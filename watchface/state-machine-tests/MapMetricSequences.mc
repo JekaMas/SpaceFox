@@ -25,7 +25,7 @@ import Toybox.WatchUi;
    else if(event.equals("empty")){view.setContext(null);generation+=1;point=false;ready=false;artState=0;id=null;lon=null;lat=null;key="source_applied";}
    else if(event.equals("sourceUnknown")){view.setContext(unknown);generation+=1;point=false;ready=false;failed=false;artState=0;id="ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a";lon=null;lat=null;key="unknown_applied";}
    else if(event.equals("source")||event.equals("source2")){var first=event.equals("source");view.setContext(first?coarse:exact);generation+=1;point=true;ready=false;failed=false;artState=0;id=first?"ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60":"ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a";lon=first?111.589567:-80.58303644;lat=first?38.863128:28.58341025;key="source_applied";}
-   else if(event.equals("start")||event.equals("start2")||event.equals("start3")){var serial=event.equals("start")?1:event.equals("start2")?2:3;Test.assert(art.request(serial));if(event.equals("start2")){generation+=1;}job=art.begin();artState=1;key="art_start_applied";}
+   else if(event.equals("start")||event.equals("start2")||event.equals("start3")){var serial=event.equals("start")?1:event.equals("start2")?2:3;Test.assert(art.request(serial));generation+=1;job=art.begin();artState=1;key="art_start_applied";}
    else if(event.equals("art_fail")){art.fail(job);ready=false;artState=0;key="art_fail_applied";}
    else if(event.equals("art_cancel")){art.cancel();generation+=1;ready=false;artState=0;key="art_cancel_applied";}
    else if(event.equals("art_late")){Test.assert(!art.complete(job));key="art_late_observed_no_mutation";}

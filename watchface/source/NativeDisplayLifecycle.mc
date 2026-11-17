@@ -11,9 +11,9 @@ class NativeDisplayLifecycle {
     function shown() as Boolean {return state!=HIDDEN;}
     function awake() as Boolean {return !sleeping;}
     function mode() as Number {return state==ACTIVE?1:0;}
-    function show() as Void {if(state==HIDDEN){state=LOW;invalidateFrame();}}
-    function hide() as Void {state=HIDDEN;invalidateFrame();}
-    function sleep() as Void {sleeping=true;}
-    function wake() as Void {sleeping=false;}
+    function show() as Boolean {if(state!=HIDDEN){return false;}state=LOW;invalidateFrame();return true;}
+    function hide() as Boolean {if(state==HIDDEN){return false;}state=HIDDEN;invalidateFrame();return true;}
+    function sleep() as Boolean {if(sleeping){return false;}sleeping=true;return true;}
+    function wake() as Boolean {if(!sleeping){return false;}sleeping=false;return true;}
     function setMode(value as Number) as Void {if(state!=HIDDEN){state=value==1?ACTIVE:LOW;}}
 }

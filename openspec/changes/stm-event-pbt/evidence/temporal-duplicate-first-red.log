@@ -1,0 +1,19 @@
+------------------------------------------------------------------------------
+Executing test duplicateTemporalEntryDoesNotRestartInFlight...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED: duplicate temporal entry must not create a second concurrent request
+Stack: 
+  - API code 0x30000203 
+  - duplicateTemporalEntryDoesNotRestartInFlight() at /task/isolated/GeneratedOwners.mc:136 0x10002040 
+  - evaluate_test_entries_0_to_7() at /task/gen/006-B4433-00/source/UnitTests.mcgen:69 0x100056c9 
+  - runTest() at /task/gen/006-B4433-00/source/UnitTests.mcgen:84 0x100057c9 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                                        Status:
+duplicateTemporalEntryDoesNotRestartInFlight ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

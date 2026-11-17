@@ -1,0 +1,21 @@
+------------------------------------------------------------------------------
+Executing test generatedArtLease...
+
+Error: Unexpected Type Error
+Details: Failed invoking <symbol>
+Stack: 
+  - onShow() at /source/watchface/source/SpaceFoxView.mc:92 0x1000bb9c 
+  - initialize() at /task/isolated/GeneratedOwners.mc:728 0x1000c452 
+  - runGeneratedArtLease() at /task/isolated/GeneratedOwners.mc:746 0x10000e83 
+  - generatedArtLease() at /task/isolated/GeneratedOwners.mc:750 0x100032fb 
+  - evaluate_test_entries_30_to_32() at /task/gen/006-B4433-00/source/UnitTests.mcgen:155 0x1000817f 
+  - runTest() at /task/gen/006-B4433-00/source/UnitTests.mcgen:174 0x1000878e 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+generatedArtLease                   ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

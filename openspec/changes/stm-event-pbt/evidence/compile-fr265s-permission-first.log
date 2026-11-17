@@ -1,0 +1,44 @@
+ERROR: Unable to pre-process jungles: /source/watchface/monkey.jungle (Permission denied)
+usage: monkeyc [-a <arg>] [-b <arg>] [--build-stats <arg>] [-d <arg>]
+       [--debug-log-level <arg>] [--debug-log-output <arg>]
+       [--disable-api-has-check-removal] [--disable-v2-opcodes] [-e]
+       [--Eno-invalid-symbol] [-f <arg>] [-g] [-h] [-i <arg>] [-k] [-l <arg>]
+       [-m <arg>] [--no-gen-styles] [-o <arg>] [-O <arg>] [-p <arg>] [-r] [-t]
+       [-u <arg>] [-v] [-w] [-x <arg>] [-y <arg>] [-z <arg>]
+-a,--apidb <arg>                  API import file
+-b,--apimir <arg>                 API MIR file
+   --build-stats <arg>            Print build stats [0=basic]
+-d,--device <arg>                 Target device
+   --debug-log-level <arg>        Debug logging verbosity [0=errors, 1=basic,
+                                  2=intermediate, 3=verbose]
+   --debug-log-output <arg>       Output log zip file
+   --disable-api-has-check-removalDo not optimize out API has checks
+   --disable-v2-opcodes           Do not use the v2 opcodes
+-e,--package-app                  Create an application package.
+   --Eno-invalid-symbol           Do not error when a symbol is found to be
+                                  invalid
+-f,--jungles <arg>                Jungle files
+-g,--debug                        Print debug output
+-h,--help                         Prints help information
+-i,--import-dbg <arg>             Import api.debug.xml
+-k,--profile                      Enable profiling support
+-l,--typecheck <arg>              Type check [0=off, 1=gradual, 2=informative,
+                                  3=strict]
+-m,--manifest <arg>               Manifest file (deprecated)
+   --no-gen-styles                Do not generate Rez.Styles module
+-o,--output <arg>                 Output file to create
+-O,--optimization <arg>           Optimization level [0=none, 1=basic, 2=fast
+                                  optimizations, 3=slow optimizations]
+                                  [p=optimize performance, z=optimize code
+                                  space]
+-p,--project-info <arg>           projectInfo.xml file to use when compiling
+-r,--release                      Strip debug information
+-t,--unit-test                    Enables compilation of unit tests
+-u,--devices <arg>                devices.xml file to use when compiling
+                                  (deprecated)
+-v,--version                      Prints the compiler version
+-w,--warn                         Show compiler warnings
+-x,--excludes <arg>               Add annotations to the exclude list
+                                  (deprecated)
+-y,--private-key <arg>            Private key to sign builds with
+-z,--rez <arg>                    Resource files (deprecated)

@@ -1,0 +1,20 @@
+native campaign source is not clean; commit and review before running:
+ M watchface/manifest.xml
+ M watchface/source/FeedService.mc
+ M watchface/source/FieldSources.mc
+ M watchface/source/Fitness.mc
+ M watchface/source/LaunchReminder.mc
+ M watchface/source/NativeDisplayLifecycle.mc
+ M watchface/source/NativeForegroundApp.mc
+ M watchface/source/NativeTransfer.mc
+ M watchface/source/SceneLifecycle.mc
+ M watchface/source/SpaceFoxApp.mc
+ M watchface/source/SpaceFoxView.mc
+ M watchface/source/generated/NativeVersion.mc
+ M watchface/state-machine-tests/MapMetricSequences.mc
+ M watchface/state-machine-tests/StateSequences.mc
+ M watchface/state-machine-tests/VolatileSequences.mc
+?? tests/test_native_stm_campaign.py
+?? tools/run_native_stm_campaign.py
+?? watchface/stm-property-tests/
+

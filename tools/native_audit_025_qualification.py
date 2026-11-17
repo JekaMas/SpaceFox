@@ -44,6 +44,10 @@ METRICS_NATIVE = INTEGRATION_NATIVE | set("""watchface/source/FieldSources.mc wa
  watchface/source/NativeCache.mc watchface/source/SceneRenderer.mc""".split())
 METRICS_OWNERS = INTEGRATION_OWNERS | {"tools/spacefox/publisher.py", "tests/test_autonomous_publisher_whole.py"}
 METRICS_PRIOR_TESTS = {"watchface/runtime-b1-tests/ClockFirst021.mc", "watchface/runtime-b1-tests/ColdAcquisition.mc"}
+# STM changes retain the original five-primary qualification and reconstruct
+# its exact source. The changed runtime files are explicit; the independent
+# current-source peer receipt remains a separate release requirement.
+STM_NATIVE = METRICS_NATIVE | {"watchface/source/LaunchReminder.mc", "watchface/source/NativeTransfer.mc"}
 AUDIT_SOURCE = "e30f79680c4e2cd8bbae1895226e5915c2a72ef9"
 
 def run_prior(root, catalog, snapshots, audit_record=None, native_delta=None, test_delta=()):
@@ -100,11 +104,12 @@ def validate(root,catalog):
     if record['scope']!='runtime-audit-025-current-source' or record['version']!='0.2.5':raise ValueError('wrong audit proof scope/version')
     from xml.etree import ElementTree as ET
     app=ET.parse(root/'watchface/manifest.xml').getroot().find('{http://www.garmin.com/xml/connectiq}application')
-    integrated=app.get('version') in ('0.2.6','0.2.7','0.2.8')
-    metrics=app.get('version') in ('0.2.7','0.2.8')
+    integrated=app.get('version') in ('0.2.6','0.2.7','0.2.8','0.2.9')
+    metrics=app.get('version') in ('0.2.7','0.2.8','0.2.9')
+    stm=app.get('version')=='0.2.9'
     actual=native_inputs(root);previous=record['nativeInputs']
     changed={name for name in set(actual)|set(previous) if actual.get(name)!=previous.get(name)}
-    expected_native=METRICS_NATIVE if metrics else INTEGRATION_NATIVE if integrated else set()
+    expected_native=STM_NATIVE if stm else METRICS_NATIVE if metrics else INTEGRATION_NATIVE if integrated else set()
     if changed!=expected_native:raise ValueError('audit native input closure changed')
     actual_tests=test_inputs(root);prior_tests=record['priorTestInputs']
     changed_tests={name for name in set(actual_tests)|set(prior_tests) if actual_tests.get(name)!=prior_tests.get(name)}

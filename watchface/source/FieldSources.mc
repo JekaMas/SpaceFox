@@ -157,11 +157,14 @@ class FieldComplicationApi {
 class SelectedFields {
     var selected=[];var subscribed=[];var labels={};var text={};var icons={};var states={};var reasons={};var energy as Number or Null=null;var energyStatus="WAITING";var energyReason="no-sample";var callbackRegistered=false;var provider=null;var api=null;var customMask=0;var fittedMask=0;var numericMask=0;
     function initialize(){}
+    function savedField(slot){return FieldCatalog.saved(slot);}
+    function systemInfo(){return System.getSystemStats();}
+    function activityInfo(){return ActivityMonitor.getInfo();}
     function start(slots,callback){
         stop();clearSnapshot();
         for(var i=0;i<4;i+=1){
             var custom=slots[i].equals("custom"+(i+1));if(custom){customMask|=(1<<i);}
-            var source=slots[i].equals("energy")?new Complications.Id(23):(custom?FieldCatalog.saved(i+1):null);
+            var source=slots[i].equals("energy")?new Complications.Id(23):(custom?savedField(i+1):null);
             selected.add(source);
         }
         var hasComplication=false;for(var i=0;i<selected.size();i+=1){if(selected[i] instanceof Complications.Id){hasComplication=true;break;}}
@@ -203,8 +206,8 @@ class SelectedFields {
                         if(kind==0){try{var icon=item.getIcon();if(icon!=null){icons[key]=safeProviderIcon(icon);}}catch(noIcon){icons[key]=false;}}
                     }
                 }item=null;
-            }else if(source instanceof String){if(source.find("system:")==0){if(!statsFetched){stats=System.getSystemStats();statsFetched=true;}if(stats!=null){text[key]=FieldFormat.system(source,FieldCatalog.systemValue(stats,source),locale);var keys=FieldCatalog.systemKeys();var at=keys.indexOf(source);if(at>=0){if(words==null){words=FieldText.menu(locale);}labels[key]=words["system"][at];}}}
-                else{if(!fetched){info=ActivityMonitor.getInfo();fetched=true;}if(info!=null){text[key]=FieldFormat.activity(source,FieldCatalog.activityValue(info,source));var keys=FieldCatalog.activityKeys();var at=keys.indexOf(source);if(at>=0){if(words==null){words=FieldText.menu(locale);}labels[key]=words["activity"][at];}}}}}
+            }else if(source instanceof String){if(source.find("system:")==0){if(!statsFetched){stats=systemInfo();statsFetched=true;}if(stats!=null){text[key]=FieldFormat.system(source,FieldCatalog.systemValue(stats,source),locale);var keys=FieldCatalog.systemKeys();var at=keys.indexOf(source);if(at>=0){if(words==null){words=FieldText.menu(locale);}labels[key]=words["system"][at];}}}
+                else{if(!fetched){info=activityInfo();fetched=true;}if(info!=null){text[key]=FieldFormat.activity(source,FieldCatalog.activityValue(info,source));var keys=FieldCatalog.activityKeys();var at=keys.indexOf(source);if(at>=0){if(words==null){words=FieldText.menu(locale);}labels[key]=words["activity"][at];}}}}}
             catch(e){states[key]="UNAVAILABLE";reasons[key]="provider-error";}
             if(text.hasKey(key)&&text[key] instanceof String&&!(text[key] as String).equals("—")){states[key]="READY";reasons[key]="available";}
         }

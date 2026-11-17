@@ -1,0 +1,19 @@
+------------------------------------------------------------------------------
+Executing test hiddenWakeDoesNotRequestFrame...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED: wake while hidden must not request a visible frame
+Stack: 
+  - API code 0x30000203 
+  - hiddenWakeDoesNotRequestFrame() at /task/isolated/GeneratedOwners.mc:311 0x10002e6c 
+  - evaluate_test_entries_0_to_17() at /task/gen/006-B4433-00/source/UnitTests.mcgen:99 0x10004e8a 
+  - runTest() at /task/gen/006-B4433-00/source/UnitTests.mcgen:114 0x10004eec 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+hiddenWakeDoesNotRequestFrame       ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

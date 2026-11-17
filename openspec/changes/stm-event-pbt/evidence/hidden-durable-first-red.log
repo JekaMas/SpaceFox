@@ -1,0 +1,21 @@
+------------------------------------------------------------------------------
+Executing test durableWhileHiddenBindsOnLowShow...
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042260
+SF_FG background_delivery
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED: LOW show must admit a complete snapshot delivered while hidden
+Stack: 
+  - API code 0x30000203 
+  - durableWhileHiddenBindsOnLowShow() at /task/isolated/GeneratedOwners.mc:393 0x1000358f 
+  - evaluate_test_entries_0_to_20() at /task/gen/006-B4433-00/source/UnitTests.mcgen:108 0x10005519 
+  - runTest() at /task/gen/006-B4433-00/source/UnitTests.mcgen:123 0x100056c2 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+durableWhileHiddenBindsOnLowShow    ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

@@ -1,0 +1,15 @@
+------------------------------------------------------------------------------
+Executing test generatedCoreShort...
+DEBUG (14:17): GENERATED_DISPLAY seeds=64 events=2696 variable_length=true after_each=true end=true
+DEBUG (14:17): GENERATED_REQUEST seeds=64 events=2696 variable_length=true after_each=true end=true
+DEBUG (14:17): GENERATED_SCENE seeds=64 events=2760 variable_length=true after_each=true end=true
+DEBUG (14:17): CORE_SHORT owner_sets=3 deterministic_red_regression=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+generatedCoreShort                  PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

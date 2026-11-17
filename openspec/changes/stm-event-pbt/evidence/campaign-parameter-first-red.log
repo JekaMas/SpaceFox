@@ -1,0 +1,20 @@
+------------------------------------------------------------------------------
+Executing test campaignParameterSmoke...
+
+Error: Symbol Not Found Error
+Details: Could not find symbol 'total'
+Stack: 
+  - runGeneratedCacheMapOwners() at /task/isolated/GeneratedOwners.mc:284 0x10003b0c 
+  - campaignBatch() at /task/isolated/CampaignPilot.mc:12 0x10003905 
+  - campaignParameterSmoke() at /task/isolated/CampaignPilot.mc:31 0x1000160e 
+  - evaluate_test_entries_0_to_30() at /task/gen/006-B4433-00/source/UnitTests.mcgen:83 0x10008096 
+  - runTest() at /task/gen/006-B4433-00/source/UnitTests.mcgen:167 0x100085cc 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+campaignParameterSmoke              ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

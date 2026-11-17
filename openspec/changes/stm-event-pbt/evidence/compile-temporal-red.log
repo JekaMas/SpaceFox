@@ -1,0 +1,10 @@
+ERROR: fr165m: /source/watchface/source/FeedService.mc:20: Parameter 1 is untyped.
+ERROR: fr165m: /source/watchface/source/FeedService.mc:20: Function return is untyped.
+ERROR: fr165m: /source/watchface/source/FeedService.mc:21: Parameter 1 is untyped.
+ERROR: fr165m: /source/watchface/source/FeedService.mc:21: Parameter 2 is untyped.
+ERROR: fr165m: /source/watchface/source/FeedService.mc:22: Parameter 1 is untyped.
+ERROR: fr165m: /source/watchface/source/FeedService.mc:22: Parameter 2 is untyped.
+ERROR: fr165m: /source/watchface/source/FeedService.mc:23,38: Assigned value type 'PolyType<Any or $.Toybox.Lang.Number>' to member '$.FeedService.started' of non-poly type '$.Toybox.Lang.Number'.
+ERROR: fr165m: /source/watchface/source/FeedService.mc:26,55: Cannot find symbol ':base' on type 'Null'.
+ERROR: fr165m: /source/watchface/source/FeedService.mc:26,55: Passing 'Any' as parameter 1 of type '$.Toybox.Lang.String'.
+ERROR: fr165m: /source/watchface/source/FeedService.mc:26,55: Passing '$.Toybox.Lang.Method' as parameter 4 of poly type 'PolyType<($.Toybox.Lang.Method(responseCode as $.Toybox.Lang.Number, data as Null or $.Toybox.Lang.ByteArray or $.Toybox.Lang.Dictionary or $.Toybox.Lang.String or $.Toybox.PersistedContent.Iterator) as Void) or ($.Toybox.Lang.Method(responseCode as $.Toybox.Lang.Number, data as Null or $.Toybox.Lang.ByteArray or $.Toybox.Lang.Dictionary or $.Toybox.Lang.String or $.Toybox.PersistedContent.Iterator, context as $.Toybox.Lang.Object) as Void)>'.

@@ -1,0 +1,23 @@
+------------------------------------------------------------------------------
+Executing test generatedFitnessOwners...
+STM_FAIL owner=fitness-coverage seed=1 index=50 trace=[[0, 0], [2, 27], [3, 22], [4, 35], [5, 68], [9, 0], [11, 0], [6, 301], [11, 0], [7, 0], [11, 0], [8, 0], [11, 0], [1, 0], [9, 0], [0, 0], [9, 0], [11, 0], [0, 80], [7, 16], [5, 7], [9, 100], [10, 25], [10, 67], [4, 39], [5, 69], [0, 72], [6, 27], [6, 50], [10, 8], [11, 56], [3, 97], [4, 35], [0, 41], [0, 22], [5, 54], [3, 36], [11, 30], [4, 70], [6, 74], [11, 44], [7, 8], [2, 77], [8, 27], [4, 63], [2, 91], [4, 0], [11, 17], [4, 48], [3, 21]] expected=missing actual=0
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - ownerCheck() at /task/isolated/GeneratedOwners.mc:12 0x10003003 
+  - final() at /task/isolated/GeneratedOwners.mc:572 0x100063fa 
+  - generatedFitnessOwners() at /task/isolated/GeneratedOwners.mc:576 0x1000136c 
+  - evaluate_test_entries_0_to_25() at /task/gen/006-B4433-00/source/UnitTests.mcgen:123 0x10006f1f 
+  - runTest() at /task/gen/006-B4433-00/source/UnitTests.mcgen:138 0x10006f81 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+generatedFitnessOwners              ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

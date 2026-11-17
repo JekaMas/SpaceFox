@@ -1,0 +1,93 @@
+{
+  "status": "GREEN",
+  "required_seconds": 3,
+  "full_duration": false,
+  "overlap_seconds": [
+    2.644097375217825
+  ],
+  "results": [
+    {
+      "owner": "foreground",
+      "worker": 0,
+      "status": "GREEN",
+      "raw_exit": 1,
+      "launcher": {
+        "status": "passed",
+        "raw_exit_code": 1,
+        "expected_tests": [
+          "campaignPilot"
+        ],
+        "observed_tests": {
+          "campaignPilot": "PASS"
+        },
+        "observed_count": 1,
+        "launcher_nonzero_framework_pass": true
+      },
+      "host_start": 2869872.186496208,
+      "productive_begin": 2869886.045218791,
+      "productive_end": 2869889.177599791,
+      "coverage": {
+        "volatile_applied": 260,
+        "hidden_durable": 192,
+        "stale_no": 202,
+        "frame_no": 134,
+        "pointer_failure": 259,
+        "frame_applied": 328,
+        "hidden_volatile": 343,
+        "bootstrap_applied": 165,
+        "hide_applied": 200,
+        "slot_failure": 219,
+        "reopen_applied": 227,
+        "commit_applied": 280,
+        "create_applied": 195,
+        "show_applied": 334
+      },
+      "assertions": 17489,
+      "skipped": 340,
+      "first_seed": 1,
+      "next_seed": 73,
+      "traces": 72,
+      "events": 3240,
+      "productive_ms": 3134
+    },
+    {
+      "owner": "source",
+      "worker": 1,
+      "status": "GREEN",
+      "raw_exit": 1,
+      "launcher": {
+        "status": "passed",
+        "raw_exit_code": 1,
+        "expected_tests": [
+          "campaignPilot"
+        ],
+        "observed_tests": {
+          "campaignPilot": "PASS"
+        },
+        "observed_count": 1,
+        "launcher_nonzero_framework_pass": true
+      },
+      "host_start": 2869871.6987195,
+      "productive_begin": 2869885.499533583,
+      "productive_end": 2869888.689316166,
+      "coverage": {
+        "hide_applied": 209,
+        "delivery_applied": 190,
+        "frame_applied": 172,
+        "switch_applied": 360,
+        "old_source_no": 390,
+        "art_applied": 224,
+        "late_art_no": 317,
+        "hidden_switch": 130,
+        "show_applied": 168
+      },
+      "assertions": 9945,
+      "skipped": 135,
+      "first_seed": 400001,
+      "next_seed": 400081,
+      "traces": 80,
+      "events": 2865,
+      "productive_ms": 3191
+    }
+  ]
+}

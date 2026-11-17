@@ -1,0 +1,88 @@
+{
+  "status": "GREEN",
+  "required_seconds": 1,
+  "full_duration": false,
+  "overlap_seconds": [
+    0.9893617080524564
+  ],
+  "results": [
+    {
+      "owner": "source",
+      "worker": 0,
+      "status": "GREEN",
+      "raw_exit": 1,
+      "launcher": {
+        "status": "passed",
+        "raw_exit_code": 1,
+        "expected_tests": [
+          "campaignPilot"
+        ],
+        "observed_tests": {
+          "campaignPilot": "PASS"
+        },
+        "observed_count": 1,
+        "launcher_nonzero_framework_pass": true
+      },
+      "host_start": 2869938.689980416,
+      "productive_begin": 2869952.59010325,
+      "productive_end": 2869953.802545708,
+      "coverage": {
+        "hide_applied": 87,
+        "delivery_applied": 73,
+        "frame_applied": 66,
+        "switch_applied": 140,
+        "old_source_no": 183,
+        "art_applied": 78,
+        "late_art_no": 121,
+        "hidden_switch": 55,
+        "show_applied": 67
+      },
+      "assertions": 3993,
+      "skipped": 52,
+      "first_seed": 1,
+      "next_seed": 33,
+      "traces": 32,
+      "events": 1142,
+      "productive_ms": 1214
+    },
+    {
+      "owner": "art-lease",
+      "worker": 1,
+      "status": "GREEN",
+      "raw_exit": 1,
+      "launcher": {
+        "status": "passed",
+        "raw_exit_code": 1,
+        "expected_tests": [
+          "campaignPilot"
+        ],
+        "observed_tests": {
+          "campaignPilot": "PASS"
+        },
+        "observed_count": 1,
+        "launcher_nonzero_framework_pass": true
+      },
+      "host_start": 2869938.838561833,
+      "productive_begin": 2869952.497431291,
+      "productive_end": 2869953.579464958,
+      "coverage": {
+        "fail": 122,
+        "sleep_retains": 409,
+        "hide_release": 117,
+        "complete": 113,
+        "prepare": 603,
+        "start": 382,
+        "refuse": 137,
+        "cancel": 429,
+        "step": 113
+      },
+      "assertions": 9841,
+      "skipped": 0,
+      "first_seed": 400001,
+      "next_seed": 400105,
+      "traces": 104,
+      "events": 4041,
+      "productive_ms": 1083
+    }
+  ]
+}

@@ -27,8 +27,11 @@ class SceneLifecycle {
             // a strictly newer completed batch is admitted; advancing the token
             // prevents an old callback from publishing into the retry.
             if(job.state!=job.FAILED || serial<=job.batchSerial){return false;}
-            generation+=1;
         }
+        // Every accepted job gets a fresh identity, including a job started
+        // after a previous successful completion or a retained ready scene.
+        // A late completion from that earlier job must not publish this one.
+        generation+=1;
         job=new SceneJob(generation,serial);presentationState=ART_PENDING;return true;
     }
     function begin() as Number or Null {

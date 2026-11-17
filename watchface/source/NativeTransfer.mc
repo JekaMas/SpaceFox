@@ -33,5 +33,5 @@ class NativeTransfer {
     }
     function due(now,connected){return !base.equals("")&&now>=nextWake(now,connected);}
     function attempted(now){lastAttempt=now.toLong();lastSucceeded=false;store.write("sf.attempt:"+base,{"base"=>base,"utc"=>lastAttempt,"success"=>false});}
-    function completed(success){lastSucceeded=success;store.write("sf.attempt:"+base,{"base"=>base,"utc"=>lastAttempt,"success"=>success});}
+    function completed(success){store.write("sf.attempt:"+base,{"base"=>base,"utc"=>lastAttempt,"success"=>success});lastSucceeded=success;}
 }

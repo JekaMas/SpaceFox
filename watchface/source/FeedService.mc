@@ -9,35 +9,48 @@ class FeedService extends System.ServiceDelegate {
     var transfer as NativeTransfer or Null;var assetRequest as Dictionary or Null;var batch as NativeBatch or Null=null;var started as Number=0;var requests as Number=0;
     var deadlineArmed as Boolean=false;var flight as NativeRequestLifecycle;var volatileSnapshot as Array or Null=null;
     function initialize(){ServiceDelegate.initialize();transfer=null;assetRequest=null;flight=new NativeRequestLifecycle();}
+    function log(message as String) as Void {System.println(message);}
     function createTransfer() as NativeTransfer {return new NativeTransfer(configuredFeedUrl(),null);}
     function requestUrl(path as String) as String {return ((transfer as NativeTransfer).base as String)+"/"+path+".txt";}
     function nowMillis() as Number {return System.getTimer();}
+    function nowUtc() as Long {return Time.now().value().toLong();}
     function phoneConnected() as Boolean {try{return System.getDeviceSettings().phoneConnected;}catch(e){return false;}}
-    function startDeadline() as Void {started=nowMillis();requests=0;deadlineArmed=true;flight.reset();}
+    function traceEntry() as Void {try{var settings=System.getDeviceSettings();var registered=Background.getTemporalEventRegisteredTime();var last=Background.getLastTemporalEventTime();log("SF_BG enter phone="+settings.phoneConnected+" registered="+(registered==null?"none":registered.value())+" last="+(last==null?"none":last.value()));}catch(ignore){}}
+    function registerEntryWake() as Void {try{Background.registerForTemporalEvent(new Time.Duration(300));}catch(e){}}
+    function stopEmptySource() as Void {Background.deleteTemporalEvent();Background.exit(null);}
+    function createBatch(source as NativeTransfer) as NativeBatch or Null {return new NativeBatch(source.store,source.base);}
+    function wakeReminders(source as NativeTransfer,now as Long) as Void {LaunchReminder.wake(source,now);}
+    function armTransfer(source as NativeTransfer,now as Long) as Void {armFeed(source,now);}
+    function startDeadline() as Boolean {
+        var now=nowMillis();var expired=deadlineArmed&&now-started>=22000;
+        var action=flight.startSession(expired);
+        if(action==2){finish();return false;}if(action==0){return false;}
+        started=now;requests=0;deadlineArmed=true;return true;
+    }
     (:typecheck(false))
     function sendRequest(path as String,callback as Method) as Void {Communications.makeWebRequest(requestUrl(path),{}, {:method=>Communications.HTTP_REQUEST_METHOD_GET,:headers=>{"Accept"=>"text/plain"},:responseType=>Communications.HTTP_RESPONSE_CONTENT_TYPE_TEXT_PLAIN},callback);}
+    (:typecheck(false)) function sendSnapshot(callback as Method) as Void {Communications.makeWebRequest(transfer.base+"/watch.json",{}, {:method=>Communications.HTTP_REQUEST_METHOD_GET,:headers=>{"Accept"=>"application/json"},:responseType=>Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON},callback);}
     function cancelOutstanding() as Void {Communications.cancelAllRequests();}
-    function rearm() as Void {if(transfer!=null){armFeed(transfer,Time.now().value().toLong());}}
+    function rearm() as Void {if(transfer!=null){armTransfer(transfer,nowUtc());}}
     (:typecheck(false)) function deliverBackground(data) as Void {Background.exit(data);}
     (:typecheck(false)) function leave() as Void {
         if(volatileSnapshot!=null){
             try{deliverBackground({"base"=>transfer.base,"volatileSnapshot"=>volatileSnapshot});return;}
-            catch(e){System.println("SF_BG volatile_delivery_failed");volatileSnapshot=null;deliverBackground({"volatileDeliveryFailed"=>true});return;}
+            catch(e){log("SF_BG volatile_delivery_failed");volatileSnapshot=null;deliverBackground({"volatileDeliveryFailed"=>true});return;}
         }
         deliverBackground({"provisional"=>true});
     }
     (:typecheck(false))
     function onTemporalEvent() as Void {
-        try{var settings=System.getDeviceSettings();var registered=Background.getTemporalEventRegisteredTime();var last=Background.getLastTemporalEventTime();System.println("SF_BG enter phone="+settings.phoneConnected+" registered="+(registered==null?"none":registered.value())+" last="+(last==null?"none":last.value()));}catch(ignore){}
-        startDeadline();try{Background.registerForTemporalEvent(new Time.Duration(300));}catch(e){}
-        try{transfer=createTransfer();if(transfer.base.equals("")){Background.deleteTemporalEvent();Background.exit(null);return;}batch=new NativeBatch(transfer.store,transfer.base);transfer.load();var now=Time.now().value().toLong();LaunchReminder.wake(transfer,now);var connected=phoneConnected();if(transfer.due(now,connected)){transfer.attempted(now);armFeed(transfer,now);if(connected){requestSnapshot();}else{optional();}}else{optional();}}catch(e){System.println("SF_BG start_error");finish();}
+        if(!startDeadline()){return;}traceEntry();registerEntryWake();
+        try{transfer=createTransfer();if(transfer.base.equals("")){stopEmptySource();return;}batch=createBatch(transfer);transfer.load();var now=nowUtc();wakeReminders(transfer,now);var connected=phoneConnected();if(transfer.due(now,connected)){transfer.attempted(now);armTransfer(transfer,now);if(connected){requestSnapshot();}else{optional();}}else{optional();}}catch(e){log("SF_BG start_error");finish();}
     }
     (:typecheck(false))
-    function request(path as String,callback as Method) as Void {if(!flight.canStart()){return;}if(requests>=44||nowMillis()-started>=22000){System.println("SF_BG request_budget");finish();return;}requests+=1;var serial=flight.begin();var pending=new NativeRequestCallback(self,serial,callback);try{sendRequest(path,pending.method(:deliver));}catch(e){flight.abandon();System.println("SF_BG request_error");finish();}}
+    function request(path as String,callback as Method) as Void {if(!flight.canStart()){return;}if(requests>=44||nowMillis()-started>=22000){log("SF_BG request_budget");finish();return;}requests+=1;var serial=flight.begin();var pending=new NativeRequestCallback(self,serial,callback);try{sendRequest(path,pending.method(:deliver));}catch(e){flight.abandon();log("SF_BG request_error");finish();}}
     (:typecheck(false)) function requestSnapshot() as Void {
         if(!flight.canStart()){return;}if(requests>=44||nowMillis()-started>=22000){finish();return;}
         requests+=1;var serial=flight.begin();var pending=new NativeRequestCallback(self,serial,method(:receiveSnapshot));
-        try{Communications.makeWebRequest(transfer.base+"/watch.json",{}, {:method=>Communications.HTTP_REQUEST_METHOD_GET,:headers=>{"Accept"=>"application/json"},:responseType=>Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON},pending.method(:deliver));}catch(e){flight.abandon();System.println("SF_BG snapshot_request_error");finish();}
+        try{sendSnapshot(pending.method(:deliver));}catch(e){flight.abandon();log("SF_BG snapshot_request_error");finish();}
     }
     (:typecheck(false)) function receiveSnapshot(code,data) as Void {
         if(!callbackAllowed()){return;}
@@ -45,14 +58,18 @@ class FeedService extends System.ServiceDelegate {
             var snapshot=data["data"];var accepted=false;
             if(snapshot.size()!=7||snapshot[0]!=1){data=null;finish();return;}
             var owner=new NativeTrustedStore(transfer.store,transfer.base);
-            try{owner.normalize(snapshot);}catch(e){System.println("SF_BG snapshot_invalid");data=null;finish();return;}
-            try{accepted=owner.saveNormalized(snapshot);}catch(e){System.println("SF_BG snapshot_storage_error");
+            try{owner.normalize(snapshot);}catch(e){log("SF_BG snapshot_invalid");data=null;finish();return;}
+            try{accepted=owner.saveNormalized(snapshot);}catch(e){log("SF_BG snapshot_storage_error");
                 // The SDK background and foreground heaps are separate. Only
                 // a complete response can be offered through bounded OS IPC.
                 if(snapshot.size()==7&&snapshot[0]==1){volatileSnapshot=snapshot;}}
             if(accepted){
                 try{if(batch!=null&&snapshot[6]!=null){batch.select(snapshot[6]);}}catch(ignore){}
-                transfer.completed(true);System.println("SF_BG snapshot_ready");
+                // The snapshot pointer is already durable. Failure to record
+                // the separate scheduling checkpoint must still terminate the
+                // service; the persisted unsuccessful attempt safely retries.
+                try{transfer.completed(true);}catch(e){log("SF_BG checkpoint_error");}
+                log("SF_BG snapshot_ready");
             }
             if(volatileSnapshot!=null){data=null;finish();return;}
         }
@@ -63,13 +80,13 @@ class FeedService extends System.ServiceDelegate {
     }
     function callbackAllowed() as Boolean {if(!flight.consume()){return false;}if(deadlineArmed&&nowMillis()-started>=22000){finish();return false;}return true;}
     (:typecheck(false))
-    function optional() as Void {try{if(batch!=null){assetRequest=batch.next();if(assetRequest!=null){request(assetRequest["path"],method(:receiveBatch));return;}if(batch.head!=null){finish();return;}}}catch(e){System.println("SF_BG batch_error");}finish();}
+    function optional() as Void {try{if(batch!=null){assetRequest=batch.next();if(assetRequest!=null){request(assetRequest["path"],method(:receiveBatch));return;}if(batch.head!=null){finish();return;}}}catch(e){log("SF_BG batch_error");}finish();}
     (:typecheck(false))
-    function receiveBatch(code as Number,data as Dictionary or String or Null) as Void {if(!callbackAllowed()){return;}try{System.println("SF_BG object_http="+code+" catalog="+(assetRequest["path"].find("wire3/catalogs/")==0));if(code==200&&data instanceof String&&batch.immutable.put(assetRequest,data)){
+    function receiveBatch(code as Number,data as Dictionary or String or Null) as Void {if(!callbackAllowed()){return;}try{log("SF_BG object_http="+code+" catalog="+(assetRequest["path"].find("wire3/catalogs/")==0));if(code==200&&data instanceof String&&batch.immutable.put(assetRequest,data)){
         // The catalog is the admission prerequisite. Exit now so the foreground
         // can display the validated schedule; the durable pending batch resumes
         // optional visual downloads at the next permitted background event.
-        if(assetRequest["path"].find("wire3/catalogs/")==0){System.println("SF_BG catalog_ready");finish();return;}optional();return;}}catch(e){System.println("SF_BG object_error");}finish();}
+        if(assetRequest["path"].find("wire3/catalogs/")==0){log("SF_BG catalog_ready");finish();return;}optional();return;}}catch(e){log("SF_BG object_error");}finish();}
     (:typecheck(false))
     function finish() as Void {if(flight.finished()){return;}var cancel=flight.finish();if(cancel){try{cancelOutstanding();}catch(e){}}try{rearm();}catch(e){}leave();}
 }
@@ -80,6 +97,9 @@ class NativeRequestLifecycle {
     const IDLE=0;const IN_FLIGHT=1;const ENDED=2;
     var state=0;var serial=0;
     function reset(){serial+=1;state=IDLE;}
+    // A repeated OS entry preserves an unexpired callback; an expired session
+    // terminates first so its request is cancelled before a later retry.
+    function startSession(expired){if(state==IN_FLIGHT){return expired?2:0;}reset();return 1;}
     function canStart(){return state==IDLE;}
     function begin(){if(!canStart()){return null;}serial+=1;state=IN_FLIGHT;return serial;}
     function isCurrent(id){return state==IN_FLIGHT&&serial==id;}
@@ -145,25 +165,39 @@ function batchPending(cache) {
 
 (:background, :extendedCode, :typecheck(false))
 function armFeed(cache, now) {
+    armFeedWithPorts(cache,now,new FeedWakePorts());
+}
+
+// Only OS effects are ports; the wake decision remains in this owner.
+(:background, :extendedCode, :typecheck(false))
+class FeedWakePorts {
+    function registered(){var v=Background.getTemporalEventRegisteredTime();return v==null?null:v.value().toLong();}
+    function last(){var v=Background.getLastTemporalEventTime();return v==null?null:v.value().toLong();}
+    function connected(){return System.getDeviceSettings().phoneConnected;}
+    function reminder(cache,now,last){return LaunchReminder.nextWake(cache,now,last);}
+    function register(next){Background.registerForTemporalEvent(new Time.Moment(next.toNumber()));}
+    function deleteEvent(){Background.deleteTemporalEvent();}
+    function log(value){System.println(value);}
+}
+(:background, :extendedCode, :typecheck(false))
+function armFeedWithPorts(cache, now, ports) {
     if (cache.base.equals("")) {
-        try { Background.deleteTemporalEvent(); } catch(e) {}
+        try { ports.deleteEvent(); } catch(e) {}
         return;
     }
     var pending = batchPending(cache);
-    var registered = Background.getTemporalEventRegisteredTime();
-    var last = Background.getLastTemporalEventTime();
-    var registeredAt = registered == null ? null : registered.value().toLong();
-    var lastAt = last == null ? null : last.value().toLong();
+    var registeredAt = ports.registered();
+    var lastAt = ports.last();
     // The OS may forget its last event after reopening the face. Keep the
     // persisted attempt as a conservative lower bound for registration.
     if(cache.lastAttempt!=null&&cache.lastAttempt<=now&&(lastAt==null||cache.lastAttempt>lastAt)){lastAt=cache.lastAttempt;}
-    var next = pendingWake(now, cache.nextWake(now, System.getDeviceSettings().phoneConnected), registeredAt, lastAt, pending);
-    var reminder = LaunchReminder.nextWake(cache, now, lastAt);
+    var next = pendingWake(now, cache.nextWake(now, ports.connected()), registeredAt, lastAt, pending);
+    var reminder = ports.reminder(cache, now, lastAt);
     if (reminder != null && reminder < next) { next = reminder; }
-    if (!registrationNeeded(now, next, registeredAt, lastAt, pending)) { System.println("SF_WAKE registration_kept pending="+pending+" next="+next);return; }
+    if (!registrationNeeded(now, next, registeredAt, lastAt, pending)) { ports.log("SF_WAKE registration_kept pending="+pending+" next="+next);return; }
     try {
-        Background.registerForTemporalEvent(new Time.Moment(next.toNumber()));System.println("SF_WAKE registration_ok pending="+pending+" next="+next);
-    } catch(e) { System.println("SF_WAKE registration_error pending="+pending+" next="+next+" error="+e.getErrorMessage()); }
+        ports.register(next);ports.log("SF_WAKE registration_ok pending="+pending+" next="+next);
+    } catch(e) { ports.log("SF_WAKE registration_error pending="+pending+" next="+next+" error="+e.getErrorMessage()); }
 }
 (:background)
 function feedUrlValue(value as Object or Null) as String {return value instanceof String?value:"https://jekamas.github.io/SpaceFox";}

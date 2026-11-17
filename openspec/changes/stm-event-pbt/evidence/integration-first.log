@@ -1,0 +1,17 @@
+------------------------------------------------------------------------------
+Executing test generatedIntegrationShort...
+DEBUG (14:25): GENERATED_DISPLAY seeds=64 events=2696 variable_length=true after_each=true end=true
+DEBUG (14:25): GENERATED_REQUEST seeds=64 events=2760 variable_length=true after_each=true end=true
+DEBUG (14:25): GENERATED_SCENE seeds=64 events=2760 variable_length=true after_each=true end=true
+DEBUG (14:25): CORE_SHORT owner_sets=3 deterministic_red_regression=true
+
+Error: Stack Overflow Error
+Details: Failed invoking <symbol>ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+generatedIntegrationShort           ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

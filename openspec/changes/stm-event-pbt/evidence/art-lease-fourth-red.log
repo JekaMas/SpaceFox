@@ -1,0 +1,24 @@
+------------------------------------------------------------------------------
+Executing test generatedArtLease...
+STM_FAIL owner=art-lease seed=1 index=18 trace=[0, 5, 1, 5, 1, 1, 3, 4, 0, 1, 2, 0, 1, 4, 3, 3, 0, 0, 2] expected=[3, 2, 3, 1, 1, false] actual=[4, 2, 3, 1, 1, true]
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - ownerCheck() at /task/isolated/GeneratedOwners.mc:12 0x100030ce 
+  - step() at /task/isolated/GeneratedOwners.mc:741 0x1000c3cb 
+  - runGeneratedArtLease() at /task/isolated/GeneratedOwners.mc:748 0x10000ee1 
+  - generatedArtLease() at /task/isolated/GeneratedOwners.mc:751 0x100032fb 
+  - evaluate_test_entries_30_to_32() at /task/gen/006-B4433-00/source/UnitTests.mcgen:155 0x1000818e 
+  - runTest() at /task/gen/006-B4433-00/source/UnitTests.mcgen:174 0x1000879d 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+generatedArtLease                   ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

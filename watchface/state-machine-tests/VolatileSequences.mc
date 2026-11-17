@@ -18,7 +18,7 @@ import Toybox.WatchUi;
  for(var seed=0;seed<8;seed+=1){
   var store=new SequenceStore();var writer=new NativeTrustedStore(store,base);
   var old=WatchUi.loadResource(Rez.JsonData.Coarse)["payload"];Test.assert(writer.save(old));
-  var app=new SpaceFoxApp();var view=new VolatileCountingView();app.view=view;app.feed=new NativeCache(base,store);view.pendingLoader=app.method(:reloadFeed);view.pendingVolatileCheck=app.method(:hasPendingVolatile);view.onShow();app.performReload();view.onEnterSleep();
+  var app=new SpaceFoxApp();var view=new VolatileCountingView();app.view=view;app.feed=new NativeCache(base,store);view.pendingLoader=app.method(:reloadFeed);view.onShow();app.performReload();view.onEnterSleep();
   var svc=new VolatileService();svc.transfer=new NativeTransfer(base,store);svc.startDeadline();
   var next=WatchUi.loadResource(Rez.JsonData.Coarse)["payload"];next[1]["generation"]=57;next[1]["selectionValidatedUtc"]=1794812998l;next[3][15]=1794812998l;next[3][20]=1795042260l;
   var expected=1795042200l;var expectedSlots=1;var expectedPointers=1;var coverage={"start_applied"=>0,"failure_observed_no_mutation"=>0,"delivery_applied"=>0,"late_observed_no_mutation"=>0,"stale_observed_no_mutation"=>0,"wrongSource_observed_no_mutation"=>0,"reopen_observed_no_mutation"=>0,"retry_applied"=>0,"hide_applied"=>0,"show_applied"=>0,"render_applied"=>0};

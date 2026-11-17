@@ -7,12 +7,12 @@ import Toybox.Background;
 module NativeForegroundApp {
     function traceWake(stage){try{var now=Time.now().value();var registered=Background.getTemporalEventRegisteredTime();var last=Background.getLastTemporalEventTime();System.println("SF_WAKE "+stage+" build="+NativeVersion.BUILD+" id="+NativeVersion.ID+" now="+now+" registered="+(registered==null?"none":registered.value())+" last="+(last==null?"none":last.value()));}catch(ignore){System.println("SF_WAKE status_unavailable");}}
     function initial(app) as [WatchUi.WatchFace] {
-        app.view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));
-        try{app.view.setSettings(app.initialSettings());}catch(e){}app.view.bootstrapPending=true;app.view.pendingLoader=app.method(:reloadFeed);app.view.pendingVolatileCheck=app.method(:hasPendingVolatile);app.view.cancelAdmission=null;app.view.syncDisplayMode(System.getDisplayMode());return [app.view as WatchUi.WatchFace];
+        app.view=app.createView();
+        try{app.view.setSettings(app.initialSettings());}catch(e){}app.view.bootstrapPending=true;app.view.pendingLoader=app.method(:reloadFeed);app.view.cancelAdmission=null;app.view.syncDisplayMode(app.currentDisplayMode());return [app.view as WatchUi.WatchFace];
     }
     function display(app,cache){
-        if(app.view==null){return;}var now=Time.now().value().toLong();var rebound=cache.packet==null||app.view.packet!=cache.packet||cache.packet.document.hasKey("dictionaries")||app.view.context!=cache.packet.presentation;
-        if(rebound){app.view.setPacket(cache.packet);if(cache.packet!=null&&app.view.context!=null){var scene=app.view.context;System.println("SF_FG accepted launch="+scene.launchId+" point="+scene.point+" target="+scene.displayTarget);}}
+        if(app.view==null){return;}var now=app.currentUtc();var rebound=cache.packet==null||app.view.packet!=cache.packet||cache.packet.document.hasKey("dictionaries")||app.view.context!=cache.packet.presentation;
+        if(rebound){app.view.setPacket(cache.packet);if(cache.packet!=null&&app.view.context!=null){var scene=app.view.context;app.traceMessage("SF_FG accepted launch="+scene.launchId+" point="+scene.point+" target="+scene.displayTarget);}}
         if(cache.packet!=null){
             // A saved queue is merged when the packet is rebound. Reopening it
             // on every wake retains a second full queue beside decoded artwork.
@@ -26,15 +26,15 @@ module NativeForegroundApp {
     // A complete response that failed its durable commit may be delivered by
     // the OS to a currently visible foreground. It never moves the slot pointer.
     function receiveVolatile(app,data){
-        var url=new NativeTransfer(configuredFeedUrl(),null).base;
+        var url=app.createForegroundTransfer(app.feedUrl(),null).base;
         if(!(data["base"] instanceof String)||!data["base"].equals(url)){return;}
         var value=data["volatileSnapshot"];
         if(!(value instanceof Array)||value.size()!=7||value[0]!=1||!(value[1] instanceof Dictionary)){return;}
         var publisher=value[1];var generation=publisher["generation"];
         if(!(generation instanceof Number||generation instanceof Long)||!(publisher["instance"] instanceof String)||!(publisher["selectionValidatedUtc"] instanceof Number||publisher["selectionValidatedUtc"] instanceof Long)){return;}
-        var selected=app.feed;
-        if(!(selected instanceof NativeCache)||!selected.base.equals(url)){selected=new NativeCache(url,null);app.feed=selected;app.trustedToken=null;}
+        var selected=bindSource(app,url);
         if(!selected.queueVolatile(value)){return;}
+        app.failedToken=null;
         if(app.view!=null&&app.view.visible()){flushVolatile(app,selected);}
     }
     function flushVolatile(app,selected){
@@ -43,34 +43,40 @@ module NativeForegroundApp {
         app.view.beginAdmission();
         try{var packet=new NativeTrustedPacket(value);if(selected.acceptVolatile(packet)){app.view.setPacket(packet);}}
         finally{app.view.admissionPending=false;app.view.resumeAfterAdmission();}
-        WatchUi.requestUpdate();
+        app.requestForegroundFrame();
     }
     function savePlan(cache,view){
         var targets=[];var scenes=view.queueSnapshots();for(var i=0;i<scenes.size();i+=1){var value=scenes[i].orderingUtc;if(value!=null&&targets.indexOf(value)<0){targets.add(value);}}
         var marker=new NativeTrustedStore(cache.store,cache.base).marker();var sequence=marker==null?null:marker["sequence"];var old=cache.store.read("sf.transfer.plan:"+cache.base);if(old instanceof Dictionary&&old["sequence"]==sequence&&old["base"] instanceof String&&old["base"].equals(cache.base)&&nativeSame(old["targets"],targets)){return;}cache.store.write("sf.transfer.plan:"+cache.base,{"base"=>cache.base,"sequence"=>sequence,"targets"=>targets});
     }
+    // Source selection has one owner for settings and reload. Rebinding drops
+    // old-scene identity before any new-source work can be presented.
+    function bindSource(app,url){
+        var selected=app.feed;
+        if(!(selected instanceof NativeCache)||!selected.base.equals(url)){
+            if(app.view!=null){app.view.releaseRenderer();app.view.setPacket(null);app.view.resetRollover();}
+            selected=app.createCache(url);app.feed=selected;app.trustedToken=null;app.failedToken=null;
+        }
+        return selected;
+    }
     // The background service publishes one complete projected snapshot. Read
     // the pointer first; a later wake with the same pointer need not allocate a
     // second scene or disturb a running optional artwork job.
     function reload(app) {
-        var url=new NativeTransfer(configuredFeedUrl(),null).base;var now=Time.now().value().toLong();var selected=app.feed;
-        if(!(selected instanceof NativeCache)||!selected.base.equals(url)){
-            if(app.view!=null){app.view.releaseRenderer();app.view.setPacket(null);app.view.resetRollover();}
-            selected=new NativeCache(url,null);app.feed=selected;app.trustedToken=null;app.failedToken=null;
-        }
+        var url=app.createForegroundTransfer(app.feedUrl(),null).base;var now=app.currentUtc();var selected=bindSource(app,url);
         if(app.view!=null&&app.view.visible()&&selected.pendingVolatile!=null){flushVolatile(app,selected);}
         var marker=new NativeTrustedStore(selected.store,url).marker();var sequence=marker instanceof Dictionary&&marker["base"] instanceof String&&marker["base"].equals(url)?marker["sequence"]:null;
         if(sequence!=null&&sequence!=app.trustedToken&&sequence!=app.failedToken&&app.view!=null){
-            if(selected.packet!=null&&selected.ramState!=selected.VOLATILE){try{new NativeUpcomingCache(selected.store,url,selected.packet.document["publisher"]["instance"]).save(app.view.queueSnapshots());}catch(e){System.println("SF_FG queue_save_error");}}
+            if(selected.packet!=null&&selected.ramState!=selected.VOLATILE){try{new NativeUpcomingCache(selected.store,url,selected.packet.document["publisher"]["instance"]).save(app.view.queueSnapshots());}catch(e){app.traceMessage("SF_FG queue_save_error");}}
             app.view.beginAdmission();if(selected.ramState!=selected.VOLATILE){selected.packet=null;}
             try{
                 var value=new NativeTrustedStore(selected.store,url).load();
                 if(value!=null){var incoming=new NativeTrustedPacket(value);value=null;if(selected.acceptDurable(incoming)){app.view.admissionPending=false;display(app,selected);savePlan(selected,app.view);}
                     app.trustedToken=sequence;app.failedToken=null;}else{app.failedToken=sequence;}
-            }catch(e){app.failedToken=sequence;System.println("SF_FG snapshot_error");}
+            }catch(e){app.failedToken=sequence;app.traceMessage("SF_FG snapshot_error");}
             app.view.admissionPending=false;app.view.resumeAfterAdmission();
         }else if(selected.packet!=null){if(selected.ramState!=selected.VOLATILE){display(app,selected);savePlan(selected,app.view);}else if(app.view.packet!=selected.packet){app.view.setPacket(selected.packet);}}
-        if(app.view!=null&&System.getDisplayMode()==System.DISPLAY_MODE_HIGH_POWER){app.view.prepareVisual();}
-        var transfer=new NativeTransfer(selected.base,selected.store);transfer.load();armFeed(transfer,now);
+        if(app.view!=null&&app.currentDisplayMode()==System.DISPLAY_MODE_HIGH_POWER){app.view.prepareVisual();}
+        var transfer=app.createForegroundTransfer(selected.base,selected.store);transfer.load();app.armForeground(transfer,now);
     }
 }

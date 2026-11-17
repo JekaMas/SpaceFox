@@ -1,0 +1,5 @@
+# Scope and model boundary
+
+Source base: `cc534ab1d754d747d8c1305fcdcdd4f6d8468fc9`. Current goal: explicit consolidated transition ownership and production-bound stateful randomized tests, including effects, requests, invalidation and resource release. No Python mirror may stand in for native Monkey C execution. Business time and dependencies must be fake and controlled by events; monotonic elapsed time is allowed only for campaign accounting. Required assertions run after every event and at trace end, and meaningful event dispositions must have nonzero coverage. The actual dependency seams and independent oracle for each owner must be established before claiming a campaign.
+
+Run parallel workers only with isolated SUT instances, fakes, state, and namespaces. An actual native watch VM is a single event loop; independent SDK processes/VMs may be driven by host workers, but an untested assumption that multiple native VMs can coexist is not evidence. Avoid real network, business storage, device sensors or business wall clock in model runs. SDK control and artifact logging are outside the business dependency boundary and must be disclosed.

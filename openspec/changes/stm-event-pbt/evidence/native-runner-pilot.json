@@ -1,0 +1,66 @@
+{
+  "status": "GREEN",
+  "required_seconds": 3,
+  "full_duration": false,
+  "overlap_seconds": [
+    2.7856302089057863
+  ],
+  "results": [
+    {
+      "owner": "display",
+      "worker": 0,
+      "status": "GREEN",
+      "raw_exit": 1,
+      "launcher": {
+        "status": "passed",
+        "raw_exit_code": 1,
+        "expected_tests": [
+          "campaignPilot"
+        ],
+        "observed_tests": {
+          "campaignPilot": "PASS"
+        },
+        "observed_count": 1,
+        "launcher_nonzero_framework_pass": true
+      },
+      "host_start": 2869373.831727625,
+      "productive_begin": 2869387.865999958,
+      "productive_end": 2869390.876557125,
+      "coverage": "{hide_no=>3098, invalidate_applied=>2098, sleep_applied=>3075, show_applied=>3064, wake_applied=>2593, wake_no=>3035, mode_hidden_no=>3062, active_applied=>2085, show_no=>2568, sleep_no=>2534, frame_applied=>4693, hide_applied=>2561}",
+      "assertions": 119922,
+      "first_seed": 1,
+      "next_seed": 985,
+      "traces": 984,
+      "events": 42301,
+      "productive_ms": 3014
+    },
+    {
+      "owner": "request",
+      "worker": 1,
+      "status": "GREEN",
+      "raw_exit": 1,
+      "launcher": {
+        "status": "passed",
+        "raw_exit_code": 1,
+        "expected_tests": [
+          "campaignPilot"
+        ],
+        "observed_tests": {
+          "campaignPilot": "PASS"
+        },
+        "observed_count": 1,
+        "launcher_nonzero_framework_pass": true
+      },
+      "host_start": 2869374.194279333,
+      "productive_begin": 2869388.090926916,
+      "productive_end": 2869391.110324583,
+      "coverage": "{start_applied=>3664, reset_applied=>5962, callback_no=>7187, callback_applied=>948, start_no=>4502, finish_cancel=>2540, session_no=>2023, finish_idle=>4853}",
+      "assertions": 58039,
+      "first_seed": 400001,
+      "next_seed": 400721,
+      "traces": 720,
+      "events": 31679,
+      "productive_ms": 3021
+    }
+  ]
+}

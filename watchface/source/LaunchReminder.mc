@@ -14,8 +14,9 @@ module LaunchReminder {
  function enabled(){try{return Application.Properties.getValue("LaunchReminders")==1;}catch(e){return false;}}
  function number(v){return v instanceof Number||v instanceof Long;}
  function same(a,b){return a instanceof String&&b instanceof String&&a.equals(b);}
- function syncEnable(store,now){
-  var on=enabled();var state=store.read("sf.reminder.control");
+ function syncEnable(store,now){return syncEnableWith(store,now,null);}
+ function syncEnableWith(store,now,services){
+  var on=services==null?enabled():services.enabled();var state=store.read("sf.reminder.control");
   if(!(state instanceof Dictionary)||state["enabled"]!=on||!number(state["since"])||state["since"]>now){state={"enabled"=>on,"since"=>now};store.write("sf.reminder.control",state);}
   return state;
  }
@@ -88,9 +89,10 @@ module LaunchReminder {
  }
  function post(slot,s){if(slot==3&&Time.now().value().toLong()>s["target"]){return;}var label=slot==3?"Scheduled launch time":"Launch in "+[15,10,5][slot]+" min";Notifications.showNotification(label,s["title"],{:dismissPrevious=>true});}
  function wake(cache,now){try{if(!enabled()){return;}wakeWith(cache,now,null,method(:post));}catch(e){}}
- function wakeWith(cache,now,quietState,postMethod){
-  try{var control=syncEnable(cache.store,now);if(!control["enabled"]){return;}var s=selected(cache.store.read("sf.reminder.snapshot"),now);if(!bound(cache.store,s,cache.base,now)){return;}var since=control["since"]>s["since"]?control["since"]:s["since"];var slot=consume(cache.store,s,now,since);if(slot==null){return;}
-   var checkNow=now;if(quietState==null){checkNow=Time.now().value().toLong();quietState=isQuiet(checkNow);}if(checkNow<now||quietState!=false||!enabled()||candidate(s,checkNow,since,null)!=slot){return;}
+ function wakeWith(cache,now,quietState,postMethod){wakeWithServices(cache,now,quietState,postMethod,null);}
+ function wakeWithServices(cache,now,quietState,postMethod,services){
+  try{var control=syncEnableWith(cache.store,now,services);if(!control["enabled"]){return;}var s=selected(cache.store.read("sf.reminder.snapshot"),now);if(!bound(cache.store,s,cache.base,now)){return;}var since=control["since"]>s["since"]?control["since"]:s["since"];var slot=consume(cache.store,s,now,since);if(slot==null){return;}
+   var checkNow=now;if(quietState==null){if(services==null){checkNow=Time.now().value().toLong();quietState=isQuiet(checkNow);}else{checkNow=services.now();quietState=services.isQuiet(checkNow);}}if(checkNow<now||quietState!=false||!(services==null?enabled():services.enabled())||candidate(s,checkNow,since,null)!=slot){return;}
    var current=selected(cache.store.read("sf.reminder.snapshot"),checkNow);if(!(current instanceof Dictionary)||current["sequence"]!=s["sequence"]||!same(current["id"],s["id"])||current["target"]!=s["target"]||!bound(cache.store,current,cache.base,checkNow)){return;}postMethod.invoke(slot,s);
   }catch(e){}
  }

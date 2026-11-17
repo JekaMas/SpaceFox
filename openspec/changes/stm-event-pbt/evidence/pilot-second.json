@@ -1,0 +1,24 @@
+[
+  {
+    "worker": 0,
+    "start": 2866871.148333083,
+    "end": 2866887.812283208,
+    "rc": 1,
+    "marks": {
+      "begin": 2866885.2274185,
+      "end": 2866887.727010625
+    },
+    "raw": "------------------------------------------------------------------------------\nExecuting test campaignPilot...\nDEBUG (15:22): PBT_PILOT_BEGIN worker=0 first=953\nDEBUG (15:22): PBT_PILOT worker=0 first=953 next=1889 batches=117 events=40306 productive_ms=2500\nPASS\n\n==============================================================================\nRESULTS\nTest:                               Status:\ncampaignPilot                       PASS\nRan 1 test\n\nPASSED (passed=1, failed=0, errors=0)\n"
+  },
+  {
+    "worker": 1,
+    "start": 2866871.148306833,
+    "end": 2866887.683911375,
+    "rc": 1,
+    "marks": {
+      "begin": 2866885.069418,
+      "end": 2866887.571791666
+    },
+    "raw": "------------------------------------------------------------------------------\nExecuting test campaignPilot...\nDEBUG (15:22): PBT_PILOT_BEGIN worker=1 first=400001\nDEBUG (15:22): PBT_PILOT worker=1 first=400001 next=400929 batches=116 events=39874 productive_ms=2507\nPASS\n\n==============================================================================\nRESULTS\nTest:                               Status:\ncampaignPilot                       PASS\nRan 1 test\n\nPASSED (passed=1, failed=0, errors=0)\n"
+  }
+]

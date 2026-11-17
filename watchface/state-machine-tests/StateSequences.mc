@@ -110,7 +110,7 @@ import Toybox.WatchUi;
   for(var i=0;i<events.size();i+=1){var event=events[i];var key=null;
    if(event.equals("request")||event.equals("request2")||event.equals("request3")){var delta=event.equals("request")?0:event.equals("request2")?1:2;Test.assert(owner.request(serial+delta));state=1;key="request_applied";}
    else if(event.equals("same")){Test.assert(!owner.request(serial));key="request_observed_no_mutation";}
-   else if(event.equals("begin")||event.equals("begin2")||event.equals("begin3")){token=owner.begin();Test.assertEqual(token,event.equals("begin")?0:event.equals("begin2")?1:2);key="begin_applied";}
+   else if(event.equals("begin")||event.equals("begin2")||event.equals("begin3")){token=owner.begin();Test.assertEqual(token,event.equals("begin")?1:event.equals("begin2")?2:4);key="begin_applied";}
    else if(event.equals("cancel")){owner.cancel();state=0;key="cancel_applied";}
    else if(event.equals("fail")){owner.fail(token);state=0;key="fail_applied";}
    else if(event.equals("complete")){Test.assert(owner.complete(token));state=2;key="complete_applied";}
