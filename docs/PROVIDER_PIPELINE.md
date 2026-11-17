@@ -69,7 +69,9 @@ quota/backoff or source-guard rejection before HTTP counts zero and refunds no s
 
 Every request, including pagination/details/manual/retry, first calls the accepted
 `Publisher.reserve` and receives a committed allowance token. The shared sliding
-15/hour ledger, unresolved-crash delay and persisted429backoff apply before HTTP.
+15/hour ledger and unresolved-crash delay apply before HTTP. Persisted metadata
+backoff also blocks catalog/version requests; schedule retries use the separate
+current schedule policy.
 Catalog/version calls use the same authority. A due check returning false causes
 no provider request, state commit, candidate, publication or output directory.
 Healthy schedule requests are hourly; failure or no future is retried at the next permitted connected opportunity. Offline wakes use the 300-second platform minimum; redraw has no call path to this publisher program. Metadata has its separate daily cadence.
@@ -83,7 +85,7 @@ at524288before JSON parsing; Content-Length, streamed bodies, UTF8, depth32 and
 30000value nodes are bounded. Duplicate keys, nonfinite numbers and invalid
 structure reject. The standard HTTP parser additionally has its own header
 line/count limits; the512KiB body allowance is not a native memory measurement.
-Failed or throttled schedule calls retain their consumed slot and retry at the next permitted connected opportunity; quota and unresolved-request recovery still apply. Catalog metadata retains its own bounded backoff.
+Failed or throttled schedule calls retain their consumed slot and retry at the next permitted connected opportunity; quota and unresolved-request recovery still apply. Catalog metadata honors `Retry-After` for 429 responses, with a 60-second minimum and a 300-second fallback when it is invalid or absent; metadata failures retain their own bounded backoff.
 
 ## Source facts and freshness
 
