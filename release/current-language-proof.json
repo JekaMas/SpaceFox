@@ -27,10 +27,11 @@
     "sha256": "3bca4d0abb4798654acfde011c94236fb49d197041fc51f887ace7422a6f4407"
   },
   "currentInputs": {
-    "tools/native_language_policy.py": "7c6d64ffc15c0e47d5452faaa66feec2fae81afa40d2a840bc6aa1d9d85dba44",
+    "tools/native_language_policy.py": "bc9c4c9ddaa77fb0d5f17287405c4eeaedc754cc1e3e68060ef10bbd37d86df2",
     "tools/build_native_localization.py": "d21715bf7cd7a1ff7fa96ecb73aa38f9e94724ce651a7c698ce1776a6b959800",
     "tools/build_watchface.py": "57ad51fbb62251615b629f9c24edab45ef032cb410f301b3f3ded54e30f54b0b",
     "tools/display_corpus.py": "2a32ab33c013aab4c6ecbc0961ad2237fd74a4d847749ecb10edc3c31977ba1c",
+    "tools/current_language_probe.py": "06d6c1acd689649a4ebc213b036c61c4cd577ae94d729a9eecba72a86e85a8bd",
     "tools/spacefox/provider.py": "2d855c18cbb43da57fa32087e275597bc14f4e7bf5490f4cc83090aab44c9c65",
     "tools/spacefox/catalog.py": "b33bf56669302cc44cd5195c1665ac95b7cc95801efa4e1ad234bff24f92a29b",
     "watchface/source/LocalePresentation.mc": "0cb0be9330afbaf415182dd30ea2304dd9e1139f714d05c71901c945c28a13cc",
@@ -75,13 +76,13 @@
   },
   "physicalDeviceObserved": false,
   "nativeSpeakerReviewed": false,
-  "proofBoundary": "Historical finite-corpus SDK and font observations retain their original source, while the current text/resource closure is independently bound; no fresh device, speaker or current bitmap claim.",
+  "proofBoundary": "Original Mac FR165 corpus/font observations retain their actual source and SDK identity. Current Linux FR165M qualification independently observes five primary dictionaries/calendar, current three bitmap fonts and all413captured joined-header/fit compositions;95currentUI glyph shapes and retained55field labels have distinct scopes. Exact resource plan and compiled relevant source bytes are checked. No native-speaker/phone/physical/pixel/menu-rendering or peak-memory claim.",
   "historicalToolchainLock": {
     "path": "openspec/changes/spacefox-watchface/evidence/final-native-timing-settings/baseline/watchface/toolchain-lock.json",
     "sha256": "948c281801f4596cd6f904428f385adf85ebfe63f89d3c416b959cddf7bed389"
   },
   "currentNativeObservation": {
-    "path": "openspec/changes/remove-legacy-fallbacks/evidence/current-finite-combined.json",
-    "sha256": "1eb8c7e4496363ce6fa6859c96267fa43e0e8a526357481b497ba8dbea3e2e99"
+    "path": "openspec/changes/remove-legacy-fallbacks/evidence/P1-peer-native/observation.json",
+    "sha256": "936610ad351fe8b7e1625a874622d3bc96eb421a9feb1efe072063061012be79"
   }
 }

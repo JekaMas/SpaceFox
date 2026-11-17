@@ -5,7 +5,7 @@ from xml.etree import ElementTree as ET
 ROOT=Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path: sys.path.insert(0, str(ROOT))
 OWNERS=('tools/native_language_policy.py','tools/build_native_localization.py','tools/build_watchface.py',
-        'tools/display_corpus.py','tools/spacefox/provider.py','tools/spacefox/catalog.py',
+        'tools/display_corpus.py','tools/current_language_probe.py','tools/spacefox/provider.py','tools/spacefox/catalog.py',
         'watchface/source/LocalePresentation.mc','watchface/source/SceneRenderer.mc',
         'watchface/source/SceneSettings.mc','watchface/source/SpaceFoxView.mc',
         'watchface/source/WatchClock.mc','watchface/source/Fitness.mc',

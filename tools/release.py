@@ -50,6 +50,22 @@ def git(root: Path, *args: str) -> str:
     return result.stdout
 
 
+def release_source_path(name: str) -> bool:
+    """Stable source scope, including deleted paths and non-Python tool inputs.
+
+    Proof-selected evidence is added separately. This predicate does not depend
+    on the current file inventory, so deleting a reviewed input cannot erase
+    it from the peer fence. Tools include live JS/vendor/data dependencies.
+    """
+    return (name.startswith(("watchface/", "release/", "licenses/", "locales/", "tools/", "tests/"))
+            or name == "assets/rocket-pack/LICENSE"
+            or name in (".github/workflows/update-feed.yml", ".github/spacefox-inputs.txt",
+                        "prototype/mission.js", "prototype/mission.html", "LICENSE",
+                        "THIRD_PARTY_NOTICES.md", "docs/AGENT_SETUP.md", "docs/RELEASE_AND_UPDATES.md",
+                        "docs/SUPPORTED_DEVICES.md", "docs/images/simulator-fr165m-0.1.13.png",
+                        "docs/images/simulator-fr165m-low-0.1.13.png", "README.md", "TESTING.md"))
+
+
 def source_state(root: Path) -> dict:
     require(Path(git(root, "rev-parse", "--show-toplevel").strip()).resolve() == root,
             "root must be the actual Git worktree")
@@ -74,9 +90,9 @@ def source_state(root: Path) -> dict:
     admission.add(proof["currentNativeObservation"]["path"])
     native = json.loads((root / proof["currentNativeObservation"]["path"]).read_bytes())
     admission.update(native["semanticInputs"])
-    admission.update(native[key]["path"] for key in ("fitProgram", "fitProbe", "fitCompile",
-                      "renderProgram", "renderProbe", "renderCompile", "fieldsFontReport"))
-    admission.update(ref["path"] for key in ("fitLogs", "renderLogs") for ref in native[key])
+    admission.update(native[key]["path"] for key in ("program", "probe", "uiProbe", "compile",
+                      "resourcePlan", "uiGlyphReport", "fieldsFontReport"))
+    admission.update(ref["path"] for ref in native["logs"])
     fields = json.loads((root / native["fieldsFontReport"]["path"]).read_bytes())
     admission.update(fields["inputs"])
     corpus_directory = PurePosixPath(proof["corpus"]["path"]).parent
@@ -89,14 +105,7 @@ def source_state(root: Path) -> dict:
     tree = _head_tree(root)
     inputs = {}
     for name in paths:
-        if not name or not (name.startswith("watchface/") or name.startswith("release/") or
-                             name.startswith("licenses/") or name.startswith("locales/") or
-                             (name.startswith("tools/") and name.endswith(".py")) or name.startswith("tests/") or name in admission or
-                             name == "assets/rocket-pack/LICENSE" or
-                             name in ("tools/release.py", "tools/ReleaseInspector.java", "tools/build_watchface.py",
-                                      "prototype/mission.js", "prototype/mission.html",
-                                      "LICENSE", "THIRD_PARTY_NOTICES.md", "docs/AGENT_SETUP.md",
-                                      "docs/RELEASE_AND_UPDATES.md", "docs/SUPPORTED_DEVICES.md", "docs/images/simulator-fr165m-0.1.13.png", "docs/images/simulator-fr165m-low-0.1.13.png", "README.md", "TESTING.md")):
+        if not name or not (release_source_path(name) or name in admission):
             continue
         path = root / name
         require(path.is_file() and not path.is_symlink(), "release input must be a regular tracked file: " + name)
@@ -345,10 +354,11 @@ def require_combined_peer(root: Path, supplied: list[dict]) -> None:
     ancestry = subprocess.run(["git", "merge-base", "--is-ancestor", reviewed, "HEAD"],
                               cwd=root, capture_output=True)
     require(ancestry.returncode == 0, "independent peer source is not an ancestor")
-    changed = set(git(root, "diff", "--name-only", reviewed, "HEAD").splitlines())
+    changed = set(git(root, "diff", "--no-renames", "--name-only", reviewed, "HEAD").splitlines())
     inputs = set(source_state(root)["inputs"])
     inputs.update({".github/workflows/update-feed.yml", ".github/spacefox-inputs.txt"})
-    require(not changed.intersection(inputs), "independently reviewed release inputs changed")
+    require(not changed.intersection(inputs) and not any(release_source_path(name) for name in changed),
+            "independently reviewed release inputs changed")
 
 
 def backup_status(path: Path | None, root: Path, fingerprint: str, official: bool) -> dict:

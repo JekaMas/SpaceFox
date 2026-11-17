@@ -111,3 +111,8 @@ Fifteen field menu/status/weather JSON files and one grapheme-property JSON were
 
 
 Fully read the current schedule reducer and traced producer/wire callers. The unused `IdKind.OPERATOR` alias is removed, and the healthy request interval now has one named constant used both by the advertised feed cadence and actual request decision; near/fast fields remain the separate source-freshness contract. `identity-policy.log` and `cadence-policy.log` each have two targeted passes. Corrected the provider documentation to name the actual map-v3 authority refs. Counts: 44 REVIEWED, 251 DATA_VALIDATED, 10 REMOVED, 4,870 PARTIAL, 15,937 PENDING.
+
+
+## P1 independent repair checkpoint
+
+Independent P1 source/method repair is complete; actual committed clean source/isolated no-SDK context and real current-peer acceptance are next. Source gates now cover all current tools inputs, tracked hidden bytes, deleted reviewed inputs and renames out of source scope; first deletion/JS/rename REDs are retained. The affected current qualification is5actualSDKPASS tables/raw1, exact413compositions/1822records and actual nonempty source-preserving joined header paint calls, five primary60dictionary words/35calendar states/3bitmap fonts, and95currentUI HarfBuzz shapes underUTF8. Exact source/resource/probe/compiler/profile/corpus bindings are checked without private SDK discovery by committed-evidence readers. All19PBT observations retain their unchanged runtime/business input scope. `P1-PEER.md` and `P1-peer-invalidation.json` are authoritative for this peer batch. P2/P3/full inventory remain open;6102prep notes remain structural leads.

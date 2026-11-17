@@ -21,6 +21,14 @@ function currentFivePrimaryAndBitmapFonts(logger as Test.Logger) as Boolean {
             var fitted=p.fit(dc,value,p.count,275);
             Test.assert(!fitted.equals("") && dc.getTextWidthInPixels(fitted,p.count)<=275);
         }
+        var keys=["hour","minute","day","second","noSchedule","dateOnly","window","timeUnknown","awaitUpdate","companyUnknown","missionUnknown","communications"];
+        for(var q=0;q<keys.size();q+=1){
+            var word=p.word(keys[q]);Test.assert(word.equals(p.dictionary[keys[q]])&&!word.equals(""));
+            var shown=p.fit(dc,word,p.small,282);Test.assert(!shown.equals("")&&dc.getTextWidthInPixels(shown,p.small)>0&&dc.getTextWidthInPixels(shown,p.small)<=282);
+            dc.drawText(195,70,p.small,shown,Graphics.TEXT_JUSTIFY_CENTER);
+        }
+        for(var weekday=1;weekday<=7;weekday+=1){var date=p.calendar([weekday,17,11]);Test.assert(!date.equals("")&&dc.getTextWidthInPixels(date,p.calendarFont)>0&&dc.getTextWidthInPixels(date,p.calendarFont)<=282);dc.drawText(195,90,p.calendarFont,date,Graphics.TEXT_JUSTIFY_CENTER);}
+        Test.assert(p.mission("Communications").equals(p.dictionary["communications"]));
         var day=p.calendar([2,17,11]);
         Test.assert(!day.equals("") && dc.getTextWidthInPixels(day,p.calendarFont)>0);
         logger.debug("CURRENT_PRIMARY locale="+locales[i]+" date="+day);
@@ -28,7 +36,8 @@ function currentFivePrimaryAndBitmapFonts(logger as Test.Logger) as Boolean {
     var fonts=[WatchUi.loadResource(Rez.Fonts.Time80),WatchUi.loadResource(Rez.Fonts.Metric32),WatchUi.loadResource(Rez.Fonts.Aod40)];
     for (var k=0; k<fonts.size(); k+=1) {
         Test.assert(fonts[k]!=null && dc.getTextWidthInPixels("0123456789",fonts[k])>0);
+        dc.drawText(195,100,fonts[k],"0123456789",Graphics.TEXT_JUSTIFY_CENTER);
     }
-    logger.debug("CURRENT_PRIMARY_COMPLETE locales=5 bitmapFonts=3");
+    logger.debug("CURRENT_PRIMARY_COMPLETE locales=5 bitmapFonts=3 uiWords=60 calendarStates=35");
     return true;
 }

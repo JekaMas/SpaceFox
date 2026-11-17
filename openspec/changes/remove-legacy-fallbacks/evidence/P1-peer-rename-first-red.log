@@ -1,0 +1,15 @@
+test_peer_fence_requires_current_identity_and_semantic_scope (tests.test_current_language_admission.CurrentLanguageAdmission.test_peer_fence_requires_current_identity_and_semantic_scope) ... FAIL
+
+======================================================================
+FAIL: test_peer_fence_requires_current_identity_and_semantic_scope (tests.test_current_language_admission.CurrentLanguageAdmission.test_peer_fence_requires_current_identity_and_semantic_scope)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-complete-legacy-audit-20261117/tests/test_current_language_admission.py", line 192, in test_peer_fence_requires_current_identity_and_semantic_scope
+    with self.assertRaisesRegex(Exception, 'reviewed release inputs changed'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Exception not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 5.272s
+
+FAILED (failures=1)

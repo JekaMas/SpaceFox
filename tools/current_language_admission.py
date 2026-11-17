@@ -13,7 +13,27 @@ import re
 PRIMARY = ['en', 'ru', 'de', 'fr', 'es']
 # Updated only with the reviewed canonical record; it is not derived from an
 # untrusted caller-provided catalog, so a repinned manifest cannot grant access.
-CURRENT_PROOF_SHA256 = '95714b5be4692c220d38ff530c89c0d0db95e5a0d671f066d67566527c19c4ad'
+CURRENT_PROOF_SHA256 = '30a2cd462f828fe3d6a494c8d093a8474ecb9b6395df90cea1251e19b22976d5'
+
+
+UI_KEYS = ('hour', 'minute', 'day', 'second', 'noSchedule', 'dateOnly', 'window',
+           'timeUnknown', 'awaitUpdate', 'companyUnknown', 'missionUnknown', 'communications')
+CALENDAR_DAYS = (('Sun','Mon','Tue','Wed','Thu','Fri','Sat'), ('Вс','Пн','Вт','Ср','Чт','Пт','Сб'),
+                 ('So','Mo','Di','Mi','Do','Fr','Sa'), ('dim','lun','mar','mer','jeu','ven','sam'),
+                 ('dom','lun','mar','mié','jue','vie','sáb'))
+
+
+def native_semantic_paths(current_inputs):
+    paths = {'tools/display_corpus.py', 'tools/current_language_probe.py',
+             'watchface/current-language-tests/CurrentUi.mc',
+             'watchface/source/LocalePresentation.mc', 'watchface/source/SceneRenderer.mc',
+             'watchface/source/SceneContext.mc', 'watchface/source/SceneSettings.mc',
+             'watchface/source/Fitness.mc', 'watchface/source/SpaceFoxView.mc',
+             'watchface/source/generated/LocaleGraphemes.mc',
+             'watchface/source/generated/SceneStrings.mc'}
+    paths.update(name for name in current_inputs if name.startswith('watchface/resources/fonts/'))
+    paths.update('watchface/resources/json/Locale'+str(i)+'.json' for i in range(5))
+    return paths
 
 
 def require(ok, reason):
@@ -102,9 +122,13 @@ def validate(root, catalog):
     historical_lock_bytes = checked(root, proof['historicalToolchainLock'])
     historical_lock = json.loads(historical_lock_bytes)
     sdk = receipt.get('sdkBinding', {})
-    require(sdk.get('toolchainLockSha256') == hashlib.sha256(historical_lock_bytes).hexdigest()
-            and all(historical_lock[key] == lock[key] for key in
-                    ('product', 'profile_api', 'sdk_version', 'compiler_sha256', 'sdk_directory'))
+    # Device/profile additions and the accepted permission extension do not
+    # erase measured compiler, SDK API, original profile or option identities.
+    require(set(lock) == set(historical_lock) | {'profiles'}
+            and all(historical_lock[k] == lock[k] for k in historical_lock if k != 'permissions')
+            and set(historical_lock['permissions']) <= set(lock['permissions'])
+            and len(set(lock['permissions'])) == len(lock['permissions'])
+            and sdk.get('toolchainLockSha256') == hashlib.sha256(historical_lock_bytes).hexdigest()
             and sdk.get('product') == lock['product'] == 'fr165'
             and sdk.get('profileApi') == lock['profile_api']
             and sdk.get('sdkVersion') == lock['sdk_version']
@@ -145,49 +169,77 @@ def validate(root, catalog):
     import gzip
     from tools.run_native_tests import parse_output
     current_native = json.loads(checked(root, proof['currentNativeObservation']))
-    require(current_native.get('status') == 'passed' and current_native.get('profile') == 'fr165m'
-            and current_native.get('sourceRecords') == 1822 and current_native.get('uniqueCompositions') == 413
-            and current_native.get('selectorCounts') == [1035, 377, 298, 112]
-            and current_native.get('rawLauncherExit') == 1, 'current native observation incomplete')
-    require(current_native.get('sdk') == '9.3.0-linux'
+    require(current_native.get('schema') == 2 and current_native.get('status') == 'passed'
+            and current_native.get('profile') == 'fr165m' and current_native.get('sdk') == '9.3.0-linux'
             and current_native.get('compilerSha256') == '082b2fd3f50578204e01d44313f43f2ce52a60dbfd6221f6b259b2687239de3f'
-            and current_native.get('profileInputs') == lock['profiles']['fr165m']['files_sha256'],
-            'current observed Linux compiler or profile identity differs')
-    # The complete compiled input inventory is preserved as historical data.
-    # Applicability is checked against the actual text/font owners, not against
-    # unrelated runtime files or a later generated release version.
+            and current_native.get('profileInputs') == lock['profiles']['fr165m']['files_sha256']
+            and current_native.get('sourceRecords') == 1822 and current_native.get('uniqueCompositions') == 413
+            and current_native.get('selectorCounts') == [1035,377,298,112]
+            and current_native.get('selectorCompositions') == [128,128,128,29]
+            and current_native.get('rawLauncherExit') == 1, 'current native observation incomplete')
+    command = current_native['compilerCommand']
+    require(command[0].endswith('/connectiq-sdk-lin-9.3.0-2026-10-20-95888f262/bin/monkeyc')
+            and command[command.index('-d')+1] == 'fr165m' and '-t' in command,
+            'current native compiler command differs')
     compiled = current_native.get('compiledNativeInputs')
-    require(isinstance(compiled, dict) and compiled and all(
-            isinstance(name, str) and isinstance(value, str) and re.fullmatch(r'[0-9a-f]{64}', value)
-            for name, value in compiled.items()), 'native compiled-input record missing')
+    require(isinstance(compiled,dict) and compiled and all(isinstance(n,str)
+            and isinstance(v,str) and re.fullmatch(r'[0-9a-f]{64}',v) for n,v in compiled.items()),
+            'native compiled-input record missing')
     relevant = current_native.get('semanticInputs')
-    require(isinstance(relevant, dict) and relevant, 'native semantic input closure missing')
+    require(isinstance(relevant,dict) and set(relevant) == native_semantic_paths(current),
+            'native semantic input closure differs')
     for name, expected in relevant.items():
-        checked(root, {'path': name, 'sha256': expected})
-    fit_source = checked(root, current_native['fitProbe'])
-    renderer_source = checked(root, current_native['renderProbe'])
-    require(renderer_source.startswith(fit_source), 'current renderer probe changes retained fit selectors')
-    for kind in ('fit', 'render'):
-        program = gzip.decompress(checked(root, current_native[kind+'Program']))
-        require(hashlib.sha256(program).hexdigest() == current_native[kind+'ProgramSha256'],
-                'current native program differs')
-        checked(root, current_native[kind+'Probe'])
-        require('BUILD SUCCESSFUL' in checked(root, current_native[kind+'Compile']).decode(),
-                'current native compile missing')
-        refs = current_native[kind+'Logs']
-        require(len(refs) == (5 if kind == 'fit' else 4), 'current native selector set differs')
-        for i, ref in enumerate(refs):
-            selector = ('currentFivePrimaryAndBitmapFonts' if kind == 'fit' and i == 0 else
-                        ('currentFinite' + str(i-1) if kind == 'fit' else 'currentRenderer' + str(i)))
-            raw = checked(root, ref).decode('utf-8')
-            require(parse_output(raw, 1, (selector,))['status'] == 'passed', 'current native selector failed: '+selector)
-            if kind == 'fit' and i == 0:
-                require('CURRENT_PRIMARY_COMPLETE locales=5 bitmapFonts=3' in raw, 'current primary cohort missing')
-            else:
-                count = current_native['selectorCounts'][i-1 if kind == 'fit' else i]
-                prefix = 'CURRENT_FINITE' if kind == 'fit' else 'CURRENT_RENDERER'
-                require(prefix + ' records=' + str(count) + ' expected=' + str(count) in raw,
-                        'current corpus selector denominator differs')
+        checked(root, {'path':name,'sha256':expected})
+        if name.startswith('watchface/'):
+            require(compiled.get(name) == expected, 'native semantic source was not compiled: '+name)
+    from tools.current_language_probe import build_resource_plan, probe_source
+    rows, names, payloads = build_resource_plan(corpus)
+    counts = [sum(row[4] for row in rows[i:i+128]) for i in range(0,len(rows),128)]
+    compositions = [len(rows[i:i+128]) for i in range(0,len(rows),128)]
+    resource_inputs = {name:hashlib.sha256(raw).hexdigest() for name,raw in payloads.items()}
+    plan = json.loads(checked(root,current_native['resourcePlan']))
+    require(plan == {'schema':1,'sourceRecords':1822,'uniqueCompositions':413,
+                     'selectorCounts':counts,'selectorCompositions':compositions,'resourceInputs':resource_inputs}
+            and current_native['resourceInputs'] == resource_inputs,
+            'native resources differ from complete captured corpus projection')
+    probe = checked(root,current_native['probe'])
+    ui_probe = checked(root,current_native['uiProbe'])
+    require(probe == probe_source(rows,names).encode()
+            and ui_probe == (root/'watchface/current-language-tests/CurrentUi.mc').read_bytes()
+            and current_native['privateSourceInputs'] == {
+                'source/CurrentFinite.mc':hashlib.sha256(probe).hexdigest(),
+                'source/CurrentUi.mc':hashlib.sha256(ui_probe).hexdigest()},
+            'current native probe differs from canonical qualification plan')
+    program = gzip.decompress(checked(root,current_native['program']))
+    require(hashlib.sha256(program).hexdigest() == current_native['programSha256'],
+            'current native program differs')
+    require('BUILD SUCCESSFUL' in checked(root,current_native['compile']).decode(),
+            'current native compile missing')
+    refs = current_native['logs'];require(len(refs)==5,'current native selector set differs')
+    for i,ref in enumerate(refs):
+        selector = 'currentFivePrimaryAndBitmapFonts' if i==0 else 'currentRenderer'+str(i-1)
+        raw = checked(root,ref).decode('utf-8')
+        require(parse_output(raw,1,(selector,))['status']=='passed','current native selector failed: '+selector)
+        if i==0:
+            require('CURRENT_PRIMARY_COMPLETE locales=5 bitmapFonts=3 uiWords=60 calendarStates=35' in raw,
+                    'current primary UI cohort missing')
+        else:
+            n=i-1
+            require('CURRENT_JOINED records='+str(counts[n])+' expected='+str(counts[n])
+                    +' compositions='+str(compositions[n])+' header_paints='+str(compositions[n])
+                    +' nonempty=true projection=true' in raw,'current joined-header cohort differs')
+    glyphs=json.loads(checked(root,current_native['uiGlyphReport']))
+    require(glyphs.get('status')=='passed' and glyphs.get('fontSha256')==current_native['robotoSha256']
+            and glyphs.get('LC_ALL')=='en_US.UTF-8' and len(glyphs['rows'])==5,
+            'current UI glyph observation differs')
+    for i,row in enumerate(glyphs['rows']):
+        dictionary=json.loads((root/('watchface/resources/json/Locale'+str(i)+'.json')).read_text())
+        texts=[dictionary[k] for k in UI_KEYS]+[day+' 17.11' for day in CALENDAR_DAYS[i]]
+        require(row['locale']==PRIMARY[i] and row['count']==19 and row['missingCodepoints']==[]
+                and [x['text'] for x in row['shapes']]==texts
+                and all(x['glyphs'] and all(g.get('g') not in (None,0,'gid0','.notdef')
+                        for g in x['glyphs']) for x in row['shapes']),
+                'current UI glyph coverage incomplete')
     fields = json.loads(checked(root, current_native['fieldsFontReport']))
     require(fields.get('status') == 'passed' and {r['locale'] for r in fields['rows']} == set(PRIMARY)
             and all(not r['missingCodepoints'] and r['count'] == 55 and len(r['shapes']) == 55

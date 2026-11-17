@@ -30,8 +30,8 @@ class CurrentLanguageAdmission(unittest.TestCase):
         names.add(proof['currentNativeObservation']['path'])
         names.update(native['semanticInputs'])
         names.update(native['compiledNativeInputs'])
-        names.update(native[k]['path'] for k in ('fitProgram', 'fitProbe', 'fitCompile', 'renderProgram', 'renderProbe', 'renderCompile', 'fieldsFontReport'))
-        names.update(ref['path'] for k in ('fitLogs', 'renderLogs') for ref in native[k])
+        names.update(native[k]['path'] for k in ('program', 'probe', 'uiProbe', 'compile', 'resourcePlan', 'uiGlyphReport', 'fieldsFontReport'))
+        names.update(ref['path'] for ref in native['logs'])
         fields = json.loads((ROOT / native['fieldsFontReport']['path']).read_text())
         names.update(fields['inputs'])
         names.update(('.github/workflows/update-feed.yml', '.github/spacefox-inputs.txt'))
@@ -43,6 +43,36 @@ class CurrentLanguageAdmission(unittest.TestCase):
 
     def test_real_five_primary_observations_and_source_replay(self):
         self.assertEqual(validate(self.root, self.catalog), ['en', 'ru', 'de', 'fr', 'es'])
+
+    def test_committed_observation_reader_does_not_discover_sdk_or_run_tools(self):
+        from unittest.mock import patch
+        with patch.object(Path, 'home', side_effect=AssertionError('private HOME lookup forbidden')), \
+             patch('tools.build_watchface.discover_toolchain', side_effect=AssertionError('SDK discovery forbidden')), \
+             patch('subprocess.run', side_effect=AssertionError('external tool execution forbidden')):
+            self.assertEqual(validate(self.root, self.catalog), ['en','ru','de','fr','es'])
+
+    def test_profile_identity_is_not_masked_by_metadata_extensions(self):
+        import hashlib
+        from unittest.mock import patch
+        pointer=self.catalog['supportPolicy']['softwareQualificationProof']['currentProof']
+        proof_path=self.root/pointer['path'];original_proof=proof_path.read_bytes()
+        lock_path=self.root/'watchface/toolchain-lock.json';original_lock=lock_path.read_bytes()
+        for kind,message in [('original','finite SDK lock binding differs'),
+                             ('current','current native observation incomplete')]:
+            with self.subTest(profile=kind):
+                lock=json.loads(original_lock)
+                if kind=='original': lock['compiler_profile_sha256']='0'*64
+                else: lock['profiles']['fr165m']['files_sha256']['compiler.json']='0'*64
+                lock_path.write_text(json.dumps(lock))
+                proof=json.loads(original_proof)
+                proof['currentInputs']['watchface/toolchain-lock.json']=hashlib.sha256(lock_path.read_bytes()).hexdigest()
+                raw=json.dumps(proof).encode();proof_path.write_bytes(raw)
+                pinned=hashlib.sha256(raw).hexdigest();pointer['sha256']=pinned
+                # Controlled negative fixture reaches the measured-profile
+                # boundary; this mock is never a production admission receipt.
+                with patch('tools.current_language_admission.CURRENT_PROOF_SHA256',pinned):
+                    with self.assertRaisesRegex(ValueError,message): validate(self.root,self.catalog)
+        lock_path.write_bytes(original_lock);proof_path.write_bytes(original_proof)
 
     def test_missing_and_changed_current_inputs_are_refused(self):
         target = self.root / 'watchface/resources/fonts/Time80.png'
@@ -78,7 +108,8 @@ class CurrentLanguageAdmission(unittest.TestCase):
 
     def test_source_fence_refuses_hidden_index_mutation(self):
         from tools.release import source_state
-        for name in ('locales/catalog.json', 'tools/release.py', 'release/signing-identity.json'):
+        for name in ('locales/catalog.json', 'tools/release.py', 'release/signing-identity.json',
+                     'tools/spacefox/bridge_map_render.js'):
             target = self.root / name
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(ROOT / name, target)
@@ -89,7 +120,9 @@ class CurrentLanguageAdmission(unittest.TestCase):
         git('config', 'user.name', 'Finite Test')
         git('add', '--all')
         git('commit', '-qm', 'fixture')
-        self.assertIn('tools/release.py', source_state(self.root)['inputs'])
+        captured=source_state(self.root)['inputs']
+        self.assertIn('tools/release.py', captured)
+        self.assertIn('tools/spacefox/bridge_map_render.js', captured)
         git('update-index', '--assume-unchanged', 'tools/release.py')
         target = self.root / 'tools/release.py'
         target.write_bytes(target.read_bytes() + b'\n# hidden edit\n')
@@ -97,6 +130,13 @@ class CurrentLanguageAdmission(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'tracked input differs from HEAD'):
             source_state(self.root)
         git('update-index', '--no-assume-unchanged', 'tools/release.py')
+        shutil.copyfile(ROOT/'tools/release.py', target)
+        git('update-index', '--skip-worktree', 'tools/release.py')
+        target.write_bytes(target.read_bytes() + b'\n# skipped edit\n')
+        self.assertEqual(git('status', '--porcelain').stdout, '')
+        with self.assertRaisesRegex(ValueError, 'tracked input differs from HEAD'):
+            source_state(self.root)
+        git('update-index', '--no-skip-worktree', 'tools/release.py')
         shutil.copyfile(ROOT/'tools/release.py', target)
         target.write_bytes(target.read_bytes() + b'\n-----BEGIN ' + b'PRIVATE KEY-----\n')
         git('add', '--all')
@@ -118,6 +158,9 @@ class CurrentLanguageAdmission(unittest.TestCase):
         git('init', '-q')
         git('config', 'user.email', 'finite-test@example.invalid')
         git('config', 'user.name', 'Finite Test')
+        deleted=self.root/'tests/reviewed-input.py'
+        deleted.parent.mkdir(parents=True,exist_ok=True)
+        deleted.write_text('pass\n')
         git('add', '--all')
         git('commit', '-qm', 'fixture')
         revision=git('rev-parse', 'HEAD').strip()
@@ -136,6 +179,21 @@ class CurrentLanguageAdmission(unittest.TestCase):
         with self.assertRaisesRegex(Exception, 'independent peer binding'):
             require_combined_peer(self.root, [missing])
         require_combined_peer(self.root, [good])
+        git('rm', 'tests/reviewed-input.py')
+        git('commit', '-qm', 'deleted reviewed input')
+        with self.assertRaisesRegex(Exception, 'reviewed release inputs changed'):
+            require_combined_peer(self.root, [good])
+        deleted.parent.mkdir(parents=True,exist_ok=True)
+        deleted.write_text('pass\n')
+        git('add', '--all')
+        git('commit', '-qm', 'restore reviewed input')
+        git('mv', 'tests/reviewed-input.py', 'retired-peer-fixture.txt')
+        git('commit', '-qm', 'rename reviewed input outside source scope')
+        with self.assertRaisesRegex(Exception, 'reviewed release inputs changed'):
+            require_combined_peer(self.root, [good])
+        deleted.parent.mkdir(parents=True,exist_ok=True)
+        git('mv', 'retired-peer-fixture.txt', 'tests/reviewed-input.py')
+        git('commit', '-qm', 'restore reviewed path')
         path=self.root/'.github/spacefox-inputs.txt'
         path.write_text(path.read_text()+'\n# changed fixture\n')
         git('add', '--all')

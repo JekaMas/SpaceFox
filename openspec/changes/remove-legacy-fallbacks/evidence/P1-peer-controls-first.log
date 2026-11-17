@@ -1,0 +1,29 @@
+test_committed_observation_reader_does_not_discover_sdk_or_run_tools (tests.test_current_language_admission.CurrentLanguageAdmission.test_committed_observation_reader_does_not_discover_sdk_or_run_tools) ... ok
+test_five_primary_and_reviewed_manifest_cannot_be_reduced_or_repinned (tests.test_current_language_admission.CurrentLanguageAdmission.test_five_primary_and_reviewed_manifest_cannot_be_reduced_or_repinned) ... ok
+test_generated_locale_mapping_and_transitive_font_page_refused (tests.test_current_language_admission.CurrentLanguageAdmission.test_generated_locale_mapping_and_transitive_font_page_refused) ... ok
+test_missing_and_changed_current_inputs_are_refused (tests.test_current_language_admission.CurrentLanguageAdmission.test_missing_and_changed_current_inputs_are_refused) ... ok
+test_peer_fence_requires_current_identity_and_semantic_scope (tests.test_current_language_admission.CurrentLanguageAdmission.test_peer_fence_requires_current_identity_and_semantic_scope) ... ERROR
+test_profile_identity_is_not_masked_by_metadata_extensions (tests.test_current_language_admission.CurrentLanguageAdmission.test_profile_identity_is_not_masked_by_metadata_extensions) ... ok
+test_real_five_primary_observations_and_source_replay (tests.test_current_language_admission.CurrentLanguageAdmission.test_real_five_primary_observations_and_source_replay) ... ok
+test_retained_capture_and_current_native_source_tamper_refused (tests.test_current_language_admission.CurrentLanguageAdmission.test_retained_capture_and_current_native_source_tamper_refused) ... ok
+test_source_fence_refuses_hidden_index_mutation (tests.test_current_language_admission.CurrentLanguageAdmission.test_source_fence_refuses_hidden_index_mutation) ... ok
+
+======================================================================
+ERROR: test_peer_fence_requires_current_identity_and_semantic_scope (tests.test_current_language_admission.CurrentLanguageAdmission.test_peer_fence_requires_current_identity_and_semantic_scope)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-complete-legacy-audit-20261117/tests/test_current_language_admission.py", line 186, in test_peer_fence_requires_current_identity_and_semantic_scope
+    deleted.write_text('pass\n')
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 809, in write_text
+    with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 771, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-language-admission-1lock9vm/tests/reviewed-input.py'
+
+----------------------------------------------------------------------
+Ran 9 tests in 11.761s
+
+FAILED (errors=1)

@@ -30,21 +30,38 @@
     {
       "id": "P1-current-proof",
       "property": "Five primary locales admitted only from retained genuine finite-corpus/glyph/resource observations under current explicit source fences.",
-      "positive": "python3 -m unittest tests.test_current_language_admission.CurrentLanguageAdmission.test_current_five_primary_proof",
-      "negative": "python3 -m unittest tests.test_current_language_admission.CurrentLanguageAdmission.test_missing_and_corrupt_inputs_refused",
-      "status": "PLANNED: test owner to be implemented with P1"
+      "positive": "python3 -B -m unittest -v tests.test_current_language_admission.CurrentLanguageAdmission.test_real_five_primary_observations_and_source_replay",
+      "negative": "python3 -B -m unittest -v tests.test_current_language_admission.CurrentLanguageAdmission.test_missing_and_changed_current_inputs_are_refused tests.test_current_language_admission.CurrentLanguageAdmission.test_profile_identity_is_not_masked_by_metadata_extensions",
+      "status": "PASS by affected observations; real clean export-context gate pending",
+      "evidence": [
+        "P1-peer-controls-first.log",
+        "P1-peer-native/observation.json",
+        "P1-peer-native/resource-plan.json",
+        "P1-peer-native/ui-glyphs.json"
+      ],
+      "boundary": "Five current SDK tables/raw1 and actual95UI glyph shapes; original Mac corpus/55fieldlabel evidence retained distinctly. No pixel/phone/hardware/menu-rendering/native-speaker claim."
     },
     {
       "id": "P1-source-fences",
       "property": "Current native, locale, corpus, generated, tool and hidden-byte closure admits valid input and rejects modifications and missing inputs.",
-      "positive_negative": "python3 -m unittest tests.test_current_language_admission.CurrentLanguageAdmission.test_source_delta_and_missing_input_refused",
-      "status": "PLANNED"
+      "positive_negative": "python3 -B -m unittest -v tests.test_current_language_admission.CurrentLanguageAdmission.test_source_fence_refuses_hidden_index_mutation tests.test_current_language_admission.CurrentLanguageAdmission.test_peer_fence_requires_current_identity_and_semantic_scope",
+      "status": "PASS by per-case reconciliation; clean copied-source context pending",
+      "evidence": [
+        "P1-peer-controls-first.log",
+        "P1-peer-fence-final.log",
+        "P1-peer-deletion-first-red.log",
+        "P1-peer-js-closure-first-red.log",
+        "P1-peer-rename-first-red.log"
+      ]
     },
     {
       "id": "P1-custody",
       "property": "Actual original published predecessor receipt, paired IQ and signing identity remain fail-closed.",
-      "positive_negative": "python3 -m unittest tests.test_current_022_admission.Current022Binding.test_release_requires_matching_independent_peer",
-      "status": "EXISTING; adapt only if current authority changes"
+      "positive_negative": "Actual tools.release.require_combined_peer with the real P1 independent receipt, plus unchanged identity_policy/public_key/backup_status/previous_release/validate_previous source and signing policy",
+      "status": "Unchanged signing/predecessor semantics retained; real P1 receipt gate pending",
+      "evidence": [
+        "P1-peer-invalidation.json"
+      ]
     },
     {
       "id": "P2-native",
