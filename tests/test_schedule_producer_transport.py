@@ -1015,6 +1015,33 @@ class ScheduleProducerTransportTest(unittest.TestCase):
             self.assertEqual(entry.record.status.value,'pending')
             self.assertEqual(entry.record.source_validated_utc,NOW+10800)
 
+    def test_wire_preserves_traversal_epoch_without_admitting_future_records(self):
+        from tools.spacefox.wire import validate_current_feed
+        from tools.spacefox.schedule import ScheduleError
+        feed=json.loads((ROOT/'tests/fixtures/fr165-runtime-20261116/feed.txt').read_bytes())
+        feed['publisher']['selectionValidatedUtc']=1794812990
+        feed['launch']['source_validated_utc']=1794812997
+        feed['upcoming'][0]['source_validated_utc']=1794813000
+        at=1794813200
+        def raw(value):return json.dumps(value,separators=(',',':')).encode()
+        accepted=validate_current_feed(raw(feed),now=at)
+        self.assertEqual(accepted['publisher']['selectionValidatedUtc'],1794812990)
+        self.assertEqual(accepted['launch']['source_validated_utc'],1794812997)
+        self.assertEqual(accepted['upcoming'][0]['source_validated_utc'],1794813000)
+        # These literal time failures must not be hidden by raising the
+        # publisher epoch to a selected/upcoming record's validation time.
+        for domain in ('selected','upcoming'):
+            future=deepcopy(feed)
+            record=future['launch'] if domain=='selected' else future['upcoming'][0]
+            record['source_validated_utc']=1794813201
+            with self.subTest(domain=domain),self.assertRaises(ScheduleError):
+                validate_current_feed(raw(future),now=at)
+        missing=deepcopy(feed);missing['publisher']['selectionValidatedUtc']=None
+        with self.assertRaisesRegex(ValueError,'lacks traversal validation'):
+            validate_current_feed(raw(missing),now=at)
+        invalid=deepcopy(feed);invalid['launch']['source_validated_utc']='not-a-UTC'
+        with self.assertRaises(ScheduleError):validate_current_feed(raw(invalid),now=at)
+
     def test_invalid_current_artifacts_keep_active_and_source(self):
         with local_authority() as (pub,store,code):
             a=normalize_launch(captured_starship(),NOW)
