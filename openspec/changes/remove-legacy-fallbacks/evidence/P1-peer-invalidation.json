@@ -1,8 +1,8 @@
 {
-  "scope": "P1 independent review only; P2/P3 remain open",
+  "scope": "Necessary P1 shipping only; P2/P3/full audit FUTURE / NOT DONE",
   "retainedNativeCampaigns": 15,
   "retainedHostCampaigns": 4,
-  "reason": "Native runtime/resources/manifest/jungle and host business owners/models have no delta from public0.2.9 base. P1 changes qualification/gates/test inputs only, not their exercised business paths. Original source/time/program observations unchanged.",
+  "reason": "Native runtime/resources/jungle and host business owners/models have no semantic delta from public0.2.9. Manifest version and generated NativeVersion only change to0.2.10/6d3ad619; they do not change qualified text/font/render semantics or exercised business paths. Original source/time/program observations unchanged.",
   "unchangedSigningFunctions": {
     "identity_policy": true,
     "public_key": true,
@@ -17,5 +17,10 @@
     "privateMC": 2,
     "generatedResourceFiles": 53,
     "sourceResourceHashFence": "Allcapturedbeforebytesmatchedaftercapture;canonicalprobe/resourcegenerationmatchesexactly."
+  },
+  "releaseMetadata": {
+    "version": "0.2.10",
+    "native_id": "6d3ad619",
+    "newBehaviorRun": false
   }
 }

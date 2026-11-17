@@ -1,8 +1,8 @@
 # Independent P1 verification and repairs
 
-Current status: source/method repairs and affected qualification/host controls complete; actual committed clean source-context and real peer export gate are next. This record covers P1 only. P2/P3/full per-file audit and release remain open.
+Current status: P1 source/method repairs, affected qualification/host controls and actual clean public-context validation complete; final real peer export gate is next. Latest explicit user steering requires necessary P1 only; P2/P3/full per-file audit is FUTURE / NOT DONE. Publication remains with author after root judgment.
 
-Reviewed author input:928683a523f29babd866d54739a6cdf2668ce50a (implementation1a121aaa,fixtureefb22829). Same peer owns all repairs. Native runtime/source/resources/manifest/jungle, host business owners/models and signing policy remain unchanged from public0.2.9; NativeIDd13aa334. All19 prior campaigns retain original IDs/durations/programs, not refreshed observations (`P1-peer-invalidation.json`).
+Reviewed author input:928683a523f29babd866d54739a6cdf2668ce50a (implementation1a121aaa,fixtureefb22829). Same peer owns all repairs. Native runtime/resources/jungle, host business owners/models and signing policy remain unchanged from public0.2.9. Release metadata alone is now0.2.10 / NativeID6d3ad619; the authentic captured native qualification remains at its original0.2.9/d13aa334 inputs and is not relabeled as a new run. All19 prior campaigns retain original IDs/durations/programs, not refreshed observations (`P1-peer-invalidation.json`).
 
 ## Material findings and same-peer repairs
 
@@ -19,3 +19,7 @@ Reviewed author input:928683a523f29babd866d54739a6cdf2668ce50a (implementation1a
 The raw first host batch has8PASS and one fixture restore ERROR (git rm removed the empty tests directory). It is not called a whole-suite GREEN. After restoring the directory and adding rename refusal, only the invalidated peer test was rerun: `P1-peer-fence-final.log` completePASS. The other8 greens remain at their original scope, including actual missing/tampered/font-page/mapping/ref-pin/source refusals, assume-unchanged and skip-worktree, sourceJS closure, noSDK/noHOME/noexternaltools validation, and original/current profile-identity negatives. Synthetic peer fixtures remain tests, not independent approval.
 
 Five fresh network-none task-owned VMs were used, one launcher per VM; all are stopped with data/config preserved. No old/foreign simulator or watch was touched. No native runtime/19PBT/31best-effort language/image/stress campaign was repeated. Physical watch, phone transport, graphics pixels/peak memory, actual notification and native-speaker results remain NOT OBSERVED. P3-preparation6102consumer notes remain structural leads, not reviewed semantic/aesthetic dispositions.
+
+## Actual clean-source/public-context boundary
+
+`P1-peer-clean-context-first.log` records actual clean root source_state PASS at72236a74 (2,095inputs), followed by an isolated wrapper assertion error that read XML text-valued languages as attributes. The reader/manifest calls succeeded; no claim that this whole first process passed. Correcting only that wrapper yielded `P1-peer-clean-context-final.log`: isolated clean public source_state PASS with2,095inputs and eng/rus/deu/fre/spa, SDKdiscovery0, externalnonGit0, privateHOMEreads0. Version/NativeVersion metadata alone changed afterward; current actual peer gate binds their final clean bytes. No new behavior or qualification run is implied.

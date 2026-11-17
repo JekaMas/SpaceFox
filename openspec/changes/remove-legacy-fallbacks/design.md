@@ -1,3 +1,5 @@
+> Current delivery scope (explicit user steering, 2026-11-18): necessary P1 admission/source/peer fixes only. Broad P2/P3 consolidation and full per-file audit below are FUTURE, not done and not current release prerequisites. Preserve the current approved runtime and genuine five-primary guarantees; this scope change does not weaken admission.
+
 # Scope and decision policy
 
 The starting public source is b9c241134bb5e5e5174db119f0e32ab7d798cb51. Every tracked path has an inventory row; prior audit observations are reusable only for identical Git objects and a newly checked current consumer/role. A prior UNKNOWN or PARTIAL remains open until a reasoned current disposition is recorded. Historical evidence is immutable and is not itself a current runtime contract. A data or binary disposition does not imply semantic source review.

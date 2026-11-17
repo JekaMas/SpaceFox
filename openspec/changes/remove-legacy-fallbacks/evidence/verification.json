@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "scope": "Full current 0.2.9 P1\u2013P3 consolidation; historical P0 evidence is retained separately and does not qualify current changes.",
+  "scope": "Necessary current P1 shipping only; P2/P3/full per-file audit FUTURE / NOT DONE under explicit latest user steering.",
   "base_revision": "1e5682e4527f837453b80b9cb4d33a5ed4e4aa97",
   "dependencies": {
     "P1": [
@@ -19,7 +19,7 @@
       "P3-ledger"
     ],
     "peer": [
-      "P3",
+      "P1",
       "affected-checks"
     ],
     "delivery": [
@@ -32,7 +32,7 @@
       "property": "Five primary locales admitted only from retained genuine finite-corpus/glyph/resource observations under current explicit source fences.",
       "positive": "python3 -B -m unittest -v tests.test_current_language_admission.CurrentLanguageAdmission.test_real_five_primary_observations_and_source_replay",
       "negative": "python3 -B -m unittest -v tests.test_current_language_admission.CurrentLanguageAdmission.test_missing_and_changed_current_inputs_are_refused tests.test_current_language_admission.CurrentLanguageAdmission.test_profile_identity_is_not_masked_by_metadata_extensions",
-      "status": "PASS by affected observations; real clean export-context gate pending",
+      "status": "PASS affected actual qualification plus clean current/public source context; final real peer gate pending",
       "evidence": [
         "P1-peer-controls-first.log",
         "P1-peer-native/observation.json",
@@ -45,7 +45,7 @@
       "id": "P1-source-fences",
       "property": "Current native, locale, corpus, generated, tool and hidden-byte closure admits valid input and rejects modifications and missing inputs.",
       "positive_negative": "python3 -B -m unittest -v tests.test_current_language_admission.CurrentLanguageAdmission.test_source_fence_refuses_hidden_index_mutation tests.test_current_language_admission.CurrentLanguageAdmission.test_peer_fence_requires_current_identity_and_semantic_scope",
-      "status": "PASS by per-case reconciliation; clean copied-source context pending",
+      "status": "PASS reconciled affected controls and actual clean copied-source context",
       "evidence": [
         "P1-peer-controls-first.log",
         "P1-peer-fence-final.log",
@@ -67,19 +67,19 @@
       "id": "P2-native",
       "property": "Actual Monkey C current cache, selection, lifecycle, optional asset and error owners preserve accepted facts and approved degradations.",
       "positive_negative": "Selected affected production-bound SDK selectors from watchface/stm-property-tests and saved cleanup evidence, chosen after exact diff.",
-      "status": "PLANNED"
+      "status": "FUTURE / NOT DONE; outside latest user-narrowed P1 shipping scope"
     },
     {
       "id": "P2-assets",
       "property": "Only schema 3 SFR1M remains public; current codec accepts captured roles and rejects invalid/corrupt objects.",
       "positive_negative": "python3 -m unittest tests.test_sfr1m_current_animation tests.test_sfr1m_offline_current",
-      "status": "EXISTING; select directly invalidated cases"
+      "status": "FUTURE / NOT DONE; outside latest user-narrowed P1 shipping scope"
     },
     {
       "id": "P3-ledger",
       "property": "Every current/base-added-deleted tracked path has justified consumer, decision and scoped evidence; unresolved required rows fail closure.",
       "positive_negative": "Reconcile Git inventory and per-path decisions; refuse missing, duplicate or unresolved required rows.",
-      "status": "PLANNED"
+      "status": "FUTURE / NOT DONE; outside latest user-narrowed P1 shipping scope"
     },
     {
       "id": "retained-campaigns",
@@ -89,7 +89,7 @@
         "openspec/changes/stm-event-pbt/evidence/HOST-CAMPAIGN.md",
         "openspec/changes/stm-event-pbt/evidence/HOST-COARSE-CAMPAIGN.md"
       ],
-      "status": "RETAIN BY INPUT; rerun only invalidated cases"
+      "status": "RETAINED 15 native +4 host by unchanged semantic inputs; no rerun"
     }
   ]
 }

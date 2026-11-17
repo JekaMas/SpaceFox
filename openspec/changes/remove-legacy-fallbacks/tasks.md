@@ -1,11 +1,16 @@
-# Complete legacy and fallback consolidation
+# Necessary current P1 delivery — narrowed user scope
 
-Current base: public `1e5682e4527f837453b80b9cb4d33a5ed4e4aa97`. The former one-hour P0 deadline is superseded. Preserve its completed historical records in `evidence/` without treating their old deferred source as current proof.
+Base: public `1e5682e4527f837453b80b9cb4d33a5ed4e4aa97`. Latest explicit user steering supersedes the earlier full-round release prerequisite: finish necessary current P1 fixes and publish; broad P2/P3/per-file archaeology is FUTURE, not completed or required for this release.
 
-- [ ] P1: Replace recursive historical five-primary language admission with a genuinely current, fail-closed qualification and source/signing contour. Retain en/ru/de/fr/es, genuine finite-corpus and font/resource observations, current-source tamper and missing-input refusals, and the actual predecessor signing identity.
-  Author-selected native and source/refusal controls are recorded in `evidence/PROGRESS.md`; independent P1 review and remaining current export/source-use reconciliation are open. The current peer receipt must emit `proof_boundary` directly.
-- [ ] P2: Reconcile every relevant saved deferred change against 0.2.9; consolidate or remove only after tracing current consumers. Preserve trusted watch snapshot schema 1, publisher feed schema 3/SFR1M, correct optional degradation and all newer STM/lifecycle behavior.
-- [ ] P3: Account for every current, added and deleted path with a per-path consumer, decision and appropriate source/data/history/binary evidence boundary. Resolve all required pending/partial/unknown scope.
-- [ ] Reconcile invalidated checks against retained 15 native and four host campaign receipts; run only affected actual product/fixture/guard cases and document exact source boundaries. Fix findings to author GREEN.
-- [ ] Obtain one independent peer review and repair through GREEN of the complete stable batch; establish exact release version/NativeID and existing admission binding before final peer GREEN.
-- [ ] After approval, nonforce integrate actual public main, perform one official signed export and publish the complete GitHub and Garmin release. Record actual Store/physical status and final source/artifact identities.
+- [ ] P1 current five-primary admission and current release/source/peer contour GREEN: genuine current en/ru/de/fr/es corpus/resource/font/header/UI evidence, tamper/missing/hidden-byte refusals, JS/deletion/rename closure and unchanged predecessor signing guarantees. Affected checks are complete; final actual current peer gate is pending.
+- [x] Reconcile affected checks with retained 15 native and four host campaigns. P1 qualification/gates changed; business owners/models did not. Preserve authentic original observations and first failures.
+- [ ] One independent P1 review/fix through GREEN, final 0.2.10 / NativeID `6d3ad619`, and one real existing-gate receipt with literal nonempty `proof_boundary`.
+- [ ] Delivery after root judgment: author integrates actual public main, performs one official signed export, and publishes complete GitHub/Garmin release with actual identities/status.
+
+## FUTURE — explicitly not done
+
+- P2 saved native/parser/resource consolidation against all 0.2.9 fixes.
+- P3 complete current/base-added-deleted per-path consumer/disposition audit and pending/partial resolution.
+- The 21,406-path inventory and 6,102 preparation notes remain incomplete structural records; they are not semantic, pixel, linguistic or full-audit approval.
+
+Historical full-round plans and prior P0 evidence remain in Git and chronological evidence. No physical or phone acceptance is implied.

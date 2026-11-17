@@ -1,3 +1,15 @@
+# Current authoritative scope — P1 shipping only, 2026-11-18
+
+Latest explicit user steering narrows delivery to necessary current P1 fixes. Broad P2/P3/full 21,406-path audit is **FUTURE / NOT DONE**, not a prerequisite for this release. Historical sections below describe their then-current plans and counts; they do not override this scope or claim pending/partial paths complete.
+
+P1 source/method and affected qualification/refusal controls are complete at `72236a74bd4b77a62fb134c81ed818d94b0a877d`. Actual clean source_state PASS: 2,095 inputs. Isolated clean public source_state and manifest validation PASS: eng/rus/deu/fre/spa, no SDK discovery, private-home reads or external non-Git processes. The first wrapper assertion error is retained separately; it was not a production reader failure. Final metadata is 0.2.10 / NativeID `6d3ad619`; only manifest/NativeVersion metadata changes after qualification, with no runtime/resource/model semantic delta. Final actual current peer gate is pending, then author owns delivery. No further behavior/PBT/SDK campaign is required.
+
+See `P1-PEER.md`, `P1-peer-invalidation.json`, and clean-context logs for exact boundaries. All 19 prior campaigns retain their original source/time/program identities. README remains truthful at published 0.2.9 until actual delivery.
+
+---
+
+## Historical full-round and P0 records (superseded scope)
+
 # Current full-round status — 2026-11-17
 
 Base `1e5682e4527f837453b80b9cb4d33a5ed4e4aa97` (public 0.2.9); separate worktree `fix-complete-legacy-audit-20261117`. The previous P0 deadline has been superseded by the explicit full-round request. P1 current five-primary admission comes first, then the 0.2.9-aware P2 consolidation and complete P3 per-file decisions. No release or physical acceptance is implied.

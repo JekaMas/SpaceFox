@@ -1,3 +1,5 @@
+> Current delivery scope (explicit user steering, 2026-11-18): necessary P1 admission/source/peer fixes only. Broad P2/P3 consolidation and full per-file audit below are FUTURE, not done and not current release prerequisites. Preserve the current approved runtime and genuine five-primary guarantees; this scope change does not weaken admission.
+
 ## ADDED Requirements
 
 ### Requirement: Canonical current behavior
