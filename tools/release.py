@@ -76,6 +76,23 @@ def resolve_performance021_retired_inputs(admission, paths, proof, read_metadata
         admission.add(path)
 
 
+def resolve_audit_retired_inputs(admission: set[str], paths: set[str], proof: dict | None) -> None:
+    """Retain recorded snapshots in place of two retired audit-era paths."""
+    if proof is None or "auditRuntime025Proof" not in proof:
+        return
+    retired = {
+        "watchface/source/NativeSourceTimes.mc":
+            "openspec/changes/close-static-runtime-audit/evidence/prior/watchface/source/NativeSourceTimes.mc.txt",
+        "tests/test_ux02_reuse.py":
+            "openspec/changes/spacefox-watchface/evidence/release-cache-port/prior/test_ux02_reuse.py",
+    }
+    for name, snapshot in retired.items():
+        if name in admission and name not in paths:
+            require(snapshot in admission and snapshot in paths,
+                    "missing retained audit-era source snapshot: " + name)
+            admission.remove(name)
+
+
 def source_state(root: Path) -> dict:
     require(Path(git(root, "rev-parse", "--show-toplevel").strip()).resolve() == root,
             "root must be the actual Git worktree")
@@ -255,6 +272,7 @@ def source_state(root: Path) -> dict:
         corpus_directory = PurePosixPath(proof["corpusPath"]).parent
         admission.update(name for name in paths if PurePosixPath(name).is_relative_to(corpus_directory))
     resolve_performance021_retired_inputs(admission, set(paths), proof, read_metadata)
+    resolve_audit_retired_inputs(admission, set(paths), proof)
     require(admission <= set(paths), "language admission inputs must be tracked")
     inputs = {}
     for name in paths:
