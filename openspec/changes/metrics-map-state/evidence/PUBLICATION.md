@@ -1,0 +1,7 @@
+# SpaceFox 0.2.7 delivery
+
+The [GitHub release](https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.7) is published with 55 assets. Tag and compiled source are `f92456c9b438650dc2c275f5c5e90224c68b7c76`; NativeID `4d727bcf`. The one official SDK IQ export verified 42 profiles and 91 members with the existing production identity. PRGs were derived from that IQ. GitHub download readback matched the signed receipt: IQ SHA256 `cd5bc52a52426a783bd7327b1a7ad669f6edd80c2549309251b1c29c23f8f326` (47,286,732 bytes); FR165 and FR165M SHA256 `3255fd1588aa4a62f4fe650e7ab711c68cfd22cf8173b2f0fdf1fc87ac802470` (7,259,308 bytes each).
+
+Publisher workflow [44069444844](https://github.com/JekaMas/SpaceFox/actions/runs/44069444844) succeeded on the compiled source: prepare and metadata succeeded, while arm/deploy/promote were skipped as not due. Public HTTPS watch.json readback returned generation 74 with Taiyuan coordinates and target. This is not a newly deployed generation or an observation of future scheduled runs.
+
+Garmin Store 0.2.7 form is prepared with the exact signed IQ, but submission and approval are not yet observed. The tool requires action-time confirmation for accepting the DLA and Terms, despite pre-approval. Physical watch and phone acceptance, and the cause or resolution of the owner's reported 0.2.4 symptoms, remain unobserved. SDK selected PASS tables retain their separate raw launcher exit boundaries.
