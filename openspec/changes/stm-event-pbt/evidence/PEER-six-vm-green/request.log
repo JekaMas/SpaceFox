@@ -1,0 +1,14 @@
+------------------------------------------------------------------------------
+Executing test campaignPilot...
+DEBUG (17:37): PBT_CAMPAIGN_BEGIN worker=1 owner=1 first=400001 version=0.2.9 native_id=d13aa334 budget_ms=4000
+DEBUG (17:37): PBT_CAMPAIGN_COVERAGE {start_applied=>3627, reset_applied=>5885, callback_no=>7084, callback_applied=>939, start_no=>4453, finish_cancel=>2513, session_no=>2000, finish_idle=>4794} assertions=57348 skipped=0
+DEBUG (17:37): PBT_CAMPAIGN_END worker=1 owner=1 first=400001 next=400713 batches=89 events=31295 productive_ms=4003 wall_ms=4004
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+campaignPilot                       PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

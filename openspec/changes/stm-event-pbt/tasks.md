@@ -10,6 +10,6 @@
 - [x] Host all four productive600-second campaigns: retain budget/publication/deployment and the reviewed SOURCE_COARSE source-only replacement. Evidence: `evidence/HOST-CAMPAIGN.md` and `evidence/HOST-COARSE-CAMPAIGN.md`.
 - [x] Complete author short native view/admission/render, fields, reminder and fake asset-lease properties; real raster/phone/hardware are outside this model boundary.
 - [x] Run the author affected short properties and required per-seed dispositions; limits and retained failures are in `evidence/EVENT_COVERAGE.md`.
-- [ ] Obtain independent peer review and repair of the stable author batch.
+- [x] Obtain independent peer source/method review and repair through the final six-VM short control (`evidence/PEER.md`); final campaigns remain below.
 - [ ] Execute at least 600 real measured seconds for each distinct required STM PBT with isolated parallel workers; record coverage, failures and actual elapsed time.
 - [ ] Reconcile final source/admission and evidence; no merge or publication until all required campaigns pass.
