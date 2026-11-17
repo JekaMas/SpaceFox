@@ -5,6 +5,23 @@
   "public_key_spki_sha256": "84e95bea4f3052a7c93f297e25605dc374a02f946b8011c65eec950b284146cc",
   "status": "local_production_custody_restored",
   "latest_release": {
+    "version": "0.2.8",
+    "package_sha256": "86b2d0cebe278a2c5ec02e1c9f908659aa9b091f83d7a01339707cb6f350eac4",
+    "kind": "github_release",
+    "tag": "v0.2.8",
+    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.8",
+    "source_revision": "29e0cbd56cb43b958c4b70ad5339cbb52d58da5c",
+    "tag_revision": "29e0cbd56cb43b958c4b70ad5339cbb52d58da5c",
+    "original_receipt_sha256": "1cee8bd6e171b5c1ff10bfa6a8d8361221ac4c3cbe6f5d019a2c84ccaac33d63",
+    "proof_boundary": "One signed 42-profile IQ export; GitHub IQ and FR165/M download readback matched. Garmin submitted; approval, availability, physical and phone acceptance not observed."
+  },
+  "note": "Stable production UUID/key. The next update uses the original published 0.2.8 receipt and matching IQ.",
+  "local_custody": {
+    "encrypted_backup_sha256": "863f743d0c3966bc67c38aa2cf91d254e4aab0d0a4334ca4de340f8a608312f6",
+    "public_evidence": "openspec/changes/spacefox-watchface/evidence/production-signing/round1/custody-initialization.json",
+    "proof_boundary": "External owner-only production RSA4096 key and encrypted backup with separately stored password; actual local restore and public signing challenge. Same Mac only; no offsite/disaster recovery."
+  },
+  "previous_release": {
     "version": "0.2.7",
     "package_sha256": "cd5bc52a52426a783bd7327b1a7ad669f6edd80c2549309251b1c29c23f8f326",
     "kind": "github_release",
@@ -14,23 +31,6 @@
     "tag_revision": "f92456c9b438650dc2c275f5c5e90224c68b7c76",
     "original_receipt_sha256": "4feed2348fed337d9c9d61a3ed09e2eaa46753da4aecfa5b82cab6e7cd118ec4",
     "proof_boundary": "One signed 42-profile IQ export; GitHub IQ and FR165/M download readback matched. Garmin submitted; approval, availability and physical acceptance not observed."
-  },
-  "note": "Stable production UUID/key. The next update uses the original published 0.2.7 receipt and matching IQ.",
-  "local_custody": {
-    "encrypted_backup_sha256": "863f743d0c3966bc67c38aa2cf91d254e4aab0d0a4334ca4de340f8a608312f6",
-    "public_evidence": "openspec/changes/spacefox-watchface/evidence/production-signing/round1/custody-initialization.json",
-    "proof_boundary": "External owner-only production RSA4096 key and encrypted backup with separately stored password; actual local restore and public signing challenge. Same Mac only; no offsite/disaster recovery."
-  },
-  "previous_release": {
-    "version": "0.2.6",
-    "package_sha256": "383ae60f1b566b56f8b0fc90ebb3bc3f061256e51f44de9bcaeb338dfdb9386d",
-    "kind": "github_release",
-    "tag": "v0.2.6",
-    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.6",
-    "source_revision": "dd4289fb32814f2da6fa1adf7d9de8fb7e64df18",
-    "tag_revision": "dd4289fb32814f2da6fa1adf7d9de8fb7e64df18",
-    "original_receipt_sha256": "88261addb168eb36bc3d6ae56b828807fb6e37851adcfee321a9fa59d9409f1a",
-    "proof_boundary": "One signed 42-profile IQ export; GitHub API digests and IQ/FR165/FR165M download readback matched. Garmin submitted with verification but approval and physical/phone acceptance remain unobserved."
   },
   "earlier_release": {
     "version": "0.1.6",
@@ -207,5 +207,16 @@
     "tag_revision": "834ef3177da535b09cf70dad7d786cb0aab5a367",
     "original_receipt_sha256": "77ca6316b96b56ef4456877e7012a0ed27658d17c8d5a85d2dfc213aae153273",
     "proof_boundary": "Owner-held original receipt digest first recorded during 0.2.5 preparation; that receipt digest was not previously published or independently authenticated. The earlier 0.2.4 publication records the IQ digest and source. Physical and phone acceptance remain unobserved."
+  },
+  "prior_026_release": {
+    "version": "0.2.6",
+    "package_sha256": "383ae60f1b566b56f8b0fc90ebb3bc3f061256e51f44de9bcaeb338dfdb9386d",
+    "kind": "github_release",
+    "tag": "v0.2.6",
+    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.6",
+    "source_revision": "dd4289fb32814f2da6fa1adf7d9de8fb7e64df18",
+    "tag_revision": "dd4289fb32814f2da6fa1adf7d9de8fb7e64df18",
+    "original_receipt_sha256": "88261addb168eb36bc3d6ae56b828807fb6e37851adcfee321a9fa59d9409f1a",
+    "proof_boundary": "One signed 42-profile IQ export; GitHub API digests and IQ/FR165/FR165M download readback matched. Garmin submitted with verification but approval and physical/phone acceptance remain unobserved."
   }
 }
