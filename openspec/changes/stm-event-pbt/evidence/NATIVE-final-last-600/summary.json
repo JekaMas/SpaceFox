@@ -1,0 +1,282 @@
+{
+  "status": "GREEN",
+  "source_revision": "1f53420a5af7c4479aca537a12197d10980e1c07",
+  "version": "0.2.9",
+  "native_id": "d13aa334",
+  "required_seconds": 600,
+  "workers_per_batch": 5,
+  "compile_concurrency_limit": 2,
+  "full_duration": true,
+  "overlap_seconds": [
+    605.5608915840276
+  ],
+  "results": [
+    {
+      "owner": "source",
+      "worker": 0,
+      "status": "GREEN",
+      "configured_budget_ms": 606000,
+      "requested_seconds": 600,
+      "thread_id": 6115520512,
+      "container": "spacefox-event-pbt-20261117",
+      "cleanup_ok": true,
+      "program": "/Users/jekamas/.codex/tmp/spacefox-stm-pbt-20261117/campaign-11.prg",
+      "program_sha256": "5e6ab07a2501fcb0e9e9123e36643ab1840954832f32bead9b6ac08aa69bf7f8",
+      "test_uuid": "c0d8e48b8f1445a3b9b93b9f700cf505",
+      "entry": "PbtApp",
+      "version": "0.2.9",
+      "native_id": "d13aa334",
+      "raw_exit": 1,
+      "launcher": {
+        "status": "passed",
+        "raw_exit_code": 1,
+        "expected_tests": [
+          "campaignPilot"
+        ],
+        "observed_tests": {
+          "campaignPilot": "PASS"
+        },
+        "observed_count": 1,
+        "launcher_nonzero_framework_pass": true
+      },
+      "host_start": 2877349.911045041,
+      "productive_begin": 2877365.637967541,
+      "productive_end": 2877971.824734791,
+      "coverage": {
+        "hide_applied": 37914,
+        "delivery_applied": 33427,
+        "frame_applied": 31211,
+        "switch_applied": 62537,
+        "old_source_no": 68521,
+        "art_applied": 35931,
+        "late_art_no": 54115,
+        "hidden_switch": 22945,
+        "show_applied": 30830
+      },
+      "assertions": 1823959,
+      "skipped": 20040,
+      "first_seed": 1,
+      "next_seed": 13801,
+      "traces": 13800,
+      "events": 510592,
+      "productive_ms": 606178,
+      "native_wall_ms": 606207,
+      "observed_wall_seconds": 606.1867672502995
+    },
+    {
+      "owner": "art-lease",
+      "worker": 1,
+      "status": "GREEN",
+      "configured_budget_ms": 606000,
+      "requested_seconds": 600,
+      "thread_id": 6132346880,
+      "container": "spacefox-event-pbt-pilot-1",
+      "cleanup_ok": true,
+      "program": "/Users/jekamas/.codex/tmp/spacefox-stm-pbt-pilot-1/campaign-12.prg",
+      "program_sha256": "2c914f3cb534eb00402ab22f5e9b90dde51211a4edc28cf1afaf79c9006c79e4",
+      "test_uuid": "c0d8e48b8f1445a3b9b93b9f700cf506",
+      "entry": "PbtApp",
+      "version": "0.2.9",
+      "native_id": "d13aa334",
+      "raw_exit": 1,
+      "launcher": {
+        "status": "passed",
+        "raw_exit_code": 1,
+        "expected_tests": [
+          "campaignPilot"
+        ],
+        "observed_tests": {
+          "campaignPilot": "PASS"
+        },
+        "observed_count": 1,
+        "launcher_nonzero_framework_pass": true
+      },
+      "host_start": 2877349.910808,
+      "productive_begin": 2877365.529608416,
+      "productive_end": 2877971.626933416,
+      "coverage": {
+        "fail": 55908,
+        "refuse": 64963,
+        "hide_release": 58081,
+        "cancel_applied": 92842,
+        "complete": 56068,
+        "sleep_retains": 194320,
+        "prepare_no": 88757,
+        "cancel_no": 150118,
+        "start": 183103,
+        "prepare_applied": 251376,
+        "step": 56119
+      },
+      "assertions": 5330177,
+      "skipped": 0,
+      "first_seed": 400001,
+      "next_seed": 448593,
+      "traces": 48592,
+      "events": 2040840,
+      "productive_ms": 606015,
+      "native_wall_ms": 606102,
+      "observed_wall_seconds": 606.0973249999806
+    },
+    {
+      "owner": "wake",
+      "worker": 2,
+      "status": "GREEN",
+      "configured_budget_ms": 606000,
+      "requested_seconds": 600,
+      "thread_id": 6149173248,
+      "container": "spacefox-event-pbt-peer-2",
+      "cleanup_ok": true,
+      "program": "/Users/jekamas/.codex/tmp/spacefox-stm-pbt-peer-2/campaign-13.prg",
+      "program_sha256": "affb567b204b71b34c7fa8af06cd720eec7c68d2f7758825129b4e55b84efed4",
+      "test_uuid": "c0d8e48b8f1445a3b9b93b9f700cf507",
+      "entry": "PbtApp",
+      "version": "0.2.9",
+      "native_id": "d13aa334",
+      "raw_exit": 1,
+      "launcher": {
+        "status": "passed",
+        "raw_exit_code": 1,
+        "expected_tests": [
+          "campaignPilot"
+        ],
+        "observed_tests": {
+          "campaignPilot": "PASS"
+        },
+        "observed_count": 1,
+        "launcher_nonzero_framework_pass": true
+      },
+      "host_start": 2877349.910689875,
+      "productive_begin": 2877365.046434375,
+      "productive_end": 2877971.198859125,
+      "coverage": {
+        "arm": 762836,
+        "registration_failure": 156413,
+        "reminder": 236137,
+        "healthy": 222880,
+        "pending": 403460,
+        "offline": 177537,
+        "kept": 261836,
+        "floor": 167554,
+        "register": 344587
+      },
+      "assertions": 4449220,
+      "skipped": 0,
+      "first_seed": 800001,
+      "next_seed": 890801,
+      "traces": 90800,
+      "events": 3632020,
+      "productive_ms": 606037,
+      "native_wall_ms": 606162,
+      "observed_wall_seconds": 606.1524247499183
+    },
+    {
+      "owner": "service-failure",
+      "worker": 3,
+      "status": "GREEN",
+      "configured_budget_ms": 606000,
+      "requested_seconds": 600,
+      "thread_id": 6165999616,
+      "container": "spacefox-event-pbt-peer-3",
+      "cleanup_ok": true,
+      "program": "/Users/jekamas/.codex/tmp/spacefox-stm-pbt-peer-3/campaign-14.prg",
+      "program_sha256": "ea563b628eaf90d6b0c7863e0dead5f0b4e949f3a8364916bacbb5438d1ba66c",
+      "test_uuid": "c0d8e48b8f1445a3b9b93b9f700cf508",
+      "entry": "PbtApp",
+      "version": "0.2.9",
+      "native_id": "d13aa334",
+      "raw_exit": 1,
+      "launcher": {
+        "status": "passed",
+        "raw_exit_code": 1,
+        "expected_tests": [
+          "campaignPilot"
+        ],
+        "observed_tests": {
+          "campaignPilot": "PASS"
+        },
+        "observed_count": 1,
+        "launcher_nonzero_framework_pass": true
+      },
+      "host_start": 2877349.910946791,
+      "productive_begin": 2877365.274256208,
+      "productive_end": 2877971.459052958,
+      "coverage": {
+        "empty": 30414,
+        "stale": 67418,
+        "healthy_no": 36806,
+        "restart": 53814,
+        "cancel": 27047,
+        "network_fail": 13496,
+        "ipc_fail": 13496,
+        "reconfigured": 29652,
+        "checkpoint_fail": 13496,
+        "commit": 67480,
+        "pointer_fail": 13496,
+        "timeout": 13500,
+        "slot_fail": 13496,
+        "send_throw": 13534,
+        "old_owner": 53922,
+        "offline": 13580
+      },
+      "assertions": 6955041,
+      "skipped": 0,
+      "first_seed": 1200001,
+      "next_seed": 1213497,
+      "traces": 13496,
+      "events": 1039101,
+      "productive_ms": 606189,
+      "native_wall_ms": 606226,
+      "observed_wall_seconds": 606.1847967500798
+    },
+    {
+      "owner": "reminder",
+      "worker": 4,
+      "status": "GREEN",
+      "configured_budget_ms": 606000,
+      "requested_seconds": 600,
+      "thread_id": 6182825984,
+      "container": "spacefox-event-pbt-peer-4",
+      "cleanup_ok": true,
+      "program": "/Users/jekamas/.codex/tmp/spacefox-stm-pbt-peer-4/campaign-10.prg",
+      "program_sha256": "b308043e4f6a1899d598439c37e814dd3c0720eef705b6012f49ab89f4fc435e",
+      "test_uuid": "c0d8e48b8f1445a3b9b93b9f700cf509",
+      "entry": "PbtApp",
+      "version": "0.2.9",
+      "native_id": "d13aa334",
+      "raw_exit": 1,
+      "launcher": {
+        "status": "passed",
+        "raw_exit_code": 1,
+        "expected_tests": [
+          "campaignPilot"
+        ],
+        "observed_tests": {
+          "campaignPilot": "PASS"
+        },
+        "observed_count": 1,
+        "launcher_nonzero_framework_pass": true
+      },
+      "host_start": 2877349.910894125,
+      "productive_begin": 2877365.274160625,
+      "productive_end": 2877971.530045375,
+      "coverage": {
+        "wake_no": 35313,
+        "wake_post": 54310,
+        "disabled_no": 37618,
+        "publish_applied": 120046,
+        "quiet_consumed": 19406,
+        "write_failure": 22468,
+        "reopen_applied": 68672
+      },
+      "assertions": 3367997,
+      "skipped": 0,
+      "first_seed": 1600001,
+      "next_seed": 1617049,
+      "traces": 17048,
+      "events": 716010,
+      "productive_ms": 606279,
+      "native_wall_ms": 606307,
+      "observed_wall_seconds": 606.2558847502805
+    }
+  ]
+}

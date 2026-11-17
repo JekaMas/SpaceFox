@@ -1,0 +1,22 @@
+{
+  "kind": "stm-event-sequence-independent-peer",
+  "status": "GREEN",
+  "version": "0.2.9",
+  "native_id": "d13aa334",
+  "source_revision": "1f53420a5af7c4479aca537a12197d10980e1c07",
+  "scope": "Independent native source/method review and repairs; all15 required full native campaigns plus retained4 full host campaigns. Existing five-primary qualification is retained under the actual source-admission guard.",
+  "report": "openspec/changes/stm-event-pbt/evidence/PEER.md",
+  "native_campaigns": "openspec/changes/stm-event-pbt/evidence/NATIVE-CAMPAIGN.json",
+  "host_campaigns": [
+    "openspec/changes/stm-event-pbt/evidence/HOST-CAMPAIGN.md",
+    "openspec/changes/stm-event-pbt/evidence/HOST-COARSE-CAMPAIGN.md"
+  ],
+  "boundaries": [
+    "Actual SDK production owner seams with fake event-driven business dependencies; host ThreadPool workers control distinct native VMs, not MonkeyC OS threads.",
+    "Compilation/startup/control gaps excluded from productive duration; raw SDK exit1 qualified only by complete selected PASS tables and strict identity/duration/output checks.",
+    "Source-audited external-call closure plus asserted fake ports; MonkeyC globals cannot be globally monkeypatched, so no universal dynamically enforced absence of unseen Toybox calls is claimed.",
+    "No physical watch, phone HTTP, actual sensor values, raster/SFR rendering, notifications or hardware failure cause proved."
+  ],
+  "physical_status": "NOT_OBSERVED",
+  "publication_status": "PENDING root judgment and author delivery; this receipt does not claim merge/export/publication."
+}

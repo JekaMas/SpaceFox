@@ -1,0 +1,24 @@
+------------------------------------------------------------------------------
+Executing test campaignPilot...
+DEBUG (18:17): PBT_CAMPAIGN_BEGIN worker=3 owner=14 first=1200001 version=0.2.9 native_id=d13aa334 budget_ms=606000
+DEBUG (18:18): PBT_CAMPAIGN_PROGRESS owner=14 next=1201241 events=95492 productive_ms=60298
+DEBUG (18:19): PBT_CAMPAIGN_PROGRESS owner=14 next=1202545 events=195816 productive_ms=120052
+DEBUG (18:20): PBT_CAMPAIGN_PROGRESS owner=14 next=1203857 events=296854 productive_ms=180034
+DEBUG (18:21): PBT_CAMPAIGN_PROGRESS owner=14 next=1205233 events=402844 productive_ms=240244
+DEBUG (18:22): PBT_CAMPAIGN_PROGRESS owner=14 next=1206649 events=511866 productive_ms=300233
+DEBUG (18:23): PBT_CAMPAIGN_PROGRESS owner=14 next=1207761 events=597464 productive_ms=360055
+DEBUG (18:24): PBT_CAMPAIGN_PROGRESS owner=14 next=1209137 events=703447 productive_ms=420058
+DEBUG (18:25): PBT_CAMPAIGN_PROGRESS owner=14 next=1210545 events=811875 productive_ms=480082
+DEBUG (18:26): PBT_CAMPAIGN_PROGRESS owner=14 next=1211945 events=919625 productive_ms=540312
+DEBUG (18:27): PBT_CAMPAIGN_PROGRESS owner=14 next=1213353 events=1028061 productive_ms=600060
+DEBUG (18:27): PBT_CAMPAIGN_COVERAGE {empty=>30414, stale=>67418, healthy_no=>36806, restart=>53814, cancel=>27047, network_fail=>13496, ipc_fail=>13496, reconfigured=>29652, checkpoint_fail=>13496, commit=>67480, pointer_fail=>13496, timeout=>13500, slot_fail=>13496, send_throw=>13534, old_owner=>53922, offline=>13580} assertions=6955041 skipped=0
+DEBUG (18:27): PBT_CAMPAIGN_END worker=3 owner=14 first=1200001 next=1213497 batches=1687 events=1039101 productive_ms=606189 wall_ms=606226
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+campaignPilot                       PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

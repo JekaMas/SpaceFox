@@ -1,8 +1,10 @@
-# Peer repair checkpoint — current source0.2.9/d13aa334
+# Current final software result — GREEN
 
-HOST all four required productive campaigns are DONE: retain original budget/publication/deployment and replace only source with the reviewed SOURCE_COARSE campaign (`HOST-COARSE-CAMPAIGN.md`). Total6,362 traces /1,078,574 events; no new four-way overlap claim.
+Reviewed source `1f53420a5af7c4479aca537a12197d10980e1c07`, version0.2.9 / NativeIDd13aa334. Independent same-peer source review, all repairs, all15 final native workloads and all4 host workloads are GREEN. Actual existing combined release peer/source-admission gate and selected OpenSpec validation PASS. One real current receipt: `PEER.json`; authoritative report: `PEER.md`; per-workload timings/counts/source bindings: `NATIVE-CAMPAIGN.md/json`.
 
-Independent native source review repaired the one-shot volatile IPC lease, stopped-field snapshot retention, first-cold-LOW bounded acquisition, SourceTrace permission oracle, arbitrary service failure chains and campaign productive/real-duration fences. Current affected SDK short batch and strict compilation/admission are GREEN within `PEER.md` scopes; final six-VM short control is GREEN (`PEER-six-vm-green/summary.json`); ten final606s+ workloads are GREEN at their original frozen input boundaries. Temporal fake-history retention and reminder continuity-oracle repairs have targeted GREEN controls; the remaining five final workloads remain OPEN (`PEER.md`). NativeID regenerated once to d13aa334. No hardware/phone/raster success is inferred.
+Native922,944 traces /40,640,643 events /104,203,818 assertions; every workload606.001–606.460 productive native seconds and606.064251–606.506998 observed host seconds. Explicit80,411 skips are not effective coverage. Native framework tables PASS/raw launcher1 is retained, not represented as raw0. Host6,362 traces /1,078,574 events retains the accepted original budget/publication/deployment and SOURCE_COARSE replacement. First REDs and their exact scopes remain preserved, including cumulative fake callback retention and reminder continuity-oracle failure; only the corrected complete required results are credited.
+
+No remaining software gate. Root judgment and author actual-main/frozen signed export/tag/GitHub/Store delivery are next. Physical watch/phone/actual health/pixels/notification/hardware-cause success remains NOT OBSERVED. All six task-owned SDK containers stopped with data/config preserved; no foreign process/watch touched. Earlier checkpoint statuses below are historical and superseded by this current result.
 
 ---
 
