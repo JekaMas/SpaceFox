@@ -1,0 +1,23 @@
+Picked up JAVA_TOOL_OPTIONS: -Duser.home=/task/home
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test trustedReminderAndBackgroundCadence...
+DEBUG (00:15): TRUST_CADENCE healthy_hour=true failure_connected=true offline300=true reopen=true
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - trustedReminderAndBackgroundCadence() at /source/watchface/trusted-tests/TrustedTests.mc:68 0x10002503 
+  - evaluate_test_entries_0_to_8() at /task/gen/006-B4433-00/source/UnitTests.mcgen:66 0x10004beb 
+  - runTest() at /task/gen/006-B4433-00/source/UnitTests.mcgen:87 0x10004d49 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+trustedReminderAndBackgroundCadence ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

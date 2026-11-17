@@ -25,7 +25,7 @@ class MinuteRefreshTest(unittest.TestCase):
         self.assertEqual(record.timing.nominal_utc, 1794609900)
         self.assertEqual([cadence_seconds(record, at) for at in
                           (1794602699, 1794602700, 1794611700, 1794611701)],
-                         [3600, 900, 900, 3600])
+                         [3600, 3600, 3600, 3600])
         changed_context = replace(record, timing=replace(record.timing, window_end_utc=1794614460),
                                   source_validated_utc=1794551193,
                                   source_updated_utc=1794348407, source_updated_iso='2026-11-10T22:06:47Z')
@@ -36,7 +36,7 @@ class MinuteRefreshTest(unittest.TestCase):
         from tools.spacefox.wire import project_schedule
         projected = project_schedule(state, build_catalog(ROOT), 1794602700,
                                      publisher={'instance':'a'*64, 'generation':1, 'selectionValidatedUtc':1794602700})
-        self.assertEqual(projected['pollIntervalSeconds'], 900)
+        self.assertEqual(projected['pollIntervalSeconds'], 3600)
         self.assertEqual(projected['timingState'], 'uncertain')
         self.assertIsNone(projected['launch']['timing']['exact_utc'])
         self.assertEqual(projected['launch']['timing']['nominal_utc'], 1794609900)

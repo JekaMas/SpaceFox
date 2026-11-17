@@ -1,0 +1,28 @@
+...E
+======================================================================
+ERROR: test_local_http_due_origin_304_and_429 (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_local_http_due_origin_304_and_429)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-schedule-cadence-20261117/tests/test_schedule_producer_whole.py", line 469, in test_local_http_due_origin_304_and_429
+    result=update(pub,client,NOW,catalog,detail_limit=0)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-schedule-cadence-20261117/tools/update_feed.py", line 163, in update
+    revision = pub.accept_and_prepare(pub.head, primary_token, tuple(records), accepted_at, files, catalog_digest,
+                                      invocation_utc=primary_request_at, selection_validated_utc=selection_epoch,
+                                      feed_publisher=publisher, artifact_profile=artifact_profile)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-schedule-cadence-20261117/tools/spacefox/publisher.py", line 1144, in accept_and_prepare
+    return self._prepare_document(doc, files, catalog_revision, feed_publisher=feed_publisher, artifact_profile=artifact_profile)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-schedule-cadence-20261117/tools/spacefox/publisher.py", line 1176, in _prepare_document
+    validate_snapshot_artifact(candidate, files, refresh_policy=doc['refresh_policy'], instance=doc['instance_id'],
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                               selection_validated_utc=doc.get('selection_validated_utc'), require_selection_epoch=True)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-schedule-cadence-20261117/tools/spacefox/publisher.py", line 230, in validate_snapshot_artifact
+    expected_upcoming = [project_launch(entry) for entry in upcoming_entries(source, source.evaluated_at_utc, policy)]
+                                                                                                              ^^^^^^
+NameError: name 'policy' is not defined
+
+----------------------------------------------------------------------
+Ran 4 tests in 10.410s
+
+FAILED (errors=1)

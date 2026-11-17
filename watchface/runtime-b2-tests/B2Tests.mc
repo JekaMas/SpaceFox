@@ -32,8 +32,8 @@ import Toybox.WatchUi;
     Test.assert(scene.sourceValidated==1794551192l&&scene.point!=null&&scene.point[0]==-97.15799f&&scene.point[1]==25.99677f);
     Test.assertEqual(scene.schedule.display(now),"T- 16:18:18");
     var v=new SpaceFoxView(new B1DecodeClock(),new ScheduleState(null,"empty"));v.setPacket(cache.packet);
-    Test.assertEqual(v.snapshotAt(now).countdown,"~T- 16:18:18");
-    Test.assertEqual(v.snapshotAt(now).lowCountdown,"~T- 16:19");
+    Test.assertEqual(v.snapshotAt(now).countdown,"T- 16:18:18");
+    Test.assertEqual(v.snapshotAt(now).lowCountdown,"T- 16:19");
     Test.assert(v.assetCache==null&&v.downloaded==null&&v.context.point!=null);
     var dc=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get().getDc();
     v.admissionPending=true;v.drawClockFallback(dc);Test.assert(v.renderer==null&&v.context.point!=null);
@@ -66,7 +66,7 @@ import Toybox.WatchUi;
     var cache=new NativeCache(base,s);Test.assert(b1Promote021(cache,raw,now));var selected=feedScene(cache.packet,now);
     Test.assert(selected.launchId.equals("ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60"));
     Test.assert(selected.point!=null&&selected.point[0]==111.589567f&&selected.point[1]==38.863128f);
-    Test.assertEqual(selected.schedule.display(now),"--:--:--");var v=new SpaceFoxView(new B1Clock(),new ScheduleState(null,"empty"));v.setContext(selected);Test.assertEqual(v.snapshotAt(now).countdown,"~"+CountdownFormat.format(selected.displayTarget-now));
+    Test.assertEqual(selected.schedule.display(now),"--:--:--");var v=new SpaceFoxView(new B1Clock(),new ScheduleState(null,"empty"));v.setContext(selected);Test.assertEqual(v.snapshotAt(now).countdown,CountdownFormat.format(selected.displayTarget-now));
     var renderer=new SceneRenderer(null);renderer.prepare(selected,new SceneSettings(null));Test.assert(renderer.pin);
     // A mobile/unknown event position is represented by a null point, never a reference-as-event substitution.
     var absent=new SceneContext({"id"=>selected.launchId,"precision"=>"unknown"});renderer.prepare(absent,new SceneSettings(null));Test.assert(absent.point==null&&!renderer.pin&&!renderer.worldFallback);
@@ -83,7 +83,7 @@ import Toybox.WatchUi;
     Test.assert(b1Promote021(cache,moved,now));v.setPacket(cache.packet);var rescheduled=v.context;
     Test.assert(rescheduled.launchId.equals(initial.launchId)&&rescheduled.retentionTarget==1794611100l&&rescheduled.sourceValidated==1794551193l&&rescheduled.rescheduled);
     Test.assert(cache.packet.document["publisher"]["generation"]==2&&rescheduled.point[0]==-97.15799f&&rescheduled.point[1]==25.99677f&&rescheduled.site.equals(initial.site));
-    Test.assertEqual(v.snapshotAt(now).countdown,"~T- 16:38:18");
+    Test.assertEqual(v.snapshotAt(now).countdown,"T- 16:38:18");
     Test.assert(b1Promote021(cache,different,now));v.setPacket(cache.packet);var next=v.context;
     // Existing fixture changes identity as a technical discriminator but retains real display strings.
     Test.assert(next.launchId.equals("ll2:launch:00000000-0000-4000-8000-000000000002")&&next.retentionTarget==1794609900l&&next.sourceValidated==1794551197l);
@@ -105,7 +105,7 @@ import Toybox.WatchUi;
     var scene=new SceneContext({"id"=>"ll2:launch:0f867f0c-5422-4d44-93b8-d7faaae7019b","rocket"=>"Starship V3","site"=>"Starbase","point"=>[-97.15799f,-80.0f],"precision"=>"minute","target"=>1794609900l});
     var settings=new SceneSettings(null);var renderer=new SceneRenderer(null);renderer.prepare(scene,settings);renderer.prepareAod();
     Test.assert(renderer.worldFallback&&!renderer.pin&&scene.point!=null);
-    var frame=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get();var clock=new ClockSnapshot("08:38","~T- 16:19");clock.localCalendar=[1,16,11];
+    var frame=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get();var clock=new ClockSnapshot("08:38","T- 16:19");clock.localCalendar=[1,16,11];
     renderer.aod(frame.getDc(),clock,0l,settings);
     // Once a downloaded outline is ready, use its centered marker alone;
     // the fallback projection must not be overlaid at a second location.

@@ -20,19 +20,16 @@ retirement, cancellation or worldwide schedule completeness.
 
 ### Requirement: Automatic bounded refresh
 
-The watch SHALL fetch its static HTTPS feed via Garmin Connect hourly by default, or every 15 minutes from two hours before an exact or validated MIN nominal target through 30 minutes after it without confirmation. MIN precision remains uncertain; date-only, window-only and unknown targets use hourly mode. Intervals SHALL be configurable within platform/provider limits, including optional 5-minute mode. Drawing/countdown ticks MUST NOT initiate requests. Delivery delay SHALL remain explicit.
-#### Scenario: Connected refresh
-- **WHEN** a scheduled background refresh is permitted and the phone has connectivity
-- **THEN** the watch receives the accepted static schedule without manual refresh, provider credentials or a custom phone application, and uses its updated launch times
-- **AND** When a first background attempt without an accepted schedule fails or is interrupted before callback, register the next attempt before the request at the first permitted slot, five minutes after the later of last temporal event and attempt. Actual OS/phone dispatch may be later; redraw does not request and normal cadence resumes after acceptance. Foreground wakes and duplicate callbacks SHALL NOT postpone pending visual deadlines; retain the registered deadline without redundant re-registration. An event newer than last dispatch remains pending even when late; consumed or absent events observe the five-minute minimum. Missing, null or unreadable FeedBaseUrl uses the published default; an explicitly stored blank disables the feed. Physical evidence uses the selected watch face.
+The watch SHALL use one schedule-request decision: successful future schedules refresh hourly; failure or an empty future schedule retries at the first connected opportunity, or after five minutes offline. The OS imposes a five-minute temporal-event minimum. Drawing, reopening, optional artwork and reminders MUST NOT bypass the hourly bound.
 
-#### Scenario: Provider unavailable or rate limited
-- **WHEN** a refresh fails, times out or is rate limited
-- **THEN** the last accepted schedule remains available and retries respect platform/provider limits without a per-second request loop
+#### Scenario: Healthy schedule and reopening
+- **WHEN** a successful request has a future launch and the face reopens or the phone reconnects before one hour
+- **THEN** no new schedule request is made until the hour has elapsed
 
-#### Scenario: Refresh window changes
-- **WHEN** the cached exact or validated MIN nominal target enters the two-hour window or passes thirty minutes without confirmation
-- **THEN** the local scheduler changes between fifteen-minute and hourly checks without inferring liftoff; temporary faster checking does not become permanent
+#### Scenario: Retry and connectivity
+- **WHEN** the last request failed or there is no future launch
+- **THEN** the next connected opportunity retries without a policy delay, or an offline opportunity is checked after five minutes; the platform temporal-event floor still applies
+- **AND** at most one schedule request is in flight and accepted facts and independent artwork remain available
 
 ### Requirement: Personal static-feed operation
 
@@ -69,20 +66,15 @@ alone MUST NOT establish feed freshness or automatic delivery.
 
 ### Requirement: Rate-aware static publication
 
-The updater SHALL use the same hourly/near-launch policy: normally one and near
-launch four primary provider polls per hour. Scheduler wakeups MAY only check
-whether a poll is due. A configured fast mode MUST stay within twelve steady
-calls/hour; manual runs, retries and extra requests share the provider budget.
-Publication SHALL be serialized. Failed/invalid updates MUST retain working data
-and validation times. No LLM SHALL infer facts.
+The publisher SHALL apply the same schedule decision: a successful request with a future launch is limited to once per hour, and a failed request or no future launch is due at the next connected opportunity. A five-minute workflow tick provides opportunities, subject to platform delays. Provider capacity, serialized in-flight requests, optional artwork and reminders remain separate. Failed updates MUST retain accepted data and validation times.
 
 #### Scenario: Provider failure or overlapping runs
-- **WHEN** the provider returns a throttle/error, a payload fails validation, or two runs overlap
-- **THEN** runs respect backoff/budget and one publisher at a time; a failed run cannot replace good data or make it fresher
+- **WHEN** a schedule request fails or two runs overlap
+- **THEN** the next permitted workflow opportunity can retry without a status or proximity backoff, and no concurrent duplicate request starts
 
 #### Scenario: Successful unchanged provider data
 - **WHEN** a successful provider validation confirms the same launch content
-- **THEN** the published feed records the new validation time without inventing a reschedule, even when the launch-content revision is unchanged
+- **THEN** the published feed records the new validation time without inventing a reschedule
 
 ### Requirement: Compact trusted watch snapshot
 
@@ -93,7 +85,7 @@ The scheduled publisher SHALL project selected and bounded upcoming launch facts
 - **THEN** current facts and the source-qualified point remain visible with available fallback art while optional work continues independently.
 
 #### Scenario: Every background event has a due snapshot
-- **WHEN** a permitted 300-second cadence makes the snapshot due at every event
+- **WHEN** a failed or empty schedule makes the snapshot due at each permitted event
 - **THEN** a complete snapshot is published before bounded optional requests, and the pending artwork job still progresses even if a later snapshot response fails; artwork failure leaves the accepted facts available.
 
 ### Requirement: Interrupted snapshot recovery
@@ -165,7 +157,7 @@ The watch SHALL recompute validated launch UTC minus current UTC on redraw and w
 - **WHEN** an exact target and current UTC are known
 - **THEN** active displays ASCII `T- HH:MM:SS` before target and `T+ HH:MM:SS` at and after target, with accumulating hours
 - **AND** each permitted LOW snapshot displays `T- HH:MM` rounded up before target and `T+ HH:MM` rounded down at and after target; no repaint is promised at a mid-minute target
-- **AND** a validated announced NET without an exact target uses the same arithmetic prefixed with `~`, without upgrading source precision; absent both exact target and announced NET displays `--:--:--` active and `--:--` LOW
+- **AND** a validated announced NET without an exact target uses the same arithmetic without a precision prefix, without upgrading source precision; absent both exact target and announced NET displays `--:--:--` active and `--:--` LOW
 
 #### Scenario: Exact time available
 - **WHEN** an accepted launch has an exact UTC timestamp and the watch time zone changes
@@ -173,7 +165,7 @@ The watch SHALL recompute validated launch UTC minus current UTC on redraw and w
 
 #### Scenario: Date known but time uncertain
 - **WHEN** the provider gives an inexact validated announced NET
-- **THEN** the face displays `~T-` before it and `~T+` afterward, and does not infer exactness or liftoff
+- **THEN** the face displays `T-` before it and `T+` afterward, and does not infer exactness or liftoff
 - **AND** a date or window with no announced NET displays the mode-appropriate unknown marker
 
 #### Scenario: Offline countdown after sleep
@@ -205,8 +197,7 @@ clear the flag; selecting a different launch SHALL not inherit it.
 
 The watch SHALL persist data and each record's provider-validation time. Freshness
 MUST use source age, never download/build time. Default stale limits are three
-hours normally and forty-five minutes near launch, configurable with publisher
-cadence. Re-fetching old data or validating other records MUST NOT renew a record.
+hours normally and forty-five minutes near launch, based on source freshness independently of request cadence. Re-fetching old data or validating other records MUST NOT renew a record.
 Once stale, that record SHALL remain stale until newer source validation arrives.
 Cache SHALL survive restart; an empty cache SHALL show no schedule.
 
@@ -226,8 +217,8 @@ Cache SHALL survive restart; an empty cache SHALL show no schedule.
 - **WHEN** an unconfirmed tracked launch is retained from cache while newer records are validated
 - **THEN** its older source-validation time remains attached and no cancellation, liftoff or fresh status is inferred from omission
 
-#### Scenario: Faster checking ends while data is stale
-- **WHEN** a stale unconfirmed record leaves the near-launch window and polling returns to hourly mode
+#### Scenario: Source remains stale after the near-launch window
+- **WHEN** a stale unconfirmed record leaves the near-launch window
 - **THEN** the longer normal age limit does not clear its stale flag without newer provider validation
 
 ### Requirement: Repeatable agent-assisted personal setup

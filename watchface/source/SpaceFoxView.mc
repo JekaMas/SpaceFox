@@ -126,10 +126,10 @@ class SpaceFoxView extends WatchUi.WatchFace {
     function snapshotAt(now as Number or Long) as ClockSnapshot {
         advanceSelection(now);
         if(context!=null){context.advanceFreshness(now);}
-        var remaining=_schedule.remainingSeconds(now);var estimated=context!=null&&context.displayTarget!=null;
+        var remaining=_schedule.remainingSeconds(now);
         if(context!=null&&context.displayTarget!=null){remaining=(context.displayTarget as Long)-now.toLong();}
-        var current=new ClockSnapshot(_clock.localTimeText(),(estimated?"~":"")+CountdownFormat.format(remaining));
-        current.lowCountdown=(estimated?"~":"")+CountdownFormat.minutes(remaining);
+        var current=new ClockSnapshot(_clock.localTimeText(),CountdownFormat.format(remaining));
+        current.lowCountdown=CountdownFormat.minutes(remaining);
         current.date=context==null?null:context.date;current.localCalendar=_clock.localCalendar();current.battery=fitness.display(values,"battery");
         if(context!=null){current.stale=context.stale;current.rescheduled=context.rescheduled;current.sourceHold=context.sourceHold;}
         return current;

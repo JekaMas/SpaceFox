@@ -329,7 +329,6 @@ def main(argv=None):
     parser.add_argument('--now', type=int, help='explicit logical UTC for qualification; default actual UTC')
     sub = parser.add_subparsers(dest='command', required=True)
     boot = sub.add_parser('bootstrap', help='explicit first creation of state authority; no provider fetch')
-    boot.add_argument('--fast-seconds', type=int)
     sub.add_parser('status')
     run = sub.add_parser('run')
     run.add_argument('--trigger', choices=('scheduled', 'manual', 'retry'), default='scheduled')
@@ -347,7 +346,7 @@ def main(argv=None):
         code = executing_revision(root)
         store = GitState(args.remote, source_ref=args.source_ref)
         if args.command == 'bootstrap':
-            print(json.dumps({'head': store.bootstrap(code, RefreshPolicy(fast_interval_seconds=args.fast_seconds))}))
+            print(json.dumps({'head': store.bootstrap(code, RefreshPolicy())}))
             return 0
         if args.command == 'run' and args.trigger == 'scheduled':
             if args.expected_base is None:

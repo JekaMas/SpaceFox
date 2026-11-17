@@ -1,0 +1,15 @@
+Picked up JAVA_TOOL_OPTIONS: -Duser.home=/task/home
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test trustedReminderAndBackgroundCadence...
+DEBUG (00:17): TRUST_CADENCE healthy_hour=true failure_connected=true offline300=true reopen=true
+DEBUG (00:17): trusted reminder exact eligible, new pointer invalidates old, coarse excluded, cadence and namespace retained
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+trustedReminderAndBackgroundCadence PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

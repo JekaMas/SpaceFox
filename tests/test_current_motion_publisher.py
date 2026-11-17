@@ -163,9 +163,8 @@ class CurrentMotionPublisherTest(unittest.TestCase):
                 files, digest = build_artifact(pub.schedule, build_catalog(ROOT), NOW,
                     publisher=pub.publisher_envelope(NOW), policy=policy, root=ROOT)
                 original = validate_artifact(files)
-                self.assertEqual(original['pollIntervalSeconds'], 7200)
-                cases = [('policy', dict(original, refreshPolicy=dict(vars(policy), stale_cycles=3))),
-                         ('cadence', dict(original, pollIntervalSeconds=1800))]
+                self.assertEqual(original['pollIntervalSeconds'], 3600)
+                cases = [('policy', dict(original, refreshPolicy=dict(vars(policy), stale_cycles=3)))]
                 for name, feed in cases:
                     with self.subTest(boundary='prepare', mutation=name):
                         altered = with_text_transport(dict(files, **{'feed.json': canonical_bytes(feed)}))

@@ -20,8 +20,8 @@ import uuid
 
 from .schedule import (AcceptedLaunch, IdKind, LaunchRecord, LaunchStatus,
                        ScheduleError, ScheduleState, StableId, TimePrecision,
-                       Timing, advance_schedule, merge_schedule, compact_schedule, poll_due, select_next,
-                       DEFAULT_POLICY, RefreshPolicy, cadence_seconds)
+                       Timing, advance_schedule, merge_schedule, compact_schedule, request_due, select_next,
+                       DEFAULT_POLICY, RefreshPolicy)
 
 MAX_LEDGER_BYTES = 65536
 MAX_ARTIFACT_BYTES = 1048576
@@ -211,11 +211,8 @@ def validate_snapshot_artifact(snapshot, files, *, refresh_policy, instance=None
         raise StateError('artifact does not bind durable generation/source/catalog/instance')
     selected = select_next(source)
     policy = RefreshPolicy(**refresh_policy)
-    record = None if selected.entry is None else selected.entry.record
-    if (feed['refreshPolicy'] != refresh_policy
-            or source.evaluated_at_utc is None
-            or feed['pollIntervalSeconds'] != cadence_seconds(record, source.evaluated_at_utc, policy)):
-        raise StateError('artifact refresh policy/cadence disagrees with durable authority')
+    if feed['refreshPolicy'] != refresh_policy or source.evaluated_at_utc is None:
+        raise StateError('artifact refresh policy disagrees with durable authority')
     launch = None
     if selected.entry is not None:
         record = selected.entry.record
@@ -426,9 +423,14 @@ def _transition(old, new, archive_lookup=None):
 
 def _schedule_due(doc, now, policy):
     current = advance_schedule(_schedule(doc['accepted']), now, policy)
-    selected = select_next(current).entry
-    return poll_due(None if selected is None else selected.record, doc['last_poll_utc'], now,
-                    policy, not_before_utc=doc['backoff_until_utc'])
+    future = any(e.record.status not in (LaunchStatus.CANCELLED, LaunchStatus.COMPLETED)
+                 and e.record.timing.ordering_utc is not None
+                 and e.record.timing.ordering_utc > now for e in current.entries)
+    last = doc['last_poll_utc']
+    requests = [r for r in doc['requests'] if r['purpose'] == 'schedule'
+                and last is not None and r['at_utc'] >= last]
+    succeeded = bool(requests) and all(r['outcome'] == 'success' for r in requests)
+    return request_due(future, last, succeeded, True, now)
 
 
 def bounded_git(path, *args, data=None, check=True):
@@ -937,16 +939,17 @@ class Publisher:
         self._time(doc, now)
         if purpose not in ('schedule', 'catalog', 'version') or trigger not in ('scheduled', 'manual', 'retry', 'extra'):
             raise StateError('invalid request purpose/trigger')
-        if trigger == 'scheduled':
-            if purpose != 'schedule':
-                raise StateError('scheduled catalog/version work needs its own qualified due owner')
+        if purpose == 'schedule' and trigger != 'extra':
             if not _schedule_due(doc, now, self.policy):
                 return None
+        elif trigger == 'scheduled':
+            raise StateError('scheduled catalog/version work needs its own qualified due owner')
         else:
             # Preserve the existing schedule validation for non-scheduled requests.
             select_next(advance_schedule(self.schedule, now, self.policy))
-        if doc['backoff_until_utc'] is not None and now < doc['backoff_until_utc']:
-            raise AllowanceUnavailable('durable provider backoff is active')
+        if purpose != 'schedule' or trigger == 'extra':
+            if doc['backoff_until_utc'] is not None and now < doc['backoff_until_utc']:
+                raise AllowanceUnavailable('durable provider backoff is active')
         requests = [r for r in doc['requests'] if now < r['at_utc'] + 3600]
         if any(r['outcome'] == 'reserved' and now < r['at_utc'] + UNCERTAIN_DELAY_SECONDS for r in requests):
             raise StateError('uncertain request outcome requires recovery delay')
@@ -967,21 +970,17 @@ class Publisher:
 
         The default updater's primary traversal is at most two pages; callers
         using its supported1..4 page override must pass the same bound here.
-        Reserve for the shortest configured cadence even before entering a near
-        window, so catalog work cannot drain the hour just ahead of that window.
+        Reserve capacity for the next hourly schedule acquisition so optional
+        catalog work cannot consume its provider allowance.
         Optional reconciliation details remain best effort under the same quota.
         """
         _integer(schedule_max_pages, 1, 4)
         doc = self._context(expected)
         self._ready(doc)
         self._time(doc, now)
-        current = advance_schedule(self.schedule, now, self.policy)
-        selected = select_next(current).entry
-        if poll_due(None if selected is None else selected.record,
-                    doc['last_poll_utc'], now, self.policy):
+        if _schedule_due(doc, now, self.policy):
             return None
-        cadence = self.policy.fast_interval_seconds or self.policy.near_interval_seconds
-        headroom = ((3600 + cadence - 1) // cadence) * schedule_max_pages
+        headroom = schedule_max_pages
         used = sum(now < r['at_utc'] + 3600 for r in doc['requests'])
         if used >= max(0, REQUESTS_PER_HOUR - headroom):
             return None
@@ -1032,14 +1031,14 @@ class Publisher:
         doc, request = self._result(expected, token, now)
         if outcome not in ('success', 'failed', 'throttled'):
             raise StateError('invalid provider result')
-        if outcome in ('failed', 'throttled'):
+        if outcome in ('failed', 'throttled') and not (request['purpose'] == 'schedule' and request['trigger'] != 'extra'):
             deadline = now + 300 if retry_after_utc is None else retry_after_utc
             _utc(deadline)
             if deadline < now + UNCERTAIN_DELAY_SECONDS:
                 raise StateError('failure backoff must be at least60seconds')
             previous = doc['backoff_until_utc']
             doc['backoff_until_utc'] = deadline if previous is None else max(previous, deadline)
-        elif retry_after_utc is not None:
+        elif outcome == 'success' and retry_after_utc is not None:
             raise StateError('success cannot carry retry backoff')
         request['outcome'] = outcome
         if retain_for_acceptance:

@@ -18,9 +18,9 @@ from tools.spacefox.native_motion import build_artifact, validate_artifact
 from tools.spacefox.feed import encode_feed, FeedEncodingError, FeedTooLargeError
 from tools.spacefox.provider import (LL2Client, ProviderError, Response, Throttled,
     normalize_launch, normalize_detail_launch, validation_epoch)
-from tools.spacefox.publisher import GitState, Publisher, LiveRevision, AllowanceUnavailable
+from tools.spacefox.publisher import GitState, Publisher, LiveRevision, AllowanceUnavailable, StateError
 from tools.spacefox.schedule import (AcceptedLaunch, ScheduleState, ScheduleError, RefreshPolicy, TimePrecision,
-    Timing, LaunchStatus, StableId, IdKind, cadence_seconds, poll_due, merge_schedule, select_next, advance_schedule)
+    Timing, LaunchStatus, StableId, IdKind, cadence_seconds, request_due, merge_schedule, select_next, advance_schedule)
 from tools.update_feed import update
 
 
@@ -46,29 +46,39 @@ class ScheduleProducerWholeTest(unittest.TestCase):
     def test_cadence_positive(self):
         row = captured_starship(); row['net_precision'] = {'id':0,'name':'Second','abbrev':'SEC'}
         record = normalize_launch(row, NOW); target = record.timing.exact_utc
-        original = deepcopy(record.content())
-        self.assertEqual(target,1794609900)
-        self.assertEqual([cadence_seconds(record,target+n) for n in (-7201,-7200,1800,1801)],[3600,900,900,3600])
-        self.assertEqual(cadence_seconds(None,target),3600)
-        self.assertEqual(cadence_seconds(replace(record,timing=Timing(TimePrecision.UNKNOWN)),target),3600)
-        self.assertEqual(record.content(),original)
+        self.assertEqual([cadence_seconds(record,target+n) for n in (-7201,-7200,1800,1801)], [3600]*4)
+        self.assertFalse(request_due(True,NOW,True,True,NOW+3599))
+        self.assertTrue(request_due(True,NOW,True,True,NOW+3600))
+        self.assertTrue(request_due(False,NOW,True,True,NOW+1))
+        self.assertTrue(request_due(True,NOW,False,True,NOW+1))
+        self.assertFalse(request_due(False,NOW,False,False,NOW+299))
+        self.assertTrue(request_due(False,NOW,False,False,NOW+300))
+        self.assertTrue(request_due(False,NOW,False,True,NOW+1))
 
     def test_cadence_negative(self):
-        row = captured_starship(); row['net_precision'] = {'id':0,'name':'Second','abbrev':'SEC'}
-        record = normalize_launch(row, NOW); target = record.timing.exact_utc
-        custom=RefreshPolicy(normal_interval_seconds=7200,near_interval_seconds=1800)
-        self.assertEqual(cadence_seconds(record,target,custom),1800)
-        self.assertEqual(cadence_seconds(record,target+1801,custom),7200)
-        self.assertFalse(poll_due(record,target-7200,target-5401,custom))
-        self.assertTrue(poll_due(record,target-7200,target-5400,custom))
-        self.assertEqual(3600//cadence_seconds(record,target,RefreshPolicy(fast_interval_seconds=300)),12)
-        for bad in (True,0,-1,299,301.5,'300'):
-            with self.subTest(bad=bad), self.assertRaises(ScheduleError): RefreshPolicy(fast_interval_seconds=bad)
-        with self.assertRaises(ScheduleError): RefreshPolicy(near_interval_seconds=3601)
-        self.assertFalse(poll_due(record,target-7200,target-6301))
-        self.assertTrue(poll_due(record,target-7200,target-6300))
-        self.assertFalse(poll_due(record,None,target,not_before_utc=target+1))
-        self.assertTrue(poll_due(record,None,target,not_before_utc=target))
+        for args in ((1,NOW,True,True,NOW+1),(True,NOW,1,True,NOW+1)):
+            with self.assertRaises(ScheduleError): request_due(*args)
+        self.assertTrue(request_due(True,None,False,True,NOW))
+        self.assertTrue(request_due(True,NOW+1,True,True,NOW))
+
+    def test_empty_future_retries_without_duplicate_inflight(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp); remote=path/'remote.git'; source=path/'source'; source.mkdir()
+            subprocess.run(['git','init','--bare','-q',str(remote)],check=True)
+            git(source,'init','-q'); git(source,'config','user.name','Local test'); git(source,'config','user.email','local@example.invalid')
+            git(source,'commit','--allow-empty','-qm','source'); code=git(source,'rev-parse','HEAD')
+            git(source,'push','-q',str(remote),'HEAD:refs/heads/main');store=GitState(str(remote))
+            try:
+                store.bootstrap(code); pub=Publisher(store,code); pub.reconcile(None)
+                token=pub.reserve(pub.head,NOW,trigger='manual')
+                with self.assertRaises(StateError): pub.reserve(pub.head,NOW,trigger='manual')
+                pub.finish_request(pub.head,token,NOW,'success')
+                pub=Publisher(store,code); pub.reconcile(None)
+                token=pub.reserve(pub.head,NOW+1,trigger='manual');self.assertIsNotNone(token)
+                pub.finish_request(pub.head,token,NOW+1,'failed')
+                pub=Publisher(store,code);pub.reconcile(None)
+                self.assertIsNotNone(pub.reserve(pub.head,NOW+2,trigger='manual'))
+            finally: store.close()
 
     def test_identity_omission_revalidation_and_atomic_rejection(self):
         row = captured_starship()
@@ -471,6 +481,9 @@ class ScheduleProducerWholeTest(unittest.TestCase):
                 store=GitState(str(remote))
                 try:
                     store.bootstrap(code); pub=Publisher(store,code); pub.reconcile(None)
+                    inflight=pub.reserve(pub.head,NOW-1,trigger='manual')
+                    with self.assertRaises(StateError): pub.reserve(pub.head,NOW-1,trigger='manual')
+                    pub.finish_request(pub.head,inflight,NOW-1,'failed')
                     client=LL2Client(origin=f'http://127.0.0.1:{server.server_port}',local_http=True)
                     catalog=build_catalog(ROOT)
                     page=json.dumps({'count':1,'next':None,'previous':None,'results':[row]}).encode()
@@ -481,7 +494,7 @@ class ScheduleProducerWholeTest(unittest.TestCase):
                     self.assertIn('mode=normal',calls[0]); self.assertIn('ordering=net',calls[0])
                     pending=pub.ledger['pending']; live=LiveRevision(pending['generation'],pending['artifact_revision'])
                     self.assertEqual(pub.reconcile(live),'promoted')
-                    head=pub.head; self.assertEqual(update(pub,client,NOW+1,catalog)['result'],'not_due')
+                    head=pub.head; self.assertIsNone(pub.reserve(pub.head,NOW+1,trigger='manual')); self.assertEqual(update(pub,client,NOW+1,catalog)['result'],'not_due'); self.assertEqual(update(pub,client,NOW+3599,catalog)['result'],'not_due')
                     self.assertEqual(pub.head,head); self.assertEqual(len(calls),1)
                     responses.append((304,NOW+3600,0,b'',{}))
                     self.assertEqual(update(pub,client,NOW+3600,catalog)['result'],'not_modified_without_record_validation')
@@ -489,12 +502,12 @@ class ScheduleProducerWholeTest(unittest.TestCase):
                     self.assertEqual(pub.reconcile(live),'ready')
                     responses.append((429,NOW+7200,0,b'',{'Retry-After':'600'}))
                     with self.assertRaises(Throttled): update(pub,client,NOW+7200,catalog)
-                    pub=Publisher(store,code); self.assertEqual(pub.ledger['backoff_until_utc'],NOW+7800)
+                    pub=Publisher(store,code); self.assertIsNone(pub.ledger['backoff_until_utc'])
                     self.assertEqual(pub.reconcile(live),'ready')
                     self.assertEqual(pub.schedule.entries[0].record.source_validated_utc,NOW)
-                    before=len(calls)
-                    with self.assertRaises(AllowanceUnavailable): client.request(pub,NOW+7201,trigger='extra')
-                    self.assertEqual(len(calls),before)
+                    responses.append((304,NOW+7201,0,b'',{}))
+                    self.assertEqual(update(pub,client,NOW+7201,catalog)['result'],'not_modified_without_record_validation')
+                    self.assertEqual(len(calls),4)
                 finally: store.close()
         finally:
             server.shutdown(); thread.join(); server.server_close()

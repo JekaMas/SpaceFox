@@ -31,11 +31,10 @@ class NativeTrustedStore {
         if(prior instanceof Dictionary&&prior["base"] instanceof String&&prior["base"].equals(base)&&(prior["sequence"] instanceof Number||prior["sequence"] instanceof Long)){sequence=prior["sequence"]+1;}
         if(prior instanceof Dictionary&&prior["base"] instanceof String&&prior["base"].equals(base)&&prior["slot"]==0){slot=1;}
         store.write(slotKey(slot),value);store.write(activeKey(),{"base"=>base,"slot"=>slot,"sequence"=>sequence});token=sequence;
-        // The background scheduler must keep near-launch cadence even when no
-        // foreground has opened yet, and can continue optional asset requests.
-        var policy=value[2];var targets=[];var rows=[];if(value[3]!=null){rows.add(value[3]);}rows.addAll(value[4]);
-        for(var i=0;i<rows.size();i+=1){var target=rows[i][10];if(target!=null&&targets.indexOf(target)<0){targets.add(target);}}
-        try{store.write("sf.transfer.plan",{"base"=>base,"sequence"=>sequence,"target"=>targets.size()>0?targets[0]:null,"targets"=>targets,"policy"=>[policy["normal_interval_seconds"],policy["near_interval_seconds"],policy["fast_interval_seconds"]]});}catch(ignore){}return true;
+        // Keep only future-ordering facts needed by the request policy.
+        var targets=[];var rows=[];if(value[3]!=null){rows.add(value[3]);}rows.addAll(value[4]);
+        for(var i=0;i<rows.size();i+=1){var target=rows[i][14];if(target!=null&&targets.indexOf(target)<0){targets.add(target);}}
+        try{store.write("sf.transfer.plan:"+base,{"base"=>base,"sequence"=>sequence,"targets"=>targets});}catch(ignore){}return true;
     }
 }
 

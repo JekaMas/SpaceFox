@@ -2,11 +2,8 @@ name: SpaceFox serialized feed
 
 on:
   schedule:
-    # Equivalent UTC-minute re-registration diagnostic; actual cron remains to be observed.
-    - cron: '7 * * * *'
-    - cron: '22 * * * *'
-    - cron: '37 * * * *'
-    - cron: '52 * * * *'
+    # Retry opportunities at the platform's five-minute minimum.
+    - cron: '2-59/5 * * * *'
   push:
     branches: [main]
   workflow_dispatch:

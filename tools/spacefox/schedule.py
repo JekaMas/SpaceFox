@@ -385,35 +385,25 @@ def _arguments(record, now_utc, policy):
 
 def cadence_seconds(record: LaunchRecord | None, now_utc: int,
                     policy: RefreshPolicy = DEFAULT_POLICY) -> int:
-    """Return configured cadence only; no wakeup, request or budget reservation.
-
-    Near mode includes T-7200 and T+1800 for an exact or sourced MIN target.
-    Date/window/unknown timing uses normal mode unless fast mode is enabled.
-    """
+    """Advertised healthy refresh interval; retries use request_due."""
     _arguments(record, now_utc, policy)
-    if policy.fast_interval_seconds is not None:
-        return policy.fast_interval_seconds
-    if (record is not None and record.status not in (LaunchStatus.CANCELLED, LaunchStatus.COMPLETED, LaunchStatus.STARTED)
-            and record.timing.countdown_utc is not None
-            and record.timing.countdown_utc - 7200 <= now_utc <= record.timing.countdown_utc + 1800):
-        return policy.near_interval_seconds
-    return policy.normal_interval_seconds
+    return 3600
 
 
-def poll_due(record: LaunchRecord | None, last_poll_utc: int | None, now_utc: int,
-             policy: RefreshPolicy = DEFAULT_POLICY, *, not_before_utc: int | None = None) -> bool:
-    """Pure due check, including an externally owned backoff deadline.
-
-    Manual/retry/quota reservations and actual provider access remain the durable
-    publisher's responsibility; a true result is never permission to bypass it.
-    """
-    interval = cadence_seconds(record, now_utc, policy)
-    if last_poll_utc is not None:
-        _utc(last_poll_utc, 'last_poll_utc')
-    if not_before_utc is not None:
-        _utc(not_before_utc, 'not_before_utc')
-    return ((last_poll_utc is None or now_utc >= last_poll_utc + interval)
-            and (not_before_utc is None or now_utc >= not_before_utc))
+def request_due(has_future: bool, last_attempt_utc: int | None,
+                last_succeeded: bool, connected: bool, now_utc: int) -> bool:
+    """Shared schedule policy; OS/workflow dispatch and provider capacity are separate."""
+    _utc(now_utc, 'now_utc')
+    if any(type(v) is not bool for v in (has_future, last_succeeded, connected)):
+        raise ScheduleError('schedule state flags must be booleans')
+    if last_attempt_utc is None:
+        return True
+    _utc(last_attempt_utc, 'last_attempt_utc')
+    if now_utc < last_attempt_utc:
+        return True
+    if last_succeeded and has_future:
+        return now_utc - last_attempt_utc >= 3600
+    return connected or now_utc - last_attempt_utc >= 300
 
 
 def _stale(record, now_utc, policy):

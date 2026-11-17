@@ -5,17 +5,17 @@
   "public_key_spki_sha256": "84e95bea4f3052a7c93f297e25605dc374a02f946b8011c65eec950b284146cc",
   "status": "local_production_custody_restored",
   "latest_release": {
-    "version": "0.2.2",
-    "package_sha256": "8ac0c056831dd0ff89cb359e5624d2c352ccf5d6f294cf681919e903bd37831f",
+    "version": "0.2.3",
+    "package_sha256": "ff210ac39494bcc832476b662d635477be101033b43e0e5013b1e2c6ad35d895",
     "kind": "github_release",
-    "tag": "v0.2.2",
-    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.2",
-    "source_revision": "d1cbce712d8f877ed02419577ef4c5dd561fc1ac",
-    "tag_revision": "d1cbce712d8f877ed02419577ef4c5dd561fc1ac",
-    "original_receipt_sha256": "ae622ac33b21136b56dfb9a8a20b5672854d8b8b9a8f38f02e7182cf7422a5d1",
-    "proof_boundary": "Signed SDK export and 42 profile member mapping; all 54 GitHub assets server digests and IQ/FR165/FR165M download readback matched. Physical, phone and Garmin Store acceptance remain unobserved."
+    "tag": "v0.2.3",
+    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.3",
+    "source_revision": "452ccabc1b548264d2e4b2dba9e1abdca7caf3ed",
+    "tag_revision": "452ccabc1b548264d2e4b2dba9e1abdca7caf3ed",
+    "original_receipt_sha256": "25a6b2d64fa0b96c951a4a13886cdf27dd232551c418d94c993df52e15f3287c",
+    "proof_boundary": "Signed IQ export with 42 profiles and 91 checked members, GitHub size/digest and download readback. Garmin 0.2.3 Internal 13 submitted pending approval; physical and phone acceptance unobserved."
   },
-  "note": "Stable production UUID/key. For the next update use the original published 0.2.2 receipt and matching IQ.",
+  "note": "Stable production UUID/key. For the next update use the original published 0.2.3 receipt and matching IQ.",
   "local_custody": {
     "encrypted_backup_sha256": "863f743d0c3966bc67c38aa2cf91d254e4aab0d0a4334ca4de340f8a608312f6",
     "public_evidence": "openspec/changes/spacefox-watchface/evidence/production-signing/round1/custody-initialization.json",
@@ -174,5 +174,16 @@
     "tag_revision": "84503c911392b48ae31ca66fe072cd371608de13",
     "original_receipt_sha256": "4d4e83b2a4a34d29ac2eff3ea09eae633130d4c348308223f21a902e5623b35e",
     "proof_boundary": "SDK signed IQ export and 42 profile member mapping; GitHub IQ and FR165/FR165M download readback matched. Physical acceptance, phone migration and Garmin Store submission remain unobserved."
+  },
+  "prior_022_release": {
+    "version": "0.2.2",
+    "package_sha256": "8ac0c056831dd0ff89cb359e5624d2c352ccf5d6f294cf681919e903bd37831f",
+    "kind": "github_release",
+    "tag": "v0.2.2",
+    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.2",
+    "source_revision": "d1cbce712d8f877ed02419577ef4c5dd561fc1ac",
+    "tag_revision": "d1cbce712d8f877ed02419577ef4c5dd561fc1ac",
+    "original_receipt_sha256": "ae622ac33b21136b56dfb9a8a20b5672854d8b8b9a8f38f02e7182cf7422a5d1",
+    "proof_boundary": "Signed SDK export and 42 profile member mapping; all 54 GitHub assets server digests and IQ/FR165/FR165M download readback matched. Physical, phone and Garmin Store acceptance remain unobserved."
   }
 }

@@ -163,3 +163,10 @@ The former feed-only raw hash/seal, chunk reassembly, repeated validation and re
 - [x] Complete independent peer verification and corrections for the same batch; repaired fast-cadence asset starvation, retained first red and observed the targeted pass (`evidence/trusted-json-research/PEER.md`, sole release receipt `peer.json`).
 - [x] Merge/freeze the reviewed source, cut over the GitHub-hosted publisher and read back hosted `watch.json` with correct HTTPS/MIME/projection before publishing the new watch build; future scheduled executions remain unobserved.
 - [x] Produce and publish the authorized full signed 0.2.3 GitHub release with readback; Garmin Store 0.2.3/Internal 13 submitted and pending approval. Phone and physical acceptance remain unobserved (`evidence/trusted-json-research/PUBLICATION.md`).
+
+Schedule retry and display simplification (0.2.4):
+
+- [x] Consolidate watch and publisher schedule request admission: one-hour successful future schedule, connected retry after failure/no-future, five-minute offline retry and platform dispatch floor; retain independent artwork and reminders.
+- [x] Remove the countdown tilde while preserving the announced NET reference and source precision/reminder eligibility; update current documentation and specification.
+- [x] Run affected cadence, retry, asset, EN/RU display and SDK compile checks; retain unrelated earlier receipts (`evidence/schedule-cadence-024/PROGRESS.md`).
+- [ ] Independent peer verification and repair, then signed release/publication and truthful physical/Store status.

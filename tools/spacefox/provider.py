@@ -38,7 +38,7 @@ class ProviderError(ValueError):
 class Throttled(ProviderError):
     def __init__(self, retry_at):
         self.retry_at = retry_at
-        super().__init__('provider throttled; durable backoff required')
+        super().__init__('provider throttled')
 
 
 def _require(condition, message):
@@ -410,7 +410,7 @@ class LL2Client:
             response = self.transport.get(url or self.first_url)
             received_at = now if clock is None else clock()
             if response.status == 429:
-                raise Throttled(retry_deadline({k.lower(): v for k, v in response.headers.items()}, received_at))
+                raise Throttled(retry_deadline({k.lower(): v for k, v in response.headers.items()}, received_at) if trigger == 'extra' else None)
             _require(response.status in (200, 304), f'provider HTTP status{response.status}')
             return token, response
         except Exception as error:

@@ -10,12 +10,12 @@ The 0.2.3 GitHub release adds compact trusted launch snapshots to the existing r
 
 Native simulator capture; it is not a physical watch photograph.
 
-The 0.2.3 release integrates compact trusted snapshots with estimated NET display and LOW/data repairs. Phone delivery and physical watch acceptance remain unobserved.
+The 0.2.4 source candidate uses hourly healthy schedule checks, retries missing or failed schedules at the next permitted connected opportunity, and removes the tilde from the countdown. Garmin background dispatch has a five-minute minimum. Phone delivery and physical watch acceptance remain unobserved.
 
 ## What it shows
 
 - A fixed 24-hour clock, local date and weekday.
-- An active countdown with seconds; always-on uses minutes. A validated inexact announced NET is a `~T−`/`~T+` reference; exact times use the normal countdown. Estimated T+ measures time since the announced NET and does not confirm liftoff or change reminder eligibility. The selected launch remains visible for at least 15 minutes after an actionable target or through a later sourced ascent end.
+- An active countdown with seconds; always-on uses minutes. A validated inexact announced NET is a `T−`/`T+` reference; exact times use the normal countdown. Estimated T+ measures time since the announced NET and does not confirm liftoff or change reminder eligibility. The selected launch remains visible for at least 15 minutes after an actionable target or through a later sourced ascent end.
 - A fading flat map with the launch point, the corresponding rocket, operator and mission purpose. The country flag appears beside the launch site; the rocket has no flag or abbreviation painted on it.
 - Four independently configurable fields. The existing steps, Body Battery, heart rate, stress, calories and watch-battery choices remain; on-watch settings also offer accessible Garmin and user complications and supported daily activity readings. Clock, countdown and field colors can be configured separately.
 - A full map outline and launch point in always-on mode, with centered time, date, weekday, minute countdown and battery. The four activity fields and animation are hidden in this mode.
@@ -23,7 +23,7 @@ The 0.2.3 release integrates compact trusted snapshots with estimated NET displa
 
 A delayed or rescheduled launch uses a reddish countdown; stale data has a separate dotted indicator. Passing zero is a time calculation, not confirmation of liftoff. Missing Garmin readings remain unavailable; Body Battery uses Garmin's current complication value when selected.
 
-A `~` before the countdown denotes a validated inexact announced NET reference; it does not confirm liftoff or change reminder eligibility. Dashes mean no usable target is available. A `?` beside a map point means its coordinates are an unverified source reference; a `?` without a point means an event location is unavailable. A simplified world outline can appear while optional artwork is loading.
+A countdown may refer to an inexact announced NET; it does not confirm liftoff or change reminder eligibility. Dashes mean no usable target is available. A `?` beside a map point means its coordinates are an unverified source reference; a `?` without a point means an event location is unavailable. A simplified world outline can appear while optional artwork is loading.
 
 ## Data and settings
 

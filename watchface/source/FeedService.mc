@@ -12,6 +12,7 @@ class FeedService extends System.ServiceDelegate {
     function createTransfer() as NativeTransfer {return new NativeTransfer(configuredFeedUrl(),null);}
     function requestUrl(path as String) as String {return ((transfer as NativeTransfer).base as String)+"/"+path+".txt";}
     function nowMillis() as Number {return System.getTimer();}
+    function phoneConnected() as Boolean {try{return System.getDeviceSettings().phoneConnected;}catch(e){return false;}}
     function startDeadline() as Void {started=nowMillis();requests=0;deadlineArmed=true;ended=false;inFlight=false;}
     (:typecheck(false))
     function sendRequest(path as String,callback as Method) as Void {Communications.makeWebRequest(requestUrl(path),{}, {:method=>Communications.HTTP_REQUEST_METHOD_GET,:headers=>{"Accept"=>"text/plain"},:responseType=>Communications.HTTP_RESPONSE_CONTENT_TYPE_TEXT_PLAIN},callback);}
@@ -21,13 +22,13 @@ class FeedService extends System.ServiceDelegate {
     (:typecheck(false))
     function onTemporalEvent() as Void {
         try{var settings=System.getDeviceSettings();var registered=Background.getTemporalEventRegisteredTime();var last=Background.getLastTemporalEventTime();System.println("SF_BG enter phone="+settings.phoneConnected+" registered="+(registered==null?"none":registered.value())+" last="+(last==null?"none":last.value()));}catch(ignore){}
-        startDeadline();try{Background.registerForTemporalEvent(new Time.Duration(3600));}catch(e){}
-        try{transfer=createTransfer();if(transfer.base.equals("")){Background.deleteTemporalEvent();Background.exit(null);return;}batch=new NativeBatch(transfer.store,transfer.base);transfer.load();var now=Time.now().value().toLong();LaunchReminder.wake(transfer,now);if(transfer.due(now)){transfer.attempted(now);armFeed(transfer,now);requestSnapshot();}else{optional();}}catch(e){System.println("SF_BG start_error");finish();}
+        startDeadline();try{Background.registerForTemporalEvent(new Time.Duration(300));}catch(e){}
+        try{transfer=createTransfer();if(transfer.base.equals("")){Background.deleteTemporalEvent();Background.exit(null);return;}batch=new NativeBatch(transfer.store,transfer.base);transfer.load();var now=Time.now().value().toLong();LaunchReminder.wake(transfer,now);var connected=phoneConnected();if(transfer.due(now,connected)){transfer.attempted(now);armFeed(transfer,now);if(connected){requestSnapshot();}else{optional();}}else{optional();}}catch(e){System.println("SF_BG start_error");finish();}
     }
     (:typecheck(false))
     function request(path as String,callback as Method) as Void {if(ended){return;}if(requests>=44||nowMillis()-started>=22000){System.println("SF_BG request_budget");finish();return;}requests+=1;inFlight=true;try{sendRequest(path,callback);}catch(e){inFlight=false;System.println("SF_BG request_error");finish();}}
     (:typecheck(false)) function requestSnapshot() as Void {
-        if(ended){return;}if(requests>=44||nowMillis()-started>=22000){finish();return;}
+        if(ended||inFlight){return;}if(requests>=44||nowMillis()-started>=22000){finish();return;}
         requests+=1;inFlight=true;
         try{Communications.makeWebRequest(transfer.base+"/watch.json",{}, {:method=>Communications.HTTP_REQUEST_METHOD_GET,:headers=>{"Accept"=>"application/json"},:responseType=>Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON},method(:receiveSnapshot));}catch(e){inFlight=false;System.println("SF_BG snapshot_request_error");finish();}
     }
@@ -39,7 +40,7 @@ class FeedService extends System.ServiceDelegate {
                 // can run every five minutes, so waiting for a non-due event
                 // would starve assets at that cadence.
                 try{if(batch!=null&&data["data"][6]!=null){batch.select(data["data"][6]);}}catch(ignore){}
-                System.println("SF_BG snapshot_ready");
+                transfer.completed(true);System.println("SF_BG snapshot_ready");
             }
         }catch(e){System.println("SF_BG snapshot_error");}
         // Release the parsed response before the bounded asset scanner runs.
@@ -114,7 +115,10 @@ function armFeed(cache, now) {
     var last = Background.getLastTemporalEventTime();
     var registeredAt = registered == null ? null : registered.value().toLong();
     var lastAt = last == null ? null : last.value().toLong();
-    var next = pendingWake(now, cache.nextWake(now), registeredAt, lastAt, pending);
+    // The OS may forget its last event after reopening the face. Keep the
+    // persisted attempt as a conservative lower bound for registration.
+    if(cache.lastAttempt!=null&&cache.lastAttempt<=now&&(lastAt==null||cache.lastAttempt>lastAt)){lastAt=cache.lastAttempt;}
+    var next = pendingWake(now, cache.nextWake(now, System.getDeviceSettings().phoneConnected), registeredAt, lastAt, pending);
     var reminder = LaunchReminder.nextWake(cache, now, lastAt);
     if (reminder != null && reminder < next) { next = reminder; }
     if (!registrationNeeded(now, next, registeredAt, lastAt, pending)) { System.println("SF_WAKE registration_kept pending="+pending+" next="+next);return; }

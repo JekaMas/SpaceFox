@@ -126,7 +126,7 @@ layer into watch RAM or enlarging the bounded schedule without qualification.
 - **THEN** the publisher serves referenced bounded shards while preserving global identity coverage and the last accepted on-watch selection
 
 #### Scenario: Catalog refresh competes with launch updates
-- **WHEN** a catalog traversal and near-launch schedule polling share the anonymous quota
+- **WHEN** a catalog traversal and schedule polling share the anonymous quota
 - **THEN** cached/resumable catalog work respects the common budget and does not exceed the provider limit or falsely renew launch-source freshness
 
 ### Requirement: Compact canonical dictionaries

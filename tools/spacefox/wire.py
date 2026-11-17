@@ -147,9 +147,8 @@ def validate_current_feed(raw, *, now=None):
         raise ValueError('missing catalog revision')
     if doc['catalogPath'] != f'wire3/catalogs/{doc["catalogDigest"]}.json':
         raise ValueError('catalog path/digest mismatch')
-    if type(doc['pollIntervalSeconds']) is not int or doc['pollIntervalSeconds'] not in (
-            policy.normal_interval_seconds, policy.near_interval_seconds, policy.fast_interval_seconds):
-        raise ValueError('feed interval is outside advertised policy')
+    if type(doc['pollIntervalSeconds']) is not int or doc['pollIntervalSeconds'] < 300:
+        raise ValueError('invalid feed interval')
     selection = doc['selection']
     if (type(selection) is not dict or set(selection) != {'acceptedRecords', 'includedRecords', 'scope', 'worldwideCompleteness'}
             or type(selection['acceptedRecords']) is not int or not 0 <= selection['acceptedRecords'] <= 128

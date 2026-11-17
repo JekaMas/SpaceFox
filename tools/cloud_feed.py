@@ -247,7 +247,6 @@ def main(argv=None):
     prepare = sub.add_parser('prepare')
     prepare.add_argument('--output', type=Path, required=True)
     prepare.add_argument('--bootstrap', action='store_true')
-    prepare.add_argument('--fast-seconds', type=int)
     arm_p = sub.add_parser('arm')
     arm_p.add_argument('--expected-base', required=True)
     arm_p.add_argument('--artifact-id', type=int, required=True)
@@ -277,9 +276,7 @@ def main(argv=None):
                 raise CloudError('first bootstrap requires explicit trusted dispatch')
             if site.get('feed.json', 8192)[0] != 404:
                 raise CloudError('first bootstrap requires an empty site, never CDN state recovery')
-            store.bootstrap(code, RefreshPolicy(fast_interval_seconds=args.fast_seconds))
-        elif args.command == 'prepare' and args.fast_seconds is not None:
-            raise CloudError('fast mode may only be selected at explicit bootstrap')
+            store.bootstrap(code, RefreshPolicy())
         if args.command == 'probe':
             head = None
             if _cloud_source_fence(root, code):

@@ -40,9 +40,10 @@ import Toybox.WatchUi;
 (:test,:typecheck(false)) function trustedViewModes(logger){
  var snapshot=WatchUi.loadResource(Rez.JsonData.Coarse)["payload"];var store=new SnapshotTestStore();var owner=new NativeTrustedStore(store,"https://jekamas.github.io/SpaceFox");Test.assert(owner.save(snapshot));var packet=new NativeTrustedPacket(owner.load());
  var clock=new TrustedClock();var view=new SpaceFoxView(clock,new ScheduleState(null,"empty"));var dc=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get().getDc();view.setPacket(packet);view.onShow();view.onLayout(dc);
- view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);var a=view.snapshotAt(clock.now);Test.assert(view.context.launchId.equals("ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60")&&view.context.point!=null&&a.countdown.find("~T-")==0);
- clock.now+=1;var b=view.snapshotAt(clock.now);Test.assert(!a.countdown.equals(b.countdown));view.syncDisplayMode(System.DISPLAY_MODE_LOW_POWER);view.updateForDisplayMode(dc,System.DISPLAY_MODE_LOW_POWER);var low=view.snapshotAt(clock.now);Test.assert(low.lowCountdown.find("~T-")==0&&view.context.point!=null);
- view.syncDisplayMode(System.DISPLAY_MODE_HIGH_POWER);view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assert(view.context.point!=null);view.setSettings(new SceneSettings({"Language"=>"ru"}));view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assert(view.context.point!=null&&view.snapshotAt(clock.now).countdown.find("~T-")==0);view.syncDisplayMode(System.DISPLAY_MODE_LOW_POWER);view.updateForDisplayMode(dc,System.DISPLAY_MODE_LOW_POWER);Test.assert(view.context.point!=null);view.onHide();logger.debug("trusted view EN/RU ACTIVE seconds, LOW point/minutes, wake retained");return true;
+ view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);var a=view.snapshotAt(clock.now);Test.assert(view.context.launchId.equals("ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60")&&view.context.point!=null&&a.countdown.find("T-")==0);
+ clock.now+=1;var b=view.snapshotAt(clock.now);Test.assert(!a.countdown.equals(b.countdown));view.syncDisplayMode(System.DISPLAY_MODE_LOW_POWER);view.updateForDisplayMode(dc,System.DISPLAY_MODE_LOW_POWER);var low=view.snapshotAt(clock.now);Test.assert(low.lowCountdown.find("T-")==0&&view.context.point!=null);
+ var reference=packet.presentation.displayTarget;var only=new SpaceFoxView(clock,new ScheduleState(null,"empty"));only.setContext(packet.presentation);Test.assert(only.snapshotAt(reference-1).countdown.find("T-")==0);Test.assert(only.snapshotAt(reference+30).countdown.find("T+")==0);Test.assert(!packet.presentation.reminderEligible&&packet.presentation.sourcePrecision.equals("window"));
+ view.syncDisplayMode(System.DISPLAY_MODE_HIGH_POWER);view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assert(view.context.point!=null);view.setSettings(new SceneSettings({"Language"=>"ru"}));view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assert(view.context.point!=null&&view.snapshotAt(clock.now).countdown.find("T-")==0);view.syncDisplayMode(System.DISPLAY_MODE_LOW_POWER);view.updateForDisplayMode(dc,System.DISPLAY_MODE_LOW_POWER);Test.assert(view.context.point!=null);view.onHide();logger.debug("trusted view EN/RU ACTIVE seconds, LOW point/minutes, wake retained");return true;
 }
 (:test,:typecheck(false)) function trustedAssetLifecycle(logger){
  Application.Storage.clearValues();var url="https://jekamas.github.io/SpaceFox";var store=new NativeStore();var payload=WatchUi.loadResource(Rez.JsonData.Coarse)["payload"];var owner=new NativeTrustedStore(store,url);Test.assert(owner.save(payload));var packet=new NativeTrustedPacket(owner.load());var batch=new NativeBatch(store,url);batch.select(packet.bridge);var request=batch.next();var count=0;
@@ -53,15 +54,18 @@ import Toybox.WatchUi;
 (:test,:typecheck(false)) function trustedReminderAndBackgroundCadence(logger){
  var base="https://jekamas.github.io/SpaceFox";var store=new SnapshotTestStore();var owner=new NativeTrustedStore(store,base);
  var coarse=WatchUi.loadResource(Rez.JsonData.Coarse)["payload"];var exact=WatchUi.loadResource(Rez.JsonData.Exact)["payload"];
- var emptyTransfer=new NativeTransfer(base,store);Test.assertEqual(emptyTransfer.interval(1794631793l),300);Test.assert(owner.save(exact));
- // A persisted snapshot is sufficient for background optional-art progress
- // even when the foreground has not yet published a cadence plan.
- logger.debug("TRUST_CADENCE normal="+emptyTransfer.interval(1794631793l)+" near="+emptyTransfer.interval(1794673950l));Test.assert(emptyTransfer.interval(1794631793l)==3600);Test.assert(emptyTransfer.interval(1794673950l)==900);
+ var emptyTransfer=new NativeTransfer(base,store);var now=1794631793l;Test.assert(emptyTransfer.due(now,true));Test.assert(owner.save(exact));emptyTransfer.attempted(now);emptyTransfer.completed(true);
+ Test.assert(!emptyTransfer.due(now+3599,true));Test.assert(emptyTransfer.due(now+3600,true));
+ var plan=store.read("sf.transfer.plan:"+base);var future=plan["targets"];plan["targets"]=[];Test.assert(emptyTransfer.due(now+1,true));Test.assert(!emptyTransfer.due(now+1,false));Test.assert(emptyTransfer.due(now+300,false));plan["targets"]=future;
+ var another="https://another.example";var otherOwner=new NativeTrustedStore(store,another);Test.assert(otherOwner.save(exact));var otherTransfer=new NativeTransfer(another,store);otherTransfer.attempted(now+1);otherTransfer.completed(true);
+ var reopened=new NativeTransfer(base,store);reopened.load();Test.assert(!reopened.due(now+3599,true));Test.assert(reopened.due(now+3600,true));
+ emptyTransfer.attempted(now+3600);Test.assert(emptyTransfer.due(now+3600,true));Test.assert(!emptyTransfer.due(now+3600,false));Test.assert(emptyTransfer.due(now+3900,false));Test.assert(emptyTransfer.due(now+3601,true));
+ logger.debug("TRUST_CADENCE healthy_hour=true failure_connected=true offline300=true reopen=true");
  var p=new NativeTrustedPacket(owner.load());var s=p.presentation;var pol=s.freshnessPolicy;var since=s.sourceValidated+60;
  var q={"base"=>base,"sequence"=>owner.marker()["sequence"],"rows"=>[[s.launchId,s.retentionTarget,s.sourcePrecision,s.rocket,s.sourceValidated,s.stale,since,[pol["normal_interval_seconds"],pol["near_interval_seconds"],pol["fast_interval_seconds"],pol["stale_cycles"]],s.retentionDeadline,s.reminderEligible]]};
  var row=LaunchReminder.selected(q,since);Test.assert(row!=null&&LaunchReminder.bound(store,row,base,since));
  Test.assert(owner.save(coarse));Test.assert(!LaunchReminder.bound(store,row,base,since));var c=new NativeTrustedPacket(owner.load());Test.assert(!c.presentation.reminderEligible);
- var isolated=new NativeTrustedStore(store,"https://another.example");Test.assert(isolated.load()==null);logger.debug("trusted reminder exact eligible, new pointer invalidates old, coarse excluded, cadence and namespace retained");return true;
+ var isolated=new NativeTrustedStore(store,"https://empty.example");Test.assert(isolated.load()==null);logger.debug("trusted reminder exact eligible, new pointer invalidates old, coarse excluded, cadence and namespace retained");return true;
 }
 
 (:test,:typecheck(false)) function trustedFailureStopsRetry(logger){
@@ -83,23 +87,25 @@ import Toybox.WatchUi;
  var memory;var payload;var code=200;var requested=null;var snapshots=0;var exits=0;
  function initialize(adapter,value){FeedService.initialize();memory=adapter;payload=value;}
  function createTransfer() as NativeTransfer {return new NativeTransfer("https://jekamas.github.io/SpaceFox",memory);}
+ function phoneConnected() as Boolean {return true;}
  function requestSnapshot(){snapshots+=1;receiveSnapshot(code,{"data"=>payload});}
  function request(path as String,callback as Method) as Void {requested=path;inFlight=true;}
  function rearm() as Void {}
  function leave() as Void {exits+=1;}
 }
 (:test,:typecheck(false)) function trustedDueSnapshotAssets(logger){
- var base="https://jekamas.github.io/SpaceFox";var store=new SnapshotTestStore();var data=WatchUi.loadResource(Rez.JsonData.Coarse)["payload"];data[2]["fast_interval_seconds"]=300;
+ var base="https://jekamas.github.io/SpaceFox";var store=new SnapshotTestStore();var data=WatchUi.loadResource(Rez.JsonData.Coarse)["payload"];
+ var duplicate=new FeedService();duplicate.startDeadline();duplicate.inFlight=true;duplicate.requestSnapshot();Test.assertEqual(duplicate.requests,0);
  var first=new TrustedAssetEvent(store,data);first.onTemporalEvent();
  Test.assertMessage(first.snapshots==1&&first.requested!=null,"due snapshot also starts optional assets");
- var packet=new NativeTrustedPacket(new NativeTrustedStore(store,base).load());Test.assert(packet.presentation.point!=null&&packet.presentation.displayTarget==1795042200l);Test.assert(new NativeTransfer(base,store).interval(Toybox.Time.now().value().toLong())==300);
+ var packet=new NativeTrustedPacket(new NativeTrustedStore(store,base).load());Test.assert(packet.presentation.point!=null&&packet.presentation.displayTarget==1795042200l);
  Test.assert(first.requested.find("wire3/catalogs/")==0);first.receiveBatch(200,b1Response(first.requested));Test.assert(first.exits==1);
  // Next due event has a failed schedule response. The already accepted facts
  // survive, and the existing optional transfer still requests its next object.
- store.write("sf.attempt",{"base"=>base,"utc"=>Toybox.Time.now().value().toLong()-301l,"build"=>NativeVersion.BUILD});
+ store.write("sf.attempt:"+base,{"base"=>base,"utc"=>Toybox.Time.now().value().toLong()-301l,"success"=>false});
  var second=new TrustedAssetEvent(store,data);second.code=503;second.onTemporalEvent();
  Test.assertMessage(second.snapshots==1&&second.requested!=null&&second.requested.find("wire3/catalogs/")==null,"failed due snapshot does not block pending assets");
  second.receiveBatch(500,null);Test.assert(second.exits==1);
  var retained=new NativeTrustedPacket(new NativeTrustedStore(store,base).load());Test.assert(retained.presentation.launchId.equals(packet.presentation.launchId)&&retained.presentation.point!=null);
- logger.debug("TRUST_DUE_ASSETS fast300=true snapshotPublishedBeforeArt=true failedSnapshotContinuesAssets=true failedArtKeepsFacts=true");return true;
+ logger.debug("TRUST_DUE_ASSETS retry=true snapshotPublishedBeforeArt=true failedSnapshotContinuesAssets=true failedArtKeepsFacts=true");return true;
 }
