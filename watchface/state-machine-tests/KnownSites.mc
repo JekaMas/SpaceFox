@@ -30,3 +30,22 @@ import Toybox.System;
  var unknown=WatchUi.loadResource(Rez.JsonData.UnknownPad)["payload"];unknown[3][9]=null;var other=new NativeTrustedPacket(unknown).presentation;policy.bind(other);Test.assert(!policy.pointVisible(true)&&policy.point==null);
  logger.debug("SITE_PACKET persisted_reopened=true point_identity=true fallback_marker=1 question=0 missing_point=0");return true;
 }
+(:test,:typecheck(false)) class SiteFrameTrace {
+ var questions=0;var bitmapMarkers=0;var circles=0;var maps=0;var expectedMarker=null;
+ function setColor(a,b){} function clear(){} function fillRectangle(x,y,w,h){}
+ function drawBitmap(x,y,b){maps+=1;if(expectedMarker!=null&&b==expectedMarker){bitmapMarkers+=1;}}
+ function drawBitmap2(x,y,b,opt){maps+=1;}
+ function fillCircle(x,y,r){if(r==4||r==7){circles+=1;}}
+ function drawCircle(x,y,r){} function drawLine(x1,y1,x2,y2){}
+ function getTextWidthInPixels(value,font){return value.length()*8;}
+ function drawText(x,y,font,value,flags){if(value.equals("?")){questions+=1;}}
+}
+(:test,:typecheck(false)) function knownSiteActiveLowDrawTrace(logger){
+ var scene=new NativeTrustedPacket(WatchUi.loadResource(Rez.JsonData.Coarse)["payload"]).presentation;
+ var settings=new SceneSettings(null);var renderer=new SceneRenderer(null);renderer.prepare(scene,settings);renderer.prepareAod();
+ var clock=new ClockSnapshot("08:25","T- 00:11");clock.localCalendar=[2,17,11];var values={"steps"=>null,"heart"=>null,"energy"=>null,"stress"=>null,"battery"=>null,"calories"=>null};
+ var active=new SiteFrameTrace();active.expectedMarker=renderer.marker;renderer.active(active,clock,settings,values,new Fitness(),0.0f);
+ logger.debug("SITE_ACTIVE markers="+active.bitmapMarkers+" question="+active.questions);Test.assert(active.bitmapMarkers==1&&active.questions==0);
+ var low=new SiteFrameTrace();renderer.aod(low,clock,0l,settings);logger.debug("SITE_LOW markers="+low.circles+" question="+low.questions);Test.assert(low.circles>=2&&low.questions==0);
+ logger.debug("SITE_DRAW active_marker=1 low_marker=1 active_question=0 low_question=0");return true;
+}
