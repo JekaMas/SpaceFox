@@ -10,7 +10,7 @@ Deadline: 2026-11-17 14:35:58 UTC. The original full per-file implementation aud
 - [x] Restore deferred native, resource and research changes to base; retain their patch and scope.
 - [x] Verify the unchanged five-primary locale admission and the directly affected host cases at the recorded source boundaries.
 - [x] Independent peer reviews this P0 diff and repairs any finding (evidence/PEER.md and PEER.json; one direct epoch/refusal test PASS).
-- [ ] Non-force integration and normal publisher delivery with observed outcome, if the remaining time permits.
+- [x] Non-force integration, normal publisher workflow and public snapshot readback; the workflow was not due and did not deploy a new snapshot (evidence/DELIVERY.md).
 
 ## P1 — future admission work
 

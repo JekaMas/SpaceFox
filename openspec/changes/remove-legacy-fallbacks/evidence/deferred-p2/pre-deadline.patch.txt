@@ -1,0 +1,2214 @@
+diff --git a/docs/PROVIDER_PIPELINE.md b/docs/PROVIDER_PIPELINE.md
+index a7e7b607..91241c70 100644
+--- a/docs/PROVIDER_PIPELINE.md
++++ b/docs/PROVIDER_PIPELINE.md
+@@ -7,9 +7,10 @@ path and local parts of3.5. It does not complete the whole task: live worldwide
+ provider qualification, authenticated Actions/Pages, native cache/phone/FR165,
+ compatible graphic retention and setup rehearsal remain required.
+ 
+-The sole current public output is schema3/SFR1M native-motion-v3 at `/feed.json`.
+-Durable authority uses `refs/heads/feed-state-motion-v3` and bootstrap anchor
+-`refs/tags/spacefox-state-bootstrap-motion-v3`. Only the current packed schema2
++The publisher serves schema3/SFR1M native-motion-v3 at `/feed.json` and the
++compact schedule projection consumed by the watch at `/watch.json`.
++Durable authority uses `refs/heads/feed-state-map-v3` and bootstrap anchor
++`refs/tags/spacefox-state-bootstrap-map-v3`. Only the current packed schema2
+ ledger is accepted; no old snapshot import/migration or alternate feed applies.
+ Historical tests and source observations below keep their original boundaries;
+ they do not establish current deployed/native acceptance.
+@@ -58,14 +59,14 @@ production detail body was not captured, so its actual mode remains unknown.
+ Omission/404/304 are never cancellation or completion. Required upcoming pagination remains atomic. Optional detail404/304, malformed or
+ regressing facts, timeout,429and exhausted allowance retain that identity and its
+ old validation while the valid upcoming batch can become pending. Failed details
+-keep their durable consumed slot/backoff; a quota denial sends no HTTP. The CLI
++keep their durable consumed slot without introducing schedule backoff; a quota denial sends no HTTP. The CLI
+ reports bounded `detailFailures` and actual issued `detailRequests`; after the first
+ failure it stops optional work without an automatic retry. A successful direct
+ detail alone may renew or change that identity. The default remains2pages and
+ 2details; changing flags is not required to recover primary-update liveness.
+ Issued requests count transport attempts started after durable permission, even
+ when the response fails. Expiring old quota slots cannot reduce that count;
+-quota/backoff or source-guard rejection before HTTP counts zero and refunds no slot.
++quota, metadata-specific backoff or source-guard rejection before HTTP counts zero and refunds no slot.
+ 
+ Every request, including pagination/details/manual/retry, first calls the accepted
+ `Publisher.reserve` and receives a committed allowance token. The shared sliding
+@@ -112,9 +113,10 @@ second target. Minute, hour, local morning/afternoon, day/month/quarter, missing
+ and future IDs are `source-coarse`. The raw nominal NET, its normalized ordering
+ anchor, precision ID/name/abbreviation/description and supplied window bounds remain
+ explicit, including source descriptions that specify local time.
+-No UTC date, minute uncertainty interval, second countdown or local-to-UTC morning
+-bounds are invented. Fractional nominal NET stays coarse and keeps its raw text.
+-This conservative current timing projection cannot yet present a minute-precision countdown.
++No UTC date, minute uncertainty interval or local-to-UTC morning bounds are
++invented. Fractional nominal NET stays coarse and keeps its raw text. The watch
++may display T−/T+ relative to a validated announced nominal NET, including a
++coarse reference; that display does not promote source precision or prove liftoff.
+ 
+ LL2 phases1/2/5/8 are pending,3/4/7 terminal completed (lifecycle terminal, never a
+ success claim),6and9are `started`; unknown IDs stay unknown. The exact source
+@@ -175,18 +177,20 @@ source reconciliation rather than delete unknown history to manufacture longevit
+ 
+ The current producer validates the canonical catalog and selected source closure,
+ selects one coherent accepted launch and publishes its exact schema3/SFR1M
+-`feed.json` plus all referenced immutable current and recoverable same-format
+-objects. Typed IDs, timing precision, actual context/nulls, per-record validation,
++`feed.json`, its compact `watch.json` projection, and referenced immutable current
++and recoverable same-format objects. Typed IDs, timing precision, actual context/nulls, per-record validation,
+ latches, refresh policy, source-content revision and traversal scope remain bound.
+ All metadata/dictionaries count toward8192 decoded UTF8 bytes. Required fields
+ are not trimmed to fit. Current schema/renderer, cross-field identity, digest,
+ selected phase/precision and scope validation precede acceptance.
+ 
+ The publisher envelope preserves stable instance identity, monotonic generation
+-and accepted selection-validation epoch, including empty schedules. A consumer
+-pins instance per FeedBaseUrl, rejects older generations and conflicting bytes at
+-the same generation, and isolates a new host namespace. These consumer obligations
+-need their own native cache observations; producer tests do not supply them.
++and accepted selection-validation epoch, including empty schedules. The watch
++trusts the controlled snapshot response, writes its complete normalized value to
++an inactive slot, then publishes a source-namespaced pointer. Foreground RAM
++comparison prevents an older pending volatile delivery from replacing newer facts;
++this is not a general wire-digest or same-generation conflict check. Producer
++tests alone do not establish native cache behavior.
+ 
+ `selection_validated_utc` is accepted source evidence, not build/download time or
+ a value inferred from other records. A qualified primary update uses the earliest
+@@ -206,8 +210,10 @@ claim worldwide completeness.
+ 
+ Matching optional SFR1M scenes retain source/role/entity/art/point provenance and
+ raw/decoded pixel integrity. Until a matching complete validated scene exists,
+-valid schedule metadata may activate with honest generic/no-point fallback; no
+-old image is relabeled for a new model. Unverified source coordinates remain
++valid schedule metadata may activate with generic art and a simplified map; a
++valid accepted coordinate remains visible as a point, and no point is invented
++when coordinates are unavailable. No old image is relabeled for a new model.
++Unverified source coordinates remain
+ explicit source facts, not surveyed/verified positions. Decimal precision and
+ null/zero distinctions remain intact. Complete current/recovery delivery stays
+ within1MiB/256files, feed8192bytes, object4096bytes and the existing native
+@@ -221,7 +227,8 @@ commits there too. Before optional work, that successful required reservation is
+ explicitly marked as awaiting acceptance; it can be consumed once in its original
+ logical invocation, then carries an irreversible consumed marker. Used,
+ failed, non-schedule, expired, unknown and consumed tokens cannot authorize it.
+-Optional outcomes/backoff are durably recorded independently. A still-reserved
++Optional request outcomes are durably recorded independently; metadata-only
++backoff remains separate from schedule retries. A still-reserved
+ result may finish later within its hour, preserving non-instantaneous requests. A crash cannot leave newly
+ accepted source without its pending artifact. Preparing allocates a monotonic
+ generation and saves exact pending bytes before export. Reopen exports that same pending
+@@ -270,7 +277,7 @@ recovers exact saved files without HTTP. A pending candidate blocks new work and
+ never a fresh budget recovered from CDN. Deploy/promote externally only after the
+ real authenticated serialization/readback adapter is qualified.
+ 
+-Qualification uses `python3 -B -m unittest -v tests.test_schedule_provider`, real
++Qualification uses `python3 -B -m unittest -v tests.test_schedule_producer_whole`, real
+ bare Git, real loopback HTTP and a clean copied portable CLI subprocess. Authored
+ response fixtures substitute LL2 only. Local observer-supplied live revisions
+ substitute Pages readback. No production LL2 requests, cloud writes, paid service,
+diff --git a/docs/SCHEDULE_CORE.md b/docs/SCHEDULE_CORE.md
+index 32246bf9..dff9531f 100644
+--- a/docs/SCHEDULE_CORE.md
++++ b/docs/SCHEDULE_CORE.md
+@@ -22,17 +22,14 @@ entity kind used by the canonical catalog. For canonical LL2 references,
+ `StableId(IdKind.ORGANIZATION, 'll2', '121')` corresponds to
+ `ll2:organization:121`; configuration121 is separately `ll2:configuration:121`.
+ The same namespace/kind/value correspondence applies to site and country IDs.
+-`IdKind.OPERATOR` remains a Python source-symbol alias for `ORGANIZATION`; its
+-value and exported content are now `organization`, replacing the experimental
+-`operator` spelling. This is not a persisted-wire compatibility guarantee: no
+-production serialized state is accepted for this unit, and wire/state migrations
+-remain separate. A launch's operator must come from launch-source evidence;
++An operator reference uses `IdKind.ORGANIZATION`; there is no separate operator
++entity or legacy enum alias. A launch's operator must come from launch-source evidence;
+ catalog manufacturer or site-agency roles cannot establish it.
+ 
+ `LaunchRecord` requires a launch ID, `Timing`, `LaunchStatus` and per-record
+ `source_validated_utc`. Optional references and configuration/operator/mission
+ text default to explicit `None`. Supplied nonempty text is preserved in full.
+-The future provider adapter must turn absent/blank optional text into `None`;
++The provider adapter turns absent/blank optional text into `None`;
+ the normalized boundary rejects blank or malformed values rather than borrowing
+ another launch's context. `COMPLETED` means provider-confirmed completion.
+ `PENDING` and `UNKNOWN` remain eligible; clock passage cannot change status.
+@@ -85,10 +82,11 @@ sortable eligible record exists. Equal anchors sort by launch namespace/value.
+ This deterministic order does not prove an unknown launch could not occur sooner.
+ Cancelled and provider-confirmed completed entries are excluded.
+ 
+-The selection contains `COUNTDOWN` with a positive UTC difference only for a future
+-exact target. At the target and afterward it contains `AWAITING_UPDATE` and no
+-remaining seconds. Coarse/missing timing gives `UNCERTAIN`; no eligible record
+-gives `NO_SCHEDULE`, no record and no invented timestamp.
++The publisher selection contains `COUNTDOWN` with a positive UTC difference only
++for a future exact target. At the target and afterward it contains
++`AWAITING_UPDATE`; coarse/missing timing gives `UNCERTAIN`. Separately, the watch
++can display T−/T+ relative to a validated announced nominal NET without treating
++it as exact or evidence of liftoff. No eligible record gives `NO_SCHEDULE`.
+ 
+ Changed exact targets, coarse timing facts, or withdrawal/resolution of uncertainty
+ for the same accepted launch set its reschedule latch. If both records have the
+@@ -98,7 +96,7 @@ cannot create or clear that latch.
+ `content_revision` hashes all accepted records' semantic JSON content in stable ID
+ order, excluding validation/evaluation time and derived flags. `record.content()`
+ returns detached plain JSON values, including explicit nulls; source validation
+-and derived flags must be added separately by the future wire owner.
++and derived flags are added separately by the current wire owner.
+ 
+ ## Cadence and source age
+ 
+@@ -112,7 +110,7 @@ cannot refresh source validation.
+ 
+ The current request decision is `request_due`; it does not itself perform I/O or reserve quota. Native wake restrictions, HTTP response handling and actual publication remain separate integration boundaries.
+ 
+-Portable checks: `python3 -B -m unittest -v tests.test_schedule_policy`.
++Portable checks: `python3 -B -m unittest -v tests.test_schedule_producer_whole`.
+ Literal tests cover selection/exclusion/context, precision/order, atomic rejection,
+ cadence boundaries, reschedule/withdrawal, source-age thresholds/omission/latching
+ and a replayed acceptance→move→omission→old-file→renewal→cancellation sequence.
+diff --git a/openspec/changes/spacefox-watchface/ROOT-STATUS.md b/openspec/changes/spacefox-watchface/ROOT-STATUS.md
+index 4068389a..a4390a23 100644
+--- a/openspec/changes/spacefox-watchface/ROOT-STATUS.md
++++ b/openspec/changes/spacefox-watchface/ROOT-STATUS.md
+@@ -1,56 +1,5 @@
+-# SpaceFox current root checkpoint
++# SpaceFox root checkpoint
+ 
+-DISPLAY03 author apply/self-verification and independent verify/fix are accepted
+-at the bounded source/test-key SDK boundary. Author commit `cd573a3f` and peer
+-commit `7c400284` retain the concrete failed inputs, fixes and observations. See
+-[root judgment](evidence/display03-active-tick-wake/ROOT-JUDGMENT.md) and the
+-[peer source result](evidence/display03-active-tick-wake/exact-active-map/RESULT.md).
++The former 0.1.13 checkpoint and its 2026 incident observations remain in Git history. It does not constrain later authorized work. The current public release is 0.2.8; its source, signing and publication boundaries are recorded in [the 0.2.8 publication record](../known-site-coordinates/evidence/PUBLICATION.md).
+ 
+-The latest owner decision retains the full contour map in LOW. LOW has large
+-time, date/weekday, minute-only T-/T+ countdown, battery and launch point, without
+-four activity fields. ACTIVE keeps the full scene, four fields and seconds.
+-Rescheduled countdowns use the qualified coral override in both modes. The
+-shared UTC target does not reset across modes. Covered-site READY now selects
+-the full contour, rather than replacing the approved composition after loading.
+-
+-The bounded current catalog has 224 sites, including 217 numeric positions using
+-72 lazy map centers. All 217 site points round to the same native displayed
+-coordinate as the exact-center reference; maximum continuous point difference
+-is 0.4751 pixels. This does not establish identical geographic centers, universal
+-coastline equivalence, future coverage or positions for unknown/mobile launches.
+-Native EN/RU and 454px LOW captures and the controlled decoded READY witness are
+-accepted. Pixel-budget observations remain bounded to the measured text.
+-
+-Final source 0.1.13/ea38c443 is `1eca186c`, signed and published under tag v0.1.13.
+-The production Music run and exact embedded-member equality passed. IQ plus 21
+-program signatures and 2,856 source pins passed. The original Garmin card displays
+-0.1.13/Internal 8 PENDING and accepted the Music install request. All 21 GitHub
+-assets were published. See [publication](evidence/display03-publication/PUBLICATION.md).
+-The cached 117e7a3f integration had only a generated-version conflict. A later
+-remote-main push rejection was handled with conflict-free PR #21, preserving separate
+-publisher-map work; its changes are not relabeled into the compiled source.
+-Per owner instruction, no behavior tests were repeated for publication.
+-
+-The original ordinary Garmin card now shows0.1.13/Internal 8 PENDING. The previous
+-0.1.12 GitHub-only build is historical. The
+-owner subsequently reported executing version **0.10.0** verbatim, active timer
+-stalling, no active point and 10–20 second wake. That string is not silently
+-normalized to 0.1.10. Earlier unambiguous 0.1.6 observations remain historical.
+-Do not repeat account, firmware, face-selection or reboot questions.
+-
+-The author measured a 4 ms SDK callback-to-completed-active-frame interval and
+-automatic one-second active cadence. Those results do not measure physical
+-gesture-to-callback latency or prove the physical wake defect repaired. The
+-heavy observer's OOM, decoded multirow watchdog, dense-map pixel overflow and
+-stalled diagnostic runs are retained; rejected or instrumented runs receive no
+-ordinary-app or physical acceptance credit.
+-
+-The source-phase peer restored 636 original simulator files and simulator.ini;
+-original temporal registration remains unverified. The final signed lane must
+-preserve its own state and report its actual executable and proof boundaries.
+-
+-**The delivery/data incident and goal remain NOT DONE.** Corrected physical
+-execution, fresh matching launch data, visible point and stable active/LOW modes
+-remain unobserved. Existing task checkboxes retain their physical/external gates;
+-source GREEN, upload acceptance and an unversioned installation queue do not
+-close them. No next task group starts while this same incident is open.
++The active authorized work is [legacy and fallback consolidation](../remove-legacy-fallbacks/tasks.md). Its inventory and verification record own current progress. Physical watch and paired-phone acceptance remain unobserved; signed software, simulator evidence and a Store submission do not establish physical success.
+diff --git a/tests/test_autonomous_publisher_whole.py b/tests/test_autonomous_publisher_whole.py
+index a9debc5b..fdc8c149 100644
+--- a/tests/test_autonomous_publisher_whole.py
++++ b/tests/test_autonomous_publisher_whole.py
+@@ -500,7 +500,7 @@ sys.exit(m.main())'''
+             good_doc=pub.ledger
+             # Hash-consistent faults force semantic admission, not just digest checks.
+             faults=[]
+-            for field,value in [('schemaVersion',2),('rendererProfile','unsupported'),('publisher',dict(instance='b'*64,generation=1,selectionValidatedUtc=NOW)),('pollIntervalSeconds',7200)]:
++            for field,value in [('schemaVersion',2),('rendererProfile','unsupported'),('publisher',dict(instance='b'*64,generation=1,selectionValidatedUtc=NOW)),('pollIntervalSeconds',299)]:
+                 altered=dict(files); feed=json.loads(files['feed.json']); feed[field]=value
+                 altered['feed.json']=canonical_bytes(feed)
+                 altered['feed.json.txt']=altered['feed.json']
+@@ -863,4 +863,97 @@ sys.exit(m.main())'''
+             self.assertFalse(any(call[0]=='POST' for call in service.calls))
+ 
+ 
++    def test_missing_authority_refuses_actual_updater_with_usable_provider(self):
++        source = self.checkout()
++        materialize = subprocess.run(['bash', '-ec', shell_step('Materialize exact reviewed runtime and catalog closure')],
++                                     cwd=source, capture_output=True)
++        self.assertEqual(materialize.returncode, 0, materialize.stderr)
++        remote = self.base / 'missing-authority.git'
++        subprocess.run(['git', 'init', '--bare', '-q', str(remote)], check=True)
++        git(source, 'push', '-q', str(remote), 'HEAD:refs/heads/main')
++        with Service().serving() as service:
++            result = self.cli(source, remote, service, 'prepare', '--bootstrap', '--output',
++                              self.base / 'initial-pending', runtime=False)
++            self.assertEqual((result['pending'], result['requests']), ('true', 1))
++            store = GitState(str(remote))
++            try:
++                pub = self.pub(store)
++                self.assertIsNotNone(pub.ledger['pending'])
++                pending = pub.pending_files()
++                service.files = pending
++                old_head = pub.head
++                anchor = store._refs('refs/tags/spacefox-state-bootstrap-map-v3')
++                git(remote, 'update-ref', '-d', STATE_REF, old_head)
++                before_calls = len(service.calls)
++                refused = self.cli(source, remote, service, 'prepare', '--output',
++                                   self.base / 'missing-pending', runtime=False, success=False)
++                self.assertTrue(refused.stderr.strip())
++                self.assertEqual(store._refs(STATE_REF), {})
++                self.assertEqual(store._refs('refs/tags/spacefox-state-bootstrap-map-v3'), anchor)
++                self.assertFalse(any('/2.3.0/' in c[1] for c in service.calls[before_calls:]))
++                self.assertEqual(service.files, pending)
++                self.cli(source, remote, service, 'prepare', '--bootstrap', '--output',
++                         self.base / 'missing-bootstrap', runtime=False, success=False)
++                self.assertEqual(store._refs(STATE_REF), {})
++                self.assertEqual(store._refs('refs/tags/spacefox-state-bootstrap-map-v3'), anchor)
++            finally:
++                store.close()
++
++
++    def test_restart_promotes_exact_pending_before_generation_three(self):
++        with self.authority() as (source, remote, store, pub), Service().serving() as service:
++            first, first_revision = self.active(pub, service)
++            second, second_revision = self.prepare(pub, NOW + 1)
++            service.files = delivery_files(pub, delivery(pub))
++            pending_head = pub.head
++            restarted = self.pub(store)
++            observed = Site(service.url + '/site', local_http=True).observe(restarted)
++            self.assertEqual(observed, second_revision)
++            self.assertEqual(restarted.reconcile(observed), 'promoted')
++            self.assertNotEqual(restarted.head, pending_head)
++            self.assertEqual(restarted.ledger['active']['generation'], 2)
++            self.assertIsNone(restarted.ledger['pending'])
++            self.assertEqual(snapshot_files(store, restarted.head, 2)[1], second)
++            third, _ = self.prepare(restarted, NOW + 2)
++            self.assertEqual(restarted.ledger['active']['generation'], 2)
++            self.assertEqual(restarted.ledger['pending']['generation'], 3)
++            self.assertEqual(restarted.pending_files(), third)
++            self.assertEqual(service.files['feed.json'], second['feed.json'])
++            self.assertNotEqual(first['feed.json'], second['feed.json'])
++
++
++    def test_stale_worker_cannot_request_after_new_pending(self):
++        with self.authority() as (source, remote, store, pub), Service().serving() as service:
++            first, revision = self.active(pub, service)
++            script = '''import json,sys
++from tools.spacefox.publisher import GitState,Publisher,LiveRevision,StateError
++from tools.spacefox.provider import LL2Client
++s=GitState(sys.argv[1]); p=Publisher(s,sys.argv[2]); p.reconcile(LiveRevision(**json.loads(sys.argv[3])))
++print('ready',flush=True); sys.stdin.readline()
++try: LL2Client(origin=sys.argv[4],local_http=True).request(p,int(sys.argv[5]),trigger='extra')
++except StateError: sys.exit(0)
++sys.exit(3)
++'''
++            child = subprocess.Popen([sys.executable, '-B', '-c', script, str(remote), self.code,
++                                      json.dumps(vars(revision)), service.url, str(NOW + 2)],
++                                     cwd=ROOT, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
++                                     stderr=subprocess.PIPE, text=True)
++            try:
++                self.assertEqual(child.stdout.readline().strip(), 'ready')
++                second, _ = self.prepare(pub, NOW + 1)
++                service.files = delivery_files(pub, delivery(pub))
++                saved = pub.head
++                calls = len(service.calls)
++                out, err = child.communicate('\n', timeout=30)
++                self.assertEqual(child.returncode, 0, out + err)
++                self.assertEqual(store._refs(STATE_REF)[STATE_REF], saved)
++                self.assertFalse(any('/2.3.0/' in c[1] for c in service.calls[calls:]))
++                self.assertEqual(service.files['feed.json'], second['feed.json'])
++                self.assertNotEqual(first['feed.json'], second['feed.json'])
++            finally:
++                if child.poll() is None:
++                    child.kill()
++                    child.communicate()
++
++
+ if __name__=='__main__': unittest.main()
+diff --git a/tests/test_hosted_delivery_controls.py b/tests/test_hosted_delivery_controls.py
+deleted file mode 100644
+index b4fdbdf9..00000000
+--- a/tests/test_hosted_delivery_controls.py
++++ /dev/null
+@@ -1,466 +0,0 @@
+-"""Whole current publisher: real sparse Git, CLI and anonymous loopback HTTP.
+-
+-No external provider, Pages, OIDC, SDK or account is contacted. Source launch and
+-metadata strings come from captured real records; only pagination, times and
+-technical faults are controlled. HTTP service answers and OIDC are the only
+-replaced boundaries. Runtime open/process observers fail on source/build use.
+-"""
+-from contextlib import contextmanager
+-from copy import deepcopy
+-from email.utils import formatdate
+-from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+-import json
+-import os
+-from pathlib import Path
+-import re
+-import subprocess
+-import sys
+-import tempfile
+-import threading
+-import unittest
+-
+-from tests.test_basic_publisher_clock import current_source_closure
+-from tests.test_current_motion_publisher import captured_starship, NOW
+-from tests.test_current_metadata_publisher import captured
+-from tools.spacefox.catalog import build_catalog, canonical_bytes
+-from tools.spacefox.cloud import (CloudError, Site,
+-    arm, delivery, delivery_files, journal, snapshot_files)
+-from tools.spacefox.native_motion import PROFILE, build_artifact, validate_artifact
+-from tools.spacefox.provider import normalize_launch
+-from tools.spacefox.publisher import (Conflict, GitState, LiveRevision, Publisher,
+-    STATE_REF, _canonical, _sha)
+-from tools.spacefox.schedule import RefreshPolicy, ScheduleState, merge_schedule
+-
+-ROOT = Path(__file__).resolve().parents[1]
+-WORKFLOW = (ROOT / '.github/workflows/update-feed.yml').read_text()
+-
+-
+-def git(root, *args, data=None):
+-    return subprocess.run(['git', '-C', str(root), *args], input=data, check=True,
+-        stdout=subprocess.PIPE, stderr=subprocess.PIPE).stdout
+-
+-
+-def shell_step(name):
+-    # Read the checked-in shell itself, not a reimplemented materializer recipe.
+-    match = re.search(r'      - name: ' + re.escape(name) + r'\n(?:[^\n]*\n)*?        run: \|\n((?:          [^\n]*\n)+)', WORKFLOW)
+-    if match is None:
+-        raise AssertionError('workflow shell missing: ' + name)
+-    return '\n'.join(line[10:] for line in match[1].splitlines())
+-
+-
+-class Service:
+-    def __init__(self):
+-        self.files = {}
+-        self.calls = []
+-        self.statuses = ['succeed']
+-        self.status_code = 200
+-        self.run = None
+-        self.jobs = None
+-        self.version = None
+-        self.epoch = NOW
+-        self.mode304 = False
+-        self.bad_etag = False
+-        self.page_fault = None
+-        self.after_root = None
+-        self.root_reads = 0
+-        candidate, files = captured()
+-        self.metadata = {}
+-        # Literal real Starship/SpaceX/Orbital Launch Pad2/USA source closure.
+-        # It contains every reference of the unchanged captured launch and of
+-        # these four actual typed records; no relationship is fabricated.
+-        selected={'countries':2,'organizations':121,'models':522,'sites':235}
+-        for collection,identity in selected.items():
+-            rows=[row for page in candidate['coverage']['pages'] if page['collection']==collection
+-                  for row in json.loads(files['objects/'+page['body']['sha256']+'.json'])['results']
+-                  if row['id']==identity]
+-            if len(rows)!=1:raise AssertionError('captured metadata identity closure')
+-            # Verbatim records; only count/pagination and later transport origin
+-            # are controlled. This is no new complete-provider observation.
+-            self.metadata[collection]=_canonical(dict(count=1,next=None,previous=None,results=rows))
+-        self.primary = _canonical(dict(count=1, next=None, previous=None, results=[captured_starship()]))
+-
+-    def answer(self, method, path, headers, body):
+-        self.calls.append((method, path, dict(headers), body))
+-        if path.startswith('/site/'):
+-            name = path[len('/site/'):]
+-            if name == 'feed.json':
+-                self.root_reads += 1
+-                if self.after_root and self.root_reads > 1:
+-                    return 200, self.after_root, {}
+-            raw = self.files.get(name)
+-            return (404, b'', {}) if raw is None else (200, raw, {})
+-        if '/actions/runs/' in path:
+-            value = self.jobs if '/jobs?' in path else self.run
+-            return (404, b'', {}) if value is None else (200, _canonical(value), {})
+-        if '/pages/deployments' in path:
+-            if method == 'POST':
+-                self.version = json.loads(body).get('pages_build_version', self.version)
+-                return 201, b'{}', {}
+-            value = self.statuses.pop(0) if len(self.statuses) > 1 else self.statuses[0]
+-            return self.status_code, _canonical(value if isinstance(value, dict) else dict(status=value)), {}
+-        if path.startswith('/2.3.0/launches/upcoming/'):
+-            return 200, self.primary, {'Date': formatdate(self.epoch, usegmt=True), 'Content-Type': 'application/json'}
+-        collection = next((c for c, route in dict(countries='config/countries', organizations='agencies',
+-            models='launcher_configurations', sites='pads').items() if path.startswith('/2.3.0/' + route + '/')), None)
+-        if collection:
+-            etag = '"' + collection + '"'
+-            h = {'Date': formatdate(self.epoch + 5, usegmt=True), 'Age': '5', 'ETag': etag, 'Content-Type': 'application/json'}
+-            if self.page_fault:
+-                return self.page_fault, b'', h
+-            if self.mode304 and headers.get('If-None-Match') == etag:
+-                if self.bad_etag:
+-                    h['ETag'] = '"wrong-url-tag"'
+-                return 304, b'', h
+-            # Preserve real display/fact fields; only transport-scoped LL2 URL
+-            # origin is rebased for the explicit anonymous loopback boundary.
+-            raw=self.metadata[collection].replace(b'https://ll.thespacedevs.com',self.url.encode())
+-            return 200, raw, h
+-        return 404, b'', {}
+-
+-    @contextmanager
+-    def serving(self):
+-        service = self
+-        class Handler(BaseHTTPRequestHandler):
+-            def handle_request(self):
+-                body = self.rfile.read(int(self.headers.get('Content-Length', '0')))
+-                status, raw, headers = service.answer(self.command, self.path, self.headers, body)
+-                self.send_response_only(status)
+-                for key, value in headers.items(): self.send_header(key, value)
+-                self.send_header('Content-Length', str(len(raw)))
+-                self.end_headers()
+-                self.wfile.write(raw)
+-                self.close_connection = True
+-            do_GET = handle_request
+-            do_POST = handle_request
+-            def log_message(self, *_): pass
+-        server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
+-        thread = threading.Thread(target=server.serve_forever, daemon=True); thread.start()
+-        try:
+-            self.url = f'http://127.0.0.1:{server.server_port}'
+-            yield self
+-        finally:
+-            server.shutdown(); server.server_close(); thread.join()
+-
+-    def witness(self, intent):
+-        self.run = dict(id=intent['runId'], run_attempt=intent['runAttempt'], head_sha=intent['source'],
+-            head_branch='main', status='completed', event='workflow_dispatch', path='.github/workflows/update-feed.yml',
+-            repository=dict(full_name=intent['repository']))
+-        self.jobs = dict(total_count=1, jobs=[dict(name='deploy', run_id=intent['runId'], head_sha=intent['source'],
+-            status='completed', conclusion='skipped', steps=[])])
+-
+-
+-class AutonomousPublisherWholeTest(unittest.TestCase):
+-    @classmethod
+-    def setUpClass(cls):
+-        cls.temporary = tempfile.TemporaryDirectory(prefix='spacefox-autonomous-whole-')
+-        cls.base = Path(cls.temporary.name); cls.fixture = cls.base / 'source'; cls.fixture.mkdir()
+-        cls.closure = current_source_closure()
+-        cls.seed = (ROOT / '.github/spacefox-inputs.txt').read_bytes()
+-        cls.runtime = {}
+-        for line in cls.seed.decode().splitlines():
+-            name = line.removeprefix('/')
+-            if (ROOT / name).is_file(): cls.runtime[name] = (ROOT / name).read_bytes()
+-        cls.sources = {**cls.runtime, **cls.closure,
+-            '.github/workflows/update-feed.yml': WORKFLOW.encode()}
+-        for name, raw in cls.sources.items():
+-            target = cls.fixture / name; target.parent.mkdir(parents=True, exist_ok=True); target.write_bytes(raw)
+-        git(cls.fixture, 'init', '-q'); git(cls.fixture, 'config', 'user.name', 'Current publisher test')
+-        git(cls.fixture, 'config', 'user.email', 'current@example.invalid'); git(cls.fixture, 'add', '.')
+-        git(cls.fixture, 'commit', '-qm', 'current source/runtime only')
+-        cls.code = git(cls.fixture, 'rev-parse', 'HEAD').decode().strip()
+-        cls.catalog = build_catalog(ROOT)
+-        state = merge_schedule(ScheduleState(), (normalize_launch(captured_starship(), NOW),), NOW)
+-        cls.template, cls.digest = build_artifact(state, cls.catalog, NOW,
+-            publisher=dict(instance='a'*64, generation=1, selectionValidatedUtc=NOW), root=ROOT)
+-        cls.serial = 0
+-
+-
+-    @classmethod
+-    def tearDownClass(cls): cls.temporary.cleanup()
+-
+-
+-    def checkout(self, runtime=False):
+-        type(self).serial += 1
+-        path = self.base / ('checkout-' + str(self.serial))
+-        git(self.base, 'clone', '-q', '--no-checkout', '--shared', str(self.fixture), str(path))
+-        git(path, 'config', 'user.name', 'Current publisher test'); git(path, 'config', 'user.email', 'current@example.invalid')
+-        git(path, 'sparse-checkout', 'init', '--no-cone')
+-        seed = self.seed.replace(b'/catalog/source.json\n', b'') if runtime else self.seed
+-        git(path, 'sparse-checkout', 'set', '--no-cone', '--stdin', data=seed)
+-        git(path, 'checkout', '-q')
+-        return path
+-
+-
+-    @contextmanager
+-    def authority(self, *, runtime=True, policy=None):
+-        source = self.checkout(runtime=runtime); remote = source.parent / (source.name + '.git')
+-        subprocess.run(['git', 'init', '--bare', '-q', str(remote)], check=True)
+-        git(source, 'push', '-q', str(remote), 'HEAD:refs/heads/main')
+-        store = GitState(str(remote))
+-        try:
+-            store.bootstrap(self.code, policy or RefreshPolicy()); pub = Publisher(store, self.code); pub.reconcile(None)
+-            yield source, remote, store, pub
+-        finally: store.close()
+-
+-
+-    def accept(self, pub, now=NOW):
+-        token = pub.reserve(pub.head, now, trigger='manual')
+-        pub.accept_source(pub.head, token, (normalize_launch(captured_starship(), NOW),), now, selection_validated_utc=NOW)
+-
+-
+-    def candidate(self, pub, now=NOW):
+-        from tools.spacefox.native_motion import with_text_transport
+-        files = {path: raw for path, raw in self.template.items() if not path.endswith('.txt')}
+-        feed = json.loads(files['feed.json'])
+-        feed['publisher'] = pub.publisher_envelope(now)
+-        files['feed.json'] = canonical_bytes(feed)
+-        files = with_text_transport(files)
+-        validate_artifact(files)
+-        return files
+-
+-
+-    def prepare(self, pub, now=NOW):
+-        files = self.candidate(pub, now)
+-        revision = pub.prepare(pub.head, now, files, self.digest,
+-            feed_publisher=pub.publisher_envelope(now), artifact_profile=PROFILE)
+-        return files, revision
+-
+-
+-    def active(self, pub, service):
+-        self.accept(pub); files, revision = self.prepare(pub)
+-        service.files = files; pub.reconcile(revision)
+-        return files, revision
+-
+-
+-    def cli(self, source, remote, service, command, *args, now=NOW, runtime=True, env=None, success=True, local=True):
+-        launcher = '''import os,sys
+-from pathlib import Path
+-import tools.cloud_feed as m
+-def oidc():
+-    print('LOCAL_OIDC_BOUNDARY',file=sys.stderr)
+-    return 'local-qualified-oidc'
+-m.oidc_token=oidc
+-if os.environ.get('RUNTIME_ONLY')=='1':
+-    def observer(event,args):
+-        if event=='import' and args[0]=='tools.spacefox.catalog_refresh' and os.environ.get('FORBID_CATALOG_IMPORT')=='1':
+-            raise AssertionError('blocked command imported metadata collector')
+-        if event=='open' and isinstance(args[0],(str,bytes)):
+-            p=Path(os.fsdecode(args[0])).resolve()
+-            if any(p==Path.cwd()/d or Path.cwd()/d in p.parents for d in ('catalog','assets')):
+-                raise AssertionError('runtime read authoring source: '+str(p))
+-    sys.addaudithook(observer)
+-    def forbidden_builder(*args,**kwargs):
+-        raise AssertionError('runtime invoked authoring builder')
+-    # Fail-only must-not-call guards, never a successful builder substitute.
+-    m.build_catalog=forbidden_builder
+-    m.build_artifact=forbidden_builder
+-sys.exit(m.main())'''
+-        environment = {k: v for k, v in os.environ.items() if not k.startswith(('GITHUB_', 'GH_TOKEN', 'ACTIONS_', 'GIT_CONFIG_'))}
+-        environment.update(RUNTIME_ONLY='1' if runtime else '0', GITHUB_RUN_ID='42', GITHUB_RUN_ATTEMPT='1')
+-        environment.update(env or {})
+-        result = subprocess.run([sys.executable, '-B', '-c', launcher, '--repository', 'local/spacefox',
+-            '--remote', str(remote), '--site', service.url + '/site', '--api', service.url,
+-            '--origin', service.url, *(['--local-qualification'] if local else []), '--now', str(now), command, *map(str,args)],
+-            cwd=source, env=environment, capture_output=True, text=True, timeout=300)
+-        self.assertEqual(result.returncode, 0 if success else 2, result.stdout + result.stderr)
+-        return json.loads(result.stdout.splitlines()[-1]) if success else result
+-
+-
+-    def pub(self, store): return Publisher(store, self.code)
+-
+-
+-    def stable(self, pub):
+-        return {k: pub.ledger[k] for k in ('accepted','active','pending','generation','selection_validated_utc')}
+-
+-    def test_missing_authority_refuses_actual_updater_with_usable_provider(self):
+-        source = self.checkout()
+-        materialize = subprocess.run(['bash', '-ec', shell_step('Materialize exact reviewed runtime and catalog closure')],
+-                                     cwd=source, capture_output=True)
+-        self.assertEqual(materialize.returncode, 0, materialize.stderr)
+-        remote = self.base / 'missing-authority.git'
+-        subprocess.run(['git', 'init', '--bare', '-q', str(remote)], check=True)
+-        git(source, 'push', '-q', str(remote), 'HEAD:refs/heads/main')
+-        with Service().serving() as service:
+-            result = self.cli(source, remote, service, 'prepare', '--bootstrap', '--output',
+-                              self.base / 'initial-pending', runtime=False)
+-            self.assertEqual((result['pending'], result['requests']), ('true', 1))
+-            store = GitState(str(remote))
+-            try:
+-                pub = self.pub(store)
+-                self.assertIsNotNone(pub.ledger['pending'])
+-                pending = pub.pending_files()
+-                service.files = pending
+-                old_head = pub.head
+-                anchor = store._refs('refs/tags/spacefox-state-bootstrap-map-v3')
+-                git(remote, 'update-ref', '-d', STATE_REF, old_head)
+-                before_calls = len(service.calls)
+-                refused = self.cli(source, remote, service, 'prepare', '--output',
+-                                   self.base / 'missing-pending', runtime=False, success=False)
+-                self.assertTrue(refused.stderr.strip())
+-                self.assertEqual(store._refs(STATE_REF), {})
+-                self.assertEqual(store._refs('refs/tags/spacefox-state-bootstrap-map-v3'), anchor)
+-                self.assertFalse(any('/2.3.0/' in c[1] for c in service.calls[before_calls:]))
+-                self.assertEqual(service.files, pending)
+-                self.cli(source, remote, service, 'prepare', '--bootstrap', '--output',
+-                         self.base / 'missing-bootstrap', runtime=False, success=False)
+-                self.assertEqual(store._refs(STATE_REF), {})
+-                self.assertEqual(store._refs('refs/tags/spacefox-state-bootstrap-map-v3'), anchor)
+-            finally:
+-                store.close()
+-
+-    def test_restart_promotes_exact_pending_before_generation_three(self):
+-        with self.authority() as (source, remote, store, pub), Service().serving() as service:
+-            first, first_revision = self.active(pub, service)
+-            second, second_revision = self.prepare(pub, NOW + 1)
+-            service.files = delivery_files(pub, delivery(pub))
+-            pending_head = pub.head
+-            restarted = self.pub(store)
+-            observed = Site(service.url + '/site', local_http=True).observe(restarted)
+-            self.assertEqual(observed, second_revision)
+-            self.assertEqual(restarted.reconcile(observed), 'promoted')
+-            self.assertNotEqual(restarted.head, pending_head)
+-            self.assertEqual(restarted.ledger['active']['generation'], 2)
+-            self.assertIsNone(restarted.ledger['pending'])
+-            self.assertEqual(snapshot_files(store, restarted.head, 2)[1], second)
+-            third, _ = self.prepare(restarted, NOW + 2)
+-            self.assertEqual(restarted.ledger['active']['generation'], 2)
+-            self.assertEqual(restarted.ledger['pending']['generation'], 3)
+-            self.assertEqual(restarted.pending_files(), third)
+-            self.assertEqual(service.files['feed.json'], second['feed.json'])
+-            self.assertNotEqual(first['feed.json'], second['feed.json'])
+-
+-    def test_stale_worker_cannot_request_after_new_pending(self):
+-        with self.authority() as (source, remote, store, pub), Service().serving() as service:
+-            first, revision = self.active(pub, service)
+-            script = '''import json,sys
+-from tools.spacefox.publisher import GitState,Publisher,LiveRevision,StateError
+-from tools.spacefox.provider import LL2Client
+-s=GitState(sys.argv[1]); p=Publisher(s,sys.argv[2]); p.reconcile(LiveRevision(**json.loads(sys.argv[3])))
+-print('ready',flush=True); sys.stdin.readline()
+-try: LL2Client(origin=sys.argv[4],local_http=True).request(p,int(sys.argv[5]),trigger='extra')
+-except StateError: sys.exit(0)
+-sys.exit(3)
+-'''
+-            child = subprocess.Popen([sys.executable, '-B', '-c', script, str(remote), self.code,
+-                                      json.dumps(vars(revision)), service.url, str(NOW + 2)],
+-                                     cwd=ROOT, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+-                                     stderr=subprocess.PIPE, text=True)
+-            try:
+-                self.assertEqual(child.stdout.readline().strip(), 'ready')
+-                second, _ = self.prepare(pub, NOW + 1)
+-                service.files = delivery_files(pub, delivery(pub))
+-                saved = pub.head
+-                calls = len(service.calls)
+-                out, err = child.communicate('\n', timeout=30)
+-                self.assertEqual(child.returncode, 0, out + err)
+-                self.assertEqual(store._refs(STATE_REF)[STATE_REF], saved)
+-                self.assertFalse(any('/2.3.0/' in c[1] for c in service.calls[calls:]))
+-                self.assertEqual(service.files['feed.json'], second['feed.json'])
+-                self.assertNotEqual(first['feed.json'], second['feed.json'])
+-            finally:
+-                if child.poll() is None:
+-                    child.kill()
+-                    child.communicate()
+-
+-
+-    def test_runtime_only_two_generations_finality_and_exact_readback(self):
+-        with self.authority() as (source,remote,store,pub), Service().serving() as s:
+-            first,rev=self.active(pub,s); preserved_source=pub.ledger['selection_validated_utc']
+-            self.assertFalse((source/'catalog/source.json').exists()); self.assertFalse((source/'assets').exists())
+-            # Run the actual runtime shell, including source exclusion.
+-            result=subprocess.run(['bash','-ec',shell_step('Check out runtime seed for exact saved-state validation')],cwd=source,capture_output=True)
+-            self.assertEqual(result.returncode,0,result.stderr)
+-            with tempfile.TemporaryDirectory(prefix='spacefox-content-only-') as folder:
+-                content=Path(folder)
+-                for name,raw in self.closure.items():
+-                    target=content/name;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(raw)
+-                recipe=json.loads((content/'catalog/source.json').read_bytes());pin=recipe['curations'][0]
+-                raw=json.dumps(json.loads((content/pin['path']).read_bytes()),ensure_ascii=False,indent=3).encode()
+-                (content/pin['path']).write_bytes(raw);pin['sha256']=_sha(raw)
+-                (content/'catalog/source.json').write_bytes(_canonical(recipe));changed=build_catalog(content)
+-                self.assertEqual(changed['dictionaries'],self.catalog['dictionaries'])
+-                from tools.cloud_feed import prepare_content
+-                class ForbiddenProvider:
+-                    def __getattr__(self,name):raise AssertionError('content-only provider call')
+-                result=prepare_content(pub,ForbiddenProvider(),NOW+1,changed,root=content)
+-                self.assertEqual((result['result'],result['requests']),('content_pending',0))
+-                second=pub.pending_files();second_rev=LiveRevision(**result['revision'])
+-            complete=delivery_files(pub,delivery(pub)); s.files=first
+-            head=pub.head
+-            answer=self.cli(source,remote,s,'arm','--expected-base',head,'--artifact-id',77,now=NOW+1)
+-            pub=self.pub(store); intent=journal(pub)['intent']; self.assertEqual(intent['generation'],2)
+-            s.statuses=['succeed']
+-            self.cli(source,remote,s,'deploy','--expected-base',answer['head'],now=NOW+1)
+-            self.assertEqual(sum(c[0]=='POST' and c[1].endswith('/pages/deployments') for c in s.calls),1)
+-            s.files=complete; self.cli(source,remote,s,'recover',now=NOW+1)
+-            pub=self.pub(store)
+-            self.assertEqual(pub.ledger['active']['generation'],2); self.assertIsNone(pub.ledger['pending'])
+-            self.assertEqual(journal(pub)['status'],'succeed'); self.assertEqual(pub.ledger['selection_validated_utc'],preserved_source)
+-            self.assertEqual(len(pub.ledger['requests']),1)
+-            self.assertEqual(snapshot_files(store,pub.head,pub.ledger['active']['generation'])[1],second)
+-            self.assertTrue(all(s.files[name]==raw for name,raw in first.items() if name not in ('feed.json','feed.json.txt')))
+-            self.assertEqual(s.files['feed.json'],second['feed.json'])
+-            self.assertEqual(s.files['feed.json.txt'],second['feed.json'])
+-            before=pub.head; calls=len(s.calls)
+-            answer=self.cli(source,remote,s,'prepare','--output',self.base/'not-due',now=NOW+2,runtime=False,success=False)
+-            # Runtime-only prepare cannot rebuild source; later jobs never need it.
+-            self.assertTrue(answer.stderr.strip())
+-            self.assertEqual(self.pub(store).head,before)
+-            self.assertFalse(any('/2.3.0/' in c[1] for c in s.calls[calls:]))
+-            # Sole mutable root must be reread after *all* immutable bytes.
+-            pub=self.pub(store); s.root_reads=0; s.after_root=first['feed.json']
+-            with self.assertRaisesRegex(CloudError,'changed during'):
+-                Site(s.url+'/site',local_http=True).observe(pub)
+-            self.assertEqual(self.pub(store).head,before)
+-            s.after_root=None; s.root_reads=0
+-            path=next(p for p in first if p not in second); good=s.files[path]; s.files[path]=good+b'x'
+-            with self.assertRaises(CloudError): Site(s.url+'/site',local_http=True).observe(pub,journal(pub)['files'])
+-            s.files[path]=good
+-            self.assertEqual(Site(s.url+'/site',local_http=True).observe(pub,journal(pub)['files']),second_rev)
+-            self.assertFalse(any('/2.3.0/' in c[1] for c in s.calls))
+-
+-
+-    def test_saved_faults_stale_source_and_cas_refuse_without_publication(self):
+-        with self.authority() as (source,remote,store,pub), Service().serving() as s:
+-            self.accept(pub); files,rev=self.prepare(pub); original=pub.head
+-            good_doc=pub.ledger
+-            # Hash-consistent faults force semantic admission, not just digest checks.
+-            faults=[]
+-            for field,value in [('schemaVersion',2),('rendererProfile','unsupported'),('publisher',dict(instance='b'*64,generation=1,selectionValidatedUtc=NOW)),('pollIntervalSeconds',7200)]:
+-                altered=dict(files); feed=json.loads(files['feed.json']); feed[field]=value
+-                altered['feed.json']=canonical_bytes(feed)
+-                altered['feed.json.txt']=altered['feed.json']
+-                faults.append(altered)
+-            altered=dict(files)
+-            key=next(k for k in files if k.startswith('rasters/') and not k.endswith('.txt'))
+-            altered[key]+=b'x'
+-            if key+'.txt' in altered:
+-                altered[key+'.txt']=altered[key]
+-            faults.append(altered)
+-            for number,altered in enumerate(faults):
+-                self.assertEqual(altered['feed.json'],altered['feed.json.txt'])
+-                doc=deepcopy(good_doc); snap=doc['pending']; snap['files']={k:dict(sha256=_sha(v),bytes=len(v)) for k,v in altered.items()}
+-                snap['artifact_revision']=_sha(_canonical({k:v for k,v in snap.items() if k!='artifact_revision'}))
+-                bad=store._commit(doc,original,{f'artifacts/1/{k}':v for k,v in altered.items()})
+-                store._git('push',f'--force-with-lease={STATE_REF}:{original}',str(remote),f'{bad}:{STATE_REF}')
+-                for command in ('arm','deploy','recover'):
+-                    with self.subTest(fault=number,command=command):
+-                        before=len(s.calls); args=[] if command=='recover' else ['--expected-base',bad]
+-                        if command=='arm': args+=['--artifact-id',77]
+-                        self.cli(source,remote,s,command,*args,success=False)
+-                        self.assertEqual(store._refs(STATE_REF)[STATE_REF],bad)
+-                        self.assertFalse(any(c[0]=='POST' or '/2.3.0/' in c[1] for c in s.calls[before:]))
+-                store._git('push',f'--force-with-lease={STATE_REF}:{bad}',str(remote),f'{original}:{STATE_REF}')
+-            pub=self.pub(store); pub,intent=arm(pub,expected=pub.head,repository='local/spacefox',run_id=42,run_attempt=1,artifact_id=77,now=NOW)
+-            # Source advances while the queued runtime is unchanged.
+-            git(source,'commit','--allow-empty','-qm','new source'); git(source,'push','-q',str(remote),'HEAD:refs/heads/main')
+-            before=pub.head; calls=len(s.calls)
+-            for command in ('arm','deploy','recover','metadata'):
+-                args=[] if command in ('recover','metadata') else ['--expected-base',before]
+-                if command=='arm':args+=['--artifact-id',78]
+-                refused=self.cli(self.fixture,remote,s,command,*args,success=False)
+-                self.assertEqual(refused.stderr.count('LOCAL_OIDC_BOUNDARY'),int(command=='deploy'))
+-                self.assertEqual(store._refs(STATE_REF)[STATE_REF],before)
+-            self.assertEqual(len(s.calls),calls)
+-            with self.assertRaises(Conflict): pub.reserve('0'*40,NOW,trigger='extra')
+-            self.assertEqual(store._refs(STATE_REF)[STATE_REF],before)
+diff --git a/tests/test_image_pipeline_research.py b/tests/test_image_pipeline_research.py
+deleted file mode 100644
+index 2f87da02..00000000
+--- a/tests/test_image_pipeline_research.py
++++ /dev/null
+@@ -1,140 +0,0 @@
+-"""Source-bound image study and byte-preserving producer optimization checks."""
+-import itertools
+-import json
+-from pathlib import Path
+-import subprocess
+-import struct
+-import zlib
+-import sys
+-import tempfile
+-import unittest
+-
+-from tools import image_pipeline_research as study
+-from tools.spacefox import native_profile as native
+-from tests.test_sfr1m_offline_current import literal_decode
+-
+-
+-def original_row(row, previous, channels):
+-    """Frozen pre-change byte-slice implementation, checked against real rows."""
+-    width=len(row)//channels; x=0; out=bytearray()
+-    while x<width:
+-        copy=0
+-        while copy<128 and x+copy<width and row[(x+copy)*channels:(x+copy+1)*channels]==previous[(x+copy)*channels:(x+copy+1)*channels]: copy+=1
+-        run=1; color=row[x*channels:(x+1)*channels]
+-        while run<128 and x+run<width and row[(x+run)*channels:(x+run+1)*channels]==color: run+=1
+-        if copy and copy*4>=run: out.append(127+copy);x+=copy
+-        else: out.append(run-1);out.extend(color);x+=run
+-    return bytes(out)
+-
+-
+-def exhaustive_cost(a,b,c,x=0):
+-    if x==len(a):return (0,0)
+-    candidates=[]
+-    for n in range(1,len(a)-x+1):
+-        if all(p==a[x] for p in a[x:x+n]):
+-            z=exhaustive_cost(a,b,c,x+n);candidates.append((z[0]+1+c,z[1]+1))
+-        if a[x:x+n]==b[x:x+n]:
+-            z=exhaustive_cost(a,b,c,x+n);candidates.append((z[0]+1,z[1]+1))
+-    return min(candidates)
+-
+-
+-class ImagePipelineTest(unittest.TestCase):
+-    def test_corpus_positive(self):
+-        assets=[study.load(x) for x in study.inventory()]
+-        self.assertTrue({'current-map','current-rocket','current-flag'} <= {a['name'] for a in assets})
+-        self.assertEqual({'map','low','rocket','flag'}, {a['kind'] for a in assets})
+-        for a in assets:
+-            w=a['width'];h=a['height'];c=a['channels'];raw=a['pixels'];previous=bytes(w*c)
+-            for y in range(h):
+-                row=raw[y*w*c:(y+1)*w*c]
+-                self.assertEqual(native._row_tokens(row,previous,c), original_row(row,previous,c),a['name'])
+-                previous=row
+-
+-    def test_corpus_negative(self):
+-        name,kind,split,path,w,h,c=study.CORPUS[0]
+-        with self.assertRaisesRegex(ValueError,'pixel length'):
+-            study.load((name,kind,split,path,w-1,h,c))
+-        with self.assertRaises((FileNotFoundError,ValueError)):
+-            study.load((name,kind,split,'missing.png',w,h,c))
+-
+-    def test_invalid_positive(self):
+-        source=study.ROOT/'watchface/resources/drawables/art_flag-us.png'
+-        with tempfile.TemporaryDirectory() as tmp:
+-            subprocess.run([sys.executable,'-B',str(study.ROOT/'tools/image_pipeline_research.py'),'--pack-png',str(source),'--output',tmp],check=True)
+-            manifest=json.loads((Path(tmp)/'manifest.json').read_text())
+-            chunks=[(Path(tmp)/(r['sha256']+'.sfr')).read_bytes() for r in manifest['shards']]
+-            w,h,raw=native.png_pixels(source.read_bytes())
+-            self.assertEqual(literal_decode(chunks,w,h,4),raw)
+-            self.assertEqual(native.decode_raster(chunks,w,h,4),raw)
+-            self.assertEqual(manifest['pixel_sha256'],study.digest(raw))
+-
+-    def test_invalid_negative(self):
+-        with self.assertRaises(ValueError):native.png_pixels(b'bad')
+-        with self.assertRaises(ValueError):study.pack(b'abc',2,2,3)
+-        source=study.ROOT/'watchface/resources/drawables/art_falcon-9.png'
+-        with tempfile.TemporaryDirectory() as tmp:
+-            result=subprocess.run([sys.executable,'-B',str(study.ROOT/'tools/image_pipeline_research.py'),'--pack-png',str(source),'--channels','3','--output',tmp],capture_output=True)
+-            self.assertNotEqual(result.returncode,0)
+-            self.assertFalse((Path(tmp)/'manifest.json').exists())
+-            # A prior successful output remains authoritative on bad input.
+-            manifest=Path(tmp)/'manifest.json'; manifest.write_bytes(b'prior manifest')
+-            original=(study.ROOT/'watchface/resources/drawables/art_flag-us.png').read_bytes()
+-            def chunk(kind, body):
+-                return struct.pack('>I',len(body))+kind+body+struct.pack('>I',zlib.crc32(kind+body)&0xffffffff)
+-            # Missing IEND, CRC corruption, truncated chunk, illegal tRNS and trailing bytes.
+-            ihdr_end=8+12+13
+-            rgb=(b'\x89PNG\r\n\x1a\n'+chunk(b'IHDR',struct.pack('>IIBBBBB',1,1,8,2,0,0,0))
+-                 +chunk(b'tRNS',b'\x00'*6)+chunk(b'IDAT',zlib.compress(b'\x00\x00\x00\x00'))+chunk(b'IEND',b''))
+-            # Optional suggested RGB palette is legal and must remain accepted.
+-            rgb_palette=(b'\x89PNG\r\n\x1a\n'+chunk(b'IHDR',struct.pack('>IIBBBBB',1,1,8,2,0,0,0))
+-                         +chunk(b'PLTE',b'\x00\x00\x00')+chunk(b'IDAT',zlib.compress(b'\x00\x00\x00\x00'))+chunk(b'IEND',b''))
+-            valid=Path(tmp)/'palette.png'; valid.write_bytes(rgb_palette)
+-            self.assertEqual(study.read_png(valid)[1],(1,1,b'\x00\x00\x00\xff'))
+-            cases=(rgb, original[:-12], original[:29]+bytes([original[29]^1])+original[30:],
+-                   original[:-1], original[:ihdr_end]+chunk(b'tRNS',b'\x00'*6)+original[ihdr_end:],
+-                   original+b'extra')
+-            for i, bad in enumerate(cases):
+-                path=Path(tmp)/f'bad-{i}.png';path.write_bytes(bad)
+-                result=subprocess.run([sys.executable,'-B',str(study.ROOT/'tools/image_pipeline_research.py'),'--pack-png',str(path),'--output',tmp],capture_output=True)
+-                self.assertNotEqual(result.returncode,0, i)
+-                self.assertEqual(manifest.read_bytes(),b'prior manifest')
+-
+-    def test_lossless_positive(self):
+-        for record in study.CORPUS[:3]:
+-            a=study.load(record);w=a['width'];h=a['height'];c=a['channels'];px=a['pixels']
+-            chunks=native.encode_raster(px,w,h,c)
+-            self.assertEqual(chunks,study.pack(px,w,h,c))
+-            self.assertEqual(literal_decode(chunks,w,h,c),px)
+-        # Boundaries cover short alternatives and the 128-pixel token cap.
+-        for n in range(1,6):
+-            for left in itertools.product(range(2),repeat=n):
+-                for above in itertools.product(range(2),repeat=n):
+-                    for channels in (3,4):
+-                        row=b''.join(bytes([v])*channels for v in left)
+-                        previous=b''.join(bytes([v])*channels for v in above)
+-                        self.assertEqual(native._row_tokens(row,previous,channels),original_row(row,previous,channels))
+-        for n in (127,128,129,256,257,390):
+-            row=b''.join(bytes([0 if i<n//2 else 255])*3 for i in range(n))
+-            previous=b''.join(bytes([0 if i%3 else 255])*3 for i in range(n))
+-            self.assertEqual(native._row_tokens(row,previous,3),original_row(row,previous,3))
+-        # Known QOI stream vectors anchor the independent parser beyond round trips.
+-        self.assertEqual(study.qoi_encode(bytes([255,0,0,255]),4),bytes([254,255,0,0]))
+-        self.assertEqual(study.qoi_decode(bytes([254,255,0,0]),1,4),bytes([255,0,0,255]))
+-        # Exhaustive oracle is deliberately separate from the DP implementation.
+-        for n in range(1,5):
+-            for left in itertools.product(range(2),repeat=n):
+-                for above in itertools.product(range(2),repeat=n):
+-                    row=b''.join(bytes([v])*3 for v in left);previous=b''.join(bytes([v])*3 for v in above)
+-                    tokens=study.optimal_row(row,previous,3);i=0;count=0
+-                    while i<len(tokens):
+-                        t=tokens[i];i+=1 if t&128 else 4;count+=1
+-                    self.assertEqual((len(tokens),count),exhaustive_cost(left,above,3))
+-
+-    def test_lossless_negative(self):
+-        a=study.load(study.CORPUS[1]);chunks=native.encode_raster(a['pixels'],a['width'],a['height'],4)
+-        self.assertNotEqual(study.digest(a['pixels']),study.digest(a['pixels'][:-1]+bytes([a['pixels'][-1]^1])))
+-        with self.assertRaises(ValueError):literal_decode(chunks[:-1],a['width'],a['height'],4)
+-        with self.assertRaises(ValueError):study.qoi_decode(bytes([254,255]),1,4)
+-
+-
+-if __name__=='__main__':unittest.main()
+diff --git a/tests/test_schedule_producer_transport.py b/tests/test_schedule_producer_transport.py
+index 095b8861..058422ef 100644
+--- a/tests/test_schedule_producer_transport.py
++++ b/tests/test_schedule_producer_transport.py
+@@ -120,7 +120,7 @@ def rollover_pages(clock,detail_status):
+             calls.append(self.path);n=len(calls);clock[0]=NOW+3600+n
+             status=200 if n==1 else detail_status
+             body={'count':1,'next':None,'previous':None,'results':[c]} if n==1 else details[self.path.split('/')[-2]]
+-            self.send_response_only(status);self.send_header('Date',formatdate(NOW+3599 if n==1 else clock[0],usegmt=True))
++            self.send_response_only(status);self.send_header('Date',formatdate(NOW+3600 if n==1 else clock[0],usegmt=True))
+             self.send_header('Age','0' if n==1 else str(clock[0]-NOW));self.send_header('Content-Type','application/json')
+             self.end_headers()
+             if status==200:self.wfile.write(json.dumps(body).encode())
+@@ -544,12 +544,12 @@ class ScheduleProducerTransportTest(unittest.TestCase):
+                 changed['window_end'] = None
+                 changed['last_updated'] = '2026-11-13T06:26:33Z'
+                 moved.append(normalize_launch(changed, NOW + 1))
+-            token = pub.reserve(pub.head, NOW + 1, trigger='manual')
++            token = pub.reserve(pub.head, NOW + 1, trigger='extra')
+             pub.accept_source(pub.head, token, tuple(moved), NOW + 1, selection_validated_utc=NOW + 1)
+             terminal = replace(moved[0], status=LaunchStatus.COMPLETED,
+                                source_validated_utc=NOW + 2, source_updated_utc=NOW + 2,
+                                source_updated_iso='2026-11-13T06:26:34Z', source_updated_subsecond=0)
+-            token = pub.reserve(pub.head, NOW + 2, trigger='manual')
++            token = pub.reserve(pub.head, NOW + 2, trigger='extra')
+             pub.accept_source(pub.head, token, (terminal,), NOW + 2, selection_validated_utc=NOW + 2)
+             at = NOW + 10802
+             pub.observe_age(pub.head, at)
+@@ -744,23 +744,23 @@ class ScheduleProducerTransportTest(unittest.TestCase):
+             self.assertIsNone(reopened.ledger['pending'])
+ 
+     def rollover_observation(self,detail_status):
+-        clock=[NOW+3599]
++        clock=[NOW+3600]
+         with local_authority() as (pub,store,code),rollover_pages(clock,detail_status) as (port,calls,a,b,c):
+             first=normalize_launch(a,NOW);second=normalize_launch(b,NOW)
+             token=pub.reserve(pub.head,NOW,trigger='manual');pub.accept_source(pub.head,token,(first,second),NOW,selection_validated_utc=NOW)
+             token=pub.reserve(pub.head,NOW,trigger='extra');pub.finish_request(pub.head,token,NOW,'success')
+             client=LL2Client(origin=f'http://127.0.0.1:{port}',local_http=True)
+-            result=update(pub,client,NOW+3599,build_catalog(ROOT),max_pages=1,detail_limit=2,clock=lambda:clock[0])
++            result=update(pub,client,NOW+3600,build_catalog(ROOT),max_pages=1,detail_limit=2,clock=lambda:clock[0])
+             count=1 if detail_status==404 else 2
+             self.assertEqual(result['requests'],1+count);self.assertEqual(result['traversal']['detailRequests'],count)
+             self.assertEqual(client.requests_started,1+count);self.assertEqual(len(calls),1+count)
+             reopened=Publisher(store,code);self.assertEqual(len(reopened.ledger['requests']),1+count)
+-            self.assertEqual(reopened.ledger['selection_validated_utc'],NOW+3599)
++            self.assertEqual(reopened.ledger['selection_validated_utc'],NOW+3600)
+             facts={e.record.launch_id.value:e.record.source_validated_utc for e in reopened.schedule.entries}
+-            self.assertEqual(facts,{a['id']:NOW,b['id']:NOW,c['id']:NOW+3599})
++            self.assertEqual(facts,{a['id']:NOW,b['id']:NOW,c['id']:NOW+3600})
+             self.assertIsNotNone(reopened.ledger['pending'])
+             if detail_status==404:
+-                self.assertEqual(reopened.ledger['backoff_until_utc'],NOW+3902)
++                self.assertIsNone(reopened.ledger['backoff_until_utc'])
+                 self.assertEqual(reopened.ledger['requests'][-1]['outcome'],'failed')
+                 self.assertEqual(len(result['detailFailures']),1)
+             else:self.assertEqual(result['detailFailures'],[])
+@@ -1026,16 +1026,34 @@ class ScheduleProducerTransportTest(unittest.TestCase):
+             envelope2=pub.publisher_envelope(NOW+1)
+             candidate,digest2=build_artifact(pub.schedule,catalog,NOW+1,publisher=envelope2,root=ROOT)
+             good=json.loads(candidate['feed.json']);cases=[]
++            # This wire field is advisory; the request owner enforces the
++            # current hourly cadence independently of its accepted value.
++            from tools.spacefox.wire import validate_current_feed
++            from tools.spacefox.schedule import request_due
++            advisory=deepcopy(good);advisory['pollIntervalSeconds']=7200
++            validate_current_feed(json.dumps(advisory,separators=(',',':')).encode(),now=NOW+1)
++            self.assertFalse(request_due(True,NOW,True,True,NOW+3599))
++            self.assertTrue(request_due(True,NOW,True,True,NOW+3600))
+             wrong=deepcopy(good);wrong['schemaVersion']=2;cases.append(json.dumps(wrong,separators=(',',':')).encode())
+             wrong=deepcopy(good);del wrong['launch']['launch_id'];cases.append(json.dumps(wrong,separators=(',',':')).encode())
+             wrong=deepcopy(good);wrong['launch']['timing']['exact_utc']='invalid';cases.append(json.dumps(wrong,separators=(',',':')).encode())
+             wrong=deepcopy(good);wrong['rendererProfile']='unsupported';cases.append(json.dumps(wrong,separators=(',',':')).encode())
+-            wrong=deepcopy(good);wrong['pollIntervalSeconds']=7200;cases.append(json.dumps(wrong,separators=(',',':')).encode())
++            wrong=deepcopy(good);wrong['pollIntervalSeconds']=299;cases.append(json.dumps(wrong,separators=(',',':')).encode())
+             over=candidate['feed.json']+b' '*(8193-len(candidate['feed.json']));self.assertEqual(len(over),8193);cases.append(over)
+             # Keep sidecars coherent so feed errors reach the actual parser
+             # and durable policy admission instead of failing on a stale copy.
+             from tools.spacefox.native_motion import with_text_transport
+-            broken=[with_text_transport(dict(candidate,**{'feed.json':raw})) for raw in cases]
++            broken=[]
++            for raw in cases:
++                try:
++                    broken.append(with_text_transport(dict(candidate,**{'feed.json':raw})))
++                except (KeyError, ValueError, TypeError):
++                    # An invalid projection can be refused before durable admission.
++                    reopened=Publisher(store,code)
++                    self.assertEqual(reopened.ledger['active'],active)
++                    self.assertEqual(reopened.ledger['accepted'],accepted)
++                    self.assertIsNone(reopened.ledger['pending'])
++
+             altered=dict(candidate);key=next(k for k in altered if k.startswith('rasters/'));altered[key]+=b'x';broken.append(altered)
+             for bad in broken:
+                 head=pub.head
+@@ -1050,7 +1068,7 @@ class ScheduleProducerTransportTest(unittest.TestCase):
+     def test_old_source_and_duplicate_result_refused_negative(self):
+         with local_authority() as (pub,store,code):
+             a=normalize_launch(captured_starship(),NOW)
+-            token=pub.reserve(pub.head,NOW,trigger='manual');pub.accept_source(pub.head,token,(a,),NOW)
++            token=pub.reserve(pub.head,NOW,trigger='manual');pub.accept_source(pub.head,token,(a,),NOW,selection_validated_utc=NOW)
+             token=pub.reserve(pub.head,NOW+3600,trigger='manual');before=pub.head
+             with self.assertRaises(StateError):pub.accept_source(pub.head,token,(replace(a,source_validated_utc=NOW-1),),NOW+3600)
+             self.assertEqual(pub.head,before);self.assertEqual(pub.schedule.entries[0].record,a)
+@@ -1077,7 +1095,7 @@ class ScheduleProducerTransportTest(unittest.TestCase):
+             missing=deepcopy(row);missing['id']='00000000-0000-4000-8000-000000000009'
+             missing['pad']=None;missing['launch_service_provider']=None
+             b=normalize_launch(missing,NOW+1)
+-            token=pub.reserve(pub.head,NOW+1,trigger='manual')
++            token=pub.reserve(pub.head,NOW+1,trigger='extra')
+             pub.accept_source(pub.head,token,(a2,b),NOW+1,selection_validated_utc=NOW+1)
+             at=NOW+10801;pub.observe_age(pub.head,at)
+             before={e.record.launch_id.value:e for e in pub.schedule.entries}
+@@ -1099,23 +1117,19 @@ class ScheduleProducerTransportTest(unittest.TestCase):
+             self.assertEqual(after[row['id']].record.source_validated_utc,NOW+1)
+             self.assertEqual(after[missing['id']].record.source_validated_utc,NOW+1)
+ 
+-    def test_fast_policy_persists_twelve_due_reservations(self):
++    def test_healthy_cadence_ignores_old_fast_hint(self):
+         policy=RefreshPolicy(fast_interval_seconds=300)
+         with local_authority(policy) as (pub,store,code):
+             original=normalize_launch(captured_starship(),NOW)
+             token=pub.reserve(pub.head,NOW,trigger='scheduled')
+             pub.accept_source(pub.head,token,(original,),NOW,selection_validated_utc=NOW)
+-            before=pub.head;self.assertIsNone(pub.reserve(pub.head,NOW+299,trigger='scheduled'))
+-            self.assertEqual(pub.head,before)
+-            for i in range(1,12):
+-                token=pub.reserve(pub.head,NOW+300*i,trigger='scheduled')
+-                self.assertIsNotNone(token);pub.finish_request(pub.head,token,NOW+300*i,'success')
+-            pub.observe_age(pub.head,NOW+3300)
++            for offset in (299,300,3599):
++                before=pub.head;self.assertIsNone(pub.reserve(pub.head,NOW+offset,trigger='scheduled'));self.assertEqual(pub.head,before)
++            token=pub.reserve(pub.head,NOW+3600,trigger='scheduled');self.assertIsNotNone(token)
++            pub.finish_request(pub.head,token,NOW+3600,'success')
+             reopened=Publisher(store,code);self.assertEqual(reopened.policy,policy)
+-            self.assertEqual(len(reopened.ledger['requests']),12)
+-            self.assertTrue(reopened.schedule.entries[0].stale)
++            self.assertEqual(len(reopened.ledger['requests']),1)
+             self.assertEqual(reopened.schedule.entries[0].record.source_validated_utc,NOW)
+-            with self.assertRaises(StateError):Publisher(store,code,RefreshPolicy())
+ 
+     def test_missing_art_does_not_exclude_upcoming_identity(self):
+         row=captured_starship();row['rocket']['configuration']['id']=999999;row['pad']['id']=999999
+diff --git a/tests/test_schedule_producer_whole.py b/tests/test_schedule_producer_whole.py
+index b5292921..863b7131 100644
+--- a/tests/test_schedule_producer_whole.py
++++ b/tests/test_schedule_producer_whole.py
+@@ -198,6 +198,7 @@ class ScheduleProducerWholeTest(unittest.TestCase):
+ 
+     def test_normalized_identity_and_immutable_state_positive(self):
+         from dataclasses import FrozenInstanceError
++        self.assertEqual(set(IdKind.__members__), {'LAUNCH','CONFIGURATION','ORGANIZATION','SITE','COUNTRY'})
+         a=normalize_launch(captured_starship(),NOW)
+         a=replace(a,configuration_id=StableId(IdKind.CONFIGURATION,'ll2','121'),
+                   operator_id=StableId(IdKind.ORGANIZATION,'ll2','121'))
+diff --git a/tools/image_pipeline_research.py b/tools/image_pipeline_research.py
+deleted file mode 100644
+index c18ad23d..00000000
+--- a/tools/image_pipeline_research.py
++++ /dev/null
+@@ -1,441 +0,0 @@
+-#!/usr/bin/env python3
+-"""Inspect current SpaceFox image sources and compare bounded SFR1 token choices.
+-
+-This is a host study: it does not install a codec on the watch. Inputs are
+-source-derived PNG resources and the retained publisher pixel references.
+-"""
+-import argparse
+-import base64
+-import csv
+-import gzip
+-import hashlib
+-import json
+-import os
+-import struct
+-import tempfile
+-import sys
+-from pathlib import Path
+-import time
+-import zlib
+-
+-ROOT = Path(__file__).resolve().parents[1]
+-sys.path.insert(0, str(ROOT))
+-from tools.spacefox import native_profile as native
+-
+-RES = 'watchface/resources/drawables/'
+-# Partition by actual asset identity, frozen before selecting thresholds.
+-CORPUS = [
+-    ('current-map', 'map', 'train', 'tests/fixtures/sfr1m-current/map.rgba.gz', 390, 390, 3),
+-    ('current-rocket', 'rocket', 'train', 'tests/fixtures/sfr1m-current/rocket.rgba.gz', 54, 124, 4),
+-    ('current-flag', 'flag', 'train', 'tests/fixtures/sfr1m-current/siteCountry.rgba.gz', 20, 12, 4),
+-] + [(f'map-{i}', 'map', 'eval' if i in (8, 15) else 'train', RES+f'MapView{i}.png', 195, 195, 3) for i in (0, 1, 4, 8, 12, 15)] \
+-  + [(f'low-{i}', 'low', 'eval' if i == 8 else 'train', RES+f'AodMap{i}.png', 390, 390, 3) for i in (0, 1, 4, 8)] \
+-  + [(name, 'flag' if name.startswith('flag-') else 'rocket', 'eval' if name in ('electron','ariane-64','flag-nz') else 'train', RES+'art_'+name+'.png', 20 if name.startswith('flag-') else 54, 12 if name.startswith('flag-') else 124, 4) for name in ('falcon-9','falcon-heavy','ariane-62','ariane-64','electron','generic','flag-us','flag-fr','flag-nz','flag-europe')]
+-
+-
+-def digest(b):
+-    return hashlib.sha256(b).hexdigest()
+-
+-
+-def read_png(path):
+-    """Accept only a complete bounded RGB/RGBA PNG without hidden transparency."""
+-    if path.stat().st_size > 2 * 1024 * 1024:
+-        raise ValueError('PNG file bound')
+-    raw = path.read_bytes()
+-    if len(raw) > 2 * 1024 * 1024 or not raw.startswith(b'\x89PNG\r\n\x1a\n'):
+-        raise ValueError('PNG signature or bound')
+-    at = 8; seen_header = False; seen_idat = False; ended_idat = False; seen_palette = False
+-    compressed = bytearray(); dimensions = None
+-    while at < len(raw):
+-        if len(raw)-at < 12: raise ValueError('truncated PNG chunk')
+-        size = struct.unpack_from('>I', raw, at)[0]
+-        end = at + 12 + size
+-        if end > len(raw): raise ValueError('truncated PNG chunk')
+-        kind = raw[at+4:at+8]; body = raw[at+8:at+8+size]
+-        if zlib.crc32(kind+body) & 0xffffffff != struct.unpack_from('>I', raw, at+8+size)[0]:
+-            raise ValueError('PNG CRC')
+-        if not seen_header:
+-            if kind != b'IHDR' or size != 13: raise ValueError('PNG header')
+-            w,h,depth,color,comp,filt,interlace = struct.unpack('>IIBBBBB',body)
+-            if not (1 <= w <= 390 and 1 <= h <= 390 and depth == 8 and color in (2,6) and (comp,filt,interlace)==(0,0,0)):
+-                raise ValueError('RGB/RGBA8 PNG required')
+-            dimensions=(w,h,3 if color==2 else 4);seen_header=True
+-        elif kind == b'IHDR': raise ValueError('duplicate PNG header')
+-        elif kind == b'PLTE':
+-            if seen_palette or seen_idat or not 3 <= size <= 768 or size % 3:
+-                raise ValueError('PNG palette')
+-            seen_palette=True
+-        elif kind == b'tRNS': raise ValueError('PNG transparency chunk unsupported')
+-        elif kind == b'IDAT':
+-            if ended_idat: raise ValueError('nonconsecutive PNG data')
+-            seen_idat=True;compressed.extend(body)
+-            if len(compressed)>1048576: raise ValueError('PNG data bound')
+-        elif kind == b'IEND':
+-            if size or not seen_idat or end != len(raw): raise ValueError('PNG end')
+-            w,h,ch=dimensions; decoder=zlib.decompressobj()
+-            scan=decoder.decompress(compressed,(w*ch+1)*h+1)
+-            if not decoder.eof or decoder.unused_data or decoder.unconsumed_tail or len(scan)!=(w*ch+1)*h:
+-                raise ValueError('PNG inflate bound')
+-            return raw, native.png_pixels(raw)
+-        else:
+-            if seen_idat: ended_idat=True
+-            if kind[0] & 32 == 0: raise ValueError('unsupported critical PNG chunk')
+-        at=end
+-    raise ValueError('missing PNG end')
+-
+-
+-def atomic_write(path, data):
+-    """Publish each immutable object and replace the manifest only once complete."""
+-    fd, name = tempfile.mkstemp(prefix='.image-pipeline-', dir=path.parent)
+-    try:
+-        with os.fdopen(fd, 'wb') as f: f.write(data)
+-        os.replace(name, path)
+-    finally:
+-        if os.path.exists(name): os.unlink(name)
+-
+-
+-def inventory():
+-    """Include all retained map tiles, LOW outlines and role artwork resources."""
+-    rows=list(CORPUS)
+-    known={row[3] for row in rows}
+-    for path in sorted((ROOT / RES).glob('*.png')):
+-        name=path.name
+-        if name.startswith('MapView') or name.startswith('MapExtra'):
+-            kind='map'
+-        elif name.startswith('AodMap'):
+-            kind='low'
+-        elif name.startswith('art_flag-'):
+-            kind='flag'
+-        elif name.startswith('art_') and not name.startswith('art_company-'):
+-            kind='rocket'
+-        else:
+-            continue
+-        rel=path.relative_to(ROOT).as_posix()
+-        if rel in known: continue
+-        w,h,rgba=read_png(path)[1]
+-        channels=3 if kind in ('map','low') else 4
+-        rows.append((path.stem,kind,'eval',rel,w,h,channels))
+-    return rows
+-
+-
+-def load(row):
+-    name, kind, split, path, w, h, ch = row
+-    raw = (ROOT / path).read_bytes() if path.endswith('.gz') else None
+-    if path.endswith('.gz'):
+-        pixels = gzip.decompress(raw)
+-    else:
+-        raw, (pw, ph, rgba) = read_png(ROOT / path)
+-        if (pw, ph) != (w, h):
+-            raise ValueError('unexpected dimensions: '+path)
+-        pixels = rgba if ch == 4 else bytes(v for i, v in enumerate(rgba) if i % 4 != 3)
+-    if len(pixels) != w*h*ch:
+-        raise ValueError('unexpected pixel length: '+path)
+-    return dict(name=name, kind=kind, split=split, path=path, width=w, height=h,
+-                channels=ch, input_sha256=digest(raw), pixel_sha256=digest(pixels), pixels=pixels)
+-
+-
+-def row_tokens(row, previous, channels, numerator, denominator):
+-    width = len(row)//channels
+-    x = 0
+-    out = bytearray()
+-    while x < width:
+-        copy = 0
+-        while copy < 128 and x+copy < width and row[(x+copy)*channels:(x+copy+1)*channels] == previous[(x+copy)*channels:(x+copy+1)*channels]:
+-            copy += 1
+-        color = row[x*channels:(x+1)*channels]
+-        run = 1
+-        while run < 128 and x+run < width and row[(x+run)*channels:(x+run+1)*channels] == color:
+-            run += 1
+-        if copy and copy*numerator >= run*denominator:
+-            out.append(127+copy); x += copy
+-        else:
+-            out.append(run-1); out.extend(color); x += run
+-    return out
+-
+-
+-def pack(pixels, width, height, channels, numerator=4, denominator=1):
+-    if not (1 <= width <= 390 and 1 <= height <= 390 and channels in (3, 4) and len(pixels) == width*height*channels and numerator > 0 and denominator > 0):
+-        raise ValueError('invalid input')
+-    chunks=[]; start=0; y=0; data=bytearray(); previous=bytes(width*channels)
+-    while y < height:
+-        current=pixels[y*width*channels:(y+1)*width*channels]
+-        encoded=row_tokens(current, previous, channels, numerator, denominator)
+-        header=f'SFR1:{start}:{y-start+1}:'
+-        if data and len(header)+4*((len(data)+len(encoded)+2)//3)>4096:
+-            chunks.append(f'SFR1:{start}:{y-start}:'.encode()+base64.b64encode(data))
+-            start=y; data=bytearray(); previous=bytes(width*channels); continue
+-        data.extend(encoded)
+-        if len(header)+4*((len(data)+2)//3)>4096:
+-            raise ValueError('single row exceeds shard')
+-        previous=current; y+=1
+-    if data:
+-        chunks.append(f'SFR1:{start}:{y-start}:'.encode()+base64.b64encode(data))
+-    if len(chunks)>32 or sum(map(len,chunks))>98304:
+-        raise ValueError('raster capacity')
+-    return chunks
+-
+-
+-
+-def optimal_row(row, previous, channels):
+-    """Minimum token bytes then token count for the exact RUN/COPY grammar."""
+-    a=list(zip(*(iter(row),)*channels)); b=list(zip(*(iter(previous),)*channels))
+-    width=len(a); runs=[0]*(width+1); copies=[0]*(width+1)
+-    for x in range(width-1,-1,-1):
+-        runs[x]=min(128,1+(runs[x+1] if x+1<width and a[x]==a[x+1] else 0))
+-        copies[x]=min(128,1+copies[x+1]) if a[x]==b[x] else 0
+-    cost=[(0,0)]*(width+1); choice=[None]*width
+-    for x in range(width-1,-1,-1):
+-        best=None
+-        for tag, maximum, byte_cost in ((0,runs[x],1+channels),(1,copies[x],1)):
+-            for length in range(1,maximum+1):
+-                suffix=cost[x+length]; key=(byte_cost+suffix[0],1+suffix[1],tag,-length)
+-                if best is None or key<best:best=key
+-        cost[x]=best[:2];choice[x]=(best[2],-best[3])
+-    out=bytearray();x=0
+-    while x<width:
+-        tag,length=choice[x]
+-        if tag:out.append(127+length)
+-        else:out.append(length-1);out.extend(a[x])
+-        x+=length
+-    return out
+-
+-
+-def pack_optimal(pixels,width,height,channels):
+-    chunks=[];start=0;y=0;data=bytearray();previous=bytes(width*channels)
+-    while y<height:
+-        current=pixels[y*width*channels:(y+1)*width*channels]
+-        encoded=optimal_row(current,previous,channels)
+-        header=f'SFR1:{start}:{y-start+1}:'
+-        if data and len(header)+4*((len(data)+len(encoded)+2)//3)>4096:
+-            chunks.append(f'SFR1:{start}:{y-start}:'.encode()+base64.b64encode(data))
+-            start=y;data=bytearray();previous=bytes(width*channels);continue
+-        data.extend(encoded)
+-        if len(header)+4*((len(data)+2)//3)>4096:raise ValueError('single row exceeds shard')
+-        previous=current;y+=1
+-    if data:chunks.append(f'SFR1:{start}:{y-start}:'.encode()+base64.b64encode(data))
+-    if len(chunks)>32 or sum(map(len,chunks))>98304:raise ValueError('raster capacity')
+-    return chunks
+-
+-
+-def optimal_study(out):
+-    out.mkdir(parents=True,exist_ok=True);rows=[]
+-    for item in CORPUS:
+-        a=load(item);p=a['pixels'];w=a['width'];h=a['height'];c=a['channels']
+-        row={k:a[k] for k in ('name','kind','split','pixel_sha256')}
+-        for name,fn in [('baseline',lambda:pack(p,w,h,c)),('optimal',lambda:pack_optimal(p,w,h,c))]:
+-            start=time.perf_counter_ns()
+-            try:
+-                chunks=fn(); elapsed=(time.perf_counter_ns()-start)/1e6
+-                if independent_decode(chunks,w,h,c)!=p:raise ValueError('pixel mismatch')
+-                row[name]={'wire_bytes':sum(map(len,chunks)),'shards':len(chunks),'encode_ms':round(elapsed,3)}
+-            except ValueError as e:
+-                if str(e) not in ('single row exceeds shard','raster capacity'):raise
+-                row[name]={'filtered':str(e)}
+-        rows.append(row)
+-    (out/'optimal.json').write_text(json.dumps(rows,indent=2)+'\n')
+-
+-def independent_decode(chunks, width, height, channels):
+-    """Independent cursor decoder; reject malformed/noncanonical/trailing input."""
+-    output=bytearray(); expected_y=0
+-    for chunk in chunks:
+-        parts=chunk.split(b':')
+-        if len(parts)!=4 or parts[0]!=b'SFR1' or not parts[1].isdigit() or not parts[2].isdigit():
+-            raise ValueError('header')
+-        start=int(parts[1]); nrows=int(parts[2])
+-        if str(start).encode()!=parts[1] or str(nrows).encode()!=parts[2] or start!=expected_y or nrows<1 or start+nrows>height or len(chunk)>4096:
+-            raise ValueError('bounds')
+-        data=base64.b64decode(parts[3], validate=True)
+-        if base64.b64encode(data)!=parts[3]: raise ValueError('base64')
+-        pos=0; prev=bytes(width*channels)
+-        for _ in range(nrows):
+-            row=bytearray()
+-            while len(row)<width*channels:
+-                if pos>=len(data): raise ValueError('truncated token')
+-                token=data[pos]; pos+=1; count=(token&127)+1; at=len(row)
+-                if at+count*channels>width*channels: raise ValueError('row overflow')
+-                if token&128:
+-                    row.extend(prev[at:at+count*channels])
+-                else:
+-                    color=data[pos:pos+channels]
+-                    if len(color)!=channels: raise ValueError('truncated color')
+-                    pos+=channels; row.extend(color*count)
+-            output.extend(row); prev=bytes(row)
+-        if pos!=len(data): raise ValueError('trailing data')
+-        expected_y+=nrows
+-    if expected_y!=height: raise ValueError('incomplete')
+-    return bytes(output)
+-
+-
+-def evaluate(asset, n, d):
+-    start=time.perf_counter_ns()
+-    chunks=pack(asset['pixels'],asset['width'],asset['height'],asset['channels'],n,d)
+-    encode_ns=time.perf_counter_ns()-start
+-    start=time.perf_counter_ns()
+-    reconstructed=independent_decode(chunks,asset['width'],asset['height'],asset['channels'])
+-    decode_ns=time.perf_counter_ns()-start
+-    if reconstructed!=asset['pixels']: raise ValueError('pixel mismatch '+asset['name'])
+-    return dict(wire_bytes=sum(map(len,chunks)), shards=len(chunks), token_bytes=sum(len(base64.b64decode(c.split(b':')[3])) for c in chunks), encode_ms=round(encode_ns/1e6,3), decode_ms=round(decode_ns/1e6,3))
+-
+-
+-
+-def qoi_encode(pixels, channels):
+-    """QOI data stream, with RGBA semantics and standard 64-entry index."""
+-    previous=(0,0,0,255); index=[(0,0,0,0)]*64; out=bytearray(); run=0
+-    tuples=list(zip(*(iter(pixels),)*channels))
+-    for i,p in enumerate(tuples):
+-        px=p if channels==4 else p+(255,)
+-        if px==previous:
+-            run+=1
+-            if run==62 or i==len(tuples)-1: out.append(0xc0|(run-1));run=0
+-            continue
+-        if run: out.append(0xc0|(run-1));run=0
+-        slot=(px[0]*3+px[1]*5+px[2]*7+px[3]*11)%64
+-        if index[slot]==px: out.append(slot)
+-        else:
+-            index[slot]=px
+-            if px[3]==previous[3]:
+-                dr=px[0]-previous[0];dg=px[1]-previous[1];db=px[2]-previous[2]
+-                if -2<=dr<=1 and -2<=dg<=1 and -2<=db<=1: out.append(0x40|((dr+2)<<4)|((dg+2)<<2)|(db+2))
+-                elif -32<=dg<=31 and -8<=dr-dg<=7 and -8<=db-dg<=7:
+-                    out.extend((0x80|(dg+32),((dr-dg+8)<<4)|(db-dg+8)))
+-                else: out.append(0xfe);out.extend(px[:3])
+-            else: out.append(0xff);out.extend(px)
+-        previous=px
+-    return bytes(out)
+-
+-
+-def qoi_decode(data, count, channels):
+-    index=[(0,0,0,0)]*64; px=(0,0,0,255); out=bytearray(); at=0; produced=0
+-    while produced<count:
+-        if at>=len(data): raise ValueError('truncated QOI')
+-        op=data[at];at+=1;run=1
+-        if op==0xfe:
+-            if at+3>len(data):raise ValueError('truncated QOI RGB')
+-            px=tuple(data[at:at+3])+(px[3],);at+=3
+-        elif op==0xff:
+-            if at+4>len(data):raise ValueError('truncated QOI RGBA')
+-            px=tuple(data[at:at+4]);at+=4
+-        elif op&0xc0==0: px=index[op]
+-        elif op&0xc0==0x40: px=((px[0]+((op>>4)&3)-2)&255,(px[1]+((op>>2)&3)-2)&255,(px[2]+(op&3)-2)&255,px[3])
+-        elif op&0xc0==0x80:
+-            if at>=len(data):raise ValueError('truncated QOI luma')
+-            delta=(op&63)-32; v=data[at];at+=1
+-            px=((px[0]+delta+(v>>4)-8)&255,(px[1]+delta)&255,(px[2]+delta+(v&15)-8)&255,px[3])
+-        else: run=(op&63)+1
+-        if produced+run>count: raise ValueError('QOI overflow')
+-        index[(px[0]*3+px[1]*5+px[2]*7+px[3]*11)%64]=px
+-        for _ in range(run):out.extend(px[:channels])
+-        produced+=run
+-    if at!=len(data): raise ValueError('QOI trailing data')
+-    return bytes(out)
+-
+-
+-def family_sizes(a):
+-    raw=a['pixels'];w=a['width'];h=a['height'];ch=a['channels']
+-    # Exact lossless row-up filter with an independent reversal.
+-    stride=w*ch; filt=bytearray();prev=bytes(stride)
+-    for y in range(h):
+-        row=raw[y*stride:(y+1)*stride]
+-        filt.extend((v-prev[i])&255 for i,v in enumerate(row));prev=row
+-    c=zlib.compress(raw,9); cf=zlib.compress(filt,9)
+-    if zlib.decompress(c)!=raw: raise ValueError('zlib mismatch')
+-    decoded=zlib.decompress(cf);back=bytearray();prev=bytes(stride)
+-    for y in range(h):
+-        r=decoded[y*stride:(y+1)*stride];row=bytes((v+prev[i])&255 for i,v in enumerate(r));back.extend(row);prev=row
+-    if bytes(back)!=raw:raise ValueError('row predictor mismatch')
+-    q=qoi_encode(raw,ch)
+-    if qoi_decode(q,w*h,ch)!=raw:raise ValueError('QOI mismatch')
+-    pixels=list(zip(*(iter(raw),)*ch)); palette=sorted(set(pixels)); packed=None
+-    if len(palette)<=256:
+-        bits=max(1,(len(palette)-1).bit_length()); lookup={p:i for i,p in enumerate(palette)}; acc=0; nbits=0; encoded=bytearray()
+-        for p in pixels:
+-            acc=(acc<<bits)|lookup[p];nbits+=bits
+-            while nbits>=8:
+-                nbits-=8;encoded.append((acc>>nbits)&255);acc &= (1<<nbits)-1
+-        if nbits:encoded.append(acc<<(8-nbits))
+-        # Independent bit cursor and exact palette byte reconstruction.
+-        recovered=bytearray()
+-        for i in range(len(pixels)):
+-            bit=i*bits;v=0
+-            for j in range(bits):v=(v<<1)|((encoded[(bit+j)//8]>>(7-(bit+j)%8))&1)
+-            recovered.extend(palette[v])
+-        if bytes(recovered)!=raw:raise ValueError('palette mismatch')
+-        packed=len(encoded)+len(palette)*ch
+-    return dict(name=a['name'],kind=a['kind'],split=a['split'],raw_bytes=len(raw),unique_colors=len(palette),packed_palette_bytes=packed,zlib_bytes=len(c),row_up_deflate_bytes=len(cf),qoi_file_estimate_bytes=len(q)+22,qoi_file_base64_estimate_bytes=len(base64.b64encode(bytes(len(q)+22))),native_decoder='not implemented',source_png_bytes=(ROOT/a['path']).stat().st_size if a['path'].endswith('.png') else None)
+-
+-def study(out):
+-    out.mkdir(parents=True,exist_ok=True)
+-    assets=[load(x) for x in inventory()]
+-    search_names={x[0] for x in CORPUS}
+-    search_assets=[a for a in assets if a['name'] in search_names]
+-    rows=[]; cache={}
+-    def run(gen, configs, subset):
+-        for n,d in configs:
+-            for a in subset:
+-                key=(a['pixel_sha256'],a['width'],a['height'],a['channels'],n,d)
+-                if key not in cache:
+-                    try: cache[key]=evaluate(a,n,d)
+-                    except ValueError as e:
+-                        if str(e) not in ('single row exceeds shard','raster capacity'): raise
+-                        cache[key]={'filtered':str(e)}
+-                rows.append(dict(generation=gen,config=f'{n}/{d}',name=a['name'],kind=a['kind'],split=a['split'],**cache[key]))
+-    train=[a for a in search_assets if a['split']=='train']
+-    # Baseline is executed and recorded before any ranking.
+-    run('baseline',[(4,1)],assets)
+-    # Diverse local decision weights, followed by perturbations around best weights.
+-    first=[(i,2) for i in (1,2,3,4,5,6,8,10,12,16,20,24,32,40,48,64)]
+-    run('generation-1',first,train)
+-    def rank(gen):
+-        totals={}
+-        for r in rows:
+-            if r['generation']==gen:
+-                k=r['config']; t=totals.setdefault(k,[0,0]);t[0]+=r.get('wire_bytes',0);t[1]+=int('filtered' in r)
+-        return sorted(totals,key=lambda k:(totals[k][1],totals[k][0],k))
+-    best=rank('generation-1')[:4]
+-    second=[]
+-    for v in best:
+-        n,d=map(int,v.split('/'))
+-        for delta in (-1,1):
+-            pair=(max(1,4*n+delta),4*d)
+-            if pair not in second: second.append(pair)
+-    run('generation-2',second,train)
+-    finalists=[]
+-    for v in rank('generation-1')[:2]+rank('generation-2')[:2]:
+-        pair=tuple(map(int,v.split('/')))
+-        if pair not in finalists: finalists.append(pair)
+-    run('generation-3-finalists',finalists,assets)
+-    alternatives=[family_sizes(a) for a in assets]
+-    manifest=[{k:v for k,v in a.items() if k!='pixels'} for a in assets]
+-    result=dict(schema=1,description='Host-only SFR1 greedy parameter search; source identities and independent exact decode',assets=manifest,rows=rows,host_families=alternatives,configuration_counts={'generation-1':len(first),'generation-2':len(second),'generation-3-finalists':len(finalists)},filtered=sum('filtered' in r for r in rows))
+-    (out/'study.json').write_text(json.dumps(result,indent=2)+'\n')
+-    fields=['generation','config','name','kind','split','wire_bytes','token_bytes','shards','encode_ms','decode_ms','filtered']
+-    with (out/'study.csv').open('w',newline='') as f:
+-        writer=csv.DictWriter(f,fieldnames=fields);writer.writeheader();writer.writerows(rows)
+-    (out/'report.md').write_text('# Image representation study\n\n'+f"{len(assets)} retained assets; training {len(train)}, held out {len(assets)-len(train)} (including all additional inventory). Configurations: {result['configuration_counts']}; filtered asset/config pairs: {result['filtered']}. Exact decode succeeded for each unfiltered pair.\n\n"+'Training ranking, generation 1: '+', '.join(rank('generation-1'))+'\n\nTraining ranking, generation 2: '+', '.join(rank('generation-2'))+'\n\nQOI is a tested pixel-stream implementation with an independently decoded stream; the reported file size adds 22 standard header/end bytes as an estimate, without emitting a full conforming file. Source PNG size is a separate file measurement, not a watch allocation or transfer cost. Host timings and alternative codecs are not watch performance or supported native formats. CSV records each measured asset/configuration.\n')
+-
+-
+-def main():
+-    parser=argparse.ArgumentParser(description=__doc__)
+-    parser.add_argument('--output',type=Path,required=True)
+-    parser.add_argument('--optimal',action='store_true',help='Run the bounded minimum-token-cost candidate on the frozen search corpus')
+-    parser.add_argument('--pack-png',type=Path,help='Pack a source-derived RGB/RGBA8 PNG as current SFR1 shards')
+-    parser.add_argument('--channels',type=int,choices=(3,4),default=4,help='Output RGB or RGBA pixel channels')
+-    args=parser.parse_args()
+-    if args.pack_png:
+-        if args.optimal: parser.error('--optimal and --pack-png are mutually exclusive')
+-        raw,(w,h,rgba)=read_png(args.pack_png)
+-        if args.channels==3 and any(rgba[i]!=255 for i in range(3,len(rgba),4)):
+-            raise ValueError('RGB packing would discard alpha')
+-        pixels=rgba if args.channels==4 else bytes(v for i,v in enumerate(rgba) if i%4!=3)
+-        chunks=native.encode_raster(pixels,w,h,args.channels)
+-        if independent_decode(chunks,w,h,args.channels)!=pixels:raise ValueError('independent decode mismatch')
+-        args.output.mkdir(parents=True,exist_ok=True)
+-        refs=[]
+-        for chunk in chunks:
+-            sha=digest(chunk);atomic_write(args.output/(sha+'.sfr'),chunk)
+-            refs.append(dict(sha256=sha,bytes=len(chunk)))
+-        atomic_write(args.output/'manifest.json',(json.dumps(dict(source_sha256=digest(raw),pixel_sha256=digest(pixels),width=w,height=h,channels=args.channels,shards=refs),indent=2)+'\n').encode())
+-    else:
+-        (optimal_study if args.optimal else study)(args.output)
+-
+-if __name__=='__main__': main()
+diff --git a/tools/spacefox/schedule.py b/tools/spacefox/schedule.py
+index e20352ea..d918906f 100644
+--- a/tools/spacefox/schedule.py
++++ b/tools/spacefox/schedule.py
+@@ -23,7 +23,6 @@ class IdKind(str, Enum):
+     LAUNCH = 'launch'
+     CONFIGURATION = 'configuration'
+     ORGANIZATION = 'organization'
+-    OPERATOR = 'organization'  # Source-symbol alias; operator is a reference role.
+     SITE = 'site'
+     COUNTRY = 'country'
+ 
+@@ -168,10 +167,10 @@ class Timing:
+ 
+     @property
+     def countdown_utc(self):
+-        """Only exact seconds or LL2's explicitly identified nominal minute.
++        """Target for eligibility: exact seconds or an explicitly nominal minute.
+ 
+-        Captured LL2 records provide no trustworthy ascent-end timestamp. The
+-        selection fallback is900seconds; window_end is never an ascent end.
++        The watch may display a broader announced-NET reference without changing
++        this eligibility or asserting an actual liftoff.
+         """
+         if self.exact_utc is not None:
+             return self.exact_utc
+@@ -382,7 +381,7 @@ class RefreshPolicy:
+             if field == 'fast_interval_seconds' and value is None:
+                 continue
+             if type(value) is not int or value < 300:
+-                raise ScheduleError('poll intervals must be integer seconds >=300 (<=12 steady calls/hour)')
++                raise ScheduleError('freshness intervals must be integer seconds >=300')
+         if self.near_interval_seconds > self.normal_interval_seconds:
+             raise ScheduleError('near interval cannot exceed normal interval')
+         if self.fast_interval_seconds is not None and self.fast_interval_seconds > self.near_interval_seconds:
+@@ -392,6 +391,7 @@ class RefreshPolicy:
+ 
+ 
+ DEFAULT_POLICY = RefreshPolicy()
++HEALTHY_REQUEST_INTERVAL_SECONDS = 3600
+ 
+ 
+ def _arguments(record, now_utc, policy):
+@@ -406,7 +406,7 @@ def cadence_seconds(record: LaunchRecord | None, now_utc: int,
+                     policy: RefreshPolicy = DEFAULT_POLICY) -> int:
+     """Advertised healthy refresh interval; retries use request_due."""
+     _arguments(record, now_utc, policy)
+-    return 3600
++    return HEALTHY_REQUEST_INTERVAL_SECONDS
+ 
+ 
+ def request_due(has_future: bool, last_attempt_utc: int | None,
+@@ -421,7 +421,7 @@ def request_due(has_future: bool, last_attempt_utc: int | None,
+     if now_utc < last_attempt_utc:
+         return True
+     if last_succeeded and has_future:
+-        return now_utc - last_attempt_utc >= 3600
++        return now_utc - last_attempt_utc >= HEALTHY_REQUEST_INTERVAL_SECONDS
+     return connected or now_utc - last_attempt_utc >= 300
+ 
+ 
+diff --git a/tools/spacefox/wire.py b/tools/spacefox/wire.py
+index ae55e314..bbd98ece 100644
+--- a/tools/spacefox/wire.py
++++ b/tools/spacefox/wire.py
+@@ -205,8 +205,10 @@ def validate_current_feed(raw, *, now=None):
+         normalized = _schedule({'entries': [dict(record=record, **flags)],
+                    'evaluated_at_utc': evaluation}).entries[0].record
+         selection_epoch = doc['publisher']['selectionValidatedUtc']
+-        if selection_epoch is None or selection_epoch < normalized.source_validated_utc:
+-            raise ValueError('selection validation precedes selected source')
++        # The traversal epoch is the oldest observation across its pages;
++        # an individual selected record can have an independently newer age.
++        if selection_epoch is None:
++            raise ValueError('selected launch lacks traversal validation')
+         from .schedule import LaunchStatus
+         if normalized.status in (LaunchStatus.COMPLETED, LaunchStatus.CANCELLED):
+             raise ValueError('selected launch is no longer upcoming')
+@@ -258,7 +260,6 @@ def validate_current_feed(raw, *, now=None):
+             source_epoch = item['source_validated_utc']
+             if doc['publisher']['selectionValidatedUtc'] is None or type(source_epoch) is not int:
+                 raise ValueError('upcoming launch lacks publisher or record epoch')
+-            single['publisher'] = dict(doc['publisher'], selectionValidatedUtc=max(doc['publisher']['selectionValidatedUtc'], source_epoch))
+             single['timingState'] = ('uncertain' if item['timing']['exact_utc'] is None else 'countdown')
+             single['selection'] = dict(selection, includedRecords=1)
+             validate_current_feed(encode_feed(single), now=now)
+diff --git a/tools/update_feed.py b/tools/update_feed.py
+index 0836e3a8..a127955f 100644
+--- a/tools/update_feed.py
++++ b/tools/update_feed.py
+@@ -110,7 +110,7 @@ def update(pub, client, now, catalog, *, trigger='scheduled', max_pages=2, detai
+         if omitted:
+             # A consumed successful primary reservation may authorize source
+             # acceptance exactly once. Optional failures retain their own outcome
+-            # and backoff without discarding the complete primary observation.
++            # without discarding the complete primary observation.
+             pub.finish_request(pub.head, token, sample(), 'success', retain_for_acceptance=True)
+             token = None
+         for prior in omitted:
+diff --git a/watchface/resources/drawables/art_company-arianespace.png b/watchface/resources/drawables/art_company-arianespace.png
+deleted file mode 100644
+index 9406b03378260d1d4befe1430161ea7d56af045e..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 987
+zcmV<110?*3P)<h;3K|Lk000e1NJLTq000yK001Tk1^@s6#5=pI00006VoOIv0RI60
+z0RN!9r;`8x1CU8XK~zYIt(I$S6jd08pR?|zQg&NvXacrfLsDqdC3qw8TCm-&+Y6u(
+z#TYcA#t0aHG%3VbYT6L7Y61x@KS;<X*aT8EpioxYQhTAK38Jae1TQog4GAUg*6!@W
+zly;6kWGma5>9$+npYxu1=6v6K&YUB-qvjKR>tage1<;(#NtQ^ubK$XV8;aWi1i;=S
+z!H=$7`E6@=XGiA5`0Y92tack~y=9}z^79W=Z}NX2T3cK1xvHjLYj}T0wv?LTOHVwu
+z8i4Zy7YuzNEY$7!WaI%ybg4D$T9zI9`I0n)0W|L31;EqZ^@hHb8llh)nX$r?ZLwNz
+z2@ui@w$f9GJ1+-!UJjn30@IIzkXFkrVVPkB02O{OilU$>3YFz$$%c~@SoN%z_Om^-
+zclA;=U*JklA#QgrZNX03f*rVXla&qDnas-aGNREaz5N3qB@rb;WqBEwhAyWz!%AN%
+zXF9u4RTXu7oQ|%(q-C1|?=Cm4*_3Sxtnhn@#cneA(-0XhCmAj$gFg-ti`|?tZPOlB
+z`O8?a;9kD#Z#VQBKifZhpr@z+cU}(72Lt^1$F&46CwD2^-`;|!sK78BLts^fk7zW?
+zzWoPLRW-qL*zLUb%0|<)4SRTZy3>^`Z5_}k-RYVsZ5^;+c|M`==)a5EM7`$*2!%%}
+zT(Ml|>3aC(iBkmIy9~>XOI1~#DqT-37E2D)Gz~>j0LaX6k>PR~LN%$)4j7l;S3=X?
+zJ=kqF)0tN9{E#n>pG*$)`$}lu_c7f){RBQgY6`sg!(j3mKKjUmQ?RY??O^=&+zu^W
+z%Bvq<g*G{v63h??plLECm?7}`^&6z6Ie7imms0}jdU*U~kcU=zsIRR-2tnZRk@*3o
+zl+^A16k)MYUt2?cZB2szS18O|+p4+vy*^<>U>v%up^^T93uI+xCU`Gx+(65rCN{tM
+zt|8QPVM{3qo;j;~{&ibBErDiQ4mI)orZ>3!%dZK3(sOybB1(kKTef4f+gV%uxXzz5
+zFb<uZm_!Ki{{a2I5*!XYV`Iwvfm8du@4W8E0AQWa(j>^Kxj$3<Bn@>t?_5Rox_`+M
+zzU?_@ur;Na(9)!J(b(|F-}fyRLRgSeWBBUtocgB2us;CdP?*5sqX{q}EM#RZ7K_G)
+zN9KJcwmIyqDfRw$C5{^hzUr-vMwAy*xwJbMrnkQH+?vw>{{RdSgIW<`tFiz9002ov
+JPDHLkV1m7-*-8Ka
+
+diff --git a/watchface/resources/drawables/art_company-rocket-lab.png b/watchface/resources/drawables/art_company-rocket-lab.png
+deleted file mode 100644
+index c434dd004477e315edfca06e43190617c64276a1..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 746
+zcmV<G0u}v<P)<h;3K|Lk000e1NJLTq000yK001Tk1^@s6#5=pI00006VoOIv0RI60
+z0RN!9r;`8x0-s4lK~zYI?bcmLQ(+hf@c+AWrUQ32KX741ACh?!1QCJZS53n-Q*o(~
+z7l9NxEW*G{OGrce0J}*Gx)37BmVpYX%#X>I)J;LqMPG_VpOd!S=G=~Q-Y#k`IH$Se
+zgl>H9&inBE9-fyM&O`7gI(lt|UXQyJ5ID#Rg*%2*KQtC)J_Y~+05|RrwoXpIuO1&6
+zj$PyzWN~bi64^PqKa*2ZI%~`G8i~ndVy68uUz*R?=_nPjdDBKzl$C%GA_+JhPITSv
+z2EPz&Oo#$aZP)BuqUYALPEE4T@#Yn!Q~&@RJg^_e<Hzvv(`QL=LsAm<?B0dy({)QI
+zr2-s|8LCa)p<`Kvj{t-QyAk+&eq`tmOM?3B4BWnX9d~ZE<Am`n{5&71q^!b66tXT1
+z!05OQr)nFJm7WGeNuek&8w7wM^BDYo9vY2$bwEzdfnga?N<}%@AgAVVud4$KJdbhf
+zQ&FCkDq>g$N6Skk!7@V;wr|^t%BmW?e)}#wFiNRJTT7!P_`~5uWmOHHzj!H`mjvhM
+zeMsH8cj<ebE)gRGJ+M7_2IHA?l29PRy2J1G8C<^7jzjsm$j{S94g$b~o<3Nt6KK8E
+zh=hc=$Uy+8YiI_;Flf10zdB$zqsxAW%Z)AqXJ_4Tx!obr`U@>!7zX<?(?vPav+3^X
+zMgM>~B>4549ckGG@Or(=gW-n9<B>cUja*?UhGpo{O8baGt(Jp^llh+t1x6Zc;2O9F
+z{uhv46jT(TOUodo6e?9TY@_|5D=E;_d=(b!MBsod3M$IRxu)#135kRd1t=9TXdZ($
+zR{PI|^Y6w}(;oo*UO4096G@zF${z7btc;FAmOdxA5(g5Ueb$0Gx97-8mUd1ZV>(%!
+cH2?s=0MHusmXhe-sQ>@~07*qoM6N<$g2QM|2LJ#7
+
+diff --git a/watchface/resources/drawables/art_company-spacex.png b/watchface/resources/drawables/art_company-spacex.png
+deleted file mode 100644
+index bc735ecebadd15c201229fac46160310b4670516..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 1021
+zcmV<Z0|NYsP)<h;3K|Lk000e1NJLTq000yK001Tk1^@s6#5=pI00006VoOIv0RI60
+z0RN!9r;`8x1F}g(K~zYIrIuSv990~~e`na)rC~wAu+aKqnl!$cn5GXkg)Da^AwmP8
+zC9#?`eW91sO4AAp3t{D2BN`+4Qd6Te)>W(6?n<Dg8`?-ph1kTTh_<m!F9y?PyHK+1
+z!j2D?>&!4+{6C)WoZtMvbG|b<f+yAa!{yg!rl-mvnn+9~O(i5+zd2B1_W%fh55M}U
+z<>t*l_xmpNKRXwW#Dp`MWwP@N0-LvN>8jdYSS#FacidmI3HMz!$8CxdU7To^W%j;R
+zL2^p6CP+~f&bYtl_MN*3AyMCYV&VnM<4vZ?q|G+}@4qRlVV{0{f}E^O?mc**-I@Z!
+z!=v23a~DO4;`jffJoDm9Hj_yT2@uM1Sm#IWWM^e?;O*n|_FsBR^FlF6Az@lQTwYpC
+zL7tt;!?D1YN?JXTlw@UgHcW5dK+G^rprR<mnc_&a#+V*Gpl@)9NH|RQsm^slReLx#
+z{s(*Z9iscQPv}0?iTm506}mqVpto-TMNw8S)dm8Lj9zEYzC)bs>Y(+#T9y9AX*W(+
+zyCzf<xB%VyN}g)`jooFmxEz>d6OQ^8qS5FIT^FcVr@#IV*(}pocZ}iTQO^G8U7@QE
+z<!S2kFV7GP&61Xus?yd4G|MuQBs8^{feZIsii_jg=yjE@+QSVS;@P(KWnJLjH!H}_
+z%HZIUYJM5{)fiY*SU^X6qb@KUiE!{pweHna0nhe$xO!~_NoeoJqhOH0qoD2wHDfaw
+z2r@lAt-A=oYPB*mGo#9(s*Tc;B8Ge(Hm2KjVH?wJ4Ea2imK3Qp6>z|JnMgRo2W^cA
+zp&gC3CMWar^IRIdVhr?82B@xYB6G)fc9j*Y7F3k)B*&hCqoJ9H4=0U*0DTvHocH$A
+z;5f?jo6;A@)6;C!zWWa6Jbie3FKTwL8|=EqRzjgL@3%B8T5oUu&uV>ByWTSWpTmOn
+zlU*I`Dl0|^L5@9x%EQMrtr`Mh$$Gt`3V`$8eqE~zWq6mJt~SiF8MAE0>1s2YZVb%N
+zwPUeZuvjeQ=h_W{Yg$fEvr$)F#W_zOLI@fhN4fIzRqoyYdwm@)KUJ+$j|sRsz(#>z
+z6Q~zpy}%m+*9x$ab!jdduYj_s6uz3f=3Vtq2B>qjlDT6$uNCAhQxq{5jaQ`P;H`<2
+z=Te1u@<Y8bHcpMRdCdTOdoNPsZ05$;H~>OOq@<*Z<lwD||NSJEEoQRv@|T{(3qn`V
+rVA12L>GJhF+7qn_?#i86UVwiAaBq}5@EP)u00000NkvXXu0mjfwH5V|
+
+diff --git a/watchface/resources/drawables/art_flag-europe.png b/watchface/resources/drawables/art_flag-europe.png
+deleted file mode 100644
+index cd26bbebaf6f25fe844056f80df8bfd40e2a0819..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 324
+zcmV-K0lWT*P)<h;3K|Lk000e1NJLTq000yK000aK1^@s6Vho-800006VoOIv0RI60
+z0RN!9r;`8x0QpHoK~yM_t&_`YgFqC9zi|{L;#gW#s83Mx2z{<TMW3tN?n3D<i`YU6
+zO+$#6j5=L}W}_np`Y+Ep^Zn<-2!Q1A+3*kgdU+DgoI)WCLd^4Yr;>r!@o@h`+n;@1
+zr|0eChFZ((fuXO_ouv2<*&YG_(x|34g3#9-8*lWTb>wBfCynY03}AZ*NTZr%zPENb
+z3Y5ao_70ofVvyVH7PP&CwCr>g*cm~2vhS%pNjf9u0|8W^NmM<EC#psT+G=J6u8Nqd
+zamiG5iDjyyY+P1FYz11cd~7^IUz6XKWbwIESN6PrD(i(Ofq&4~_1#p-K(l_zHTngC
+WW>L^R*pH|H0000<MNUMnLSTYA&yv0X
+
+diff --git a/watchface/resources/drawables/art_flag-fr.png b/watchface/resources/drawables/art_flag-fr.png
+deleted file mode 100644
+index 3de0993bd9835f3b9759f9249885528d90fcb6b6..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 124
+zcmeAS@N?(olHy`uVBq!ia0vp^B0$W;!3HFgc;@~FQfx`y?k)`fL2$v|<&%LThMq2t
+zAsQ2tQxXyq1h&8XcfNsjk3~?E?~I2#=NX3;t~~u)V&;ZZ0Ss=uGNuJr9FiCq)_rD|
+U$enn|45*pG)78&qol`;+0A2Mb*#H0l
+
+diff --git a/watchface/resources/drawables/art_flag-nz.png b/watchface/resources/drawables/art_flag-nz.png
+deleted file mode 100644
+index 6e1b96906238202b512c5d5ca4fa2efa832630a8..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 359
+zcmV-t0hs=YP)<h;3K|Lk000e1NJLTq000yK000aK1^@s6Vho-800006VoOIv0RI60
+z0RN!9r;`8x0USw0K~yM_#gV;B!%!4Qk1y$qU<W}^LBwL6gbED`Rz;j#1SkK3B5r~p
+zUF@!ti=#MH9Q{IFoz<y|G@Di(tBwW9OPV;Pex$<_1<!Qv8_xaR`{0jhyWQFi0XFYl
+zPA~5$FQfpl4<4D%4Y8WG0GQsZ=m}TW55tjkH?zI%;3-7K0U*d`!Bd>SHn^$2P&&Q>
+zz>+3Qb`RU-8m{u=LT7j?)R{clk!#kA69epAJpDeQCCyl>?{6ZXtTS4xQarjQvvz{3
+zd|c&|DeO}`bFiNu$S3RAsV+8V`oG9z!k{!ah)ftC2|LFMS}Pku0MH16m{fU<W^d}q
+zT8Sb)%K(I~Fv5~1%j11mvUQdp3ti>&CgPtHp?$-D;~lp=Z@D?G4h8@K002ovPDHLk
+FV1l-gm|Xw>
+
+diff --git a/watchface/resources/drawables/art_flag-us.png b/watchface/resources/drawables/art_flag-us.png
+deleted file mode 100644
+index f5926d8b94d2bdc8859eb824ed778f1bd909ea92..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 286
+zcmeAS@N?(olHy`uVBq!ia0vp^B0$W;!3HFgc;@~FQfx`y?k)`fL2$v|<&%LTmpxq^
+zLo_C?J!hE36ew`)<Nr7NN`s?1=5jsaEb4EVaHGrYBKM7m$jbKIwR_zA1Ux1-<T?Z`
+z;eNf(eDa~K8zU+<$om-be11InZc+4w3C{z+uYOr4U;algUfxPF%Walg%Yq#$3%MFk
+zv8PS;>uG1^h~v!aXh^JBU$I^xU|#(r$0c&Y0f+Of4dTu|K4^13VC!n#38|WPzCX0}
+z_vC*sTo5bk!obYDWL-L2^YrBw1%EA$thjx5!ERf%PiC<ZU&4id{Qh`T>xJLZg}(gL
+izgNF)ii$PMZTf%Ytw)c3hFAm8dkmhgelF{r5}E+HA$UUo
+
+diff --git a/watchface/source/LaunchReminder.mc b/watchface/source/LaunchReminder.mc
+index 1109b380..bb5dfbc5 100644
+--- a/watchface/source/LaunchReminder.mc
++++ b/watchface/source/LaunchReminder.mc
+@@ -22,9 +22,7 @@ module LaunchReminder {
+  function valid(s,base,now){
+   if(!(s instanceof Dictionary)||!same(s["base"],base)||!(s["id"] instanceof String)||!number(s["sequence"])||!number(s["target"])||!number(s["validated"])||!number(s["since"])||s["validated"]>now||s["since"]>now||s["stale"]!=false){return false;}
+   var p=s["policy"];if(!(p instanceof Array)||p.size()!=4||!number(p[0])||!number(p[1])||p[2]!=null&&!number(p[2])||!number(p[3])||p[0]<300||p[1]<300||p[3]<1||p[2]!=null&&p[2]<300){return false;}
+-  var age=now-s["validated"];if(p[2]!=null){return age/p[2]<p[3];}
+-  if(age/p[0]>=p[3]){return false;}var end=now<s["target"]+1800?now:s["target"]+1800;
+-  return !(end>=s["target"]-7200&&end>=s["validated"]&&(end-s["validated"])/p[1]>=p[3]);
++  return !nativeFreshnessExpired(s["validated"],s["target"],now,p[0],p[1],p[2],p[3]);
+  }
+  // A new complete snapshot invalidates a queued reminder before posting.
+  function bound(store,s,base,now){
+diff --git a/watchface/source/NativeCache.mc b/watchface/source/NativeCache.mc
+index bd57ba6b..177179c0 100644
+--- a/watchface/source/NativeCache.mc
++++ b/watchface/source/NativeCache.mc
+@@ -3,10 +3,10 @@ import Toybox.Lang;
+ 
+ (:background, :typecheck(false))
+ class NativeStore {
+-    var reads=0;var writes=0;var dataWrites=0;
++    var reads=0;var writes=0;
+     function initialize(){}
+     function read(key){reads+=1;return Application.Storage.getValue(key);}
+-    function write(key,value){writes+=1;if(key.find("sf.feed.")==0){dataWrites+=1;}Application.Storage.setValue(key,value);}
++    function write(key,value){writes+=1;Application.Storage.setValue(key,value);}
+     function remove(key){writes+=1;Application.Storage.deleteValue(key);}
+ }
+ 
+diff --git a/watchface/source/NativeFeed.mc b/watchface/source/NativeFeed.mc
+index 14175318..972b5a84 100644
+--- a/watchface/source/NativeFeed.mc
++++ b/watchface/source/NativeFeed.mc
+@@ -12,6 +12,5 @@ class NativeFeed {
+         if(value==null){return optional;}if(!(value instanceof String)){return false;}var a=value.find(":");if(a==null||a==0){return false;}var rest=value.substring(a+1,value.length());var b=rest.find(":");return b!=null && rest.substring(0,b).equals(kind) && b<rest.length()-1&&nativeNormalizedEdges(value.substring(0,a))&&nativeNormalizedEdges(rest.substring(b+1,rest.length()));
+     }
+     function advance(now){}
+-    function refreshTarget(){return null;}
+     function compact(){}
+ }
+diff --git a/watchface/source/NativeForegroundApp.mc b/watchface/source/NativeForegroundApp.mc
+index 98f99ff0..3afaa003 100644
+--- a/watchface/source/NativeForegroundApp.mc
++++ b/watchface/source/NativeForegroundApp.mc
+@@ -8,7 +8,7 @@ module NativeForegroundApp {
+     function traceWake(stage){try{var now=Time.now().value();var registered=Background.getTemporalEventRegisteredTime();var last=Background.getLastTemporalEventTime();System.println("SF_WAKE "+stage+" build="+NativeVersion.BUILD+" id="+NativeVersion.ID+" now="+now+" registered="+(registered==null?"none":registered.value())+" last="+(last==null?"none":last.value()));}catch(ignore){System.println("SF_WAKE status_unavailable");}}
+     function initial(app) as [WatchUi.WatchFace] {
+         app.view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));
+-        try{app.view.setSettings(app.initialSettings());}catch(e){}app.view.bootstrapPending=true;app.view.pendingLoader=app.method(:reloadFeed);app.view.pendingVolatileCheck=app.method(:hasPendingVolatile);app.view.cancelAdmission=null;app.view.syncDisplayMode(System.getDisplayMode());return [app.view as WatchUi.WatchFace];
++        try{app.view.setSettings(app.initialSettings());}catch(e){}app.view.bootstrapPending=true;app.view.pendingLoader=app.method(:reloadFeed);app.view.pendingVolatileCheck=app.method(:hasPendingVolatile);app.view.syncDisplayMode(System.getDisplayMode());return [app.view as WatchUi.WatchFace];
+     }
+     function display(app,cache){
+         if(app.view==null){return;}var now=Time.now().value().toLong();var rebound=cache.packet==null||app.view.packet!=cache.packet||cache.packet.document.hasKey("dictionaries")||app.view.context!=cache.packet.presentation;
+@@ -42,7 +42,7 @@ module NativeForegroundApp {
+         // Stale callbacks were refused by the cache before any visual cancel.
+         app.view.beginAdmission();
+         try{var packet=new NativeTrustedPacket(value);if(selected.acceptVolatile(packet)){app.view.setPacket(packet);}}
+-        finally{app.view.admissionPending=false;app.view.resumeAfterAdmission();}
++        finally{app.view.endAdmission();}
+         WatchUi.requestUpdate();
+     }
+     function savePlan(cache,view){
+@@ -68,7 +68,7 @@ module NativeForegroundApp {
+                 if(value!=null){var incoming=new NativeTrustedPacket(value);value=null;if(selected.acceptDurable(incoming)){app.view.admissionPending=false;display(app,selected);savePlan(selected,app.view);}
+                     app.trustedToken=sequence;app.failedToken=null;}else{app.failedToken=sequence;}
+             }catch(e){app.failedToken=sequence;System.println("SF_FG snapshot_error");}
+-            app.view.admissionPending=false;app.view.resumeAfterAdmission();
++            app.view.endAdmission();
+         }else if(selected.packet!=null){if(selected.ramState!=selected.VOLATILE){display(app,selected);savePlan(selected,app.view);}else if(app.view.packet!=selected.packet){app.view.setPacket(selected.packet);}}
+         if(app.view!=null&&System.getDisplayMode()==System.DISPLAY_MODE_HIGH_POWER){app.view.prepareVisual();}
+         var transfer=new NativeTransfer(selected.base,selected.store);transfer.load();armFeed(transfer,now);
+diff --git a/watchface/source/NativeIncrementalJson.mc b/watchface/source/NativeIncrementalJson.mc
+index 9c9abf4b..4bea5f89 100644
+--- a/watchface/source/NativeIncrementalJson.mc
++++ b/watchface/source/NativeIncrementalJson.mc
+@@ -2,7 +2,7 @@ import Toybox.Lang;
+ import Toybox.StringUtil;
+ 
+ (:typecheck(false)) class NativeJsonFrame {
+-    var kind;var depth;var path;var result;var state=0;var count=0;var previous=null;var keyStart=0;var key=null;var begin=0;
++    var kind;var depth;var path;var result;var state=0;var count=0;var previous=null;var key=null;
+     function initialize(k,d,p,r){kind=k;depth=d;path=p;result=r;}
+ }
+ 
+@@ -11,11 +11,11 @@ import Toybox.StringUtil;
+ (:extendedCode, :typecheck(false))
+ class NativeIncrementalJson extends NativeJson {
+     var maxInput=0;var stack=[];var result=null;var done=false;var stage=0;var sizeAt=0;var bytes=0;var control=0;
+-    var token=null;var tokenPurpose=null;var tokenStart=0;var tokenResult="";var tokenSegment=0;var tokenNormalized=false;
++    var token=null;var tokenPurpose=null;var tokenStart=0;var tokenResult="";var tokenSegment=0;
+     function initialize(){NativeJson.initialize();}
+-    function dispose(){rowOwner=null;rootOwner=null;nodeOwner=null;source="";stack=null;result=null;}
++    function dispose(){rootOwner=null;nodeOwner=null;source="";stack=null;result=null;}
+     function begin(raw,maxBytes){
+-        if(!(raw instanceof String)||raw.length()>maxBytes){fail();}maxInput=maxBytes;source=raw;index=0;nodes=0;path="";spans={};ignored=[];stack=[];result=null;done=false;stage=0;sizeAt=0;bytes=0;control=0;token=null;hasDel=false;
++        if(!(raw instanceof String)||raw.length()>maxBytes){fail();}maxInput=maxBytes;source=raw;index=0;nodes=0;path="";stack=[];result=null;done=false;stage=0;sizeAt=0;bytes=0;control=0;token=null;
+     }
+     // Each call performs at most 16 lexical or grammar operations. A string
+     // operation scans at most 128 characters; number scanning is one digit.
+@@ -23,7 +23,7 @@ class NativeIncrementalJson extends NativeJson {
+         var budget=16;
+         while(budget>0&&!done){budget-=1;
+             if(stage==0){if(sizeAt<source.length()){var end=sizeAt+64;if(end>source.length()){end=source.length();}bytes+=StringUtil.convertEncodedString(source.substring(sizeAt,end),{:fromRepresentation=>StringUtil.REPRESENTATION_STRING_PLAIN_TEXT,:toRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:encoding=>StringUtil.CHAR_ENCODING_UTF8}).size();if(bytes>maxInput){fail();}sizeAt=end;continue;}stage=1;continue;}
+-            if(stage==1){if(control<32){if(!feedMode&&(control==9||control==10||control==13)){control+=1;continue;}var c=control.toChar().toString();if(c.length()>0&&source.find(c)!=null){fail();}control+=1;continue;}hasDel=source.find(127.toChar().toString())!=null;stage=2;continue;}
++            if(stage==1){if(control<32){if(!feedMode&&(control==9||control==10||control==13)){control+=1;continue;}var c=control.toChar().toString();if(c.length()>0&&source.find(c)!=null){fail();}control+=1;continue;}stage=2;continue;}
+             if(token!=null){tokenStep();continue;}
+             if(stack.size()==0){if(stage==2){stage=3;startValue(0);continue;}white();if(index!=source.length()){fail();}source="";done=true;continue;}
+             var f=stack[stack.size()-1];
+@@ -34,14 +34,14 @@ class NativeIncrementalJson extends NativeJson {
+     function startValue(depth){
+         nodes+=1;if(depth>8||nodes>5000){fail();}white();var c=peek();
+         if(c.equals("{")){index+=1;stack.add(new NativeJsonFrame("object",depth,path,{}));return;}
+-        if(c.equals("[")){if(catalogMode&&!path.equals("/unresolved")){fail();}index+=1;stack.add(new NativeJsonFrame("array",depth,path,[]));return;}
++        if(c.equals("[")){index+=1;stack.add(new NativeJsonFrame("array",depth,path,[]));return;}
+         if(c.equals("\"")){startString("value");return;}
+         if(c.equals("n")){literal("null");complete(null);return;}if(c.equals("t")){literal("true");complete(true);return;}if(c.equals("f")){literal("false");complete(false);return;}
+         token="number";tokenPurpose="value";tokenStart=index;if(c.equals("-")){index+=1;}var first=peek();if(first.equals("0")){index+=1;finishNumber();return;}if(!digit(first)){fail();}
+     }
+     function objectStep(f){
+-        if(f.state==0||f.state==5){white();if(f.state==0&&peek().equals("}")){index+=1;stack=stack.slice(0,stack.size()-1);complete(f.result);return;}f.count+=1;if(f.count>4096||!peek().equals("\"")){fail();}f.keyStart=index;f.state=1;startString("key");return;}
+-        if(f.state==2){white();need(":");path=f.path+"/"+f.key;f.begin=index;f.state=3;startValue(f.depth+1);return;}
++        if(f.state==0||f.state==5){white();if(f.state==0&&peek().equals("}")){index+=1;stack=stack.slice(0,stack.size()-1);complete(f.result);return;}f.count+=1;if(f.count>4096||!peek().equals("\"")){fail();}f.state=1;startString("key");return;}
++        if(f.state==2){white();need(":");path=f.path+"/"+f.key;f.state=3;startValue(f.depth+1);return;}
+         if(f.state==4){white();if(peek().equals("}")){index+=1;stack=stack.slice(0,stack.size()-1);complete(f.result);return;}need(",");f.state=5;return;}
+         fail();
+     }
+@@ -51,16 +51,15 @@ class NativeIncrementalJson extends NativeJson {
+     }
+     function startString(purpose){
+         need("\"");token="string";tokenPurpose=purpose;tokenResult="";tokenSegment=index;
+-        tokenNormalized=feedMode&&(path.find("/launch/")==0||path.find("/upcoming/")==0||path.equals("/dictionaries")||path.equals("/unresolvedCatalogIds"));
+     }
+     function tokenStep(){
+         if(token.equals("number")){if(digit(peek())){index+=1;return;}finishNumber();return;}
+         if(index>=source.length()){fail();}
+         var end=index+128;if(end>source.length()){end=source.length();}var piece=source.substring(index,end);var quote=piece.find("\"");var slash=piece.find("\\");var stop=piece.length();if(quote!=null&&quote<stop){stop=quote;}if(slash!=null&&slash<stop){stop=slash;}
+         if(!feedMode){var prefix=piece.substring(0,stop);if(prefix.find("\n")!=null||prefix.find("\r")!=null||prefix.find("\t")!=null){fail();}}
+-        if(hasDel&&tokenNormalized&&piece.substring(0,stop).find(127.toChar().toString())!=null){fail();}index+=stop;if(stop==piece.length()){return;}
++        index+=stop;if(stop==piece.length()){return;}
+         if(quote!=null&&stop==quote){var value=tokenResult.length()==0?source.substring(tokenSegment,index):tokenResult+source.substring(tokenSegment,index);index+=1;if(!feedMode&&byteSize(value)>2048){fail();}var purpose=tokenPurpose;token=null;if(purpose.equals("key")){finishKey(value);}else{complete(value);}return;}
+-        tokenResult+=source.substring(tokenSegment,index);index+=1;var c=peek();index+=1;if(tokenNormalized&&["b","f","n","r","t","u"].indexOf(c)>=0){fail();}
++        tokenResult+=source.substring(tokenSegment,index);index+=1;var c=peek();index+=1;
+         if(c.equals("\"")||c.equals("\\")||!feedMode&&c.equals("/")){tokenResult+=c;}
+         else if(c.equals("b")){tokenResult+=8.toChar().toString();}else if(c.equals("f")){tokenResult+=12.toChar().toString();}else if(c.equals("n")){tokenResult+="\n";}else if(c.equals("r")){tokenResult+="\r";}else if(c.equals("t")){tokenResult+="\t";}
+         else if(c.equals("u")){var hexStart=index;var code=hex4();if(feedMode&&(code>=32||code==8||code==9||code==10||code==12||code==13||!source.substring(hexStart,index).equals(source.substring(hexStart,index).toLower()))){fail();}if(code>=0xD800&&code<=0xDBFF){need("\\");need("u");var low=hex4();if(low<0xDC00||low>0xDFFF){fail();}code=0x10000+(code-0xD800)*1024+low-0xDC00;}else if(code>=0xDC00&&code<=0xDFFF){fail();}tokenResult+=code.toChar().toString();}else{fail();}tokenSegment=index;
+@@ -70,20 +69,14 @@ class NativeIncrementalJson extends NativeJson {
+         if(digits.length()>19||digits.length()==19&&digits.compareTo(negative?"9223372036854775808":"9223372036854775807")>0){value=new NativeIntegerLexeme(text);}else{var n=text.toLong();if(n==null){fail();}value=n>= -2147483648l&&n<=2147483647l?n.toNumber():n;}token=null;complete(value);
+     }
+     function finishKey(key){
+-        var f=stack[stack.size()-1];if(nodeOwner!=null){nodeOwner.knownField(f.path,key);}if(catalogMode&&f.depth==0&&["schemaVersion","catalogVersion","projection","entries","unresolved","visualSelection"].indexOf(key)<0){fail();}
++        var f=stack[stack.size()-1];if(nodeOwner!=null){nodeOwner.knownField(f.path,key);}
+         if(feedMode){var common=commonKeys.indexOf(key);if(common>=0){key=commonKeys[common];}}
+         if(f.result.hasKey(key)||feedMode&&f.previous!=null&&f.previous.compareTo(key)>=0){fail();}f.previous=key;f.key=key;f.state=2;
+     }
+     function complete(child){
+         if(stack.size()==0){result=child;return;}var f=stack[stack.size()-1];
+-        if(f.kind.equals("array")){if(catalogMode&&!(child instanceof String)){fail();}if(nodeOwner!=null){child=nodeOwner.arrayElement(f.path,f.result.size(),child,f.depth);}f.result.add(child);f.state=2;return;}
+-        var oldPath=f.path;var key=f.key;var begin=f.begin;var finish=index;
+-        if(feedMode){
+-            if(oldPath.equals("")&&["/catalogRevision","/dictionaries","/unresolvedCatalogIds","/launch"].indexOf(path)>=0){spans[path]=[begin,finish];}
+-            if(path.equals("/launch/ascent_end")||path.equals("/launch/country_code")||path.equals("/launch/site_location_name")){spans[path]=[begin,finish];}
+-            if(path.equals("/launch/operator_abbrev")){var next=finish;while(next<source.length()&&" \t\r\n".find(source.substring(next,next+1))!=null){next+=1;}if(source.substring(next,next+1).equals(",")){spans[path]=[f.keyStart,next+1];}else{fail();}}
+-            if(path.equals("/publisher")||path.equals("/launch/source_validated_utc")||path.equals("/launch/stale")||path.equals("/launch/rescheduled")||path.equals("/pollIntervalSeconds")||path.equals("/timingState")){ignored.add([begin,finish]);}child=projection(path,child);
+-        }
++        if(f.kind.equals("array")){if(nodeOwner!=null){child=nodeOwner.arrayElement(f.path,f.result.size(),child,f.depth);}f.result.add(child);f.state=2;return;}
++        var oldPath=f.path;var key=f.key;
+         if(nodeOwner!=null){child=nodeOwner.objectField(oldPath,key,child);}if(rootOwner!=null&&oldPath.equals("")){child=rootOwner.sceneField(key,child);}f.result[key]=child;path=oldPath;f.state=4;
+     }
+ }
+diff --git a/watchface/source/NativeJson.mc b/watchface/source/NativeJson.mc
+index b1bba387..525a1f02 100644
+--- a/watchface/source/NativeJson.mc
++++ b/watchface/source/NativeJson.mc
+@@ -12,76 +12,20 @@ class NativeIntegerLexeme {
+     function nonnegative(){return !text.substring(0,1).equals("-");}
+ }
+ 
+-// Runtime-checked JSON boundary. Only integer JSON is admitted by current feed/descriptor objects.
+-// Dynamic containers are deliberately checked here before domain construction.
++// Shared lexical primitives for the bounded SFR descriptor parser.
++// Schedule responses use the platform JSON decoder and never enter this owner.
+ (:background, :extendedCode, :typecheck(false))
+ class NativeJson {
+-    var source; var index; var nodes;var hasDel=false; var feedMode=false;var catalogMode=false;var keepCatalogNames=true;var rowOwner=null;var rootOwner=null;var nodeOwner=null;var commonKeys=["kind","name","visual","position","sourcePosition"];var launchKeys=null;var path="";var spans={};var ignored=[];
++    var source;var index;var nodes;var feedMode=false;var rootOwner=null;var nodeOwner=null;var commonKeys=["kind","name","visual","position","sourcePosition"];var path="";
+     function initialize(){source="";index=0;nodes=0;}
+     function fail(){throw new Lang.InvalidValueException("Invalid bounded JSON");}
+     function byteSize(value){var total=0;for(var i=0;i<value.length();i+=64){var end=i+64;if(end>value.length()){end=value.length();}total+=StringUtil.convertEncodedString(value.substring(i,end),{:fromRepresentation=>StringUtil.REPRESENTATION_STRING_PLAIN_TEXT,:toRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:encoding=>StringUtil.CHAR_ENCODING_UTF8}).size();}return total;}
+-    function parse(raw,maxBytes){
+-        if(!(raw instanceof String) || raw.length()>maxBytes || byteSize(raw)>maxBytes){fail();}
+-        // Allocate the extended key pool only for a selected-feed parser;
+-        // immutable scene/descriptor parsers do not retain this extra table.
+-        if(feedMode&&!catalogMode&&rowOwner!=null){launchKeys=["configuration_id","configuration_name","country_code","country_id","country_name","launch_id","mission_name","mission_purpose","operator_abbrev","operator_id","operator_name","rescheduled","site_id","site_location_name","site_name","source_status_id","source_status_name","source_updated_iso","source_updated_utc","source_validated_utc","stale","status","timing","date_utc","exact_utc","nominal_utc","precision","source_net","source_precision_abbrev","source_precision_description","source_precision_id","source_precision_name","window_end_utc","window_start_utc","sitePosition","siteSource","encoding","latitude","longitude","qualification","units","decodedBytes","path","sha256"];}
+-        source=raw;hasDel=source.find(127.toChar().toString())!=null;index=0;nodes=0;path="";spans={};ignored=[];for(var ctrl=0;ctrl<32;ctrl+=1){if(!feedMode&&(ctrl==9||ctrl==10||ctrl==13)){continue;}var character=ctrl.toChar().toString();if(character.length()>0&&source.find(character)!=null){fail();}}var value=read(0);white();if(index!=source.length()){fail();}source="";return value;
+-    }
+     function peek(){return index<source.length()?source.substring(index,index+1):"";}
+-    // In canonical feed mode every caller requires its next delimiter/token.
+-    // Whitespace outside a String fails there; avoid four VM substring probes
+-    // at every grammar boundary. Generic metadata parsing permits JSON whitespace.
+     function white(){if(feedMode){return;}while(index<source.length() && (peek().equals(" ")||peek().equals("\n")||peek().equals("\r")||peek().equals("\t"))){index+=1;}}
+-    // Keep the delimiter check in this frame. Nested feed objects already use
+-    // the VM's small call stack; calling peek() here adds a frame at every
+-    // deepest string boundary without changing the check.
+     function need(c){if(index>=source.length()||!source.substring(index,index+1).equals(c)){fail();}index+=1;}
+-    function read(depth){
+-        nodes+=1;if(depth>8||nodes>5000){fail();}white();var c=peek();if(c.equals("\"")){return string();}if(c.equals("{")){return object(depth);}if(c.equals("[")){return list(depth);}if(c.equals("n")){literal("null");return null;}if(c.equals("t")){literal("true");return true;}if(c.equals("f")){literal("false");return false;}return number();
+-    }
+-    function object(depth){
+-        need("{");white();var result={};if(peek().equals("}")){index+=1;return result;}var previous=null;var count=0;var rowFields=feedMode&&(path.find("/dictionaries/")==0||catalogMode&&path.find("/entries/")==0);
+-        while(true){count+=1;if(count>4096){fail();}white();if(!peek().equals("\"")){fail();}var keyStart=index;var key=rowFields?rowKey():string();if(nodeOwner!=null){nodeOwner.knownField(path,key);}if(catalogMode&&depth==0&&["schemaVersion","catalogVersion","projection","entries","unresolved","visualSelection"].indexOf(key)<0){fail();}if(feedMode){var common=commonKeys.indexOf(key);if(common>=0){key=commonKeys[common];}else if(launchKeys!=null){var shared=launchKeys.indexOf(key);if(shared>=0){key=launchKeys[shared];}}}if(result.hasKey(key)||feedMode&&previous!=null&&previous.compareTo(key)>=0){fail();}previous=key;white();need(":");var oldPath=path;path=oldPath+"/"+key;var begin=index;var child=read(depth+1);var finish=index;if(feedMode){if(oldPath.equals("")&&["/catalogRevision","/dictionaries","/unresolvedCatalogIds","/launch"].indexOf(path)>=0){spans[path]=[begin,finish];}if(path.equals("/launch/ascent_end")||path.equals("/launch/country_code")||path.equals("/launch/site_location_name")){spans[path]=[begin,finish];}if(path.equals("/launch/operator_abbrev")){var next=finish;while(next<source.length()&&" \t\r\n".find(source.substring(next,next+1))!=null){next+=1;}if(source.substring(next,next+1).equals(",")){spans[path]=[keyStart,next+1];}else{fail();}}if(path.equals("/publisher")||path.equals("/launch/source_validated_utc")||path.equals("/launch/stale")||path.equals("/launch/rescheduled")||path.equals("/pollIntervalSeconds")||path.equals("/timingState")){ignored.add([begin,finish]);}child=projection(path,child);}if(nodeOwner!=null){child=nodeOwner.objectField(oldPath,key,child);}if(rootOwner!=null&&oldPath.equals("")){child=rootOwner.sceneField(key,child);}result[key]=child;path=oldPath;white();if(peek().equals("}")){index+=1;return result;}need(",");}
+-    }
+-    function rowKey(){var end=index+8;if(end<=source.length()){var prefix=source.substring(index,end);if(prefix.find("\"kind\"")==0){index+=6;return "kind";}if(prefix.find("\"name\"")==0){index+=6;return "name";}if(prefix.equals("\"visual\"")){index+=8;return "visual";}}return string();}
+-    function list(depth){if(catalogMode&&!path.equals("/unresolved")){fail();}need("[");white();var result=[];if(peek().equals("]")){index+=1;return result;}while(true){if(result.size()>=4096){fail();}var child=read(depth+1);if(catalogMode&&!(child instanceof String)){fail();}if(nodeOwner!=null){child=nodeOwner.arrayElement(path,result.size(),child,depth);}result.add(child);white();if(peek().equals("]")){index+=1;return result;}need(",");}}
+-    function number(){
+-        var start=index;if(peek().equals("-")){index+=1;}var first=peek();if(first.equals("")){fail();}if(first.equals("0")){index+=1;}else{if(!digit(first)){fail();}while(digit(peek())){index+=1;}}
+-        var text=source.substring(start,index);if(text.equals("-")||feedMode&&text.equals("-0")){fail();}var negative=text.substring(0,1).equals("-");var digits=negative?text.substring(1,text.length()):text;if(digits.length()>19||digits.length()==19&&digits.compareTo(negative?"9223372036854775808":"9223372036854775807")>0){return new NativeIntegerLexeme(text);}var n=text.toLong();if(n==null){fail();}return n>= -2147483648l&&n<=2147483647l?n.toNumber():n;
+-    }
+-    function projection(key,value){
+-        if(!(value instanceof String)){return value;}
+-        if(key.find("/dictionaries/")==0){
+-            if(key.length()<5||!key.substring(key.length()-5,key.length()).equals("/name")){return value;}
+-            if(!keepCatalogNames){return null;}return value;
+-        }
+-        // Successor rows use the same normalized launch text projection.
+-        if(key.find("/upcoming/")==0){key="/launch"+key.substring(9,key.length());}
+-        if(key.find("/launch/")!=0){return value;}
+-        if(!nativeNormalizedEdges(value)){fail();}
+-        var unused=["/launch/mission_name","/launch/source_status_name","/launch/timing/source_precision_name","/launch/timing/source_precision_abbrev","/launch/timing/source_precision_description"];
+-        var display=["/launch/configuration_name","/launch/operator_name","/launch/operator_abbrev","/launch/mission_purpose","/launch/site_name","/launch/country_name","/launch/site_location_name"];
+-        var skip=unused.indexOf(key)>=0;if(skip||display.indexOf(key)>=0){if(skip){return null;}if(value.length()>64){return value.substring(0,63)+"…";}}return value;
+-    }
+     function digit(c){return !c.equals("") && "0123456789".find(c)!=null;}
+     function literal(text){if(index+text.length()>source.length() || !source.substring(index,index+text.length()).equals(text)){fail();}index+=text.length();}
+     function hex4(){var n=0;for(var i=0;i<4;i+=1){var c=peek().toLower();var v="0123456789abcdef".find(c);if(c.equals("")||v==null){fail();}n=n*16+v;index+=1;}return n;}
+-    function string(){
+-        need("\"");var result="";var start=index;var normalized=feedMode&&(path.find("/launch/")==0||path.find("/upcoming/")==0||path.equals("/dictionaries")||path.equals("/unresolvedCatalogIds"));
+-        while(index<source.length()){
+-            var end=index+128;if(end>source.length()){end=source.length();}var piece=source.substring(index,end);var quote=piece.find("\"");var slash=piece.find("\\");var stop=piece.length();
+-            if(quote!=null&&quote<stop){stop=quote;}if(slash!=null&&slash<stop){stop=slash;}
+-            if(!feedMode){var prefix=piece.substring(0,stop);if(prefix.find("\n")!=null||prefix.find("\r")!=null||prefix.find("\t")!=null){fail();}}
+-            if(hasDel&&normalized&&piece.substring(0,stop).find(127.toChar().toString())!=null){fail();}index+=stop;if(stop==piece.length()){continue;}
+-            if(quote!=null&&stop==quote){result=result.length()==0?source.substring(start,index):result+source.substring(start,index);index+=1;if(!feedMode&&byteSize(result)>2048){fail();}return result;}
+-            result+=source.substring(start,index);index+=1;var c=peek();index+=1;if(normalized&&["b","f","n","r","t","u"].indexOf(c)>=0){fail();}
+-            if(c.equals("\"")||c.equals("\\")||!feedMode&&c.equals("/")){result+=c;}
+-            else if(c.equals("b")){result+=8.toChar().toString();}else if(c.equals("f")){result+=12.toChar().toString();}
+-            else if(c.equals("n")){result+="\n";}else if(c.equals("r")){result+="\r";}else if(c.equals("t")){result+="\t";}
+-            else if(c.equals("u")){var hexStart=index;var code=hex4();if(feedMode&&(code>=32||code==8||code==9||code==10||code==12||code==13||!source.substring(hexStart,index).equals(source.substring(hexStart,index).toLower()))){fail();}if(code>=0xD800 && code<=0xDBFF){need("\\");need("u");var low=hex4();if(low<0xDC00||low>0xDFFF){fail();}code=0x10000+(code-0xD800)*1024+low-0xDC00;}else if(code>=0xDC00 && code<=0xDFFF){fail();}result+=code.toChar().toString();}
+-            else{fail();}start=index;
+-        }fail();return null;
+-    }
+ 
+ }
+ 
+@@ -94,33 +38,9 @@ class NativeWireHash {
+         if(buffer.length()+text.length()<=256){buffer+=text;return;}
+         flush();for(var i=0;i<text.length();i+=256){var end=i+256;if(end>text.length()){end=text.length();}buffer=text.substring(i,end);flush();}
+     }
+-    function range(text,start,end){while(start<end){var next=start+256;if(next>end){next=end;}put(text.substring(start,next));start=next;}}
+-    function update(bytes){hash.update(bytes);count+=bytes.size();if(count>65536){throw new Lang.InvalidValueException("Canonical byte bound");}}
+-    function scalar(value){if(value==null){put("null");}else if(value instanceof String){quoted(value);}else if(value instanceof Number||value instanceof Long){put(value.toString());}else{throw new Lang.InvalidValueException("Invalid scalar");}}
+-    function quoted(text){
+-        var chars=text.toCharArray();var special=false;for(var i=0;i<chars.size();i+=1){var n=chars[i].toNumber();if(n<32||n==34||n==92){special=true;break;}}
+-        if(!special){put("\""+text+"\"");return;}
+-        put("\"");var start=0;for(var j=0;j<chars.size();j+=1){var n=chars[j].toNumber();if(n<32||n==34||n==92){put(text.substring(start,j));if(n==34||n==92){put("\\"+chars[j].toString());}else if(n==8){put("\\b");}else if(n==9){put("\\t");}else if(n==10){put("\\n");}else if(n==12){put("\\f");}else if(n==13){put("\\r");}else{put("\\u"+n.format("%04x"));}start=j+1;}}put(text.substring(start,text.length()));put("\"");
+-    }
+     function digest(){flush();return StringUtil.convertEncodedString(hash.digest(),{:fromRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:toRepresentation=>StringUtil.REPRESENTATION_STRING_HEX}).toLower();}
+ }
+ 
+-(:typecheck(false))
+-class NativeCanonical extends NativeWireHash {
+-    var nodes=0;
+-    function initialize(){NativeWireHash.initialize();}
+-    function emit(value){write(value,0);}
+-    function write(value,depth){
+-        nodes+=1;if(depth>16||nodes>20000){throw new Lang.InvalidValueException("Canonical work bound");}
+-        if(value==null){put("null");}else if(value instanceof String){quoted(value);}else if(value instanceof Boolean){put(value?"true":"false");}
+-        else if(value instanceof Number||value instanceof Long){put(value.toString());}
+-        else if(value instanceof NativeIntegerLexeme){put(value.text);}
+-        else if(value instanceof Array){put("[");for(var i=0;i<value.size();i+=1){if(i>0){put(",");}write(value[i],depth+1);}put("]");}
+-        else if(value instanceof Dictionary){var keys=value.keys();for(var k=0;k<keys.size();k+=1){if(!(keys[k] instanceof String)){throw new Lang.InvalidValueException("Canonical key type");}}keys.sort(null);put("{");for(var j=0;j<keys.size();j+=1){if(j>0){put(",");}quoted(keys[j]);put(":");write(value[keys[j]],depth+1);}put("}");}
+-        else{throw new Lang.InvalidValueException("Unsupported canonical type");}
+-    }
+-}
+-
+ // Native canonical HEX round-trip avoids hundreds of per-character VM calls.
+ // Decoder permissiveness cannot admit punctuation/case: exact re-encoding wins.
+ (:background, :typecheck(false))
+diff --git a/watchface/source/NativeTrustedSnapshot.mc b/watchface/source/NativeTrustedSnapshot.mc
+index 88a53840..9976a178 100644
+--- a/watchface/source/NativeTrustedSnapshot.mc
++++ b/watchface/source/NativeTrustedSnapshot.mc
+@@ -70,7 +70,6 @@ class NativeTrustedPacket extends NativeFeed {
+         terminalUpdates=value[5];bridge=value[6];document={"publisher"=>value[1],"refreshPolicy"=>policy,"launch"=>presentation==null?null:{"launch_id"=>presentation.launchId}};
+         validation=presentation==null?null:presentation.sourceValidated;stale=presentation==null?false:presentation.stale;rescheduled=presentation==null?false:presentation.rescheduled;
+     }
+-    function refreshTarget(){return presentation==null?null:presentation.retentionTarget;}
+     function advance(now){if(presentation!=null){presentation.advanceFreshness(now);stale=presentation.stale;}}
+     function compact(){}
+ }
+diff --git a/watchface/source/SceneContext.mc b/watchface/source/SceneContext.mc
+index dce9ef27..14258d17 100644
+--- a/watchface/source/SceneContext.mc
++++ b/watchface/source/SceneContext.mc
+@@ -1,5 +1,17 @@
+ import Toybox.Lang;
+ 
++// Shared source-age rule for the display and the reminder eligibility guard.
++// Callers own sticky display state and future-timestamp refusal respectively.
++(:background, :extendedCode, :typecheck(false))
++function nativeFreshnessExpired(checked,target,now,normal,near,fast,cycles) {
++    var age=now.toLong()-checked.toLong();if(age<0){age=0;}
++    if(fast!=null){return age/fast>=cycles;}
++    if(age/normal>=cycles){return true;}
++    if(target==null){return false;}
++    var end=now<target+1800?now:target+1800;
++    return end>=target-7200&&end>=checked&&(end-checked)/near>=cycles;
++}
++
+ // One accepted selected-launch object is replaced atomically. Real startup has
+ // none. This is an injection/cache seam, not a claimed live feed implementation.
+ (:extendedCode)
+@@ -62,11 +74,8 @@ class SceneContext {
+     // Same source-age rule as accepted feed, applied to whichever launch is
+     // displayed after local selection. It performs arithmetic only.
+     (:typecheck(false)) function advanceFreshness(now) as Void {
+-        if(sourceValidated==null||freshnessPolicy==null){return;}var age=now.toLong()-sourceValidated;if(age<0){age=0;}
+-        var p=freshnessPolicy;var cycles=p["stale_cycles"];var fast=p["fast_interval_seconds"];
+-        if(fast!=null){stale=stale||age/fast>=cycles;return;}
+-        stale=stale||age/p["normal_interval_seconds"]>=cycles;var t=freshnessTarget;
+-        if(t!=null){var end=now<t+1800?now:t+1800;stale=stale||end>=t-7200&&end>=sourceValidated&&(end-sourceValidated)/p["near_interval_seconds"]>=cycles;}
++        if(sourceValidated==null||freshnessPolicy==null){return;}var p=freshnessPolicy;
++        stale=stale||nativeFreshnessExpired(sourceValidated,freshnessTarget,now,p["normal_interval_seconds"],p["near_interval_seconds"],p["fast_interval_seconds"],p["stale_cycles"]);
+     }
+     function flag(data as Dictionary<String, Object or Null>, key as String) as Boolean {
+         var value=data[key]; return value instanceof Boolean && value;
+diff --git a/watchface/source/SpaceFoxApp.mc b/watchface/source/SpaceFoxApp.mc
+index 4245de92..43a203a3 100644
+--- a/watchface/source/SpaceFoxApp.mc
++++ b/watchface/source/SpaceFoxApp.mc
+@@ -24,7 +24,7 @@ class SpaceFoxApp extends Application.AppBase {
+     // transition. Break the app/view Method cycle and cancel owned callbacks.
+     (:typecheck(disableBackgroundCheck))
+     function onStop(state as Dictionary or Null) as Void {
+-        var current=view;if(current!=null){current.pendingLoader=null;current.pendingVolatileCheck=null;current.cancelAdmission=null;current.onHide();}
++        var current=view;if(current!=null){current.pendingLoader=null;current.pendingVolatileCheck=null;current.onHide();}
+         view=null;feed=null;
+     }
+     function getServiceDelegate() as [System.ServiceDelegate] {return [new FeedService()];}
+diff --git a/watchface/source/SpaceFoxView.mc b/watchface/source/SpaceFoxView.mc
+index 5a9f61df..d5b09033 100644
+--- a/watchface/source/SpaceFoxView.mc
++++ b/watchface/source/SpaceFoxView.mc
+@@ -26,7 +26,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
+     private var _resumePending as Boolean = false;
+     private var _resumeTimer as Timer.Timer or Null = null;
+     var bootstrapPending as Boolean=false;var lowNeedsLoader as Boolean=false;
+-    var admissionPending as Boolean=false;var cancelAdmission as Method or Null=null;
++    var admissionPending as Boolean=false;
+     var presentation as LocalePresentation;
+     var settings as SceneSettings;
+     var context as SceneContext or Null;var visualKey as Array or Null=null;
+@@ -146,10 +146,8 @@ class SpaceFoxView extends WatchUi.WatchFace {
+     (:typecheck(false)) function advanceSelection(now as Number or Long) as Void {
+         if(context==null||context.retentionDeadline==null){return;}
+         if(now.toLong()<context.retentionDeadline&&!selectionPassed(context)){return;}
+-        // Successors are checkpointed while the parser owns the heap. At a
+-        // rollover, cancel that candidate so the accepted queue can be
+-        // restored instead of losing the next selection or keeping it stale.
+-        if(admissionPending){if(cancelAdmission!=null){cancelAdmission.invoke();resumeAfterAdmission();}return;}
++        // Do not change the selected scene while admission owns the view.
++        if(admissionPending){return;}
+         resolveSelection(now);
+     }
+     (:extendedCode,:typecheck(false)) function resolveSelection(now as Number or Long) as Void {
+@@ -245,15 +243,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
+     // Release only rebuildable graphics while the strict candidate is resident;
+     // retain the compact selected context, UTC schedule and successor facts.
+     function beginAdmission() as Void {cancelSfrBuild();stopAnimation();stopFitness();presentation.suspend();LocaleGraphemes.data=null;if(packet!=null&&context!=null){context.stale=packet.stale as Boolean;context.rescheduled=packet.rescheduled as Boolean;}packet=null;downloaded=null;assetCache=null;renderer=null;restMask=null;sceneBuffer=null;sceneScaleOptions=null;layoutReady=false;admissionPending=true;startFallbackClock();WatchUi.requestUpdate();}
+-    function endAdmission() as Void {admissionPending=false;_resumePending=true;WatchUi.requestUpdate();}
+-    (:typecheck(false))
+-    // Keep the last accepted scene while its durable packet is revalidated.
+-    // The packet is detached for the parser, but its presentation and qualified
+-    // visual remain the only visible scene until a replacement is admitted.
+-    function clearForRestore() as Void {
+-        if(packet!=null && context!=null){context.stale=packet.stale;context.rescheduled=packet.rescheduled;}
+-        packet=null;
+-    }
++    function endAdmission() as Void {admissionPending=false;resumeAfterAdmission();}
+     function prepareRenderer() as Void {if(sfrBuild!=null||sfrFallbackPrepared){return;}presentation.restore(settings.language);LocaleGraphemes.load();renderer=new SceneRenderer(presentation);renderer.mapDecision=mapDecision;renderer.prepare(context,settings);(renderer as SceneRenderer).useDownloaded(downloaded);mapDecision.restored();if(lifecycle.mode()==LOW){(renderer as SceneRenderer).prepareAod();}}
+     function prepareOptionalAod() as Void {if(renderer!=null&&sfrBuild==null&&!sfrFallbackPrepared){try{(renderer as SceneRenderer).prepareAod();}catch(e){renderer=null;layoutReady=false;}}}
+     function releaseRenderer() as Void {stopAnimation();renderer=null;layoutReady=false;}
+@@ -368,7 +358,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
+         if(parts.size()==3){dc.drawText(x,active?y-107:y-45,Graphics.FONT_TINY,parts[1].format("%02d")+"."+parts[2].format("%02d"),Graphics.TEXT_JUSTIFY_CENTER);}
+         // Keep admitted facts independent of the optional graphics as well.
+         // Their own failure cannot prevent the already drawn clock/date.
+-        try{if(context!=null){var now=_clock.utcSeconds();advanceSelection(now);var selected=context as SceneContext or Null;if(selected!=null){var snap=snapshotAt(now);var value=lifecycle.mode()==LOW?snap.lowCountdown:snap.countdown;dc.setColor(selected.rescheduled||selected.sourceHold?0xFF6B6B:settings.countdownColor,Graphics.COLOR_TRANSPARENT);dc.drawText(x,active?y+7:y+25,Graphics.FONT_TINY,value,Graphics.TEXT_JUSTIFY_CENTER);dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(x,active?y+124:y+55,Graphics.FONT_XTINY,active?presentation.fit(dc,selected.site,Graphics.FONT_XTINY,242):selected.site,Graphics.TEXT_JUSTIFY_CENTER);dc.drawText(x,active?y-159:y+80,Graphics.FONT_XTINY,active?presentation.fit(dc,selected.rocket,Graphics.FONT_XTINY,238):selected.rocket+" · "+selected.purpose,Graphics.TEXT_JUSTIFY_CENTER);if(active){var company=selected.operatorShort.equals("")?selected.operator:selected.operatorShort;dc.drawText(x,y-133,Graphics.FONT_XTINY,presentation.fit(dc,company+" · "+selected.purpose,Graphics.FONT_XTINY,282),Graphics.TEXT_JUSTIFY_CENTER);}}}}catch(e){}
++        try{if(context!=null){var now=_clock.utcSeconds();var snap=snapshotAt(now);var selected=context as SceneContext or Null;if(selected!=null){var value=lifecycle.mode()==LOW?snap.lowCountdown:snap.countdown;dc.setColor(selected.rescheduled||selected.sourceHold?0xFF6B6B:settings.countdownColor,Graphics.COLOR_TRANSPARENT);dc.drawText(x,active?y+7:y+25,Graphics.FONT_TINY,value,Graphics.TEXT_JUSTIFY_CENTER);dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(x,active?y+124:y+55,Graphics.FONT_XTINY,active?presentation.fit(dc,selected.site,Graphics.FONT_XTINY,242):selected.site,Graphics.TEXT_JUSTIFY_CENTER);dc.drawText(x,active?y-159:y+80,Graphics.FONT_XTINY,active?presentation.fit(dc,selected.rocket,Graphics.FONT_XTINY,238):selected.rocket+" · "+selected.purpose,Graphics.TEXT_JUSTIFY_CENTER);if(active){var company=selected.operatorShort.equals("")?selected.operator:selected.operatorShort;dc.drawText(x,y-133,Graphics.FONT_XTINY,presentation.fit(dc,company+" · "+selected.purpose,Graphics.FONT_XTINY,282),Graphics.TEXT_JUSTIFY_CENTER);}}}}catch(e){}
+         LocaleGraphemes.data=null;
+         // ACTIVE retains all four configured values even when fonts/optional
+         // art fail. This never samples providers or promotes the mode to LOW.
+@@ -414,7 +404,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
+     function animationDone() as Void{animationRunning=false;animationProgress=0.0;WatchUi.requestUpdate();}
+     function onEnterSleep() as Void { lifecycle.sleep();var display=System.getDisplayMode();syncDisplayMode(display);if(display!=System.DISPLAY_MODE_OFF){prepareOptionalAod();} }
+     function onExitSleep() as Void { lifecycle.wake();var display=System.getDisplayMode();syncDisplayMode(display);if(display!=System.DISPLAY_MODE_OFF){WatchUi.requestUpdate();} }
+-    function onHide() as Void {if(!lifecycle.shown()){return;}lifecycle.hide();_resumePending=false;lowNeedsLoader=false;stopResume();stopAnimation();cancelSfrBuild();stopFitness();stopFallbackClock();if(cancelAdmission!=null){cancelAdmission.invoke();}releaseVisualForSettings();}
++    function onHide() as Void {if(!lifecycle.shown()){return;}lifecycle.hide();_resumePending=false;lowNeedsLoader=false;stopResume();stopAnimation();cancelSfrBuild();stopFitness();stopFallbackClock();releaseVisualForSettings();}
+     // Settings must not retain the decoded scene while its picker is open.
+     // The accepted packet and source remain; onLayout/onShow rebuild the view.
+     function releaseVisualForSettings() as Void {clearDecodingText();downloaded=null;renderer=null;restMask=null;sceneBuffer=null;sceneScaleOptions=null;layoutReady=false;sceneLifecycle.replace();}

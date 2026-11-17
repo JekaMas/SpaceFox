@@ -1,0 +1,78 @@
+import Toybox.Graphics;
+import Toybox.Test;
+import Toybox.WatchUi;
+
+(:test,:typecheck(false)) class CleanupClock extends WatchClock {
+    function utcSeconds(){return 1800000000;}
+    function localTimeText(){return "08:25";}
+    function localCalendar(){return [2,17,11];}
+}
+(:test,:typecheck(false)) class CleanupView extends SpaceFoxView {
+    var calls=0;
+    function initialize(){SpaceFoxView.initialize(new CleanupClock(),new ScheduleState(null,"empty"));}
+    function advanceSelection(now){calls+=1;SpaceFoxView.advanceSelection(now);}
+    function startFallbackClock(){}
+    function drawFallbackFields(dc){}
+}
+(:test,:typecheck(false)) class CleanupDC {
+    var texts=[];
+    function getWidth(){return 390;} function getHeight(){return 390;}
+    function setColor(a,b){} function clear(){}
+    function drawText(x,y,font,value,flags){texts.add(value);}
+    function getTextWidthInPixels(value,font){return value.length()*8;}
+    function drawLine(a,b,c,d){} function fillCircle(x,y,r){}
+}
+(:test,:typecheck(false)) function cleanupFallbackSelectsOnce(logger){
+    var v=new CleanupView();
+    var first=new SceneContext({"id"=>"old","rocket"=>"Old","site"=>"Old site","target"=>1799999000l,"precision"=>"exact","retentionDeadline"=>1800000000l});
+    var second=new SceneContext({"id"=>"next","rocket"=>"Next","site"=>"Next site","target"=>1800000060l,"precision"=>"exact","retentionDeadline"=>1800001860l});
+    v.setContext(first);v.upcoming=[second];var dc=new CleanupDC();v.drawClockFallback(dc);
+    logger.debug("CHECK calls="+v.calls+" next="+(v.context==second)+" texts="+dc.texts.toString());
+    Test.assertEqual(v.calls,1);Test.assert(v.context==second);Test.assert(dc.texts.indexOf("T- 00:01")>=0);Test.assert(dc.texts.indexOf("Next site")>=0);
+    logger.debug("CLEANUP_FALLBACK selection_calls=1 rollover=next low_countdown=T-00:01");return true;
+}
+
+// The expected freshness outcomes are literal, independent of the two owners.
+(:test,:typecheck(false)) function cleanupFreshnessSharedPolicy(logger){
+    var cases=[
+        [998000l,1000000l,999000l,3600,900,null,3,false],
+        [998000l,1000000l,1000700l,3600,900,null,3,true],
+        [1000000l,2000000l,1010799l,3600,900,null,3,false],
+        [1000000l,2000000l,1010800l,3600,900,null,3,true],
+        [1000000l,2000000l,1000600l,3600,900,300,2,true]
+    ];
+    for(var i=0;i<cases.size();i+=1){
+        var c=cases[i];var p={"normal_interval_seconds"=>c[3],"near_interval_seconds"=>c[4],"fast_interval_seconds"=>c[5],"stale_cycles"=>c[6]};
+        var scene=new SceneContext({"id"=>"launch","precision"=>"exact","target"=>c[1],"sourceValidated"=>c[0],"freshnessPolicy"=>p});scene.advanceFreshness(c[2]);
+        var reminder={"base"=>"https://fixture.invalid","id"=>"launch","sequence"=>1,"target"=>c[1],"validated"=>c[0],"since"=>c[0],"stale"=>false,"policy"=>[c[3],c[4],c[5],c[6]]};
+        Test.assertEqual(scene.stale,c[7]);Test.assertEqual(LaunchReminder.valid(reminder,"https://fixture.invalid",c[2]),!c[7]);
+    }
+    var future={"base"=>"https://fixture.invalid","id"=>"launch","sequence"=>1,"target"=>2000000l,"validated"=>1000001l,"since"=>999000l,"stale"=>false,"policy"=>[3600,900,null,3]};
+    Test.assert(!LaunchReminder.valid(future,"https://fixture.invalid",1000000l));
+    var sticky=new SceneContext({"id"=>"launch","precision"=>"exact","target"=>2000000l,"sourceValidated"=>1000000l,"freshnessPolicy"=>{"normal_interval_seconds"=>3600,"near_interval_seconds"=>900,"fast_interval_seconds"=>null,"stale_cycles"=>3},"stale"=>true});sticky.advanceFreshness(1000001l);Test.assert(sticky.stale);
+    logger.debug("CLEANUP_FRESHNESS normal_near_fast future_refused sticky_retained");return true;
+}
+
+(:test,:typecheck(false)) class CleanupObjectStore {
+ var values={};function read(key){return values[key];}
+}
+(:test,:typecheck(false)) function cleanupSfrDescriptorBoundary(logger){
+    var snapshot=WatchUi.loadResource(Rez.JsonData.Coarse)["payload"];
+    var packet=new NativeTrustedPacket(snapshot);var store=new CleanupObjectStore();var build=new NativeSfrBuild(store,"https://fixture.invalid",packet);
+    var raw=WatchUi.loadResource(Rez.JsonData.CleanupSelection)["raw"];var ref=packet.bridge["selection"];
+    store.values["sf.obj."+ref["sha256"]]=raw;build.readKind=0;
+    var job=new NativeSfrReadJob(build,ref,true);var steps=0;while(!job.step()){steps+=1;Test.assert(steps<5000);}
+    Test.assertEqual(job.result["launchId"],"ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60");Test.assert(job.result["position"]==true);
+    var corrupt=raw+"x";store.values["sf.obj."+ref["sha256"]]=corrupt;var refused=false;
+    try{var bad=new NativeSfrReadJob(build,ref,true);while(!bad.step()){} }catch(e){refused=true;}Test.assert(refused);
+    var unknown=raw.substring(0,raw.length()-1)+",\"zz_unknown\":1}";var hash=new NativeWireHash();hash.put(unknown);var digest=hash.digest();
+    var unknownRef={"sha256"=>digest,"decodedBytes"=>hash.count};store.values["sf.obj."+digest]=unknown;refused=false;
+    try{var bad=new NativeSfrReadJob(build,unknownRef,true);while(!bad.step()){} }catch(e){refused=true;}Test.assert(refused);
+    build.dispose();logger.debug("CLEANUP_SFR captured_root=true corrupt_hash_refused=true unknown_field_refused=true");return true;
+}
+
+(:test,:typecheck(false)) function cleanupSfrCanonicalRefusals(logger){
+    var malformed=["{\"a\":1,\"a\":2}","{\"b\":1,\"a\":2}","{\"a\":-0}","{\"a\":1, }"];
+    for(var i=0;i<malformed.size();i+=1){var refused=false;try{var p=new NativeIncrementalJson();p.feedMode=true;p.begin(malformed[i],4096);var steps=0;while(!p.step()){steps+=1;Test.assert(steps<500);} }catch(e){refused=true;}Test.assertMessage(refused,"canonical refusal "+i);}
+    logger.debug("CLEANUP_SFR duplicate_order_negative_zero_whitespace_refused=4");return true;
+}
