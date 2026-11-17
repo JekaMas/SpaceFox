@@ -171,4 +171,4 @@ Schedule retry and display simplification (0.2.4):
 - [x] Run affected cadence, retry, asset, EN/RU display and SDK compile checks; retain unrelated earlier receipts (`evidence/schedule-cadence-024/PROGRESS.md`).
 - [x] Independent peer verified and repaired the same batch to GREEN, including residual schedule-pagination backoff; see `evidence/schedule-cadence-024/PEER.md` and sole current release receipt `peer.json`.
 - [x] Merge/freeze actual main, deploy/read back the updated upstream source, export/tag/publish the authorized full signed GitHub release (`evidence/schedule-cadence-024/PUBLICATION.md`).
-- [ ] Complete Garmin Store submission and record its status; phone and physical acceptance remain unobserved.
+- [x] Submit 0.2.4 to Garmin and record the observed owner-facing version; approval, phone and physical acceptance remain unobserved.
