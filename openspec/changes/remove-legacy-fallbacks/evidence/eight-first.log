@@ -1,0 +1,36 @@
+test_durable_latches_and_publication_preserve_source_ages (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_durable_latches_and_publication_preserve_source_ages) ... ok
+test_invalid_current_artifacts_keep_active_and_source (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_invalid_current_artifacts_keep_active_and_source) ... 
+  test_invalid_current_artifacts_keep_active_and_source (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_invalid_current_artifacts_keep_active_and_source) (size=2572) ... FAIL
+test_invalid_current_artifacts_keep_active_and_source (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_invalid_current_artifacts_keep_active_and_source) ... FAIL
+test_old_source_and_duplicate_result_refused_negative (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_old_source_and_duplicate_result_refused_negative) ... ok
+test_optional_detail_never_renews_primary_minimum (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_optional_detail_never_renews_primary_minimum) ... ok
+test_quota_exhaustion_preserves_primary_and_terminal_latches (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_quota_exhaustion_preserves_primary_and_terminal_latches) ... ok
+test_healthy_cadence_ignores_old_fast_hint (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_healthy_cadence_ignores_old_fast_hint) ... ok
+test_rollover_optional_404_counts_started_attempt (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_rollover_optional_404_counts_started_attempt) ... ok
+test_rollover_optional_success_counts_each_attempt (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_rollover_optional_success_counts_each_attempt) ... ok
+
+======================================================================
+FAIL: test_invalid_current_artifacts_keep_active_and_source (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_invalid_current_artifacts_keep_active_and_source) (size=2572)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/cleanup-legacy-fallbacks-20261117/tests/test_schedule_producer_transport.py", line 1052, in test_invalid_current_artifacts_keep_active_and_source
+    with self.subTest(size=len(bad['feed.json'])),self.assertRaises(StateError):
+                                                  ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: StateError not raised
+
+======================================================================
+FAIL: test_invalid_current_artifacts_keep_active_and_source (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_invalid_current_artifacts_keep_active_and_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/cleanup-legacy-fallbacks-20261117/tests/test_schedule_producer_transport.py", line 1054, in test_invalid_current_artifacts_keep_active_and_source
+    self.assertEqual(pub.head,head)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+AssertionError: 'df2c909bbb99a66d16ed634ba0e54d678b903dbb' != '4416485fad0b38e498bba4b12bd4f449e7c61c51'
+- df2c909bbb99a66d16ed634ba0e54d678b903dbb
++ 4416485fad0b38e498bba4b12bd4f449e7c61c51
+
+
+----------------------------------------------------------------------
+Ran 8 tests in 144.893s
+
+FAILED (failures=2)

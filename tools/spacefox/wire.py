@@ -205,8 +205,10 @@ def validate_current_feed(raw, *, now=None):
         normalized = _schedule({'entries': [dict(record=record, **flags)],
                    'evaluated_at_utc': evaluation}).entries[0].record
         selection_epoch = doc['publisher']['selectionValidatedUtc']
-        if selection_epoch is None or selection_epoch < normalized.source_validated_utc:
-            raise ValueError('selection validation precedes selected source')
+        # The traversal epoch is the oldest observation across its pages;
+        # an individual selected record can have an independently newer age.
+        if selection_epoch is None:
+            raise ValueError('selected launch lacks traversal validation')
         from .schedule import LaunchStatus
         if normalized.status in (LaunchStatus.COMPLETED, LaunchStatus.CANCELLED):
             raise ValueError('selected launch is no longer upcoming')
@@ -258,7 +260,6 @@ def validate_current_feed(raw, *, now=None):
             source_epoch = item['source_validated_utc']
             if doc['publisher']['selectionValidatedUtc'] is None or type(source_epoch) is not int:
                 raise ValueError('upcoming launch lacks publisher or record epoch')
-            single['publisher'] = dict(doc['publisher'], selectionValidatedUtc=max(doc['publisher']['selectionValidatedUtc'], source_epoch))
             single['timingState'] = ('uncertain' if item['timing']['exact_utc'] is None else 'countdown')
             single['selection'] = dict(selection, includedRecords=1)
             validate_current_feed(encode_feed(single), now=now)

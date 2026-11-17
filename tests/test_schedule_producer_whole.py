@@ -198,6 +198,7 @@ class ScheduleProducerWholeTest(unittest.TestCase):
 
     def test_normalized_identity_and_immutable_state_positive(self):
         from dataclasses import FrozenInstanceError
+        self.assertEqual(set(IdKind.__members__), {'LAUNCH','CONFIGURATION','ORGANIZATION','SITE','COUNTRY'})
         a=normalize_launch(captured_starship(),NOW)
         a=replace(a,configuration_id=StableId(IdKind.CONFIGURATION,'ll2','121'),
                   operator_id=StableId(IdKind.ORGANIZATION,'ll2','121'))

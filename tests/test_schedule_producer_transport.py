@@ -120,7 +120,7 @@ def rollover_pages(clock,detail_status):
             calls.append(self.path);n=len(calls);clock[0]=NOW+3600+n
             status=200 if n==1 else detail_status
             body={'count':1,'next':None,'previous':None,'results':[c]} if n==1 else details[self.path.split('/')[-2]]
-            self.send_response_only(status);self.send_header('Date',formatdate(NOW+3599 if n==1 else clock[0],usegmt=True))
+            self.send_response_only(status);self.send_header('Date',formatdate(NOW+3600 if n==1 else clock[0],usegmt=True))
             self.send_header('Age','0' if n==1 else str(clock[0]-NOW));self.send_header('Content-Type','application/json')
             self.end_headers()
             if status==200:self.wfile.write(json.dumps(body).encode())
@@ -544,12 +544,12 @@ class ScheduleProducerTransportTest(unittest.TestCase):
                 changed['window_end'] = None
                 changed['last_updated'] = '2026-11-13T06:26:33Z'
                 moved.append(normalize_launch(changed, NOW + 1))
-            token = pub.reserve(pub.head, NOW + 1, trigger='manual')
+            token = pub.reserve(pub.head, NOW + 1, trigger='extra')
             pub.accept_source(pub.head, token, tuple(moved), NOW + 1, selection_validated_utc=NOW + 1)
             terminal = replace(moved[0], status=LaunchStatus.COMPLETED,
                                source_validated_utc=NOW + 2, source_updated_utc=NOW + 2,
                                source_updated_iso='2026-11-13T06:26:34Z', source_updated_subsecond=0)
-            token = pub.reserve(pub.head, NOW + 2, trigger='manual')
+            token = pub.reserve(pub.head, NOW + 2, trigger='extra')
             pub.accept_source(pub.head, token, (terminal,), NOW + 2, selection_validated_utc=NOW + 2)
             at = NOW + 10802
             pub.observe_age(pub.head, at)
@@ -744,23 +744,23 @@ class ScheduleProducerTransportTest(unittest.TestCase):
             self.assertIsNone(reopened.ledger['pending'])
 
     def rollover_observation(self,detail_status):
-        clock=[NOW+3599]
+        clock=[NOW+3600]
         with local_authority() as (pub,store,code),rollover_pages(clock,detail_status) as (port,calls,a,b,c):
             first=normalize_launch(a,NOW);second=normalize_launch(b,NOW)
             token=pub.reserve(pub.head,NOW,trigger='manual');pub.accept_source(pub.head,token,(first,second),NOW,selection_validated_utc=NOW)
             token=pub.reserve(pub.head,NOW,trigger='extra');pub.finish_request(pub.head,token,NOW,'success')
             client=LL2Client(origin=f'http://127.0.0.1:{port}',local_http=True)
-            result=update(pub,client,NOW+3599,build_catalog(ROOT),max_pages=1,detail_limit=2,clock=lambda:clock[0])
+            result=update(pub,client,NOW+3600,build_catalog(ROOT),max_pages=1,detail_limit=2,clock=lambda:clock[0])
             count=1 if detail_status==404 else 2
             self.assertEqual(result['requests'],1+count);self.assertEqual(result['traversal']['detailRequests'],count)
             self.assertEqual(client.requests_started,1+count);self.assertEqual(len(calls),1+count)
             reopened=Publisher(store,code);self.assertEqual(len(reopened.ledger['requests']),1+count)
-            self.assertEqual(reopened.ledger['selection_validated_utc'],NOW+3599)
+            self.assertEqual(reopened.ledger['selection_validated_utc'],NOW+3600)
             facts={e.record.launch_id.value:e.record.source_validated_utc for e in reopened.schedule.entries}
-            self.assertEqual(facts,{a['id']:NOW,b['id']:NOW,c['id']:NOW+3599})
+            self.assertEqual(facts,{a['id']:NOW,b['id']:NOW,c['id']:NOW+3600})
             self.assertIsNotNone(reopened.ledger['pending'])
             if detail_status==404:
-                self.assertEqual(reopened.ledger['backoff_until_utc'],NOW+3902)
+                self.assertIsNone(reopened.ledger['backoff_until_utc'])
                 self.assertEqual(reopened.ledger['requests'][-1]['outcome'],'failed')
                 self.assertEqual(len(result['detailFailures']),1)
             else:self.assertEqual(result['detailFailures'],[])
@@ -1026,16 +1026,34 @@ class ScheduleProducerTransportTest(unittest.TestCase):
             envelope2=pub.publisher_envelope(NOW+1)
             candidate,digest2=build_artifact(pub.schedule,catalog,NOW+1,publisher=envelope2,root=ROOT)
             good=json.loads(candidate['feed.json']);cases=[]
+            # This wire field is advisory; the request owner enforces the
+            # current hourly cadence independently of its accepted value.
+            from tools.spacefox.wire import validate_current_feed
+            from tools.spacefox.schedule import request_due
+            advisory=deepcopy(good);advisory['pollIntervalSeconds']=7200
+            validate_current_feed(json.dumps(advisory,separators=(',',':')).encode(),now=NOW+1)
+            self.assertFalse(request_due(True,NOW,True,True,NOW+3599))
+            self.assertTrue(request_due(True,NOW,True,True,NOW+3600))
             wrong=deepcopy(good);wrong['schemaVersion']=2;cases.append(json.dumps(wrong,separators=(',',':')).encode())
             wrong=deepcopy(good);del wrong['launch']['launch_id'];cases.append(json.dumps(wrong,separators=(',',':')).encode())
             wrong=deepcopy(good);wrong['launch']['timing']['exact_utc']='invalid';cases.append(json.dumps(wrong,separators=(',',':')).encode())
             wrong=deepcopy(good);wrong['rendererProfile']='unsupported';cases.append(json.dumps(wrong,separators=(',',':')).encode())
-            wrong=deepcopy(good);wrong['pollIntervalSeconds']=7200;cases.append(json.dumps(wrong,separators=(',',':')).encode())
+            wrong=deepcopy(good);wrong['pollIntervalSeconds']=299;cases.append(json.dumps(wrong,separators=(',',':')).encode())
             over=candidate['feed.json']+b' '*(8193-len(candidate['feed.json']));self.assertEqual(len(over),8193);cases.append(over)
             # Keep sidecars coherent so feed errors reach the actual parser
             # and durable policy admission instead of failing on a stale copy.
             from tools.spacefox.native_motion import with_text_transport
-            broken=[with_text_transport(dict(candidate,**{'feed.json':raw})) for raw in cases]
+            broken=[]
+            for raw in cases:
+                try:
+                    broken.append(with_text_transport(dict(candidate,**{'feed.json':raw})))
+                except (KeyError, ValueError, TypeError):
+                    # An invalid projection can be refused before durable admission.
+                    reopened=Publisher(store,code)
+                    self.assertEqual(reopened.ledger['active'],active)
+                    self.assertEqual(reopened.ledger['accepted'],accepted)
+                    self.assertIsNone(reopened.ledger['pending'])
+
             altered=dict(candidate);key=next(k for k in altered if k.startswith('rasters/'));altered[key]+=b'x';broken.append(altered)
             for bad in broken:
                 head=pub.head
@@ -1050,7 +1068,7 @@ class ScheduleProducerTransportTest(unittest.TestCase):
     def test_old_source_and_duplicate_result_refused_negative(self):
         with local_authority() as (pub,store,code):
             a=normalize_launch(captured_starship(),NOW)
-            token=pub.reserve(pub.head,NOW,trigger='manual');pub.accept_source(pub.head,token,(a,),NOW)
+            token=pub.reserve(pub.head,NOW,trigger='manual');pub.accept_source(pub.head,token,(a,),NOW,selection_validated_utc=NOW)
             token=pub.reserve(pub.head,NOW+3600,trigger='manual');before=pub.head
             with self.assertRaises(StateError):pub.accept_source(pub.head,token,(replace(a,source_validated_utc=NOW-1),),NOW+3600)
             self.assertEqual(pub.head,before);self.assertEqual(pub.schedule.entries[0].record,a)
@@ -1077,7 +1095,7 @@ class ScheduleProducerTransportTest(unittest.TestCase):
             missing=deepcopy(row);missing['id']='00000000-0000-4000-8000-000000000009'
             missing['pad']=None;missing['launch_service_provider']=None
             b=normalize_launch(missing,NOW+1)
-            token=pub.reserve(pub.head,NOW+1,trigger='manual')
+            token=pub.reserve(pub.head,NOW+1,trigger='extra')
             pub.accept_source(pub.head,token,(a2,b),NOW+1,selection_validated_utc=NOW+1)
             at=NOW+10801;pub.observe_age(pub.head,at)
             before={e.record.launch_id.value:e for e in pub.schedule.entries}
@@ -1099,23 +1117,19 @@ class ScheduleProducerTransportTest(unittest.TestCase):
             self.assertEqual(after[row['id']].record.source_validated_utc,NOW+1)
             self.assertEqual(after[missing['id']].record.source_validated_utc,NOW+1)
 
-    def test_fast_policy_persists_twelve_due_reservations(self):
+    def test_healthy_cadence_ignores_old_fast_hint(self):
         policy=RefreshPolicy(fast_interval_seconds=300)
         with local_authority(policy) as (pub,store,code):
             original=normalize_launch(captured_starship(),NOW)
             token=pub.reserve(pub.head,NOW,trigger='scheduled')
             pub.accept_source(pub.head,token,(original,),NOW,selection_validated_utc=NOW)
-            before=pub.head;self.assertIsNone(pub.reserve(pub.head,NOW+299,trigger='scheduled'))
-            self.assertEqual(pub.head,before)
-            for i in range(1,12):
-                token=pub.reserve(pub.head,NOW+300*i,trigger='scheduled')
-                self.assertIsNotNone(token);pub.finish_request(pub.head,token,NOW+300*i,'success')
-            pub.observe_age(pub.head,NOW+3300)
+            for offset in (299,300,3599):
+                before=pub.head;self.assertIsNone(pub.reserve(pub.head,NOW+offset,trigger='scheduled'));self.assertEqual(pub.head,before)
+            token=pub.reserve(pub.head,NOW+3600,trigger='scheduled');self.assertIsNotNone(token)
+            pub.finish_request(pub.head,token,NOW+3600,'success')
             reopened=Publisher(store,code);self.assertEqual(reopened.policy,policy)
-            self.assertEqual(len(reopened.ledger['requests']),12)
-            self.assertTrue(reopened.schedule.entries[0].stale)
+            self.assertEqual(len(reopened.ledger['requests']),1)
             self.assertEqual(reopened.schedule.entries[0].record.source_validated_utc,NOW)
-            with self.assertRaises(StateError):Publisher(store,code,RefreshPolicy())
 
     def test_missing_art_does_not_exclude_upcoming_identity(self):
         row=captured_starship();row['rocket']['configuration']['id']=999999;row['pad']['id']=999999

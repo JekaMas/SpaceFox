@@ -22,17 +22,14 @@ entity kind used by the canonical catalog. For canonical LL2 references,
 `StableId(IdKind.ORGANIZATION, 'll2', '121')` corresponds to
 `ll2:organization:121`; configuration121 is separately `ll2:configuration:121`.
 The same namespace/kind/value correspondence applies to site and country IDs.
-`IdKind.OPERATOR` remains a Python source-symbol alias for `ORGANIZATION`; its
-value and exported content are now `organization`, replacing the experimental
-`operator` spelling. This is not a persisted-wire compatibility guarantee: no
-production serialized state is accepted for this unit, and wire/state migrations
-remain separate. A launch's operator must come from launch-source evidence;
+An operator reference uses `IdKind.ORGANIZATION`; there is no separate operator
+entity or legacy enum alias. A launch's operator must come from launch-source evidence;
 catalog manufacturer or site-agency roles cannot establish it.
 
 `LaunchRecord` requires a launch ID, `Timing`, `LaunchStatus` and per-record
 `source_validated_utc`. Optional references and configuration/operator/mission
 text default to explicit `None`. Supplied nonempty text is preserved in full.
-The future provider adapter must turn absent/blank optional text into `None`;
+The provider adapter turns absent/blank optional text into `None`;
 the normalized boundary rejects blank or malformed values rather than borrowing
 another launch's context. `COMPLETED` means provider-confirmed completion.
 `PENDING` and `UNKNOWN` remain eligible; clock passage cannot change status.
@@ -85,10 +82,11 @@ sortable eligible record exists. Equal anchors sort by launch namespace/value.
 This deterministic order does not prove an unknown launch could not occur sooner.
 Cancelled and provider-confirmed completed entries are excluded.
 
-The selection contains `COUNTDOWN` with a positive UTC difference only for a future
-exact target. At the target and afterward it contains `AWAITING_UPDATE` and no
-remaining seconds. Coarse/missing timing gives `UNCERTAIN`; no eligible record
-gives `NO_SCHEDULE`, no record and no invented timestamp.
+The publisher selection contains `COUNTDOWN` with a positive UTC difference only
+for a future exact target. At the target and afterward it contains
+`AWAITING_UPDATE`; coarse/missing timing gives `UNCERTAIN`. Separately, the watch
+can display T−/T+ relative to a validated announced nominal NET without treating
+it as exact or evidence of liftoff. No eligible record gives `NO_SCHEDULE`.
 
 Changed exact targets, coarse timing facts, or withdrawal/resolution of uncertainty
 for the same accepted launch set its reschedule latch. If both records have the
@@ -98,7 +96,7 @@ cannot create or clear that latch.
 `content_revision` hashes all accepted records' semantic JSON content in stable ID
 order, excluding validation/evaluation time and derived flags. `record.content()`
 returns detached plain JSON values, including explicit nulls; source validation
-and derived flags must be added separately by the future wire owner.
+and derived flags are added separately by the current wire owner.
 
 ## Cadence and source age
 
@@ -112,7 +110,7 @@ cannot refresh source validation.
 
 The current request decision is `request_due`; it does not itself perform I/O or reserve quota. Native wake restrictions, HTTP response handling and actual publication remain separate integration boundaries.
 
-Portable checks: `python3 -B -m unittest -v tests.test_schedule_policy`.
+Portable checks: `python3 -B -m unittest -v tests.test_schedule_producer_whole`.
 Literal tests cover selection/exclusion/context, precision/order, atomic rejection,
 cadence boundaries, reschedule/withdrawal, source-age thresholds/omission/latching
 and a replayed acceptance→move→omission→old-file→renewal→cancellation sequence.

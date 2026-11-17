@@ -7,9 +7,10 @@ path and local parts of3.5. It does not complete the whole task: live worldwide
 provider qualification, authenticated Actions/Pages, native cache/phone/FR165,
 compatible graphic retention and setup rehearsal remain required.
 
-The sole current public output is schema3/SFR1M native-motion-v3 at `/feed.json`.
-Durable authority uses `refs/heads/feed-state-motion-v3` and bootstrap anchor
-`refs/tags/spacefox-state-bootstrap-motion-v3`. Only the current packed schema2
+The publisher serves schema3/SFR1M native-motion-v3 at `/feed.json` and the
+compact schedule projection consumed by the watch at `/watch.json`.
+Durable authority uses `refs/heads/feed-state-map-v3` and bootstrap anchor
+`refs/tags/spacefox-state-bootstrap-map-v3`. Only the current packed schema2
 ledger is accepted; no old snapshot import/migration or alternate feed applies.
 Historical tests and source observations below keep their original boundaries;
 they do not establish current deployed/native acceptance.
@@ -58,14 +59,14 @@ production detail body was not captured, so its actual mode remains unknown.
 Omission/404/304 are never cancellation or completion. Required upcoming pagination remains atomic. Optional detail404/304, malformed or
 regressing facts, timeout,429and exhausted allowance retain that identity and its
 old validation while the valid upcoming batch can become pending. Failed details
-keep their durable consumed slot/backoff; a quota denial sends no HTTP. The CLI
+keep their durable consumed slot without introducing schedule backoff; a quota denial sends no HTTP. The CLI
 reports bounded `detailFailures` and actual issued `detailRequests`; after the first
 failure it stops optional work without an automatic retry. A successful direct
 detail alone may renew or change that identity. The default remains2pages and
 2details; changing flags is not required to recover primary-update liveness.
 Issued requests count transport attempts started after durable permission, even
 when the response fails. Expiring old quota slots cannot reduce that count;
-quota/backoff or source-guard rejection before HTTP counts zero and refunds no slot.
+quota, metadata-specific backoff or source-guard rejection before HTTP counts zero and refunds no slot.
 
 Every request, including pagination/details/manual/retry, first calls the accepted
 `Publisher.reserve` and receives a committed allowance token. The shared sliding
@@ -112,9 +113,10 @@ second target. Minute, hour, local morning/afternoon, day/month/quarter, missing
 and future IDs are `source-coarse`. The raw nominal NET, its normalized ordering
 anchor, precision ID/name/abbreviation/description and supplied window bounds remain
 explicit, including source descriptions that specify local time.
-No UTC date, minute uncertainty interval, second countdown or local-to-UTC morning
-bounds are invented. Fractional nominal NET stays coarse and keeps its raw text.
-This conservative current timing projection cannot yet present a minute-precision countdown.
+No UTC date, minute uncertainty interval or local-to-UTC morning bounds are
+invented. Fractional nominal NET stays coarse and keeps its raw text. The watch
+may display T−/T+ relative to a validated announced nominal NET, including a
+coarse reference; that display does not promote source precision or prove liftoff.
 
 LL2 phases1/2/5/8 are pending,3/4/7 terminal completed (lifecycle terminal, never a
 success claim),6and9are `started`; unknown IDs stay unknown. The exact source
@@ -175,18 +177,20 @@ source reconciliation rather than delete unknown history to manufacture longevit
 
 The current producer validates the canonical catalog and selected source closure,
 selects one coherent accepted launch and publishes its exact schema3/SFR1M
-`feed.json` plus all referenced immutable current and recoverable same-format
-objects. Typed IDs, timing precision, actual context/nulls, per-record validation,
+`feed.json`, its compact `watch.json` projection, and referenced immutable current
+and recoverable same-format objects. Typed IDs, timing precision, actual context/nulls, per-record validation,
 latches, refresh policy, source-content revision and traversal scope remain bound.
 All metadata/dictionaries count toward8192 decoded UTF8 bytes. Required fields
 are not trimmed to fit. Current schema/renderer, cross-field identity, digest,
 selected phase/precision and scope validation precede acceptance.
 
 The publisher envelope preserves stable instance identity, monotonic generation
-and accepted selection-validation epoch, including empty schedules. A consumer
-pins instance per FeedBaseUrl, rejects older generations and conflicting bytes at
-the same generation, and isolates a new host namespace. These consumer obligations
-need their own native cache observations; producer tests do not supply them.
+and accepted selection-validation epoch, including empty schedules. The watch
+trusts the controlled snapshot response, writes its complete normalized value to
+an inactive slot, then publishes a source-namespaced pointer. Foreground RAM
+comparison prevents an older pending volatile delivery from replacing newer facts;
+this is not a general wire-digest or same-generation conflict check. Producer
+tests alone do not establish native cache behavior.
 
 `selection_validated_utc` is accepted source evidence, not build/download time or
 a value inferred from other records. A qualified primary update uses the earliest
@@ -206,8 +210,10 @@ claim worldwide completeness.
 
 Matching optional SFR1M scenes retain source/role/entity/art/point provenance and
 raw/decoded pixel integrity. Until a matching complete validated scene exists,
-valid schedule metadata may activate with honest generic/no-point fallback; no
-old image is relabeled for a new model. Unverified source coordinates remain
+valid schedule metadata may activate with generic art and a simplified map; a
+valid accepted coordinate remains visible as a point, and no point is invented
+when coordinates are unavailable. No old image is relabeled for a new model.
+Unverified source coordinates remain
 explicit source facts, not surveyed/verified positions. Decimal precision and
 null/zero distinctions remain intact. Complete current/recovery delivery stays
 within1MiB/256files, feed8192bytes, object4096bytes and the existing native
@@ -221,7 +227,8 @@ commits there too. Before optional work, that successful required reservation is
 explicitly marked as awaiting acceptance; it can be consumed once in its original
 logical invocation, then carries an irreversible consumed marker. Used,
 failed, non-schedule, expired, unknown and consumed tokens cannot authorize it.
-Optional outcomes/backoff are durably recorded independently. A still-reserved
+Optional request outcomes are durably recorded independently; metadata-only
+backoff remains separate from schedule retries. A still-reserved
 result may finish later within its hour, preserving non-instantaneous requests. A crash cannot leave newly
 accepted source without its pending artifact. Preparing allocates a monotonic
 generation and saves exact pending bytes before export. Reopen exports that same pending
@@ -270,7 +277,7 @@ recovers exact saved files without HTTP. A pending candidate blocks new work and
 never a fresh budget recovered from CDN. Deploy/promote externally only after the
 real authenticated serialization/readback adapter is qualified.
 
-Qualification uses `python3 -B -m unittest -v tests.test_schedule_provider`, real
+Qualification uses `python3 -B -m unittest -v tests.test_schedule_producer_whole`, real
 bare Git, real loopback HTTP and a clean copied portable CLI subprocess. Authored
 response fixtures substitute LL2 only. Local observer-supplied live revisions
 substitute Pages readback. No production LL2 requests, cloud writes, paid service,

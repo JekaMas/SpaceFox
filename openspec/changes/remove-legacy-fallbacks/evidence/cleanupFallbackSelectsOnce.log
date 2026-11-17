@@ -1,0 +1,13 @@
+------------------------------------------------------------------------------
+Executing test cleanupFallbackSelectsOnce...
+DEBUG (13:12): CHECK calls=1 next=true texts=[08:25, 17.11, T- 00:01, Next site, Next ?? ]
+DEBUG (13:12): CLEANUP_FALLBACK selection_calls=1 rollover=next low_countdown=T-00:01
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+cleanupFallbackSelectsOnce          PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

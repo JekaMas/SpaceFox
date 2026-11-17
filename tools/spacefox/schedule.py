@@ -23,7 +23,6 @@ class IdKind(str, Enum):
     LAUNCH = 'launch'
     CONFIGURATION = 'configuration'
     ORGANIZATION = 'organization'
-    OPERATOR = 'organization'  # Source-symbol alias; operator is a reference role.
     SITE = 'site'
     COUNTRY = 'country'
 
@@ -168,10 +167,10 @@ class Timing:
 
     @property
     def countdown_utc(self):
-        """Only exact seconds or LL2's explicitly identified nominal minute.
+        """Target for eligibility: exact seconds or an explicitly nominal minute.
 
-        Captured LL2 records provide no trustworthy ascent-end timestamp. The
-        selection fallback is900seconds; window_end is never an ascent end.
+        The watch may display a broader announced-NET reference without changing
+        this eligibility or asserting an actual liftoff.
         """
         if self.exact_utc is not None:
             return self.exact_utc
@@ -382,7 +381,7 @@ class RefreshPolicy:
             if field == 'fast_interval_seconds' and value is None:
                 continue
             if type(value) is not int or value < 300:
-                raise ScheduleError('poll intervals must be integer seconds >=300 (<=12 steady calls/hour)')
+                raise ScheduleError('freshness intervals must be integer seconds >=300')
         if self.near_interval_seconds > self.normal_interval_seconds:
             raise ScheduleError('near interval cannot exceed normal interval')
         if self.fast_interval_seconds is not None and self.fast_interval_seconds > self.near_interval_seconds:
@@ -392,6 +391,7 @@ class RefreshPolicy:
 
 
 DEFAULT_POLICY = RefreshPolicy()
+HEALTHY_REQUEST_INTERVAL_SECONDS = 3600
 
 
 def _arguments(record, now_utc, policy):
@@ -406,7 +406,7 @@ def cadence_seconds(record: LaunchRecord | None, now_utc: int,
                     policy: RefreshPolicy = DEFAULT_POLICY) -> int:
     """Advertised healthy refresh interval; retries use request_due."""
     _arguments(record, now_utc, policy)
-    return 3600
+    return HEALTHY_REQUEST_INTERVAL_SECONDS
 
 
 def request_due(has_future: bool, last_attempt_utc: int | None,
@@ -421,7 +421,7 @@ def request_due(has_future: bool, last_attempt_utc: int | None,
     if now_utc < last_attempt_utc:
         return True
     if last_succeeded and has_future:
-        return now_utc - last_attempt_utc >= 3600
+        return now_utc - last_attempt_utc >= HEALTHY_REQUEST_INTERVAL_SECONDS
     return connected or now_utc - last_attempt_utc >= 300
 
 

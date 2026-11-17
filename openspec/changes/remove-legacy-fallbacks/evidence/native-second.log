@@ -1,0 +1,21 @@
+------------------------------------------------------------------------------
+Executing test cleanupFallbackSelectsOnce...
+DEBUG (12:48): CHECK calls=1 next=true texts=[08:25, 17.11, T- 00:01, Next site, Next ?? ]
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - cleanupFallbackSelectsOnce() at /task/isolated/SelectionOnce.mc:30 0x10001022 
+  - evaluate_test_entries_0_to_1() at /task/gen/006-B4433-00/source/UnitTests.mcgen:51 0x10004508 
+  - runTest() at /task/gen/006-B4433-00/source/UnitTests.mcgen:66 0x100045ba 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+cleanupFallbackSelectsOnce          ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)
