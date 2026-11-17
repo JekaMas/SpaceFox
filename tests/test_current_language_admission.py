@@ -98,7 +98,7 @@ class CurrentLanguageAdmission(unittest.TestCase):
             source_state(self.root)
         git('update-index', '--no-assume-unchanged', 'tools/release.py')
         shutil.copyfile(ROOT/'tools/release.py', target)
-        target.write_bytes(target.read_bytes() + b'\n-----BEGIN PRIVATE KEY-----\n')
+        target.write_bytes(target.read_bytes() + b'\n-----BEGIN ' + b'PRIVATE KEY-----\n')
         git('add', '--all')
         git('commit', '-qm', 'secret control')
         with self.assertRaisesRegex(Exception, 'secret-shaped'):
