@@ -6,4 +6,4 @@
 - [x] Run production-bound deterministic event-sequence properties and focused FR165/M SDK/API/frame checks, retaining failures and exact adapter boundaries.
 - [x] Update current contracts and evidence, reconcile version/native identity and complete author verification.
 - [x] One independent peer verifies and repairs this same stable batch to GREEN (source8b9d211e / NativeID4d727bcf; evidence/PEER.md and the single actual independent-peer.json).
-- [ ] Complete Garmin submission and record the outcome; GitHub 0.2.7 is published and physical/phone acceptance remain unobserved (see evidence/PUBLICATION.md).
+- [x] Publish GitHub 0.2.7 and submit the same signed package to Garmin; Store approval/availability and physical/phone acceptance remain unobserved (see evidence/PUBLICATION.md).
