@@ -315,7 +315,7 @@ import Toybox.System;
  function suspend(){suspends+=1;locale="";}
 }
 (:test,:typecheck(false)) class PbtView extends SpaceFoxView {
- var fakeMode=Toybox.System.DISPLAY_MODE_HIGH_POWER;var timers=[];var updates=0;var lowFrames=0;var fallbackFrames=0;var layouts=0;var fitnessCalls=0;var animationStarts=0;var animationStops=0;var modeLogs=0;var clock;
+ var fakeMode=Toybox.System.DISPLAY_MODE_HIGH_POWER;var timers=[];var updates=0;var lowFrames=0;var fallbackFrames=0;var layouts=0;var fitnessCalls=0;var animationStarts=0;var animationStops=0;var modeLogs=0;var lowSnapshots=0;var clock;
  function initialize(){clock=new PbtClock();SpaceFoxView.initialize(clock,new ScheduleState(null,"empty"));}
  function createPresentation() as LocalePresentation {return new PbtLocale();}
  function deviceMode() as Toybox.System.DisplayMode {return fakeMode;}
@@ -325,7 +325,8 @@ import Toybox.System;
  function cancelAnimations() as Void {animationStops+=1;}
  function animateProgress(duration as Float,callback as Method) as Void {animationStarts+=1;}
  function onLayout(dc as Toybox.Graphics.Dc) as Void {layouts+=1;}
- function refreshFitnessWork() as Void {fitnessCalls+=1;}
+ function refreshFitnessWork() as Void {fitnessCalls+=1;selectedFields.claimInitialSnapshot();}
+ function readFitnessSnapshot(now as Number or Long) as Void {lowSnapshots+=1;}
  function drawPendingLow(dc){lowFrames+=1;markLowFramePainted((clock.now/60).toLong());}
  function drawClockFallback(dc){fallbackFrames+=1;}
 }
@@ -341,7 +342,7 @@ import Toybox.System;
 // The view's OS, timer, layout and paint ports are fake before the first event.
 // The event model predicts scheduling/paint permission, not pixels.
 (:test,:typecheck(false)) class ViewTrace {
- var view;var dc;var state=0;var sleeping=false;var high=true;var now=1794818604;var minute=null;var pending=false;var timer=-1;var timers=[];var updates=0;var modeLogs=0;var low=0;var fallback=0;var layouts=0;var fitness=0;var stops=0;var fires=0;var trace=[];
+ var view;var dc;var state=0;var sleeping=false;var high=true;var now=1794818604;var minute=null;var pending=false;var timer=-1;var timers=[];var updates=0;var modeLogs=0;var low=0;var fallback=0;var layouts=0;var fitness=0;var stops=0;var fires=0;var initialSnapshot=true;var lowSnapshots=0;var trace=[];
  var coverage={"show_applied"=>0,"show_no"=>0,"hide_applied"=>0,"hide_no"=>0,"sleep_applied"=>0,"sleep_no"=>0,"wake_applied"=>0,"wake_no"=>0,"hidden_wake_no"=>0,"low_paint"=>0,"same_minute_no"=>0,"hidden_frame_no"=>0,"timer_applied"=>0,"timer_no"=>0,"mode_change"=>0};
  function initialize(){view=new PbtView();dc=new PbtGraphics();}
  function stopTimer(){if(timer>=0){timers[timer]=0;timer=-1;stops+=1;}}
@@ -357,22 +358,22 @@ import Toybox.System;
   else if(e==5){now+=arg;view.clock.now=now;}
   else if(e==6){
    if(state==0){coverage["hidden_frame_no"]+=1;}
-   else{sync();if(state==1){var m=(now/60).toLong();if(minute==m){coverage["same_minute_no"]+=1;}else{minute=m;low+=1;coverage["low_paint"]+=1;}}
+   else{sync();if(state==1){var m=(now/60).toLong();if(minute==m){coverage["same_minute_no"]+=1;}else{minute=m;low+=1;coverage["low_paint"]+=1;if(initialSnapshot){initialSnapshot=false;lowSnapshots+=1;minute=null;updates+=1;}}}
     else{layouts+=1;fallback+=1;if(pending&&timer<0){pending=false;timer=timers.size();timers.add(1);}}}
    view.onUpdate(dc);
-  }else{var ix=0;if(timers.size()>0){ix=arg%timers.size();}var allowed=timers.size()>0&&timers[ix]==1;if(allowed){coverage["timer_applied"]+=1;timers[ix]=0;timer=-1;fires+=1;if(state==2&&high){fitness+=2;}}else{coverage["timer_no"]+=1;}var ran=false;if(view.timers.size()>0){ran=view.timers[ix].fire();}ownerCheck(ran==allowed,"view-timer",seed,i,trace,allowed,ran);}
+  }else{var ix=0;if(timers.size()>0){ix=arg%timers.size();}var allowed=timers.size()>0&&timers[ix]==1;if(allowed){coverage["timer_applied"]+=1;timers[ix]=0;timer=-1;fires+=1;if(state==2&&high){fitness+=2;initialSnapshot=false;}}else{coverage["timer_no"]+=1;}var ran=false;if(view.timers.size()>0){ran=view.timers[ix].fire();}ownerCheck(ran==allowed,"view-timer",seed,i,trace,allowed,ran);}
   verify(seed,i);
  }
  function verify(seed,i){
   var actualStops=0;var actualFires=0;for(var n=0;n<view.timers.size();n+=1){actualStops+=view.timers[n].stops;actualFires+=view.timers[n].fires;}
   var expectedMode=0;if(state==2){expectedMode=1;}
-  ownerCheck(view.visible()==(state!=0)&&view.displayMode()==expectedMode&&view.lastLowFrameMinute()==minute&&view.updates==updates&&view.modeLogs==modeLogs&&view.lowFrames==low&&view.fallbackFrames==fallback&&view.layouts==layouts&&view.fitnessCalls==fitness&&view.timers.size()==timers.size()&&actualStops==stops&&actualFires==fires,"view",seed,i,trace,[state,sleeping,high,minute,updates,low,fallback,layouts,fitness,timers.size(),stops,fires],[view.visible(),view.displayMode(),view.lastLowFrameMinute(),view.updates,view.lowFrames,view.fallbackFrames,view.layouts,view.fitnessCalls,view.timers.size(),actualStops,actualFires]);
+  ownerCheck(view.visible()==(state!=0)&&view.displayMode()==expectedMode&&view.lastLowFrameMinute()==minute&&view.updates==updates&&view.modeLogs==modeLogs&&view.lowFrames==low&&view.fallbackFrames==fallback&&view.layouts==layouts&&view.fitnessCalls==fitness&&view.lowSnapshots==lowSnapshots&&view.timers.size()==timers.size()&&actualStops==stops&&actualFires==fires,"view",seed,i,trace,[state,sleeping,high,minute,updates,low,fallback,layouts,fitness,timers.size(),stops,fires],[view.visible(),view.displayMode(),view.lastLowFrameMinute(),view.updates,view.lowFrames,view.fallbackFrames,view.layouts,view.fitnessCalls,view.timers.size(),actualStops,actualFires]);
  }
  function final(seed,n){verify(seed,n);var keys=coverage.keys();for(var k=0;k<keys.size();k+=1){ownerCheck(coverage[keys[k]]>0,"view-coverage",seed,n,trace,keys[k],coverage[keys[k]]);}recordCoverage(coverage);}
 }
 (:typecheck(false)) function runGeneratedViewLifecycle(firstSeed,seedCount){
  var total=0;
- for(var seed=firstSeed;seed<firstSeed+seedCount;seed+=1){var rng=new OwnerRandom(seed);var run=new ViewTrace();var prefix=[[0,0],[0,0],[6,0],[7,0],[7,0],[2,0],[2,0],[6,0],[6,0],[5,60],[6,0],[3,0],[3,0],[4,0],[4,0],[1,0],[1,0],[6,0],[2,0],[3,0]];var events=prefix.size()+12+rng.draw(25);
+ for(var seed=firstSeed;seed<firstSeed+seedCount;seed+=1){var rng=new OwnerRandom(seed);var run=new ViewTrace();var prefix=[[4,0],[0,0],[6,0],[6,0],[6,0],[1,0],[4,0],[0,0],[0,0],[6,0],[7,0],[7,0],[2,0],[2,0],[6,0],[6,0],[5,60],[6,0],[3,0],[3,0],[4,0],[4,0],[1,0],[1,0],[6,0],[2,0],[3,0]];var events=prefix.size()+12+rng.draw(25);
   for(var i=0;i<events;i+=1){var e=0;var arg=0;if(i<prefix.size()){e=prefix[i][0];arg=prefix[i][1];}else{e=rng.draw(8);arg=rng.draw(5)*30;}run.step(e,arg,seed,i);total+=1;}
   run.final(seed,events);
  }
@@ -503,7 +504,7 @@ import Toybox.System;
 }
 (:test,:typecheck(false)) class FieldTrace {
  var fields;var active=false;var values=[null,null,null,null];var failed=[false,false,false,false];var expected=[null,null,null,null];var states=["WAITING","WAITING","WAITING","WAITING"];var gets=0;var registers=0;var unregistrations=0;var subscriptions=0;var unsubscriptions=0;var trace=[];
- var coverage={"start_applied"=>0,"stop_applied"=>0,"stopped_no"=>0,"read_applied"=>0,"change_applied"=>0,"ready_applied"=>0,"missing_applied"=>0,"failure_applied"=>0};
+ var coverage={"start_applied"=>0,"stop_applied"=>0,"stopped_no"=>0,"stopped_read_no"=>0,"read_applied"=>0,"change_applied"=>0,"ready_applied"=>0,"missing_applied"=>0,"failure_applied"=>0};
  function initialize(){fields=new PbtSelectedFields();}
  function applyValue(index){if(failed[index]){expected[index]=null;states[index]="UNAVAILABLE";coverage["failure_applied"]+=1;}else if(values[index]==null){expected[index]=null;states[index]="WAITING";coverage["missing_applied"]+=1;}else{expected[index]=values[index].toString();states[index]="READY";coverage["ready_applied"]+=1;}}
  function step(e,arg,seed,i){trace.add([e,arg]);var index=arg%4;
@@ -512,7 +513,7 @@ import Toybox.System;
   else if(e==2){values[index]=arg+20;failed[index]=false;fields.fakeApi.values[index]=arg+20;fields.fakeApi.failures[index]=false;}
   else if(e==3){values[index]=null;failed[index]=false;fields.fakeApi.values[index]=null;fields.fakeApi.failures[index]=false;}
   else if(e==4){failed[index]=true;fields.fakeApi.failures[index]=true;}
-  else if(e==5){if(active){for(var j=0;j<4;j+=1){applyValue(j);}gets+=4;coverage["read_applied"]+=1;}else{expected=[null,null,null,null];states=["WAITING","WAITING","WAITING","WAITING"];}fields.read("en");}
+  else if(e==5){if(active){for(var j=0;j<4;j+=1){applyValue(j);}gets+=4;coverage["read_applied"]+=1;}else{coverage["stopped_read_no"]+=1;}fields.read("en");}
   else{if(active){applyValue(index);gets+=1;coverage["change_applied"]+=1;}else{coverage["stopped_no"]+=1;}fields.readChanged("en",new Toybox.Complications.Id(fields.fakeApi.kinds[index]));}
   verify(seed,i);
  }
@@ -523,7 +524,7 @@ import Toybox.System;
  function final(seed,n){verify(seed,n);var keys=coverage.keys();for(var k=0;k<keys.size();k+=1){ownerCheck(coverage[keys[k]]>0,"fields-coverage",seed,n,trace,keys[k],coverage[keys[k]]);}recordCoverage(coverage);}
 }
 (:typecheck(false)) function runGeneratedSelectedFields(firstSeed,seedCount){
- var total=0;for(var seed=firstSeed;seed<firstSeed+seedCount;seed+=1){var rng=new OwnerRandom(seed);var run=new FieldTrace();var prefix=[[0,0],[2,0],[3,1],[4,2],[2,3],[5,0],[2,2],[6,2],[1,0],[6,1],[0,0],[5,0]];var events=prefix.size()+12+rng.draw(37);
+ var total=0;for(var seed=firstSeed;seed<firstSeed+seedCount;seed+=1){var rng=new OwnerRandom(seed);var run=new FieldTrace();var prefix=[[0,0],[2,0],[3,1],[4,2],[2,3],[5,0],[2,2],[6,2],[1,0],[5,0],[6,1],[0,0],[5,0]];var events=prefix.size()+12+rng.draw(37);
   for(var i=0;i<events;i+=1){var e=0;var arg=0;if(i<prefix.size()){e=prefix[i][0];arg=prefix[i][1];}else{e=rng.draw(7);arg=rng.draw(32);}run.step(e,arg,seed,i);total+=1;}run.final(seed,events);
  }
  return total;
@@ -684,7 +685,7 @@ import Toybox.System;
   else if(e==3){if(shown&&dirty){dirty=false;coverage["frame_applied"]+=1;if(lowCheck){lowCheck=false;if(pending>ram){ram=pending;pending=0;context=ram;dirty=true;if(activeToken!=null){staleToken=activeToken;activeToken=null;}}else if(ram==0){ram=1;context=1;dirty=true;}}}view.onUpdate(new PbtGraphics());}
   else if(e==4){var before=view.sceneLifecycle.generation;var frames=app.frameRequests;var other=1-source;app.onBackgroundData({"base"=>url(other),"volatileSnapshot"=>value(other,99)});ownerCheck(view.sceneLifecycle.generation==before&&app.frameRequests==frames,"source-old-callback",seed,i,trace,[before,frames],[view.sceneLifecycle.generation,app.frameRequests]);coverage["old_source_no"]+=1;}
   else if(e==5){if(2>ram&&2>pending){pending=2;if(shown){ram=2;context=2;pending=0;dirty=true;if(activeToken!=null){staleToken=activeToken;activeToken=null;}coverage["delivery_applied"]+=1;}}app.onBackgroundData({"base"=>url(source),"volatileSnapshot"=>value(source,2)});}
-  else if(e==6){if(activeToken==null&&context!=0){if(view.sceneLifecycle.request(100+i)){activeToken=view.sceneLifecycle.begin();coverage["art_applied"]+=1;}else{skipped+=1;}}else{skipped+=1;}}
+  else if(e==6){if(activeToken==null&&context!=0){var granted=view.sceneLifecycle.request(100+i);ownerCheck(granted,"source-art-permission",seed,i,trace,true,granted);activeToken=view.sceneLifecycle.begin();ownerCheck(activeToken!=null,"source-art-lease",seed,i,trace,"non-null",activeToken);coverage["art_applied"]+=1;}else{skipped+=1;}}
   else{if(staleToken!=null){Test.assert(!view.sceneLifecycle.complete(staleToken));coverage["late_art_no"]+=1;}else{skipped+=1;}}
   verify(seed,i);
  }
@@ -826,10 +827,10 @@ import Toybox.System;
   ownerCheck(service.flight.finished()&&saved!=null&&saved[1]["generation"]==3,"service-retry-save",seed,index,trace,[true,3],[service.flight.finished(),saved==null?null:saved[1]["generation"]]);recordCoverage({"fault_"+fault=>1});return 4;
  }
 }
-(:typecheck(false)) function runGeneratedServiceFailure(firstSeed,seedCount){
+(:typecheck(false)) function runServiceFailureRegressions(firstSeed,seedCount){
  var total=0;for(var seed=firstSeed;seed<firstSeed+seedCount;seed+=1){var shift=new OwnerRandom(seed).draw(6);for(var j=0;j<6;j+=1){var which=(j+shift)%6;total+=new ServiceFailureTrace(which).run(seed,j);}}return total;
 }
-(:test,:typecheck(false)) function generatedServiceFailure(logger){var n=runGeneratedServiceFailure(1,16);logger.debug("GENERATED_SERVICE_FAILURE seeds=16 events="+n+" fake_ports=true after_each=true end=true");return true;}
+(:test,:typecheck(false)) function generatedServiceFailure(logger){Test.assert(runServiceFailureRegressions(1,1)>0);var n=runGeneratedServiceFailure(1,16);logger.debug("GENERATED_SERVICE_FAILURE seeds=16 events="+n+" fake_ports=true after_each=true end=true");return true;}
 
 // Old-source callbacks cannot clear the current source's failure checkpoint.
 (:test,:typecheck(false)) function oldSourceCannotClearFailedAdmission(logger){

@@ -120,13 +120,15 @@ class SpaceFoxView extends WatchUi.WatchFace {
     function refreshFitnessWork() as Void {
         var now=_clock.utcSeconds();var minute=utcMinute(now);var changed=false;
         if(metricsMinute==null||metricsMinute!=minute){
-            fitness.selectedRoles=settings.slots;
-            if(!selectedFields.active()){selectedFields.start(settings.slots,method(:fieldsChanged));}
-            selectedFields.read(settings.language);
-            values=fitness.sample(now);metricsMinute=minute;changed=true;
+            readFitnessSnapshot(now);metricsMinute=minute;changed=true;
         }
         if(fitnessTimer==null){fitnessTimer=newViewTimer();fitnessTimer.start(method(:refreshFitness),60000,true);}
         if(changed){requestFrame();}
+    }
+    function readFitnessSnapshot(now as Number or Long) as Void {
+        selectedFields.claimInitialSnapshot();fitness.selectedRoles=settings.slots;
+        if(!selectedFields.active()){selectedFields.start(settings.slots,method(:fieldsChanged));}
+        selectedFields.read(settings.language);values=fitness.sample(now);
     }
     function fieldsChanged(id as Complications.Id) as Void {
         if(!lifecycle.shown()||lifecycle.mode()!=NOT_LOW||admissionPending||deviceMode()!=System.DISPLAY_MODE_HIGH_POWER){return;}
@@ -186,7 +188,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
     }
     function snapshot() as ClockSnapshot {return snapshotAt(_clock.utcSeconds());}
     (:extendedCode)
-    function setSettings(next as SceneSettings) as Void { clearDecodingText();stopFitness();selectedFields.clearSnapshot();var rolesChanged=!nativeSame(settings.slots,next.slots);settings=next;if(rolesChanged){metricsMinute=null;values={};}lifecycle.invalidateFrame();if(!admissionPending&&!sfrFallbackPrepared&&sfrBuild==null){presentation.restore(settings.language);}stopAnimation();if(renderer!=null){renderer.prepare(context,settings);(renderer as SceneRenderer).useDownloaded(downloaded);} if(canForegroundWork()){refreshFitness();} }
+    function setSettings(next as SceneSettings) as Void { clearDecodingText();stopFitness();selectedFields.invalidateSnapshot();var rolesChanged=!nativeSame(settings.slots,next.slots);settings=next;if(rolesChanged){metricsMinute=null;values={};}lifecycle.invalidateFrame();if(!admissionPending&&!sfrFallbackPrepared&&sfrBuild==null){presentation.restore(settings.language);}stopAnimation();if(renderer!=null){renderer.prepare(context,settings);(renderer as SceneRenderer).useDownloaded(downloaded);} if(canForegroundWork()){refreshFitness();} }
     function refreshLocale() as Void {var previous=settings.language;settings.refreshLanguage();if(!previous.equals(settings.language)){setSettings(settings);}}
     (:extendedCode, :typecheck(false))
     // The scene digest binds selected art/map identity; bridge IDs and exact
@@ -303,6 +305,13 @@ class SpaceFoxView extends WatchUi.WatchFace {
     }
     function afterLowFrame() as Void {
         if(admissionPending){return;}
+        // Cold LOW must not depend on a preceding ACTIVE callback. Consume one
+        // startup/settings lease after the first clock frame, then stop sources;
+        // later LOW frames retain the result without provider polling/timers.
+        if(selectedFields.claimInitialSnapshot()){
+            try{readFitnessSnapshot(_clock.utcSeconds());}catch(e){}finally{stopFitness();}
+            lifecycle.invalidateFrame();requestFrame();
+        }
         if(bootstrapPending||lowNeedsLoader){bootstrapPending=false;lowNeedsLoader=false;if(pendingLoader!=null){try{pendingLoader.invoke();}catch(e){}}}
     }
     (:typecheck(false)) function updateForDisplayMode(dc as Graphics.Dc, displayMode as System.DisplayMode) as Void {

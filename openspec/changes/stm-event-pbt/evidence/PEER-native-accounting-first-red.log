@@ -1,0 +1,18 @@
+test_short_host_observation_cannot_certify_600_seconds (tests.test_native_stm_campaign.NativeCampaignOutputControl.test_short_host_observation_cannot_certify_600_seconds) ... FAIL
+
+======================================================================
+FAIL: test_short_host_observation_cannot_certify_600_seconds (tests.test_native_stm_campaign.NativeCampaignOutputControl.test_short_host_observation_cannot_certify_600_seconds)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-stm-event-pbt-20261117/tests/test_native_stm_campaign.py", line 30, in test_short_host_observation_cannot_certify_600_seconds
+    self.assertEqual(self.observed(host_seconds=1)['status'],'RED')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'GREEN' != 'RED'
+- GREEN
++ RED
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.004s
+
+FAILED (failures=1)

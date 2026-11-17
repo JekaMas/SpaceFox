@@ -1,0 +1,17 @@
+------------------------------------------------------------------------------
+Executing test peerAffectedProperties...
+DEBUG (17:05): GENERATED_SERVICE_FAILURE seeds=16 events=1193 fake_ports=true after_each=true end=true
+DEBUG (17:05): GENERATED_SELECTEDFIELDS seeds=64 events=2696 after_each=true end=true
+DEBUG (17:05): GENERATED_VIEWLIFECYCLE seeds=32 events=1622 after_each=true end=true
+DEBUG (17:05): GENERATED_SOURCESWITCH seeds=32 events=1142 after_each=true end=true
+DEBUG (17:05): GENERATED_FOREGROUNDDELIVERY seeds=32 events=1462 after_each=true end=true
+DEBUG (17:05): PEER_AFFECTED families=5 service_fields_view_source_foreground=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+peerAffectedProperties              PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

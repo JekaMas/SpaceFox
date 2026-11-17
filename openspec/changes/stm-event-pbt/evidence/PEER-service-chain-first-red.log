@@ -1,0 +1,25 @@
+------------------------------------------------------------------------------
+Executing test generatedServiceFailure...
+STM_FAIL owner=service-chain-delivery seed=1 index=16 trace=[[3, 0, 0], [0, 0, 0], [3, 1, 0], [5, 1, 0], [0, 0, 0], [5, 0, 0], [0, 0, 0], [1, -1, [200, 1]], [0, 0, 0], [2, 3600, 3600000], [4, 1, 0], [0, 0, 0], [1, -1, [200, 2]], [4, 0, 0], [0, 0, 0], [1, 0, [200, 9]], [1, -1, [200, 3]]] expected=[0, 0] actual=[1, 2]
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - ownerCheck() at /task/isolated/GeneratedOwners.mc:16 0x10003b62 
+  - verify() at /task/isolated/ServiceFailureChains.mc:66 0x1001049c 
+  - step() at /task/isolated/ServiceFailureChains.mc:61 0x10010a4c 
+  - runGeneratedServiceFailure() at /task/isolated/ServiceFailureChains.mc:84 0x10002a8f 
+  - generatedServiceFailure() at /task/isolated/GeneratedOwners.mc:832 0x1000150c 
+  - evaluate_test_entries_30_to_37() at /task/gen/006-B4433-00/source/UnitTests.mcgen:168 0x10009b9b 
+  - runTest() at /task/gen/006-B4433-00/source/UnitTests.mcgen:189 0x10009c34 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+generatedServiceFailure             ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

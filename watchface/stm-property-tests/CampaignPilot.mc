@@ -1,6 +1,12 @@
 import Toybox.Lang;
 import Toybox.System;
 import Toybox.Test;
+// Harness accounting only. Gaps between completed workload calls (including
+// trace/progress IO) are not productive property execution.
+(:test,:typecheck(false)) class PbtCampaignBudget {
+ var productive=0;
+ function completed(start,end){Test.assert(end>=start);productive+=end-start;}
+}
 // Harness monotonic time measures test execution only; every business clock,
 // storage, timer and service in the tested owners is independently faked.
 (:typecheck(false)) function campaignBatch(owner, seed, count){
@@ -23,13 +29,18 @@ import Toybox.Test;
 }
 (:test,:typecheck(false)) function campaignPilot(logger){
  PbtMetrics.assertions=0;PbtMetrics.skipped=0;PbtMetrics.coverage={};var first=PbtConfig.FIRST_SEED;var seed=first;var events=0;var batches=0;
- logger.debug("PBT_CAMPAIGN_BEGIN worker="+PbtConfig.WORKER+" owner="+PbtConfig.OWNER+" first="+first);
- var start=System.getTimer();var elapsed=0;var nextReport=60000;
- while(elapsed<PbtConfig.DURATION_MS){events+=campaignBatch(PbtConfig.OWNER,seed,8);seed+=8;batches+=1;elapsed=System.getTimer()-start;
-  if(elapsed>=nextReport){logger.debug("PBT_CAMPAIGN_PROGRESS owner="+PbtConfig.OWNER+" next="+seed+" events="+events+" productive_ms="+elapsed);nextReport+=60000;}}
- Test.assert(events>0&&seed>first&&elapsed>=PbtConfig.DURATION_MS);
+ logger.debug("PBT_CAMPAIGN_BEGIN worker="+PbtConfig.WORKER+" owner="+PbtConfig.OWNER+" first="+first+" version="+NativeVersion.BUILD+" native_id="+NativeVersion.ID);
+ var start=System.getTimer();var budget=new PbtCampaignBudget();var nextReport=60000;
+ while(budget.productive<PbtConfig.DURATION_MS){var workStarted=System.getTimer();events+=campaignBatch(PbtConfig.OWNER,seed,8);budget.completed(workStarted,System.getTimer());seed+=8;batches+=1;
+  if(budget.productive>=nextReport){logger.debug("PBT_CAMPAIGN_PROGRESS owner="+PbtConfig.OWNER+" next="+seed+" events="+events+" productive_ms="+budget.productive);nextReport+=60000;}}
+ var wall=System.getTimer()-start;
+ Test.assert(events>0&&seed>first&&budget.productive>=PbtConfig.DURATION_MS&&wall>=budget.productive);
  logger.debug("PBT_CAMPAIGN_COVERAGE "+PbtMetrics.coverage+" assertions="+PbtMetrics.assertions+" skipped="+PbtMetrics.skipped);
- logger.debug("PBT_CAMPAIGN_END worker="+PbtConfig.WORKER+" owner="+PbtConfig.OWNER+" first="+first+" next="+seed+" batches="+batches+" events="+events+" productive_ms="+elapsed);return true;
+ logger.debug("PBT_CAMPAIGN_END worker="+PbtConfig.WORKER+" owner="+PbtConfig.OWNER+" first="+first+" next="+seed+" batches="+batches+" events="+events+" productive_ms="+budget.productive+" wall_ms="+wall);return true;
+}
+(:test,:typecheck(false)) function campaignBudgetExcludesControlGaps(logger){
+ var budget=new PbtCampaignBudget();budget.completed(100,102);budget.completed(1000,1001);
+ Test.assertMessage(budget.productive==3,"control gap must not count as productive execution");return true;
 }
 (:test,:typecheck(false)) function campaignParameterSmoke(logger){
  for(var owner=0;owner<15;owner+=1){var n=campaignBatch(owner,1001+owner*100,8);Test.assertMessage(n>0,"campaign owner had no events");}

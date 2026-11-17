@@ -1,3 +1,13 @@
+# Peer repair checkpoint — current source0.2.9/d13aa334
+
+HOST all four required productive campaigns are DONE: retain original budget/publication/deployment and replace only source with the reviewed SOURCE_COARSE campaign (`HOST-COARSE-CAMPAIGN.md`). Total6,362 traces /1,078,574 events; no new four-way overlap claim.
+
+Independent native source review repaired the one-shot volatile IPC lease, stopped-field snapshot retention, first-cold-LOW bounded acquisition, SourceTrace permission oracle, arbitrary service failure chains and campaign productive/real-duration fences. Current affected SDK short batch and strict compilation/admission are GREEN within `PEER.md` scopes; six-VM short control and all fifteen final600s workloads are still OPEN. NativeID regenerated once to d13aa334. No hardware/phone/raster success is inferred.
+
+---
+
+# Historical author checkpoints (retained at their original boundaries)
+
 # Current progress — 2026-11-17
 
 Host four productive 600-second campaigns were observed at source `ab409bc4` (evidence `0b3bac0a`): 4,508 traces, 756,593 events, forbidden calls 0 and 601.046 seconds observed overlap. The SOURCE_COARSE/nominal NET property was missing, so the source campaign is REOPENED for the extension, independent review and source-only 600-second rerun. Budget, publication and deployment retain their original valid results. See `HOST-CAMPAIGN.md`. Native 600-second campaigns and independent native review remain open.

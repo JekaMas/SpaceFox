@@ -35,7 +35,10 @@ class FeedService extends System.ServiceDelegate {
     (:typecheck(false)) function deliverBackground(data) as Void {Background.exit(data);}
     (:typecheck(false)) function leave() as Void {
         if(volatileSnapshot!=null){
-            try{deliverBackground({"base"=>transfer.base,"volatileSnapshot"=>volatileSnapshot});return;}
+            // Revoke this one-shot lease before the OS effect, including throws or
+            // a reentrant next session. A later durable success must not resend it.
+            var value=volatileSnapshot;volatileSnapshot=null;
+            try{deliverBackground({"base"=>transfer.base,"volatileSnapshot"=>value});return;}
             catch(e){log("SF_BG volatile_delivery_failed");volatileSnapshot=null;deliverBackground({"volatileDeliveryFailed"=>true});return;}
         }
         deliverBackground({"provisional"=>true});

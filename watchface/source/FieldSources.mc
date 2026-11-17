@@ -155,7 +155,7 @@ class FieldComplicationApi {
 // persisted if a provider disappears; a failed subscription is polled on minute.
 (:extendedCode, :typecheck(false))
 class SelectedFields {
-    var selected=[];var subscribed=[];var labels={};var text={};var icons={};var states={};var reasons={};var energy as Number or Null=null;var energyStatus="WAITING";var energyReason="no-sample";var callbackRegistered=false;var provider=null;var api=null;var customMask=0;var fittedMask=0;var numericMask=0;
+    var selected=[];var subscribed=[];var labels={};var text={};var icons={};var states={};var reasons={};var energy as Number or Null=null;var energyStatus="WAITING";var energyReason="no-sample";var callbackRegistered=false;var provider=null;var api=null;var customMask=0;var fittedMask=0;var numericMask=0;var initialSnapshotPending=true;
     function initialize(){}
     function savedField(slot){return FieldCatalog.saved(slot);}
     function systemInfo(){return System.getSystemStats();}
@@ -184,9 +184,14 @@ class SelectedFields {
     }
     // Selection/settings changes start a new snapshot; OS suspension does not.
     function clearSnapshot(){labels={};text={};icons={};states={};reasons={};energy=null;energyStatus="WAITING";energyReason="no-sample";customMask=0;fittedMask=0;numericMask=0;}
+    // Startup/settings authorize one bounded LOW acquisition. Suspending
+    // subscriptions does not revoke the accepted snapshot or rearm this lease.
+    function claimInitialSnapshot(){if(!initialSnapshotPending){return false;}initialSnapshotPending=false;return true;}
+    function invalidateSnapshot(){clearSnapshot();initialSnapshotPending=true;}
     function read(locale){readSelected(locale,null);}
     function readChanged(locale,id){readSelected(locale,id);}
     function readSelected(locale,onlyId){
+        if(!active()){return;}initialSnapshotPending=false;
         var info=null;var fetched=false;var stats=null;var statsFetched=false;var words=null;
         if(onlyId==null){labels={};text={};icons={};states={};reasons={};energy=null;energyStatus="WAITING";energyReason="no-sample";fittedMask=0;numericMask=0;}
         else{for(var i=0;i<selected.size();i+=1){var prior=selected[i];if(prior instanceof Complications.Id&&prior.equals(onlyId)){var key="custom"+(i+1);labels.remove(key);text.remove(key);icons.remove(key);states.remove(key);reasons.remove(key);fittedMask&=~(1<<i);numericMask&=~(1<<i);if(prior.getType()==23){energy=null;energyStatus="WAITING";energyReason="no-sample";}}}}
