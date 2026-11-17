@@ -57,6 +57,34 @@ class CapturedCoordinates(unittest.TestCase):
         self.assertEqual(decoded[3][0],f'll2:launch:{rec.launch_id.value}')
         self.assertEqual(decoded[3][9],['-0.7692','60.8184'])
 
+    def test_shared_placeholder_points_survive_complete_artifact_admission(self):
+        # One unchanged captured launch plus an explicitly synthetic second
+        # launch at the same placeholder ID. Expected points are input literals,
+        # never read from the catalog, encoder or accepted output.
+        from tools.spacefox.catalog import build_catalog
+        from tools.spacefox.native_motion import build_artifact
+        from tools.spacefox.schedule import StableId, IdKind
+        now=1800000000
+        first=normalize_launch(captured(237),now)
+        second=replace(first,launch_id=StableId(IdKind.LAUNCH,'ll2','ffffffff-ffff-4fff-8fff-ffffffffffff'),
+                       site_position={'latitude':'60.9001','longitude':'-0.7402'})
+        stored=schedule_document(ScheduleState((AcceptedLaunch(first,False,False),AcceptedLaunch(second,False,False)),now))
+        state=_schedule(json.loads(json.dumps(stored)))
+        files,_=build_artifact(state,build_catalog(ROOT),now,
+                              publisher={'instance':'1'*64,'generation':1,'selectionValidatedUtc':now},root=ROOT)
+        payload=json.loads(files['watch.json'])['data']
+        self.assertEqual(payload[3][0],'ll2:launch:9536659f-bacc-4396-8bd4-04f8050cc92d')
+        self.assertEqual(payload[3][8],'ll2:site:237')
+        self.assertEqual(payload[3][9],['-0.7692','60.8184'])
+        self.assertEqual(len(payload[4]),1)
+        self.assertEqual(payload[4][0][0],'ll2:launch:ffffffff-ffff-4fff-8fff-ffffffffffff')
+        self.assertEqual(payload[4][0][8],'ll2:site:237')
+        self.assertEqual(payload[4][0][9],['-0.7402','60.9001'])
+        # Match the existing native store/decoder fixture's captured identity
+        # and point, without claiming its injected envelope is this artifact.
+        native=json.loads((ROOT/'watchface/trusted-tests/resources/unknown-pad.json').read_text())['payload']
+        self.assertEqual((native[3][0],native[3][9]),(payload[3][0],payload[3][9]))
+
     def test_known_pad_and_missing_position(self):
         rec=normalize_launch(captured(25),1800000000); launch=projected(rec)
         entry={'positionMode':'fixed-source','position':{'longitude':'111.589567','latitude':'38.863128'}}
