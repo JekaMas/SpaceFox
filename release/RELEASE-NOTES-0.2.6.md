@@ -1,0 +1,7 @@
+SpaceFox 0.2.6 repairs state ownership for ACTIVE, LOW and hidden display modes, background requests, atomic snapshot storage and optional artwork. A committed launch snapshot can reach LOW without waiting for an ACTIVE transition; duplicate or late responses cannot replace a newer request. Clock, launch point, countdown and four configured fields remain available independently of artwork.
+
+The schedule publisher prioritizes due acquisition over optional content rebuilding. With a successful request and a future launch, normal refresh is hourly. Failed requests or an empty future schedule retry at the next connected opportunity; offline checks use five minutes. Garmin and GitHub scheduling can dispatch later, and the upstream source quota still applies. Announced inexact NET uses T−/T+ as a reference and does not confirm liftoff or change reminder eligibility.
+
+For USB installation choose `SpaceFox-fr165.prg` or `SpaceFox-fr165m.prg`, or use `SpaceFox-0.2.6-FR165-install.zip`. `SpaceFox.iq` contains all 42 supported SDK profiles. Instructions, checksums, source inputs, licenses and labeled simulator screenshots are attached.
+
+The owner reported missing data and unexpected LOW transitions on physical 0.2.4; their cause remains unconfirmed. Source-bound SDK cold acquisition, ACTIVE/LOW, wake, offline reopen and finite transition properties have the precise scopes recorded in the repository. Phone delivery, physical 0.2.6 behavior, 15-minute use, physical watchdog margin and Store approval are not yet observed.

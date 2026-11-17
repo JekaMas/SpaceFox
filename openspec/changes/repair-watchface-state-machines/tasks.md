@@ -6,4 +6,4 @@
 - [x] Run affected host and FR165M SDK integration: actual cold acquisition/callback/storage, accepted facts, mode transitions, active seconds, LOW and reopen; capture EN/RU frames and preserve precise adapter and physical boundaries.
 - [x] Reconcile current specifications, version/native identity and retained applicable evidence; author self-review and repair all failures.
 - [x] One independent peer reviews and fixes the whole stable batch to GREEN; original0.2.5 evidence/PEER.md retained; current0.2.6 semantic integration closed in evidence/integration-026/PEER.md, its ONE peer.json and actual peer-admission.log.
-- [ ] After acceptance, merge and deliver the authorized release; physical watch and phone acceptance remain separately observed.
+- [x] After acceptance, merge and deliver the signed GitHub release and restore the public publisher; the Garmin Store submission and physical watch and phone acceptance remain separately recorded in evidence/integration-026/PUBLICATION.md.
