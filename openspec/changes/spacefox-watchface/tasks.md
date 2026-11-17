@@ -151,7 +151,7 @@ Current integration batch (existing tasks 3.2–3.4, 5.1–5.5 and 7.1–7.3):
 - [x] Combine the frozen 0.2.1 and performance owners, preserving both runtime and resource contracts; record directly invalidated checks and original proof boundaries in `evidence/current-integration-022/INTEGRATION.md`.
 - [x] Complete the selected source, native interaction and release admission checks; retain earlier greens where their inputs are unchanged.
 - [x] Existing independent peer reviewed and repaired the complete combined batch to GREEN; exact export receipt and retained/new proof scopes are in `evidence/current-integration-022/PEER.md` and `peer-current-022.json`.
-- [ ] Reserve/freeze actual main/source, build one full signed IQ, create the final tag after successful export, and publish/read back the authorized full GitHub release. Physical and phone acceptance remain unobserved; Store action requires actual current legal consent.
+- [x] Reserve/freeze actual main/source, build one full signed IQ, create the final tag after successful export, and publish/read back the authorized 0.2.2 GitHub release. Physical and phone acceptance remain unobserved.
 
 Trusted JSON simplification (existing tasks 3.2–3.4, 5.1–5.5, 7.1–7.3):
 
@@ -161,5 +161,5 @@ The former feed-only raw hash/seal, chunk reassembly, repeated validation and re
 - [x] Apply measured improvements across publisher and watch, remove superseded feed checks and owners, and verify offline snapshot recovery, launch display and independent optional assets locally. Hosted cutover remains open.
 - [x] Run affected host and owned-SDK lifecycle checks and update the authoritative specification and source/release bindings.
 - [x] Complete independent peer verification and corrections for the same batch; repaired fast-cadence asset starvation, retained first red and observed the targeted pass (`evidence/trusted-json-research/PEER.md`, sole release receipt `peer.json`).
-- [ ] Merge/freeze the reviewed source, cut over the autonomous publisher and read back hosted `watch.json` with correct HTTPS/MIME/projection before publishing the new watch build.
-- [ ] Produce and publish the authorized full signed release with readback; keep phone, Garmin Store and physical acceptance separately truthful.
+- [x] Merge/freeze the reviewed source, cut over the GitHub-hosted publisher and read back hosted `watch.json` with correct HTTPS/MIME/projection before publishing the new watch build; future scheduled executions remain unobserved.
+- [x] Produce and publish the authorized full signed 0.2.3 GitHub release with readback; Garmin Store 0.2.3/Internal 13 submitted and pending approval. Phone and physical acceptance remain unobserved (`evidence/trusted-json-research/PUBLICATION.md`).

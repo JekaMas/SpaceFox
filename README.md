@@ -2,15 +2,15 @@
 
 SpaceFox is a free, MIT-licensed space watch face for Garmin watches, including Forerunner 165 and Forerunner 165 Music. It combines a large digital clock, rocket artwork, a launch-site map, a local T−/T+ countdown and four configurable activity fields.
 
-**[Install from Connect IQ](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3)** · **[0.2.2 release](https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.2)** · **[FR165 install ZIP](https://github.com/JekaMas/SpaceFox/releases/download/v0.2.2/SpaceFox-0.2.2-FR165-install.zip)** · [Release notes](release/RELEASE-NOTES-0.2.2.md)
+**[Install from Connect IQ](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3)** · **[0.2.3 release](https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.3)** · **[FR165 install ZIP](https://github.com/JekaMas/SpaceFox/releases/download/v0.2.3/SpaceFox-0.2.3-FR165-install.zip)** · [Release notes](release/RELEASE-NOTES-0.2.3.md)
 
-The 0.2.2 GitHub release includes launch reminders, watchdog and data-admission repairs. Reminders default off. The owner reported an IQ error on a physical non-Music FR165 with 0.1.18; its cause and physical acceptance of the newer release, including notification delivery, remain unknown. Garmin Store availability is separate and has not been established.
+The 0.2.3 GitHub release adds compact trusted launch snapshots to the existing reminders, watchdog and data-admission repairs. Reminders default off. The owner reported an IQ error on a physical non-Music FR165 with 0.1.18; its cause and physical acceptance of the newer release, including notification delivery, remain unknown. The 0.2.3 Garmin Store update is submitted and pending approval.
 
 ![SpaceFox 0.1.18 in the Forerunner 165 Music simulator](openspec/changes/spacefox-watchface/evidence/fields018/entry-controls/peer-release-390-256680ec.png)
 
 Native simulator capture; it is not a physical watch photograph.
 
-The 0.2.3 source candidate explores compact trusted snapshots and integrates bounded performance improvements with the estimated NET display and LOW/data repairs; physical acceptance and Store publication remain unobserved.
+The 0.2.3 release integrates compact trusted snapshots with estimated NET display and LOW/data repairs. Phone delivery and physical watch acceptance remain unobserved.
 
 ## What it shows
 
