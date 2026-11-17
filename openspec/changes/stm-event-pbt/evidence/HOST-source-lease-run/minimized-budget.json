@@ -1,0 +1,746 @@
+{
+  "machine": "budget",
+  "seed": 1,
+  "event_index": 115,
+  "events": [
+    [
+      "anchor_missing",
+      0,
+      0
+    ],
+    [
+      "bootstrap_existing",
+      0,
+      0
+    ],
+    [
+      "anchor_restored",
+      0,
+      0
+    ],
+    [
+      "reconcile",
+      0,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      0
+    ],
+    [
+      "accept",
+      0,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      0
+    ],
+    [
+      "advance",
+      3599,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      0
+    ],
+    [
+      "advance",
+      1,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      0
+    ],
+    [
+      "finish",
+      1,
+      1
+    ],
+    [
+      "reserve",
+      0,
+      0
+    ],
+    [
+      "finish",
+      2,
+      0
+    ],
+    [
+      "reserve",
+      1,
+      1
+    ],
+    [
+      "finish",
+      3,
+      2
+    ],
+    [
+      "reserve",
+      1,
+      1
+    ],
+    [
+      "query_catalog",
+      0,
+      0
+    ],
+    [
+      "checkpoint",
+      1,
+      0
+    ],
+    [
+      "write_failed",
+      0,
+      0
+    ],
+    [
+      "foreign_commit",
+      0,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      0
+    ],
+    [
+      "reopen",
+      0,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      0
+    ],
+    [
+      "reconcile",
+      0,
+      0
+    ],
+    [
+      "authority_lost",
+      0,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      0
+    ],
+    [
+      "authority_restored",
+      0,
+      0
+    ],
+    [
+      "reconcile",
+      0,
+      0
+    ],
+    [
+      "source_changed",
+      0,
+      0
+    ],
+    [
+      "reopen",
+      0,
+      0
+    ],
+    [
+      "adopt",
+      0,
+      0
+    ],
+    [
+      "reconcile",
+      0,
+      0
+    ],
+    [
+      "advance",
+      3600,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      0
+    ],
+    [
+      "finish",
+      4,
+      0
+    ],
+    [
+      "query_catalog",
+      0,
+      0
+    ],
+    [
+      "reserve_catalog",
+      1,
+      0
+    ],
+    [
+      "finish",
+      5,
+      0
+    ],
+    [
+      "reserve",
+      2,
+      1
+    ],
+    [
+      "finish",
+      6,
+      0
+    ],
+    [
+      "reserve",
+      2,
+      1
+    ],
+    [
+      "finish",
+      7,
+      0
+    ],
+    [
+      "reserve",
+      2,
+      1
+    ],
+    [
+      "finish",
+      8,
+      0
+    ],
+    [
+      "reserve",
+      2,
+      1
+    ],
+    [
+      "finish",
+      9,
+      0
+    ],
+    [
+      "reserve",
+      2,
+      1
+    ],
+    [
+      "finish",
+      10,
+      0
+    ],
+    [
+      "reserve",
+      2,
+      1
+    ],
+    [
+      "finish",
+      11,
+      0
+    ],
+    [
+      "reserve",
+      2,
+      1
+    ],
+    [
+      "finish",
+      12,
+      0
+    ],
+    [
+      "reserve",
+      2,
+      1
+    ],
+    [
+      "finish",
+      13,
+      0
+    ],
+    [
+      "reserve",
+      2,
+      1
+    ],
+    [
+      "finish",
+      14,
+      0
+    ],
+    [
+      "reserve",
+      2,
+      1
+    ],
+    [
+      "finish",
+      15,
+      0
+    ],
+    [
+      "reserve",
+      2,
+      1
+    ],
+    [
+      "finish",
+      16,
+      0
+    ],
+    [
+      "reserve",
+      2,
+      1
+    ],
+    [
+      "finish",
+      17,
+      0
+    ],
+    [
+      "reserve",
+      2,
+      1
+    ],
+    [
+      "finish",
+      18,
+      0
+    ],
+    [
+      "reserve",
+      2,
+      1
+    ],
+    [
+      "reserve_catalog",
+      1,
+      0
+    ],
+    [
+      "query_catalog",
+      0,
+      0
+    ],
+    [
+      "checkpoint",
+      2,
+      1
+    ],
+    [
+      "advance",
+      3600,
+      0
+    ],
+    [
+      "reserve",
+      2,
+      1
+    ],
+    [
+      "finish",
+      0,
+      0
+    ],
+    [
+      "finish",
+      -1,
+      0
+    ],
+    [
+      "finish",
+      19,
+      0
+    ],
+    [
+      "finish",
+      20,
+      0
+    ],
+    [
+      "reserve_race",
+      0,
+      0
+    ],
+    [
+      "reopen",
+      0,
+      0
+    ],
+    [
+      "adopt",
+      0,
+      0
+    ],
+    [
+      "reconcile",
+      0,
+      0
+    ],
+    [
+      "advance",
+      60,
+      0
+    ],
+    [
+      "bootstrap_existing",
+      2,
+      0
+    ],
+    [
+      "reopen",
+      3,
+      0
+    ],
+    [
+      "foreign_commit",
+      14,
+      0
+    ],
+    [
+      "foreign_commit",
+      12,
+      0
+    ],
+    [
+      "checkpoint",
+      3,
+      0
+    ],
+    [
+      "foreign_commit",
+      0,
+      0
+    ],
+    [
+      "authority_restored",
+      13,
+      0
+    ],
+    [
+      "reserve",
+      2,
+      1
+    ],
+    [
+      "reopen",
+      7,
+      0
+    ],
+    [
+      "bootstrap_existing",
+      3,
+      0
+    ],
+    [
+      "adopt",
+      0,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      2
+    ],
+    [
+      "anchor_restored",
+      0,
+      0
+    ],
+    [
+      "authority_restored",
+      6,
+      0
+    ],
+    [
+      "source_changed",
+      0,
+      0
+    ],
+    [
+      "anchor_missing",
+      7,
+      0
+    ],
+    [
+      "write_failed",
+      15,
+      0
+    ],
+    [
+      "anchor_restored",
+      7,
+      0
+    ],
+    [
+      "authority_lost",
+      7,
+      0
+    ],
+    [
+      "advance",
+      3599,
+      0
+    ],
+    [
+      "reconcile",
+      0,
+      0
+    ],
+    [
+      "source_changed",
+      3,
+      0
+    ],
+    [
+      "query_catalog",
+      9,
+      0
+    ],
+    [
+      "finish",
+      9,
+      2
+    ],
+    [
+      "anchor_missing",
+      13,
+      0
+    ],
+    [
+      "anchor_missing",
+      6,
+      0
+    ],
+    [
+      "reconcile",
+      9,
+      0
+    ],
+    [
+      "bootstrap_existing",
+      15,
+      0
+    ],
+    [
+      "anchor_missing",
+      12,
+      0
+    ],
+    [
+      "bootstrap_existing",
+      1,
+      0
+    ],
+    [
+      "foreign_commit",
+      7,
+      0
+    ],
+    [
+      "authority_restored",
+      13,
+      0
+    ],
+    [
+      "query_catalog",
+      11,
+      0
+    ],
+    [
+      "anchor_restored",
+      11,
+      0
+    ],
+    [
+      "reserve_catalog",
+      14,
+      0
+    ]
+  ],
+  "error": "AssertionError: ('missing semantic facts', ['callback_duplicate'])",
+  "failure_property": "missing semantic facts",
+  "model": {
+    "now": 1794565651,
+    "commits": 54,
+    "code": "00000000000000000000000000000000000003ec",
+    "actor": "00000000000000000000000000000000000003ec",
+    "saved_code": "00000000000000000000000000000000000003ea",
+    "available": true,
+    "fresh": true,
+    "ready": false,
+    "requests": [
+      {
+        "id": "6639c0dd41aac4ccd9eae47730a83d35a75451b45fa3897ce9b49267f4b7325d",
+        "at_utc": 1794561992,
+        "purpose": "version",
+        "trigger": "extra",
+        "outcome": "success"
+      },
+      {
+        "id": "5ccba071b270cc58bc9c5a68581b9d78bd4fc0b6eee1e455a857d10c23a29a4d",
+        "at_utc": 1794561992,
+        "purpose": "schedule",
+        "trigger": "extra",
+        "outcome": "reserved"
+      }
+    ],
+    "records": {
+      "1": {
+        "record": "LaunchRecord(launch_id=StableId(kind=<IdKind.LAUNCH: 'launch'>, namespace='ll2', value='1'), timing=Timing(precision=<TimePrecision.EXACT: 'exact'>, exact_utc=1795551192, date_utc=None, window_start_utc=None, window_end_utc=None, nominal_utc=None, source_net=None, source_precision_id=None, source_precision_name=None, source_precision_abbrev=None, source_precision_description=None), status=<LaunchStatus.PENDING: 'pending'>, source_validated_utc=1794551192, configuration_id=None, operator_id=None, site_id=None, country_id=None, configuration_name='Rocket 0', operator_name=None, operator_abbrev=None, mission_name=None, mission_purpose=None, source_updated_utc=1794551182, source_updated_subsecond=0, source_updated_iso=None, source_status_id=None, source_status_name=None, site_name=None, country_name=None, country_code=None, site_location_name=None, site_position=None, ascent_end=None)",
+        "stale": true,
+        "rescheduled": false
+      }
+    },
+    "generation": 0,
+    "active": "None",
+    "pending": "None",
+    "journal": null,
+    "coverage": {
+      "anchor_missing/observed_no_mutation": 5,
+      "bootstrap_existing/observed_no_mutation": 5,
+      "anchor_restored/applied": 4,
+      "reconcile/applied": 5,
+      "reserve/applied": 19,
+      "reserve/observed_no_mutation": 10,
+      "accept/applied": 1,
+      "advance/applied": 5,
+      "finish/applied": 19,
+      "query_catalog/observed_no_mutation": 5,
+      "checkpoint/applied": 1,
+      "write_failed/observed_no_mutation": 2,
+      "foreign_commit/applied": 4,
+      "reopen/applied": 5,
+      "authority_lost/observed_no_mutation": 2,
+      "authority_restored/applied": 3,
+      "source_changed/observed_no_mutation": 3,
+      "adopt/applied": 2,
+      "reserve_catalog/applied": 1,
+      "reserve_catalog/observed_no_mutation": 2,
+      "checkpoint/observed_no_mutation": 2,
+      "finish/observed_no_mutation": 4,
+      "reserve_race/observed_no_mutation": 1,
+      "adopt/observed_no_mutation": 1,
+      "advance/observed_no_mutation": 1,
+      "reconcile/observed_no_mutation": 2,
+      "foreign_commit/observed_no_mutation": 1,
+      "authority_restored/observed_no_mutation": 1
+    },
+    "properties": {
+      "durable_model": 118,
+      "identity_and_time": 118,
+      "effect_counts": 118,
+      "no_real_effects": 118
+    }
+  },
+  "sut": {
+    "head": "fe1ec73aad9abcf8c0173578c224f264c298cd74",
+    "ledger": {
+      "accepted": {
+        "entries": [
+          {
+            "record": {
+              "configuration_id": null,
+              "configuration_name": "Rocket 0",
+              "country_id": null,
+              "launch_id": {
+                "kind": "launch",
+                "namespace": "ll2",
+                "value": "1"
+              },
+              "mission_name": null,
+              "mission_purpose": null,
+              "operator_id": null,
+              "operator_name": null,
+              "site_id": null,
+              "source_updated_utc": 1794551182,
+              "source_validated_utc": 1794551192,
+              "status": "pending",
+              "timing": {
+                "date_utc": null,
+                "exact_utc": 1795551192,
+                "precision": "exact",
+                "window_end_utc": null,
+                "window_start_utc": null
+              }
+            },
+            "rescheduled": false,
+            "stale": true
+          }
+        ],
+        "evaluated_at_utc": 1794562052
+      },
+      "active": null,
+      "backoff_until_utc": 1794555092,
+      "catalog_refresh": {
+        "bytes": 22,
+        "sha256": "5d4f1ff6edfea446294c7bc4a0660d91554052b891f147465c12875d8bafbdb2"
+      },
+      "code_revision": "00000000000000000000000000000000000003ea",
+      "generation": 0,
+      "instance_id": "c4d4fdce4e9f4c08ea7720cdb7b6fc2738d035b452ba69ff94c104725d7a1221",
+      "last_event_utc": 1794562052,
+      "last_poll_utc": 1794558392,
+      "pending": null,
+      "refresh_policy": {
+        "fast_interval_seconds": null,
+        "near_interval_seconds": 900,
+        "normal_interval_seconds": 3600,
+        "stale_cycles": 3
+      },
+      "requests": [
+        {
+          "at_utc": 1794561992,
+          "id": "6639c0dd41aac4ccd9eae47730a83d35a75451b45fa3897ce9b49267f4b7325d",
+          "outcome": "success",
+          "purpose": "version",
+          "trigger": "extra"
+        },
+        {
+          "at_utc": 1794561992,
+          "id": "5ccba071b270cc58bc9c5a68581b9d78bd4fc0b6eee1e455a857d10c23a29a4d",
+          "outcome": "reserved",
+          "purpose": "schedule",
+          "trigger": "extra"
+        }
+      ],
+      "schema_version": 2,
+      "selection_validated_utc": 1794551192
+    },
+    "pushes": 54,
+    "failed_cas": 1,
+    "entropy_calls": 22,
+    "commands": 1553
+  },
+  "forbidden": 0,
+  "minimization": {
+    "attempts": 100,
+    "one_deletion_minimal": false
+  }
+}

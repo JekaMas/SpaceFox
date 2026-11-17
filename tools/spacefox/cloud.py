@@ -429,7 +429,7 @@ def write_scheduling_witness(pub, day, catalog_source_digest):
                             pub.store.remote, f'{commit}:{STATE_REF}', check=False)
     if result.returncode:
         raise Conflict('projection witness CAS failed')
-    return Publisher(pub.store, pub.running_code)
+    return Publisher(pub.store, pub.running_code, token_source=pub._token_source)
 
 
 def retained_files(snapshot, files, *, text_transport):

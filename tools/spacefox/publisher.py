@@ -548,12 +548,13 @@ class GitState:
     Each instance has a private temporary object database. The remote ref update
     is the actual CAS boundary, including for independent worker processes.
     """
-    def __init__(self, remote, *, source_ref='refs/heads/main'):
+    def __init__(self, remote, *, source_ref='refs/heads/main', token_source=None):
         if type(remote) is not str or not remote or remote.startswith('-'):
             raise StateError('explicit Git remote required')
         if not source_ref.startswith('refs/heads/') or any(c.isspace() for c in source_ref):
             raise StateError('explicit source branch ref required')
         self.remote, self.source_ref = remote, source_ref
+        self._token_source = uuid.uuid4 if token_source is None else token_source
         self._blob_cache = {}
         self._fetched_refs = None
         self._blob_cache_bytes = 0
@@ -793,7 +794,7 @@ class GitState:
             raise StateError('stale source code cannot bootstrap')
         if type(policy) is not RefreshPolicy:
             raise StateError('validated refresh policy required')
-        doc = dict(schema_version=2, instance_id=_sha(uuid.uuid4().bytes),
+        doc = dict(schema_version=2, instance_id=_sha(self._token_source().bytes),
                    refresh_policy=dict(vars(policy)),
                    code_revision=running_code, generation=0, accepted=schedule_document(ScheduleState()),
                    active=None, pending=None, last_event_utc=None, last_poll_utc=None,
@@ -954,8 +955,9 @@ class Publisher:
     They must call the provider only after reserve returns a non-null token, once
     per token, and report normalized source validation separately from HTTP200.
     """
-    def __init__(self, store, running_code, policy=None):
+    def __init__(self, store, running_code, policy=None, *, token_source=None):
         self.store, self.running_code = store, running_code
+        self._token_source = uuid.uuid4 if token_source is None else token_source
         self.head, self._ledger = store.load()
         self.policy = RefreshPolicy(**self._ledger['refresh_policy'])
         if policy is not None and policy != self.policy:
@@ -1031,7 +1033,7 @@ class Publisher:
                                  self.store.remote, f'{commit}:{STATE_REF}', check=False)
         if result.returncode:
             raise Conflict('cloud journal CAS failed')
-        updated = Publisher(self.store, self.running_code)
+        updated = Publisher(self.store, self.running_code, token_source=self._token_source)
         journal(updated)
         return updated, value['intent']
 
@@ -1076,7 +1078,7 @@ class Publisher:
             raise StateError('uncertain request outcome requires recovery delay')
         if len(requests) >= REQUESTS_PER_HOUR:
             raise AllowanceUnavailable('shared15/hour provider allowance exhausted')
-        token = _sha(uuid.uuid4().bytes)
+        token = _sha(self._token_source().bytes)
         requests.append(dict(id=token, at_utc=now, purpose=purpose, trigger=trigger, outcome='reserved'))
         doc['requests'] = requests
         if purpose == 'schedule' and trigger != 'extra':

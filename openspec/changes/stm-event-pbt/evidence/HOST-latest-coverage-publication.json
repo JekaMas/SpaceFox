@@ -1,0 +1,443 @@
+{
+  "machine": "publication",
+  "seed": 1,
+  "event_index": 0,
+  "events": [
+    [
+      "prepare",
+      0,
+      0
+    ],
+    [
+      "live",
+      1,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      0
+    ],
+    [
+      "atomic_prepare",
+      0,
+      0
+    ],
+    [
+      "live",
+      1,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      1
+    ],
+    [
+      "finish_retained",
+      1,
+      0
+    ],
+    [
+      "atomic_prepare",
+      1,
+      1
+    ],
+    [
+      "atomic_prepare",
+      1,
+      0
+    ],
+    [
+      "atomic_prepare",
+      1,
+      0
+    ],
+    [
+      "live",
+      1,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      1
+    ],
+    [
+      "finish_retained",
+      2,
+      0
+    ],
+    [
+      "advance",
+      3600,
+      0
+    ],
+    [
+      "atomic_prepare",
+      2,
+      0
+    ],
+    [
+      "prepare",
+      1,
+      0
+    ],
+    [
+      "prepare",
+      2,
+      0
+    ],
+    [
+      "prepare",
+      0,
+      0
+    ],
+    [
+      "prepare",
+      0,
+      0
+    ],
+    [
+      "live",
+      2,
+      0
+    ],
+    [
+      "reopen",
+      0,
+      0
+    ],
+    [
+      "prepare",
+      0,
+      0
+    ],
+    [
+      "live",
+      0,
+      0
+    ],
+    [
+      "deploy",
+      1,
+      0
+    ],
+    [
+      "deploy",
+      0,
+      0
+    ],
+    [
+      "live",
+      0,
+      0
+    ],
+    [
+      "prepare",
+      0,
+      0
+    ],
+    [
+      "live",
+      1,
+      0
+    ],
+    [
+      "live",
+      1,
+      0
+    ],
+    [
+      "write_failed",
+      0,
+      0
+    ],
+    [
+      "source_changed",
+      0,
+      0
+    ],
+    [
+      "prepare",
+      0,
+      0
+    ],
+    [
+      "reopen",
+      0,
+      0
+    ],
+    [
+      "adopt",
+      0,
+      0
+    ],
+    [
+      "reconcile",
+      0,
+      0
+    ],
+    [
+      "prepare",
+      0,
+      0
+    ],
+    [
+      "deploy",
+      2,
+      0
+    ],
+    [
+      "live",
+      1,
+      0
+    ],
+    [
+      "authority_lost",
+      0,
+      0
+    ],
+    [
+      "authority_restored",
+      0,
+      0
+    ],
+    [
+      "reconcile",
+      0,
+      0
+    ],
+    [
+      "adopt",
+      2,
+      0
+    ],
+    [
+      "live",
+      0,
+      0
+    ],
+    [
+      "reopen",
+      14,
+      0
+    ],
+    [
+      "reopen",
+      12,
+      0
+    ],
+    [
+      "source_changed",
+      6,
+      0
+    ],
+    [
+      "reserve",
+      1,
+      0
+    ],
+    [
+      "write_failed",
+      12,
+      0
+    ],
+    [
+      "advance",
+      -1,
+      0
+    ],
+    [
+      "authority_restored",
+      14,
+      0
+    ],
+    [
+      "live",
+      2,
+      0
+    ],
+    [
+      "source_changed",
+      7,
+      0
+    ],
+    [
+      "adopt",
+      3,
+      0
+    ],
+    [
+      "deploy",
+      0,
+      0
+    ],
+    [
+      "prepare",
+      0,
+      0
+    ],
+    [
+      "authority_lost",
+      0,
+      0
+    ],
+    [
+      "advance",
+      59,
+      0
+    ],
+    [
+      "advance",
+      -1,
+      0
+    ],
+    [
+      "reconcile",
+      7,
+      0
+    ],
+    [
+      "source_changed",
+      14,
+      0
+    ],
+    [
+      "reopen",
+      7,
+      0
+    ],
+    [
+      "deploy",
+      0,
+      0
+    ],
+    [
+      "authority_lost",
+      7,
+      0
+    ],
+    [
+      "source_changed",
+      14,
+      0
+    ],
+    [
+      "live",
+      0,
+      0
+    ],
+    [
+      "advance",
+      3600,
+      0
+    ],
+    [
+      "authority_lost",
+      3,
+      0
+    ],
+    [
+      "finish_retained",
+      8,
+      0
+    ],
+    [
+      "authority_restored",
+      10,
+      0
+    ],
+    [
+      "authority_restored",
+      13,
+      0
+    ],
+    [
+      "reconcile",
+      6,
+      0
+    ],
+    [
+      "live",
+      1,
+      0
+    ],
+    [
+      "adopt",
+      15,
+      0
+    ],
+    [
+      "write_failed",
+      12,
+      0
+    ],
+    [
+      "adopt",
+      1,
+      0
+    ],
+    [
+      "reopen",
+      7,
+      0
+    ]
+  ],
+  "error": "AssertionError: unexpected rejection: invalid complete native-motion-v3 artifact",
+  "model": {
+    "now": 1794551192,
+    "commits": 2,
+    "code": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "actor": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "saved_code": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "available": true,
+    "fresh": true,
+    "ready": true,
+    "requests": [],
+    "records": {},
+    "generation": 1,
+    "active": "None",
+    "pending": "LiveRevision(generation=1, artifact_revision='f929bd097c799782e7ffb426f61cf00137ef23fe1b6a9575424bfe8272d0fe98')",
+    "journal": null,
+    "coverage": {},
+    "properties": {
+      "durable_model": 2,
+      "identity_and_time": 2,
+      "effect_counts": 2,
+      "no_real_effects": 2,
+      "complete_candidate_identity": 1
+    }
+  },
+  "sut": {
+    "head": "73b8887b346fa176dbd092688c301232d1d3db4f",
+    "ledger": {
+      "accepted": {
+        "entries": [],
+        "evaluated_at_utc": null
+      },
+      "active": null,
+      "backoff_until_utc": null,
+      "code_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "generation": 0,
+      "instance_id": "c5834643cded8b4bed1c0151884347bb81cd5b810596620312380ffa6f60a801",
+      "last_event_utc": null,
+      "last_poll_utc": null,
+      "pending": null,
+      "refresh_policy": {
+        "fast_interval_seconds": null,
+        "near_interval_seconds": 900,
+        "normal_interval_seconds": 3600,
+        "stale_cycles": 3
+      },
+      "requests": [],
+      "schema_version": 2,
+      "selection_validated_utc": null
+    },
+    "pushes": 1,
+    "failed_cas": 0,
+    "entropy_calls": 1,
+    "commands": 28
+  },
+  "forbidden": 0
+}

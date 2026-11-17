@@ -1,0 +1,496 @@
+{
+  "machine": "publication",
+  "seed": 1,
+  "event_index": 0,
+  "events": [
+    [
+      "reserve",
+      0,
+      1
+    ],
+    [
+      "finish_retained",
+      1,
+      0
+    ],
+    [
+      "atomic_prepare",
+      1,
+      1
+    ],
+    [
+      "atomic_prepare",
+      1,
+      0
+    ],
+    [
+      "atomic_prepare",
+      1,
+      0
+    ],
+    [
+      "live",
+      1,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      1
+    ],
+    [
+      "finish_retained",
+      2,
+      0
+    ],
+    [
+      "advance",
+      3600,
+      0
+    ],
+    [
+      "atomic_prepare",
+      2,
+      0
+    ],
+    [
+      "prepare",
+      1,
+      0
+    ],
+    [
+      "prepare",
+      2,
+      0
+    ],
+    [
+      "prepare",
+      0,
+      0
+    ],
+    [
+      "prepare",
+      0,
+      0
+    ],
+    [
+      "live",
+      2,
+      0
+    ],
+    [
+      "reopen",
+      0,
+      0
+    ],
+    [
+      "prepare",
+      0,
+      0
+    ],
+    [
+      "live",
+      0,
+      0
+    ],
+    [
+      "deploy",
+      1,
+      0
+    ],
+    [
+      "deploy",
+      0,
+      0
+    ],
+    [
+      "live",
+      0,
+      0
+    ],
+    [
+      "prepare",
+      0,
+      0
+    ],
+    [
+      "live",
+      1,
+      0
+    ],
+    [
+      "live",
+      1,
+      0
+    ],
+    [
+      "write_failed",
+      0,
+      0
+    ],
+    [
+      "source_changed",
+      0,
+      0
+    ],
+    [
+      "prepare",
+      0,
+      0
+    ],
+    [
+      "reopen",
+      0,
+      0
+    ],
+    [
+      "adopt",
+      0,
+      0
+    ],
+    [
+      "reconcile",
+      0,
+      0
+    ],
+    [
+      "prepare",
+      0,
+      0
+    ],
+    [
+      "deploy",
+      2,
+      0
+    ],
+    [
+      "live",
+      1,
+      0
+    ],
+    [
+      "authority_lost",
+      0,
+      0
+    ],
+    [
+      "authority_restored",
+      0,
+      0
+    ],
+    [
+      "reconcile",
+      0,
+      0
+    ],
+    [
+      "adopt",
+      2,
+      0
+    ],
+    [
+      "live",
+      0,
+      0
+    ],
+    [
+      "reopen",
+      14,
+      0
+    ],
+    [
+      "reopen",
+      12,
+      0
+    ],
+    [
+      "source_changed",
+      6,
+      0
+    ],
+    [
+      "reserve",
+      1,
+      0
+    ],
+    [
+      "write_failed",
+      12,
+      0
+    ],
+    [
+      "advance",
+      -1,
+      0
+    ],
+    [
+      "authority_restored",
+      14,
+      0
+    ],
+    [
+      "live",
+      2,
+      0
+    ],
+    [
+      "source_changed",
+      7,
+      0
+    ],
+    [
+      "adopt",
+      3,
+      0
+    ],
+    [
+      "deploy",
+      0,
+      0
+    ],
+    [
+      "prepare",
+      0,
+      0
+    ],
+    [
+      "authority_lost",
+      0,
+      0
+    ],
+    [
+      "advance",
+      59,
+      0
+    ],
+    [
+      "advance",
+      -1,
+      0
+    ],
+    [
+      "reconcile",
+      7,
+      0
+    ],
+    [
+      "source_changed",
+      14,
+      0
+    ],
+    [
+      "reopen",
+      7,
+      0
+    ],
+    [
+      "deploy",
+      0,
+      0
+    ],
+    [
+      "authority_lost",
+      7,
+      0
+    ],
+    [
+      "source_changed",
+      14,
+      0
+    ],
+    [
+      "live",
+      0,
+      0
+    ],
+    [
+      "advance",
+      3600,
+      0
+    ],
+    [
+      "authority_lost",
+      3,
+      0
+    ],
+    [
+      "finish_retained",
+      8,
+      0
+    ],
+    [
+      "authority_restored",
+      10,
+      0
+    ],
+    [
+      "authority_restored",
+      13,
+      0
+    ],
+    [
+      "reconcile",
+      6,
+      0
+    ],
+    [
+      "live",
+      1,
+      0
+    ],
+    [
+      "adopt",
+      15,
+      0
+    ],
+    [
+      "write_failed",
+      12,
+      0
+    ],
+    [
+      "adopt",
+      1,
+      0
+    ],
+    [
+      "reopen",
+      7,
+      0
+    ]
+  ],
+  "error": "AttributeError: 'PublicationCase' object has no attribute 'reserve_operation'",
+  "model": {
+    "now": 1794551192,
+    "commits": 3,
+    "code": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "actor": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "saved_code": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "available": true,
+    "fresh": true,
+    "ready": true,
+    "requests": [
+      {
+        "id": "692865c9a376a1a82d161b0f9578595554873797fa9ebbb068b797828122e61d",
+        "at_utc": 1794551192,
+        "purpose": "schedule",
+        "trigger": "scheduled",
+        "outcome": "success",
+        "accepted_source": true
+      }
+    ],
+    "records": {
+      "0f867f0c-5422-4d44-93b8-d7faaae7019b": {
+        "record": "LaunchRecord(launch_id=StableId(kind=<IdKind.LAUNCH: 'launch'>, namespace='ll2', value='0f867f0c-5422-4d44-93b8-d7faaae7019b'), timing=Timing(precision=<TimePrecision.EXACT: 'exact'>, exact_utc=1795551192, date_utc=None, window_start_utc=None, window_end_utc=None, nominal_utc=None, source_net=None, source_precision_id=None, source_precision_name=None, source_precision_abbrev=None, source_precision_description=None), status=<LaunchStatus.PENDING: 'pending'>, source_validated_utc=1794551192, configuration_id=StableId(kind=<IdKind.CONFIGURATION: 'configuration'>, namespace='ll2', value='522'), operator_id=StableId(kind=<IdKind.ORGANIZATION: 'organization'>, namespace='ll2', value='121'), site_id=StableId(kind=<IdKind.SITE: 'site'>, namespace='ll2', value='235'), country_id=StableId(kind=<IdKind.COUNTRY: 'country'>, namespace='ll2', value='2'), configuration_name='Starship V3', operator_name='SpaceX', operator_abbrev='SpX', mission_name='Starlink Group 31-2 (Starship Flight 15)', mission_purpose='Communications', source_updated_utc=1794348406, source_updated_subsecond=0, source_updated_iso='2026-11-10T22:06:46Z', source_status_id=8, source_status_name='To Be Confirmed', site_name='Orbital Launch Pad 2', country_name='United States of America', country_code='US', site_location_name='SpaceX Starbase, TX, USA', site_position=None, ascent_end=None)",
+        "stale": false,
+        "rescheduled": false
+      }
+    },
+    "generation": 0,
+    "active": "None",
+    "pending": "None",
+    "journal": null,
+    "coverage": {},
+    "properties": {
+      "durable_model": 2,
+      "identity_and_time": 2,
+      "effect_counts": 2,
+      "no_real_effects": 2,
+      "complete_candidate_identity": 1
+    }
+  },
+  "sut": {
+    "head": "55b5db604bf5230328b977715b27349e7ecd836a",
+    "ledger": {
+      "accepted": {
+        "entries": [
+          {
+            "record": {
+              "configuration_id": {
+                "kind": "configuration",
+                "namespace": "ll2",
+                "value": "522"
+              },
+              "configuration_name": "Starship V3",
+              "country_code": "US",
+              "country_id": {
+                "kind": "country",
+                "namespace": "ll2",
+                "value": "2"
+              },
+              "country_name": "United States of America",
+              "launch_id": {
+                "kind": "launch",
+                "namespace": "ll2",
+                "value": "0f867f0c-5422-4d44-93b8-d7faaae7019b"
+              },
+              "mission_name": "Starlink Group 31-2 (Starship Flight 15)",
+              "mission_purpose": "Communications",
+              "operator_abbrev": "SpX",
+              "operator_id": {
+                "kind": "organization",
+                "namespace": "ll2",
+                "value": "121"
+              },
+              "operator_name": "SpaceX",
+              "site_id": {
+                "kind": "site",
+                "namespace": "ll2",
+                "value": "235"
+              },
+              "site_location_name": "SpaceX Starbase, TX, USA",
+              "site_name": "Orbital Launch Pad 2",
+              "source_status_id": 8,
+              "source_status_name": "To Be Confirmed",
+              "source_updated_iso": "2026-11-10T22:06:46Z",
+              "source_updated_utc": 1794348406,
+              "source_validated_utc": 1794551192,
+              "status": "pending",
+              "timing": {
+                "date_utc": null,
+                "exact_utc": 1795551192,
+                "precision": "exact",
+                "window_end_utc": null,
+                "window_start_utc": null
+              }
+            },
+            "rescheduled": false,
+            "stale": false
+          }
+        ],
+        "evaluated_at_utc": 1794551192
+      },
+      "active": null,
+      "backoff_until_utc": null,
+      "code_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "generation": 0,
+      "instance_id": "7c3ccd10bb7ec37b46d37926ae6274267f007a34aeaf15c882a715a7f3300529",
+      "last_event_utc": 1794551192,
+      "last_poll_utc": 1794551192,
+      "pending": null,
+      "refresh_policy": {
+        "fast_interval_seconds": null,
+        "near_interval_seconds": 900,
+        "normal_interval_seconds": 3600,
+        "stale_cycles": 3
+      },
+      "requests": [
+        {
+          "accepted_source": true,
+          "at_utc": 1794551192,
+          "id": "692865c9a376a1a82d161b0f9578595554873797fa9ebbb068b797828122e61d",
+          "outcome": "success",
+          "purpose": "schedule",
+          "trigger": "scheduled"
+        }
+      ],
+      "schema_version": 2,
+      "selection_validated_utc": 1794551192
+    },
+    "pushes": 3,
+    "failed_cas": 0,
+    "entropy_calls": 2,
+    "commands": 74
+  },
+  "forbidden": 0
+}

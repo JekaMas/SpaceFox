@@ -1,0 +1,35 @@
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-stm-event-pbt-20261117/tests/host_stm_properties.py", line 765, in run_trace
+    assert not missing,('missing semantic facts',sorted(missing))
+           ^^^^^^^^^^^
+AssertionError: ('missing semantic facts', ['callback_duplicate'])
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-stm-event-pbt-20261117/tools/run_host_stm_pbt.py", line 122, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-stm-event-pbt-20261117/tools/run_host_stm_pbt.py", line 119, in main
+    print(json.dumps(execute(seconds=args.seconds,traces=args.traces,seed=args.seed,machines=args.machines,output=args.output,progress=True),indent=2))
+                     ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-stm-event-pbt-20261117/tools/run_host_stm_pbt.py", line 93, in execute
+    results=[future.result() for future in as_completed(futures)]
+             ~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/concurrent/futures/_base.py", line 447, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/concurrent/futures/_base.py", line 396, in __get_result
+    raise self._exception
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/concurrent/futures/thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/concurrent/futures/thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-stm-event-pbt-20261117/tools/run_host_stm_pbt.py", line 72, in worker
+    try:receipt=run_trace(machine,seed+cases,fixture)
+                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-stm-event-pbt-20261117/tests/host_stm_properties.py", line 771, in run_trace
+    raise TraceFailure(dict(machine=machine,seed=seed,event_index=index,events=events,
+        error=type(error).__name__+': '+str(error),failure_property=(str(error.args[0][0]) if error.args and isinstance(error.args[0],tuple) else str(error).split(':',1)[0]),model=None if case is None else model_summary(case),
+        sut=None if case is None else sut_summary(case),forbidden=scope.forbidden)) from error
+tests.host_stm_properties.TraceFailure: AssertionError: ('missing semantic facts', ['callback_duplicate'])
