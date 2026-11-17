@@ -4,7 +4,9 @@ Base: actual public main 0acdebe0be6740f91cab4b91930e4a53628389f7 (0.2.3). The w
 
 Garmin documents a temporal background minimum of five minutes and phone connectivity via DeviceSettings: [Background services](https://developer.garmin.com/connect-iq/articles/core-topics/Backgrounding.html), [Background API](https://developer.garmin.com/connect-iq/api-docs/Toybox/Background.html), [DeviceSettings](https://developer.garmin.com/connect-iq/api-docs/Toybox/System/DeviceSettings.html). Connected retry is immediately due by policy; actual dispatch is subject to the OS minimum and may be later. No custom phone companion/reconnect event is assumed.
 
-Verification in progress; no physical acceptance claimed.
+Independent software review and repair GREEN; see `PEER.md` and `peer.json`.
+Updated hosted deployment, release and physical/phone/Store approval remain open.
+The author observations below retain their original source/receipt scope.
 
 Author verification (source build 0.2.4, NativeID `497e879c`):
 
@@ -13,3 +15,5 @@ Author verification (source build 0.2.4, NativeID `497e879c`):
 - `stable-trustedReminderAndBackgroundCadence.log` retains the initial ERROR: the new two-source test reused an address which the existing assertion expected to be empty; it was repaired to use a genuinely third address and rerun. Earlier invalid-device lane setup and producer NameError are retained privately in `compile.log` and `host-first.log` respectively; `host-first.log` is copied here. The producer NameError was repaired before the later integrated results.
 - `host-second.log` passes 4 captured/source policy cases; `host-integrated.log` passes the actual local HTTP 304/hour boundary, 429 to next-request retry, manual reentry and in-flight reservation test; `host-empty.log` passes empty-future success/reopen and duplicate-in-flight case; `host-last.log` passes that HTTP path plus four release binding/predecessor tests and a fifth admission case (6 total); `host-closure.log` passes 13 affected transport/admission/predecessor/artifact tests. Local origin is not the real remote service.
 - Existing language and image proof remains historical; the current file-level owner/test scope and exact peer source are required by the existing production release admission. OpenSpec strict, native-version check, Python syntax and changed-file whitespace pass. No full locale/device/stress campaign, physical phone/watch proof, or final hosted publisher deployment is asserted.
+
+Peer repaired the residual `extra` schedule-page/detail backoff and current cloud/spec wording. Native/compiler inputs remain unchanged (`497e879c`). The raw first pagination failure and nine-case batch (eight pass, one fixture-age failure) remain alongside the corrected single-case pass. See PEER.md for per-case reconciliation; no native suite was repeated.
