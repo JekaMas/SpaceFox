@@ -292,6 +292,9 @@ class SpaceFoxView extends WatchUi.WatchFace {
         }finally{presentation.aodContextFont=oldContext;presentation.aodBatteryFont=oldBattery;presentation.locale=oldLocale;}
     }
     (:typecheck(false)) function updateForDisplayMode(dc as Graphics.Dc, displayMode as System.DisplayMode) as Void {
+        // An OS draw queued before hide must not recreate LOW resources or
+        // load facts after that lifecycle owner has revoked visible work.
+        if(!lifecycle.shown()){return;}
         // OFF is not a third layout. Stop any owned work without scheduling a
         // redraw or loading resources; a later HIGH observation resumes after
         // its first frame, and LOW never starts active sampling or decoding.
@@ -355,19 +358,27 @@ class SpaceFoxView extends WatchUi.WatchFace {
     // health providers. This is temporary while the full scene is unavailable.
     (:typecheck(false)) function drawClockFallback(dc as Graphics.Dc) as Void {
         startFallbackClock();
-        var x=dc.getWidth()/2;var y=dc.getHeight()/2;var parts=_clock.localCalendar();
+        var x=dc.getWidth()/2;var y=dc.getHeight()/2;var active=lifecycle.mode()==NOT_LOW;var parts=_clock.localCalendar();
         if(lifecycle.mode()==LOW){var minute=utcMinute(_clock.utcSeconds());var phase=((minute%4+4)%4).toNumber();x+=(phase%2==0?-1:1);y+=(phase/2==0?-1:1);aodMinute=minute;}
         dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.clear();
         dc.setColor(settings.clockColor,Graphics.COLOR_TRANSPARENT);
-        dc.drawText(x,y-15,Graphics.FONT_MEDIUM,_clock.localTimeText(),Graphics.TEXT_JUSTIFY_CENTER);
-        if(parts.size()==3){dc.drawText(x,y-45,Graphics.FONT_TINY,parts[1].format("%02d")+"."+parts[2].format("%02d"),Graphics.TEXT_JUSTIFY_CENTER);}
+        dc.drawText(x,active?y-77:y-15,active?Graphics.FONT_NUMBER_MEDIUM:Graphics.FONT_MEDIUM,_clock.localTimeText(),Graphics.TEXT_JUSTIFY_CENTER);
+        if(parts.size()==3){dc.drawText(x,active?y-107:y-45,Graphics.FONT_TINY,parts[1].format("%02d")+"."+parts[2].format("%02d"),Graphics.TEXT_JUSTIFY_CENTER);}
         // Keep admitted facts independent of the optional graphics as well.
         // Their own failure cannot prevent the already drawn clock/date.
-        try{if(context!=null){var now=_clock.utcSeconds();advanceSelection(now);var selected=context as SceneContext or Null;if(selected!=null){var snap=snapshotAt(now);var value=lifecycle.mode()==LOW?snap.lowCountdown:snap.countdown;dc.setColor(selected.rescheduled||selected.sourceHold?0xFF6B6B:settings.countdownColor,Graphics.COLOR_TRANSPARENT);dc.drawText(x,y+25,Graphics.FONT_TINY,value,Graphics.TEXT_JUSTIFY_CENTER);dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(x,y+55,Graphics.FONT_XTINY,selected.site,Graphics.TEXT_JUSTIFY_CENTER);dc.drawText(x,y+80,Graphics.FONT_XTINY,selected.rocket+" · "+selected.purpose,Graphics.TEXT_JUSTIFY_CENTER);}}}catch(e){}
+        try{if(context!=null){var now=_clock.utcSeconds();advanceSelection(now);var selected=context as SceneContext or Null;if(selected!=null){var snap=snapshotAt(now);var value=lifecycle.mode()==LOW?snap.lowCountdown:snap.countdown;dc.setColor(selected.rescheduled||selected.sourceHold?0xFF6B6B:settings.countdownColor,Graphics.COLOR_TRANSPARENT);dc.drawText(x,active?y+7:y+25,Graphics.FONT_TINY,value,Graphics.TEXT_JUSTIFY_CENTER);dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(x,active?y+124:y+55,Graphics.FONT_XTINY,active?presentation.fit(dc,selected.site,Graphics.FONT_XTINY,242):selected.site,Graphics.TEXT_JUSTIFY_CENTER);dc.drawText(x,active?y-159:y+80,Graphics.FONT_XTINY,active?presentation.fit(dc,selected.rocket,Graphics.FONT_XTINY,238):selected.rocket+" · "+selected.purpose,Graphics.TEXT_JUSTIFY_CENTER);if(active){var company=selected.operatorShort.equals("")?selected.operator:selected.operatorShort;dc.drawText(x,y-133,Graphics.FONT_XTINY,presentation.fit(dc,company+" · "+selected.purpose,Graphics.FONT_XTINY,282),Graphics.TEXT_JUSTIFY_CENTER);}}}}catch(e){}
+        LocaleGraphemes.data=null;
+        // ACTIVE retains all four configured values even when fonts/optional
+        // art fail. This never samples providers or promotes the mode to LOW.
+        if(active){try{drawFallbackFields(dc);}catch(e){}}
         // Bounded direct-draw map after clock and facts: an optional failure
         // must never erase or prevent the clock. Its source point is separate
         // from downloaded artwork and is absent for an unknown event location.
         try{if(context!=null){var left=(dc.getWidth()-195)/2;FallbackWorld.draw(dc,left,15);if(context.point!=null){FallbackMap.point(dc,context.point,left,15);}else{FallbackMap.unknown(dc,left+190,20);}}}catch(e){}
+    }
+    (:typecheck(false)) function drawFallbackFields(dc) {
+        var x=dc.getWidth()/2;var y=dc.getHeight()/2;
+        for(var i=0;i<4;i+=1){dc.setColor(settings.fieldColors[i],Graphics.COLOR_TRANSPARENT);dc.drawText(x+(i%2==0?-100:100),y+(i<2?49:87),Graphics.FONT_TINY,presentation.metric(fitness,values,settings.slots[i]),Graphics.TEXT_JUSTIFY_CENTER);}
     }
     function applyPixelRest(dc as Graphics.Dc) as Void {
         if(lifecycle.mode() == NOT_LOW){return;}
