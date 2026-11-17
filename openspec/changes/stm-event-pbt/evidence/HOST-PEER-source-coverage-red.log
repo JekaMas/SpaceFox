@@ -1,0 +1,15 @@
+test_source_model_requires_status_and_selection_evidence (tests.test_host_stm_pbt.CampaignAccountingTest.test_source_model_requires_status_and_selection_evidence) ... FAIL
+
+======================================================================
+FAIL: test_source_model_requires_status_and_selection_evidence (tests.test_host_stm_pbt.CampaignAccountingTest.test_source_model_requires_status_and_selection_evidence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-stm-event-pbt-20261117/tests/test_host_stm_pbt.py", line 94, in test_source_model_requires_status_and_selection_evidence
+    self.assertTrue({'source_started','source_unknown','selection_checked'} <= required)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=1)

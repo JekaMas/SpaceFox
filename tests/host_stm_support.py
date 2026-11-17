@@ -271,7 +271,10 @@ def forbid_real_effects():
         for obj, name in [(builtins,'open'),(io,'open'),(os,'open'),(os,'urandom'),
                           (subprocess,'run'),(subprocess,'Popen'),(tempfile,'TemporaryDirectory'),
                           (socket,'create_connection'),(socket.socket,'connect'),(socket.socket,'connect_ex'),(socket.socket,'sendto'),
+                          (socket.socket,'send'),(socket.socket,'sendall'),(socket.socket,'recv'),(socket.socket,'recvfrom'),
                           (threading.Thread,'start'),(os,'mkdir'),(os,'unlink'),(os,'rename'),(os,'replace'),(os,'rmdir'),
-                          (time,'time'),(time,'monotonic'),(time,'perf_counter'),(time,'sleep'),(uuid,'uuid4')]:
+                          (os,'stat'),(os,'lstat'),(os,'listdir'),(os,'scandir'),(os,'readlink'),(os,'access'),
+                          (time,'time'),(time,'time_ns'),(time,'monotonic'),(time,'monotonic_ns'),
+                          (time,'perf_counter'),(time,'perf_counter_ns'),(time,'sleep'),(uuid,'uuid4')]:
             stack.enter_context(patch.object(obj,name,wrap(getattr(obj,name),obj.__name__+'.'+name)))
         yield

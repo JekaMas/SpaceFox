@@ -73,13 +73,15 @@ def execute(*,seconds=0,traces=4,seed=1,machines=None,output=None,progress=False
         barrier.wait()
         started=time.monotonic();last_log=started
         counts=Counter();facts=Counter();transitions=Counter();properties=Counter()
-        cases=events=0;minimum=None;maximum=0;namespaces=set()
-        while not stop.is_set() and (cases<traces if not seconds else time.monotonic()-started<seconds):
+        cases=events=0;productive=0.0;minimum=None;maximum=0;namespaces=set()
+        while not stop.is_set() and (cases<traces if not seconds else productive<seconds):
+            work_started=time.monotonic()
             try:receipt=run_trace(machine,seed+cases,fixture)
             except TraceFailure as failure:
                 stop.set()
                 if output:save_failure(failure.receipt,fixture,Path(output))
                 raise
+            productive+=time.monotonic()-work_started
             cases+=1;events+=receipt['events'];minimum=receipt['events'] if minimum is None else min(minimum,receipt['events']);maximum=max(maximum,receipt['events'])
             counts.update(receipt['coverage']);facts.update(receipt['facts']);transitions.update(receipt['transitions']);properties.update(receipt['properties'])
             assert receipt['namespace'] not in namespaces,'repeated case namespace'
@@ -90,10 +92,10 @@ def execute(*,seconds=0,traces=4,seed=1,machines=None,output=None,progress=False
         ended=time.monotonic()
         assert cases>0,'zero property traces'
         return dict(machine=machine,thread_id=threading.get_ident(),started_monotonic=started,ended_monotonic=ended,
-            elapsed_seconds=ended-started,cases=cases,events=events,min_events=minimum,max_events=maximum,
+            elapsed_seconds=ended-started,productive_seconds=productive,cases=cases,events=events,min_events=minimum,max_events=maximum,
             first_seed=seed,last_seed=seed+cases-1,distinct_namespaces=len(namespaces),effective_dispositions=dict(counts),
             semantic_facts=dict(facts),owner_transitions=dict(transitions),property_assertions=dict(properties),
-            forbidden_effects=0,campaign_requirement_met=bool(seconds>=600 and ended-started>=600))
+            forbidden_effects=0,campaign_requirement_met=bool(seconds>=600 and productive>=600 and ended-started>=600))
     with forbid_real_effects(),ThreadPoolExecutor(max_workers=len(machines),thread_name_prefix='host-stm') as pool:
         futures=[pool.submit(worker,machine) for machine in machines]
         results=[future.result() for future in as_completed(futures)]

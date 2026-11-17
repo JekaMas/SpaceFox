@@ -1,0 +1,15 @@
+test_productive_budget_excludes_control_gaps (tests.test_host_stm_pbt.CampaignAccountingTest.test_productive_budget_excludes_control_gaps) ... FAIL
+
+======================================================================
+FAIL: test_productive_budget_excludes_control_gaps (tests.test_host_stm_pbt.CampaignAccountingTest.test_productive_budget_excludes_control_gaps)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-stm-event-pbt-20261117/tests/test_host_stm_pbt.py", line 77, in test_productive_budget_excludes_control_gaps
+    self.assertEqual(worker['cases'],3)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: 1 != 3
+
+----------------------------------------------------------------------
+Ran 1 test in 0.051s
+
+FAILED (failures=1)

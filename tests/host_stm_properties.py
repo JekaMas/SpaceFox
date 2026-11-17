@@ -27,10 +27,14 @@ def token(number,namespace):
     return hashlib.sha256(uuid.UUID(int=(prefix<<64)|number).bytes).hexdigest()
 
 
-def record(identity, version, validated, *, status='pending', point=0):
+def record(identity, version, validated, *, status='pending', point=0, precision='exact'):
     """Synthetic typed provider event, not an internal cache/state mutation."""
+    anchor=START+1000000+version*60
+    timing=(domain.Timing(domain.TimePrecision.EXACT,exact_utc=anchor) if precision=='exact' else
+            domain.Timing(domain.TimePrecision.WINDOW,window_start_utc=anchor,window_end_utc=anchor+3600) if precision=='window' else
+            domain.Timing(domain.TimePrecision.UNKNOWN))
     return domain.LaunchRecord(domain.StableId(domain.IdKind.LAUNCH,'ll2',str(identity)),
-        domain.Timing(domain.TimePrecision.EXACT,exact_utc=START+1000000+version*60),
+        timing,
         domain.LaunchStatus(status),validated,source_updated_utc=START-10+version,
         configuration_name='Rocket '+str(version),site_position=(None if point==0 else
             {'latitude':str(point),'longitude':'12.0'}))
@@ -39,8 +43,9 @@ def record(identity, version, validated, *, status='pending', point=0):
 def stale(entry, now):
     r=entry['record'];age=now-r.source_validated_utc
     normal=age>=10800
-    near=(r.status not in (domain.LaunchStatus.COMPLETED,domain.LaunchStatus.CANCELLED,domain.LaunchStatus.STARTED)
-          and now>=r.timing.exact_utc-7200 and min(now,r.timing.exact_utc+1800)-r.source_validated_utc>=2700)
+    target=r.timing.exact_utc
+    near=(target is not None and r.status not in (domain.LaunchStatus.COMPLETED,domain.LaunchStatus.CANCELLED,domain.LaunchStatus.STARTED)
+          and now>=target-7200 and min(now,target+1800)-r.source_validated_utc>=2700)
     return entry['stale'] or normal or near
 
 
@@ -100,7 +105,8 @@ class BaseCase:
 
     def due(self):
         future=any(e['record'].status not in (domain.LaunchStatus.COMPLETED,domain.LaunchStatus.CANCELLED)
-                   and e['record'].timing.exact_utc>self.now for e in self.records.values())
+                   and (e['record'].timing.exact_utc if e['record'].timing.exact_utc is not None else e['record'].timing.window_start_utc) is not None
+                   and (e['record'].timing.exact_utc if e['record'].timing.exact_utc is not None else e['record'].timing.window_start_utc)>self.now for e in self.records.values())
         relevant=[r for r in self.requests if r['purpose']=='schedule' and self.last is not None and r['at_utc']>=self.last]
         success=bool(relevant) and all(r['outcome']=='success' for r in relevant)
         return self.last is None or self.now<self.last or not (future and success) or self.now-self.last>=3600
@@ -329,7 +335,7 @@ class SourceCase(BudgetCase):
                     self.note('source_conflict');self.error_contains='conflict';return None
                 if key in self.archives and replace(r,source_validated_utc=before.source_validated_utc)==before:
                     continue
-                moved=old['rescheduled'] or r.timing.exact_utc!=before.timing.exact_utc
+                moved=old['rescheduled'] or r.timing!=before.timing
                 old_stale=stale(old,self.now)
                 source_stale=old_stale if r.source_validated_utc==before.source_validated_utc else False
                 result[key]=dict(record=r,rescheduled=moved,stale=source_stale)
@@ -339,10 +345,11 @@ class SourceCase(BudgetCase):
     def apply(self,event):
         name,a,b=event
         if name not in ('source','omitted','duplicate_batch','mixed_batch'):return super().apply(event)
-        ident=self.handles[a%len(self.handles)] if self.handles and a>=0 else '0'*64
+        ident=(self.handles[-1] if self.handles and a==-2 else
+               self.handles[a%len(self.handles)] if self.handles and a>=0 else '0'*64)
         req=next((r for r in self.requests if r['id']==ident),None)
         ok=self.writable() and req is not None and req['purpose']=='schedule' and req['outcome']=='reserved' and not req.get('accepted_source',False)
-        incoming=() if name=='omitted' else (record(b['id'],b['version'],self.now+b['age'],status=b['status'],point=b['point']),)
+        incoming=() if name=='omitted' else (record(b['id'],b['version'],self.now+b['age'],status=b['status'],point=b['point'],precision=b.get('precision','exact')),)
         if name=='duplicate_batch':incoming=incoming+incoming
         if name=='mixed_batch':incoming=incoming+(record(1+b['id']%3,0,self.now+1),)
         result=self.merge_expected(incoming) if ok else None
@@ -355,8 +362,12 @@ class SourceCase(BudgetCase):
             self.note('source_accepted')
             if not incoming:self.note('source_omission_retained')
             for r in incoming:
+                if r.status is domain.LaunchStatus.STARTED:self.note('source_started')
+                if r.status is domain.LaunchStatus.UNKNOWN:self.note('source_unknown')
+                if r.timing.precision is domain.TimePrecision.WINDOW:self.note('source_window')
+                if r.timing.precision is domain.TimePrecision.UNKNOWN:self.note('source_unknown_timing')
                 old=self.records.get(r.launch_id.value)
-                if old and old['record'].timing.exact_utc!=r.timing.exact_utc:self.note('source_rescheduled')
+                if old and old['record'].timing!=r.timing:self.note('source_rescheduled')
                 if old and old['record'].site_position!=r.site_position:self.note('point_corrected')
                 if r.launch_id.value in self.archives and r.launch_id.value in result:self.note('source_revived')
             for key,e in list(result.items()):
@@ -370,6 +381,27 @@ class SourceCase(BudgetCase):
     def assert_all(self):
         super().assert_all()
         store=MemoryGit(self.remote)
+        # Independently predict which exact-time record is eligible. An
+        # in-flight status must not become a future countdown or a completion.
+        eligible=[]
+        if self.evaluated is not None:
+            for key,entry in self.records.items():
+                r=entry['record'];target=r.timing.exact_utc;anchor=target if target is not None else r.timing.window_start_utc
+                if (r.status not in (domain.LaunchStatus.COMPLETED,domain.LaunchStatus.CANCELLED)
+                        and (target is None or self.evaluated<target+900)
+                        and (r.status is not domain.LaunchStatus.STARTED or target is not None and target<=self.evaluated)):
+                    eligible.append((anchor is None,0 if anchor is None else anchor,r.launch_id.namespace,r.launch_id.value,target))
+        observed=domain.select_next(prod._schedule(MemoryGit(self.remote)._ledger_at(self.remote.refs[prod.STATE_REF])['accepted']))
+        if not eligible:
+            assert observed.entry is None and observed.timing_state is domain.TimingState.NO_SCHEDULE,'selection_empty'
+        else:
+            _,_,namespace,value,target=min(eligible)
+            assert observed.entry.record.launch_id.namespace==namespace and observed.entry.record.launch_id.value==value,'selection_identity'
+            expected_state=(domain.TimingState.UNCERTAIN if target is None else
+                            domain.TimingState.COUNTDOWN if target>self.evaluated else domain.TimingState.AWAITING_UPDATE)
+            expected_remaining=target-self.evaluated if target is not None and target>self.evaluated else None
+            assert observed.timing_state is expected_state and observed.remaining_seconds==expected_remaining,'selection_countdown'
+        self.note('selection_checked')
         for key,e in self.archives.items():
             observed=store.archived(e['record'].launch_id,self.remote.refs[prod.STATE_REF])
             assert observed is not None
@@ -378,8 +410,8 @@ class SourceCase(BudgetCase):
 
     @classmethod
     def prefix(cls):
-        def source(slot,version=0,age=0,status='pending',point=0,kind='source'):
-            return [kind,slot,dict(id=1,version=version,age=age,status=status,point=point)]
+        def source(slot,version=0,age=0,status='pending',point=0,kind='source',precision='exact'):
+            return [kind,slot,dict(id=1,version=version,age=age,status=status,point=point,precision=precision)]
         return [
             ['reserve',0,1],source(0),source(0),
             ['reserve',0,1],source(1,1), # conflicting same validation
@@ -398,7 +430,11 @@ class SourceCase(BudgetCase):
             ['write_failed',0,0],['foreign_commit',0,0],source(1),
             ['reopen',0,0],['reconcile',0,0],['authority_lost',0,0],
             ['authority_restored',0,0],['reconcile',0,0],['source_changed',0,0],
-            ['reopen',0,0],['adopt',0,0],['reconcile',0,0]]
+            ['reopen',0,0],['adopt',0,0],['reconcile',0,0],
+            ['advance',60,0],['reserve',0,1],source(-2,5,status='started'),
+            ['advance',1,0],['reserve',0,1],source(-2,6,status='unknown'),
+            ['advance',1,0],['reserve',0,1],source(-2,7,precision='window'),
+            ['advance',1,0],['reserve',0,1],source(-2,8,precision='unknown')]
 
 
 def record_document(r):
@@ -722,7 +758,7 @@ def generated_event(cls,rng):
     if name=='advance':return [name,rng.choice([-1,0,1,59,60,299,300,3599,3600]),0]
     if name in ('source','duplicate_batch','mixed_batch'):
         return [name,rng.choice([-1]+list(range(16))),dict(id=rng.randint(1,3),version=rng.randint(0,4),
-            age=rng.choice([-1,0,1]),status=rng.choice(['pending','completed','cancelled']),point=rng.randint(0,2))]
+            age=rng.choice([-1,0,1]),status=rng.choice(['pending','unknown','started','completed','cancelled']),point=rng.randint(0,2),precision=rng.choice(['exact','window','unknown']))]
     if name=='omitted':return [name,rng.choice([-1]+list(range(16))),0]
     if name=='reserve':return [name,rng.randrange(3),rng.randrange(3)]
     if name in ('accept','finish'):return [name,rng.choice([-1]+list(range(16))),rng.randrange(3)]
@@ -804,7 +840,7 @@ REQUIRED={
 
 REQUIRED_FACTS={
  'budget':{'postcommit_source_refused','healthy_suppressed','permission_issued','quota_refused','uncertain_refused','optional_backoff_refused','catalog_headroom','catalog_checkpoint','catalog_invalid_refused','callback_missing','callback_expired','callback_duplicate'},
- 'source':{'source_accepted','source_future','source_duplicate_ids','mixed_atomic_refusal','source_regressed','source_conflict','source_omission_retained','source_rescheduled','source_retired','source_revived','point_corrected'},
+ 'source':{'source_accepted','source_future','source_duplicate_ids','mixed_atomic_refusal','source_regressed','source_conflict','source_omission_retained','source_rescheduled','source_retired','source_revived','point_corrected','source_started','source_unknown','selection_checked','source_window','source_unknown_timing'},
  'publication':{'old_live_refused','idempotent_live','witness_saved','witness_idempotent','witness_refused','candidate_prepared','product_failure_refused','malformed_feed_refused','pending_prepare_refused','exact_promotion','mixed_live_refused','deploy_succeeded','deploy_failed_retained','atomic_candidate_saved','atomic_future_refused','atomic_expired_refused'},
  'deployment':{'old_observation_refused','intent_armed','arm_missing_refused','duplicate_arm_refused','wrong_observation_refused','unfinal_observation_refused','duplicate_observation_refused','unknown_pages_retained','empty_without_proof_retained','stale_recovery_refused','proven_not_started','partial_finality_retained','final_exact_promoted'},
 }

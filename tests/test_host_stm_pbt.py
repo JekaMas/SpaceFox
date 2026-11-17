@@ -62,3 +62,33 @@ class HostStateProperties(unittest.TestCase):
         reduced,limit=minimize(events,lambda xs:'start' in xs and 'response' in xs)
         self.assertEqual(reduced,['start','response'])
         self.assertTrue(limit['one_deletion_minimal'])
+
+class CampaignAccountingTest(unittest.TestCase):
+    def test_productive_budget_excludes_control_gaps(self):
+        from unittest.mock import patch
+        class Clock:
+            def __init__(self):self.values=iter((0,0,0.1,10,10,10.1,20,20,20.1,30,30,30))
+            def monotonic(self):return next(self.values)
+        def trace(machine,seed,fixture):
+            return dict(events=1,coverage={},facts={},transitions={},properties={},namespace=str(seed))
+        with patch('tools.run_host_stm_pbt.time',Clock()), patch('tools.run_host_stm_pbt.run_trace',trace), patch('tools.run_host_stm_pbt.ArtifactFixture',object):
+            result=execute(seconds=0.25,traces=1,machines=['budget'])
+        worker=result['workers'][0]
+        self.assertEqual(worker['cases'],3)
+        self.assertGreaterEqual(worker['productive_seconds'],0.25)
+
+    def test_guard_counts_metadata_and_nanosecond_clocks(self):
+        from unittest.mock import patch
+        from tests.host_stm_support import BusinessScope, business, forbid_real_effects
+        with patch('os.stat',lambda *args,**kwargs: None), patch('time.time_ns',lambda: 1), patch('time.monotonic_ns',lambda: 1), forbid_real_effects():
+            for effect in (lambda: __import__('os').stat('/fake'), lambda: time.time_ns(), lambda: time.monotonic_ns()):
+                scope=BusinessScope(None)
+                with business(scope):
+                    try:effect()
+                    except AssertionError:pass
+                self.assertEqual(scope.forbidden,1)
+
+    def test_source_model_requires_status_and_selection_evidence(self):
+        from tests.host_stm_properties import REQUIRED_FACTS
+        required=REQUIRED_FACTS['source']
+        self.assertTrue({'source_started','source_unknown','selection_checked','source_window','source_unknown_timing'} <= required)

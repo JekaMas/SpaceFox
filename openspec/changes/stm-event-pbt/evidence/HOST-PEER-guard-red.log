@@ -1,0 +1,15 @@
+test_guard_counts_metadata_and_nanosecond_clocks (tests.test_host_stm_pbt.CampaignAccountingTest.test_guard_counts_metadata_and_nanosecond_clocks) ... FAIL
+
+======================================================================
+FAIL: test_guard_counts_metadata_and_nanosecond_clocks (tests.test_host_stm_pbt.CampaignAccountingTest.test_guard_counts_metadata_and_nanosecond_clocks)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-stm-event-pbt-20261117/tests/test_host_stm_pbt.py", line 89, in test_guard_counts_metadata_and_nanosecond_clocks
+    self.assertEqual(scope.forbidden,1)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1
+
+----------------------------------------------------------------------
+Ran 1 test in 0.011s
+
+FAILED (failures=1)
