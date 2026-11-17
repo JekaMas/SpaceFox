@@ -500,8 +500,8 @@ def require_combined_peer(root: Path, supplied: list[dict]) -> None:
         from tools.native_current_022_qualification import validate
         validate(root, catalog)
         app = ET.parse(root / "watchface/manifest.xml").getroot().find("iq:application", NS)
-        if app.get("version") in ("0.2.3", "0.2.4"):
-            kind = "schedule-cadence-independent-peer" if app.get("version") == "0.2.4" else "trusted-json-independent-peer"
+        if app.get("version") in ("0.2.3", "0.2.4", "0.2.5"):
+            kind = {"0.2.3": "trusted-json-independent-peer", "0.2.4": "schedule-cadence-independent-peer", "0.2.5": "state-machine-independent-peer"}[app.get("version")]
             peers = [item["data"] for item in supplied if item["data"].get("kind") == kind]
             native = (root / "watchface/source/generated/NativeVersion.mc").read_text()
             match = re.search(r'const ID = "([0-9a-f]{8})"', native)
@@ -514,7 +514,7 @@ def require_combined_peer(root: Path, supplied: list[dict]) -> None:
                     "trusted snapshot peer must identify its reviewed source")
             ancestry = subprocess.run(["git", "merge-base", "--is-ancestor", reviewed, "HEAD"], cwd=root, capture_output=True)
             require(ancestry.returncode == 0, "peer source is not an ancestor")
-            unchanged = git(root, "diff", "--name-only", reviewed, "HEAD", "--", "watchface", "tools/spacefox", "tools/cloud_feed.py", "tools/update_feed.py", ".github/workflows/update-feed.yml", ".github/spacefox-inputs.txt", "tools/release.py", "tools/native_current_022_qualification.py", "locales/catalog.json")
+            unchanged = git(root, "diff", "--name-only", reviewed, "HEAD", "--", "watchface", "tools/spacefox", "tools/cloud_feed.py", "tools/update_feed.py", ".github/workflows/update-feed.yml", ".github/spacefox-inputs.txt", "tools/release.py", "tools/native_current_022_qualification.py", "locales/catalog.json", "tests/test_state_machine_publisher.py")
             require(not unchanged.strip(), "reviewed trusted snapshot source changed")
             return
         peers = [item["data"] for item in supplied if item["data"].get("kind") == "current022-independent-native-peer"]

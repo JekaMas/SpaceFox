@@ -1,0 +1,18 @@
+test_empty_future_due_reaches_request_before_content (tests.test_state_machine_publisher.PublisherPriorityTest.test_empty_future_due_reaches_request_before_content) ... FAIL
+
+======================================================================
+FAIL: test_empty_future_due_reaches_request_before_content (tests.test_state_machine_publisher.PublisherPriorityTest.test_empty_future_due_reaches_request_before_content)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-watchface-state-machines-20261117/tests/test_state_machine_publisher.py", line 24, in test_empty_future_due_reaches_request_before_content
+    self.assertEqual(result['result'], 'requested')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'content_pending' != 'requested'
+- content_pending
++ requested
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)

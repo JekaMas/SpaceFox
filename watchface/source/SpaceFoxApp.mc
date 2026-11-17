@@ -29,7 +29,7 @@ class SpaceFoxApp extends Application.AppBase {
     }
     function getServiceDelegate() as [System.ServiceDelegate] {return [new FeedService()];}
     (:typecheck(disableBackgroundCheck))
-    function onBackgroundData(data as Application.PersistableType) as Void {System.println("SF_FG background_delivery");failedToken=null;if(view==null||System.getDisplayMode()==System.DISPLAY_MODE_OFF){return;}if(view.canForegroundWork()){try{reloadFeed();}catch(e){}}WatchUi.requestUpdate();}
+    function onBackgroundData(data as Application.PersistableType) as Void {System.println("SF_FG background_delivery");failedToken=null;if(view==null||System.getDisplayMode()==System.DISPLAY_MODE_OFF){return;}if(view.canAcceptBackground()){try{reloadFeed();}catch(e){}}WatchUi.requestUpdate();}
     (:typecheck(disableBackgroundCheck))
     function reloadFeed() as Void {try{performReload();}catch(e){System.println("SF_FG reload_error");}}
     (:typecheck(false)) function performReload() as Void {NativeForegroundApp.reload(self);}

@@ -33,45 +33,30 @@ The watch face SHALL survive startup, data acquisition, artwork loading and acti
 - **WHEN** artwork or acquisition is pending as the face enters low power, hides or turns off
 - **THEN** owned work stops or safely resumes without stale publication or resource exhaustion.
 
-### Requirement: Rejected provisional work does not spin
-A complete provisional feed rejected by validation SHALL not be reparsed on every view wake. The implementation SHALL retain a token-specific rejection cooldown of at most 300 seconds and permit a subsequent retry of the identical input, because a future source timestamp can become valid as time advances. An unavailable catalog SHALL remain retryable without being classified as a rejected complete feed. A changed provisional token SHALL not inherit the previous token's cooldown.
+### Requirement: Current snapshot admission is atomic
+The background SHALL obtain the trusted current-format snapshot and write a complete candidate to the inactive storage slot before publishing its active pointer. A failed write SHALL preserve the previously active slot. Foreground restoration SHALL bind the committed facts to the display independently of optional artwork readiness. A stale or duplicate request or artwork completion SHALL NOT replace a newer selection.
 
-#### Scenario: Complete invalid feed on an empty cache
-- **WHEN** the foreground rejects a complete provisional feed and the view is reopened during its cooldown
-- **THEN** the same token is not reparsed and the clock continues; after the cooldown the identical token may be retried.
+#### Scenario: Interrupted snapshot publication
+- **WHEN** an inactive-slot or active-pointer write fails
+- **THEN** reopening reads the last completely published snapshot and retains its facts.
 
-#### Scenario: Catalog is not yet available
-- **WHEN** the required catalog is unavailable
-- **THEN** the provisional input remains retryable without the rejected-feed cooldown.
+#### Scenario: Lifecycle changes during delivery
+- **WHEN** a committed snapshot arrives while the shown display is in low power
+- **THEN** the selected facts become available in LOW without waiting for an ACTIVE transition.
 
-#### Scenario: Missing catalog remains deferred until progress
-- **WHEN** a provisional feed is waiting for its catalog
-- **THEN** foreground wakes do not repeatedly reparse it, and a background delivery notification permits immediate retry; a bounded retry after at most 300 seconds remains available if notification is missed.
+### Requirement: Optional-resource overlap remains bounded
+Optional artwork SHALL be deferred while a snapshot candidate owns constrained resources. Clock, countdown and previously accepted facts SHALL remain available while optional work is pending or has failed.
 
-### Requirement: Source-bound admission remains atomic
-The foreground SHALL authenticate staged chunks, fully validate the current-format feed and its pinned catalog, and verify semantic and record identities before changing the accepted pointer. A replacement or interrupted job SHALL NOT publish partial input. Any retained successor and selected launch facts SHALL be derived from the validated source, and strict restore SHALL verify the accepted raw and inverse witnesses before rebinding it.
-
-#### Scenario: A new token arrives during preparation
-- **WHEN** the provisional marker changes before publication
-- **THEN** the prior provisional job is discarded and the changed input is separately authenticated.
-
-#### Scenario: An unexpected foreground callback failure
-- **WHEN** the owned timer or preparation callback fails unexpectedly
-- **THEN** the active job and timers are released, the previous scene remains available, and a later lifecycle, settings or background event can initiate a strict restore.
-
-### Requirement: Bounded foreground preparation and optional-resource overlap
-Feed and scene-descriptor parsing and hashing SHALL advance in bounded foreground work units. Foreground scheduling SHALL preserve progress across low-power transitions and SHALL release transient parser state before advancing to the next allocation-heavy phase. Reconstructible visual and optional health resources SHALL be deferred while a provisional input owns the constrained heap, then restored for the selected settings after admission or failure.
-
-#### Scenario: Accepted facts during a short active window
-- **WHEN** a valid input is still being prepared as the display enters low power and returns active
-- **THEN** the existing job resumes without restarting, and the previous accepted clock, countdown and facts remain available until the verified replacement is ready.
+#### Scenario: Optional artwork cannot complete
+- **WHEN** artwork is pending or its build fails after facts are accepted
+- **THEN** the current clock, countdown and qualified point remain available.
 
 ### Requirement: Live launch acquisition and LOW continuity
-The watch face SHALL admit the current validated feed and catalog and display the selected launch and qualified site before optional artwork is ready. It SHALL label an announced but inexact NET estimate while preserving source precision. During acquisition and restoration, LOW SHALL retain the approved map, qualified point, clock, weekday/date, minute countdown and battery, and release temporary LOW resources before resuming HIGH work.
+The watch face SHALL admit the current trusted snapshot and display the selected launch and qualified site before optional artwork is ready. It SHALL label an announced but inexact NET estimate while preserving source precision. During acquisition and restoration, LOW SHALL retain the approved map, qualified point, clock, weekday/date, minute countdown and battery, and release temporary LOW resources before resuming HIGH work.
 
 #### Scenario: Background catalog precedes optional closure
-- **WHEN** the feed and its pinned catalog arrive and validate
-- **THEN** the selected launch and qualified point can be shown before optional artwork completes, and a subsequent background event resumes the pending closure even when feed polling is not due.
+- **WHEN** the current snapshot is committed and delivered
+- **THEN** the selected launch and qualified point can be shown before optional artwork completes, and a subsequent background event resumes pending artwork even when schedule polling is not due.
 
 #### Scenario: LOW interrupts pending preparation
 - **WHEN** the display enters LOW with acquisition or restoration pending
@@ -79,7 +64,7 @@ The watch face SHALL admit the current validated feed and catalog and display th
 
 #### Scenario: Announced but inexact source time
 - **WHEN** the selected source has no exact UTC but has a validated announced NET
-- **THEN** the face shows an explicitly estimated `~T−` before that reference and `~T+` afterward, while keeping source precision, selection, scheduling and reminders unchanged; `~T+` is elapsed time since the announced NET and is not proof of liftoff.
+- **THEN** the face shows `T−` before that reference and `T+` afterward, while keeping source precision, selection, scheduling and reminders unchanged; `T+` is elapsed time since the announced NET and is not proof of liftoff.
 
 #### Scenario: No announced reference
 - **WHEN** neither exact UTC nor validated announced NET is available

@@ -88,14 +88,14 @@ import Toybox.WatchUi;
  function initialize(adapter,value){FeedService.initialize();memory=adapter;payload=value;}
  function createTransfer() as NativeTransfer {return new NativeTransfer("https://jekamas.github.io/SpaceFox",memory);}
  function phoneConnected() as Boolean {return true;}
- function requestSnapshot(){snapshots+=1;receiveSnapshot(code,{"data"=>payload});}
- function request(path as String,callback as Method) as Void {requested=path;inFlight=true;}
+ function requestSnapshot(){snapshots+=1;flight.begin();receiveSnapshot(code,{"data"=>payload});}
+ function request(path as String,callback as Method) as Void {requested=path;flight.begin();}
  function rearm() as Void {}
  function leave() as Void {exits+=1;}
 }
 (:test,:typecheck(false)) function trustedDueSnapshotAssets(logger){
  var base="https://jekamas.github.io/SpaceFox";var store=new SnapshotTestStore();var data=WatchUi.loadResource(Rez.JsonData.Coarse)["payload"];
- var duplicate=new FeedService();duplicate.startDeadline();duplicate.inFlight=true;duplicate.requestSnapshot();Test.assertEqual(duplicate.requests,0);
+ var duplicate=new FeedService();duplicate.startDeadline();duplicate.flight.begin();duplicate.requestSnapshot();Test.assertEqual(duplicate.requests,0);
  var first=new TrustedAssetEvent(store,data);first.onTemporalEvent();
  Test.assertMessage(first.snapshots==1&&first.requested!=null,"due snapshot also starts optional assets");
  var packet=new NativeTrustedPacket(new NativeTrustedStore(store,base).load());Test.assert(packet.presentation.point!=null&&packet.presentation.displayTarget==1795042200l);

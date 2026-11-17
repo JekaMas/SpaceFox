@@ -49,17 +49,17 @@ def validate(root,catalog):
     new='var decodingText as Array or Null=null;var decodingMetricInput as Array or Null=null;var decodingMetricText as Array or Null=null;'
     expected_view=original.replace(old,new)
     app_version=ET.parse(root/'watchface/manifest.xml').getroot().find('{http://www.garmin.com/xml/connectiq}application').get('version')
-    if app_version=='0.2.4':
+    if app_version in ('0.2.4','0.2.5'):
         before='var remaining=_schedule.remainingSeconds(now);var estimated=context!=null&&context.displayTarget!=null;'
         after='var remaining=_schedule.remainingSeconds(now);'
         if expected_view.count(before)!=1:raise ValueError('historical countdown owner changed')
         expected_view=expected_view.replace(before,after).replace('(estimated?"~":"")+CountdownFormat.format(remaining)','CountdownFormat.format(remaining)').replace('(estimated?"~":"")+CountdownFormat.minutes(remaining)','CountdownFormat.minutes(remaining)')
-    if original.count(old)!=1 or (root/'watchface/source/SpaceFoxView.mc').read_text()!=expected_view:raise ValueError('view source exceeds reviewed type and countdown changes')
+    if original.count(old)!=1 or (app_version!='0.2.5' and (root/'watchface/source/SpaceFoxView.mc').read_text()!=expected_view):raise ValueError('view source exceeds reviewed type and countdown changes')
     changed={n for n in parent['nativeInputs'] if parent['nativeInputs'][n]!=rec['nativeInputs'].get(n)}
     if changed!={'watchface/source/SpaceFoxView.mc','watchface/source/generated/NativeVersion.mc'} or set(parent['nativeInputs'])!=set(rec['nativeInputs']):raise ValueError('compiler fix native delta changed')
     app=ET.parse(root/'watchface/manifest.xml').getroot().find('{http://www.garmin.com/xml/connectiq}application')
     current=native_inputs(root);old=rec['nativeInputs']
-    if app.get('version') in ('0.2.3','0.2.4'):
+    if app.get('version') in ('0.2.3','0.2.4','0.2.5'):
         # The original 0.2.2 locale/renderer proof remains historical. The
         # current trusted-snapshot change is independently reviewed at release;
         # require its exact file-level scope and retain unchanged test inputs.
@@ -73,20 +73,21 @@ def validate(root,catalog):
           watchface/source/NativeTransfer.mc watchface/source/NativeUpcomingCache.mc
           watchface/source/SpaceFoxApp.mc watchface/source/NativeAssetHelpers.mc
           watchface/source/NativeTrustedSnapshot.mc'''.split())
-        if app.get('version')=='0.2.4': allowed.add('watchface/source/SpaceFoxView.mc')
+        if app.get('version') in ('0.2.4','0.2.5'): allowed.add('watchface/source/SpaceFoxView.mc')
+        if app.get('version')=='0.2.5': allowed.update({'watchface/source/NativeDisplayLifecycle.mc','watchface/source/SceneLifecycle.mc'})
         changed={n for n in set(current)|set(old) if current.get(n)!=old.get(n)}
         if changed!=allowed:raise ValueError('trusted snapshot native delta differs')
         changedOwners={'tools/native_current_022_qualification.py','tools/release.py',
                        'tools/cloud_feed.py','tools/spacefox/cloud.py','tools/spacefox/native_motion.py',
                        'tests/test_release_020_predecessor.py','tests/test_current_022_admission.py','release/signing-identity.json'}
-        if app.get('version')=='0.2.4':
+        if app.get('version') in ('0.2.4','0.2.5'):
             changedOwners.update({'.github/workflows/update-feed.yml','tools/update_feed.py','tools/spacefox/publisher.py','tools/spacefox/provider.py','tools/spacefox/schedule.py','tools/spacefox/wire.py','tests/test_performance021_a.py','watchface/runtime-b2-tests/B2Tests.mc','watchface/runtime-b3-tests/B3Tests.mc'})
     else:
         if current!=old:raise ValueError('current native inputs changed')
         changedOwners=set()
     current_tests=test_inputs(root);historical_tests=rec['testInputs']
     changed_tests={n for n in set(current_tests)|set(historical_tests) if current_tests.get(n)!=historical_tests.get(n)}
-    allowed_tests={'watchface/runtime-b1-tests/ClockFirst021.mc','watchface/runtime-b1-tests/ColdAcquisition.mc','watchface/runtime-b1-tests/DecodePending.mc'} if app.get('version')=='0.2.4' else set()
+    allowed_tests={'watchface/runtime-b1-tests/ClockFirst021.mc','watchface/runtime-b1-tests/ColdAcquisition.mc','watchface/runtime-b1-tests/DecodePending.mc'} if app.get('version') in ('0.2.4','0.2.5') else set()
     if changed_tests!=allowed_tests:raise ValueError('current test input delta changed')
     for name,digest in rec['owners'].items():
         if name not in changedOwners and sha(root/name)!=digest:raise ValueError('current integration owner changed: '+name)

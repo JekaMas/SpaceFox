@@ -1,0 +1,20 @@
+------------------------------------------------------------------------------
+Executing test cadenceEventSequences...
+DEBUG (05:41): CADENCE_TRACE_SEED 0
+DEBUG (05:41): CADENCE_TRACE_SEED 1
+DEBUG (05:41): CADENCE_TRACE_SEED 2
+DEBUG (05:41): CADENCE_TRACE_SEED 3
+DEBUG (05:41): CADENCE_TRACE_SEED 4
+DEBUG (05:41): CADENCE_TRACE_SEED 5
+DEBUG (05:41): CADENCE_TRACE_SEED 6
+DEBUG (05:41): CADENCE_TRACE_SEED 7
+DEBUG (05:41): CADENCE_GENERATOR seeds=8 events=112 connection_applied=32 connection_observed_no_mutation=16 oracle=after_every_event
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+cadenceEventSequences               PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

@@ -1,0 +1,16 @@
+SF_VIEW mode=HIGH pending=false
+SF_WAKE registration_ok pending=false next=1794892722
+Background: SF_BG enter phone=true registered=none last=1794892722
+Background: SF_WAKE registration_ok pending=false next=1794893022
+SF_WAKE registration_kept pending=false next=1794893022
+Background: SF_BG snapshot_ready
+Background: SF_BG object_http=200 catalog=true
+Background: SF_BG catalog_ready
+Background: SF_WAKE registration_kept pending=true next=1794893022
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_kept pending=true next=1794893022
+SF_WAKE registration_kept pending=true next=1794893022
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_WAKE registration_kept pending=true next=1794893022

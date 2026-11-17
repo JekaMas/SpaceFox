@@ -1,0 +1,20 @@
+------------------------------------------------------------------------------
+Executing test cacheEventSequences...
+DEBUG (05:44): CACHE_TRACE_SEED 0
+DEBUG (05:44): CACHE_TRACE_SEED 1
+DEBUG (05:44): CACHE_TRACE_SEED 2
+DEBUG (05:44): CACHE_TRACE_SEED 3
+DEBUG (05:44): CACHE_TRACE_SEED 4
+DEBUG (05:44): CACHE_TRACE_SEED 5
+DEBUG (05:44): CACHE_TRACE_SEED 6
+DEBUG (05:44): CACHE_TRACE_SEED 7
+DEBUG (05:44): CACHE_GENERATOR seeds=8 events=48 commit=19 observed_no_mutation=5 reopen=24 oracle=after_every_event
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+cacheEventSequences                 PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

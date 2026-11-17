@@ -1,0 +1,12 @@
+SF_VIEW mode=HIGH pending=false
+SF_WAKE registration_ok pending=false next=1794892145
+Background: SF_BG enter phone=true registered=none last=1794892145
+Background: SF_WAKE registration_ok pending=false next=1794892445
+SF_WAKE registration_kept pending=false next=1794892445
+Background: SF_BG snapshot_ready
+Background: SF_BG object_http=200 catalog=true
+Background: SF_BG catalog_ready
+Background: SF_WAKE registration_kept pending=true next=1794892445
+SF_FG background_delivery
+SF_WAKE registration_kept pending=true next=1794892445
+SF_WAKE registration_kept pending=true next=1794892445

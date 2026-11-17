@@ -1,0 +1,84 @@
+------------------------------------------------------------------------------
+Executing test requestDuplicateRejected...
+PASS
+------------------------------------------------------------------------------
+Executing test requestEventSequences...
+DEBUG (05:28): SEQUENCE request 8 deterministic traces: duplicate, late and post-finish ignored
+PASS
+------------------------------------------------------------------------------
+Executing test cacheEventSequences...
+DEBUG (05:28): SEQUENCE cache: slot/pointer interruption retain prior facts; reopen observes only committed snapshot
+PASS
+------------------------------------------------------------------------------
+Executing test lowBackgroundDelivery...
+SF_VIEW mode=HIGH pending=false
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_ok pending=false next=1794893300
+SF_VIEW mode=LOW pending=false
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042260
+SF_WAKE registration_kept pending=false next=1794893300
+DEBUG (05:28): LOW background commit binds current point without changing mode
+PASS
+------------------------------------------------------------------------------
+Executing test displayEventSequences...
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+DEBUG (05:28): SEQUENCE display show/hide and repeated sleep/wake preserve OS-owned state
+PASS
+------------------------------------------------------------------------------
+Executing test artworkEventSequences...
+DEBUG (05:28): SEQUENCE art cancellation and stale completion preserve facts
+PASS
+------------------------------------------------------------------------------
+Executing test cadenceEventSequences...
+DEBUG (05:28): SEQUENCE request policy: healthy hour, failure, no future, offline 300, reconnect, reopen
+PASS
+------------------------------------------------------------------------------
+Executing test lowFirstDeliveryFrame...
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_kept pending=false next=1794893300
+SF_WAKE registration_kept pending=false next=1794893300
+DEBUG (05:28): LOW first delivery: normal LOW draw with point and target; no ACTIVE event between delivery and frame
+PASS
+------------------------------------------------------------------------------
+Executing test lateResponseAcrossSleep...
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+PASS
+------------------------------------------------------------------------------
+Executing test connectedEventTrace...
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_kept pending=false next=1794893300
+SF_VIEW mode=HIGH pending=false
+DEBUG (05:28): TRACE show/sleep/request/duplicate/commit/render/time/response/wake/late/hide: oracle checked after each event
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+requestDuplicateRejected            PASS
+requestEventSequences               PASS
+cacheEventSequences                 PASS
+lowBackgroundDelivery               PASS
+displayEventSequences               PASS
+artworkEventSequences               PASS
+cadenceEventSequences               PASS
+lowFirstDeliveryFrame               PASS
+lateResponseAcrossSleep             PASS
+connectedEventTrace                 PASS
+Ran 10 tests
+
+PASSED (passed=10, failed=0, errors=0)

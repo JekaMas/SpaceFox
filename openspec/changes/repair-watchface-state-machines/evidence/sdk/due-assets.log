@@ -1,0 +1,20 @@
+------------------------------------------------------------------------------
+Executing test trustedDueSnapshotAssets...
+SF_BG enter phone=true registered=none last=1794892145
+SF_WAKE registration_ok pending=false next=1794894274
+SF_BG snapshot_ready
+SF_BG object_http=200 catalog=true
+SF_BG catalog_ready
+SF_BG enter phone=true registered=1794894274 last=1794892145
+SF_WAKE registration_ok pending=true next=1794894274
+SF_BG object_http=500 catalog=false
+DEBUG (05:39): TRUST_DUE_ASSETS retry=true snapshotPublishedBeforeArt=true failedSnapshotContinuesAssets=true failedArtKeepsFacts=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+trustedDueSnapshotAssets            PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

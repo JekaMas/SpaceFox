@@ -7,13 +7,13 @@ import Toybox.Time;
 (:background, :extendedCode)
 class FeedService extends System.ServiceDelegate {
     var transfer as NativeTransfer or Null;var assetRequest as Dictionary or Null;var batch as NativeBatch or Null=null;var started as Number=0;var requests as Number=0;
-    var deadlineArmed as Boolean=false;var ended as Boolean=false;var inFlight as Boolean=false;
-    function initialize(){ServiceDelegate.initialize();transfer=null;assetRequest=null;}
+    var deadlineArmed as Boolean=false;var flight as NativeRequestLifecycle;
+    function initialize(){ServiceDelegate.initialize();transfer=null;assetRequest=null;flight=new NativeRequestLifecycle();}
     function createTransfer() as NativeTransfer {return new NativeTransfer(configuredFeedUrl(),null);}
     function requestUrl(path as String) as String {return ((transfer as NativeTransfer).base as String)+"/"+path+".txt";}
     function nowMillis() as Number {return System.getTimer();}
     function phoneConnected() as Boolean {try{return System.getDeviceSettings().phoneConnected;}catch(e){return false;}}
-    function startDeadline() as Void {started=nowMillis();requests=0;deadlineArmed=true;ended=false;inFlight=false;}
+    function startDeadline() as Void {started=nowMillis();requests=0;deadlineArmed=true;flight.reset();}
     (:typecheck(false))
     function sendRequest(path as String,callback as Method) as Void {Communications.makeWebRequest(requestUrl(path),{}, {:method=>Communications.HTTP_REQUEST_METHOD_GET,:headers=>{"Accept"=>"text/plain"},:responseType=>Communications.HTTP_RESPONSE_CONTENT_TYPE_TEXT_PLAIN},callback);}
     function cancelOutstanding() as Void {Communications.cancelAllRequests();}
@@ -26,11 +26,11 @@ class FeedService extends System.ServiceDelegate {
         try{transfer=createTransfer();if(transfer.base.equals("")){Background.deleteTemporalEvent();Background.exit(null);return;}batch=new NativeBatch(transfer.store,transfer.base);transfer.load();var now=Time.now().value().toLong();LaunchReminder.wake(transfer,now);var connected=phoneConnected();if(transfer.due(now,connected)){transfer.attempted(now);armFeed(transfer,now);if(connected){requestSnapshot();}else{optional();}}else{optional();}}catch(e){System.println("SF_BG start_error");finish();}
     }
     (:typecheck(false))
-    function request(path as String,callback as Method) as Void {if(ended){return;}if(requests>=44||nowMillis()-started>=22000){System.println("SF_BG request_budget");finish();return;}requests+=1;inFlight=true;try{sendRequest(path,callback);}catch(e){inFlight=false;System.println("SF_BG request_error");finish();}}
+    function request(path as String,callback as Method) as Void {if(!flight.canStart()){return;}if(requests>=44||nowMillis()-started>=22000){System.println("SF_BG request_budget");finish();return;}requests+=1;var serial=flight.begin();var pending=new NativeRequestCallback(self,serial,callback);try{sendRequest(path,pending.method(:deliver));}catch(e){flight.abandon();System.println("SF_BG request_error");finish();}}
     (:typecheck(false)) function requestSnapshot() as Void {
-        if(ended||inFlight){return;}if(requests>=44||nowMillis()-started>=22000){finish();return;}
-        requests+=1;inFlight=true;
-        try{Communications.makeWebRequest(transfer.base+"/watch.json",{}, {:method=>Communications.HTTP_REQUEST_METHOD_GET,:headers=>{"Accept"=>"application/json"},:responseType=>Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON},method(:receiveSnapshot));}catch(e){inFlight=false;System.println("SF_BG snapshot_request_error");finish();}
+        if(!flight.canStart()){return;}if(requests>=44||nowMillis()-started>=22000){finish();return;}
+        requests+=1;var serial=flight.begin();var pending=new NativeRequestCallback(self,serial,method(:receiveSnapshot));
+        try{Communications.makeWebRequest(transfer.base+"/watch.json",{}, {:method=>Communications.HTTP_REQUEST_METHOD_GET,:headers=>{"Accept"=>"application/json"},:responseType=>Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON},pending.method(:deliver));}catch(e){flight.abandon();System.println("SF_BG snapshot_request_error");finish();}
     }
     (:typecheck(false)) function receiveSnapshot(code,data) as Void {
         if(!callbackAllowed()){return;}
@@ -48,7 +48,7 @@ class FeedService extends System.ServiceDelegate {
         // an art failure never rolls back the already published snapshot.
         data=null;optional();
     }
-    function callbackAllowed() as Boolean {if(ended){return false;}inFlight=false;if(deadlineArmed&&nowMillis()-started>=22000){finish();return false;}return true;}
+    function callbackAllowed() as Boolean {if(!flight.consume()){return false;}if(deadlineArmed&&nowMillis()-started>=22000){finish();return false;}return true;}
     (:typecheck(false))
     function optional() as Void {try{if(batch!=null){assetRequest=batch.next();if(assetRequest!=null){request(assetRequest["path"],method(:receiveBatch));return;}if(batch.head!=null){finish();return;}}}catch(e){System.println("SF_BG batch_error");}finish();}
     (:typecheck(false))
@@ -58,7 +58,33 @@ class FeedService extends System.ServiceDelegate {
         // optional visual downloads at the next permitted background event.
         if(assetRequest["path"].find("wire3/catalogs/")==0){System.println("SF_BG catalog_ready");finish();return;}optional();return;}}catch(e){System.println("SF_BG object_error");}finish();}
     (:typecheck(false))
-    function finish() as Void {if(ended){return;}ended=true;var cancel=inFlight;inFlight=false;if(cancel){try{cancelOutstanding();}catch(e){}}try{rearm();}catch(e){}leave();}
+    function finish() as Void {if(flight.finished()){return;}var cancel=flight.finish();if(cancel){try{cancelOutstanding();}catch(e){}}try{rearm();}catch(e){}leave();}
+}
+// Request transitions: IDLE -> IN_FLIGHT -> IDLE, or either -> ENDED.
+// A monotonically increasing identity rejects late and duplicate callbacks.
+(:background, :extendedCode, :typecheck(false))
+class NativeRequestLifecycle {
+    const IDLE=0;const IN_FLIGHT=1;const ENDED=2;
+    var state=0;var serial=0;
+    function reset(){serial+=1;state=IDLE;}
+    function canStart(){return state==IDLE;}
+    function begin(){if(!canStart()){return null;}serial+=1;state=IN_FLIGHT;return serial;}
+    function isCurrent(id){return state==IN_FLIGHT&&serial==id;}
+    function consume(){if(state!=IN_FLIGHT){return false;}state=IDLE;return true;}
+    function abandon(){if(state==IN_FLIGHT){state=IDLE;}}
+    function finished(){return state==ENDED;}
+    function finish(){var cancel=state==IN_FLIGHT;state=ENDED;serial+=1;return cancel;}
+}
+// Each OS callback is bound to the request that created it.  A delayed or
+// duplicate response cannot consume the next request's mutable asset descriptor.
+(:background, :extendedCode, :typecheck(false))
+class NativeRequestCallback {
+    var owner;var serial;var target;
+    function initialize(service,id,callback){owner=service;serial=id;target=callback;}
+    function deliver(code,data) as Void {
+        if(!owner.flight.isCurrent(serial)){return;}
+        target.invoke(code,data);
+    }
 }
 // Keep a pending download's earliest registered deadline across foreground
 // wakes. The OS enforces five minutes since the last dispatched event.

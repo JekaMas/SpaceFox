@@ -4,7 +4,10 @@ import Toybox.Lang;
 // keep the previously selected snapshot intact until the new pointer is saved.
 (:background, :extendedCode, :typecheck(false))
 class NativeTrustedStore {
-    var store;var base;var token=null;
+    // Save progresses candidate -> slot -> published pointer. A failed write
+    // never moves the durable active pointer to a partially written slot.
+    const IDLE=0;const CANDIDATE=1;const SLOT_WRITTEN=2;const COMMITTED=3;
+    var phase=0;var store;var base;var token=null;
     function initialize(adapter,url){store=adapter==null?new NativeStore():adapter;base=url;}
     function activeKey(){return "sf.snapshot.active:"+base;}
     function slotKey(slot){return "sf.snapshot."+slot+":"+base;}
@@ -24,13 +27,21 @@ class NativeTrustedStore {
         for(var t=0;t<value[5].size();t+=1){value[5][t]["source_validated_utc"]=integer(value[5][t]["source_validated_utc"]);}
         var bridge=value[6];if(bridge!=null){bridge["version"]=bridge["version"].toNumber();var refs=[bridge["selection"],bridge["transfer"]];for(var r=0;r<refs.size();r+=1){if(refs[r]!=null){refs[r]["decodedBytes"]=refs[r]["decodedBytes"].toNumber();}}}
     }
+    function writeCandidate(slot,value){
+        if(phase!=CANDIDATE){throw new Lang.InvalidValueException("No snapshot candidate");}
+        store.write(slotKey(slot),value);phase=SLOT_WRITTEN;
+    }
+    function publishCandidate(slot,sequence){
+        if(phase!=SLOT_WRITTEN){throw new Lang.InvalidValueException("Snapshot slot is incomplete");}
+        store.write(activeKey(),{"base"=>base,"slot"=>slot,"sequence"=>sequence});token=sequence;phase=COMMITTED;
+    }
     function save(value){
         if(!(value instanceof Array)||value.size()!=7||value[0]!=1){return false;}
-        normalize(value);
+        phase=CANDIDATE;normalize(value);
         var prior=marker();var slot=0;var sequence=1;
         if(prior instanceof Dictionary&&prior["base"] instanceof String&&prior["base"].equals(base)&&(prior["sequence"] instanceof Number||prior["sequence"] instanceof Long)){sequence=prior["sequence"]+1;}
         if(prior instanceof Dictionary&&prior["base"] instanceof String&&prior["base"].equals(base)&&prior["slot"]==0){slot=1;}
-        store.write(slotKey(slot),value);store.write(activeKey(),{"base"=>base,"slot"=>slot,"sequence"=>sequence});token=sequence;
+        writeCandidate(slot,value);publishCandidate(slot,sequence);
         // Keep only future-ordering facts needed by the request policy.
         var targets=[];var rows=[];if(value[3]!=null){rows.add(value[3]);}rows.addAll(value[4]);
         for(var i=0;i<rows.size();i+=1){var target=rows[i][14];if(target!=null&&targets.indexOf(target)<0){targets.add(target);}}

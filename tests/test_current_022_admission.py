@@ -29,7 +29,7 @@ class Current022Binding(unittest.TestCase):
         native=(ROOT/'watchface/source/generated/NativeVersion.mc').read_text()
         native_id=re.search(r'const ID = "([0-9a-f]{8})"',native).group(1)
         revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
-        good={'data': {'kind':'schedule-cadence-independent-peer','status':'GREEN','version':'0.2.4','native_id':native_id,'source_revision':revision}}
+        good={'data': {'kind':'state-machine-independent-peer','status':'GREEN','version':'0.2.5','native_id':native_id,'source_revision':revision}}
         with patch.object(owner,'validate',return_value=[]):
             with self.assertRaises(Exception): release.require_combined_peer(ROOT,[])
             bad={'data':dict(good['data'],native_id='00000000')}
