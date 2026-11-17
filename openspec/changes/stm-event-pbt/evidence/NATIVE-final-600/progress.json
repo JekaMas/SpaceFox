@@ -1,0 +1,302 @@
+[
+  {
+    "owner": "display",
+    "worker": 0,
+    "status": "GREEN",
+    "configured_budget_ms": 606000,
+    "requested_seconds": 600,
+    "thread_id": 6149435392,
+    "container": "spacefox-event-pbt-20261117",
+    "cleanup_ok": true,
+    "program": "/Users/jekamas/.codex/tmp/spacefox-stm-pbt-20261117/campaign-0.prg",
+    "program_sha256": "e63733ec75d95436b8a8329b9adf9f445c84af7c4f84e985f313fc8e0a8ebceb",
+    "test_uuid": "c0d8e48b8f1445a3b9b93b9f700cf505",
+    "entry": "PbtApp",
+    "version": "0.2.9",
+    "native_id": "d13aa334",
+    "raw_exit": 1,
+    "launcher": {
+      "status": "passed",
+      "raw_exit_code": 1,
+      "expected_tests": [
+        "campaignPilot"
+      ],
+      "observed_tests": {
+        "campaignPilot": "PASS"
+      },
+      "observed_count": 1,
+      "launcher_nonzero_framework_pass": true
+    },
+    "host_start": 2875392.5684185,
+    "productive_begin": 2875407.873424375,
+    "productive_end": 2876014.183115916,
+    "coverage": {
+      "hide_no": 525409,
+      "invalidate_applied": 359634,
+      "sleep_applied": 525457,
+      "show_applied": 526027,
+      "wake_applied": 441470,
+      "wake_no": 525578,
+      "mode_hidden_no": 525155,
+      "active_applied": 359963,
+      "show_no": 441658,
+      "sleep_no": 441617,
+      "frame_applied": 799365,
+      "hide_applied": 442047
+    },
+    "assertions": 20524821,
+    "skipped": 0,
+    "first_seed": 1,
+    "next_seed": 168241,
+    "traces": 168240,
+    "events": 7234219,
+    "productive_ms": 606028,
+    "native_wall_ms": 606327,
+    "observed_wall_seconds": 606.3096915408969
+  },
+  {
+    "owner": "request",
+    "worker": 1,
+    "status": "GREEN",
+    "configured_budget_ms": 606000,
+    "requested_seconds": 600,
+    "thread_id": 6166261760,
+    "container": "spacefox-event-pbt-pilot-1",
+    "cleanup_ok": true,
+    "program": "/Users/jekamas/.codex/tmp/spacefox-stm-pbt-pilot-1/campaign-1.prg",
+    "program_sha256": "d399959b765268a80ae1f77c8afa557a33e3074dbc0f621e0bca84785cc95acf",
+    "test_uuid": "c0d8e48b8f1445a3b9b93b9f700cf506",
+    "entry": "PbtApp",
+    "version": "0.2.9",
+    "native_id": "d13aa334",
+    "raw_exit": 1,
+    "launcher": {
+      "status": "passed",
+      "raw_exit_code": 1,
+      "expected_tests": [
+        "campaignPilot"
+      ],
+      "observed_tests": {
+        "campaignPilot": "PASS"
+      },
+      "observed_count": 1,
+      "launcher_nonzero_framework_pass": true
+    },
+    "host_start": 2875392.572077666,
+    "productive_begin": 2875408.082896625,
+    "productive_end": 2876014.280442791,
+    "coverage": {
+      "start_applied": 608842,
+      "reset_applied": 972548,
+      "callback_no": 1233559,
+      "callback_applied": 159473,
+      "start_no": 784230,
+      "finish_cancel": 421692,
+      "session_no": 300832,
+      "finish_idle": 852164
+    },
+    "assertions": 9755678,
+    "skipped": 0,
+    "first_seed": 400001,
+    "next_seed": 521209,
+    "traces": 121208,
+    "events": 5333340,
+    "productive_ms": 606023,
+    "native_wall_ms": 606207,
+    "observed_wall_seconds": 606.1975461659022
+  },
+  {
+    "owner": "scene",
+    "worker": 2,
+    "status": "GREEN",
+    "configured_budget_ms": 606000,
+    "requested_seconds": 600,
+    "thread_id": 6183088128,
+    "container": "spacefox-event-pbt-peer-2",
+    "cleanup_ok": true,
+    "program": "/Users/jekamas/.codex/tmp/spacefox-stm-pbt-peer-2/campaign-2.prg",
+    "program_sha256": "d754aca1cfcd375804ff71209cacce878abc872f036027655f66892ce95566f7",
+    "test_uuid": "c0d8e48b8f1445a3b9b93b9f700cf507",
+    "entry": "PbtApp",
+    "version": "0.2.9",
+    "native_id": "d13aa334",
+    "raw_exit": 1,
+    "launcher": {
+      "status": "passed",
+      "raw_exit_code": 1,
+      "expected_tests": [
+        "campaignPilot"
+      ],
+      "observed_tests": {
+        "campaignPilot": "PASS"
+      },
+      "observed_count": 1,
+      "launcher_nonzero_framework_pass": true
+    },
+    "host_start": 2875392.570338208,
+    "productive_begin": 2875407.594671583,
+    "productive_end": 2876013.944922958,
+    "coverage": {
+      "fail_applied": 238659,
+      "cancel_applied": 1076761,
+      "request_no": 607344,
+      "complete_applied": 212006,
+      "request_applied": 1283605,
+      "complete_no": 1068259,
+      "begin_applied": 769393,
+      "ready_applied": 1076665,
+      "replace_applied": 1076554
+    },
+    "assertions": 15653214,
+    "skipped": 0,
+    "first_seed": 800001,
+    "next_seed": 1003665,
+    "traces": 203664,
+    "events": 8961497,
+    "productive_ms": 606022,
+    "native_wall_ms": 606358,
+    "observed_wall_seconds": 606.3502513752319
+  },
+  {
+    "owner": "storage",
+    "worker": 3,
+    "status": "GREEN",
+    "configured_budget_ms": 606000,
+    "requested_seconds": 600,
+    "thread_id": 6199914496,
+    "container": "spacefox-event-pbt-peer-3",
+    "cleanup_ok": true,
+    "program": "/Users/jekamas/.codex/tmp/spacefox-stm-pbt-peer-3/campaign-3.prg",
+    "program_sha256": "9a15e364433a38e92abff1591be658497a97639e2407686dda10e4bf8afa8f00",
+    "test_uuid": "c0d8e48b8f1445a3b9b93b9f700cf508",
+    "entry": "PbtApp",
+    "version": "0.2.9",
+    "native_id": "d13aa334",
+    "raw_exit": 1,
+    "launcher": {
+      "status": "passed",
+      "raw_exit_code": 1,
+      "expected_tests": [
+        "campaignPilot"
+      ],
+      "observed_tests": {
+        "campaignPilot": "PASS"
+      },
+      "observed_count": 1,
+      "launcher_nonzero_framework_pass": true
+    },
+    "host_start": 2875392.574786125,
+    "productive_begin": 2875407.782437833,
+    "productive_end": 2876013.963788375,
+    "coverage": {
+      "slot_no": 291861,
+      "invalid_no": 291908,
+      "commit_applied": 333389,
+      "reopen_no": 375244,
+      "pointer_no": 291653
+    },
+    "assertions": 4335348,
+    "skipped": 0,
+    "first_seed": 1200001,
+    "next_seed": 1241689,
+    "traces": 41688,
+    "events": 1584055,
+    "productive_ms": 606111,
+    "native_wall_ms": 606180,
+    "observed_wall_seconds": 606.1813505417667
+  },
+  {
+    "owner": "temporal",
+    "worker": 4,
+    "status": "RED",
+    "configured_budget_ms": 606000,
+    "requested_seconds": 600,
+    "thread_id": 6216740864,
+    "container": "spacefox-event-pbt-peer-4",
+    "cleanup_ok": true,
+    "program": "/Users/jekamas/.codex/tmp/spacefox-stm-pbt-peer-4/campaign-4.prg",
+    "program_sha256": "8b9ec76d2937c87a1e0ff206366112ec0dd22270b635482fab23173253b9423e",
+    "test_uuid": "c0d8e48b8f1445a3b9b93b9f700cf509",
+    "entry": "PbtApp",
+    "version": "0.2.9",
+    "native_id": "d13aa334",
+    "raw_exit": 1,
+    "launcher": {
+      "status": "failed",
+      "raw_exit_code": 1,
+      "expected_tests": [
+        "campaignPilot"
+      ],
+      "observed_tests": {
+        "campaignPilot": "ERROR"
+      },
+      "observed_count": 1,
+      "launcher_nonzero_framework_pass": false
+    },
+    "host_start": 2875392.566639,
+    "productive_begin": 2875407.498323958,
+    "productive_end": null,
+    "coverage": null,
+    "assertions": null,
+    "skipped": null,
+    "first_seed": null,
+    "next_seed": null,
+    "traces": null,
+    "events": null,
+    "productive_ms": null,
+    "native_wall_ms": null,
+    "observed_wall_seconds": null
+  },
+  {
+    "owner": "cache-map",
+    "worker": 5,
+    "status": "GREEN",
+    "configured_budget_ms": 606000,
+    "requested_seconds": 600,
+    "thread_id": 6233567232,
+    "container": "spacefox-event-pbt-peer-5",
+    "cleanup_ok": true,
+    "program": "/Users/jekamas/.codex/tmp/spacefox-stm-pbt-peer-5/campaign-5.prg",
+    "program_sha256": "f62c74ddeae986553ab11af69d808795820e3e2d1600c60e026a8ea374f453c6",
+    "test_uuid": "c0d8e48b8f1445a3b9b93b9f700cf50a",
+    "entry": "PbtApp",
+    "version": "0.2.9",
+    "native_id": "d13aa334",
+    "raw_exit": 1,
+    "launcher": {
+      "status": "passed",
+      "raw_exit_code": 1,
+      "expected_tests": [
+        "campaignPilot"
+      ],
+      "observed_tests": {
+        "campaignPilot": "PASS"
+      },
+      "observed_count": 1,
+      "launcher_nonzero_framework_pass": true
+    },
+    "host_start": 2875392.578528041,
+    "productive_begin": 2875407.316524041,
+    "productive_end": 2876013.47595675,
+    "coverage": {
+      "map_restored": 141948,
+      "queue_applied": 116592,
+      "delivery_applied": 80249,
+      "source_applied": 142027,
+      "map_error": 141922,
+      "volatile_no": 82875,
+      "queue_no": 90820,
+      "durable_no": 51349,
+      "delivery_no": 127166
+    },
+    "assertions": 4858586,
+    "skipped": 0,
+    "first_seed": 2000001,
+    "next_seed": 2032753,
+    "traces": 32752,
+    "events": 1408442,
+    "productive_ms": 606132,
+    "native_wall_ms": 606192,
+    "observed_wall_seconds": 606.1594327092171
+  }
+]

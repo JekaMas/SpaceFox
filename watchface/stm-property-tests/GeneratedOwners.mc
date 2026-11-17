@@ -142,6 +142,9 @@ import Toybox.System;
  function armTransfer(source as NativeTransfer,now as Long) as Void {arms+=1;}
  function sendSnapshot(callback as Method) as Void {sends+=1;if(sendFails){throw new Lang.InvalidValueException("injected send failure");}sent.add(callback);}
  function sendRequest(path as String,callback as Method) as Void {forbidden+=1;}
+ // The fake OS retains old Methods for late-callback events within a trace.
+ // Release that test-owned registry only after the terminal/end assertions.
+ function releaseHistory(){sent=[];deliveries=[];}
  function cancelOutstanding() as Void {cancellations+=1;}
  function deliverBackground(data) as Void {exits+=1;if(deliveryFails&&data instanceof Dictionary&&data.hasKey("volatileSnapshot")){throw new Lang.InvalidValueException("injected delivery failure");}deliveries.add(data);}
 }
@@ -227,6 +230,9 @@ import Toybox.System;
   }
   var keys=coverage.keys();for(var k=0;k<keys.size();k+=1){ownerCheck(coverage[keys[k]]>0,"temporal-coverage",seed,events,trace,keys[k],coverage[keys[k]]);}recordCoverage(coverage);
   ownerCheck(s.flight.state==state&&s.fakeStore.pointers==pointers&&s.forbidden==0,"temporal-end",seed,events,trace,[state,pointers,0],[s.flight.state,s.fakeStore.pointers,s.forbidden]);
+  trace.add([2,0]);if(state!=2){if(state==1){cancellations+=1;}state=2;serial+=1;arms+=1;exits+=1;}s.finish();total+=1;
+  ownerCheck(s.flight.state==2&&s.flight.serial==serial&&s.cancellations==cancellations&&s.arms==arms&&s.exits==exits,"temporal-teardown",seed,events,trace,[2,serial,cancellations,arms,exits],[s.flight.state,s.flight.serial,s.cancellations,s.arms,s.exits]);
+  s.releaseHistory();
  }
  return total;
 }
@@ -330,6 +336,9 @@ import Toybox.System;
  function drawPendingLow(dc){lowFrames+=1;markLowFramePainted((clock.now/60).toLong());}
  function drawClockFallback(dc){fallbackFrames+=1;}
 }
+(:typecheck(false)) function pbtCheckViewReleased(view,seed,index,trace){
+ for(var n=0;n<view.timers.size();n+=1){ownerCheck(view.timers[n].callback==null,"fake-timer-release",seed,index,trace,null,view.timers[n].callback);}
+}
 (:test,:typecheck(false)) function duplicateShowDoesNotScheduleAgain(logger){
  var view=new PbtView();view.onShow();var first=view.updates;view.onShow();
  Test.assertMessage(view.updates==first,"duplicate OS show must not issue an extra redraw");return true;
@@ -375,7 +384,7 @@ import Toybox.System;
  var total=0;
  for(var seed=firstSeed;seed<firstSeed+seedCount;seed+=1){var rng=new OwnerRandom(seed);var run=new ViewTrace();var prefix=[[4,0],[0,0],[6,0],[6,0],[6,0],[1,0],[4,0],[0,0],[0,0],[6,0],[7,0],[7,0],[2,0],[2,0],[6,0],[6,0],[5,60],[6,0],[3,0],[3,0],[4,0],[4,0],[1,0],[1,0],[6,0],[2,0],[3,0]];var events=prefix.size()+12+rng.draw(25);
   for(var i=0;i<events;i+=1){var e=0;var arg=0;if(i<prefix.size()){e=prefix[i][0];arg=prefix[i][1];}else{e=rng.draw(8);arg=rng.draw(5)*30;}run.step(e,arg,seed,i);total+=1;}
-  run.final(seed,events);
+  run.final(seed,events);run.step(1,0,seed,events);total+=1;pbtCheckViewReleased(run.view,seed,events,run.trace);
  }
  return total;
 }
@@ -475,7 +484,10 @@ import Toybox.System;
 (:typecheck(false)) function runGeneratedForegroundDelivery(firstSeed,seedCount){
  var total=0;var skips=0;
  for(var seed=firstSeed;seed<firstSeed+seedCount;seed+=1){var rng=new OwnerRandom(seed);var run=new ForegroundTrace();var prefix=[0,3,4,5,7,8,7,6,1,5,7,10,6,0,8,5,7,2,9,3,5,7];var events=prefix.size()+12+rng.draw(25);
-  for(var i=0;i<events;i+=1){var e=0;if(i<prefix.size()){e=prefix[i];}else{e=rng.draw(11);}run.step(e,seed,i);total+=1;}run.final(seed,events);skips+=run.skipped;PbtMetrics.skipped+=run.skipped;
+  for(var i=0;i<events;i+=1){var e=0;if(i<prefix.size()){e=prefix[i];}else{e=rng.draw(11);}run.step(e,seed,i);total+=1;}run.final(seed,events);
+  run.trace.add("stop");var stoppedView=run.app.view;run.app.onStop(null);run.shown=false;run.exists=false;run.hasCache=false;run.verify(seed,events);total+=1;
+  if(stoppedView!=null){pbtCheckViewReleased(stoppedView,seed,events,run.trace);ownerCheck(!stoppedView.visible()&&stoppedView.pendingLoader==null&&stoppedView.cancelAdmission==null,"foreground-loader-release",seed,events,run.trace,true,!stoppedView.visible()&&stoppedView.pendingLoader==null&&stoppedView.cancelAdmission==null);}
+  skips+=run.skipped;PbtMetrics.skipped+=run.skipped;
  }
  return total;
 }
@@ -700,7 +712,9 @@ import Toybox.System;
 }
 (:typecheck(false)) function runGeneratedSourceSwitch(firstSeed,seedCount){
  var total=0;var skips=0;for(var seed=firstSeed;seed<firstSeed+seedCount;seed+=1){var rng=new OwnerRandom(seed);var run=new SourceTrace();var prefix=[[6,0],[0,1],[4,0],[7,0],[1,0],[0,0],[2,0],[3,0],[5,0],[4,0],[0,1],[5,0]];var events=prefix.size()+12+rng.draw(25);
-  for(var i=0;i<events;i+=1){var e=0;var arg=0;if(i<prefix.size()){e=prefix[i][0];arg=prefix[i][1];}else{e=rng.draw(8);arg=rng.draw(4);}run.step(e,arg,seed,i);total+=1;}run.final(seed,events);skips+=run.skipped;PbtMetrics.skipped+=run.skipped;
+  for(var i=0;i<events;i+=1){var e=0;var arg=0;if(i<prefix.size()){e=prefix[i][0];arg=prefix[i][1];}else{e=rng.draw(8);arg=rng.draw(4);}run.step(e,arg,seed,i);total+=1;}run.final(seed,events);run.trace.add("stop");run.app.onStop(null);run.shown=false;total+=1;pbtCheckViewReleased(run.view,seed,events,run.trace);
+  ownerCheck(run.app.view==null&&run.app.feed==null&&!run.view.visible()&&!run.view.mapDecision.pointVisible(false),"source-stop",seed,events,run.trace,true,run.app.view==null&&run.app.feed==null&&!run.view.visible()&&!run.view.mapDecision.pointVisible(false));
+  ownerCheck(run.view.pendingLoader==null&&run.view.cancelAdmission==null,"source-loader-release",seed,events,run.trace,true,run.view.pendingLoader==null&&run.view.cancelAdmission==null);skips+=run.skipped;PbtMetrics.skipped+=run.skipped;
  }
  return total;
 }
@@ -755,7 +769,10 @@ import Toybox.System;
 }
 (:typecheck(false)) function runGeneratedArtLease(firstSeed,seedCount){
  var total=0;for(var seed=firstSeed;seed<firstSeed+seedCount;seed+=1){var rng=new OwnerRandom(seed);var run=new ArtTrace();var prefix=[4,0,0,5,1,5,1,7,1,3,4,0,1,2,0,1,6];var events=prefix.size()+12+rng.draw(25);
-  for(var i=0;i<events;i+=1){var e=i<prefix.size()?prefix[i]:rng.draw(8);run.step(e,seed,i);total+=1;}run.final(seed,events);
+  for(var i=0;i<events;i+=1){var e=i<prefix.size()?prefix[i]:rng.draw(8);run.step(e,seed,i);total+=1;}run.final(seed,events);run.trace.add(8);if(run.build){run.disposed+=1;}run.view.onHide();total+=1;
+  ownerCheck(run.view.sfrBuild==null&&run.view.disposals==run.disposed,"art-terminal-release",seed,events,run.trace,[false,run.disposed],[run.view.sfrBuild!=null,run.view.disposals]);pbtCheckViewReleased(run.view,seed,events,run.trace);
+  // lastBuild is a fake inspection handle. Its owner back-reference is not a production lease.
+  run.view.lastBuild=null;
  }return total;
 }
 (:test,:typecheck(false)) function generatedArtLease(logger){var n=runGeneratedArtLease(1,32);logger.debug("GENERATED_ART_LEASE seeds=32 events="+n+" fake_decoder=true after_each=true end=true");return true;}

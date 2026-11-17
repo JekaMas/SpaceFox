@@ -1,0 +1,24 @@
+------------------------------------------------------------------------------
+Executing test campaignPilot...
+DEBUG (17:44): PBT_CAMPAIGN_BEGIN worker=0 owner=0 first=1 version=0.2.9 native_id=d13aa334 budget_ms=606000
+DEBUG (17:45): PBT_CAMPAIGN_PROGRESS owner=0 next=13553 events=582689 productive_ms=60016
+DEBUG (17:46): PBT_CAMPAIGN_PROGRESS owner=0 next=27617 events=1187561 productive_ms=120008
+DEBUG (17:47): PBT_CAMPAIGN_PROGRESS owner=0 next=42657 events=1834316 productive_ms=180017
+DEBUG (17:48): PBT_CAMPAIGN_PROGRESS owner=0 next=60841 events=2616269 productive_ms=240003
+DEBUG (17:49): PBT_CAMPAIGN_PROGRESS owner=0 next=79401 events=3414327 productive_ms=300014
+DEBUG (17:50): PBT_CAMPAIGN_PROGRESS owner=0 next=97753 events=4203460 productive_ms=360017
+DEBUG (17:51): PBT_CAMPAIGN_PROGRESS owner=0 next=116049 events=4990131 productive_ms=420023
+DEBUG (17:52): PBT_CAMPAIGN_PROGRESS owner=0 next=133417 events=5736884 productive_ms=480024
+DEBUG (17:53): PBT_CAMPAIGN_PROGRESS owner=0 next=150441 events=6468801 productive_ms=540021
+DEBUG (17:54): PBT_CAMPAIGN_PROGRESS owner=0 next=166593 events=7163339 productive_ms=600023
+DEBUG (17:54): PBT_CAMPAIGN_COVERAGE {hide_no=>525409, invalidate_applied=>359634, sleep_applied=>525457, show_applied=>526027, wake_applied=>441470, wake_no=>525578, mode_hidden_no=>525155, active_applied=>359963, show_no=>441658, sleep_no=>441617, frame_applied=>799365, hide_applied=>442047} assertions=20524821 skipped=0
+DEBUG (17:54): PBT_CAMPAIGN_END worker=0 owner=0 first=1 next=168241 batches=21030 events=7234219 productive_ms=606028 wall_ms=606327
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+campaignPilot                       PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

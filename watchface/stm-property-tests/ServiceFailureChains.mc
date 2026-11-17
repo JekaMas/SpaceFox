@@ -3,14 +3,14 @@ import Toybox.Test;
 // Arbitrary service chains. The model owns logical clock, request identity,
 // persisted outcome and expected IPC effects; it never reads a SUT decision.
 (:test,:typecheck(false)) class ServiceChainTrace {
- var service;var store;var callbacks=[];var identities=[];var epoch=0;
+ var service;var store;var services=[];var callbacks=[];var identities=[];var epoch=0;
  var now=1794818604l;var millis=0;var configured=true;var online=true;var fault=0;var sendError=false;var ipcError=false;
  var state=0;var serial=0;var started=0;var hasTransfer=false;var bound=false;
  var last=null;var succeeded=false;var disk=0;var slots=0;var pointers=0;
  var sends=0;var localCallbacks=0;var cancellations=0;var arms=0;var registrations=0;var reminders=0;var exits=0;var deliveries=[];var trace=[];
  var coverage={"empty"=>0,"reconfigured"=>0,"send_throw"=>0,"slot_fail"=>0,"pointer_fail"=>0,"checkpoint_fail"=>0,"ipc_fail"=>0,"commit"=>0,"network_fail"=>0,"stale"=>0,"old_owner"=>0,"timeout"=>0,"cancel"=>0,"healthy_no"=>0,"offline"=>0,"restart"=>0};
  function initialize(){store=new PbtMemoryStore();newService();}
- function newService(){service=new PbtTemporalService();service.fakeStore=store;service.fakeUtc=now;service.fakeMillis=millis;service.testUrl=configured?"https://pbt.invalid":"";service.connected=online;service.sendFails=sendError;service.deliveryFails=ipcError;
+ function newService(){service=new PbtTemporalService();services.add(service);service.fakeStore=store;service.fakeUtc=now;service.fakeMillis=millis;service.testUrl=configured?"https://pbt.invalid":"";service.connected=online;service.sendFails=sendError;service.deliveryFails=ipcError;
   state=0;serial=0;hasTransfer=false;bound=false;sends=0;localCallbacks=0;cancellations=0;arms=0;registrations=0;reminders=0;exits=0;deliveries=[];}
  function terminal(kind,generation){
   if(state==2){return;}if(state==1){cancellations+=1;coverage["cancel"]+=1;}
@@ -81,7 +81,10 @@ import Toybox.Test;
   var events=prefix.size()+12+rng.draw(37);
   for(var i=0;i<events;i+=1){var e;var a;var b;if(i<prefix.size()){e=prefix[i][0];a=prefix[i][1];b=prefix[i][2];}else{e=rng.draw(10);a=rng.draw(5);b=0;
     if(e==1){a=rng.draw(8);b=[rng.draw(2)==0?200:503,1+rng.draw(9)];}else if(e==2){a=rng.draw(4)*300;b=a*1000;}else if(e==4){a=[0,1,2,4][rng.draw(4)];}else{a=a%2;}}
-   run.step(e,a,b,seed,i);total+=1;}run.final(seed,events);
+   run.step(e,a,b,seed,i);total+=1;}
+  run.step(8,0,0,seed,events);total+=1;run.final(seed,events+1);
+  // Preserve every old owner/Method throughout the trace, then release the fake OS registries.
+  for(var j=0;j<run.services.size();j+=1){run.services[j].releaseHistory();}run.callbacks=[];
  }return total;
 }
 // Small causal replays for the two independently found lifetime failures.
@@ -120,4 +123,16 @@ import Toybox.Test;
 (:test,:typecheck(false)) function peerAffectedProperties(logger){
  Test.assert(generatedServiceFailure(logger));Test.assert(generatedSelectedFields(logger));Test.assert(generatedViewLifecycle(logger));Test.assert(generatedSourceSwitch(logger));Test.assert(generatedForegroundDelivery(logger));
  logger.debug("PEER_AFFECTED families=5 service_fields_view_source_foreground=true");return true;
+}
+
+// Reproduce the cumulative fake-OS history leak past the observed 658-seed
+// prefix, then exercise the same callback/timer/loader ownership closure.
+(:test,:typecheck(false)) function peerFakeHistoryControls(logger){
+ var temporal=runGeneratedTemporalService(1600001,768);
+ var view=runGeneratedViewLifecycle(1600001,32);
+ var foreground=runGeneratedForegroundDelivery(1600001,32);
+ var source=runGeneratedSourceSwitch(1600001,32);
+ var art=runGeneratedArtLease(1600001,32);
+ var failure=runGeneratedServiceFailure(1600001,32);
+ logger.debug("PBT_FAKE_HISTORY temporal_seeds=768 other_family_seeds=32 temporal="+temporal+" view="+view+" foreground="+foreground+" source="+source+" art="+art+" service="+failure+" after_each=true terminal_checked=true");return true;
 }

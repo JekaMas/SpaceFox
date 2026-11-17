@@ -1,0 +1,24 @@
+------------------------------------------------------------------------------
+Executing test campaignPilot...
+DEBUG (17:44): PBT_CAMPAIGN_BEGIN worker=2 owner=2 first=800001 version=0.2.9 native_id=d13aa334 budget_ms=606000
+DEBUG (17:45): PBT_CAMPAIGN_PROGRESS owner=2 next=816369 events=720188 productive_ms=60014
+DEBUG (17:46): PBT_CAMPAIGN_PROGRESS owner=2 next=833281 events=1464373 productive_ms=120011
+DEBUG (17:47): PBT_CAMPAIGN_PROGRESS owner=2 next=851561 events=2268699 productive_ms=180013
+DEBUG (17:48): PBT_CAMPAIGN_PROGRESS owner=2 next=873553 events=3236340 productive_ms=240003
+DEBUG (17:49): PBT_CAMPAIGN_PROGRESS owner=2 next=895993 events=4223685 productive_ms=300011
+DEBUG (17:50): PBT_CAMPAIGN_PROGRESS owner=2 next=918257 events=5203377 productive_ms=360001
+DEBUG (17:51): PBT_CAMPAIGN_PROGRESS owner=2 next=940361 events=6175968 productive_ms=420010
+DEBUG (17:52): PBT_CAMPAIGN_PROGRESS owner=2 next=961393 events=7101403 productive_ms=480014
+DEBUG (17:53): PBT_CAMPAIGN_PROGRESS owner=2 next=982081 events=8011752 productive_ms=540009
+DEBUG (17:54): PBT_CAMPAIGN_PROGRESS owner=2 next=1001673 events=8873855 productive_ms=600017
+DEBUG (17:54): PBT_CAMPAIGN_COVERAGE {fail_applied=>238659, cancel_applied=>1076761, request_no=>607344, complete_applied=>212006, request_applied=>1283605, complete_no=>1068259, begin_applied=>769393, ready_applied=>1076665, replace_applied=>1076554} assertions=15653214 skipped=0
+DEBUG (17:54): PBT_CAMPAIGN_END worker=2 owner=2 first=800001 next=1003665 batches=25458 events=8961497 productive_ms=606022 wall_ms=606358
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+campaignPilot                       PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

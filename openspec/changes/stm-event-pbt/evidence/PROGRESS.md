@@ -2,7 +2,7 @@
 
 HOST all four required productive campaigns are DONE: retain original budget/publication/deployment and replace only source with the reviewed SOURCE_COARSE campaign (`HOST-COARSE-CAMPAIGN.md`). Total6,362 traces /1,078,574 events; no new four-way overlap claim.
 
-Independent native source review repaired the one-shot volatile IPC lease, stopped-field snapshot retention, first-cold-LOW bounded acquisition, SourceTrace permission oracle, arbitrary service failure chains and campaign productive/real-duration fences. Current affected SDK short batch and strict compilation/admission are GREEN within `PEER.md` scopes; final six-VM short control is GREEN (`PEER-six-vm-green/summary.json`); all fifteen final600s workloads remain OPEN pending root GO. NativeID regenerated once to d13aa334. No hardware/phone/raster success is inferred.
+Independent native source review repaired the one-shot volatile IPC lease, stopped-field snapshot retention, first-cold-LOW bounded acquisition, SourceTrace permission oracle, arbitrary service failure chains and campaign productive/real-duration fences. Current affected SDK short batch and strict compilation/admission are GREEN within `PEER.md` scopes; final six-VM short control is GREEN (`PEER-six-vm-green/summary.json`); five final606s+ workloads are GREEN at their original frozen inputs; temporal fake-history retention was repaired and targeted controls are GREEN; the remaining ten final workloads remain OPEN (`PEER.md`). NativeID regenerated once to d13aa334. No hardware/phone/raster success is inferred.
 
 ---
 

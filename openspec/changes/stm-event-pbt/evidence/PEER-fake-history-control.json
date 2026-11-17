@@ -1,0 +1,30 @@
+{
+  "status": "GREEN",
+  "boundary": "Named SDK selector; fake business dependencies; not pixel/hardware or raw-exit0 proof",
+  "selector": "peerFakeHistoryControls",
+  "raw_exit": 1,
+  "launcher": {
+    "status": "passed",
+    "raw_exit_code": 1,
+    "expected_tests": [
+      "peerFakeHistoryControls"
+    ],
+    "observed_tests": {
+      "peerFakeHistoryControls": "PASS"
+    },
+    "observed_count": 1,
+    "launcher_nonzero_framework_pass": true
+  },
+  "temporal_seeds": 768,
+  "other_family_seeds": 32,
+  "family_events": {
+    "temporal": 33004,
+    "view": 1650,
+    "foreground": 1490,
+    "source": 1170,
+    "art": 1330,
+    "service_failure": 2479
+  },
+  "production_changed": false,
+  "native_id": "d13aa334"
+}

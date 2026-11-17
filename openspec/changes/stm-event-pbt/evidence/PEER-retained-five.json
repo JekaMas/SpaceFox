@@ -1,0 +1,36 @@
+{
+  "kind": "retained-native-campaign-scope-comparison",
+  "original_source_revision": "76868d0c0d9b7e1c526bf2c5e262f90683f1d72a",
+  "retained_owners": [
+    "display",
+    "request",
+    "scene",
+    "storage",
+    "cache-map"
+  ],
+  "method": "Exact declaration text comparison at original reviewed revision; current production/resources/manifest/campaign harness have no Git delta. No rerun or new-source digest substitution.",
+  "unchanged_declarations": {
+    "PbtMetrics": true,
+    "recordCoverage": true,
+    "OwnerRandom": true,
+    "ownerCheck": true,
+    "runGeneratedDisplayOwners": true,
+    "OwnerRequestFake": true,
+    "runGeneratedRequestOwners": true,
+    "runGeneratedSceneOwners": true,
+    "PbtMemoryStore": true,
+    "pbtSnapshot": true,
+    "StorageTrace": true,
+    "runGeneratedStorageOwners": true,
+    "CacheMapTrace": true,
+    "runGeneratedCacheMapOwners": true
+  },
+  "unchanged_paths": [
+    "watchface/source",
+    "watchface/resources",
+    "watchface/manifest.xml",
+    "tools/run_native_stm_campaign.py"
+  ],
+  "original_receipt": "NATIVE-final-600/summary.json",
+  "limits": "Shared compilation input file changed for other workloads; the retained functions, models, helpers, production dependencies and harness did not. Original program digests/revision retained."
+}

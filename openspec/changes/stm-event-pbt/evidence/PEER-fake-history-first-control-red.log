@@ -1,0 +1,24 @@
+------------------------------------------------------------------------------
+Executing test peerFakeHistoryControls...
+STM_FAIL owner=foreground-owners seed=1600001 index=42 trace=[0, 3, 4, 5, 7, 8, 7, 6, 1, 5, 7, 10, 6, 0, 8, 5, 7, 2, 9, 3, 5, 7, 3, 4, 1, 6, 4, 3, 5, 8, 7, 0, 5, 2, 3, 8, 5, 2, 0, 9, 2, 1, stop] expected=[false, true] actual=[false, false]
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - ownerCheck() at /task/isolated/GeneratedOwners.mc:16 0x1000440f 
+  - verify() at /task/isolated/GeneratedOwners.mc:471 0x1000ffc9 
+  - runGeneratedForegroundDelivery() at /task/isolated/GeneratedOwners.mc:488 0x1000143a 
+  - peerFakeHistoryControls() at /task/isolated/ServiceFailureChains.mc:133 0x100012bd 
+  - evaluate_test_entries_30_to_43() at /task/gen/006-B4433-00/source/UnitTests.mcgen:188 0x1000a18a 
+  - runTest() at /task/gen/006-B4433-00/source/UnitTests.mcgen:207 0x1000a828 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+peerFakeHistoryControls             ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

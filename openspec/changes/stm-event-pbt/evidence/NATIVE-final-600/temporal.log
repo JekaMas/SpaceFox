@@ -1,0 +1,22 @@
+------------------------------------------------------------------------------
+Executing test campaignPilot...
+DEBUG (17:44): PBT_CAMPAIGN_BEGIN worker=4 owner=4 first=1600001 version=0.2.9 native_id=d13aa334 budget_ms=606000
+
+Error: Too Many Objects Error
+Details: Failed invoking <symbol>
+Stack: 
+  - pbtSnapshot() at /task/isolated/GeneratedOwners.mc:160 0x10003275 
+  - runGeneratedTemporalService() at /task/isolated/GeneratedOwners.mc:216 0x10003a63 
+  - campaignBatch() at /task/isolated/CampaignPilot.mc:17 0x10004ab0 
+  - campaignPilot() at /task/isolated/CampaignPilot.mc:34 0x1000193b 
+  - evaluate_test_entries_0_to_30() at /task/gen/006-B4433-00/source/UnitTests.mcgen:81 0x10009cf1 
+  - runTest() at /task/gen/006-B4433-00/source/UnitTests.mcgen:200 0x1000a2d1 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+campaignPilot                       ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)
