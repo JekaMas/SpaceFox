@@ -1,0 +1,185 @@
+------------------------------------------------------------------------------
+Executing test queuedVolatileObsolete...
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042320
+SF_WAKE registration_ok pending=false next=1794912213
+SF_VIEW mode=HIGH pending=false
+SF_WAKE registration_kept pending=false next=1794912213
+DEBUG (10:43): QUEUED_STALE newer_durable_retained=true art_cancel=0 consumed_once=true
+PASS
+------------------------------------------------------------------------------
+Executing test customFieldSuspension...
+DEBUG (10:43): CUSTOM_SUSPEND ready_value_retained=true provider_stopped=true
+PASS
+------------------------------------------------------------------------------
+Executing test mapMetricEventSequences...
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+DEBUG (10:43): MAP_METRIC_SEED 0 effective=true
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+DEBUG (10:43): MAP_METRIC_SEED 1 effective=true
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+DEBUG (10:43): MAP_METRIC_SEED 2 effective=true
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+DEBUG (10:43): MAP_METRIC_SEED 3 effective=true
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+DEBUG (10:43): MAP_METRIC_SEED 4 effective=true
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+DEBUG (10:43): MAP_METRIC_SEED 5 effective=true
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+DEBUG (10:43): MAP_METRIC_SEED 6 effective=true
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+DEBUG (10:43): MAP_METRIC_SEED 7 effective=true
+DEBUG (10:43): MAP_METRIC sequences=8 events=224 independent_literals=true
+PASS
+------------------------------------------------------------------------------
+Executing test volatileSnapshotSequences...
+SF_VIEW mode=HIGH pending=false
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_kept pending=false next=1794912213
+SF_VIEW mode=LOW pending=false
+SF_BG snapshot_storage_error
+SF_FG background_delivery
+SF_FG background_delivery
+SF_WAKE registration_kept pending=false next=1794912213
+SF_FG background_delivery
+SF_WAKE registration_kept pending=false next=1794912213
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042260
+SF_WAKE registration_kept pending=false next=1794912213
+DEBUG (10:43): VOLATILE_SEED 0 applied_and_observed=true
+SF_VIEW mode=HIGH pending=false
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_kept pending=false next=1794912213
+SF_VIEW mode=LOW pending=false
+SF_BG snapshot_storage_error
+SF_FG background_delivery
+SF_FG background_delivery
+SF_WAKE registration_kept pending=false next=1794912213
+SF_FG background_delivery
+SF_WAKE registration_kept pending=false next=1794912213
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042260
+SF_WAKE registration_kept pending=false next=1794912213
+DEBUG (10:43): VOLATILE_SEED 1 applied_and_observed=true
+SF_VIEW mode=HIGH pending=false
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_kept pending=false next=1794912213
+SF_VIEW mode=LOW pending=false
+SF_BG snapshot_storage_error
+SF_FG background_delivery
+SF_FG background_delivery
+SF_WAKE registration_ok pending=false next=1794912214
+SF_FG background_delivery
+SF_WAKE registration_kept pending=false next=1794912214
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042260
+SF_WAKE registration_kept pending=false next=1794912214
+DEBUG (10:43): VOLATILE_SEED 2 applied_and_observed=true
+SF_VIEW mode=HIGH pending=false
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_kept pending=false next=1794912214
+SF_VIEW mode=LOW pending=false
+SF_BG snapshot_storage_error
+SF_FG background_delivery
+SF_FG background_delivery
+SF_WAKE registration_kept pending=false next=1794912214
+SF_FG background_delivery
+SF_WAKE registration_kept pending=false next=1794912214
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042260
+SF_WAKE registration_kept pending=false next=1794912214
+DEBUG (10:43): VOLATILE_SEED 3 applied_and_observed=true
+SF_VIEW mode=HIGH pending=false
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_kept pending=false next=1794912214
+SF_VIEW mode=LOW pending=false
+SF_BG snapshot_storage_error
+SF_FG background_delivery
+SF_FG background_delivery
+SF_WAKE registration_kept pending=false next=1794912214
+SF_FG background_delivery
+SF_WAKE registration_kept pending=false next=1794912214
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042260
+SF_WAKE registration_kept pending=false next=1794912214
+DEBUG (10:43): VOLATILE_SEED 4 applied_and_observed=true
+SF_VIEW mode=HIGH pending=false
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_kept pending=false next=1794912214
+SF_VIEW mode=LOW pending=false
+SF_BG snapshot_storage_error
+SF_FG background_delivery
+SF_FG background_delivery
+SF_WAKE registration_kept pending=false next=1794912214
+SF_FG background_delivery
+SF_WAKE registration_kept pending=false next=1794912214
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042260
+SF_WAKE registration_kept pending=false next=1794912214
+DEBUG (10:43): VOLATILE_SEED 5 applied_and_observed=true
+SF_VIEW mode=HIGH pending=false
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_kept pending=false next=1794912214
+SF_VIEW mode=LOW pending=false
+SF_BG snapshot_storage_error
+SF_FG background_delivery
+SF_FG background_delivery
+SF_WAKE registration_kept pending=false next=1794912214
+SF_FG background_delivery
+SF_WAKE registration_kept pending=false next=1794912214
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042260
+SF_WAKE registration_kept pending=false next=1794912214
+DEBUG (10:43): VOLATILE_SEED 6 applied_and_observed=true
+SF_VIEW mode=HIGH pending=false
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_kept pending=false next=1794912214
+SF_VIEW mode=LOW pending=false
+SF_BG snapshot_storage_error
+SF_FG background_delivery
+SF_FG background_delivery
+SF_WAKE registration_kept pending=false next=1794912214
+SF_FG background_delivery
+SF_WAKE registration_kept pending=false next=1794912214
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042260
+SF_WAKE registration_kept pending=false next=1794912214
+DEBUG (10:43): VOLATILE_SEED 7 applied_and_observed=true
+DEBUG (10:43): VOLATILE_GENERATOR seeds=8 events=88 after_every_event=true
+PASS
+------------------------------------------------------------------------------
+Executing test metricProviderSequences...
+DEBUG (10:43): METRIC_PROVIDER seeds=8 events=40 isolated_failure=true oldest_age=300
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+queuedVolatileObsolete              PASS
+customFieldSuspension               PASS
+mapMetricEventSequences             PASS
+volatileSnapshotSequences           PASS
+metricProviderSequences             PASS
+Ran 5 tests
+
+PASSED (passed=5, failed=0, errors=0)

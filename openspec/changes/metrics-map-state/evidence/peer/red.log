@@ -1,0 +1,79 @@
+------------------------------------------------------------------------------
+Executing test queuedVolatileObsolete...
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042320
+SF_WAKE registration_ok pending=false next=1794912115
+SF_VIEW mode=HIGH pending=false
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042320
+SF_WAKE registration_kept pending=false next=1794912115
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x300001ba 
+  - queuedVolatileObsolete() at /source/watchface/state-machine-tests/VolatileSequences.mc:110 0x10004e64 
+  - evaluate_test_entries_0_to_25() at /task/peer/gen/006-B4433-00/source/UnitTests.mcgen:123 0x1000761e 
+  - runTest() at /task/peer/gen/006-B4433-00/source/UnitTests.mcgen:138 0x10007680 
+ERROR
+------------------------------------------------------------------------------
+Executing test customFieldSuspension...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED: LOW/hidden suspension must retain READY custom value
+Stack: 
+  - API code 0x30000203 
+  - customFieldSuspension() at /source/watchface/metrics-map-tests/MetricApiTests.mc:48 0x10005890 
+  - evaluate_test_entries_0_to_25() at /task/peer/gen/006-B4433-00/source/UnitTests.mcgen:79 0x100073cc 
+  - runTest() at /task/peer/gen/006-B4433-00/source/UnitTests.mcgen:138 0x10007680 
+ERROR
+------------------------------------------------------------------------------
+Executing test mapMetricEventSequences...
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+DEBUG (10:41): MAP_METRIC_SEED 0 effective=true
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+DEBUG (10:41): MAP_METRIC_SEED 1 effective=true
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+DEBUG (10:41): MAP_METRIC_SEED 2 effective=true
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+DEBUG (10:41): MAP_METRIC_SEED 3 effective=true
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+DEBUG (10:41): MAP_METRIC_SEED 4 effective=true
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+DEBUG (10:41): MAP_METRIC_SEED 5 effective=true
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+DEBUG (10:41): MAP_METRIC_SEED 6 effective=true
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+DEBUG (10:41): MAP_METRIC_SEED 7 effective=true
+DEBUG (10:41): MAP_METRIC sequences=8 events=224 independent_literals=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+queuedVolatileObsolete              ERROR
+customFieldSuspension               ERROR
+mapMetricEventSequences             PASS
+Ran 3 tests
+
+FAILED (passed=1, failed=0, errors=2)

@@ -1,0 +1,20 @@
+{
+  "kind": "metrics-map-independent-peer",
+  "status": "GREEN",
+  "version": "0.2.7",
+  "native_id": "4d727bcf",
+  "source_revision": "8b9d211e1868c3dd476a549f4971d0ae7bf47747",
+  "report": "openspec/changes/metrics-map-state/evidence/PEER.md",
+  "proofs": {
+    "focused": "5 named selectors PASS; raw launcher exit 1",
+    "frames": "same-site ACTIVE marker; same-minute LOW show/delivery once; captured input and fixed-clock test observer",
+    "retained": "Author provider/API, IPC, host, prior lifecycle and unchanged EN/RU evidence retain original source boundaries"
+  },
+  "boundaries": [
+    "SDK simulator, not hardware or phone",
+    "No physical cause or physical success established",
+    "Metric mocks prove draw/model only; actual Garmin SDK API availability is separate",
+    "No complete heap/GFX peak, battery or whole-profile/runtime claim",
+    "Frame observer stopped after observations; no natural zero-exit claim"
+  ]
+}

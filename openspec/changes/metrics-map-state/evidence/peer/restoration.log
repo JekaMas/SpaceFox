@@ -1,0 +1,5 @@
+snapshot_compare_exit=0
+    PID COMMAND
+      1 /run/rosetta/rosetta /usr/bin/sleep sleep infinity
+      7 /run/rosetta/rosetta /usr/bin/sh sh -c rm -rf /tmp/com.garmin.connectiq; rm -f /tmp/.X99-lock /tmp/.X11-unix/X99; tar -xf /task/peer/before.tar -C /; tar -df /task/peer/before.tar -C / > /task/peer/restore-diff.log 2>&1; status=$?; echo "snapshot_compare_exit=$status" > /task/peer/restoration.log; ps -eo pid,args >> /task/peer/restoration.log
+     17 /usr/bin/ps ps -eo pid,args

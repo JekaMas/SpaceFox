@@ -5,5 +5,5 @@
 - [x] Integrate network, render and storage errors into their owners, including volatile accepted facts and atomic durable recovery.
 - [x] Run production-bound deterministic event-sequence properties and focused FR165/M SDK/API/frame checks, retaining failures and exact adapter boundaries.
 - [x] Update current contracts and evidence, reconcile version/native identity and complete author verification.
-- [ ] One independent peer verifies and repairs this same stable batch to GREEN.
+- [x] One independent peer verifies and repairs this same stable batch to GREEN (source8b9d211e / NativeID4d727bcf; evidence/PEER.md and the single actual independent-peer.json).
 - [ ] Merge and deliver the authorized release; record Garmin, phone and physical acceptance separately.
