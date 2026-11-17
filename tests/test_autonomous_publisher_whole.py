@@ -16,6 +16,7 @@ import re
 import subprocess
 import sys
 import tempfile
+import time
 import threading
 import unittest
 from unittest.mock import patch
@@ -584,7 +585,9 @@ sys.exit(m.main())'''
             from tools.spacefox.cloud import deploy
             # Replace cloud's time reference, not the process-global time.sleep
             # used by subprocess timeout polling inside the HTTP worker.
+            monotonic = time.monotonic
             with patch('tools.spacefox.cloud.time') as cloud_time:
+                cloud_time.monotonic.side_effect = monotonic
                 self.assertEqual(deploy(pub,pages,Site(s.url+'/site',local_http=True),expected=pub.head,repository='local/spacefox',run_id=43,run_attempt=1,id_token='local',polls=3),'succeed')
                 self.assertEqual(cloud_time.sleep.call_count,2)
             self.assertEqual(sum(c[0]=='POST' for c in s.calls),old_post+1)

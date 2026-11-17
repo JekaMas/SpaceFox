@@ -4,15 +4,19 @@ The workflow owns the whole writer/deployment lock. Pages has no conditional
 write/idempotency contract. An armed intent is never automatically POSTed twice.
 Unknown async finality blocks all later work, even if its feed is already visible.
 """
+import ast
 import base64
 from concurrent.futures import ThreadPoolExecutor, as_completed, TimeoutError as FuturesTimeout
+from datetime import datetime, timedelta
 import json
 import os
 import time
 from pathlib import Path
 import re
+import resource
 import subprocess
 import sys
+import tempfile
 import time
 from urllib.error import HTTPError
 from urllib.parse import quote, urlsplit
@@ -192,10 +196,91 @@ class Pages:
         # A successful cancel response is only a request, not finality.
         return self.wait(version)
 
+    def _source_text(self, name, revision):
+        _digest(revision, git=True)
+        status, raw = self.http.request('GET', self.api + '/repos/' + self.repository + '/contents/' + quote(name, safe='/') + '?ref=' + revision,
+                                        headers={'Authorization': 'Bearer ' + self.token,
+                                                 'X-GitHub-Api-Version': '2026-03-10'}, limit=196608)
+        if status != 200:
+            return None
+        item = bounded_json(raw)
+        if type(item) is not dict or item.get('encoding') != 'base64' or type(item.get('content')) is not str:
+            return None
+        data = base64.b64decode(''.join(item['content'].split()), validate=True)
+        if type(item.get('size')) is not int or item['size'] != len(data) or len(data) > 131072:
+            return None
+        return data.decode('utf-8')
+
+    def _job_log(self, intent, job):
+        # gh follows GitHub's signed log redirect without exposing it in output.
+        # Files plus a deadline bound collection even if a child retains stdout.
+        with tempfile.TemporaryFile() as out, tempfile.TemporaryFile() as err:
+            def limit_output():
+                resource.setrlimit(resource.RLIMIT_FSIZE, (1048577, 1048577))
+            result = subprocess.run(['gh', 'run', 'view', str(intent['runId']), '-R', self.repository,
+                                     '--job', str(job['id']), '--log'], stdout=out, stderr=err,
+                                    timeout=30, preexec_fn=limit_output)
+            if result.returncode:
+                return None
+            out.seek(0);raw = out.read(1048577)
+            return None if len(raw) > 1048576 else raw.decode('utf-8')
+
+    def _stale_prepost(self, intent, job):
+        # A failed step alone proves nothing. Accept this exact error only if
+        # the originating source has the same pre-POST control-flow functions
+        # as the current implementation; all uncertainty remains armed.
+        if type(job.get('id')) is not int or job.get('conclusion') != 'failure':
+            return False
+        try:
+            log = self._job_log(intent, job)
+            message = 'cloud-feed: queued source code is stale before work permission'
+            if type(log) is not str:
+                return False
+            step = next(step for step in job['steps'] if step.get('name') ==
+                        'POST once, then bound async polling and cancellation finality')
+            start = datetime.fromisoformat(step['started_at'].replace('Z', '+00:00'))
+            end = datetime.fromisoformat(step['completed_at'].replace('Z', '+00:00'))
+            def in_step(line, suffix):
+                if not line.endswith(suffix):
+                    return False
+                match = re.search(r'\b(\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d+)?Z) ', line)
+                if match is None:
+                    return False
+                when = datetime.fromisoformat(match.group(1).replace('Z', '+00:00'))
+                return start <= when < end + timedelta(seconds=1)
+            lines = log.splitlines()
+            if (sum(in_step(line, message) for line in lines) != 1 or
+                    sum(in_step(line, '##[error]Process completed with exit code 2.') for line in lines) != 1):
+                return False
+            root = Path(__file__).resolve().parents[2]
+            functions = {
+                'tools/cloud_feed.py': ((None, 'main'),),
+                'tools/spacefox/cloud.py': ((None, 'deploy'), (None, '_http_direct'),
+                    ('Pages', 'create'), ('Pages', 'wait'), ('Pages', 'cancel'),
+                    ('Pages', 'status'), ('Pages', 'call'), ('Pages', 'repo_call'), ('HTTP', 'request')),
+                'tools/spacefox/publisher.py': (('Publisher', '_context'),),
+            }
+            for name, entries in functions.items():
+                historical = self._source_text(name, intent['source'])
+                if type(historical) is not str:
+                    return False
+                old, current = ast.parse(historical), ast.parse((root / name).read_text())
+                for owner, function in entries:
+                    def shape(tree):
+                        scope = tree if owner is None else next(node for node in tree.body if isinstance(node, ast.ClassDef) and node.name == owner)
+                        node = next(node for node in scope.body if isinstance(node, ast.FunctionDef) and node.name == function)
+                        return ast.dump(node, include_attributes=False)
+                    if shape(old) != shape(current):
+                        return False
+            return True
+        except (OSError, ValueError, TypeError, KeyError, UnicodeError, SyntaxError, StopIteration,
+                subprocess.SubprocessError, CloudError):
+            return False
+
     def never_started(self, intent):
         """Positive skipped-job/step evidence from the completed run attempt.
 
-        Missing jobs/steps, cancellation, logs or a404 alone prove nothing. A
+        Missing jobs/steps, cancellation, uncorroborated logs or a404 alone prove nothing. A
         re-run receives another attempt identity and cannot execute this intent.
         Actual GitHub record behavior still requires remote qualification.
         """
@@ -233,7 +318,11 @@ class Pages:
             return True
         steps = [step for step in job['steps'] if step.get('name') ==
                  'POST once, then bound async polling and cancellation finality']
-        return len(steps) == 1 and steps[0].get('status') == 'completed' and steps[0].get('conclusion') == 'skipped'
+        if len(steps) != 1 or steps[0].get('status') != 'completed':
+            return False
+        if steps[0].get('conclusion') == 'skipped':
+            return True
+        return steps[0].get('conclusion') == 'failure' and self._stale_prepost(intent, job)
 
 
 def snapshot_files(store, state, generation):

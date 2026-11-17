@@ -1,0 +1,14 @@
+F
+======================================================================
+FAIL: test_exact_prepost_failure_recovers_but_ambiguous_cases_refuse (tests.test_pages_stale_prepost.StalePrePost.test_exact_prepost_failure_recovers_but_ambiguous_cases_refuse)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-pages-stale-intent-20261117/tests/test_pages_stale_prepost.py", line 24, in test_exact_prepost_failure_recovers_but_ambiguous_cases_refuse
+    p=FakePages();self.assertTrue(p.never_started(INTENT))
+                  ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)

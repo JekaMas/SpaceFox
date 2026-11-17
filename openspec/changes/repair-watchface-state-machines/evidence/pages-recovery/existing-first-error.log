@@ -1,0 +1,23 @@
+E
+======================================================================
+ERROR: test_empty_pages_exact_witness_and_nonempty_uncertainty (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_empty_pages_exact_witness_and_nonempty_uncertainty)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-pages-stale-intent-20261117/tests/test_autonomous_publisher_whole.py", line 588, in test_empty_pages_exact_witness_and_nonempty_uncertainty
+    self.assertEqual(deploy(pub,pages,Site(s.url+'/site',local_http=True),expected=pub.head,repository='local/spacefox',run_id=43,run_attempt=1,id_token='local',polls=3),'succeed')
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-pages-stale-intent-20261117/tools/spacefox/cloud.py", line 681, in deploy
+    if value is None or value['status'] != 'armed':
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-pages-stale-intent-20261117/tools/spacefox/cloud.py", line 582, in observe
+    if time.monotonic() >= deadline:
+                   ^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-pages-stale-intent-20261117/tools/spacefox/cloud.py", line 562, in _get_before
+    def get(self, path, limit):
+           ^^^^^^^^^^^^^^
+TypeError: '<=' not supported between instances of 'MagicMock' and 'int'
+
+----------------------------------------------------------------------
+Ran 1 test in 74.848s
+
+FAILED (errors=1)
