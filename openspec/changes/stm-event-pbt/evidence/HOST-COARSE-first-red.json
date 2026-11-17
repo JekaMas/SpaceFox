@@ -1,0 +1,928 @@
+{
+  "machine": "source",
+  "seed": 1,
+  "event_index": 97,
+  "events": [
+    [
+      "anchor_missing",
+      0,
+      0
+    ],
+    [
+      "bootstrap_existing",
+      0,
+      0
+    ],
+    [
+      "anchor_restored",
+      0,
+      0
+    ],
+    [
+      "reconcile",
+      0,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      1
+    ],
+    [
+      "source",
+      0,
+      {
+        "id": 1,
+        "version": 0,
+        "age": 0,
+        "status": "pending",
+        "point": 0,
+        "precision": "exact"
+      }
+    ],
+    [
+      "source",
+      0,
+      {
+        "id": 1,
+        "version": 0,
+        "age": 0,
+        "status": "pending",
+        "point": 0,
+        "precision": "exact"
+      }
+    ],
+    [
+      "reserve",
+      0,
+      1
+    ],
+    [
+      "source",
+      1,
+      {
+        "id": 1,
+        "version": 1,
+        "age": 0,
+        "status": "pending",
+        "point": 0,
+        "precision": "exact"
+      }
+    ],
+    [
+      "advance",
+      1,
+      0
+    ],
+    [
+      "source",
+      1,
+      {
+        "id": 1,
+        "version": 1,
+        "age": 0,
+        "status": "pending",
+        "point": 0,
+        "precision": "exact"
+      }
+    ],
+    [
+      "reserve",
+      0,
+      1
+    ],
+    [
+      "source",
+      2,
+      {
+        "id": 1,
+        "version": 0,
+        "age": 1,
+        "status": "pending",
+        "point": 0,
+        "precision": "exact"
+      }
+    ],
+    [
+      "duplicate_batch",
+      2,
+      {
+        "id": 1,
+        "version": 0,
+        "age": 0,
+        "status": "pending",
+        "point": 0,
+        "precision": "exact"
+      }
+    ],
+    [
+      "mixed_batch",
+      2,
+      {
+        "id": 2,
+        "version": 0,
+        "age": 0,
+        "status": "pending",
+        "point": 0
+      }
+    ],
+    [
+      "source",
+      2,
+      {
+        "id": 1,
+        "version": 1,
+        "age": -1,
+        "status": "pending",
+        "point": 0,
+        "precision": "exact"
+      }
+    ],
+    [
+      "source",
+      2,
+      {
+        "id": 1,
+        "version": 0,
+        "age": 0,
+        "status": "pending",
+        "point": 0,
+        "precision": "exact"
+      }
+    ],
+    [
+      "finish",
+      2,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      1
+    ],
+    [
+      "omitted",
+      3,
+      0
+    ],
+    [
+      "advance",
+      1,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      1
+    ],
+    [
+      "source",
+      4,
+      {
+        "id": 1,
+        "version": 2,
+        "age": 0,
+        "status": "pending",
+        "point": 0,
+        "precision": "exact"
+      }
+    ],
+    [
+      "advance",
+      1,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      1
+    ],
+    [
+      "source",
+      5,
+      {
+        "id": 1,
+        "version": 3,
+        "age": 0,
+        "status": "completed",
+        "point": 0,
+        "precision": "exact"
+      }
+    ],
+    [
+      "advance",
+      86400,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      1
+    ],
+    [
+      "omitted",
+      6,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      1
+    ],
+    [
+      "source",
+      7,
+      {
+        "id": 1,
+        "version": 3,
+        "age": 0,
+        "status": "completed",
+        "point": 0,
+        "precision": "exact"
+      }
+    ],
+    [
+      "advance",
+      1,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      1
+    ],
+    [
+      "source",
+      8,
+      {
+        "id": 1,
+        "version": 4,
+        "age": 0,
+        "status": "pending",
+        "point": 0,
+        "precision": "exact"
+      }
+    ],
+    [
+      "advance",
+      1,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      1
+    ],
+    [
+      "source",
+      9,
+      {
+        "id": 1,
+        "version": 4,
+        "age": 0,
+        "status": "pending",
+        "point": 1,
+        "precision": "exact"
+      }
+    ],
+    [
+      "reserve",
+      0,
+      1
+    ],
+    [
+      "source",
+      10,
+      {
+        "id": 1,
+        "version": 4,
+        "age": 0,
+        "status": "pending",
+        "point": 2,
+        "precision": "exact"
+      }
+    ],
+    [
+      "write_failed",
+      0,
+      0
+    ],
+    [
+      "foreign_commit",
+      0,
+      0
+    ],
+    [
+      "source",
+      1,
+      {
+        "id": 1,
+        "version": 0,
+        "age": 0,
+        "status": "pending",
+        "point": 0,
+        "precision": "exact"
+      }
+    ],
+    [
+      "reopen",
+      0,
+      0
+    ],
+    [
+      "reconcile",
+      0,
+      0
+    ],
+    [
+      "authority_lost",
+      0,
+      0
+    ],
+    [
+      "authority_restored",
+      0,
+      0
+    ],
+    [
+      "reconcile",
+      0,
+      0
+    ],
+    [
+      "source_changed",
+      0,
+      0
+    ],
+    [
+      "reopen",
+      0,
+      0
+    ],
+    [
+      "adopt",
+      0,
+      0
+    ],
+    [
+      "reconcile",
+      0,
+      0
+    ],
+    [
+      "advance",
+      60,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      1
+    ],
+    [
+      "source",
+      -2,
+      {
+        "id": 1,
+        "version": 5,
+        "age": 0,
+        "status": "started",
+        "point": 0,
+        "precision": "exact"
+      }
+    ],
+    [
+      "advance",
+      1,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      1
+    ],
+    [
+      "source",
+      -2,
+      {
+        "id": 1,
+        "version": 6,
+        "age": 0,
+        "status": "unknown",
+        "point": 0,
+        "precision": "exact"
+      }
+    ],
+    [
+      "advance",
+      1,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      1
+    ],
+    [
+      "source",
+      -2,
+      {
+        "id": 1,
+        "version": 7,
+        "age": 0,
+        "status": "pending",
+        "point": 0,
+        "precision": "window"
+      }
+    ],
+    [
+      "advance",
+      1,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      1
+    ],
+    [
+      "source",
+      -2,
+      {
+        "id": 1,
+        "version": 8,
+        "age": 0,
+        "status": "pending",
+        "point": 0,
+        "precision": "unknown"
+      }
+    ],
+    [
+      "source",
+      7,
+      {
+        "id": 1,
+        "version": 3,
+        "age": 0,
+        "status": "completed",
+        "point": 2,
+        "precision": "window"
+      }
+    ],
+    [
+      "advance",
+      0,
+      0
+    ],
+    [
+      "anchor_missing",
+      0,
+      0
+    ],
+    [
+      "source_changed",
+      13,
+      0
+    ],
+    [
+      "reserve",
+      2,
+      1
+    ],
+    [
+      "reconcile",
+      7,
+      0
+    ],
+    [
+      "omitted",
+      9,
+      0
+    ],
+    [
+      "reserve",
+      0,
+      0
+    ],
+    [
+      "bootstrap_existing",
+      0,
+      0
+    ],
+    [
+      "source_changed",
+      6,
+      0
+    ],
+    [
+      "write_failed",
+      0,
+      0
+    ],
+    [
+      "anchor_restored",
+      7,
+      0
+    ],
+    [
+      "foreign_commit",
+      15,
+      0
+    ],
+    [
+      "bootstrap_existing",
+      7,
+      0
+    ],
+    [
+      "authority_restored",
+      7,
+      0
+    ],
+    [
+      "reopen",
+      14,
+      0
+    ],
+    [
+      "adopt",
+      0,
+      0
+    ],
+    [
+      "write_failed",
+      3,
+      0
+    ],
+    [
+      "mixed_batch",
+      8,
+      {
+        "id": 1,
+        "version": 2,
+        "age": 1,
+        "status": "cancelled",
+        "point": 1,
+        "precision": "unknown"
+      }
+    ],
+    [
+      "advance",
+      60,
+      0
+    ],
+    [
+      "adopt",
+      15,
+      0
+    ],
+    [
+      "anchor_restored",
+      12,
+      0
+    ],
+    [
+      "finish",
+      14,
+      0
+    ],
+    [
+      "source_changed",
+      13,
+      0
+    ],
+    [
+      "mixed_batch",
+      10,
+      {
+        "id": 3,
+        "version": 2,
+        "age": -1,
+        "status": "completed",
+        "point": 2,
+        "precision": "unknown"
+      }
+    ],
+    [
+      "omitted",
+      4,
+      0
+    ],
+    [
+      "anchor_restored",
+      12,
+      0
+    ],
+    [
+      "authority_restored",
+      15,
+      0
+    ],
+    [
+      "reserve",
+      1,
+      0
+    ],
+    [
+      "adopt",
+      12,
+      0
+    ],
+    [
+      "mixed_batch",
+      4,
+      {
+        "id": 3,
+        "version": 1,
+        "age": -1,
+        "status": "unknown",
+        "point": 2,
+        "precision": "unknown"
+      }
+    ],
+    [
+      "reopen",
+      12,
+      0
+    ],
+    [
+      "anchor_restored",
+      11,
+      0
+    ],
+    [
+      "authority_restored",
+      14,
+      0
+    ],
+    [
+      "reconcile",
+      0,
+      0
+    ]
+  ],
+  "error": "AssertionError: ('missing semantic facts', ['coarse_hour_selected', 'coarse_minute_selected', 'source_coarse_hour', 'source_coarse_minute'])",
+  "failure_property": "missing semantic facts",
+  "model": {
+    "now": 1794637720,
+    "commits": 45,
+    "code": "00000000000000000000000000000000000003ec",
+    "actor": "00000000000000000000000000000000000003ec",
+    "saved_code": "00000000000000000000000000000000000003ec",
+    "available": true,
+    "fresh": true,
+    "ready": true,
+    "requests": [
+      {
+        "id": "078ff2957b2d115bca7b8abdb793d8b362e0903f7558e8b98feedfcf6cf27200",
+        "at_utc": 1794637595,
+        "purpose": "schedule",
+        "trigger": "extra",
+        "outcome": "success",
+        "accepted_source": true
+      },
+      {
+        "id": "91f5f74b4d9eedb6d0d520566d55fc5023c663da01d43e49ca0d7703ffe99fbb",
+        "at_utc": 1794637595,
+        "purpose": "schedule",
+        "trigger": "extra",
+        "outcome": "success",
+        "accepted_source": true
+      },
+      {
+        "id": "03763d33879493d696ca865418fb6f50c03d6145f63ba1c4d57a783fb73a08e3",
+        "at_utc": 1794637596,
+        "purpose": "schedule",
+        "trigger": "extra",
+        "outcome": "success",
+        "accepted_source": true
+      },
+      {
+        "id": "f30ca8c8e31ada7c75f035155e3041dede89a4dc300c3d720cf97ae26ffeabfe",
+        "at_utc": 1794637597,
+        "purpose": "schedule",
+        "trigger": "extra",
+        "outcome": "success",
+        "accepted_source": true
+      },
+      {
+        "id": "06827245551181605fb42cbd0e90587eda878e9b6e0a7d95c353177706f5a6b2",
+        "at_utc": 1794637597,
+        "purpose": "schedule",
+        "trigger": "extra",
+        "outcome": "reserved"
+      },
+      {
+        "id": "73645584702779bce6e209f3e8f08a8db176e49eb958b51d63004c0f445af757",
+        "at_utc": 1794637657,
+        "purpose": "schedule",
+        "trigger": "extra",
+        "outcome": "success",
+        "accepted_source": true
+      },
+      {
+        "id": "b968f64d39ccbf402eaaebc5b4b939bb945cb8b1ef2e77431b3e58cdf6cee47b",
+        "at_utc": 1794637658,
+        "purpose": "schedule",
+        "trigger": "extra",
+        "outcome": "success",
+        "accepted_source": true
+      },
+      {
+        "id": "8d91c1f318d308e208ecc28b3a9cd3d383f5a5c48b6dd8cc0a04d38fc186eabc",
+        "at_utc": 1794637659,
+        "purpose": "schedule",
+        "trigger": "extra",
+        "outcome": "success",
+        "accepted_source": true
+      },
+      {
+        "id": "834eec9f83c327706e06c06430d179ad14078ad7d09b919f69c6595f490beead",
+        "at_utc": 1794637660,
+        "purpose": "schedule",
+        "trigger": "extra",
+        "outcome": "success",
+        "accepted_source": true
+      }
+    ],
+    "records": {
+      "1": {
+        "record": "LaunchRecord(launch_id=StableId(kind=<IdKind.LAUNCH: 'launch'>, namespace='ll2', value='1'), timing=Timing(precision=<TimePrecision.UNKNOWN: 'unknown'>, exact_utc=None, date_utc=None, window_start_utc=None, window_end_utc=None, nominal_utc=None, source_net=None, source_precision_id=None, source_precision_name=None, source_precision_abbrev=None, source_precision_description=None), status=<LaunchStatus.PENDING: 'pending'>, source_validated_utc=1794637660, configuration_id=None, operator_id=None, site_id=None, country_id=None, configuration_name='Rocket 8', operator_name=None, operator_abbrev=None, mission_name=None, mission_purpose=None, source_updated_utc=1794551190, source_updated_subsecond=0, source_updated_iso=None, source_status_id=None, source_status_name=None, site_name=None, country_name=None, country_code=None, site_location_name=None, site_position=None, ascent_end=None)",
+        "stale": false,
+        "rescheduled": true
+      }
+    },
+    "generation": 0,
+    "active": "None",
+    "pending": "None",
+    "journal": null,
+    "coverage": {
+      "anchor_missing/observed_no_mutation": 2,
+      "bootstrap_existing/observed_no_mutation": 3,
+      "anchor_restored/applied": 5,
+      "reconcile/applied": 5,
+      "reserve/applied": 15,
+      "source/applied": 11,
+      "source/observed_no_mutation": 8,
+      "advance/applied": 11,
+      "duplicate_batch/observed_no_mutation": 1,
+      "mixed_batch/observed_no_mutation": 4,
+      "finish/applied": 1,
+      "omitted/applied": 2,
+      "write_failed/observed_no_mutation": 3,
+      "foreign_commit/applied": 1,
+      "reopen/applied": 4,
+      "authority_lost/observed_no_mutation": 1,
+      "authority_restored/applied": 4,
+      "source_changed/observed_no_mutation": 4,
+      "adopt/applied": 3,
+      "reserve/observed_no_mutation": 3,
+      "reconcile/observed_no_mutation": 1,
+      "omitted/observed_no_mutation": 2,
+      "foreign_commit/observed_no_mutation": 1,
+      "advance/observed_no_mutation": 1,
+      "adopt/observed_no_mutation": 1,
+      "finish/observed_no_mutation": 1
+    },
+    "properties": {
+      "durable_model": 100,
+      "identity_and_time": 100,
+      "effect_counts": 100,
+      "no_real_effects": 100,
+      "per_identity_retirement": 100
+    }
+  },
+  "sut": {
+    "head": "9fe90b5ba502fb19ba2b61720e830098de0500c8",
+    "ledger": {
+      "accepted": {
+        "entries": [
+          {
+            "record": {
+              "configuration_id": null,
+              "configuration_name": "Rocket 8",
+              "country_id": null,
+              "launch_id": {
+                "kind": "launch",
+                "namespace": "ll2",
+                "value": "1"
+              },
+              "mission_name": null,
+              "mission_purpose": null,
+              "operator_id": null,
+              "operator_name": null,
+              "site_id": null,
+              "source_updated_utc": 1794551190,
+              "source_validated_utc": 1794637660,
+              "status": "pending",
+              "timing": {
+                "date_utc": null,
+                "exact_utc": null,
+                "precision": "unknown",
+                "window_end_utc": null,
+                "window_start_utc": null
+              }
+            },
+            "rescheduled": true,
+            "stale": false
+          }
+        ],
+        "evaluated_at_utc": 1794637660
+      },
+      "active": null,
+      "backoff_until_utc": null,
+      "code_revision": "00000000000000000000000000000000000003ec",
+      "generation": 0,
+      "instance_id": "35ed6f15bef06bb945ebcd918f3e86c87b073494da6abeae8eb41cdfada5d9e0",
+      "last_event_utc": 1794637660,
+      "last_poll_utc": null,
+      "pending": null,
+      "refresh_policy": {
+        "fast_interval_seconds": null,
+        "near_interval_seconds": 900,
+        "normal_interval_seconds": 3600,
+        "stale_cycles": 3
+      },
+      "requests": [
+        {
+          "accepted_source": true,
+          "at_utc": 1794637595,
+          "id": "078ff2957b2d115bca7b8abdb793d8b362e0903f7558e8b98feedfcf6cf27200",
+          "outcome": "success",
+          "purpose": "schedule",
+          "trigger": "extra"
+        },
+        {
+          "accepted_source": true,
+          "at_utc": 1794637595,
+          "id": "91f5f74b4d9eedb6d0d520566d55fc5023c663da01d43e49ca0d7703ffe99fbb",
+          "outcome": "success",
+          "purpose": "schedule",
+          "trigger": "extra"
+        },
+        {
+          "accepted_source": true,
+          "at_utc": 1794637596,
+          "id": "03763d33879493d696ca865418fb6f50c03d6145f63ba1c4d57a783fb73a08e3",
+          "outcome": "success",
+          "purpose": "schedule",
+          "trigger": "extra"
+        },
+        {
+          "accepted_source": true,
+          "at_utc": 1794637597,
+          "id": "f30ca8c8e31ada7c75f035155e3041dede89a4dc300c3d720cf97ae26ffeabfe",
+          "outcome": "success",
+          "purpose": "schedule",
+          "trigger": "extra"
+        },
+        {
+          "at_utc": 1794637597,
+          "id": "06827245551181605fb42cbd0e90587eda878e9b6e0a7d95c353177706f5a6b2",
+          "outcome": "reserved",
+          "purpose": "schedule",
+          "trigger": "extra"
+        },
+        {
+          "accepted_source": true,
+          "at_utc": 1794637657,
+          "id": "73645584702779bce6e209f3e8f08a8db176e49eb958b51d63004c0f445af757",
+          "outcome": "success",
+          "purpose": "schedule",
+          "trigger": "extra"
+        },
+        {
+          "accepted_source": true,
+          "at_utc": 1794637658,
+          "id": "b968f64d39ccbf402eaaebc5b4b939bb945cb8b1ef2e77431b3e58cdf6cee47b",
+          "outcome": "success",
+          "purpose": "schedule",
+          "trigger": "extra"
+        },
+        {
+          "accepted_source": true,
+          "at_utc": 1794637659,
+          "id": "8d91c1f318d308e208ecc28b3a9cd3d383f5a5c48b6dd8cc0a04d38fc186eabc",
+          "outcome": "success",
+          "purpose": "schedule",
+          "trigger": "extra"
+        },
+        {
+          "accepted_source": true,
+          "at_utc": 1794637660,
+          "id": "834eec9f83c327706e06c06430d179ad14078ad7d09b919f69c6595f490beead",
+          "outcome": "success",
+          "purpose": "schedule",
+          "trigger": "extra"
+        }
+      ],
+      "schema_version": 2,
+      "selection_validated_utc": 1794637660
+    },
+    "pushes": 45,
+    "failed_cas": 1,
+    "entropy_calls": 16,
+    "commands": 1495
+  },
+  "forbidden": 0
+}

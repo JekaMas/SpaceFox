@@ -7,6 +7,7 @@ handles are delivery inputs only; state/permission expectations come from models
 from collections import Counter
 from copy import deepcopy
 from dataclasses import replace
+from datetime import datetime, timezone
 import hashlib
 import json
 import random
@@ -30,7 +31,14 @@ def token(number,namespace):
 def record(identity, version, validated, *, status='pending', point=0, precision='exact'):
     """Synthetic typed provider event, not an internal cache/state mutation."""
     anchor=START+1000000+version*60
-    timing=(domain.Timing(domain.TimePrecision.EXACT,exact_utc=anchor) if precision=='exact' else
+    if precision.startswith('source-coarse'):
+        minute=precision=='source-coarse-minute'
+        nominal=anchor//(60 if minute else 3600)*(60 if minute else 3600)
+        timing=domain.Timing(domain.TimePrecision.SOURCE_COARSE,nominal_utc=nominal,
+            source_net=datetime.fromtimestamp(nominal,timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
+            source_precision_id=1 if minute else 2,source_precision_name='Minute' if minute else 'Hour')
+    else:
+        timing=(domain.Timing(domain.TimePrecision.EXACT,exact_utc=anchor) if precision=='exact' else
             domain.Timing(domain.TimePrecision.WINDOW,window_start_utc=anchor,window_end_utc=anchor+3600) if precision=='window' else
             domain.Timing(domain.TimePrecision.UNKNOWN))
     return domain.LaunchRecord(domain.StableId(domain.IdKind.LAUNCH,'ll2',str(identity)),
@@ -40,10 +48,27 @@ def record(identity, version, validated, *, status='pending', point=0, precision
             {'latitude':str(point),'longitude':'12.0'}))
 
 
+def reference_times(record):
+    """Input-only reference bounds for the generated exact/window/coarse cases.
+
+    No production countdown_utc/ordering_utc property is used by the oracle.
+    A sourced MIN can affect retention/reminders without becoming EXACT.
+    """
+    t=record.timing
+    eligible=t.exact_utc
+    if t.precision is domain.TimePrecision.SOURCE_COARSE and t.source_precision_id==1:
+        eligible=t.nominal_utc
+    ordering=t.exact_utc
+    if ordering is None:ordering=t.window_start_utc
+    if ordering is None:ordering=t.window_end_utc
+    if ordering is None:ordering=t.nominal_utc
+    return eligible,ordering
+
+
 def stale(entry, now):
     r=entry['record'];age=now-r.source_validated_utc
     normal=age>=10800
-    target=r.timing.exact_utc
+    target,_=reference_times(r)
     near=(target is not None and r.status not in (domain.LaunchStatus.COMPLETED,domain.LaunchStatus.CANCELLED,domain.LaunchStatus.STARTED)
           and now>=target-7200 and min(now,target+1800)-r.source_validated_utc>=2700)
     return entry['stale'] or normal or near
@@ -105,8 +130,8 @@ class BaseCase:
 
     def due(self):
         future=any(e['record'].status not in (domain.LaunchStatus.COMPLETED,domain.LaunchStatus.CANCELLED)
-                   and (e['record'].timing.exact_utc if e['record'].timing.exact_utc is not None else e['record'].timing.window_start_utc) is not None
-                   and (e['record'].timing.exact_utc if e['record'].timing.exact_utc is not None else e['record'].timing.window_start_utc)>self.now for e in self.records.values())
+                   and reference_times(e['record'])[1] is not None
+                   and reference_times(e['record'])[1]>self.now for e in self.records.values())
         relevant=[r for r in self.requests if r['purpose']=='schedule' and self.last is not None and r['at_utc']>=self.last]
         success=bool(relevant) and all(r['outcome']=='success' for r in relevant)
         return self.last is None or self.now<self.last or not (future and success) or self.now-self.last>=3600
@@ -366,6 +391,7 @@ class SourceCase(BudgetCase):
                 if r.status is domain.LaunchStatus.UNKNOWN:self.note('source_unknown')
                 if r.timing.precision is domain.TimePrecision.WINDOW:self.note('source_window')
                 if r.timing.precision is domain.TimePrecision.UNKNOWN:self.note('source_unknown_timing')
+                if r.timing.precision is domain.TimePrecision.SOURCE_COARSE:self.note('source_coarse_minute' if r.timing.source_precision_id==1 else 'source_coarse_hour')
                 old=self.records.get(r.launch_id.value)
                 if old and old['record'].timing!=r.timing:self.note('source_rescheduled')
                 if old and old['record'].site_position!=r.site_position:self.note('point_corrected')
@@ -381,26 +407,47 @@ class SourceCase(BudgetCase):
     def assert_all(self):
         super().assert_all()
         store=MemoryGit(self.remote)
-        # Independently predict which exact-time record is eligible. An
+        # Predict eligibility separately from exact display precision. Sourced
+        # MIN affects retention, but never becomes an exact wire countdown. An
         # in-flight status must not become a future countdown or a completion.
         eligible=[]
         if self.evaluated is not None:
             for key,entry in self.records.items():
-                r=entry['record'];target=r.timing.exact_utc;anchor=target if target is not None else r.timing.window_start_utc
+                r=entry['record'];target,anchor=reference_times(r)
                 if (r.status not in (domain.LaunchStatus.COMPLETED,domain.LaunchStatus.CANCELLED)
                         and (target is None or self.evaluated<target+900)
                         and (r.status is not domain.LaunchStatus.STARTED or target is not None and target<=self.evaluated)):
-                    eligible.append((anchor is None,0 if anchor is None else anchor,r.launch_id.namespace,r.launch_id.value,target))
+                    eligible.append((anchor is None,0 if anchor is None else anchor,r.launch_id.namespace,r.launch_id.value))
         observed=domain.select_next(prod._schedule(MemoryGit(self.remote)._ledger_at(self.remote.refs[prod.STATE_REF])['accepted']))
         if not eligible:
             assert observed.entry is None and observed.timing_state is domain.TimingState.NO_SCHEDULE,'selection_empty'
         else:
-            _,_,namespace,value,target=min(eligible)
+            _,_,namespace,value=min(eligible)
+            expected_record=self.records[value]['record'];target=expected_record.timing.exact_utc
             assert observed.entry.record.launch_id.namespace==namespace and observed.entry.record.launch_id.value==value,'selection_identity'
             expected_state=(domain.TimingState.UNCERTAIN if target is None else
                             domain.TimingState.COUNTDOWN if target>self.evaluated else domain.TimingState.AWAITING_UPDATE)
             expected_remaining=target-self.evaluated if target is not None and target>self.evaluated else None
             assert observed.timing_state is expected_state and observed.remaining_seconds==expected_remaining,'selection_countdown'
+            # Exercise the real source->wire->watch-row projection separately
+            # from eligibility. Expectations use literal source input fields.
+            from tools.spacefox.wire import project_launch
+            from tools.spacefox.watch_snapshot import _row
+            row=_row(project_launch(observed.entry),{'entries':{}},POLICY,False)
+            t=expected_record.timing;eligibility,ordering=reference_times(expected_record)
+            minute=t.precision is domain.TimePrecision.SOURCE_COARSE and t.source_precision_id==1
+            precision='minute' if minute else t.precision.value
+            deadline=None if eligibility is None else eligibility+900
+            reminder=expected_record.status is domain.LaunchStatus.PENDING and eligibility is not None
+            if t.window_start_utc is not None:reminder=reminder and eligibility>=t.window_start_utc
+            if t.window_end_utc is not None:reminder=reminder and eligibility<=t.window_end_utc
+            expected=(eligibility,precision,deadline,ordering,None if t.exact_utc is not None else t.nominal_utc,reminder)
+            assert tuple(row[n] for n in (10,11,13,14,20,21))==expected,'source_precision_projection'
+            assert observed.entry.record.timing==t,'selected_source_precision'
+            if t.precision is domain.TimePrecision.SOURCE_COARSE:
+                assert t.exact_utc is None and observed.remaining_seconds is None,'coarse_not_exact'
+                self.note('coarse_minute_selected' if minute else 'coarse_hour_selected')
+            self.properties['source_precision_projection']+=1
         self.note('selection_checked')
         for key,e in self.archives.items():
             observed=store.archived(e['record'].launch_id,self.remote.refs[prod.STATE_REF])
@@ -434,7 +481,9 @@ class SourceCase(BudgetCase):
             ['advance',60,0],['reserve',0,1],source(-2,5,status='started'),
             ['advance',1,0],['reserve',0,1],source(-2,6,status='unknown'),
             ['advance',1,0],['reserve',0,1],source(-2,7,precision='window'),
-            ['advance',1,0],['reserve',0,1],source(-2,8,precision='unknown')]
+            ['advance',1,0],['reserve',0,1],source(-2,8,precision='unknown'),
+            ['advance',1,0],['reserve',0,1],source(-2,9,precision='source-coarse-minute'),
+            ['advance',1,0],['reserve',0,1],source(-2,10,precision='source-coarse-hour')]
 
 
 def record_document(r):
@@ -758,7 +807,7 @@ def generated_event(cls,rng):
     if name=='advance':return [name,rng.choice([-1,0,1,59,60,299,300,3599,3600]),0]
     if name in ('source','duplicate_batch','mixed_batch'):
         return [name,rng.choice([-1]+list(range(16))),dict(id=rng.randint(1,3),version=rng.randint(0,4),
-            age=rng.choice([-1,0,1]),status=rng.choice(['pending','unknown','started','completed','cancelled']),point=rng.randint(0,2),precision=rng.choice(['exact','window','unknown']))]
+            age=rng.choice([-1,0,1]),status=rng.choice(['pending','unknown','started','completed','cancelled']),point=rng.randint(0,2),precision=rng.choice(['exact','window','unknown','source-coarse-minute','source-coarse-hour']))]
     if name=='omitted':return [name,rng.choice([-1]+list(range(16))),0]
     if name=='reserve':return [name,rng.randrange(3),rng.randrange(3)]
     if name in ('accept','finish'):return [name,rng.choice([-1]+list(range(16))),rng.randrange(3)]
@@ -840,7 +889,7 @@ REQUIRED={
 
 REQUIRED_FACTS={
  'budget':{'postcommit_source_refused','healthy_suppressed','permission_issued','quota_refused','uncertain_refused','optional_backoff_refused','catalog_headroom','catalog_checkpoint','catalog_invalid_refused','callback_missing','callback_expired','callback_duplicate'},
- 'source':{'source_accepted','source_future','source_duplicate_ids','mixed_atomic_refusal','source_regressed','source_conflict','source_omission_retained','source_rescheduled','source_retired','source_revived','point_corrected','source_started','source_unknown','selection_checked','source_window','source_unknown_timing'},
+ 'source':{'source_accepted','source_future','source_duplicate_ids','mixed_atomic_refusal','source_regressed','source_conflict','source_omission_retained','source_rescheduled','source_retired','source_revived','point_corrected','source_started','source_unknown','selection_checked','source_window','source_unknown_timing','source_coarse_minute','source_coarse_hour','coarse_minute_selected','coarse_hour_selected'},
  'publication':{'old_live_refused','idempotent_live','witness_saved','witness_idempotent','witness_refused','candidate_prepared','product_failure_refused','malformed_feed_refused','pending_prepare_refused','exact_promotion','mixed_live_refused','deploy_succeeded','deploy_failed_retained','atomic_candidate_saved','atomic_future_refused','atomic_expired_refused'},
  'deployment':{'old_observation_refused','intent_armed','arm_missing_refused','duplicate_arm_refused','wrong_observation_refused','unfinal_observation_refused','duplicate_observation_refused','unknown_pages_retained','empty_without_proof_retained','stale_recovery_refused','proven_not_started','partial_finality_retained','final_exact_promoted'},
 }

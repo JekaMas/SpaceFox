@@ -1,0 +1,16 @@
+REQUIRED_COARSE_COVERAGE_RED AssertionError: ('missing semantic facts', ['coarse_hour_selected', 'coarse_minute_selected', 'source_coarse_hour', 'source_coarse_minute'])
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-stm-event-pbt-20261117/tests/host_stm_properties.py", line 801, in run_trace
+    assert not missing,('missing semantic facts',sorted(missing))
+           ^^^^^^^^^^^
+AssertionError: ('missing semantic facts', ['coarse_hour_selected', 'coarse_minute_selected', 'source_coarse_hour', 'source_coarse_minute'])
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<stdin>", line 7, in <module>
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-stm-event-pbt-20261117/tests/host_stm_properties.py", line 807, in run_trace
+    raise TraceFailure(dict(machine=machine,seed=seed,event_index=index,events=events,
+        error=type(error).__name__+': '+str(error),failure_property=(str(error.args[0][0]) if error.args and isinstance(error.args[0],tuple) else str(error).split(':',1)[0]),model=None if case is None else model_summary(case),
+        sut=None if case is None else sut_summary(case),forbidden=scope.forbidden)) from error
+tests.host_stm_properties.TraceFailure: AssertionError: ('missing semantic facts', ['coarse_hour_selected', 'coarse_minute_selected', 'source_coarse_hour', 'source_coarse_minute'])

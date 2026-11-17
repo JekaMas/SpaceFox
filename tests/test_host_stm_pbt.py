@@ -92,3 +92,22 @@ class CampaignAccountingTest(unittest.TestCase):
         from tests.host_stm_properties import REQUIRED_FACTS
         required=REQUIRED_FACTS['source']
         self.assertTrue({'source_started','source_unknown','selection_checked','source_window','source_unknown_timing'} <= required)
+
+    def test_source_coarse_witness_and_replay(self):
+        from tests.host_stm_properties import REQUIRED_FACTS,TraceFailure
+        required={'source_coarse_minute','source_coarse_hour','coarse_minute_selected','coarse_hour_selected'}
+        self.assertTrue(required <= REQUIRED_FACTS['source'])
+        fixture=ArtifactFixture();events=trace_for('source',9127)
+        without_coarse=[event for event in events if not (
+            isinstance(event[2],dict) and event[2].get('precision','').startswith('source-coarse'))]
+        with forbid_real_effects():
+            with self.assertRaises(TraceFailure) as caught:
+                run_trace('source',9127,fixture,without_coarse)
+            self.assertIn('missing semantic facts',caught.exception.receipt['error'])
+            self.assertIn('source_coarse_',caught.exception.receipt['error'])
+            actual=run_trace('source',9127,fixture)
+            replay=run_trace('source',9127,fixture,events)
+        self.assertEqual(actual,replay) # replay control; independent oracle is in run_trace
+        for fact in required:self.assertGreater(actual['facts'][fact],0)
+        self.assertGreater(actual['properties']['source_precision_projection'],0)
+        self.assertEqual(actual['forbidden'],0)
