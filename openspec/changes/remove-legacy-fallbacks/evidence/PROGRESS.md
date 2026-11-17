@@ -1,10 +1,13 @@
 # Current authoritative scope — P1 shipping only, 2026-11-18
 
+**Delivery completed at its observable boundaries:** frozen tag/source `a93a8d412ad1663e86e861515bf0fbc434d0c7c7`, 0.2.10 / NativeID `6d3ad619`. The regular GitHub release has 53/53 asset digest metadata matches. Garmin verified the exact signed IQ and accepted Submit; its public listing still showed 0.2.9/Internal 18 immediately afterward, so 0.2.10 public availability/approval is not observed. Physical watch and phone acceptance remain unobserved. The first 900-second SDK timeout is preserved; the subsequent official export passed. See `PUBLICATION.md`. P2/P3 remain FUTURE / NOT DONE.
+
+
 Latest explicit user steering narrows delivery to necessary current P1 fixes. Broad P2/P3/full 21,406-path audit is **FUTURE / NOT DONE**, not a prerequisite for this release. Historical sections below describe their then-current plans and counts; they do not override this scope or claim pending/partial paths complete.
 
 P1 source/method and affected qualification/refusal controls are complete at `72236a74bd4b77a62fb134c81ed818d94b0a877d`. Actual clean source_state PASS: 2,095 inputs. Isolated clean public source_state and manifest validation PASS: eng/rus/deu/fre/spa, no SDK discovery, private-home reads or external non-Git processes. The first wrapper assertion error is retained separately; it was not a production reader failure. Final metadata is 0.2.10 / NativeID `6d3ad619`; only manifest/NativeVersion metadata changes after qualification, with no runtime/resource/model semantic delta. Final actual current peer gate PASS on clean reviewed source `e939448366dd2bb1c14ec1b0de80e52313302899`; one canonical `P1-PEER.json` carries the actual nonempty proof boundary. P1 GREEN; author now owns delivery. No further behavior/PBT/SDK campaign is required.
 
-See `P1-PEER.md`, `P1-peer-invalidation.json`, and clean-context logs for exact boundaries. All 19 prior campaigns retain their original source/time/program identities. README remains truthful at published 0.2.9 until actual delivery.
+See `P1-PEER.md`, `P1-peer-invalidation.json`, and clean-context logs for exact boundaries. All 19 prior campaigns retain their original source/time/program identities. The historical statement that README awaited 0.2.9 delivery predates the completed 0.2.10 publication above.
 
 ---
 

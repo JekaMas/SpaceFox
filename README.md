@@ -2,15 +2,15 @@
 
 SpaceFox is a free, MIT-licensed space watch face for Garmin watches, including Forerunner 165 and Forerunner 165 Music. It combines a large digital clock, rocket artwork, a launch-site map, a local T−/T+ countdown and four configurable activity fields.
 
-**[Install from Connect IQ](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3)** · **[0.2.9 release](https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.9)** · **[FR165 install ZIP](https://github.com/JekaMas/SpaceFox/releases/download/v0.2.9/SpaceFox-0.2.9-FR165-install.zip)** · [Release notes](https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.9)
+**[Install from Connect IQ](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3)** · **[0.2.10 release](https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.10)** · **[FR165 install ZIP](https://github.com/JekaMas/SpaceFox/releases/download/v0.2.10/SpaceFox-0.2.10-FR165-install.zip)** · [Release notes](https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.10)
 
-The 0.2.9 GitHub release improves state transitions and recovery for display, requests, saved facts, optional artwork and fields; known launch coordinates remain available when supplied. Reminders default off. The owner reported missing updates, a missing launch point and countdown, and unexpectedly early LOW on physical 0.2.4; their cause and physical acceptance of 0.2.9 remain unobserved. Garmin submission and approval are tracked separately in the publication record.
+The 0.2.10 GitHub release consolidates current five-language qualification and release-source safeguards; watch runtime behavior is unchanged from 0.2.9. Garmin accepted its signed 0.2.10 submission, while public availability has not yet been observed. The owner reported missing updates, a missing launch point and countdown, and unexpectedly early LOW on physical 0.2.4; their cause and physical acceptance of 0.2.10 remain unobserved. Reminders default off.
 
 ![SpaceFox 0.1.18 in the Forerunner 165 Music simulator](openspec/changes/spacefox-watchface/evidence/fields018/entry-controls/peer-release-390-256680ec.png)
 
 Native simulator capture; it is not a physical watch photograph.
 
-The 0.2.9 release uses hourly healthy schedule checks and retries missing or failed schedules at the next permitted connected opportunity. Garmin background dispatch has a five-minute minimum. Phone delivery and physical watch acceptance remain unobserved.
+The 0.2.10 release uses hourly healthy schedule checks and retries missing or failed schedules at the next permitted connected opportunity. Garmin background dispatch has a five-minute minimum. Phone delivery and physical watch acceptance remain unobserved.
 
 ## What it shows
 
@@ -33,7 +33,7 @@ English and `https://jekamas.github.io/SpaceFox` are defaults. English, Russian,
 
 The watch calculates the countdown locally, keeps accepted launch data offline and preloads a bounded set of upcoming launches so the face can advance locally at the retention deadline. Partial or failed updates preserve known future launches and their refresh targets across restart. New schedules and artwork arrive through Garmin Connect on the paired phone. The public [feed](https://jekamas.github.io/SpaceFox/feed.json) and the compact watch snapshot at `watch.json` are maintained by GitHub Actions with an independent Cloudflare timer; it does not need an agent or computer to stay running. No AWS account, subscription or SpaceFox login is required.
 
-See [installation](https://github.com/JekaMas/SpaceFox/releases/download/v0.2.9/INSTALLATION.md), [supported watches](docs/SUPPORTED_DEVICES.md), [settings and testing](TESTING.md), and [permissions and privacy](docs/PRIVACY.md). Use the existing SpaceFox Connect IQ listing for updates. USB installation uses the PRG matching the watch model; IQ is the Store export, not a file to open on a phone.
+See [installation](https://github.com/JekaMas/SpaceFox/releases/download/v0.2.10/INSTALLATION.md), [supported watches](docs/SUPPORTED_DEVICES.md), [settings and testing](TESTING.md), and [permissions and privacy](docs/PRIVACY.md). Use the existing SpaceFox Connect IQ listing for updates. USB installation uses the PRG matching the watch model; IQ is the Store export, not a file to open on a phone.
 
 ## Contributing and SDD
 

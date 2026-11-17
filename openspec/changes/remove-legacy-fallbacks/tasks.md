@@ -5,7 +5,7 @@ Base: public `1e5682e4527f837453b80b9cb4d33a5ed4e4aa97`. Latest explicit user st
 - [x] P1 current five-primary admission and current release/source/peer contour GREEN: genuine current en/ru/de/fr/es corpus/resource/font/header/UI evidence, tamper/missing/hidden-byte refusals, JS/deletion/rename closure and unchanged predecessor signing guarantees. Affected checks and actual current peer gate PASS; see P1-PEER.json and P1-peer-current-gate.log.
 - [x] Reconcile affected checks with retained 15 native and four host campaigns. P1 qualification/gates changed; business owners/models did not. Preserve authentic original observations and first failures.
 - [x] One independent P1 review/fix through GREEN, final 0.2.10 / NativeID `6d3ad619`, and one real existing-gate receipt with literal nonempty `proof_boundary`.
-- [ ] Delivery after root judgment: author integrates actual public main, performs one official signed export, and publishes complete GitHub/Garmin release with actual identities/status.
+- [x] Delivery: integrated actual public main, performed signed export, published the complete GitHub release and submitted the verified 0.2.10 IQ to Garmin. Public Garmin availability and physical/phone acceptance remain unobserved; exact identities and failed timeout are in `evidence/PUBLICATION.md`.
 
 ## FUTURE — explicitly not done
 
