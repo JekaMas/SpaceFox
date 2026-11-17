@@ -1,6 +1,6 @@
 # Independent P1 verification and repairs
 
-Current status: P1 source/method repairs, affected qualification/host controls and actual clean public-context validation complete; final real peer export gate is next. Latest explicit user steering requires necessary P1 only; P2/P3/full per-file audit is FUTURE / NOT DONE. Publication remains with author after root judgment.
+Current status: P1 source/method repairs, affected qualification/host controls and actual clean public-context validation complete; the actual current peer export gate PASS on clean source `e939448366dd2bb1c14ec1b0de80e52313302899` (0.2.10 /6d3ad619). P1 GREEN. Latest explicit user steering requires necessary P1 only; P2/P3/full per-file audit is FUTURE / NOT DONE. Publication remains with author after root judgment.
 
 Reviewed author input:928683a523f29babd866d54739a6cdf2668ce50a (implementation1a121aaa,fixtureefb22829). Same peer owns all repairs. Native runtime/resources/jungle, host business owners/models and signing policy remain unchanged from public0.2.9. Release metadata alone is now0.2.10 / NativeID6d3ad619; the authentic captured native qualification remains at its original0.2.9/d13aa334 inputs and is not relabeled as a new run. All19 prior campaigns retain original IDs/durations/programs, not refreshed observations (`P1-peer-invalidation.json`).
 
@@ -23,3 +23,9 @@ Five fresh network-none task-owned VMs were used, one launcher per VM; all are s
 ## Actual clean-source/public-context boundary
 
 `P1-peer-clean-context-first.log` records actual clean root source_state PASS at72236a74 (2,095inputs), followed by an isolated wrapper assertion error that read XML text-valued languages as attributes. The reader/manifest calls succeeded; no claim that this whole first process passed. Correcting only that wrapper yielded `P1-peer-clean-context-final.log`: isolated clean public source_state PASS with2,095inputs and eng/rus/deu/fre/spa, SDKdiscovery0, externalnonGit0, privateHOMEreads0. Version/NativeVersion metadata alone changed afterward; current actual peer gate binds their final clean bytes. No new behavior or qualification run is implied.
+
+## Final current receipt and handoff
+
+`P1-PEER.json` is the one actual independent receipt, reviewed source `e939448366dd2bb1c14ec1b0de80e52313302899`, version0.2.10 / NativeID6d3ad619, with literal nonempty proof_boundary. The existing `tools.release.evidence_inputs` and `require_combined_peer` accepted those exact bytes against the clean final source (`P1-peer-current-gate.log`). This includes current five-primary admission and clean source_state; no extra behavior/native campaign was run. Final evidence-only reconciliation does not change release source inputs.
+
+P1 is GREEN. Broad P2/P3/full per-file audit remains FUTURE / NOT DONE under the latest explicit user scope; partial inventories/preparation remain partial. Author delivery still must integrate actual public main, export/sign once, publish/read back GitHub/Garmin and update factual published status. No physical/phone success is inferred.

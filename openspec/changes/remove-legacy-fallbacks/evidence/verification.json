@@ -32,12 +32,13 @@
       "property": "Five primary locales admitted only from retained genuine finite-corpus/glyph/resource observations under current explicit source fences.",
       "positive": "python3 -B -m unittest -v tests.test_current_language_admission.CurrentLanguageAdmission.test_real_five_primary_observations_and_source_replay",
       "negative": "python3 -B -m unittest -v tests.test_current_language_admission.CurrentLanguageAdmission.test_missing_and_changed_current_inputs_are_refused tests.test_current_language_admission.CurrentLanguageAdmission.test_profile_identity_is_not_masked_by_metadata_extensions",
-      "status": "PASS affected actual qualification plus clean current/public source context; final real peer gate pending",
+      "status": "PASS affected actual qualification, clean current/public source context and existing actual current peer gate",
       "evidence": [
         "P1-peer-controls-first.log",
         "P1-peer-native/observation.json",
         "P1-peer-native/resource-plan.json",
-        "P1-peer-native/ui-glyphs.json"
+        "P1-peer-native/ui-glyphs.json",
+        "P1-peer-current-gate.log"
       ],
       "boundary": "Five current SDK tables/raw1 and actual95UI glyph shapes; original Mac corpus/55fieldlabel evidence retained distinctly. No pixel/phone/hardware/menu-rendering/native-speaker claim."
     },
@@ -51,16 +52,18 @@
         "P1-peer-fence-final.log",
         "P1-peer-deletion-first-red.log",
         "P1-peer-js-closure-first-red.log",
-        "P1-peer-rename-first-red.log"
+        "P1-peer-rename-first-red.log",
+        "P1-peer-current-gate.log"
       ]
     },
     {
       "id": "P1-custody",
       "property": "Actual original published predecessor receipt, paired IQ and signing identity remain fail-closed.",
       "positive_negative": "Actual tools.release.require_combined_peer with the real P1 independent receipt, plus unchanged identity_policy/public_key/backup_status/previous_release/validate_previous source and signing policy",
-      "status": "Unchanged signing/predecessor semantics retained; real P1 receipt gate pending",
+      "status": "PASS existing actual current peer gate; unchanged signing/predecessor semantics retained",
       "evidence": [
-        "P1-peer-invalidation.json"
+        "P1-peer-invalidation.json",
+        "P1-peer-current-gate.log"
       ]
     },
     {
@@ -91,5 +94,8 @@
       ],
       "status": "RETAINED 15 native +4 host by unchanged semantic inputs; no rerun"
     }
-  ]
+  ],
+  "reviewed_release_source": "e939448366dd2bb1c14ec1b0de80e52313302899",
+  "p1_status": "GREEN",
+  "peer_receipt": "P1-PEER.json"
 }
