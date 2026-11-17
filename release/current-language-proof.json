@@ -1,0 +1,87 @@
+{
+  "schema": 1,
+  "scope": "current-five-primary-retained-finite",
+  "primaryLocales": [
+    "en",
+    "ru",
+    "de",
+    "fr",
+    "es"
+  ],
+  "referenceVersion": "0.2.9",
+  "referenceSource": "1f53420a5af7c4479aca537a12197d10980e1c07",
+  "referencePeer": {
+    "path": "openspec/changes/stm-event-pbt/evidence/PEER.json",
+    "sha256": "272b0ace619760750212df066c1ce87b935f386592512e632ce221aaa0af044c"
+  },
+  "referenceGate": {
+    "path": "openspec/changes/stm-event-pbt/evidence/PEER-release-gate.log",
+    "sha256": "fd16cab128876756267054aa7734139a00040802d77718c0bb867857797d2eb2"
+  },
+  "finiteReceipt": {
+    "path": "openspec/changes/spacefox-watchface/evidence/basic-main-review/finite/software-qualification.json",
+    "sha256": "a26d99cd1f64ce5aa3eacc3829448e9340171728e2c3fdcc1a982a7da2792d01"
+  },
+  "corpus": {
+    "path": "corpus/real-schedule-basic-five-20261113/display-corpus.json",
+    "sha256": "3bca4d0abb4798654acfde011c94236fb49d197041fc51f887ace7422a6f4407"
+  },
+  "currentInputs": {
+    "tools/native_language_policy.py": "7c6d64ffc15c0e47d5452faaa66feec2fae81afa40d2a840bc6aa1d9d85dba44",
+    "tools/build_native_localization.py": "d21715bf7cd7a1ff7fa96ecb73aa38f9e94724ce651a7c698ce1776a6b959800",
+    "tools/build_watchface.py": "57ad51fbb62251615b629f9c24edab45ef032cb410f301b3f3ded54e30f54b0b",
+    "tools/display_corpus.py": "2a32ab33c013aab4c6ecbc0961ad2237fd74a4d847749ecb10edc3c31977ba1c",
+    "tools/spacefox/provider.py": "2d855c18cbb43da57fa32087e275597bc14f4e7bf5490f4cc83090aab44c9c65",
+    "tools/spacefox/catalog.py": "b33bf56669302cc44cd5195c1665ac95b7cc95801efa4e1ad234bff24f92a29b",
+    "watchface/source/LocalePresentation.mc": "0cb0be9330afbaf415182dd30ea2304dd9e1139f714d05c71901c945c28a13cc",
+    "watchface/source/SceneRenderer.mc": "4f6981947ecd4957034fb4363d0814abcb70c1ab6bcb49ddfff339502dc4a6a9",
+    "watchface/source/SceneSettings.mc": "264304ed331374ed730a93da642998813dd9b9c15d2cff8043f92afb53e2efc4",
+    "watchface/source/SpaceFoxView.mc": "7b08f1f89ca260cb5bd941963cfb19d3a7a98a8846f8c14e2687d99b1a188aa4",
+    "watchface/source/WatchClock.mc": "e1cb5dd3ac35fb8bc52efad2ef85c7b909cb15fe7a04b4710302d4d34ddec100",
+    "watchface/source/Fitness.mc": "c4ed7075af469ce56f15a1684ddebfb9bb6c4ded9f76df19568393699671450b",
+    "watchface/source/ScheduleState.mc": "4a9f22b9d01398fa60eb2ce6e430b09d878380b93b88f93058972e340780f3c4",
+    "watchface/source/SceneContext.mc": "221de71d47d59c6e0c9ae9de7850bcda1258670f29041ee5900b3c0d8a8491aa",
+    "watchface/source/FeedScene.mc": "928408d6f228deeedfd0cda92190122bf0404ff95c6ad98c558061ac6046e572",
+    "watchface/source/generated/LocaleGraphemes.mc": "5ad65d6328908a7f251cd5ddbac83244de9b51929c2c46cb746bfb168a4f6c80",
+    "watchface/monkey.jungle": "abe93f12654450100407e84232b4c6dc0e7c9b1707499d7fd8e118fce040f0c4",
+    "watchface/toolchain-lock.json": "823b210ec7670daf0db7dae5f659bd275340a95b04af98518d68df9785ae8f86",
+    "watchface/resources/settings/settings.xml": "eee078296d533acbc4fd5d293c77a62f49745339554dcfe1e4ff35504f74f02f",
+    "watchface/resources/settings/properties.xml": "998ad36162b6820e53f3d92e7dcfe7963ece9cb99a182f9ac8e838666612b140",
+    "watchface/resources/json/locales.xml": "15b1c7862c6bf727a195536368db9a26baba2d0ce3c3ed5f07a1682129235c0a",
+    "locales/en.json": "0fd9ee10ba903853f5105dc0c51884b9b2986a1e27f559e1790f5521419538f2",
+    "watchface/resources/json/Locale0.json": "a416bf9017d3493ffff332fc6a44cc1b9534de749e2a253a3134ba87beeb6ca5",
+    "watchface/resources/strings/strings.xml": "58c64fbf8e8966bdd0956cedad26ae53e6bbbd2dd881b45f7c1aa2f407678f26",
+    "locales/ru.json": "087604228bb305061e65f77a1ce88b45219969918d51cad1afa4b0ce93cd6084",
+    "watchface/resources/json/Locale1.json": "0c8483d2a71025129d5794d93a3ae63e5083f9cf1b92347475537403a81b2fb3",
+    "watchface/resources-rus/strings/strings.xml": "5ef370226b1aea90a30a296ae969cc3edea66cde2ca7cf7f2da7e1b787bb3b7a",
+    "locales/de.json": "f889e4028b5610c25dec36729f30c9527c49c44eac13bbf404b2e72e5a5d14b0",
+    "watchface/resources/json/Locale2.json": "52a2d57f8d2e73a78a3581ca5d893962f664499fd1e65487ebda189cf5d3c74d",
+    "watchface/resources-deu/strings/strings.xml": "4fa5ff33fbf713886085b695ab1324c22692dfa35e461fca00983752ab6a1f0f",
+    "locales/fr.json": "a300ea860486bf45f40cb68123249dfc7b32d3e17bd8c7798905c1a571451d22",
+    "watchface/resources/json/Locale3.json": "76fdc9e6a41886722a060b98d546d1eaf9deabaa7baa7cb5b098818b37f7f6bb",
+    "watchface/resources-fre/strings/strings.xml": "5f075c1b1973b1617bd14e3197d99742d19b45c6f384ccb6bca7d683e0048a05",
+    "locales/es.json": "aa127e612f1bf8a8cc8ab00457e85a8b29beff78f0a543f6fa78c8ec9f1302b9",
+    "watchface/resources/json/Locale4.json": "29f023d6b291ea15a56dc6e340775a555cc0d196dce88699f79df5cfd5de5d7b",
+    "watchface/resources-spa/strings/strings.xml": "9deba86015e55144ae67f558f9c2a28fbebebde5cadae7bf0422bacf12c4b5a6",
+    "watchface/resources/json/graphemes.xml": "dc18fb0a60a2d8e2b4b058f91cd0723ea6cbafee33947429c325db9854f9c1a7",
+    "watchface/resources/json/GraphemeProperties.json": "2b8a5a6541465122288792356878479bdf3d70a4afd47203751d444d9c71b78e",
+    "watchface/resources/fonts/fonts.xml": "a0632efe7e59d29ffd056439bc5dff68093beca498e75cffecb3d0de295f4058",
+    "watchface/resources/fonts/Aod40.fnt": "63911e0977860d4c27023b09b9b753f213c3052b3047275b28ac9b9047c0e4fc",
+    "watchface/resources/fonts/Aod40.png": "1bd0407c53153021a267421e10d44bbcfbc51c92f78960e3b3a35c7e6d6146c6",
+    "watchface/resources/fonts/Metric32.fnt": "c41e4239d62f9e702520689b0fcc8a21d4dcfc542225bdf23c694ac69a84abea",
+    "watchface/resources/fonts/Metric32.png": "af7c90017fcf00bf7e87ecc365b68c343b85e158ad8408fb6ab6e5e03b0d626a",
+    "watchface/resources/fonts/Time80.fnt": "d8c75b5b2ad057ad9329a6b37f014a64bb438165b38e37b50463c3f9768f17bc",
+    "watchface/resources/fonts/Time80.png": "38b4fa183abede45b7a2c56698150f3aa15b7cf3023915052794dbc17f401121"
+  },
+  "physicalDeviceObserved": false,
+  "nativeSpeakerReviewed": false,
+  "proofBoundary": "Historical finite-corpus SDK and font observations retain their original source, while the current text/resource closure is independently bound; no fresh device, speaker or current bitmap claim.",
+  "historicalToolchainLock": {
+    "path": "openspec/changes/spacefox-watchface/evidence/final-native-timing-settings/baseline/watchface/toolchain-lock.json",
+    "sha256": "948c281801f4596cd6f904428f385adf85ebfe63f89d3c416b959cddf7bed389"
+  },
+  "currentNativeObservation": {
+    "path": "openspec/changes/remove-legacy-fallbacks/evidence/current-finite-combined.json",
+    "sha256": "1eb8c7e4496363ce6fa6859c96267fa43e0e8a526357481b497ba8dbea3e2e99"
+  }
+}

@@ -30,41 +30,6 @@ def git(root, *args):
 
 
 class GroupCTest(unittest.TestCase):
-    def source_fixture(self, root):
-        # Actual Git boundary with the source_state mandatory admission set.
-        names = ('tools/release.py', 'release/signing-identity.json',
-                 'tests/__init__.py', 'tests/test_basic_launch_logic.py',
-                 'tests/test_basic_time_fields.py', 'tests/test_release_update_native.py',
-                 'tests/test_current_data_convergence.py', 'tests/test_current_timing_convergence.py',
-                 'tests/test_current_version_binding.py', 'tests/native_historical_binding.py',
-                 'watchface/source/Example.mc')
-        for name in names:
-            p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b'original source\n')
-        for name,value in [('locales/catalog.json',{'supportPolicy':{'softwareQualificationProof':None}}),
-                           ('release/native-admission-inputs.json',[])]:
-            p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(value))
-        git(root,'init','-q');git(root,'config','user.name','C local test');git(root,'config','user.email','c@example.invalid')
-        git(root,'add','.');git(root,'commit','-qm','initial source')
-
-    def test_source_capture_single_read_and_fresh_fence(self):
-        with tempfile.TemporaryDirectory() as temp:
-            root=Path(temp).resolve();self.source_fixture(root)
-            expected={p.relative_to(root).as_posix():sha(p.read_bytes()) for p in root.rglob('*') if p.is_file() and '.git' not in p.parts}
-            counts=collections.Counter();reader=Path.read_bytes
-            def counted(path):counts[path]+=1;return reader(path)
-            with patch.object(Path,'read_bytes',counted):first=release.source_state(root)
-            self.assertEqual(first['inputs'],expected)
-            self.assertEqual(set(counts.values()),{1})
-            source=root/'watchface/source/Example.mc';source.write_bytes(b'mutated! source\n')
-            with self.assertRaisesRegex(release.ReleaseBlocked,'source must be clean'):release.source_state(root)
-            git(root,'add','.');git(root,'commit','-qm','source changed')
-            second=release.source_state(root)
-            self.assertEqual(second['inputs'][str(source.relative_to(root))],sha(b'mutated! source\n'))
-            self.assertNotEqual(first,second)
-            for data in (b'-----BEGIN '+b'PRIVATE KEY-----',b'-----BEGIN '+b'RSA PRIVATE KEY-----'):
-                source.write_bytes(data);git(root,'add','.');git(root,'commit','-qm','secret control')
-                with self.assertRaisesRegex(release.ReleaseBlocked,'secret-shaped'):release.source_state(root)
-
     def test_snapshot_mutation_sequences(self):
         # Independent model: only the declared original tree is admitted. Every
         # event reaches the production fence; refusal never alters the tree.
@@ -173,17 +138,6 @@ class GroupCTest(unittest.TestCase):
         self.assertEqual(global_map.project(0,0),(128,128))
         for point in ((True,0),(91,0),(0,-181)):
             with self.assertRaises(global_map.GeographyError):global_map.project(*point)
-
-    def test_changed_retired_snapshot_refuses(self):
-        from tools.native_performance021_qualification import validate
-        catalog=json.loads((ROOT/'locales/catalog.json').read_text());ref=catalog['supportPolicy']['softwareQualificationProof']['performance021Proof']
-        record=json.loads((ROOT/ref['path']).read_text())
-        with tempfile.TemporaryDirectory() as temp:
-            root=Path(temp)
-            for name in (ref['path'],*(row['path'] for row in record['prior'].values())):
-                p=root/name;p.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(ROOT/name,p)
-            target=root/record['prior']['tools/build_private_beta.py']['path'];target.write_bytes(target.read_bytes()+b'changed')
-            with self.assertRaisesRegex(ValueError,'proof input changed'):validate(root,catalog)
 
     def browser_receipt(self):
         baseline=json.loads((EVIDENCE/'BROWSER-BASELINE.json').read_text());current=json.loads((EVIDENCE/'BROWSER-CURRENT.json').read_text())

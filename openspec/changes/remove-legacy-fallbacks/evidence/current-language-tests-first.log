@@ -1,0 +1,18 @@
+.F.
+======================================================================
+FAIL: test_missing_and_changed_current_inputs_are_refused (tests.test_current_language_admission.CurrentLanguageAdmission.test_missing_and_changed_current_inputs_are_refused)
+----------------------------------------------------------------------
+ValueError: software resource dependency unavailable: Time80.png
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-complete-legacy-audit-20261117/tests/test_current_language_admission.py", line 40, in test_missing_and_changed_current_inputs_are_refused
+    with self.assertRaisesRegex(ValueError, 'missing qualification input'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "missing qualification input" does not match "software resource dependency unavailable: Time80.png"
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.469s
+
+FAILED (failures=1)

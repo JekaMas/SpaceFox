@@ -1,0 +1,120 @@
+{
+  "schema": 1,
+  "scope": "P0 host-only delivery; P1-P3 and complete original audit remain future",
+  "cases": [
+    {
+      "id": "p0-transport",
+      "purpose": "independent source-age and traversal, current hourly and refusal behavior",
+      "evidence": [
+        "eight-first.log",
+        "traversal-final.log",
+        "advisory-wire.log",
+        "interval-preservation.log",
+        "cadence-policy.log",
+        "identity-policy.log"
+      ]
+    },
+    {
+      "id": "p0-existing-admission",
+      "purpose": "existing five-primary proof remains fail-closed and unchanged",
+      "evidence": [
+        "language-admission-first.log",
+        "language-admission-p0.log"
+      ]
+    },
+    {
+      "id": "p0-peer",
+      "purpose": "independent review of frozen host diff",
+      "status": "GREEN",
+      "receipt": "PEER.json",
+      "evidence": [
+        "PEER.md",
+        "peer-wire-epochs.log"
+      ]
+    }
+  ],
+  "observedCases": [
+    {
+      "id": "transport-eight",
+      "cases": [
+        "test_durable_latches_and_publication_preserve_source_ages",
+        "test_invalid_current_artifacts_keep_active_and_source",
+        "test_old_source_and_duplicate_result_refused_negative",
+        "test_optional_detail_never_renews_primary_minimum",
+        "test_quota_exhaustion_preserves_primary_and_terminal_latches",
+        "test_healthy_cadence_ignores_old_fast_hint",
+        "test_rollover_optional_404_counts_started_attempt",
+        "test_rollover_optional_success_counts_each_attempt"
+      ],
+      "positive_negative": "Independent traversal epoch preserved; invalid artifact rejection and retained source; hourly boundary; quota and optional errors",
+      "evidence": [
+        "eight-first.log",
+        "traversal-final.log",
+        "advisory-wire.log"
+      ],
+      "limitations": "First eight batch included stale 7200 refusal and failed; corrected valid-domain witness is separate."
+    },
+    {
+      "id": "current-sfr-codec",
+      "cases": [
+        "CurrentSfrCodecTest.test_row_encoding_matches_independent_rule",
+        "CurrentSfrCodecTest.test_captured_current_roles_roundtrip_and_bounds",
+        "CurrentSfrCodecTest.test_current_png_owner_rejects_invalid_bytes"
+      ],
+      "positive_negative": "Captured current roles and independent decode; truncated/invalid inputs refused",
+      "evidence": [
+        "sfr-codec.log"
+      ],
+      "disposition": "DEFERRED source, retained as historical observation; not evidence for P0 current source"
+    },
+    {
+      "id": "native-owners",
+      "cases": [
+        "cleanupFallbackSelectsOnce",
+        "cleanupFreshnessSharedPolicy",
+        "cleanupSfrDescriptorBoundary",
+        "cleanupSfrCanonicalRefusals"
+      ],
+      "positive_negative": "Selected successor once; freshness independent literal boundaries; captured asset descriptor accepted and corrupt hash/unknown field/canonical violations refused",
+      "evidence": [
+        "native-batch-compile.log",
+        "cleanupFallbackSelectsOnce.log",
+        "cleanupFreshnessSharedPolicy.log",
+        "cleanupSfrDescriptorBoundary.log",
+        "cleanupSfrCanonicalRefusals.log"
+      ],
+      "limitations": "FR165M SDK selected tables PASS, each raw launcher exit 1; recording DC and descriptor boundaries, not full frame or device.",
+      "disposition": "DEFERRED source, retained as historical observation; not evidence for P0 current source"
+    },
+    {
+      "id": "hosted-test-consolidation",
+      "cases": [
+        "test_missing_authority_refuses_actual_updater_with_usable_provider",
+        "test_restart_promotes_exact_pending_before_generation_three",
+        "test_stale_worker_cannot_request_after_new_pending",
+        "test_saved_faults_stale_source_and_cas_refuse_without_publication"
+      ],
+      "positive_negative": "Real local Git/loopback missing authority, exact recovery, stale writer and hash-consistent invalid/CAS refusal",
+      "evidence": [
+        "hosted-consolidation.log"
+      ],
+      "limitations": "local Git and loopback; no public provider, Pages, device or account interaction",
+      "disposition": "DEFERRED source, retained as historical observation; not evidence for P0 current source"
+    }
+  ],
+  "outstandingCases": [
+    {
+      "id": "P1",
+      "purpose": "current five-locale admission without recursive retired proof islands"
+    },
+    {
+      "id": "P2",
+      "purpose": "saved native/resource cleanup after P1"
+    },
+    {
+      "id": "P3",
+      "purpose": "per-file audit completion"
+    }
+  ],
+  "deadlineUtc": "2026-11-17T14:35:58Z"
+}

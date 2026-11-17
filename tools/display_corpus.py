@@ -373,8 +373,9 @@ def ui_sources(root=ROOT):
     return ui, menus, semantic
 
 
-def build(directory, root=ROOT):
-    directory, root = Path(directory), Path(root)
+def replay_source_records(directory):
+    """Validate the captured provider pages and return their projected records."""
+    directory = Path(directory)
     state = loads((directory / 'collection.json').read_bytes())
     require(state.get('complete') is True and state.get('next') is None, 'complete next=null enumeration required')
     replay = {'count': None, 'pages': []}
@@ -390,6 +391,45 @@ def build(directory, root=ROOT):
         replay['pages'].append(page)
         records.extend(selected)
     require(len(records) == state['count'] == replay['count'], 'exact source count required')
+    return state, records
+
+
+def load_complete_corpus(path, root=ROOT):
+    """Bind retained launch text to the captured source, without rebuilding historical UI."""
+    path = Path(path).resolve()
+    data = json.loads(path.read_text())
+    coverage = data['coverage']
+    state, records = replay_source_records(path.parent)
+    if (coverage['terminalNext'] is not None or coverage['launchCount'] != coverage['sourceCount']
+            or coverage['uniqueLaunchIds'] != coverage['sourceCount'] or coverage['sourceCount'] < 1
+            or len(data['launches']) != coverage['sourceCount']
+            or coverage['sourceCount'] != len(records) or coverage['pageCount'] != len(state['pages'])
+            or data['neededDisplayIndices'] != list(range(len(data['strings'])))
+            or data['provenance']['collectionSha256'] != digest((path.parent / 'collection.json').read_bytes())):
+        raise ValueError('complete source enumeration and exact needed display dictionary required')
+    strings = data['strings']
+    def text(index):
+        if index is None:
+            return None
+        if not isinstance(index, int) or isinstance(index, bool) or not 0 <= index < len(strings):
+            raise ValueError('invalid corpus text index')
+        return strings[index]
+    for row, launch in zip(records, data['launches']):
+        site = row['texts'][5] or row['texts'][3]
+        country = row['countryCode'] or row['texts'][4]
+        composed = country + ' · ' + site if country and site else country or site
+        header = ' · '.join(value for value in row['texts'][:2] if value) or None
+        if (len(launch) != 7 or launch[:3] != [row['id'], row['net'], row['sourceIds']]
+                or [text(index) for index in launch[3]] != row['texts'][:3] + [composed]
+                or text(launch[4]) != row['countryCode'] or text(launch[5]) != composed
+                or text(launch[6]) != header):
+            raise ValueError('finite corpus launch differs from captured provider projection')
+    return data
+
+
+def build(directory, root=ROOT):
+    directory, root = Path(directory), Path(root)
+    state, records = replay_source_records(directory)
     strings, indices = [], {}
     def intern(value):
         if value is None:

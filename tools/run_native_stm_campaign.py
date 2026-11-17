@@ -200,7 +200,8 @@ def main():
         ap.error('positive duration and unique valid owner indices required')
     revision = command('git', '-C', str(ROOT), 'rev-parse', 'HEAD').stdout.strip()
     relevant = ('watchface', 'tools/run_native_stm_campaign.py', 'tests/test_native_stm_campaign.py',
-                'tools/native_audit_025_qualification.py', 'tools/release.py', 'locales/catalog.json')
+                'tools/current_language_admission.py', 'release/current-language-proof.json',
+                'tools/release.py', 'locales/catalog.json')
     dirty = command('git', '-C', str(ROOT), 'status', '--porcelain', '--', *relevant).stdout
     if dirty:
         raise SystemExit('native campaign source is not clean; commit and review before running:\n' + dirty)

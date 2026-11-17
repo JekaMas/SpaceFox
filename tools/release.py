@@ -50,230 +50,43 @@ def git(root: Path, *args: str) -> str:
     return result.stdout
 
 
-def resolve_performance021_retired_inputs(admission, paths, proof, read_metadata):
-    """Replace only retired resource paths with their authenticated prior bytes."""
-    if proof is None or "performance021Proof" not in proof:
-        return
-    from tools.native_performance021_qualification import D_DELETED
-    ref = proof["performance021Proof"]
-    proof_path = ref["path"]
-    require(proof_path in paths and hashlib.sha256(read_metadata(proof_path)).hexdigest() == ref["sha256"],
-            "performance021 admission proof is missing or changed")
-    record = json.loads(read_metadata(proof_path))
-    require(record.get("scope") == "performance021-host-source-delta" and
-            record.get("baseline") == "29f3cfd067ff10690a9ba5163f25e04cd4b55b6f",
-            "performance021 admission baseline differs")
-    for name in D_DELETED & admission - paths:
-        require(name not in record["current"], "current resource cannot use retired snapshot: " + name)
-        snapshot = record["prior"].get(name)
-        require(isinstance(snapshot, dict), "missing retired resource snapshot: " + name)
-        path = snapshot.get("path")
-        require(isinstance(path, str) and not PurePosixPath(path).is_absolute() and
-                ".." not in PurePosixPath(path).parts and path in paths and
-                hashlib.sha256(read_metadata(path)).hexdigest() == snapshot.get("sha256"),
-                "retired resource snapshot is missing or changed: " + name)
-        admission.remove(name)
-        admission.add(path)
-
-
-def resolve_audit_retired_inputs(admission: set[str], paths: set[str], proof: dict | None) -> None:
-    """Retain recorded snapshots in place of two retired audit-era paths."""
-    if proof is None or "auditRuntime025Proof" not in proof:
-        return
-    retired = {
-        "watchface/source/NativeSourceTimes.mc":
-            "openspec/changes/close-static-runtime-audit/evidence/prior/watchface/source/NativeSourceTimes.mc.txt",
-        "tests/test_ux02_reuse.py":
-            "openspec/changes/spacefox-watchface/evidence/release-cache-port/prior/test_ux02_reuse.py",
-    }
-    for name, snapshot in retired.items():
-        if name in admission and name not in paths:
-            require(snapshot in admission and snapshot in paths,
-                    "missing retained audit-era source snapshot: " + name)
-            admission.remove(name)
-
-
 def source_state(root: Path) -> dict:
     require(Path(git(root, "rev-parse", "--show-toplevel").strip()).resolve() == root,
             "root must be the actual Git worktree")
     require(not git(root, "status", "--porcelain", "--untracked-files=all").strip(),
             "release source must be clean, including untracked inputs")
     paths = git(root, "ls-files", "-z").split("\0")
-    # Preserve the proof actually used by manifest admission, alongside compiler
-    # inputs. Its retained raw pages are replayed locally, never fetched here.
-    # Only small admission metadata is retained. Large evidence/source bytes are
-    # read once below and released; nothing is reused by the next source fence.
-    metadata = {}
-    def read_metadata(name):
-        if name not in metadata:
-            metadata[name] = (root / name).read_bytes()
-        return metadata[name]
-    def metadata_digest(name):
-        return hashlib.sha256(read_metadata(name)).hexdigest()
-    catalog = json.loads(read_metadata("locales/catalog.json"))
-    proof = catalog["supportPolicy"]["softwareQualificationProof"]
-    admission = {"locales/catalog.json", "release/native-admission-inputs.json",
-                 # The historical site-flag observer imports these test modules
-                 # while reconstructing the generator used by its proof.
-                 "tests/__init__.py", "tests/test_basic_launch_logic.py",
-                 "tests/test_basic_time_fields.py",
-                 # The integration proof binds the incoming settings and
-                 # historical receipt readers to the current owner closure.
-                 "tests/test_release_update_native.py", "tests/test_current_data_convergence.py",
-                 "tests/test_current_timing_convergence.py", "tests/test_current_version_binding.py",
-                 "tests/native_historical_binding.py"}
-    # The retained delta validators reconstruct historical source trees. Their
-    # exact proof inputs must travel with a release and isolated qualification.
-    additional = json.loads(read_metadata("release/native-admission-inputs.json"))
-    require(isinstance(additional, list) and len(additional) == len(set(additional)),
-            "invalid native admission input manifest")
-    for name in additional:
-        require(isinstance(name, str) and (name == ".github/workflows/update-feed.yml" or
-                name.startswith(("openspec/changes/spacefox-watchface/evidence/",
-                                 "openspec/changes/add-launch-reminders/evidence/")))
-                and ".." not in PurePosixPath(name).parts and name in paths,
-                "unsafe or untracked native admission input")
-        admission.add(name)
-    if proof is not None and "devices020Proof" in proof:
-        admission.add("tools/device-fonts020.json")
-
-    if proof is not None and "integrated016Proof" in proof:
-        # Parent qualification reconstructs exact tracked tools inventories;
-        # include the non-Python entries that the standard export filter omits.
-        admission.update({"prototype/fonts/RobotoCondensed-latin-600.woff2",
-                          "tools/analyze_features.js", "tools/annotate_marker_aa.js",
-                          "tools/audit_marker_native.js", "tools/audit_native_motion_pixels.js",
-                          "tools/native-resources-requirements.txt", "tools/native_map_paths.js",
-                          "tools/native_marker_svg.js", "tools/recheck_feature_records.js",
-                          "tools/recheck_markers.js", "tools/reconcile_composition.js",
-                          "tools/spacefox/bridge_map_render.js", "tools/vendor/d3-7.9.0.min.js",
-                          "tools/vendor/topojson-client-3.1.0.min.js"})
-    if proof is not None and "reminder015Proof" in proof:
-        admission.update({"openspec/changes/add-launch-reminders/proposal.md",
-                          "openspec/changes/add-launch-reminders/design.md",
-                          "openspec/changes/add-launch-reminders/tasks.md",
-                          "openspec/changes/add-launch-reminders/specs/launch-reminders/spec.md",
-                          "docs/LAUNCH_REMINDERS.md"})
-    if proof is not None and "auditRuntime025Proof" in proof:
-        audit_path = proof["auditRuntime025Proof"]["path"]
-        require(audit_path in paths, "runtime audit proof must be tracked")
-        audit = json.loads((root / audit_path).read_text())
-        admission.add(audit_path)
-        admission.update(ref["path"] for ref in audit["priorSnapshots"].values())
-        admission.update(item["log"]["path"] for item in audit["sdkCases"])
-        admission.update(audit["currentOwners"])
-    if proof is not None and "currentIntegration022Proof" in proof:
-        current_path = proof["currentIntegration022Proof"]["path"]
-        require(current_path in paths, "current integration proof must be tracked")
-        current = json.loads((root / current_path).read_text())
-        admission.add(current_path)
-        admission.update(ref["path"] for ref in current["cases"].values())
-        admission.update(current[key]["path"] for key in ("replacement", "replacementRun", "seed", "program", "fixtureArchive", "fr165m", "fr265s", "host", "predecessor", "historicalPeer", "peerReviewedProof", "preTypeView"))
-        admission.update(ref["path"] for ref in current["probeSources"].values())
-        admission.update(current["owners"])
-    if proof is not None and "liveRuntime020Proof" in proof:
-        current_path = proof["liveRuntime020Proof"]["path"]
-        require(current_path in paths, "live integration proof must be tracked")
-        current = json.loads((root / current_path).read_text())
-        admission.add(current_path)
-        admission.update(ref["path"] for ref in current["priorSnapshots"].values())
-        admission.update(ref["path"] for ref in current["evidence"].values())
-        admission.update(current["currentOwners"])
-    if proof is not None and "b3Runtime023Proof" in proof:
-        b3_path = proof["b3Runtime023Proof"]["path"]
-        require(b3_path in paths, "B3 proof must be tracked")
-        b3 = json.loads((root / b3_path).read_text())
-        admission.add(b3_path)
-        admission.update(ref["path"] for ref in b3["priorSnapshots"].values())
-        admission.update(item["log"]["path"] for item in b3["sdkCases"])
-        admission.update(b3["currentOwners"])
-    if proof is not None and "b2Runtime022Proof" in proof:
-        b2_path = proof["b2Runtime022Proof"]["path"]
-        require(b2_path in paths, "B2 proof must be tracked")
-        b2 = json.loads((root / b2_path).read_text())
-        admission.add(b2_path)
-        admission.update(ref["path"] for ref in b2["priorSnapshots"].values())
-        admission.update(item["log"]["path"] for item in b2["sdkCases"])
-        admission.update(ref["path"] for ref in b2["frameEvidence"].values())
-        admission.add(b2["crossVmProcesses"]["path"])
-        admission.update(b2["currentOwners"])
-    if proof is not None and "b1Integration021Proof" in proof:
-        current_path = proof["b1Integration021Proof"]["path"]
-        require(current_path in paths, "B1 integration proof must be tracked")
-        current = json.loads((root / current_path).read_text())
-        admission.add(current_path)
-        admission.add(current["baselineCatalog"]["path"])
-        admission.add(current["stockImage"]["path"])
-        admission.update(ref["path"] for ref in current["evidence"].values())
-    if proof is not None and "watchdogReleaseProof" in proof:
-        delta_path = proof["watchdogReleaseProof"]["path"]
-        require(delta_path in paths, "watchdog admission proof must be tracked")
-        delta = json.loads((root / delta_path).read_text())
-        admission.add(delta_path)
-        admission.add(delta["authorVersion"]["path"])
-        admission.update(item["path"] for item in delta["priorSnapshots"].values())
-        admission.update(item["path"] for item in delta["evidence"].values())
-    if proof is not None:
-        for name in (proof["corpusPath"], proof["receiptPath"]):
-            require(isinstance(name, str) and name and not PurePosixPath(name).is_absolute() and
-                    ".." not in PurePosixPath(name).parts, "unsafe language proof path")
-            admission.add(name)
-        receipt = json.loads(read_metadata(proof["receiptPath"]))
-        historical = {}
-        for proof_key in ("ux02DeltaProof", "ux03DeltaProof", "cachePortDeltaProof", "deliveryDeltaProof"):
-            if proof_key not in proof:
-                continue
-            delta_path = proof[proof_key]["path"]
-            require(delta_path in paths, proof_key + " admission proof must be tracked")
-            delta = json.loads(read_metadata(delta_path))
-            historical.update(delta["priorSnapshots"])
-            admission.add(delta_path)
-            admission.add(delta["priorCatalog"]["path"])
-            admission.update(item["path"] for item in historical.values())
-            if proof_key in ("cachePortDeltaProof", "deliveryDeltaProof"):
-                admission.update(item["path"] for item in delta["evidence"].values())
-                if proof_key == "cachePortDeltaProof":
-                    admission.add(delta["cacheObservation"]["path"])
-            else:
-                admission.update(delta["evidence"])
-            admission.update(delta["sources"])
-        for name, expected in proof["productionSources"].items():
-            if name not in paths and name in historical:
-                snapshot = historical[name]
-                require(snapshot["path"] in admission and metadata_digest(snapshot["path"]) == snapshot["sha256"],
-                        "missing historical admission source snapshot: " + name)
-            else:
-                admission.add(name)
-        if "display02DeltaProof" in proof:
-            delta_path = proof["display02DeltaProof"]["path"]
-            require(delta_path in paths, "DISPLAY02 admission proof must be tracked")
-            delta = json.loads(read_metadata(delta_path))
-            admission.update((delta_path, delta["priorCatalog"]["path"]))
-            admission.update(delta["inputs"])
-            admission.update(item["path"] for item in delta["priorSnapshots"].values())
-            admission.update(item["path"] for item in delta["evidence"].values())
-            # Older delta inventories may name a now-retired source. The current
-            # validator reconstructs that exact path from its preserved snapshot.
-            for name, snapshot in delta["priorSnapshots"].items():
-                if name in admission and name not in paths:
-                    require(snapshot["path"] in paths and metadata_digest(snapshot["path"]) == snapshot["sha256"],
-                            "missing DISPLAY02 historical source snapshot: " + name)
-                    admission.remove(name)
-                    admission.add(snapshot["path"])
-        if "currentNativeUiDeltaProof" in proof:
-            delta_path = proof["currentNativeUiDeltaProof"]["path"]
-            require(delta_path in paths, "current native UI proof must be tracked")
-            delta = json.loads(read_metadata(delta_path))
-            admission.add(delta_path)
-            admission.update(delta["reviewedCurrent"])
-            admission.update(item["path"] for item in delta["historicalSnapshots"].values())
-            admission.update(item["path"] for item in delta["evidence"].values())
-        admission.update(receipt["observations"])
-        corpus_directory = PurePosixPath(proof["corpusPath"]).parent
-        admission.update(name for name in paths if PurePosixPath(name).is_relative_to(corpus_directory))
-    resolve_performance021_retired_inputs(admission, set(paths), proof, read_metadata)
-    resolve_audit_retired_inputs(admission, set(paths), proof)
+    # Include the one live language contour and its actual captured inputs.
+    # Historical observations keep their original identities; no old source tree
+    # is reconstructed or pulled into the export by legacy dispatch keys.
+    catalog = json.loads((root / "locales/catalog.json").read_bytes())
+    from tools.native_language_policy import software_locales
+    software_locales(root, catalog)
+    pointer = catalog["supportPolicy"]["softwareQualificationProof"]["currentProof"]
+    proof = json.loads((root / pointer["path"]).read_bytes())
+    admission = {"locales/catalog.json", pointer["path"],
+                 ".github/workflows/update-feed.yml", ".github/spacefox-inputs.txt"}
+    admission.update(proof["currentInputs"])
+    admission.update(proof[key]["path"] for key in
+                     ("referencePeer", "referenceGate", "finiteReceipt", "corpus", "historicalToolchainLock"))
+    receipt = json.loads((root / proof["finiteReceipt"]["path"]).read_bytes())
+    admission.update(receipt["observations"])
+    admission.add(proof["currentNativeObservation"]["path"])
+    native = json.loads((root / proof["currentNativeObservation"]["path"]).read_bytes())
+    admission.update(native["semanticInputs"])
+    admission.update(native[key]["path"] for key in ("fitProgram", "fitProbe", "fitCompile",
+                      "renderProgram", "renderProbe", "renderCompile", "fieldsFontReport"))
+    admission.update(ref["path"] for key in ("fitLogs", "renderLogs") for ref in native[key])
+    fields = json.loads((root / native["fieldsFontReport"]["path"]).read_bytes())
+    admission.update(fields["inputs"])
+    corpus_directory = PurePosixPath(proof["corpus"]["path"]).parent
+    collection_name = str(corpus_directory / "collection.json")
+    collection = json.loads((root / collection_name).read_bytes())
+    admission.add(collection_name)
+    admission.update(str(corpus_directory / page["raw"]) for page in collection["pages"])
     require(admission <= set(paths), "language admission inputs must be tracked")
+    from tools.spacefox.publisher import _head_tree, _tracked_bytes
+    tree = _head_tree(root)
     inputs = {}
     for name in paths:
         if not name or not (name.startswith("watchface/") or name.startswith("release/") or
@@ -287,7 +100,7 @@ def source_state(root: Path) -> dict:
             continue
         path = root / name
         require(path.is_file() and not path.is_symlink(), "release input must be a regular tracked file: " + name)
-        data = metadata.pop(name) if name in metadata else path.read_bytes()
+        data = _tracked_bytes(root, tree, name)
         require(path.suffix.lower() not in (".pem", ".key", ".der", ".p12", ".pfx") and
                 (b"-----BEGIN " + b"PRIVATE KEY-----") not in data and
                 (b"-----BEGIN " + b"RSA PRIVATE KEY-----") not in data,
@@ -511,95 +324,31 @@ def evidence_inputs(paths: list[Path], root: Path) -> list[dict]:
     return evidence
 
 
-# Independent combined-source review, including the exact 0.1.24 version file.
-# A freshly repinned author qualification cannot substitute for this boundary.
-AUDIT_RUNTIME_PROOF_BODY_SHA256 = "37bdc9e3999fb4b7e1f9d5837a8fdaa6ecb7d5e833b32319f89bc16ad240b847"
-CURRENT_INTEGRATION_PROOF_BODY_SHA256 = "53481388290090e9d570c32a16acd93628100b2e4c7b1b743edb56de81844a23"
-INTEGRATION_PEER_NATIVE_SHA256 = "71547b49bc1c46f268ef22fd169b56feec0697b5ae4f24b76d19e9eab8826d5c"
-INTEGRATION_PEER_PROOF_BODY_SHA256 = "39d7287783bcc2f5642afcc1b90ac928909ecb435371391521a601bbf03de1bf"
-
-
 def require_combined_peer(root: Path, supplied: list[dict]) -> None:
-    """Bind production export to the reviewed native bytes and combined proof."""
+    """Require one independent review bound to this release's live source."""
+    from tools.native_language_policy import software_locales
     catalog = json.loads((root / "locales/catalog.json").read_text())
-    audit = catalog["supportPolicy"]["softwareQualificationProof"].get("auditRuntime025Proof")
-    if audit is not None:
-        from tools.native_audit_025_qualification import validate
-        validate(root, catalog)
-        app = ET.parse(root / "watchface/manifest.xml").getroot().find("iq:application", NS)
-        native = (root / "watchface/source/generated/NativeVersion.mc").read_text()
-        match = re.search(r'const ID = "([0-9a-f]{8})"', native)
-        required_kind = {"0.2.6": "state-machine-integration-peer", "0.2.7": "metrics-map-independent-peer", "0.2.8": "known-site-coordinates-independent-peer", "0.2.9": "stm-event-sequence-independent-peer"}.get(app.get("version"), "runtime-audit-independent-peer")
-        peers = [item["data"] for item in supplied if item["data"].get("kind") == required_kind]
-        require(len(peers) == 1 and peers[0].get("status") == "GREEN" and
-                peers[0].get("version") == app.get("version") and match is not None and
-                peers[0].get("native_id") == match.group(1), "production export requires runtime audit peer binding")
-        reviewed = peers[0].get("source_revision")
-        require(isinstance(reviewed, str) and re.fullmatch(r"[0-9a-f]{40}", reviewed), "runtime audit peer must identify reviewed source")
-        ancestry = subprocess.run(["git", "merge-base", "--is-ancestor", reviewed, "HEAD"], cwd=root, capture_output=True)
-        require(ancestry.returncode == 0, "runtime audit peer source is not an ancestor")
-        unchanged = git(root, "diff", "--name-only", reviewed, "HEAD", "--", "watchface", "tools/spacefox", "tools/cloud_feed.py", "tools/update_feed.py", "tools/refresh_catalog.py", ".github/workflows/update-feed.yml", ".github/spacefox-inputs.txt", "tools/release.py", "tools/native_audit_025_qualification.py", "locales/catalog.json", "tests/test_state_machine_publisher.py", "tests/test_known_site_coordinates.py", "tests/test_watch_snapshot.py", "tests/test_current_motion_publisher.py", "tests/test_autonomous_publisher_whole.py", "tests/test_current_022_admission.py", "tests/host_stm_support.py", "tests/host_stm_properties.py", "tests/test_host_stm_pbt.py", "tools/run_host_stm_pbt.py", "tools/run_native_stm_campaign.py", "tests/test_native_stm_campaign.py", "release/signing-identity.json")
-        require(not unchanged.strip(), "reviewed runtime audit source changed")
-        return
-    combined = catalog["supportPolicy"]["softwareQualificationProof"].get("currentIntegration022Proof")
-    if combined is not None:
-        from tools.native_current_022_qualification import validate
-        validate(root, catalog)
-        app = ET.parse(root / "watchface/manifest.xml").getroot().find("iq:application", NS)
-        if app.get("version") in ("0.2.3", "0.2.4", "0.2.5"):
-            kind = {"0.2.3": "trusted-json-independent-peer", "0.2.4": "schedule-cadence-independent-peer", "0.2.5": "state-machine-independent-peer"}[app.get("version")]
-            peers = [item["data"] for item in supplied if item["data"].get("kind") == kind]
-            native = (root / "watchface/source/generated/NativeVersion.mc").read_text()
-            match = re.search(r'const ID = "([0-9a-f]{8})"', native)
-            require(len(peers) == 1 and peers[0].get("status") == "GREEN" and
-                    peers[0].get("version") == app.get("version") and match is not None and
-                    peers[0].get("native_id") == match.group(1),
-                    "production export requires trusted snapshot independent peer binding")
-            reviewed = peers[0].get("source_revision")
-            require(isinstance(reviewed, str) and re.fullmatch(r"[0-9a-f]{40}", reviewed),
-                    "trusted snapshot peer must identify its reviewed source")
-            ancestry = subprocess.run(["git", "merge-base", "--is-ancestor", reviewed, "HEAD"], cwd=root, capture_output=True)
-            require(ancestry.returncode == 0, "peer source is not an ancestor")
-            unchanged = git(root, "diff", "--name-only", reviewed, "HEAD", "--", "watchface", "tools/spacefox", "tools/cloud_feed.py", "tools/update_feed.py", ".github/workflows/update-feed.yml", ".github/spacefox-inputs.txt", "tools/release.py", "tools/native_current_022_qualification.py", "locales/catalog.json", "tests/test_state_machine_publisher.py")
-            require(not unchanged.strip(), "reviewed trusted snapshot source changed")
-            return
-        peers = [item["data"] for item in supplied if item["data"].get("kind") == "current022-independent-native-peer"]
-        require(len(peers) == 1 and peers[0].get("status") == "GREEN" and
-                peers[0].get("integration_proof_sha256") == "9838392688273e99b88e3808b4a4a24e7f549e4a97d418386ba461aa2243592c",
-                "production export requires current 0.2.2 independent peer binding")
-        return
-    catalog = json.loads((root / "locales/catalog.json").read_text())
-    proof = catalog["supportPolicy"]["softwareQualificationProof"]
-    require(isinstance(proof, dict) and "integration022Proof" in proof,
-            "production export requires current combined peer binding")
-    from tools.native_watchdog_release_qualification import diagnostic_source_digest
-    ref = proof["integration022Proof"]
-    expected_proof = ref["sha256"]
-    path = PurePosixPath(ref["path"])
-    require(not path.is_absolute() and ".." not in path.parts,
-            "invalid integration022 proof path")
-    raw = (root / path).read_bytes()
-    require(hashlib.sha256(raw).hexdigest() == expected_proof,
-            "combined proof differs from locale binding")
-    record = json.loads(raw)
-    # The proof binds this release owner; exclude that single digest to avoid a
-    # circular guard -> proof -> guard hash. All other reviewed proof bytes are
-    # independently fixed here, and the locale qualifier checks the owner hash.
-    record["owners"].pop("tools/release.py")
-    body = json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()
-    require(hashlib.sha256(body).hexdigest() == INTEGRATION_PEER_PROOF_BODY_SHA256,
-            "combined proof differs from independent peer binding")
+    software_locales(root, catalog)
+    app = ET.parse(root / "watchface/manifest.xml").getroot().find("iq:application", NS)
+    native = (root / "watchface/source/generated/NativeVersion.mc").read_text()
+    match = re.search(r'const ID = "([0-9a-f]{8})"', native)
     peers = [item["data"] for item in supplied
-             if item["data"].get("kind") == "integration024-independent-native-peer"]
-    require(len(peers) == 1 and peers[0].get("status") == "GREEN" and
-            peers[0].get("native_inputs_sha256") == INTEGRATION_PEER_NATIVE_SHA256 and
-            peers[0].get("integration_proof_sha256") == expected_proof,
-            "production export requires current combined peer binding")
-    watch = root / "watchface"
-    actual = diagnostic_source_digest(root, (watch / "manifest.xml").read_bytes(),
-                                      (watch / "source/generated/NativeVersion.mc").read_bytes())
-    require(actual == INTEGRATION_PEER_NATIVE_SHA256,
-            "current native inputs differ from combined peer binding")
+             if item["data"].get("kind") == "legacy-fallbacks-independent-peer"]
+    require(len(peers) == 1 and peers[0].get("status") == "GREEN"
+            and peers[0].get("version") == app.get("version") and match is not None
+            and peers[0].get("native_id") == match.group(1)
+            and isinstance(peers[0].get("proof_boundary"), str) and bool(peers[0]["proof_boundary"].strip()),
+            "production export requires current independent peer binding")
+    reviewed = peers[0].get("source_revision")
+    require(isinstance(reviewed, str) and re.fullmatch(r"[0-9a-f]{40}", reviewed),
+            "independent peer must identify reviewed source")
+    ancestry = subprocess.run(["git", "merge-base", "--is-ancestor", reviewed, "HEAD"],
+                              cwd=root, capture_output=True)
+    require(ancestry.returncode == 0, "independent peer source is not an ancestor")
+    changed = set(git(root, "diff", "--name-only", reviewed, "HEAD").splitlines())
+    inputs = set(source_state(root)["inputs"])
+    inputs.update({".github/workflows/update-feed.yml", ".github/spacefox-inputs.txt"})
+    require(not changed.intersection(inputs), "independently reviewed release inputs changed")
 
 
 def backup_status(path: Path | None, root: Path, fingerprint: str, official: bool) -> dict:

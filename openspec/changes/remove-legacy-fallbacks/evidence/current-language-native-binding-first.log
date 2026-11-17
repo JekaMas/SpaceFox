@@ -1,0 +1,19 @@
+..E
+======================================================================
+ERROR: test_real_five_primary_observations_and_source_replay (tests.test_current_language_admission.CurrentLanguageAdmission.test_real_five_primary_observations_and_source_replay)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-complete-legacy-audit-20261117/tests/test_current_language_admission.py", line 43, in test_real_five_primary_observations_and_source_replay
+    self.assertEqual(validate(self.root, self.catalog), ['en', 'ru', 'de', 'fr', 'es'])
+                     ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-complete-legacy-audit-20261117/tools/current_language_admission.py", line 152, in validate
+    require(current_native.get('compilerSha256') == lock['compiler_sha256'], 'current compiler identity differs')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-complete-legacy-audit-20261117/tools/current_language_admission.py", line 21, in require
+    raise ValueError(reason)
+ValueError: current compiler identity differs
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.746s
+
+FAILED (errors=1)

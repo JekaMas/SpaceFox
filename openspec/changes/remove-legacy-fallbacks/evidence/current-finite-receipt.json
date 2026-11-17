@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "profile": "fr165m",
+  "sdk": "9.3.0-linux",
+  "selectorCounts": [
+    1035,
+    377,
+    298,
+    112
+  ],
+  "sourceRecords": 1822,
+  "uniqueCompositions": 413,
+  "rawLauncherExit": 1,
+  "inputs": {
+    "tools/current_language_probe.py": "784a695d3e17bb81ab7a2eabe53bed99f38f964e30a47619463f5666becd52b2",
+    "tools/display_corpus.py": "2a32ab33c013aab4c6ecbc0961ad2237fd74a4d847749ecb10edc3c31977ba1c",
+    "watchface/current-language-tests/CurrentUi.mc": "c43e08925d98256bf36ece3feb423ad78ca2fedf10e21c4cb019b1c95dd66f19",
+    "watchface/resources/fonts/Aod40.fnt": "63911e0977860d4c27023b09b9b753f213c3052b3047275b28ac9b9047c0e4fc",
+    "watchface/resources/fonts/Aod40.png": "1bd0407c53153021a267421e10d44bbcfbc51c92f78960e3b3a35c7e6d6146c6",
+    "watchface/resources/fonts/Metric32.fnt": "c41e4239d62f9e702520689b0fcc8a21d4dcfc542225bdf23c694ac69a84abea",
+    "watchface/resources/fonts/Metric32.png": "af7c90017fcf00bf7e87ecc365b68c343b85e158ad8408fb6ab6e5e03b0d626a",
+    "watchface/resources/fonts/Time80.fnt": "d8c75b5b2ad057ad9329a6b37f014a64bb438165b38e37b50463c3f9768f17bc",
+    "watchface/resources/fonts/Time80.png": "38b4fa183abede45b7a2c56698150f3aa15b7cf3023915052794dbc17f401121",
+    "watchface/resources/fonts/fonts.xml": "a0632efe7e59d29ffd056439bc5dff68093beca498e75cffecb3d0de295f4058",
+    "watchface/resources/json/Locale0.json": "a416bf9017d3493ffff332fc6a44cc1b9534de749e2a253a3134ba87beeb6ca5",
+    "watchface/resources/json/Locale1.json": "0c8483d2a71025129d5794d93a3ae63e5083f9cf1b92347475537403a81b2fb3",
+    "watchface/resources/json/Locale2.json": "52a2d57f8d2e73a78a3581ca5d893962f664499fd1e65487ebda189cf5d3c74d",
+    "watchface/resources/json/Locale3.json": "76fdc9e6a41886722a060b98d546d1eaf9deabaa7baa7cb5b098818b37f7f6bb",
+    "watchface/resources/json/Locale4.json": "29f023d6b291ea15a56dc6e340775a555cc0d196dce88699f79df5cfd5de5d7b",
+    "watchface/source/LocalePresentation.mc": "0cb0be9330afbaf415182dd30ea2304dd9e1139f714d05c71901c945c28a13cc",
+    "watchface/source/SceneRenderer.mc": "4f6981947ecd4957034fb4363d0814abcb70c1ab6bcb49ddfff339502dc4a6a9",
+    "watchface/source/generated/LocaleGraphemes.mc": "5ad65d6328908a7f251cd5ddbac83244de9b51929c2c46cb746bfb168a4f6c80",
+    "watchface/source/generated/SceneStrings.mc": "dd8a910b53d2493ec8760e0148186c9535c05a5e0644ae5b6e6eccb6dd651109"
+  },
+  "program": {
+    "path": "openspec/changes/remove-legacy-fallbacks/evidence/current-finite.prg.gz",
+    "sha256": "7e9c01cdb153841a22123822bc6cdcb7887546a84744101edf51f1cade793863"
+  },
+  "programSha256": "2a2c0dec9df50cc216d580da0e9507bb9de0ae7b43488159587819d0bf33be30",
+  "generatedProbe": {
+    "path": "openspec/changes/remove-legacy-fallbacks/evidence/current-finite-probe.mc.txt",
+    "sha256": "fc72c863bae5b530d949f4a6ad65ede57081323eb678e7e749673ca4bce9b333"
+  },
+  "compile": {
+    "path": "openspec/changes/remove-legacy-fallbacks/evidence/current-finite-compile-3.log",
+    "sha256": "d26510f3a7e811f721248874ae8d44f97d1d4f8fa59bdad2f8a56d50af4240cf"
+  },
+  "logs": [
+    {
+      "path": "openspec/changes/remove-legacy-fallbacks/evidence/current-five-native-first.log",
+      "sha256": "35aa6af7818aacde46a51e5c3e548565ca79892829069ade14c0beb8c47c6178"
+    },
+    {
+      "path": "openspec/changes/remove-legacy-fallbacks/evidence/current-finite-0.log",
+      "sha256": "224d65e5e97d1055a1f7e175f9e3e211a9fe38384d87c673800adcbc4b649395"
+    },
+    {
+      "path": "openspec/changes/remove-legacy-fallbacks/evidence/current-finite-1-restart.log",
+      "sha256": "09b6003519dffd40171dd6114c5ee7f4f310f6124db2032331e5fc8c35cf6159"
+    },
+    {
+      "path": "openspec/changes/remove-legacy-fallbacks/evidence/current-finite-2-newvm.log",
+      "sha256": "41dbf99cb6d0bb3b998dd20562592524150622f19ca3405223b16247f7f7d5d6"
+    },
+    {
+      "path": "openspec/changes/remove-legacy-fallbacks/evidence/current-finite-3-newvm.log",
+      "sha256": "b49d21bf9516d8434fd2acc9c59702aeeac052a1239147d72fb0e74444c00b21"
+    }
+  ],
+  "boundary": "Actual compiled current LocalePresentation fit and five-locale resource/font loading in FR165M simulator. Four corpus-weighted fit selectors cover source projections; no complete SceneRenderer composition, screenshot, physical watch, native-speaker, phone or peak-memory claim. Concurrent same-VM attempt and failed startup receipts retained separately."
+}

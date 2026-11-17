@@ -5,6 +5,7 @@ from xml.etree import ElementTree as ET
 ROOT=Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path: sys.path.insert(0, str(ROOT))
 OWNERS=('tools/native_language_policy.py','tools/build_native_localization.py','tools/build_watchface.py',
+        'tools/display_corpus.py','tools/spacefox/provider.py','tools/spacefox/catalog.py',
         'watchface/source/LocalePresentation.mc','watchface/source/SceneRenderer.mc',
         'watchface/source/SceneSettings.mc','watchface/source/SpaceFoxView.mc',
         'watchface/source/WatchClock.mc','watchface/source/Fitness.mc',
@@ -20,10 +21,6 @@ def input_paths(catalog,root=ROOT):
  """
  root=Path(root).resolve()
  rows=catalog['locales'];primary=set(catalog['supportPolicy']['primaryLocales']);paths=list(OWNERS)
- if isinstance(catalog['supportPolicy']['softwareQualificationProof'],dict) and 'sourceDeltaProof' in catalog['supportPolicy']['softwareQualificationProof']:
-  paths.extend(('tools/native_timing_requalification.py','tools/native_timing_settings.py','tools/spacefox/native_profile.py','watchface/tests/NativeClockTests.mc','tests/fixtures/final_native_timing_settings/Assertions.mc','watchface/source/NativeFeed.mc','watchface/source/NativeJson.mc','tests/fixtures/sourced_ascent_end/Assertions.mc'))
- if isinstance(catalog['supportPolicy']['softwareQualificationProof'],dict) and 'visualDeltaProof' in catalog['supportPolicy']['softwareQualificationProof']:
-  paths.extend(('tools/native_site_flag_requalification.py','tools/native_site_flag_tests.py','tools/native_site_flag_observer.py','watchface/source/NativeSfr.mc','watchface/source/NativeVisualRenderer.mc','watchface/source/NativeAssetTypes.mc','watchface/source/generated/NativeAssets.mc','watchface/resources/drawables/drawables.xml'))
  paths.extend(('watchface/monkey.jungle','watchface/toolchain-lock.json',
                'watchface/resources/settings/settings.xml','watchface/resources/settings/properties.xml'))
  def dependency(binding,filename):
@@ -82,144 +79,7 @@ def validate_generated_locale_source(root,catalog,qualified,*,include_availabili
  if actual!=expected:raise ValueError('generated locale source differs from source-bound admission')
 
 def software_locales(root,catalog=None):
- root=Path(root).resolve();catalog=catalog or json.loads((root/'locales/catalog.json').read_text());policy=catalog['supportPolicy'];qualified=policy['softwareQualifiedLocales'];proof=policy['softwareQualificationProof']
- if (not isinstance(qualified,list) or any(not isinstance(v,str) for v in qualified)
-     or len(set(qualified))!=len(qualified) or not set(qualified)<=set(policy['primaryLocales'])):
-  raise ValueError('software locale IDs must be unique primary modes')
- if not qualified:
-  if proof is not None:raise ValueError('empty software admission must have no proof')
-  return []
- if isinstance(proof,dict) and 'auditRuntime025Proof' in proof:
-  from tools.native_audit_025_qualification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'currentIntegration022Proof' in proof:
-  from tools.native_current_022_qualification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'liveRuntime020Proof' in proof:
-  from tools.native_live_020_qualification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'integration022Proof' in proof:
-  from tools.native_integration022_qualification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'performance021Proof' in proof:
-  from tools.native_performance021_qualification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'b3Runtime023Proof' in proof:
-  from tools.native_b3_023_qualification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'b2Runtime022Proof' in proof:
-  from tools.native_b2_022_qualification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'b1Integration021Proof' in proof:
-  from tools.native_b1_021_qualification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'watchdogReleaseProof' in proof:
-  from tools.native_watchdog_release_qualification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'devices020Proof' in proof:
-  from tools.native_devices020_qualification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'fields018Proof' in proof:
-  from tools.native_fields018_qualification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'rollover017Proof' in proof:
-  from tools.native_rollover017_qualification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'integrated016Proof' in proof:
-  from tools.native_integrated016_qualification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'display04DeltaProof' in proof:
-  from tools.native_display04_requalification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'reminder015Proof' in proof:
-  from tools.native_reminder_qualification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'version14Proof' in proof:
-  from tools.native_version14_qualification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'decoderStreamProof' in proof:
-  from tools.native_decoder_stream_qualification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'settingsReadabilityProof' in proof:
-  from tools.native_settings_readability import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'integration13DeltaProof' in proof:
-  from tools.native_integration13_requalification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'exactMapDeltaProof' in proof:
-  from tools.native_exact_map_requalification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'lowMapDeltaProof' in proof:
-  from tools.native_low_map_requalification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'display03DeltaProof' in proof:
-  from tools.native_display03_requalification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'display02DeltaProof' in proof:
-  from tools.native_release_version_requalification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'deliveryDeltaProof' in proof:
-  from tools.native_delivery_requalification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'cachePortDeltaProof' in proof:
-  from tools.native_cache_port_requalification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'ux03DeltaProof' in proof:
-  from tools.native_ux03_requalification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'ux02DeltaProof' in proof:
-  from tools.native_ux02_requalification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'uxDeltaProof' in proof:
-  from tools.native_ux_requalification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'incidentDeltaProof' in proof:
-  from tools.native_incident_requalification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'deviceDeltaProof' in proof:
-  from tools.native_device_requalification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'bootstrapDeltaProof' in proof:
-  from tools.native_bootstrap_requalification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'visualDeltaProof' in proof:
-  from tools.native_site_flag_requalification import validate
-  return validate(root,catalog)
- if isinstance(proof,dict) and 'sourceDeltaProof' in proof:
-  from tools.native_timing_requalification import validate
-  return validate(root,catalog)
- qualified=_validate_bound_files(root,catalog)
- # Byte binding alone cannot establish complete source pagination or a native
- # cohort. Reconcile the actual source/SDK evidence before granting admission.
- try:
-  try:
-   from tools.qualify_native_finite import validate_bound_observation
-  except ModuleNotFoundError:
-   from qualify_native_finite import validate_bound_observation
-  validate_bound_observation(root,catalog)
- except (KeyError,TypeError,OSError,json.JSONDecodeError) as error:
-  raise ValueError('invalid complete-corpus/native observation proof') from error
- return qualified
-
-def _validate_bound_files(root,catalog):
- """Exercise source/byte binding only; this helper never grants admission."""
- root=Path(root).resolve();policy=catalog['supportPolicy'];qualified=policy['softwareQualifiedLocales'];proof=policy['softwareQualificationProof']
- keys={'schemaVersion','corpusPath','corpusSha256','receiptPath','receiptSha256','productionSources','scope','physicalDeviceObserved','nativeSpeakerReviewed'}
- if (not isinstance(proof,dict) or set(proof)!=keys or type(proof['schemaVersion']) is not int or proof['schemaVersion']!=1
-     or proof['scope']!='finite-primary-software' or proof['physicalDeviceObserved'] is not False
-     or proof['nativeSpeakerReviewed'] is not False):raise ValueError('invalid finite software proof shape/boundary')
- def checked(name,digest):
-  if not isinstance(name,str) or not name or Path(name).is_absolute() or '..' in Path(name).parts:raise ValueError('software proof path must be repository-relative')
-  path=(root/name).resolve()
-  if not path.is_relative_to(root) or not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest()!=digest:raise ValueError('software proof input changed: '+name)
-  return path
- if not isinstance(proof['productionSources'],dict):raise ValueError('finite software source closure differs')
- for name,digest in proof['productionSources'].items():checked(name,digest)
- if set(proof['productionSources'])!=set(input_paths(catalog,root)):raise ValueError('finite software source closure differs')
- checked(proof['corpusPath'],proof['corpusSha256'])
- receipt=json.loads(checked(proof['receiptPath'],proof['receiptSha256']).read_text())
- if (receipt.get('status')!='passed' or receipt.get('qualifiedLocales')!=qualified
-     or receipt.get('corpusSha256')!=proof['corpusSha256']
-     or receipt.get('productionSources')!=proof['productionSources']):raise ValueError('finite software receipt does not bind admission')
- validate_generated_locale_source(root,catalog,qualified,include_availability=False)
- return qualified
+ """Admit only the one current five-primary proof, without historical dispatch."""
+ root=Path(root).resolve();catalog=catalog or json.loads((root/'locales/catalog.json').read_text())
+ from tools.current_language_admission import validate
+ return validate(root,catalog)

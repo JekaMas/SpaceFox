@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "<stdin>", line 4, in <module>
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-complete-legacy-audit-20261117/tools/native_language_policy.py", line 85, in software_locales
+    return validate(root,catalog)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-complete-legacy-audit-20261117/tools/current_language_admission.py", line 104, in validate
+    require(sdk.get('toolchainLockSha256') == hashlib.sha256(lock_bytes).hexdigest()
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            and sdk.get('product') == lock['product'] == 'fr165'
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            and sdk.get('profileApi') == lock['profile_api']
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            and sdk.get('sdkVersion') == lock['sdk_version']
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            and sdk.get('compilerSha256') == lock['compiler_sha256'], 'finite SDK lock binding differs')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-complete-legacy-audit-20261117/tools/current_language_admission.py", line 21, in require
+    raise ValueError(reason)
+ValueError: finite SDK lock binding differs

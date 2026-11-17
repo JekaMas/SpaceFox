@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "<stdin>", line 3, in <module>
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-complete-legacy-audit-20261117/tools/native_language_policy.py", line 85, in software_locales
+    return validate(root,catalog)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-complete-legacy-audit-20261117/tools/current_language_admission.py", line 87, in validate
+    corpus = load_complete_corpus(root / corpus_ref['path'], root)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-complete-legacy-audit-20261117/tools/display_corpus.py", line 392, in load_complete_corpus
+    build(target, root)
+    ~~~~~^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-complete-legacy-audit-20261117/tools/display_corpus.py", line 434, in build
+    ui_inputs, menu_inputs, ui_semantics = ui_sources(root)
+                                           ~~~~~~~~~~^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-complete-legacy-audit-20261117/tools/display_corpus.py", line 366, in ui_sources
+    require(set(needed_ids) <= actual.keys(), 'referenced native menu string missing')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-complete-legacy-audit-20261117/tools/display_corpus.py", line 43, in require
+    raise ValueError(message)
+ValueError: referenced native menu string missing

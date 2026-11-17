@@ -1,0 +1,21 @@
+....E
+======================================================================
+ERROR: test_source_fence_refuses_hidden_index_mutation (tests.test_current_language_admission.CurrentLanguageAdmission.test_source_fence_refuses_hidden_index_mutation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-complete-legacy-audit-20261117/tests/test_current_language_admission.py", line 91, in test_source_fence_refuses_hidden_index_mutation
+    self.assertIn('tools/release.py', source_state(self.root)['inputs'])
+                                      ~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-complete-legacy-audit-20261117/tools/release.py", line 97, in source_state
+    require(Path(git(root, "rev-parse", "--show-toplevel").strip()).resolve() == root,
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "root must be the actual Git worktree")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-complete-legacy-audit-20261117/tools/release.py", line 37, in require
+    raise ReleaseBlocked(message)
+tools.release.ReleaseBlocked: root must be the actual Git worktree
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.523s
+
+FAILED (errors=1)
