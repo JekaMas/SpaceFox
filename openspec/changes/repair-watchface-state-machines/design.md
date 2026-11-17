@@ -23,3 +23,8 @@ Initial investigation: current user report is the physical witness, without a ve
 Each generated event is followed by its reference assertions; masks and seeds are logged for replay. The short first-failure traces are retained, including the original launcher results. These finite traces do not establish a universal schedule or physical-watch behavior. The actual HTTPS, simulator lifecycle and visual evidence has its own explicit boundary in `evidence/sdk/README.md`.
 
 The cadence property also uses 8 generated logical-time traces (112 events), including connected/disconnected changes and repeated identical connection events. The reference computes due from independent last-attempt, success, future and connection variables; `cadence-generator.log` records 32 applied and 16 observed-no-mutation connection events and asserts due after each event. This supplements, rather than replaces, the OS temporal-event boundary in the native acquisition observation.
+
+
+## Independent closure
+
+The peer repaired the existing generators' pooled coverage and HIDDEN/LOW observation gaps and two connected draw defects. Final native sequence properties check per-run dispositions and independent counters/literal projections after events: request100 (8 environmental time advances, not production coverage), display120, cache64 and art112; cadence112 remains separately bounded. There is no new property framework or Python SUT mirror. `evidence/PEER.md` reconciles exact retained/new receipts and the forced-renderer-failure ACTIVE frame. HIDDEN permission now gates draw entry; the existing light fallback retains four ACTIVE fields for EMPTY and FACTS without changing OS LOW, art reserve or cadence.

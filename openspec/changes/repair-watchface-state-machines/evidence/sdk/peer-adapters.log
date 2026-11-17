@@ -1,0 +1,109 @@
+------------------------------------------------------------------------------
+Executing test requestEventSequences...
+DEBUG (06:09): REQUEST_TRACE_SEED mask=0
+DEBUG (06:09): REQUEST_RUN_COVERAGE seed=0 all_required=true
+DEBUG (06:09): REQUEST_TRACE_SEED mask=1
+DEBUG (06:09): REQUEST_RUN_COVERAGE seed=1 all_required=true
+DEBUG (06:09): REQUEST_TRACE_SEED mask=2
+DEBUG (06:09): REQUEST_RUN_COVERAGE seed=2 all_required=true
+DEBUG (06:09): REQUEST_TRACE_SEED mask=3
+DEBUG (06:09): REQUEST_RUN_COVERAGE seed=3 all_required=true
+DEBUG (06:09): REQUEST_TRACE_SEED mask=4
+DEBUG (06:09): REQUEST_RUN_COVERAGE seed=4 all_required=true
+DEBUG (06:09): REQUEST_TRACE_SEED mask=5
+DEBUG (06:09): REQUEST_RUN_COVERAGE seed=5 all_required=true
+DEBUG (06:09): REQUEST_TRACE_SEED mask=6
+DEBUG (06:09): REQUEST_RUN_COVERAGE seed=6 all_required=true
+DEBUG (06:09): REQUEST_TRACE_SEED mask=7
+DEBUG (06:09): REQUEST_RUN_COVERAGE seed=7 all_required=true
+DEBUG (06:09): REQUEST_GENERATOR seeds=8 events=100 environment_advances=8 oracle=after_every_event
+PASS
+------------------------------------------------------------------------------
+Executing test displayEventSequences...
+DEBUG (06:09): DISPLAY_TRACE_SEED 0
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_ok pending=false next=1794895750
+SF_VIEW mode=HIGH pending=false
+SF_FG background_delivery
+DEBUG (06:09): DISPLAY_RUN_COVERAGE seed=0 all_required=true
+DEBUG (06:09): DISPLAY_TRACE_SEED 1
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_kept pending=false next=1794895750
+SF_VIEW mode=HIGH pending=false
+SF_FG background_delivery
+SF_VIEW mode=HIGH pending=false
+DEBUG (06:09): DISPLAY_RUN_COVERAGE seed=1 all_required=true
+DEBUG (06:09): DISPLAY_TRACE_SEED 2
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_kept pending=false next=1794895750
+SF_VIEW mode=HIGH pending=false
+SF_FG background_delivery
+DEBUG (06:09): DISPLAY_RUN_COVERAGE seed=2 all_required=true
+DEBUG (06:09): DISPLAY_TRACE_SEED 3
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_kept pending=false next=1794895750
+SF_VIEW mode=HIGH pending=false
+SF_FG background_delivery
+SF_VIEW mode=HIGH pending=false
+DEBUG (06:09): DISPLAY_RUN_COVERAGE seed=3 all_required=true
+DEBUG (06:09): DISPLAY_TRACE_SEED 4
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_kept pending=false next=1794895750
+SF_VIEW mode=HIGH pending=false
+SF_FG background_delivery
+DEBUG (06:09): DISPLAY_RUN_COVERAGE seed=4 all_required=true
+DEBUG (06:09): DISPLAY_TRACE_SEED 5
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_kept pending=false next=1794895750
+SF_VIEW mode=HIGH pending=false
+SF_FG background_delivery
+SF_VIEW mode=HIGH pending=false
+DEBUG (06:09): DISPLAY_RUN_COVERAGE seed=5 all_required=true
+DEBUG (06:09): DISPLAY_TRACE_SEED 6
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_kept pending=false next=1794895750
+SF_VIEW mode=HIGH pending=false
+SF_FG background_delivery
+DEBUG (06:09): DISPLAY_RUN_COVERAGE seed=6 all_required=true
+DEBUG (06:09): DISPLAY_TRACE_SEED 7
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_kept pending=false next=1794895750
+SF_VIEW mode=HIGH pending=false
+SF_FG background_delivery
+SF_VIEW mode=HIGH pending=false
+DEBUG (06:09): DISPLAY_RUN_COVERAGE seed=7 all_required=true
+DEBUG (06:09): DISPLAY_GENERATOR seeds=8 events=120 oracle=after_every_event hidden_effects_checked=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+requestEventSequences               PASS
+displayEventSequences               PASS
+Ran 2 tests
+
+PASSED (passed=2, failed=0, errors=0)

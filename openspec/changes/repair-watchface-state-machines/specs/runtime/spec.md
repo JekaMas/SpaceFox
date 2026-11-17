@@ -19,3 +19,8 @@ The watch SHALL separate OS display lifecycle from acquisition, accepted snapsho
 #### Scenario: Request cadence
 - **WHEN** a successful last acquisition has a future launch
 - **THEN** no new schedule request is made before one hour; otherwise the earliest supported connected opportunity is used, or an offline check after 300 seconds, subject to Garmin scheduling and source quota.
+
+
+#### Scenario: Optional renderer fails with empty or accepted data
+- **WHEN** the visible ACTIVE face has no schedule or its optional renderer preparation/draw fails
+- **THEN** its clock and four configured fields remain ACTIVE, using unavailable markers for absent readings, while any accepted point and countdown remain independent of artwork; only an OS lifecycle/mode event selects LOW.
