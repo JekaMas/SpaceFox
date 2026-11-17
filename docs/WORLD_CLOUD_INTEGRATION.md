@@ -7,7 +7,7 @@ untracked inputs are not overwritten. The full catalog and geography inputs are
 publisher-side source material; the site contains the selected launch's
 content-addressed display and source provenance closure.
 
-The current feed is `/feed.json`, schema 3 with the `SFR1M` renderer profile.
+The publisher and visual root remains `/feed.json`, schema 3 with the `SFR1M` renderer profile. The watch obtains its separate trusted schedule projection from `/watch.json`; visual assets remain independently delivered.
 The publisher validates the selected source and pixel data and bounds the complete
 current and retained immutable delivery to 256 files and 1 MiB. The feed itself
 is limited to 8192 decoded bytes. It retains the immediately active generation's

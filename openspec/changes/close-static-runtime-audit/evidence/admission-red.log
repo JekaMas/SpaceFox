@@ -1,0 +1,60 @@
+test_release_requires_matching_independent_peer (tests.test_current_022_admission.Current022Binding.test_release_requires_matching_independent_peer) ... ok
+test_repinned_native_delta_is_refused (tests.test_current_022_admission.Current022Binding.test_repinned_native_delta_is_refused) ... ok
+test_unreviewed_native_delta_is_refused (tests.test_current_022_admission.Current022Binding.test_unreviewed_native_delta_is_refused) ... ok
+test_historical_root_replays_and_changed_current_owner_is_rejected (tests.test_ux02_admission.HistoricalAdmission.test_historical_root_replays_and_changed_current_owner_is_rejected) ... ERROR
+test_primary_qualification_and_changed_renderer_refusal (tests.test_ux03_admission.Ux03Admission.test_primary_qualification_and_changed_renderer_refusal) ... ERROR
+test_changed_predecessor_helper_is_refused (tests.test_native_reminder_qualification.ReminderQualificationTest.test_changed_predecessor_helper_is_refused) ... ok
+test_published_predecessor_reconstruction (tests.test_native_reminder_qualification.ReminderQualificationTest.test_published_predecessor_reconstruction) ... ERROR
+NativeLanguagePolicyTest (unittest.loader._FailedTest.NativeLanguagePolicyTest) ... ERROR
+
+======================================================================
+ERROR: test_historical_root_replays_and_changed_current_owner_is_rejected (tests.test_ux02_admission.HistoricalAdmission.test_historical_root_replays_and_changed_current_owner_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-runtime-audit-20261117/tests/test_ux02_admission.py", line 16, in test_historical_root_replays_and_changed_current_owner_is_rejected
+    self.assertEqual(software_locales(ROOT),catalog['supportPolicy']['primaryLocales'])
+                     ~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-runtime-audit-20261117/tools/native_language_policy.py", line 94, in software_locales
+    return validate(root,catalog)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-runtime-audit-20261117/tools/native_audit_025_qualification.py", line 74, in validate
+    if parse_output(raw,row['rawExit'],tuple(row['tests']))['status']!='passed':raise ValueError('audit SDK case incomplete')
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: audit SDK case incomplete
+
+======================================================================
+ERROR: test_primary_qualification_and_changed_renderer_refusal (tests.test_ux03_admission.Ux03Admission.test_primary_qualification_and_changed_renderer_refusal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-runtime-audit-20261117/tests/test_ux03_admission.py", line 9, in test_primary_qualification_and_changed_renderer_refusal
+    self.assertEqual(software_locales(ROOT),catalog['supportPolicy']['primaryLocales'])
+                     ~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-runtime-audit-20261117/tools/native_language_policy.py", line 94, in software_locales
+    return validate(root,catalog)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-runtime-audit-20261117/tools/native_audit_025_qualification.py", line 74, in validate
+    if parse_output(raw,row['rawExit'],tuple(row['tests']))['status']!='passed':raise ValueError('audit SDK case incomplete')
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: audit SDK case incomplete
+
+======================================================================
+ERROR: test_published_predecessor_reconstruction (tests.test_native_reminder_qualification.ReminderQualificationTest.test_published_predecessor_reconstruction)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-runtime-audit-20261117/tests/test_native_reminder_qualification.py", line 14, in test_published_predecessor_reconstruction
+    self.assertEqual(software_locales(ROOT, CATALOG), ['en', 'ru', 'de', 'fr', 'es'])
+                     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-runtime-audit-20261117/tools/native_language_policy.py", line 94, in software_locales
+    return validate(root,catalog)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-runtime-audit-20261117/tools/native_audit_025_qualification.py", line 74, in validate
+    if parse_output(raw,row['rawExit'],tuple(row['tests']))['status']!='passed':raise ValueError('audit SDK case incomplete')
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: audit SDK case incomplete
+
+======================================================================
+ERROR: NativeLanguagePolicyTest (unittest.loader._FailedTest.NativeLanguagePolicyTest)
+----------------------------------------------------------------------
+AttributeError: module 'tests.test_native_language_policy' has no attribute 'NativeLanguagePolicyTest'
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.215s
+
+FAILED (errors=4)

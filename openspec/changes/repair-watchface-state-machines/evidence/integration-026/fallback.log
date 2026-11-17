@@ -1,0 +1,16 @@
+------------------------------------------------------------------------------
+Executing test activeFallbackFrame...
+SF_VIEW mode=HIGH pending=false
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_ok pending=false next=1794897393
+SF_VIEW mode=LOW pending=false
+DEBUG (06:36): ACTIVE EMPTY/FACTS renderer failure draws four fields; accepted point/target survive; OS LOW alone switches layout
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+activeFallbackFrame                 PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

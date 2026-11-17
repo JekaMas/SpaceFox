@@ -20,19 +20,21 @@ class MapOnlyContractTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate_current_feed(canonical_bytes(old))
 
-    def test_only_six_role_slots_language_and_url_settings(self):
+    def test_fields_language_url_and_default_off_reminders(self):
         settings = ET.parse(ROOT / 'watchface/resources/settings/settings.xml').getroot()
         properties = ET.parse(ROOT / 'watchface/resources/settings/properties.xml').getroot()
         self.assertEqual({p.attrib['id'] for p in properties},
                          {'Field1', 'Field2', 'Field3', 'Field4', 'Language', 'FeedBaseUrl',
-                          'ClockColor', 'CountdownColor', 'Field1Color', 'Field2Color', 'Field3Color', 'Field4Color'})
+                          'ClockColor', 'CountdownColor', 'Field1Color', 'Field2Color', 'Field3Color', 'Field4Color', 'LaunchReminders'})
         self.assertEqual(next(p.text for p in properties if p.get('id') == 'FeedBaseUrl'),
                          'https://jekamas.github.io/SpaceFox')
+        self.assertEqual(next(p.text for p in properties if p.get('id') == 'LaunchReminders'), '0')
         for i in range(1, 5):
             entry = next(item for item in settings if item.attrib['propertyKey'] == '@Properties.Field'+str(i))
             self.assertEqual([child.text for child in entry.find('settingConfig')],
                              ['@Strings.Steps', '@Strings.Energy', '@Strings.Heart', '@Strings.Stress',
-                              '@Strings.Calories', '@Strings.Battery'])
+                              '@Strings.Calories', '@Strings.Battery', '@Strings.WatchSelected'])
+            self.assertEqual([int(child.attrib['value']) for child in entry.find('settingConfig')], list(range(7)))
 
 
 if __name__ == '__main__':

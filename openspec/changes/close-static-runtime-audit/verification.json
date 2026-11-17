@@ -1,0 +1,344 @@
+{
+  "schema_version": 2,
+  "change": "close-static-runtime-audit",
+  "requirements": [
+    {
+      "id": "AUD1",
+      "capability": "runtime",
+      "title": "Due schedule acquisition is not deferred by content refresh",
+      "fingerprint": "45462bd937e60dd7ee99f1f4d138ac9f5fe765cccf9b38d26c6c94e08a2a7cd5"
+    },
+    {
+      "id": "AUD2",
+      "capability": "runtime",
+      "title": "Metadata executing source matches tracked bytes",
+      "fingerprint": "231ee7360e0f390050fa72ed1eccab7b98299afdd30c320bbdf9fc3cc50e2fd5"
+    },
+    {
+      "id": "AUD3",
+      "capability": "runtime",
+      "title": "Current selected state remains accurate",
+      "fingerprint": "dbe697138fc6b28c531beae440000953b344fa94411aec231ee971bc37994a9d"
+    }
+  ],
+  "properties": [
+    {
+      "id": "AUD1.P1",
+      "requirement_id": "AUD1",
+      "scenarios": [
+        "Due schedule or constrained request"
+      ],
+      "statement": "Due schedule acquisition is not deferred by content refresh",
+      "owner": "tools/cloud_feed.py",
+      "oracle": "Current owner with independent literal or Git/transport observations; SDK results are retained tables, not physical evidence.",
+      "source_globs": [
+        "tools/cloud_feed.py",
+        "tests/**"
+      ]
+    },
+    {
+      "id": "AUD2.P1",
+      "requirement_id": "AUD2",
+      "scenarios": [
+        "Hidden source modification"
+      ],
+      "statement": "Metadata executing source matches tracked bytes",
+      "owner": "tools/refresh_catalog.py",
+      "oracle": "Current owner with independent literal or Git/transport observations; SDK results are retained tables, not physical evidence.",
+      "source_globs": [
+        "tools/refresh_catalog.py",
+        "tests/**"
+      ]
+    },
+    {
+      "id": "AUD3.P1",
+      "requirement_id": "AUD3",
+      "scenarios": [
+        "Context advances and reminders resume"
+      ],
+      "statement": "Current selected state remains accurate",
+      "owner": "watchface/source/SpaceFoxView.mc",
+      "oracle": "Current owner with independent literal or Git/transport observations; SDK results are retained tables, not physical evidence.",
+      "source_globs": [
+        "watchface/source/SpaceFoxView.mc",
+        "watchface/audit-tests/**"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "AUD1.positive",
+      "property_id": "AUD1.P1",
+      "polarity": "positive",
+      "scenario": "Due schedule or constrained request",
+      "scenario_fingerprint": "960f6a8f01c2cd522a85817f7d96380396ada57460c7cfaafd75054aa13a87bb",
+      "setup": "Isolated fixture, real selected owner, and explicitly substituted dependencies.",
+      "observable": "The named case observes the expected request, refusal, freshness or deduplication boundary.",
+      "red_expectation": "Reject missing or contradictory output, unsafe side effects, stale selection or duplicate dispatch.",
+      "green_expectation": "The full named case completes with its stated independent assertions.",
+      "invalidation_dependencies": [
+        "tools/cloud_feed.py",
+        "tests/test_autonomous_publisher_whole.py"
+      ],
+      "test_id": "test_due_expired_min_prepare_reaches_provider_in_same_cli",
+      "command_id": "case-test_due_expired_min_prepare_reaches_provider_in_same_cli",
+      "state": "planned",
+      "source_path": "tests/test_autonomous_publisher_whole.py",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "Local fixture provider, logical clock or SDK watch as applicable",
+        "allowed_proof": "Scoped deterministic behavior at the named production boundary",
+        "forbidden_claims": [
+          "Physical FR165, deployed schedule or live provider behavior"
+        ]
+      },
+      "planning_note": "The public project has no typed shared runner; this edge is not claimed as a shared-runner pass."
+    },
+    {
+      "id": "AUD1.negative",
+      "property_id": "AUD1.P1",
+      "polarity": "negative",
+      "scenario": "Due schedule or constrained request",
+      "scenario_fingerprint": "960f6a8f01c2cd522a85817f7d96380396ada57460c7cfaafd75054aa13a87bb",
+      "setup": "Isolated fixture, real selected owner, and explicitly substituted dependencies.",
+      "observable": "The named case observes the expected request, refusal, freshness or deduplication boundary.",
+      "red_expectation": "Reject missing or contradictory output, unsafe side effects, stale selection or duplicate dispatch.",
+      "green_expectation": "The full named case completes with its stated independent assertions.",
+      "invalidation_dependencies": [
+        "tools/cloud_feed.py",
+        "tests/test_autonomous_publisher_whole.py"
+      ],
+      "test_id": "test_due_recovery_and_denied_capacity_never_call_transport",
+      "command_id": "case-test_due_recovery_and_denied_capacity_never_call_transport",
+      "state": "planned",
+      "source_path": "tests/test_autonomous_publisher_whole.py",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "Local fixture provider, logical clock or SDK watch as applicable",
+        "allowed_proof": "Scoped deterministic behavior at the named production boundary",
+        "forbidden_claims": [
+          "Physical FR165, deployed schedule or live provider behavior"
+        ]
+      },
+      "planning_note": "The public project has no typed shared runner; this edge is not claimed as a shared-runner pass."
+    },
+    {
+      "id": "AUD2.positive",
+      "property_id": "AUD2.P1",
+      "polarity": "positive",
+      "scenario": "Hidden source modification",
+      "scenario_fingerprint": "31e13e23d73305803a496aa84c14cb3f6580eafbc1560cacc9aacc38e94e7231",
+      "setup": "Isolated fixture, real selected owner, and explicitly substituted dependencies.",
+      "observable": "The named case observes the expected request, refusal, freshness or deduplication boundary.",
+      "red_expectation": "Reject missing or contradictory output, unsafe side effects, stale selection or duplicate dispatch.",
+      "green_expectation": "The full named case completes with its stated independent assertions.",
+      "invalidation_dependencies": [
+        "tools/refresh_catalog.py",
+        "tests/test_performance021_a.py"
+      ],
+      "test_id": "test_no_work_fence_rejects_unverified_producer_sources",
+      "command_id": "case-test_no_work_fence_rejects_unverified_producer_sources",
+      "state": "planned",
+      "source_path": "tests/test_performance021_a.py",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "Local fixture provider, logical clock or SDK watch as applicable",
+        "allowed_proof": "Scoped deterministic behavior at the named production boundary",
+        "forbidden_claims": [
+          "Physical FR165, deployed schedule or live provider behavior"
+        ]
+      },
+      "planning_note": "The public project has no typed shared runner; this edge is not claimed as a shared-runner pass."
+    },
+    {
+      "id": "AUD2.negative",
+      "property_id": "AUD2.P1",
+      "polarity": "negative",
+      "scenario": "Hidden source modification",
+      "scenario_fingerprint": "31e13e23d73305803a496aa84c14cb3f6580eafbc1560cacc9aacc38e94e7231",
+      "setup": "Isolated fixture, real selected owner, and explicitly substituted dependencies.",
+      "observable": "The named case observes the expected request, refusal, freshness or deduplication boundary.",
+      "red_expectation": "Reject missing or contradictory output, unsafe side effects, stale selection or duplicate dispatch.",
+      "green_expectation": "The full named case completes with its stated independent assertions.",
+      "invalidation_dependencies": [
+        "tools/refresh_catalog.py",
+        "tests/test_runtime_audit_fence.py"
+      ],
+      "test_id": "test_clean_and_hidden_edits_before_publisher",
+      "command_id": "case-test_clean_and_hidden_edits_before_publisher",
+      "state": "planned",
+      "source_path": "tests/test_runtime_audit_fence.py",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "Local fixture provider, logical clock or SDK watch as applicable",
+        "allowed_proof": "Scoped deterministic behavior at the named production boundary",
+        "forbidden_claims": [
+          "Physical FR165, deployed schedule or live provider behavior"
+        ]
+      },
+      "planning_note": "The public project has no typed shared runner; this edge is not claimed as a shared-runner pass."
+    },
+    {
+      "id": "AUD3.positive",
+      "property_id": "AUD3.P1",
+      "polarity": "positive",
+      "scenario": "Context advances and reminders resume",
+      "scenario_fingerprint": "0ee105d86d8c85094a2c54890a7e43ce99bd2eb8916b99c26b8ac91884ea82fb",
+      "setup": "Isolated fixture, real selected owner, and explicitly substituted dependencies.",
+      "observable": "The named case observes the expected request, refusal, freshness or deduplication boundary.",
+      "red_expectation": "Reject missing or contradictory output, unsafe side effects, stale selection or duplicate dispatch.",
+      "green_expectation": "The full named case completes with its stated independent assertions.",
+      "invalidation_dependencies": [
+        "watchface/source/SpaceFoxView.mc",
+        "watchface/audit-tests/AuditTests.mc"
+      ],
+      "test_id": "auditFreshnessAndRollover",
+      "command_id": "case-auditFreshnessAndRollover",
+      "state": "planned",
+      "source_path": "watchface/audit-tests/AuditTests.mc",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "Local fixture provider, logical clock or SDK watch as applicable",
+        "allowed_proof": "Scoped deterministic behavior at the named production boundary",
+        "forbidden_claims": [
+          "Physical FR165, deployed schedule or live provider behavior"
+        ]
+      },
+      "planning_note": "The public project has no typed shared runner; this edge is not claimed as a shared-runner pass."
+    },
+    {
+      "id": "AUD3.negative",
+      "property_id": "AUD3.P1",
+      "polarity": "negative",
+      "scenario": "Context advances and reminders resume",
+      "scenario_fingerprint": "0ee105d86d8c85094a2c54890a7e43ce99bd2eb8916b99c26b8ac91884ea82fb",
+      "setup": "Isolated fixture, real selected owner, and explicitly substituted dependencies.",
+      "observable": "The named case observes the expected request, refusal, freshness or deduplication boundary.",
+      "red_expectation": "Reject missing or contradictory output, unsafe side effects, stale selection or duplicate dispatch.",
+      "green_expectation": "The full named case completes with its stated independent assertions.",
+      "invalidation_dependencies": [
+        "watchface/source/SpaceFoxView.mc",
+        "watchface/audit-tests/AuditTests.mc"
+      ],
+      "test_id": "auditReminderCurrentRows",
+      "command_id": "case-auditReminderCurrentRows",
+      "state": "planned",
+      "source_path": "watchface/audit-tests/AuditTests.mc",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "Local fixture provider, logical clock or SDK watch as applicable",
+        "allowed_proof": "Scoped deterministic behavior at the named production boundary",
+        "forbidden_claims": [
+          "Physical FR165, deployed schedule or live provider behavior"
+        ]
+      },
+      "planning_note": "The public project has no typed shared runner; this edge is not claimed as a shared-runner pass."
+    }
+  ],
+  "commands": [
+    {
+      "id": "case-test_due_expired_min_prepare_reaches_provider_in_same_cli",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_due_expired_min_prepare_reaches_provider_in_same_cli"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "expected_markers": [
+        "test_due_expired_min_prepare_reaches_provider_in_same_cli"
+      ],
+      "notes": "Direct host case or strict retained named SDK table; physical behavior is not proven."
+    },
+    {
+      "id": "case-test_due_recovery_and_denied_capacity_never_call_transport",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_due_recovery_and_denied_capacity_never_call_transport"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "expected_markers": [
+        "test_due_recovery_and_denied_capacity_never_call_transport"
+      ],
+      "notes": "Direct host case or strict retained named SDK table; physical behavior is not proven."
+    },
+    {
+      "id": "case-test_no_work_fence_rejects_unverified_producer_sources",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_performance021_a.HostPerformanceTest.test_no_work_fence_rejects_unverified_producer_sources"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "expected_markers": [
+        "test_no_work_fence_rejects_unverified_producer_sources"
+      ],
+      "notes": "Direct host case or strict retained named SDK table; physical behavior is not proven."
+    },
+    {
+      "id": "case-test_clean_and_hidden_edits_before_publisher",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_runtime_audit_fence.MetadataExecutingFence.test_clean_and_hidden_edits_before_publisher"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "expected_markers": [
+        "test_clean_and_hidden_edits_before_publisher"
+      ],
+      "notes": "Direct host case or strict retained named SDK table; physical behavior is not proven."
+    },
+    {
+      "id": "case-auditFreshnessAndRollover",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-c",
+        "from pathlib import Path;import re;from tools.run_native_tests import parse_output;p=Path('openspec/changes/close-static-runtime-audit/evidence/sdk-freshness-green.log');s='\\n'.join(x for x in p.read_text().splitlines() if not re.fullmatch(r'SF_VIEW mode=(?:HIGH|LOW) pending=(?:true|false)',x.strip()));assert parse_output(s,1,('auditFreshnessAndRollover',))['status']=='passed';print('auditFreshnessAndRollover')"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "expected_markers": [
+        "auditFreshnessAndRollover"
+      ],
+      "notes": "Direct host case or strict retained named SDK table; physical behavior is not proven."
+    },
+    {
+      "id": "case-auditReminderCurrentRows",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-c",
+        "from pathlib import Path;import re;from tools.run_native_tests import parse_output;p=Path('openspec/changes/close-static-runtime-audit/evidence/sdk-reminder-green.log');s='\\n'.join(x for x in p.read_text().splitlines() if not re.fullmatch(r'SF_VIEW mode=(?:HIGH|LOW) pending=(?:true|false)',x.strip()));assert parse_output(s,1,('auditReminderCurrentRows',))['status']=='passed';print('auditReminderCurrentRows')"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "expected_markers": [
+        "auditReminderCurrentRows"
+      ],
+      "notes": "Direct host case or strict retained named SDK table; physical behavior is not proven."
+    }
+  ]
+}

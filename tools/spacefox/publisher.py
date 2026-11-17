@@ -12,7 +12,7 @@ import os
 import signal
 import selectors
 import time
-from pathlib import PurePosixPath
+from pathlib import Path, PurePosixPath
 import re
 import subprocess
 import tempfile
@@ -419,6 +419,80 @@ def _transition(old, new, archive_lookup=None):
                 raise StateError('source reservation consumption requires a new durable candidate')
         if current is not None and 'accepted_source' in current and 'accepted_source' not in request and request['outcome'] != 'reserved':
             raise StateError('completed reservation cannot acquire source permission')
+
+
+def _head_tree(root):
+    raw = bounded_git(root, 'ls-tree', '-r', '-z', 'HEAD').stdout
+    result = {}
+    for entry in raw.split(b'\0'):
+        if not entry:
+            continue
+        header, path = entry.split(b'\t', 1)
+        mode, kind, digest = header.split()
+        if kind == b'blob':
+            result[os.fsdecode(path)] = (mode, digest.decode('ascii'))
+    return result
+
+
+def _tracked_bytes(root, tree, name):
+    path = Path(name)
+    if path.is_absolute() or '..' in path.parts or not path.parts:
+        raise ValueError('unsafe tracked input')
+    name = path.as_posix()
+    mode, expected = tree[name]
+    target = root / path
+    if mode != b'100644' and mode != b'100755':
+        raise ValueError('regular tracked input required')
+    if target.is_symlink() or not target.resolve().is_relative_to(root):
+        raise ValueError('unsafe tracked input')
+    # Resolve sizes only for files actually read: ls-tree -l on a partial
+    # clone fetches every missing blob in the whole repository. Stream the
+    # candidate before allocation, then recheck the stable snapshot so a
+    # changed or oversized worktree file cannot become trusted input.
+    size = target.stat().st_size
+    algorithm = hashlib.sha1 if len(expected) == 40 else hashlib.sha256
+    digest = algorithm(b'blob ' + str(size).encode() + b'\0')
+    with target.open('rb') as stream:
+        while chunk := stream.read(65536):
+            digest.update(chunk)
+    if digest.hexdigest() != expected:
+        raise ValueError('tracked input differs from HEAD')
+    from .catalog import _read_snapshot
+    raw = _read_snapshot(target, size)
+    digest = algorithm(b'blob ' + str(len(raw)).encode() + b'\0')
+    digest.update(raw)
+    if len(raw) != size or digest.hexdigest() != expected:
+        raise ValueError('tracked input differs from HEAD')
+    return raw
+
+
+def tracked_executing_revision(root, scopes, *, require_present=False, message='producer checkout must be committed and clean before provider permission'):
+    """Bind permission SHA to the actual tracked clean producer checkout."""
+    root = Path(root).resolve()
+    result = bounded_git(root, 'status', '--porcelain', '--untracked-files=all', '--', *scopes)
+    if result.stdout:
+        raise StateError(message)
+    if require_present:
+        tracked_all = bounded_git(root, 'ls-files', '--error-unmatch', '--', *scopes, check=False)
+        if tracked_all.returncode or any(not (root / name).is_file() or (root / name).is_symlink() for name in scopes):
+            raise StateError(message)
+    # Git status ignores assume-unchanged and skip-worktree. Check any present
+    # flagged producer bytes directly against HEAD before opening authority.
+    tracked = bounded_git(root, 'ls-files', '-v', '-z', '--', *scopes).stdout
+    flagged = [entry for entry in tracked.split(b'\0') if entry and entry[:1] != b'H']
+    if flagged:
+        tree = _head_tree(root)
+        try:
+            for entry in flagged:
+                name = os.fsdecode(entry[2:])
+                target = root / name
+                if target.exists() or target.is_symlink():
+                    _tracked_bytes(root, tree, name)
+                elif entry[:1] != b'S':
+                    raise ValueError('missing flagged producer input')
+        except (KeyError, OSError, ValueError) as exc:
+            raise StateError(message) from exc
+    return bounded_git(root, 'rev-parse', 'HEAD').stdout.decode().strip()
 
 
 def _schedule_due(doc, now, policy):

@@ -2,8 +2,8 @@
 
 This document retains the earlier static-profile qualification and its original
 evidence boundaries. Its optional-profile flags, wire3/wire2/v1 routing and
-legacy-retention setup below are historical, not current instructions. The sole
-current public format is native-motion-v3, envelope schema3/SFR1M at `/feed.json`;
+legacy-retention setup below are historical, not current instructions. The
+publisher and visual root remains native-motion-v3, envelope schema3/SFR1M at `/feed.json`; the current watch schedule is the separate trusted `/watch.json` projection;
 see [the current motion contract](NATIVE_MOTION_V3.md). Current source, typed
 identity, raw/pixel integrity, bounds and same-format recovery remain required.
 No old-profile or cross-version qualification is added by retaining this record.
@@ -114,7 +114,7 @@ A different fresh whole-unit peer and root judgment remain required.
 ## Historical production activation handoff
 
 The route and blank-default statements in this historical handoff are superseded
-by the current sole schema-3 `/feed.json` route and the 0.1.1 test default
+by the schema-3 `/feed.json` publisher/visual root, separate current `/watch.json` schedule, and the 0.1.1 test default
 `https://jekamas.github.io/SpaceFox`.
 
 `FeedBaseUrl` remains blank by default. With an explicitly configured trusted

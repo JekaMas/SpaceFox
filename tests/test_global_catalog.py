@@ -209,7 +209,7 @@ class GlobalCatalogTest(unittest.TestCase):
             self.assertIn(identity,asset['facts']['coverage']['configurationIds'])
 
     def test_coverage_negative(self):
-        self.assertIn('ll2:configuration:522',coverage_report(self.catalog)['configurations']['missingArtIds'])
+        self.assertIn('ll2:configuration:39',coverage_report(self.catalog)['configurations']['missingArtIds'])
         bad=copy.deepcopy(self.catalog)
         bad['dictionaries']['assets']['spacefox:asset:vehicle-s520']['facts']['coverage']['configurationIds']=['ll2:configuration:522']
         with self.assertRaisesRegex(CatalogError,'not reviewed'):validate_catalog(bad)
@@ -220,7 +220,7 @@ class GlobalCatalogTest(unittest.TestCase):
         bad['dictionaries']['sites']['ll2:site:65']['curation']={'id':'fake','reviewedAt':'2026-11-12','sources':['https://example.com/'],'reason':'fake','changes':{}}
         with self.assertRaises(CatalogError):validate_catalog(bad)
         # Country-code mark availability never closes an unknown origin.
-        self.assertIsNone(self.catalog['dictionaries']['configurations']['ll2:configuration:30']['references']['origin'])
+        self.assertIsNone(self.catalog['dictionaries']['configurations']['ll2:configuration:39']['references']['origin'])
 
 
 if __name__ == '__main__':unittest.main()

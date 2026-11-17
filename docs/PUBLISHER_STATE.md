@@ -1,8 +1,7 @@
 # Durable publisher-state core
 
-The current target is one native-motion-v3 schema3/SFR1M feed at `/feed.json`,
-with packed schema2 authority in the motion-v3 namespace below. Prior wire/state
-readers, migration, dual roots and transition-period closure are retired. This
+The publisher/visual root is native-motion-v3 schema3/SFR1M at `/feed.json`; the watch obtains its separate trusted schedule projection at `/watch.json`,
+with packed schema2 authority in the motion-v3 namespace below. Prior wire/state readers, migration and old transition-period routes are retired. This
 guide states the current contract; historical local observations and remaining
 current implementation checks keep their original boundaries in
 [PROGRESS.md](../openspec/changes/spacefox-watchface/PROGRESS.md).
@@ -65,12 +64,10 @@ only after its reservation is durable. `None` means a scheduled primary poll is
 not due and causes no state commit. The updater must initiate exactly one provider
 request per returned token, including each pagination/manual/retry/catalog/version
 request. All share a sliding15-reservations/hour allowance. The accepted cadence
-kernel supplies hourly/near15minute or explicit fast>=300second decisions, keeping
-steady fast primary polling at most12/hour. Extra requests share the remaining
+policy admits hourly healthy primary requests and the next permitted connected retry after failure or no future. Offline wake uses the 300-second platform minimum; source freshness thresholds are separate. Extra requests share the remaining
 allowance. An unresolved reservation remains counted across crashes and imposes
 a60second uncertainty delay. It is not refunded; after the rolling hour it ages
-out. Failed/throttled results persist at least60seconds of backoff (default300),
-with explicit provider retry deadlines supported. Monotonic logical UTC prevents
+out. Failed schedule attempts retry at the next permitted connected opportunity; the existing reservation, quota and unresolved-call guards still apply. Monotonic logical UTC prevents
 clock rewind from resetting the quota. Signed UTC seconds and zero remain valid;
 an existing zero backoff deadline is retained when a later result has an earlier
 deadline. These are local control-policy proofs;

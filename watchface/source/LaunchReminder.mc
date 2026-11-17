@@ -56,7 +56,7 @@ module LaunchReminder {
  // successors just as they do in the foreground. A successor's eligibility
  // cannot begin before every preceding scene's retention deadline.
  function selected(snapshot,now){
-  if(!(snapshot instanceof Dictionary)){return null;}var rows=snapshot["rows"];if(!(rows instanceof Array)){return snapshot;}
+  if(!(snapshot instanceof Dictionary)){return null;}var rows=snapshot["rows"];if(!(rows instanceof Array)){return null;}
   if(rows.size()<1||rows.size()>3){return null;}var start=null;
   for(var i=0;i<rows.size();i+=1){var r=rows[i];if(!(r instanceof Array)||r.size()!=10||!(r[0] instanceof String)||!(r[9] instanceof Boolean)||r[8]!=null&&!number(r[8])){return null;}
    if(r[8]!=null&&now>=r[8]){if(start==null||r[8]>start){start=r[8];}continue;}if(!r[9]){return null;}

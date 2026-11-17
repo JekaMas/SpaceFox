@@ -45,7 +45,7 @@ The background SHALL obtain the trusted current-format snapshot and write a comp
 - **THEN** the selected facts become available in LOW without waiting for an ACTIVE transition.
 
 ### Requirement: Optional-resource overlap remains bounded
-Optional artwork SHALL be deferred while a snapshot candidate owns constrained resources. Clock, countdown and previously accepted facts SHALL remain available while optional work is pending or has failed.
+Current snapshot admission and optional scene-descriptor work SHALL remain bounded. Foreground scheduling SHALL preserve progress across low-power transitions and release transient state before allocation-heavy phases. Optional artwork SHALL be deferred while a snapshot candidate owns constrained resources. Clock, countdown and previously accepted facts SHALL remain available while optional work is pending or has failed.
 
 #### Scenario: Optional artwork cannot complete
 - **WHEN** artwork is pending or its build fails after facts are accepted

@@ -264,6 +264,45 @@ sys.exit(m.main())'''
     def stable(self, pub):
         return {k: pub.ledger[k] for k in ('accepted','active','pending','generation','selection_validated_utc')}
 
+    def test_due_expired_min_prepare_reaches_provider_in_same_cli(self):
+        # Captured Starship is source MIN at 1794609900. After its 900-second
+        # retention, no future is left; only transport time is controlled.
+        with self.authority(runtime=False) as (source,remote,store,pub), Service().serving() as service:
+            materialized=subprocess.run(['bash','-ec',shell_step('Materialize exact reviewed runtime and catalog closure')],cwd=source,capture_output=True)
+            self.assertEqual(materialized.returncode,0,materialized.stderr)
+            self.active(pub,service)
+            deadline=1794610801
+            service.epoch=deadline
+            output=source.parent/'due-expired-min-output'
+            result=self.cli(source,remote,service,'prepare','--output',output,now=deadline,runtime=False)
+            calls=[call for call in service.calls if call[1].startswith('/2.3.0/launches/upcoming/')]
+            self.assertEqual(len(calls),1)
+            self.assertEqual(result['requests'],1)
+            self.assertEqual(result['result'],'pending')
+            self.assertTrue(output.is_dir())
+
+    def test_due_recovery_and_denied_capacity_never_call_transport(self):
+        from tools.cloud_feed import prepare_content
+        from tools.spacefox.provider import LL2Client
+        class ForbiddenTransport:
+            def get(self,url):raise AssertionError('unexpected provider transport')
+        for mode in ('pending','inflight','quota'):
+            with self.subTest(mode=mode), self.authority(runtime=False) as (_,_,store,pub), Service().serving() as service:
+                self.active(pub,service)
+                now=1794610801
+                client=LL2Client(transport=ForbiddenTransport())
+                if mode=='pending':
+                    self.prepare(pub,NOW+1)
+                    result=prepare_content(pub,client,now,self.catalog,root=ROOT)
+                    self.assertEqual(result['result'],'recovered_pending')
+                else:
+                    count=1 if mode=='inflight' else 15
+                    for _ in range(count):
+                        token=pub.reserve(pub.head,now,trigger='extra')
+                        if mode=='quota':pub.finish_request(pub.head,token,now,'success')
+                    with self.assertRaises(ValueError):prepare_content(pub,client,now,self.catalog,root=ROOT)
+                self.assertEqual(client.requests_started,0)
+
     def test_selected_current_bound_and_explicit_unknown_absence(self):
         self.assertLessEqual(len(self.template['feed.json']),8192)
         self.assertLessEqual(sum(map(len,self.template.values())),1048576)

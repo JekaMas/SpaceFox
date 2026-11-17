@@ -1,4 +1,4 @@
-"""Reconstruct the exact 0.1.14 predecessor and refuse a changed prior helper."""
+"""Current reminder owner is covered by active source admission; old receipts stay historical."""
 import json
 from pathlib import Path
 import unittest
@@ -7,7 +7,7 @@ from tools.native_language_policy import software_locales
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = json.loads((ROOT / 'locales/catalog.json').read_text())
-SNAPSHOT = ROOT / 'openspec/changes/add-launch-reminders/evidence/locale-015/prior/tools/spacefox/native_profile.py'
+SNAPSHOT = ROOT / 'watchface/source/LaunchReminder.mc'
 
 class ReminderQualificationTest(unittest.TestCase):
     def test_published_predecessor_reconstruction(self):
@@ -19,5 +19,5 @@ class ReminderQualificationTest(unittest.TestCase):
             raw = original(path)
             return raw + b'\n# changed' if path == SNAPSHOT else raw
         with patch.object(Path, 'read_bytes', altered):
-            with self.assertRaisesRegex(ValueError, 'reminder qualification input changed'):
+            with self.assertRaisesRegex(ValueError, 'audit native input closure changed'):
                 software_locales(ROOT, CATALOG)

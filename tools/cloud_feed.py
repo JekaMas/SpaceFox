@@ -55,7 +55,7 @@ def outputs(result):
 
 
 def prepare_content(pub, client, now, catalog, *, root, clock=None):
-    """Real cloud prepare owner: recover first; poll due schedules before content-only work.
+    """Recover first; due acquisition takes priority over optional content rebuild.
 
     The complete source digest detects metadata/art changes independent of code
     adoption or provider due time. Pending candidates are never reconstructed.
@@ -99,6 +99,11 @@ def _prepare_content(pub, client, now, catalog, *, root, clock, owner):
     else:
         builder = owner.build
         catalog_review = owner.review
+    if _schedule_due(pub.ledger, now, pub.policy):
+        result = update(pub,client,now,catalog,trigger='scheduled',clock=clock,artifact_builder=builder,artifact_profile=PROFILE)
+        if result['result'] == 'pending':
+            result['catalogReview'] = catalog_review
+        return result
     active=pub.ledger['active']
     if active is not None:
         path=f'artifacts/{active["generation"]}/{FEED_PATH}'
@@ -107,7 +112,7 @@ def _prepare_content(pub, client, now, catalog, *, root, clock, owner):
             raise CloudError('current-format active feed missing')
         previous=validate_feed(pub.store._blob(pub.head,path,8192))
         selection_changed = _projection_changed(pub.schedule, now, pub.policy, previous)
-        if not _schedule_due(pub.ledger, now, pub.policy) and (previous is None or 'upcoming' not in previous or selection_changed or previous['catalogSourceDigest'] != (owner.source_digest() if owner is not None else sha(canonical_bytes(catalog))) or 'feed.json.txt' not in active['files'] or 'watch.json' not in active['files']):
+        if previous is None or 'upcoming' not in previous or selection_changed or previous['catalogSourceDigest'] != (owner.source_digest() if owner is not None else sha(canonical_bytes(catalog))) or 'feed.json.txt' not in active['files'] or 'watch.json' not in active['files']:
             publisher=pub.publisher_envelope(now)
             traversal=previous['providerTraversal'] if previous is not None else None
             files,digest=builder(pub.schedule,catalog,now,publisher=publisher,policy=pub.policy,traversal=traversal)

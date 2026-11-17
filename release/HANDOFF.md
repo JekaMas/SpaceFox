@@ -11,9 +11,13 @@ and disaster recovery are not claimed.
 
 The 0.2.2 source combines performance changes with the live-data/LOW and B2/B3 reminder integration. Its physical acceptance and Garmin Store status remain unobserved; publication and signed artifact identity are recorded after delivery. See [release notes](RELEASE-NOTES-0.2.2.md).
 
+## Published 0.2.5 GitHub release
+
+[SpaceFox 0.2.5](https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.5) is a regular GitHub release compiled from `e30f79680c4e2cd8bbae1895226e5915c2a72ef9`, native ID `d9f85ed4`. One SDK signed IQ export supplied all 42 supported PRGs, including both FR165 variants. The original full receipt is a release asset and is the next update predecessor. The owner-held 0.2.4 original receipt and its published IQ/source anchors were the predecessor; its receipt digest was first recorded now, without prior independent authentication. No separate signature or artifact audit was run. Physical watch, phone and Store acceptance remain unobserved. See [release notes](RELEASE-NOTES-0.2.5.md).
+
 ## Published 0.1.23 GitHub test prerelease
 
-[SpaceFox 0.1.23](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.23-test.1) is a published GitHub test prerelease built from `c222b705f2ad7deff86e6d49f39119baa0748f3f`, native ID `47d8d5a5`. Its original receipt and IQ are the current update predecessor. One SDK IQ export supplies all 42 profile PRGs, the FR165 install ZIP and source-input archive. The original 0.1.22 receipt and IQ were its predecessor. Physical FR165 notification delivery, haptics, scheduling and P1–P6 acceptance, the 0.1.18 IQ cause, phone migration and Garmin Store acceptance remain unverified. See [release notes](RELEASE-NOTES-0.1.23.md).
+[SpaceFox 0.1.23](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.23-test.1) is a published GitHub test prerelease built from `c222b705f2ad7deff86e6d49f39119baa0748f3f`, native ID `47d8d5a5`. Its original receipt and IQ were retained as a historical update predecessor. One SDK IQ export supplies all 42 profile PRGs, the FR165 install ZIP and source-input archive. The original 0.1.22 receipt and IQ were its predecessor. Physical FR165 notification delivery, haptics, scheduling and P1–P6 acceptance, the 0.1.18 IQ cause, phone migration and Garmin Store acceptance remain unverified. See [release notes](RELEASE-NOTES-0.1.23.md).
 
 ## Published 0.1.22 GitHub test prerelease
 

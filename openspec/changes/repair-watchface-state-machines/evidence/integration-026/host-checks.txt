@@ -1,0 +1,6 @@
+Combined historical/current qualification: COMBINED ADMISSION PASS.
+Sparse publisher imports: SPARSE_IMPORT_CLOSURE PASS.
+Affected publisher due test plus predecessor receipt and signer tests: Ran 3 tests, OK.
+Negative repinned historical proof and unexpected native delta checks: Ran 2 tests, OK.
+Both changed OpenSpec changes validated. git diff --check passed excluding incoming immutable historical audit evidence, whose pre-existing CRLF ledger and raw logs were not rewritten.
+The first predecessor attempt failed because the public IQ had not yet been downloaded; the matching published 0.2.5 IQ was then downloaded alongside the receipt, after which both predecessor cases passed.
