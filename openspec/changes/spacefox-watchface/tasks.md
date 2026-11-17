@@ -170,4 +170,5 @@ Schedule retry and display simplification (0.2.4):
 - [x] Remove the countdown tilde while preserving the announced NET reference and source precision/reminder eligibility; update current documentation and specification.
 - [x] Run affected cadence, retry, asset, EN/RU display and SDK compile checks; retain unrelated earlier receipts (`evidence/schedule-cadence-024/PROGRESS.md`).
 - [x] Independent peer verified and repaired the same batch to GREEN, including residual schedule-pagination backoff; see `evidence/schedule-cadence-024/PEER.md` and sole current release receipt `peer.json`.
-- [ ] Merge/freeze actual main, deploy/read back the updated upstream source, export/tag/publish the authorized full signed release and perform authorized Store delivery; retain truthful physical/phone/Store approval boundaries.
+- [x] Merge/freeze actual main, deploy/read back the updated upstream source, export/tag/publish the authorized full signed GitHub release (`evidence/schedule-cadence-024/PUBLICATION.md`).
+- [ ] Complete Garmin Store submission and record its status; phone and physical acceptance remain unobserved.
