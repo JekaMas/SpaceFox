@@ -18,4 +18,4 @@
 
 Software acceptance above is complete; no physical success is claimed.
 
-- [ ] Author integrates the accepted exact source into actual main, exports the frozen full signed IQ, tags/publishes the GitHub release and completes Store delivery under existing authorization; no separate third review or repeated behavior campaign.
+- [x] Author integrated the accepted source into actual main, exported the signed IQ, published the GitHub release and submitted the verified IQ to Garmin. Garmin approval and public availability remain unobserved; see `evidence/PUBLICATION.md`.

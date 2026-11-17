@@ -1,3 +1,9 @@
+# Delivery — 0.2.9
+
+GitHub release 0.2.9 is published from tag and compiled source `fe380ee71e45219f00e953f6e97236fe3f7b0066`, NativeID `d13aa334`. The exact signed IQ was submitted to Garmin after its version and signature were verified. The listing showed 0.2.9 notes but version 0.2.8/Internal 17; approval and availability of 0.2.9 remain unobserved. See `PUBLICATION.md`. Physical watch and phone acceptance remain NOT OBSERVED.
+
+---
+
 # Current final software result — GREEN
 
 Reviewed software source `1f53420a5af7c4479aca537a12197d10980e1c07`, version0.2.9 / NativeIDd13aa334. Current signing-predecessor metadata independently reviewed at `bfe511d35e8eb26081302047c65458b6e49c74e9`: latest original0.2.8 receipt/paired IQ accepted, unchanged UUID/SPKI/custody, one applicable PEER.json accepted by the actual unchanged release gate (`PEER-signing-predecessor.md`, `PEER-signing-release-gate.log`). All19 software proof scopes remain unchanged; no behavior/SDK/host/locale rerun. Independent same-peer source review, all repairs, all15 final native workloads and all4 host workloads are GREEN. Actual existing combined release peer/source-admission gate and selected OpenSpec validation PASS. One real current receipt: `PEER.json`; authoritative report: `PEER.md`; per-workload timings/counts/source bindings: `NATIVE-CAMPAIGN.md/json`.
