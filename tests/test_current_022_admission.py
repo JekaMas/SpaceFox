@@ -37,3 +37,23 @@ class Current022Binding(unittest.TestCase):
             release.require_combined_peer(ROOT,[good])
             with patch.object(release,'git',return_value='watchface/source/SpaceFoxView.mc'):
                 with self.assertRaises(Exception):release.require_combined_peer(ROOT,[good])
+
+    def test_current_peer_binds_workflow_and_sparse_seed(self):
+        import re, subprocess
+        from tools import release
+        native=(ROOT/'watchface/source/generated/NativeVersion.mc').read_text()
+        native_id=re.search(r'const ID = "([0-9a-f]{8})"',native).group(1)
+        revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+        good={'data':{'kind':'state-machine-integration-peer','status':'GREEN','version':'0.2.6','native_id':native_id,'source_revision':revision}}
+        original=release.git
+        # Report a post-review change only if the real gate asks Git to inspect
+        # that semantic input. This tests its selected closure, not a blanket
+        # mocked dirty result unrelated to the passed pathspec.
+        with patch.object(owner,'validate',return_value=[]):
+            for changed_path in ('.github/workflows/update-feed.yml','.github/spacefox-inputs.txt'):
+                def changed(root,*args):
+                    if args[0]=='diff':return changed_path+'\n' if changed_path in args else ''
+                    return original(root,*args)
+                with self.subTest(path=changed_path),patch.object(release,'git',side_effect=changed):
+                    with self.assertRaisesRegex(Exception,'reviewed runtime audit source changed'):
+                        release.require_combined_peer(ROOT,[good])

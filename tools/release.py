@@ -538,7 +538,7 @@ def require_combined_peer(root: Path, supplied: list[dict]) -> None:
         require(isinstance(reviewed, str) and re.fullmatch(r"[0-9a-f]{40}", reviewed), "runtime audit peer must identify reviewed source")
         ancestry = subprocess.run(["git", "merge-base", "--is-ancestor", reviewed, "HEAD"], cwd=root, capture_output=True)
         require(ancestry.returncode == 0, "runtime audit peer source is not an ancestor")
-        unchanged = git(root, "diff", "--name-only", reviewed, "HEAD", "--", "watchface", "tools/spacefox", "tools/cloud_feed.py", "tools/update_feed.py", "tools/refresh_catalog.py", "tools/release.py", "tools/native_audit_025_qualification.py", "locales/catalog.json", "tests/test_state_machine_publisher.py")
+        unchanged = git(root, "diff", "--name-only", reviewed, "HEAD", "--", "watchface", "tools/spacefox", "tools/cloud_feed.py", "tools/update_feed.py", "tools/refresh_catalog.py", ".github/workflows/update-feed.yml", ".github/spacefox-inputs.txt", "tools/release.py", "tools/native_audit_025_qualification.py", "locales/catalog.json", "tests/test_state_machine_publisher.py")
         require(not unchanged.strip(), "reviewed runtime audit source changed")
         return
     combined = catalog["supportPolicy"]["softwareQualificationProof"].get("currentIntegration022Proof")
