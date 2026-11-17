@@ -29,7 +29,7 @@ import Toybox.Test;
 }
 (:test,:typecheck(false)) function campaignPilot(logger){
  PbtMetrics.assertions=0;PbtMetrics.skipped=0;PbtMetrics.coverage={};var first=PbtConfig.FIRST_SEED;var seed=first;var events=0;var batches=0;
- logger.debug("PBT_CAMPAIGN_BEGIN worker="+PbtConfig.WORKER+" owner="+PbtConfig.OWNER+" first="+first+" version="+NativeVersion.BUILD+" native_id="+NativeVersion.ID);
+ logger.debug("PBT_CAMPAIGN_BEGIN worker="+PbtConfig.WORKER+" owner="+PbtConfig.OWNER+" first="+first+" version="+NativeVersion.BUILD+" native_id="+NativeVersion.ID+" budget_ms="+PbtConfig.DURATION_MS);
  var start=System.getTimer();var budget=new PbtCampaignBudget();var nextReport=60000;
  while(budget.productive<PbtConfig.DURATION_MS){var workStarted=System.getTimer();events+=campaignBatch(PbtConfig.OWNER,seed,8);budget.completed(workStarted,System.getTimer());seed+=8;batches+=1;
   if(budget.productive>=nextReport){logger.debug("PBT_CAMPAIGN_PROGRESS owner="+PbtConfig.OWNER+" next="+seed+" events="+events+" productive_ms="+budget.productive);nextReport+=60000;}}

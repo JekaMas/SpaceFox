@@ -8,12 +8,12 @@ from tools.run_native_stm_campaign import coverage_counts
 
 
 class NativeCampaignOutputControl(unittest.TestCase):
-    def observed(self, *, host_seconds=1, first=1, next_seed=9):
+    def observed(self, *, host_seconds=1, first=1, next_seed=9, productive_ms=606000):
         from tools import run_native_stm_campaign as runner
         raw=("Executing test campaignPilot...\n"
-             "DEBUG (00:00): PBT_CAMPAIGN_BEGIN worker=0 owner=0 first=1 version=0.2.9 native_id=12345678\n"
+             "DEBUG (00:00): PBT_CAMPAIGN_BEGIN worker=0 owner=0 first=1 version=0.2.9 native_id=12345678 budget_ms=606000\n"
              "DEBUG (00:00): PBT_CAMPAIGN_COVERAGE {show_applied=>1} assertions=100 skipped=0\n"
-             f"DEBUG (00:00): PBT_CAMPAIGN_END worker=0 owner=0 first={first} next={next_seed} batches=1 events=10 productive_ms=600000 wall_ms=600000\n"
+             f"DEBUG (00:00): PBT_CAMPAIGN_END worker=0 owner=0 first={first} next={next_seed} batches=1 events=10 productive_ms={productive_ms} wall_ms=606000\n"
              "PASS\nRESULTS\nTest: Status:\ncampaignPilot PASS\nRan 1 test\nPASSED (passed=1, failed=0, errors=0)\n")
         process=SimpleNamespace(stdout=raw.splitlines(True),wait=lambda:1,kill=lambda:None)
         with TemporaryDirectory() as temporary:
@@ -36,6 +36,7 @@ class NativeCampaignOutputControl(unittest.TestCase):
 
     def test_duration_and_seed_ranges_have_independent_fences(self):
         self.assertEqual(self.observed(host_seconds=601)['status'],'GREEN')
+        self.assertEqual(self.observed(host_seconds=601,productive_ms=600000)['status'],'RED')
         self.assertEqual(self.observed(host_seconds=601,first=2,next_seed=10)['status'],'RED')
         self.assertEqual(self.observed(host_seconds=601,next_seed=1)['status'],'RED')
         self.assertEqual(self.observed(host_seconds=601,next_seed=10)['status'],'RED')

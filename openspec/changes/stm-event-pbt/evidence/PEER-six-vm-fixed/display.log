@@ -1,0 +1,14 @@
+------------------------------------------------------------------------------
+Executing test campaignPilot...
+DEBUG (17:29): PBT_CAMPAIGN_BEGIN worker=0 owner=0 first=1 version=0.2.9 native_id=d13aa334
+DEBUG (17:29): PBT_CAMPAIGN_COVERAGE {hide_no=>2315, invalidate_applied=>1555, sleep_applied=>2288, show_applied=>2306, wake_applied=>1921, wake_no=>2289, mode_hidden_no=>2316, active_applied=>1547, show_no=>1904, sleep_no=>1917, frame_applied=>3508, hide_applied=>1935} assertions=89683 skipped=0
+DEBUG (17:29): PBT_CAMPAIGN_END worker=0 owner=0 first=1 next=737 batches=92 events=31620 productive_ms=3028 wall_ms=3029
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+campaignPilot                       PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

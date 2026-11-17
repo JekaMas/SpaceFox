@@ -73,8 +73,9 @@ def execute(owner, worker, seconds, output, ready=None):
     identity=re.search(r'const BUILD = "([0-9.]+)"; const ID = "([0-9a-f]{8})";',native)
     if identity is None:
         raise RuntimeError('invalid native source identity')
+    execution_ms=seconds*1000+max(1000,seconds*10) # margin; real requested wall fence stays strict
     (isolated / 'PbtConfig.mc').write_text(
-        f'(:test) module PbtConfig {{ const WORKER={worker}; const OWNER={owner}; const FIRST_SEED={1+worker*400000}; const DURATION_MS={seconds*1000}; }}\n')
+        f'(:test) module PbtConfig {{ const WORKER={worker}; const OWNER={owner}; const FIRST_SEED={1+worker*400000}; const DURATION_MS={execution_ms}; }}\n')
     compile_cmd = ('docker', 'exec', container, f'{SDK}/monkeyc', '-f', '/task/test.jungle',
                    '-o', f'/task/campaign-{owner}.prg', '-d', 'fr165m', '-y', '/task/test.der', '-t', '-l', '3')
     try:
@@ -89,7 +90,7 @@ def execute(owner, worker, seconds, output, ready=None):
         command('docker', 'exec', container, 'sh', '-c',
                 f'pkill -f "[/]bin/simulator" || true; DISPLAY=:99 {SDK}/connectiq > /task/campaign-simulator.log 2>&1 &')
         if ready is not None:
-            ready.wait(timeout=420)
+            ready.wait(timeout=180*((ready.parties+1)//2)+60)
     except BaseException:
         if ready is not None:
             ready.abort()
@@ -124,20 +125,21 @@ def execute(owner, worker, seconds, output, ready=None):
             (output/f'{NAMES[owner]}-cleanup-error.txt').write_text(repr(error)+'\n')
             cleanup_ok=False
     raw = ''.join(lines)
-    begin_markers=re.findall(r'PBT_CAMPAIGN_BEGIN worker=(\d+) owner=(\d+) first=(\d+) version=([0-9.]+) native_id=([0-9a-f]{8})',raw)
+    begin_markers=re.findall(r'PBT_CAMPAIGN_BEGIN worker=(\d+) owner=(\d+) first=(\d+) version=([0-9.]+) native_id=([0-9a-f]{8}) budget_ms=(\d+)',raw)
     marker = re.search(r'PBT_CAMPAIGN_END worker=(\d+) owner=(\d+) first=(\d+) next=(\d+) batches=(\d+) events=(\d+) productive_ms=(\d+) wall_ms=(\d+)', raw)
     cov = re.search(r'PBT_CAMPAIGN_COVERAGE (.+) assertions=(\d+) skipped=(\d+)', raw)
     parsed = parse_output(raw, rc, ('campaignPilot',))
     counts = None if cov is None else coverage_counts(cov[1])
     good = (cleanup_ok and parsed['status'] == 'passed' and len(begin_markers)==1 and
-            begin_markers[0]==(str(worker),str(owner),str(1+worker*400000),identity[1],identity[2]) and
+            begin_markers[0]==(str(worker),str(owner),str(1+worker*400000),identity[1],identity[2],str(execution_ms)) and
             raw.count('PBT_CAMPAIGN_END ')==1 and raw.count('PBT_CAMPAIGN_COVERAGE ')==1 and marker is not None and cov is not None and counts is not None and
             int(marker[1]) == worker and int(marker[2]) == owner and int(marker[3]) == 1+worker*400000 and
             int(marker[4])-int(marker[3]) == int(marker[5])*8 and
-            int(marker[5]) > 0 and int(marker[6]) > 0 and int(marker[7]) >= seconds*1000 and
+            int(marker[5]) > 0 and int(marker[6]) > 0 and int(marker[7]) >= execution_ms and
             int(cov[2]) > int(marker[6]) and int(marker[8]) >= int(marker[7]) and
             begin is not None and end is not None and end-begin >= seconds)
     return {'owner': NAMES[owner], 'worker': worker, 'status': 'GREEN' if good else 'RED',
+            'configured_budget_ms': execution_ms, 'requested_seconds': seconds,
             'thread_id': threading.get_ident(), 'container': container, 'cleanup_ok': cleanup_ok,
             'program': str(program), 'program_sha256': program_sha,
             'test_uuid': app.get('id'), 'entry': 'PbtApp', 'version': identity[1], 'native_id': identity[2],

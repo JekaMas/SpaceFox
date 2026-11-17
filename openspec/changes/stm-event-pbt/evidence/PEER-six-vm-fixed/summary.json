@@ -1,0 +1,320 @@
+{
+  "status": "RED",
+  "source_revision": "1df33d2ea3facd7eb845951d9c10277a95856b91",
+  "version": "0.2.9",
+  "native_id": "d13aa334",
+  "required_seconds": 3,
+  "workers_per_batch": 6,
+  "compile_concurrency_limit": 2,
+  "full_duration": false,
+  "overlap_seconds": [
+    2.5918130418285728
+  ],
+  "results": [
+    {
+      "owner": "display",
+      "worker": 0,
+      "status": "GREEN",
+      "thread_id": 6172012544,
+      "container": "spacefox-event-pbt-20261117",
+      "cleanup_ok": true,
+      "program": "/Users/jekamas/.codex/tmp/spacefox-stm-pbt-20261117/campaign-0.prg",
+      "program_sha256": "3083bdae85560b553d7345d065328052c759b220c74d232d82ac23411473ce31",
+      "test_uuid": "c0d8e48b8f1445a3b9b93b9f700cf505",
+      "entry": "PbtApp",
+      "version": "0.2.9",
+      "native_id": "d13aa334",
+      "raw_exit": 1,
+      "launcher": {
+        "status": "passed",
+        "raw_exit_code": 1,
+        "expected_tests": [
+          "campaignPilot"
+        ],
+        "observed_tests": {
+          "campaignPilot": "PASS"
+        },
+        "observed_count": 1,
+        "launcher_nonzero_framework_pass": true
+      },
+      "host_start": 2874470.488394166,
+      "productive_begin": 2874484.817739416,
+      "productive_end": 2874487.858024666,
+      "coverage": {
+        "hide_no": 2315,
+        "invalidate_applied": 1555,
+        "sleep_applied": 2288,
+        "show_applied": 2306,
+        "wake_applied": 1921,
+        "wake_no": 2289,
+        "mode_hidden_no": 2316,
+        "active_applied": 1547,
+        "show_no": 1904,
+        "sleep_no": 1917,
+        "frame_applied": 3508,
+        "hide_applied": 1935
+      },
+      "assertions": 89683,
+      "skipped": 0,
+      "first_seed": 1,
+      "next_seed": 737,
+      "traces": 736,
+      "events": 31620,
+      "productive_ms": 3028,
+      "native_wall_ms": 3029,
+      "observed_wall_seconds": 3.040285250172019
+    },
+    {
+      "owner": "request",
+      "worker": 1,
+      "status": "RED",
+      "thread_id": 6188838912,
+      "container": "spacefox-event-pbt-pilot-1",
+      "cleanup_ok": true,
+      "program": "/Users/jekamas/.codex/tmp/spacefox-stm-pbt-pilot-1/campaign-1.prg",
+      "program_sha256": "5646311c8a8e54b0d0d11e857dacaffc7fbebe0cb53d5b574368be86558db41a",
+      "test_uuid": "c0d8e48b8f1445a3b9b93b9f700cf506",
+      "entry": "PbtApp",
+      "version": "0.2.9",
+      "native_id": "d13aa334",
+      "raw_exit": 1,
+      "launcher": {
+        "status": "passed",
+        "raw_exit_code": 1,
+        "expected_tests": [
+          "campaignPilot"
+        ],
+        "observed_tests": {
+          "campaignPilot": "PASS"
+        },
+        "observed_count": 1,
+        "launcher_nonzero_framework_pass": true
+      },
+      "host_start": 2874470.485409041,
+      "productive_begin": 2874485.033939333,
+      "productive_end": 2874488.027083791,
+      "coverage": {
+        "start_applied": 2695,
+        "reset_applied": 4335,
+        "callback_no": 5244,
+        "callback_applied": 697,
+        "start_no": 3316,
+        "finish_cancel": 1872,
+        "session_no": 1502,
+        "finish_idle": 3549
+      },
+      "assertions": 42536,
+      "skipped": 0,
+      "first_seed": 400001,
+      "next_seed": 400529,
+      "traces": 528,
+      "events": 23210,
+      "productive_ms": 3000,
+      "native_wall_ms": 3000,
+      "observed_wall_seconds": 2.993144457694143
+    },
+    {
+      "owner": "scene",
+      "worker": 2,
+      "status": "GREEN",
+      "thread_id": 6205665280,
+      "container": "spacefox-event-pbt-peer-2",
+      "cleanup_ok": true,
+      "program": "/Users/jekamas/.codex/tmp/spacefox-stm-pbt-peer-2/campaign-2.prg",
+      "program_sha256": "dab19f3d8ddaba07ef31438b0af7fb40ce333bce3ae6c4128c15bdc826c69a60",
+      "test_uuid": "c0d8e48b8f1445a3b9b93b9f700cf507",
+      "entry": "PbtApp",
+      "version": "0.2.9",
+      "native_id": "d13aa334",
+      "raw_exit": 1,
+      "launcher": {
+        "status": "passed",
+        "raw_exit_code": 1,
+        "expected_tests": [
+          "campaignPilot"
+        ],
+        "observed_tests": {
+          "campaignPilot": "PASS"
+        },
+        "observed_count": 1,
+        "launcher_nonzero_framework_pass": true
+      },
+      "host_start": 2874470.484033958,
+      "productive_begin": 2874484.656245333,
+      "productive_end": 2874487.662818708,
+      "coverage": {
+        "fail_applied": 1049,
+        "cancel_applied": 4694,
+        "request_no": 2684,
+        "complete_applied": 923,
+        "request_applied": 5589,
+        "complete_no": 4725,
+        "begin_applied": 3352,
+        "ready_applied": 4763,
+        "replace_applied": 4764
+      },
+      "assertions": 68917,
+      "skipped": 0,
+      "first_seed": 800001,
+      "next_seed": 800897,
+      "traces": 896,
+      "events": 39488,
+      "productive_ms": 3004,
+      "native_wall_ms": 3005,
+      "observed_wall_seconds": 3.006573374848813
+    },
+    {
+      "owner": "storage",
+      "worker": 3,
+      "status": "GREEN",
+      "thread_id": 6222491648,
+      "container": "spacefox-event-pbt-peer-3",
+      "cleanup_ok": true,
+      "program": "/Users/jekamas/.codex/tmp/spacefox-stm-pbt-peer-3/campaign-3.prg",
+      "program_sha256": "faf82bad01edf0aac417ef9d8546abdba3a1a01a4debd7694ee692b92e77e2aa",
+      "test_uuid": "c0d8e48b8f1445a3b9b93b9f700cf508",
+      "entry": "PbtApp",
+      "version": "0.2.9",
+      "native_id": "d13aa334",
+      "raw_exit": 1,
+      "launcher": {
+        "status": "passed",
+        "raw_exit_code": 1,
+        "expected_tests": [
+          "campaignPilot"
+        ],
+        "observed_tests": {
+          "campaignPilot": "PASS"
+        },
+        "observed_count": 1,
+        "launcher_nonzero_framework_pass": true
+      },
+      "host_start": 2874470.483884583,
+      "productive_begin": 2874484.742805791,
+      "productive_end": 2874487.835689166,
+      "coverage": {
+        "slot_no": 1346,
+        "invalid_no": 1353,
+        "commit_applied": 1528,
+        "reopen_no": 1722,
+        "pointer_no": 1340
+      },
+      "assertions": 19961,
+      "skipped": 0,
+      "first_seed": 1200001,
+      "next_seed": 1200193,
+      "traces": 192,
+      "events": 7289,
+      "productive_ms": 3109,
+      "native_wall_ms": 3110,
+      "observed_wall_seconds": 3.092883375007659
+    },
+    {
+      "owner": "wake",
+      "worker": 4,
+      "status": "GREEN",
+      "thread_id": 6239318016,
+      "container": "spacefox-event-pbt-peer-4",
+      "cleanup_ok": true,
+      "program": "/Users/jekamas/.codex/tmp/spacefox-stm-pbt-peer-4/campaign-13.prg",
+      "program_sha256": "c4b0c134959ec6723204a5f8dab5354c8483c3d86acd4d5eaa8fdc3a674ff32f",
+      "test_uuid": "c0d8e48b8f1445a3b9b93b9f700cf509",
+      "entry": "PbtApp",
+      "version": "0.2.9",
+      "native_id": "d13aa334",
+      "raw_exit": 1,
+      "launcher": {
+        "status": "passed",
+        "raw_exit_code": 1,
+        "expected_tests": [
+          "campaignPilot"
+        ],
+        "observed_tests": {
+          "campaignPilot": "PASS"
+        },
+        "observed_count": 1,
+        "launcher_nonzero_framework_pass": true
+      },
+      "host_start": 2874470.487716083,
+      "productive_begin": 2874484.685802458,
+      "productive_end": 2874487.743658083,
+      "coverage": {
+        "arm": 3116,
+        "registration_failure": 627,
+        "reminder": 956,
+        "healthy": 896,
+        "pending": 1625,
+        "offline": 713,
+        "kept": 1070,
+        "floor": 671,
+        "register": 1419
+      },
+      "assertions": 18420,
+      "skipped": 0,
+      "first_seed": 1600001,
+      "next_seed": 1600377,
+      "traces": 376,
+      "events": 15036,
+      "productive_ms": 3058,
+      "native_wall_ms": 3059,
+      "observed_wall_seconds": 3.0578556251712143
+    },
+    {
+      "owner": "service-failure",
+      "worker": 5,
+      "status": "GREEN",
+      "thread_id": 6256144384,
+      "container": "spacefox-event-pbt-peer-5",
+      "cleanup_ok": true,
+      "program": "/Users/jekamas/.codex/tmp/spacefox-stm-pbt-peer-5/campaign-14.prg",
+      "program_sha256": "2762ba8312605e9127cdd11e907bb8ea689444b0d389e2594df2558f67580a9c",
+      "test_uuid": "c0d8e48b8f1445a3b9b93b9f700cf50a",
+      "entry": "PbtApp",
+      "version": "0.2.9",
+      "native_id": "d13aa334",
+      "raw_exit": 1,
+      "launcher": {
+        "status": "passed",
+        "raw_exit_code": 1,
+        "expected_tests": [
+          "campaignPilot"
+        ],
+        "observed_tests": {
+          "campaignPilot": "PASS"
+        },
+        "observed_count": 1,
+        "launcher_nonzero_framework_pass": true
+      },
+      "host_start": 2874470.489532791,
+      "productive_begin": 2874484.548346083,
+      "productive_end": 2874487.625752375,
+      "coverage": {
+        "empty": 124,
+        "stale": 279,
+        "healthy_no": 171,
+        "restart": 211,
+        "cancel": 112,
+        "network_fail": 56,
+        "ipc_fail": 56,
+        "reconfigured": 117,
+        "checkpoint_fail": 56,
+        "commit": 280,
+        "pointer_fail": 56,
+        "timeout": 56,
+        "slot_fail": 56,
+        "send_throw": 56,
+        "old_owner": 223,
+        "offline": 56
+      },
+      "assertions": 28873,
+      "skipped": 0,
+      "first_seed": 2000001,
+      "next_seed": 2000057,
+      "traces": 56,
+      "events": 4254,
+      "productive_ms": 3080,
+      "native_wall_ms": 3080,
+      "observed_wall_seconds": 3.077406291849911
+    }
+  ]
+}
