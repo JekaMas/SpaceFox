@@ -35,13 +35,13 @@
     "tools/spacefox/provider.py": "2d855c18cbb43da57fa32087e275597bc14f4e7bf5490f4cc83090aab44c9c65",
     "tools/spacefox/catalog.py": "b33bf56669302cc44cd5195c1665ac95b7cc95801efa4e1ad234bff24f92a29b",
     "watchface/source/LocalePresentation.mc": "0cb0be9330afbaf415182dd30ea2304dd9e1139f714d05c71901c945c28a13cc",
-    "watchface/source/SceneRenderer.mc": "4f6981947ecd4957034fb4363d0814abcb70c1ab6bcb49ddfff339502dc4a6a9",
+    "watchface/source/SceneRenderer.mc": "2384791dadceb1aaff3687f4c247df1835342236a9344b6f38af6998d41ead45",
     "watchface/source/SceneSettings.mc": "264304ed331374ed730a93da642998813dd9b9c15d2cff8043f92afb53e2efc4",
-    "watchface/source/SpaceFoxView.mc": "7b08f1f89ca260cb5bd941963cfb19d3a7a98a8846f8c14e2687d99b1a188aa4",
+    "watchface/source/SpaceFoxView.mc": "02ce98cbbdbd6bce676908c6e0969b5c4ae4fbc820f6f0134af56c97bee9e331",
     "watchface/source/WatchClock.mc": "e1cb5dd3ac35fb8bc52efad2ef85c7b909cb15fe7a04b4710302d4d34ddec100",
-    "watchface/source/Fitness.mc": "c4ed7075af469ce56f15a1684ddebfb9bb6c4ded9f76df19568393699671450b",
+    "watchface/source/Fitness.mc": "29e9494c28a6824d69c19264a5e75ef0134f986c29e617b127e29cc19f16083f",
     "watchface/source/ScheduleState.mc": "4a9f22b9d01398fa60eb2ce6e430b09d878380b93b88f93058972e340780f3c4",
-    "watchface/source/SceneContext.mc": "221de71d47d59c6e0c9ae9de7850bcda1258670f29041ee5900b3c0d8a8491aa",
+    "watchface/source/SceneContext.mc": "562b45bf090282dcb9aab8747822842d85b68968553847cb65b9aa7686c5cfc5",
     "watchface/source/FeedScene.mc": "928408d6f228deeedfd0cda92190122bf0404ff95c6ad98c558061ac6046e572",
     "watchface/source/generated/LocaleGraphemes.mc": "5ad65d6328908a7f251cd5ddbac83244de9b51929c2c46cb746bfb168a4f6c80",
     "watchface/monkey.jungle": "abe93f12654450100407e84232b4c6dc0e7c9b1707499d7fd8e118fce040f0c4",
@@ -76,13 +76,13 @@
   },
   "physicalDeviceObserved": false,
   "nativeSpeakerReviewed": false,
-  "proofBoundary": "Original Mac FR165 corpus/font observations retain their actual source and SDK identity. Current Linux FR165M qualification independently observes five primary dictionaries/calendar, current three bitmap fonts and all413captured joined-header/fit compositions;95currentUI glyph shapes and retained55field labels have distinct scopes. Exact resource plan and compiled relevant source bytes are checked. No native-speaker/phone/physical/pixel/menu-rendering or peak-memory claim.",
+  "proofBoundary": "Original Mac FR165 and prior Linux FR165M observations remain historical. The new current Linux FR165M observation covers five primary dictionaries, three bitmap fonts and all 413 joined-header compositions / 1822 records. It predates only the retained, non-text FieldSources subscription-rearm/type delta and NativeVersion identity update. Unchanged glyph-shaping reports retain their actual original scopes. No physical, phone, native-speaker, pixel or peak-memory claim.",
   "historicalToolchainLock": {
     "path": "openspec/changes/spacefox-watchface/evidence/final-native-timing-settings/baseline/watchface/toolchain-lock.json",
     "sha256": "948c281801f4596cd6f904428f385adf85ebfe63f89d3c416b959cddf7bed389"
   },
   "currentNativeObservation": {
-    "path": "openspec/changes/remove-legacy-fallbacks/evidence/P1-peer-native/observation.json",
-    "sha256": "936610ad351fe8b7e1625a874622d3bc96eb421a9feb1efe072063061012be79"
+    "path": "openspec/changes/fix-physical-six/evidence/current-native-qualification/observation.json",
+    "sha256": "b92debc771bfb0a2d2ce38d12bc529f684fc9b1b49db6a851a6b67b71d940014"
   }
 }

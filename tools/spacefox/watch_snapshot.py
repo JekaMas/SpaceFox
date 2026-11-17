@@ -6,6 +6,7 @@ consumer receives this fixed positional projection. No digest is used here.
 from datetime import date
 from decimal import Decimal, InvalidOperation
 import json
+import re
 
 # Order is shared with the native decoder. New values are appended only when
 # the publisher and watch are released together.
@@ -22,6 +23,16 @@ def _point(position):
         return [str(lon), str(lat)]
     except (KeyError, InvalidOperation, TypeError, ValueError):
         return None
+
+def _mission_text(launch):
+    # These provider placeholders are not mission information. Retain real
+    # mission names when no meaningful source category was supplied.
+    for candidate in (launch.get('mission_purpose'), launch.get('mission_name')):
+        if isinstance(candidate, str):
+            candidate = candidate.strip()
+            if candidate and not re.fullmatch(r'(?:\d+\s+)?unknown(?:\s+payloads?)?', candidate, re.IGNORECASE):
+                return candidate
+    return None
 
 def _row(launch, catalog, policy, selected):
     if launch is None:
@@ -66,7 +77,7 @@ def _row(launch, catalog, policy, selected):
     reminder=(launch['status']=='pending' and deadline is not None and
               (timing['window_start_utc'] is None or target>=timing['window_start_utc']) and
               (timing['window_end_utc'] is None or target<=timing['window_end_utc']))
-    values=(launch['launch_id'],rocket,operator,short,launch['mission_purpose'],site,
+    values=(launch['launch_id'],rocket,operator,short,_mission_text(launch),site,
             launch['configuration_id'],launch['operator_id'],launch['site_id'],point,target,
             precision,timing['date_utc'],deadline,ordering,launch['source_validated_utc'],policy,
             launch['rescheduled'],launch['stale'],launch.get('source_status_id')==5,display,reminder)

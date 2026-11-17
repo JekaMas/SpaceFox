@@ -1,0 +1,488 @@
+{
+  "schema_version": 2,
+  "change": "fix-physical-six",
+  "requirements": [
+    {
+      "id": "mission",
+      "capability": "physical-watchface",
+      "title": "Meaningful mission text",
+      "fingerprint": "3b30442d3ca52716cf6876bc712437d99d35bc789837a9792f34890a5dc94bdd"
+    },
+    {
+      "id": "static",
+      "capability": "physical-watchface",
+      "title": "Static recognizable rocket",
+      "fingerprint": "c1de4d1145a8ea9432a0bed1a52a063ad064fd998950627b996f6468958befa0"
+    },
+    {
+      "id": "wake",
+      "capability": "physical-watchface",
+      "title": "Useful wake frame",
+      "fingerprint": "ddce9417b24d311ec74b39e0c9ea0bcb541cf521670a1dc1cb6f1beea8e3b8dc"
+    },
+    {
+      "id": "health",
+      "capability": "physical-watchface",
+      "title": "Genuine health values",
+      "fingerprint": "e871fe13598ddf46a1a93190b6545555b158d39071e5ef25fb31cda6eadff038"
+    },
+    {
+      "id": "rocket",
+      "capability": "physical-watchface",
+      "title": "Source-backed model selection",
+      "fingerprint": "39dae13ac8cabb30ce889247536a38583af5b6a9dab946db2a9cf013102f59ee"
+    },
+    {
+      "id": "coordinates",
+      "capability": "physical-watchface",
+      "title": "Qualified map point",
+      "fingerprint": "46b3604133dc1b199613b43664deab1c64b4687276a456be0f1d700c05d0f9d9"
+    }
+  ],
+  "properties": [
+    {
+      "id": "mission.P1",
+      "requirement_id": "mission",
+      "scenarios": [
+        "Missing purpose"
+      ],
+      "statement": "Meaningful mission text",
+      "owner": "tools/spacefox/watch_snapshot.py; watchface/source/SceneContext.mc",
+      "oracle": "Source/captured literals and actual production boundary; simulator substitutions and physical limits recorded in AUTHOR.md.",
+      "source_globs": [
+        "tools/spacefox/watch_snapshot.py",
+        "watchface/source/SceneContext.mc"
+      ]
+    },
+    {
+      "id": "static.P1",
+      "requirement_id": "static",
+      "scenarios": [
+        "Scene becomes ready"
+      ],
+      "statement": "Static recognizable rocket",
+      "owner": "watchface/source/NativeVisualRenderer.mc; watchface/source/SceneRenderer.mc",
+      "oracle": "Source/captured literals and actual production boundary; simulator substitutions and physical limits recorded in AUTHOR.md.",
+      "source_globs": [
+        "watchface/source/NativeVisualRenderer.mc",
+        "watchface/source/SceneRenderer.mc"
+      ]
+    },
+    {
+      "id": "wake.P1",
+      "requirement_id": "wake",
+      "scenarios": [
+        "OS wake"
+      ],
+      "statement": "Useful wake frame",
+      "owner": "watchface/source/SpaceFoxView.mc; watchface/source/NativeDisplayLifecycle.mc",
+      "oracle": "Source/captured literals and actual production boundary; simulator substitutions and physical limits recorded in AUTHOR.md.",
+      "source_globs": [
+        "watchface/source/SpaceFoxView.mc",
+        "watchface/source/NativeDisplayLifecycle.mc"
+      ]
+    },
+    {
+      "id": "health.P1",
+      "requirement_id": "health",
+      "scenarios": [
+        "One provider fails"
+      ],
+      "statement": "Genuine health values",
+      "owner": "watchface/source/FieldSources.mc; watchface/source/Fitness.mc; watchface/source/SpaceFoxView.mc",
+      "oracle": "Source/captured literals and actual production boundary; simulator substitutions and physical limits recorded in AUTHOR.md.",
+      "source_globs": [
+        "watchface/source/FieldSources.mc",
+        "watchface/source/Fitness.mc",
+        "watchface/source/SpaceFoxView.mc"
+      ]
+    },
+    {
+      "id": "rocket.P1",
+      "requirement_id": "rocket",
+      "scenarios": [
+        "Long March 2D"
+      ],
+      "statement": "Source-backed model selection",
+      "owner": "tools/build_bundled_models.py; watchface/source/generated/NativeModels.mc",
+      "oracle": "Source/captured literals and actual production boundary; simulator substitutions and physical limits recorded in AUTHOR.md.",
+      "source_globs": [
+        "tools/build_bundled_models.py",
+        "watchface/source/generated/NativeModels.mc"
+      ]
+    },
+    {
+      "id": "coordinates.P1",
+      "requirement_id": "coordinates",
+      "scenarios": [
+        "Unknown site with response coordinates"
+      ],
+      "statement": "Qualified map point",
+      "owner": "tools/spacefox/provider.py; tools/spacefox/watch_snapshot.py; watchface/source/SceneLifecycle.mc",
+      "oracle": "Source/captured literals and actual production boundary; simulator substitutions and physical limits recorded in AUTHOR.md.",
+      "source_globs": [
+        "tools/spacefox/provider.py",
+        "tools/spacefox/watch_snapshot.py",
+        "watchface/source/SceneLifecycle.mc"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "mission.P1.POSITIVE",
+      "property_id": "mission.P1",
+      "polarity": "positive",
+      "scenario": "Missing purpose",
+      "scenario_fingerprint": "f042dd64e99d62a63c8d56f6a91c1bfb0ab7eed35d9373ffbdb3d66be7af4d67",
+      "test_id": "MissionText.test_named_mission_when_purpose_is_unknown",
+      "source_path": "tests/test_physical_mission_text.py",
+      "source_sha256": "1e4abb587ba7bde9fd2a0b953354c5aa2df9dc265d0419d8fbbc778447f78df5",
+      "command_id": "host-mission",
+      "state": "observed",
+      "substitution": {
+        "classification": "host production owner"
+      }
+    },
+    {
+      "id": "mission.P1.NEGATIVE",
+      "property_id": "mission.P1",
+      "polarity": "negative",
+      "scenario": "Missing purpose",
+      "scenario_fingerprint": "f042dd64e99d62a63c8d56f6a91c1bfb0ab7eed35d9373ffbdb3d66be7af4d67",
+      "test_id": "MissionText.test_real_unknown_payload_is_omitted",
+      "source_path": "tests/test_physical_mission_text.py",
+      "source_sha256": "1e4abb587ba7bde9fd2a0b953354c5aa2df9dc265d0419d8fbbc778447f78df5",
+      "command_id": "host-mission",
+      "state": "observed",
+      "substitution": {
+        "classification": "host production owner"
+      }
+    },
+    {
+      "id": "static.P1.POSITIVE",
+      "property_id": "static.P1",
+      "polarity": "positive",
+      "scenario": "Scene becomes ready",
+      "scenario_fingerprint": "e4c3f74236735a71903370431e3839051bb67d04158140bfeb43d495dd134602",
+      "test_id": "physicalRocketNeverMoves",
+      "source_path": "watchface/physical-six-tests/RenderTests.mc",
+      "source_sha256": "34c6c52dbadf7b7523650ff1c9c89eabe958213f44145be1a429da42e065dac4",
+      "command_id": "native-render",
+      "state": "observed",
+      "substitution": {
+        "classification": "simulator/fake where noted"
+      }
+    },
+    {
+      "id": "static.P1.NEGATIVE",
+      "property_id": "static.P1",
+      "polarity": "negative",
+      "scenario": "Scene becomes ready",
+      "scenario_fingerprint": "e4c3f74236735a71903370431e3839051bb67d04158140bfeb43d495dd134602",
+      "test_id": "physicalTaiyuanActiveLowTrace",
+      "source_path": "watchface/physical-six-tests/RenderTests.mc",
+      "source_sha256": "34c6c52dbadf7b7523650ff1c9c89eabe958213f44145be1a429da42e065dac4",
+      "command_id": "native-render",
+      "state": "observed",
+      "substitution": {
+        "classification": "simulator/fake where noted"
+      }
+    },
+    {
+      "id": "wake.P1.POSITIVE",
+      "property_id": "wake.P1",
+      "polarity": "positive",
+      "scenario": "OS wake",
+      "scenario_fingerprint": "16e404000743751e95379accf51a99e1102e0e4aa8aa1a062393dcb4cd7a9656",
+      "test_id": "physicalFirstWakeFromColdLow",
+      "source_path": "watchface/physical-six-tests/WakeTests.mc",
+      "source_sha256": "a51bddb1fe2f8633f38228489755eaedf0a4f96cf3b5abcba60d45d4b23832e7",
+      "command_id": "native-render",
+      "state": "observed",
+      "substitution": {
+        "classification": "simulator/fake where noted"
+      }
+    },
+    {
+      "id": "wake.P1.NEGATIVE",
+      "property_id": "wake.P1",
+      "polarity": "negative",
+      "scenario": "OS wake",
+      "scenario_fingerprint": "16e404000743751e95379accf51a99e1102e0e4aa8aa1a062393dcb4cd7a9656",
+      "test_id": "physicalFirstWakeFromColdLow",
+      "source_path": "watchface/physical-six-tests/WakeTests.mc",
+      "source_sha256": "a51bddb1fe2f8633f38228489755eaedf0a4f96cf3b5abcba60d45d4b23832e7",
+      "command_id": "native-render",
+      "state": "observed",
+      "substitution": {
+        "classification": "simulator/fake where noted"
+      }
+    },
+    {
+      "id": "health.P1.POSITIVE",
+      "property_id": "health.P1",
+      "polarity": "positive",
+      "scenario": "One provider fails",
+      "scenario_fingerprint": "7cf5193761c59d6ff636d503fb864d9237a8de2c3c1f8ff8701a0baabf3087ea",
+      "test_id": "physicalSimulatorActualProviders",
+      "source_path": "watchface/physical-six-tests/HealthTests.mc",
+      "source_sha256": "82b59d836950133e8ce291b2c04bebfc05952f9419622cb61fd139df0fd7a671",
+      "command_id": "native-health",
+      "state": "observed",
+      "substitution": {
+        "classification": "simulator/fake where noted"
+      }
+    },
+    {
+      "id": "health.P1.NEGATIVE",
+      "property_id": "health.P1",
+      "polarity": "negative",
+      "scenario": "One provider fails",
+      "scenario_fingerprint": "7cf5193761c59d6ff636d503fb864d9237a8de2c3c1f8ff8701a0baabf3087ea",
+      "test_id": "physicalHealthSubscriptionRearm",
+      "source_path": "watchface/physical-six-tests/HealthTests.mc",
+      "source_sha256": "82b59d836950133e8ce291b2c04bebfc05952f9419622cb61fd139df0fd7a671",
+      "command_id": "native-health",
+      "state": "observed",
+      "substitution": {
+        "classification": "simulator/fake where noted"
+      }
+    },
+    {
+      "id": "rocket.P1.POSITIVE",
+      "property_id": "rocket.P1",
+      "polarity": "positive",
+      "scenario": "Long March 2D",
+      "scenario_fingerprint": "96c901e3f86e1dc14ce1f86ebf4dc2964e8cb55c41c62ff248629cfb0c0bfc8f",
+      "test_id": "OfflineModelBindings.test_captured_2026_2036_carrier_identities_are_bound",
+      "source_path": "tests/test_physical_model_resources.py",
+      "source_sha256": "a5598c37bcae230b6aaf30eaf3a3abec22ca38e166deeb4e2142d67a02e8dfab",
+      "command_id": "host-models",
+      "state": "observed",
+      "substitution": {
+        "classification": "host production owner"
+      }
+    },
+    {
+      "id": "rocket.P1.NEGATIVE",
+      "property_id": "rocket.P1",
+      "polarity": "negative",
+      "scenario": "Long March 2D",
+      "scenario_fingerprint": "96c901e3f86e1dc14ce1f86ebf4dc2964e8cb55c41c62ff248629cfb0c0bfc8f",
+      "test_id": "OfflineModelBindings.test_unidentified_id_is_not_assigned_a_known_vehicle",
+      "source_path": "tests/test_physical_model_resources.py",
+      "source_sha256": "a5598c37bcae230b6aaf30eaf3a3abec22ca38e166deeb4e2142d67a02e8dfab",
+      "command_id": "host-models",
+      "state": "observed",
+      "substitution": {
+        "classification": "host production owner"
+      }
+    },
+    {
+      "id": "coordinates.P1.POSITIVE",
+      "property_id": "coordinates.P1",
+      "polarity": "positive",
+      "scenario": "Unknown site with response coordinates",
+      "scenario_fingerprint": "ae4b8aa9cdd415355f5c854c299ef01fef97f905c5b11825966fcf7ce16bc85e",
+      "test_id": "CapturedCoordinates.test_captured_response_reaches_whole_publisher_snapshot",
+      "source_path": "tests/test_known_site_coordinates.py",
+      "source_sha256": "98d8ca5bfed34dd3a0d5c28bfcba7b833c27e2d9d8a6f7d87d63572b739e878d",
+      "command_id": "host-sites",
+      "state": "observed",
+      "substitution": {
+        "classification": "host production owner"
+      }
+    },
+    {
+      "id": "coordinates.P1.NEGATIVE",
+      "property_id": "coordinates.P1",
+      "polarity": "negative",
+      "scenario": "Unknown site with response coordinates",
+      "scenario_fingerprint": "ae4b8aa9cdd415355f5c854c299ef01fef97f905c5b11825966fcf7ce16bc85e",
+      "test_id": "CapturedCoordinates.test_known_pad_and_missing_position",
+      "source_path": "tests/test_known_site_coordinates.py",
+      "source_sha256": "98d8ca5bfed34dd3a0d5c28bfcba7b833c27e2d9d8a6f7d87d63572b739e878d",
+      "command_id": "host-sites",
+      "state": "observed",
+      "substitution": {
+        "classification": "host production owner"
+      }
+    }
+  ],
+  "commands": [
+    {
+      "id": "host-mission",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-m",
+        "unittest",
+        "tests.test_physical_mission_text",
+        "tests.test_watch_snapshot",
+        "tests.test_physical_model_resources"
+      ],
+      "cwd": ".",
+      "expected_markers": [
+        "Ran 9 tests",
+        "OK"
+      ],
+      "result": "PASS; model mapping gained two later cases checked separately"
+    },
+    {
+      "id": "host-models",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-m",
+        "unittest",
+        "tests.test_physical_model_resources"
+      ],
+      "cwd": ".",
+      "expected_markers": [
+        "Ran 5 tests",
+        "OK"
+      ],
+      "result": "PASS"
+    },
+    {
+      "id": "host-sites",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-m",
+        "unittest",
+        "tests.test_known_site_coordinates"
+      ],
+      "cwd": ".",
+      "expected_markers": [
+        "Ran 8 tests",
+        "OK"
+      ],
+      "result": "PASS"
+    },
+    {
+      "id": "native-render",
+      "runner": "command",
+      "argv": [
+        "monkeydo",
+        "/task/render.prg",
+        "fr165",
+        "-t"
+      ],
+      "cwd": ".",
+      "expected_markers": [
+        "physicalRocketNeverMoves",
+        "physicalTaiyuanActiveLowTrace",
+        "physicalFirstWakeFromColdLow"
+      ],
+      "result": "seven selected PASS; raw launcher 1; pre-rearm fields delta is irrelevant to render/wake assertions"
+    },
+    {
+      "id": "native-health",
+      "runner": "command",
+      "argv": [
+        "monkeydo",
+        "/task/combined.prg",
+        "fr165",
+        "-t",
+        "physicalFinalAffectedBatch"
+      ],
+      "cwd": ".",
+      "expected_markers": [
+        "PHYSICAL_FINAL",
+        "PASS"
+      ],
+      "result": "PASS; raw launcher 1; actual simulator APIs and typed fakes distinguished"
+    },
+    {
+      "id": "native-retained",
+      "runner": "command",
+      "argv": [
+        "monkeydo",
+        "/task/retained4.prg",
+        "fr165",
+        "-t",
+        "physicalRetainedAffectedOwners"
+      ],
+      "cwd": ".",
+      "expected_markers": [
+        "PHYSICAL_RETAINED",
+        "PASS"
+      ],
+      "result": "PASS; raw launcher 1; fake art decoder"
+    },
+    {
+      "id": "five-primary",
+      "runner": "command",
+      "argv": [
+        "monkeydo",
+        "/task/qualification.prg",
+        "fr165m",
+        "-t",
+        "<each-current-selector>"
+      ],
+      "cwd": ".",
+      "expected_markers": [
+        "currentFivePrimaryAndBitmapFonts",
+        "currentRenderer0",
+        "currentRenderer1",
+        "currentRenderer2",
+        "currentRenderer3"
+      ],
+      "result": "5/5 complete PASS; exact pre-rearm FieldSources and NativeVersion captured"
+    },
+    {
+      "id": "admission",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-m",
+        "unittest",
+        "tests.test_current_language_admission"
+      ],
+      "cwd": ".",
+      "expected_markers": [
+        "Ran 9 tests",
+        "OK"
+      ],
+      "result": "PASS"
+    },
+    {
+      "id": "openspec",
+      "runner": "command",
+      "argv": [
+        "openspec",
+        "validate",
+        "fix-physical-six",
+        "--strict"
+      ],
+      "cwd": ".",
+      "expected_markers": [
+        "is valid"
+      ],
+      "result": "PASS before last text-only evidence updates"
+    },
+    {
+      "id": "watchface-sfr-memory",
+      "runner": "command",
+      "argv": [
+        "monkeydo",
+        "/task/sfr-observer.prg",
+        "fr165"
+      ],
+      "cwd": ".",
+      "expected_markers": [
+        "WATCHFACE_LARGEST",
+        "WATCHFACE_SFR_STARTED",
+        "WATCHFACE_SFR_COMPLETE"
+      ],
+      "result": "Observed on real simulator watchface budget; intentional stop exit 137; test entry/fixture setup, not peak or physical proof"
+    }
+  ],
+  "external_limits": [
+    "Physical watch and phone not observed",
+    "SFR-in-flight peak memory on physical watch not measured",
+    "Garmin and GitHub publication await independent peer and release GO"
+  ],
+  "notes": "Actual raw launcher exit 1 and historical evidence/source delta are preserved; this graph describes observations, not device acceptance."
+}

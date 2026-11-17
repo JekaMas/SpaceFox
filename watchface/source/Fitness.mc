@@ -1,6 +1,5 @@
 import Toybox.ActivityMonitor;
 import Toybox.Lang;
-import Toybox.SensorHistory;
 import Toybox.System;
 import Toybox.Time;
 
@@ -11,12 +10,8 @@ class Fitness {
     var status as Dictionary = {};var reason as Dictionary = {};
     function initialize() {}
     function activityAvailable() as Boolean {return Toybox has :ActivityMonitor && ActivityMonitor has :getInfo;}
-    function heartAvailable() as Boolean {return Toybox has :SensorHistory && SensorHistory has :getHeartRateHistory;}
-    function stressAvailable() as Boolean {return Toybox has :SensorHistory && SensorHistory has :getStressHistory;}
     (:typecheck(false)) function activityInfo(){return ActivityMonitor.getInfo();}
     (:typecheck(false)) function batteryValue(){return System.getSystemStats().battery;}
-    (:typecheck(false)) function heartSample(){return SensorHistory.getHeartRateHistory({:period=>1,:order=>SensorHistory.ORDER_NEWEST_FIRST}).next();}
-    (:typecheck(false)) function stressSample(){return SensorHistory.getStressHistory({:period=>1,:order=>SensorHistory.ORDER_NEWEST_FIRST}).next();}
     function requested(role as String) as Boolean {return selectedRoles==null || (selectedRoles as Array<String>).indexOf(role)>=0;}
     // Only finite nonnegative real Garmin data, no fixtures/default health.
     function number(value as Object or Null, maximum as Number or Null) as Number or Null {
@@ -48,15 +43,8 @@ class Fitness {
             catch(e){status["steps"]="UNAVAILABLE";status["calories"]="UNAVAILABLE";reason["steps"]="provider-error";reason["calories"]="provider-error";}
         }
         if(requested("battery")){try{values["battery"]=number(batteryValue(),100);}catch(e){status["battery"]="UNAVAILABLE";reason["battery"]="provider-error";}}
-        if(requested("energy")&&selectedFields!=null){values["energy"]=(selectedFields as SelectedFields).energy;if(values["energy"]==null){status["energy"]=(selectedFields as SelectedFields).energyStatus;reason["energy"]=(selectedFields as SelectedFields).energyReason;}}
-        if(requested("heart")){
-            try{if(heartAvailable()){values["heart"]=recent(heartSample(),now,300,true);}else{status["heart"]="UNAVAILABLE";reason["heart"]="unsupported";}}
-            catch(e){status["heart"]="UNAVAILABLE";reason["heart"]="provider-error";}
-        }
-        if(requested("stress")){
-            try{if(stressAvailable()){values["stress"]=recent(stressSample(),now,100,false);}else{status["stress"]="UNAVAILABLE";reason["stress"]="unsupported";}}
-            catch(e){status["stress"]="UNAVAILABLE";reason["stress"]="provider-error";}
-        }
+        if(selectedFields!=null){var source=selectedFields as SelectedFields;var health=["energy","heart","stress"];
+            for(var i=0;i<health.size();i+=1){var role=health[i];if(requested(role)){values[role]=source.healthValue(role);status[role]=source.healthState(role);reason[role]=source.healthReason(role);}}}
         for(var i=0;i<roles.size();i+=1){var role=roles[i];if(requested(role)&&values[role]!=null){status[role]="READY";reason[role]="available";}}
         return values;
     }

@@ -68,8 +68,7 @@ class SceneRenderer {
         model = null; art = null; map = null; aodMap=null; aodResource=null; pin = false;aodPin=false;worldFallback=false;
         var resource=mapDecision.activeResource();
         if (context == null) { self.mapResource=resource;artResource=Rez.Drawables.Art_unknown;aodResource=mapDecision.lowResource();map=load(resource) as Graphics.BitmapType; art=load(artResource as ResourceId) as Graphics.BitmapType; return; }
-        var id=NativeAssets.models.hasKey(context.modelId)?context.modelId:"generic";
-        model=NativeAssets.models[id] as ResourceId;artResource=id.equals("generic")?Rez.Drawables.Art_unknown:(model as ResourceId);art=load(artResource as ResourceId) as Graphics.BitmapType;
+        model=NativeModels.resource(context.modelId);artResource=model;art=load(artResource as ResourceId) as Graphics.BitmapType;
         pin=mapDecision.matched;aodPin=pin;pinX=mapDecision.x;pinY=mapDecision.y;aodPinX=pinX;aodPinY=pinY;
         worldFallback=mapDecision.worldPoint(true)!=null;
         aodResource=worldFallback?null:mapDecision.lowResource();
@@ -124,7 +123,7 @@ class SceneRenderer {
         if (context != null) {
             // Match the existing unavailable health marker without changing the
             // accepted context: absent company/mission stay empty in storage.
-            var purposeText=context.purpose.equals("")?"—":presentation.mission(context.purpose);
+            var purposeText=presentation.mission(context.purpose);
             var labelFont=fonts["label"] as Graphics.FontType;var nameFont=fonts["nameSmall"] as Graphics.FontType;
             if(layoutRocketInput==null||!layoutRocketInput.equals(context.rocket)||!layoutOperatorInput.equals(context.operator)||!layoutShortInput.equals(context.operatorShort)||layoutLabelFont!=labelFont||layoutNameFont!=nameFont){
                 // Invalidate by the actual text and fonts, including an empty
@@ -145,12 +144,7 @@ class SceneRenderer {
             if(gap>0){text(dc,left+rocketWidth+8,47,fonts["nameSmall"] as Graphics.FontType,"·",0x96B8C9,16,1);}
             text(dc,left+rocketWidth+gap+operatorWidth/2,47,fonts["nameSmall"] as Graphics.FontType,operatorTitle,0xD4DFEB,238,1);
             text(dc,195,70,(fonts["small"] as Graphics.FontType),purposeText,0xD4DFEB,282,1);
-            var ascent = progress > 0 && progress < 1 ? (progress * 9).toNumber() : 0;
-            if(downloaded!=null&&downloaded.bitmap!=null){downloaded.draw(dc,progress,ascent);}else{dc.drawBitmap(22,118-ascent,art as Graphics.BitmapType);}
-            // Flags and operator marks are never attached to the rocket.
-            if (progress > 0 && progress < 1) {
-                dc.setColor(0xF7AE4F,Graphics.COLOR_TRANSPARENT); dc.fillPolygon([[45,239-ascent],[53,239-ascent],[49,248-ascent]]);
-            }
+            if(downloaded!=null&&downloaded.bitmap!=null){downloaded.draw(dc,0.0,0);}else{dc.drawBitmap(22,118,art as Graphics.BitmapType);}
             var flag=rich==null?null:rich.siteCountryBitmap;
             var footerBudget=flag==null?242:216;
             var footerFont=dc.getTextWidthInPixels(context.site,fonts["label"] as Graphics.FontType)>footerBudget?fonts["nameSmall"] as Graphics.FontType:fonts["label"] as Graphics.FontType;

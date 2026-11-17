@@ -32,7 +32,11 @@ class SceneContext {
         launchId = text(data, "id");
         if(data.hasKey("date")&&data["date"] instanceof String){date=data["date"] as String;}
         rocket = text(data, "rocket"); operator = text(data, "operator"); operatorShort = text(data, "operatorShort");
-        purpose = text(data, "purpose"); site = text(data, "site");
+        purpose = text(data, "purpose");
+        // Current-format snapshots saved before placeholder filtering remain
+        // valid data, but their unknown category is not useful display text.
+        if(purpose.toLower().equals("unknown") || purpose.toLower().equals("unknown payload")){purpose="";}
+        site = text(data, "site");
         modelId = text(data, "modelId"); operatorId = text(data, "operatorId");siteId=text(data,"siteId");
         point = null;
         if (data.hasKey("point") && validPoint(data["point"]) &&

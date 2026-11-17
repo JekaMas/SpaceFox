@@ -18,10 +18,10 @@ The 0.2.10 release uses hourly healthy schedule checks and retries missing or fa
 - An active countdown with seconds; always-on uses minutes. A validated inexact announced NET is a `T−`/`T+` reference; exact times use the normal countdown. Estimated T+ measures time since the announced NET and does not confirm liftoff or change reminder eligibility. The selected launch remains visible for at least 15 minutes after an actionable target or through a later sourced ascent end.
 - A fading flat map with the launch point, the corresponding rocket, operator and mission purpose. The country flag appears beside the launch site; the rocket has no flag or abbreviation painted on it.
 - Four independently configurable fields. The existing steps, Body Battery, heart rate, stress, calories and watch-battery choices remain; on-watch settings also offer accessible Garmin and user complications and supported daily activity readings. Clock, countdown and field colors can be configured separately.
-- A full map outline and launch point in always-on mode, with centered time, date, weekday, minute countdown and battery. The four activity fields and animation are hidden in this mode.
+- A full map outline and launch point in always-on mode, with centered time, date, weekday, minute countdown and battery. The four activity fields and rocket artwork are omitted in this mode.
 - Optional, quiet-aware launch reminders. They are off by default; when enabled, Garmin schedules notifications from T−15. Device settings control vibration and delivery.
 
-A delayed or rescheduled launch uses a reddish countdown; stale data has a separate dotted indicator. Passing zero is a time calculation, not confirmation of liftoff. Missing Garmin readings remain unavailable; Body Battery uses Garmin's current complication value when selected.
+A delayed or rescheduled launch uses a reddish countdown; stale data has a separate dotted indicator. Passing zero is a time calculation, not confirmation of liftoff. Missing Garmin readings remain unavailable; Body Battery, heart rate and stress use Garmin's current complication values when selected. Rocket artwork is static.
 
 A countdown may refer to an inexact announced NET; it does not confirm liftoff or change reminder eligibility. Dashes mean no usable target is available. A point is omitted when no valid launch-site coordinates are available. A simplified world outline can appear while optional artwork is loading.
 

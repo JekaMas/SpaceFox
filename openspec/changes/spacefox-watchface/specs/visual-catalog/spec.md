@@ -295,7 +295,7 @@ an externally supported profile.
 
 #### Scenario: Maintainer adds a rocket in the supported drawing schema
 - **WHEN** validated artwork uses the current bounded SFR1M primitives and transforms
-- **THEN** its geometry, launch-country flag and optional animation can update from static files without an app or layout change
+- **THEN** its static geometry and launch-country flag can update from static files without an app or layout change
 
 #### Scenario: Artwork requires a new renderer operation
 - **WHEN** a visual requires unknown operations or a different projection convention
@@ -356,7 +356,7 @@ pixel, hidden cap increase or executable drawing grammar SHALL establish equival
 
 #### Scenario: Source update and display lifecycle reuse
 - **WHEN** an up-to8192B valid source-only generation retains the same immutable selection, or high power enters low/off/hide and returns
-- **THEN** identical optional graphics are downloaded zero times, matching complete graphics may stay resident, local transparent time and adjacent countdown plus four large fields remain readable, redraw performs no I/O/parser/resource construction, and partial work or animation cannot continue in low/off/hide
+- **THEN** identical optional graphics are downloaded zero times, matching complete graphics may stay resident, local transparent time and adjacent countdown plus four large fields remain readable, redraw performs no I/O/parser/resource construction, and partial work cannot continue in low/off/hide
 
 #### Scenario: Incomplete or incompatible scene retains coherent fallback
 - **WHEN** changed model/place/art, interruption, full storage, corrupt raw/pixels, unknown point, malformed late provenance or an endpoint/layout mismatch occurs

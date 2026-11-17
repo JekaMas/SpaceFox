@@ -1,0 +1,20 @@
+import Toybox.Lang;
+import Toybox.Application;
+import Toybox.Graphics;
+import Toybox.System;
+import Toybox.WatchUi;
+(:typecheck(false)) class PhysicalFrameClock extends WatchClock {
+ function utcSeconds() as Number {return 1795041600;}
+ function localTimeText() as String {return "08:25";}
+ function localCalendar() as Array<Number> {return [3,17,11];}
+}
+(:typecheck(false)) class PhysicalFrameView extends SpaceFoxView {
+ function initialize(){SpaceFoxView.initialize(new PhysicalFrameClock(),new ScheduleState(null,"empty"));}
+ function deviceMode() as System.DisplayMode {return System.DISPLAY_MODE_LOW_POWER;}
+ function onUpdate(dc as Graphics.Dc) as Void {SpaceFoxView.onUpdate(dc);System.println("PHYSICAL_FRAME_LOW_RU");}
+}
+(:typecheck(false)) class PhysicalFrameApp extends Application.AppBase {
+ function initialize(){AppBase.initialize();}
+ function getInitialView(){var view=new PhysicalFrameView();view.setSettings(new SceneSettings({"Language"=>1}));var data=WatchUi.loadResource(Rez.JsonData.PhysicalPayload)["payload"];var store=new NativeTrustedStore(new FrameMemory(),"https://fixture.invalid");store.save(data);view.setPacket(new NativeTrustedPacket(store.load()));return [view];}
+}
+(:typecheck(false)) class FrameMemory {var data={};function read(k){return data[k];}function write(k,v){data[k]=v;}}

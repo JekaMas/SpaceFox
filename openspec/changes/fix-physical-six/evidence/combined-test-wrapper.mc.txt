@@ -1,0 +1,13 @@
+import Toybox.Test;
+(:test,:typecheck(false)) function physicalFinalAffectedBatch(logger){
+ Test.assert(physicalAffectedStateSequences(logger));
+ Test.assert(physicalHealthRearmRegressionBatch(logger));
+ logger.debug("PHYSICAL_FINAL affected_sequences_and_health_rearm=true");return true;
+}
+(:test,:typecheck(false)) function physicalRetainedAffectedOwners(logger){
+ Test.assert(generatedSelectedFields(logger));
+ Test.assert(generatedArtLease(logger));
+ Test.assert(finalStaticLifecycle(logger));
+ Test.assert(finalAodMinuteGuard(logger));
+ logger.debug("PHYSICAL_RETAINED selected_fields_art_and_lifecycle=true");return true;
+}

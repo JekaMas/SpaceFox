@@ -1,0 +1,5 @@
+SDK 9.3 / fr165 simulator, actual Monkey C, strict -l 3, selected physicalRetainedAffectedOwners. Complete framework PASS, one wrapper, zero failures/errors; raw launcher exit 1.
+GENERATED_SELECTEDFIELDS seeds=64 events=2696 after_each=true end=true
+GENERATED_ART_LEASE seeds=32 events=1334 fake_decoder=true after_each=true end=true
+Static lifecycle completed its LOW/ACTIVE path. AOD minute guard recorded first=null, same=30000000, held=30000000, next=30000001; renderer draws 1,2,2,3. The first data-driven LOW invalidation permits exactly one immediate redraw, then an identical minute tick does not repaint. Previous selected-fields and AOD oracle failures and corrections are retained separately.
+The art-lease fake does not demonstrate a full SFR decoding memory bound. No physical device or phone claim.

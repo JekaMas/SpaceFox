@@ -1,0 +1,10 @@
+SDK 9.3 / fr165 simulator, non-test PRG, strict -l 3 compile BUILD SUCCESSFUL. Manifest is app type watchface and current 0.2.11, with test-only SfrObserverApp entrypoint and test key. The observer exercises the actual SpaceFoxView, SceneRenderer, NativeStore, NativeRenderSource and NativeSfrBuild. In setup before measured view lifecycle it loaded and wrote 26 captured objects one at a time; this is fixture injection, not live network/phone delivery. It first drew the largest current-catalog PNG, then admitted the actual captured Long March 2D snapshot and immutable SFR objects.
+
+Observed program output:
+WATCHFACE_FIXTURE_READY objects=26
+SF_VIEW mode=HIGH pending=false
+WATCHFACE_LARGEST total=126784 used=104072 free=22712
+WATCHFACE_SFR_STARTED total=126784 used=97360 free=29424 reserve=11428
+WATCHFACE_SFR_COMPLETE total=126784 used=104968 free=21816 model=ll2:configuration:17
+
+After observing completion the task-owned simulator was intentionally stopped; the launcher consequently ended 137, not a zero-exit test table. These are isolated instantaneous samples, not peak memory; the program logged completion and requested a subsequent frame, but did not instrument a post-completion frame. Physical device, phone, network delivery and full-watchface lifespan remain unobserved. The first simulator connection failure and narrower screenshot/test-VM observations are retained separately. Observer and fixture-generation source/jungle are included for reproduction.

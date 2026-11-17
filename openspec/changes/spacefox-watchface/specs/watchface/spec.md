@@ -171,24 +171,21 @@ A new time with no announced NET SHALL replace the countdown with an uncertainty
 - **WHEN** the selected launch has an inexact announced NET
 - **THEN** the countdown uses that announced reference without a precision prefix or claiming liftoff
 
-### Requirement: Short active-display launch animation
+### Requirement: Static source-backed rocket artwork
 
-The watch face SHALL provide a simple two-to-three-second rocket ignition/ascent
-animation while active. Animation SHALL stop
-on sleep or always-on low-power entry and SHALL not assert that a real launch
-occurred merely because an animation played or the countdown reached zero.
+The active watch face SHALL render the selected source-backed rocket or closest qualified family as static artwork. It SHALL NOT animate, spin or draw a flame, and SHALL NOT imply that a launch occurred when the countdown reaches zero.
 #### Scenario: Raise wrist
 - **WHEN** the face becomes active through a wrist gesture
-- **THEN** the short animation plays while current time and launch information remain readable
+- **THEN** the rocket remains static while current time and launch information remain readable
 - **AND** HIGH selects NOT_LOW, LOW selects LOW, and OFF stops drawing and active work while retaining LOW as app state. A draw observing LOW before the power callback SHALL use LOW and stop active work. Loading, errors, retries and readiness SHALL NOT choose the mode.
 
 #### Scenario: Display sleeps
 - **WHEN** the face enters sleep/low-power mode
-- **THEN** animated rendering stops and the low-power face uses its qualified sparse layout
+- **THEN** the low-power face uses its qualified sparse layout without rocket artwork
 
 ### Requirement: Qualified AMOLED always-on display
 
-The AOD SHALL show centered time, local weekday/date, a minute-only countdown or uncertainty, battery, a sparse matching map outline and selected launch point. It SHALL omit the four configurable fields and animation, and satisfy lit-pixel and burn-in rules. Returning active restores the accepted composition and UTC calculation.
+The AOD SHALL show centered time, local weekday/date, a minute-only countdown or uncertainty, battery, a sparse matching map outline and selected launch point. It SHALL omit the four configurable fields and rocket artwork, and satisfy lit-pixel and burn-in rules. Returning active restores the accepted composition and UTC calculation.
 
 #### Scenario: Enter always-on mode
 - **WHEN** FR165 enters low-power always-on mode

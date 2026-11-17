@@ -1,0 +1,10 @@
+# Tasks
+
+- [x] Reproduce and trace the six reported properties across publisher/watch owners with current and photo-version boundaries.
+- [x] Repair mission text and deterministic static rocket rendering and selection, including the finite catalog/contact sheet.
+- [x] Repair wake and four configured field acquisition while preserving valid zero and explicit unavailable data.
+- [x] Verify canonical coordinates and current visible uncertainty glyph paths without inventing positions.
+- [x] Complete affected production-boundary EN/RU, state-sequence, catalog and native checks; retained failure and actual SFR/watchface memory scopes are documented in `evidence/AUTHOR.md`.
+- [x] Complete author review, current source evidence and stable commit preparation; record exact boundaries for independent verification.
+- [ ] Independently verify and fix this stable batch through GREEN; verify the current clean source fence and issue the single applicable peer receipt.
+- [ ] After peer GREEN and delivery authorization, integrate, export and publish, and record actual GitHub and Garmin outcomes.

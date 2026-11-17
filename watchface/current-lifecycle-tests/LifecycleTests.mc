@@ -31,14 +31,12 @@ function finalBuffer() as Graphics.BufferedBitmap {
     return Graphics.createBufferedBitmap({:width=>390,:height=>390}).get() as Graphics.BufferedBitmap;
 }
 (:test, :typecheck(false))
-function finalAnimationLifecycle(logger as Test.Logger) as Boolean {
+function finalStaticLifecycle(logger as Test.Logger) as Boolean {
     var v=new SpaceFoxView(new FinalClock(),new ScheduleState(null,"empty"));
     v.setContext(finalContext());var dc=finalBuffer().getDc();v.onLayout(dc);v.onShow();
-    v.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);var firstFrameBeforeResume=!v.animationRunning;v.resumeAfterFrame();
-    var started=v.animationRunning;v.setSettings(new SceneSettings(null));var settingsStopped=!v.animationRunning && v.animationProgress==0.0;v.onEnterSleep();var stopped=!v.animationRunning && v.animationProgress==0.0;
-    v.onExitSleep();v.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);var wakeFrameBeforeResume=!v.animationRunning;v.resumeAfterFrame();var restarted=v.animationRunning;v.onHide();
-    logger.debug("first frame precedes resume; sleep and hide stop/reset; static fallback duration 2.5s");
-    return firstFrameBeforeResume && wakeFrameBeforeResume && started && settingsStopped && stopped && restarted && !v.animationRunning && v.animationProgress==0.0 && new NativeVisualRenderer().duration()==2.5;
+    v.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);v.resumeAfterFrame();v.setSettings(new SceneSettings(null));v.onEnterSleep();
+    var low=v.displayMode()==0;v.onExitSleep();v.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);var active=v.displayMode()==1;v.onHide();
+    logger.debug("static face preserves LOW and ACTIVE lifecycle");return low && active && !v.visible();
 }
 (:test, :typecheck(false))
 function finalAnimationBounds(logger as Test.Logger) as Boolean {
@@ -52,8 +50,8 @@ function finalAnimationBounds(logger as Test.Logger) as Boolean {
 (:test, :typecheck(false))
 function finalAodMinuteGuard(logger as Test.Logger) as Boolean {
     var c=new FinalClock();var v=new SpaceFoxView(c,new ScheduleState(null,"empty"));v.setContext(finalContext());v.onShow();
-    var im=finalBuffer();v.onLayout(im.getDc());var renderer=new FinalAodRenderer();renderer.prepare(v.context,v.settings);v.renderer=renderer;v.onEnterSleep();v.updateForDisplayMode(im.getDc(),System.DISPLAY_MODE_LOW_POWER);var first=v.lastLowFrameMinute();var firstDraws=renderer.draws;c.now+=1;v.updateForDisplayMode(im.getDc(),System.DISPLAY_MODE_LOW_POWER);var same=v.lastLowFrameMinute();var sameDraws=renderer.draws;c.now+=60;v.updateForDisplayMode(im.getDc(),System.DISPLAY_MODE_LOW_POWER);var next=v.lastLowFrameMinute();var nextDraws=renderer.draws;
-    logger.debug("actual sparse renderer minute guard and stopped animation");v.onHide();return first==same && next!=same && firstDraws==1 && sameDraws==1 && nextDraws==2 && !v.animationRunning;
+    var im=finalBuffer();v.onLayout(im.getDc());var renderer=new FinalAodRenderer();renderer.prepare(v.context,v.settings);v.renderer=renderer;v.onEnterSleep();v.updateForDisplayMode(im.getDc(),System.DISPLAY_MODE_LOW_POWER);var first=v.lastLowFrameMinute();var firstDraws=renderer.draws;c.now+=1;v.updateForDisplayMode(im.getDc(),System.DISPLAY_MODE_LOW_POWER);var same=v.lastLowFrameMinute();var sameDraws=renderer.draws;c.now+=1;v.updateForDisplayMode(im.getDc(),System.DISPLAY_MODE_LOW_POWER);var held=v.lastLowFrameMinute();var heldDraws=renderer.draws;c.now+=60;v.updateForDisplayMode(im.getDc(),System.DISPLAY_MODE_LOW_POWER);var next=v.lastLowFrameMinute();var nextDraws=renderer.draws;
+    logger.debug("actual sparse renderer minute guard first="+first+" same="+same+" held="+held+" next="+next+" draws="+firstDraws+","+sameDraws+","+heldDraws+","+nextDraws);v.onHide();return first==null&&same==held&&next!=held&&firstDraws==1&&sameDraws==2&&heldDraws==2&&nextDraws==3;
 }
 
 (:typecheck(false)) class FinalDateClock extends FinalClock {

@@ -1,0 +1,9 @@
+Actual compiled Monkey C / SDK 9.3 / fr165 simulator, test-only provider fakes except where stated. Raw monkeydo launcher exit 1, framework result table complete: 5 selected, 5 PASS, 0 failed, 0 errors.
+
+- physicalSupportedHealthSubscriptions: PASS; supported complication IDs 18, 22 and 23.
+- physicalHealthValuesAndFailures: PASS; fake values, zero, per-source failure, missing sample, stop/restart retention and failed callback registration with direct read.
+- physicalSimulatorActualProviders: PASS; real simulator Garmin APIs returned energy 88, heart 139, stress 43 and steps 0, all READY. These are simulator provider values, not observed human data.
+- physicalMetricCallbackKeepsSceneAndLowValues: PASS; current view callback preserved unrelated values and scene job; LOW retained values.
+- physicalFirstWakeFromColdLow: PASS; current view onShow LOW, first OS wake with HIGH display, ACTIVE fallback paint and duplicate wake.
+
+No physical watch, phone, battery-life or latency claim. Earlier actual supported-subscription RED is retained separately. The first source version lacked the selected wake test and its static code path returned early from wake while initially shown LOW.

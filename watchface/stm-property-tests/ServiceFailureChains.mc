@@ -102,7 +102,7 @@ import Toybox.Test;
 }
 (:test,:typecheck(false)) class PbtLowMetricView extends PbtView {
  function initialize(){PbtView.initialize();fitness=new PbtFitness();selectedFields=new PbtEnergyFields();fitness.selectedFields=selectedFields;
-  fitness.stepsValue=27;fitness.heartValue=72;fitness.heartAt=clock.now;fitness.stressValue=35;fitness.stressAt=clock.now;selectedFields.fakeApi.value=68;}
+  fitness.stepsValue=27;selectedFields.fakeApi.values[18]=72;selectedFields.fakeApi.values[22]=35;selectedFields.fakeApi.values[23]=68;}
  function readFitnessSnapshot(now as Number or Long) as Void {SpaceFoxView.readFitnessSnapshot(now);}
  function refreshFitnessWork() as Void {SpaceFoxView.refreshFitnessWork();}
 }
@@ -111,9 +111,9 @@ import Toybox.Test;
  Test.assert(v.displayMode()==v.LOW&&v.values["steps"]==27&&v.values["energy"]==68&&v.values["heart"]==72&&v.values["stress"]==35);
  Test.assert(v.timers.size()==0&&v.fitnessTimer==null&&!v.selectedFields.active());
  v.onUpdate(new PbtGraphics());v.onUpdate(new PbtGraphics());
- Test.assert(v.fitness.activityCalls==1&&v.fitness.heartCalls==1&&v.fitness.stressCalls==1&&v.selectedFields.fakeApi.gets==1);
+ Test.assert(v.fitness.activityCalls==1&&v.fitness.heartCalls==0&&v.fitness.stressCalls==0&&v.selectedFields.fakeApi.gets==3);
  v.fitness.stepsValue=40;v.fakeMode=Toybox.System.DISPLAY_MODE_HIGH_POWER;v.syncDisplayMode(v.fakeMode);v.refreshFitness();
- Test.assert(v.values["steps"]==40&&v.selectedFields.fakeApi.gets==2&&v.fitness.activityCalls==2);v.fakeMode=Toybox.System.DISPLAY_MODE_LOW_POWER;v.onEnterSleep();
+ Test.assert(v.values["steps"]==40&&v.selectedFields.fakeApi.gets==6&&v.fitness.activityCalls==2);v.fakeMode=Toybox.System.DISPLAY_MODE_LOW_POWER;v.onEnterSleep();
  Test.assert(v.values["steps"]==40&&!v.selectedFields.active()&&v.fitnessTimer==null);return true;
 }
 (:test,:typecheck(false)) function peerLifetimeControls(logger){

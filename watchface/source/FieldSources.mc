@@ -155,24 +155,33 @@ class FieldComplicationApi {
 // persisted if a provider disappears; a failed subscription is polled on minute.
 (:extendedCode, :typecheck(false))
 class SelectedFields {
-    var selected=[];var subscribed=[];var labels={};var text={};var icons={};var states={};var reasons={};var energy as Number or Null=null;var energyStatus="WAITING";var energyReason="no-sample";var callbackRegistered=false;var provider=null;var api=null;var customMask=0;var fittedMask=0;var numericMask=0;var initialSnapshotPending=true;
+    var selected=[];var subscribed=[];var labels={};var text={};var icons={};var states={};var reasons={};var energy as Number or Null=null;var energyStatus="WAITING";var energyReason="no-sample";var heart as Number or Null=null;var heartStatus="WAITING";var heartReason="no-sample";var stress as Number or Null=null;var stressStatus="WAITING";var stressReason="no-sample";var previousRoles=null;var changeCallback=null;var callbackRegistered=false;var firstSubscriptionRead=false;var provider=null;var api=null;var customMask=0;var fittedMask=0;var numericMask=0;var initialSnapshotPending=true;
     function initialize(){}
     function savedField(slot){return FieldCatalog.saved(slot);}
     function systemInfo(){return System.getSystemStats();}
     function activityInfo(){return ActivityMonitor.getInfo();}
-    function start(slots,callback){
-        stop();clearSnapshot();
+    function start(slots,onChange){
+        stop();var same=previousRoles!=null&&previousRoles.size()==slots.size();
+        if(same){for(var n=0;n<slots.size();n+=1){if(!previousRoles[n].equals(slots[n])){same=false;break;}}}
+        if(!same){clearSnapshot();}previousRoles=[];for(var n=0;n<slots.size();n+=1){previousRoles.add(slots[n]);}
         for(var i=0;i<4;i+=1){
             var custom=slots[i].equals("custom"+(i+1));if(custom){customMask|=(1<<i);}
-            var source=slots[i].equals("energy")?new Complications.Id(23):(custom?savedField(i+1):null);
+            var kind=slots[i].equals("energy")?23:(slots[i].equals("heart")?18:(slots[i].equals("stress")?22:0));
+            var source=kind!=0?new Complications.Id(kind):(custom?savedField(i+1):null);
             selected.add(source);
         }
+        changeCallback=onChange;ensureSubscriptions();firstSubscriptionRead=true;
+    }
+    // A failed registration or subscription can be retried at the existing
+    // bounded metric refresh. Already subscribed IDs are never duplicated.
+    function ensureSubscriptions(){
         var hasComplication=false;for(var i=0;i<selected.size();i+=1){if(selected[i] instanceof Complications.Id){hasComplication=true;break;}}
         if(!hasComplication){return;}
-        try{if(api==null){Complications.registerComplicationChangeCallback(callback);}else{api.register(callback);}callbackRegistered=true;}catch(e){}
+        if(!callbackRegistered){try{if(api==null){Complications.registerComplicationChangeCallback(changeCallback);}else{api.register(changeCallback);}callbackRegistered=true;}catch(e){}}
         if(!callbackRegistered){return;}
         var attempted=[];
         for(var i=0;i<selected.size();i+=1){var id=selected[i];if(!(id instanceof Complications.Id)){continue;}var duplicate=false;
+            for(var j=0;j<subscribed.size();j+=1){if(id.equals(subscribed[j])){duplicate=true;break;}}
             for(var j=0;j<attempted.size();j+=1){if(id.equals(attempted[j])){duplicate=true;break;}}
             if(!duplicate){attempted.add(id);try{if(api==null?Complications.subscribeToUpdates(id):api.subscribe(id)){subscribed.add(id);}}catch(e){}}
         }
@@ -180,32 +189,37 @@ class SelectedFields {
     function stop(){for(var i=0;i<subscribed.size();i+=1){try{if(api==null){Complications.unsubscribeFromUpdates(subscribed[i]);}else{api.unsubscribe(subscribed[i]);}}catch(e){}}
         if(callbackRegistered){try{if(api==null){Complications.registerComplicationChangeCallback(null);}else{api.register(null);}}catch(e){}}
         // Suspending live sources must retain the last bounded presentation in LOW.
-        subscribed=[];selected=[];icons={};callbackRegistered=false;
+        subscribed=[];selected=[];icons={};callbackRegistered=false;firstSubscriptionRead=false;changeCallback=null;
     }
     // Selection/settings changes start a new snapshot; OS suspension does not.
-    function clearSnapshot(){labels={};text={};icons={};states={};reasons={};energy=null;energyStatus="WAITING";energyReason="no-sample";customMask=0;fittedMask=0;numericMask=0;}
+    function clearSnapshot(){labels={};text={};icons={};states={};reasons={};clearHealth(18);clearHealth(22);clearHealth(23);customMask=0;fittedMask=0;numericMask=0;}
+    function clearHealth(kind){if(kind==18){heart=null;heartStatus="WAITING";heartReason="no-sample";}else if(kind==22){stress=null;stressStatus="WAITING";stressReason="no-sample";}else if(kind==23){energy=null;energyStatus="WAITING";energyReason="no-sample";}}
+    function failHealth(kind){if(kind==18){heartStatus="UNAVAILABLE";heartReason="provider-error";}else if(kind==22){stressStatus="UNAVAILABLE";stressReason="provider-error";}else if(kind==23){energyStatus="UNAVAILABLE";energyReason="provider-error";}}
+    function acceptHealth(kind,value){if(!(value instanceof Number)||value<0||value>(kind==18?300:100)){return;}if(kind==18){heart=value;heartStatus="READY";heartReason="available";}else if(kind==22){stress=value;stressStatus="READY";stressReason="available";}else if(kind==23){energy=value;energyStatus="READY";energyReason="available";}}
+    function healthValue(role as String) as Number or Null {return role.equals("heart")?heart:(role.equals("stress")?stress:energy);}
+    function healthState(role as String) as String {return role.equals("heart")?heartStatus:(role.equals("stress")?stressStatus:energyStatus);}
+    function healthReason(role as String) as String {return role.equals("heart")?heartReason:(role.equals("stress")?stressReason:energyReason);}
     // Startup/settings authorize one bounded LOW acquisition. Suspending
     // subscriptions does not revoke the accepted snapshot or rearm this lease.
     function claimInitialSnapshot(){if(!initialSnapshotPending){return false;}initialSnapshotPending=false;return true;}
-    function invalidateSnapshot(){clearSnapshot();initialSnapshotPending=true;}
-    function read(locale){readSelected(locale,null);}
+    function invalidateSnapshot(){clearSnapshot();previousRoles=null;initialSnapshotPending=true;}
+    function read(locale){if(firstSubscriptionRead){firstSubscriptionRead=false;}else if(active()){ensureSubscriptions();}readSelected(locale,null);}
     function readChanged(locale,id){readSelected(locale,id);}
     function readSelected(locale,onlyId){
         if(!active()){return;}initialSnapshotPending=false;
         var info=null;var fetched=false;var stats=null;var statsFetched=false;var words=null;
-        if(onlyId==null){labels={};text={};icons={};states={};reasons={};energy=null;energyStatus="WAITING";energyReason="no-sample";fittedMask=0;numericMask=0;}
-        else{for(var i=0;i<selected.size();i+=1){var prior=selected[i];if(prior instanceof Complications.Id&&prior.equals(onlyId)){var key="custom"+(i+1);labels.remove(key);text.remove(key);icons.remove(key);states.remove(key);reasons.remove(key);fittedMask&=~(1<<i);numericMask&=~(1<<i);if(prior.getType()==23){energy=null;energyStatus="WAITING";energyReason="no-sample";}}}}
+        if(onlyId==null){labels={};text={};icons={};states={};reasons={};clearHealth(18);clearHealth(22);clearHealth(23);fittedMask=0;numericMask=0;}
+        else{for(var i=0;i<selected.size();i+=1){var prior=selected[i];if(prior instanceof Complications.Id&&prior.equals(onlyId)){var key="custom"+(i+1);labels.remove(key);text.remove(key);icons.remove(key);states.remove(key);reasons.remove(key);fittedMask&=~(1<<i);numericMask&=~(1<<i);clearHealth(prior.getType());}}}
         for(var i=0;i<selected.size();i+=1){var key="custom"+(i+1);var source=selected[i];if(source==null){if((customMask&(1<<i))!=0){states[key]="UNAVAILABLE";reasons[key]="not-configured";}continue;}
             if(onlyId!=null&&(!(source instanceof Complications.Id)||!source.equals(onlyId))){continue;}
             states[key]="WAITING";reasons[key]="no-sample";
             try{if(source instanceof Complications.Id){
                 var earlier=-1;for(var n=0;n<i;n+=1){if(selected[n] instanceof Complications.Id&&source.equals(selected[n])){earlier=n;break;}}
                 if(earlier>=0){var previous="custom"+(earlier+1);if(labels.hasKey(previous)){labels[key]=labels[previous];}if(text.hasKey(previous)){text[key]=text[previous];}if(icons.hasKey(previous)){icons[key]=icons[previous];}if(states.hasKey(previous)){states[key]=states[previous];}if(reasons.hasKey(previous)){reasons[key]=reasons[previous];}continue;}
-                var item=null;try{item=provider!=null?provider.get(source):(api==null?Complications.getComplication(source):api.get(source));}catch(missing){states[key]="UNAVAILABLE";reasons[key]="provider-error";if(source.getType()==23){energyStatus="UNAVAILABLE";energyReason="provider-error";}}
+                var item=null;try{item=provider!=null?provider.get(source):(api==null?Complications.getComplication(source):api.get(source));}catch(missing){states[key]="UNAVAILABLE";reasons[key]="provider-error";failHealth(source.getType());}
                 if(item!=null){var kind=source.getType();var needText=(customMask&(1<<i))!=0;
-                    if(kind==23){if(item.value instanceof Number&&item.value>=0&&item.value<=100){energy=item.value;energyStatus="READY";energyReason="available";}
-                        if(!needText){for(var j=i+1;j<selected.size();j+=1){if((customMask&(1<<j))!=0&&selected[j] instanceof Complications.Id&&source.equals(selected[j])){needText=true;break;}}}
-                    }
+                    if(kind==18||kind==22||kind==23){acceptHealth(kind,item.value);}
+                    if(!needText){for(var j=i+1;j<selected.size();j+=1){if((customMask&(1<<j))!=0&&selected[j] instanceof Complications.Id&&source.equals(selected[j])){needText=true;break;}}}
                     if(needText){var label=item.shortLabel;if(!(label instanceof String)||label.equals("")){label=item.longLabel;}labels[key]=label instanceof String?label:"";
                         text[key]=kind==23?(energy==null?"—":energy.toString()):FieldFormat.complication(item,locale);
                         if(kind==0){try{var icon=item.getIcon();if(icon!=null){icons[key]=safeProviderIcon(icon);}}catch(noIcon){icons[key]=false;}}

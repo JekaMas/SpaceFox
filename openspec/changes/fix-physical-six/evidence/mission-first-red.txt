@@ -1,0 +1,7 @@
+Baseline: 3513111136c21d70103ced412db9cfe4ef487578
+Command: python3 -m unittest tests.test_physical_mission_text
+Ran 3 tests in 0.003s: FAILED (failures=2), exit 1.
+test_named_mission_when_purpose_is_unknown: expected 'Gaofen 12-05', observed 'Unknown'.
+test_real_unknown_payload_is_omitted: expected None, observed 'Unknown'.
+test_meaningful_purpose_remains_preferred: PASS.
+The first case uses a modified real captured row; the second uses the unmodified captured Long March 2D/Taiyuan response. No physical 0.2.10 observation is implied.
