@@ -28,7 +28,9 @@ class NativeCache {
         if(pendingVolatile!=null&&!comparePublisher(publisher,pendingVolatile[1],false)){return false;}
         pendingVolatile=value;return true;
     }
-    function takeVolatile(){var value=pendingVolatile;pendingVolatile=null;return value;}
+    // Bootstrap can admit a newer durable publisher while this delivery waits hidden.
+    // Recheck before the foreground admission boundary can cancel current art.
+    function takeVolatile(){var value=pendingVolatile;pendingVolatile=null;return value!=null&&newerPublisher(value[1],false)?value:null;}
     function newer(candidate,allowEqual){return newerPublisher(candidate.document["publisher"],allowEqual);}
     function acceptVolatile(candidate){if(!newer(candidate,false)){return false;}packet=candidate;ramState=VOLATILE;return true;}
     function acceptDurable(candidate){if(ramState==VOLATILE&&!newer(candidate,true)){return false;}packet=candidate;ramState=DURABLE;return true;}

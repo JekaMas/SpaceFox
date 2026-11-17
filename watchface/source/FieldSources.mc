@@ -158,7 +158,7 @@ class SelectedFields {
     var selected=[];var subscribed=[];var labels={};var text={};var icons={};var states={};var reasons={};var energy as Number or Null=null;var energyStatus="WAITING";var energyReason="no-sample";var callbackRegistered=false;var provider=null;var api=null;var customMask=0;var fittedMask=0;var numericMask=0;
     function initialize(){}
     function start(slots,callback){
-        stop();
+        stop();clearSnapshot();
         for(var i=0;i<4;i+=1){
             var custom=slots[i].equals("custom"+(i+1));if(custom){customMask|=(1<<i);}
             var source=slots[i].equals("energy")?new Complications.Id(23):(custom?FieldCatalog.saved(i+1):null);
@@ -176,8 +176,11 @@ class SelectedFields {
     }
     function stop(){for(var i=0;i<subscribed.size();i+=1){try{if(api==null){Complications.unsubscribeFromUpdates(subscribed[i]);}else{api.unsubscribe(subscribed[i]);}}catch(e){}}
         if(callbackRegistered){try{if(api==null){Complications.registerComplicationChangeCallback(null);}else{api.register(null);}}catch(e){}}
-        subscribed=[];selected=[];labels={};text={};icons={};states={};reasons={};energy=null;energyStatus="WAITING";energyReason="no-sample";callbackRegistered=false;customMask=0;fittedMask=0;numericMask=0;
+        // Suspending live sources must retain the last bounded presentation in LOW.
+        subscribed=[];selected=[];icons={};callbackRegistered=false;
     }
+    // Selection/settings changes start a new snapshot; OS suspension does not.
+    function clearSnapshot(){labels={};text={};icons={};states={};reasons={};energy=null;energyStatus="WAITING";energyReason="no-sample";customMask=0;fittedMask=0;numericMask=0;}
     function read(locale){readSelected(locale,null);}
     function readChanged(locale,id){readSelected(locale,id);}
     function readSelected(locale,onlyId){

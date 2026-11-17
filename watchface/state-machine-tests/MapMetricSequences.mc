@@ -12,6 +12,7 @@ import Toybox.WatchUi;
   var coarse=new NativeTrustedPacket(WatchUi.loadResource(Rez.JsonData.Coarse)["payload"]).presentation;
   var exact=new NativeTrustedPacket(WatchUi.loadResource(Rez.JsonData.Exact)["payload"]).presentation;
   var unknownPayload=WatchUi.loadResource(Rez.JsonData.Exact)["payload"];unknownPayload[3][9]=null;var unknown=new NativeTrustedPacket(unknownPayload).presentation;
+  var dc=Toybox.Graphics.createBufferedBitmap({:width=>390,:height=>390}).get().getDc();
   var shown=false;var sleeping=false;var point=false;var ready=false;var failed=false;var id=null;var lon=null;var lat=null;var generation=0;var job=null;var artState=0;
   var coverage={"show_applied"=>0,"show_observed_no_mutation"=>0,"hide_applied"=>0,"hide_observed_no_mutation"=>0,"sleep_applied"=>0,"sleep_observed_no_mutation"=>0,"wake_applied"=>0,"wake_observed_no_mutation"=>0,"source_applied"=>0,"art_start_applied"=>0,"art_complete_applied"=>0,"art_fail_applied"=>0,"art_cancel_applied"=>0,"art_late_observed_no_mutation"=>0,"metric_applied"=>0,"render_observed_no_mutation"=>0,"render_error_applied"=>0,"render_restored_applied"=>0,"unknown_applied"=>0};
   var events=["show","show","empty","source","sleep","sleep","render","wake","wake","start","art_fail","art_late","start2","art_cancel","art_late","start3","metric","complete","render","fault","render","restored","sourceUnknown","source2","hide","hide","render"];
@@ -32,7 +33,7 @@ import Toybox.WatchUi;
    else if(event.equals("metric")){view.refreshFitness();fields.next=0;view.fieldsChanged(new Toybox.Complications.Id(23));Test.assert(view.values["energy"]==0&&art.pending()&&art.job.token==job);key="metric_applied";}
    else if(event.equals("fault")){map.failure();failed=true;key="render_error_applied";}
    else if(event.equals("restored")){map.restored();failed=false;key="render_restored_applied";}
-   else{key="render_observed_no_mutation";}
+   else{view.updateForDisplayMode(dc,Toybox.System.DISPLAY_MODE_HIGH_POWER);key="render_observed_no_mutation";}
    if(key!=null){coverage[key]+=1;}
    Test.assertEqual(view.visible(),shown);Test.assertEqual(view.displayMode(),shown&&!sleeping?1:0);
    var expectedMode=shown?(ready&&!failed?2:1):0;Test.assertEqual(map.mode(shown,ready),expectedMode);Test.assertEqual(map.pointVisible(shown),shown&&point);

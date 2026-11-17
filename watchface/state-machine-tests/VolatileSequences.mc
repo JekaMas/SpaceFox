@@ -97,3 +97,17 @@ import Toybox.WatchUi;
  }
  logger.debug("VOLATILE_PREVIEW seeds=8 events="+eventsTotal+" two_causal_orders=true");return true;
 }
+
+// A queued event can become obsolete while hidden bootstrap admits a newer
+// durable publication. Consumption must reject it before cancelling art.
+(:test,:typecheck(false)) function queuedVolatileObsolete(logger){
+ var base="https://jekamas.github.io/SpaceFox";var store=new SequenceStore();var writer=new NativeTrustedStore(store,base);
+ var queued=WatchUi.loadResource(Rez.JsonData.Coarse)["payload"];queued[1]["generation"]=57;queued[1]["selectionValidatedUtc"]=1794812998l;
+ var durable=WatchUi.loadResource(Rez.JsonData.Coarse)["payload"];durable[1]["generation"]=58;durable[1]["selectionValidatedUtc"]=1794812999l;durable[3][20]=1795042320l;
+ var app=new SpaceFoxApp();app.feed=new NativeCache(base,store);app.view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));
+ app.onBackgroundData({"base"=>base,"volatileSnapshot"=>queued});Test.assert(writer.save(durable));app.performReload();app.view.onShow();
+ Test.assert(app.view.sceneLifecycle.request(1));var token=app.view.sceneLifecycle.begin();var generation=app.view.sceneLifecycle.generation;
+ app.performReload();Test.assertEqual(app.view.sceneLifecycle.generation,generation);Test.assert(app.view.sceneLifecycle.pending()&&app.view.sceneLifecycle.job.token==token);
+ Test.assert(app.feed.pendingVolatile==null&&app.view.packet==app.feed.packet&&app.view.context.displayTarget==1795042320l);app.view.onHide();
+ logger.debug("QUEUED_STALE newer_durable_retained=true art_cancel=0 consumed_once=true");return true;
+}

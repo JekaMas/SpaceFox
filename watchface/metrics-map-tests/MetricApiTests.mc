@@ -34,3 +34,19 @@ import Toybox.Test;
  }
  logger.debug("METRIC_PROVIDER seeds=8 events="+events+" isolated_failure=true oldest_age=300");return true;
 }
+
+(:test,:typecheck(false)) class RetainedMetricValue {
+ var value=68;var shortLabel="Body Battery";var longLabel="Body Battery";
+}
+(:test,:typecheck(false)) class RetainedMetricApi extends MetricBatteryApi {
+ function get(id){return new RetainedMetricValue();}
+}
+(:test,:typecheck(false)) function customFieldSuspension(logger){
+ var prior=Toybox.Application.Storage.getValue("sf.field1");var fields=new SelectedFields();
+ try{Toybox.Application.Storage.setValue("sf.field1",new Toybox.Complications.Id(23));fields.api=new RetainedMetricApi();var observer=new MetricObserver();
+  fields.start(["custom1","steps","heart","stress"],observer.method(:changed));fields.read("en");Test.assert(fields.display("custom1").equals("68")&&fields.state("custom1").equals("READY"));
+  fields.stop();Test.assertMessage(fields.display("custom1").equals("68")&&fields.state("custom1").equals("READY"),"LOW/hidden suspension must retain READY custom value");Test.assert(!fields.active()&&fields.subscribed.size()==0);
+  fields.start(["steps","energy","heart","stress"],observer.method(:changed));Test.assert(fields.display("custom1").equals("—")&&fields.state("custom1").equals("WAITING"));
+ }finally{fields.stop();if(prior==null){Toybox.Application.Storage.deleteValue("sf.field1");}else{Toybox.Application.Storage.setValue("sf.field1",prior);}}
+ logger.debug("CUSTOM_SUSPEND ready_value_retained=true provider_stopped=true");return true;
+}
