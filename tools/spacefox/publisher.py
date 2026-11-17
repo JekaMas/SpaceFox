@@ -947,7 +947,7 @@ class Publisher:
         else:
             # Preserve the existing schedule validation for non-scheduled requests.
             select_next(advance_schedule(self.schedule, now, self.policy))
-        if purpose != 'schedule' or trigger == 'extra':
+        if purpose != 'schedule':
             if doc['backoff_until_utc'] is not None and now < doc['backoff_until_utc']:
                 raise AllowanceUnavailable('durable provider backoff is active')
         requests = [r for r in doc['requests'] if now < r['at_utc'] + 3600]
@@ -1031,7 +1031,7 @@ class Publisher:
         doc, request = self._result(expected, token, now)
         if outcome not in ('success', 'failed', 'throttled'):
             raise StateError('invalid provider result')
-        if outcome in ('failed', 'throttled') and not (request['purpose'] == 'schedule' and request['trigger'] != 'extra'):
+        if outcome in ('failed', 'throttled') and request['purpose'] != 'schedule':
             deadline = now + 300 if retry_after_utc is None else retry_after_utc
             _utc(deadline)
             if deadline < now + UNCERTAIN_DELAY_SECONDS:

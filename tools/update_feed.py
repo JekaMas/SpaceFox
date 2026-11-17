@@ -143,8 +143,9 @@ def update(pub, client, now, catalog, *, trigger='scheduled', max_pages=2, detai
                     pub.finish_request(pub.head, token, sample(), 'failed')
                     token = None
                 detail_failures.append({'launchId': prior.launch_id.key, 'reason': str(error)})
-                # Failed origin requests establish backoff; later details must
-                # wait too. No omission/error/304 changes this record's facts.
+                # Stop this invocation's optional detail work after a failure.
+                # The consolidated policy admits the next schedule retry;
+                # no omission/error/304 changes this record's facts.
                 break
         # Build the full candidate first. A malformed/regressing/oversize candidate
         # must not replace accepted schedule; Publisher repeats its own reducer at

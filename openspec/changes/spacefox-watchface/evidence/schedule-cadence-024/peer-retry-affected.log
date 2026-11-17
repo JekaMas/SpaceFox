@@ -1,0 +1,35 @@
+test_schedule_pagination_failure_retries_without_backoff (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_schedule_pagination_failure_retries_without_backoff) ... ok
+test_429_and_shared_quota_count_only_started_attempts (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_429_and_shared_quota_count_only_started_attempts) ... ok
+test_throttled_backoff_blocks_manual_version_without_write (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_throttled_backoff_blocks_manual_version_without_write) ... ok
+test_zero_utc_backoff_survives_reopen (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_zero_utc_backoff_survives_reopen) ... ok
+test_optional_failures_preserve_primary_and_old_source (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_optional_failures_preserve_primary_and_old_source) ... ok
+test_optional_missing_404_preserves_primary_and_old_record (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_optional_missing_404_preserves_primary_and_old_record) ... ok
+test_optional_429_preserves_primary_and_omitted_age (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_optional_429_preserves_primary_and_omitted_age) ... ok
+test_advancing_clock_optional_429_keeps_primary (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_advancing_clock_optional_429_keeps_primary) ... ok
+test_advancing_clock_keeps_each_response_origin (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_advancing_clock_keeps_each_response_origin) ... FAIL
+
+======================================================================
+FAIL: test_advancing_clock_keeps_each_response_origin (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_advancing_clock_keeps_each_response_origin)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-schedule-cadence-20261117/tests/test_schedule_producer_transport.py", line 934, in test_advancing_clock_keeps_each_response_origin
+    self.assertEqual(facts,{original.launch_id.value:NOW,
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        '00000000-0000-4000-8000-000000000013':NOW+3482,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        '00000000-0000-4000-8000-000000000014':NOW+3604})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'00000000-0000-4000-8000-000000000013': 179[107 chars]3892} != {'0f867f0c-5422-4d44-93b8-d7faaae7019b': 179[107 chars]4796}
+  {'00000000-0000-4000-8000-000000000013': 1794554674,
+   '00000000-0000-4000-8000-000000000014': 1794554796,
+-  '0f867f0c-5422-4d44-93b8-d7faaae7019b': 1794553892}
+?                                                ^^
+
++  '0f867f0c-5422-4d44-93b8-d7faaae7019b': 1794551192}
+?                                                ^^
+
+
+----------------------------------------------------------------------
+Ran 9 tests in 136.432s
+
+FAILED (failures=1)

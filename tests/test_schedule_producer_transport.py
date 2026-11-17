@@ -88,17 +88,17 @@ def two_pages_and_omitted_detail():
 
 @contextmanager
 def directed_pages_and_detail(clock,throttled=False):
-    calls=[];base=captured_starship();first=deepcopy(base);second=deepcopy(base)
+    start=clock[0];calls=[];base=captured_starship();first=deepcopy(base);second=deepcopy(base)
     first['id']='00000000-0000-4000-8000-000000000013';second['id']='00000000-0000-4000-8000-000000000014'
     class Handler(BaseHTTPRequestHandler):
         def do_GET(self):
-            calls.append(self.path);n=len(calls);clock[0]=NOW+(902,904,907)[n-1]
+            calls.append(self.path);n=len(calls);clock[0]=start+(2,4,7)[n-1]
             query={'mode':'normal','limit':'1','ordering':'net','include_suborbital':'true','hide_recent_previous':'false','offset':'1'}
             nxt=f'http://127.0.0.1:{self.server.server_port}/2.3.0/launches/upcoming/?'+urlencode(query)
             body=({'count':2,'next':nxt,'previous':None,'results':[first]} if n==1 else
                   {'count':2,'next':None,'previous':None,'results':[second]} if n==2 else base)
             self.send_response_only(429 if throttled and n==3 else 200);self.send_header('Date',formatdate(clock[0],usegmt=True))
-            self.send_header('Age',str((120,0,907)[n-1]));self.send_header('Content-Type','application/json')
+            self.send_header('Age',str((120,0,start+7-NOW)[n-1]));self.send_header('Content-Type','application/json')
             if throttled and n==3:self.send_header('Retry-After','60')
             self.end_headers();self.wfile.write(json.dumps(body).encode())
         def log_message(self,*args):pass
@@ -576,13 +576,14 @@ class ScheduleProducerTransportTest(unittest.TestCase):
             self.assertEqual(len(reopened.ledger['requests']), 15)
             self.assertIsNotNone(reopened.ledger['pending'])
 
-    def test_two_hour_429_backoff_survives_quota_window_rollover(self):
+    def test_schedule_pagination_failure_retries_without_backoff(self):
         calls = []
+        statuses = [200, 429, 200, 200]
         class Handler(BaseHTTPRequestHandler):
             def do_GET(self):
                 calls.append(self.path)
-                self.send_response_only(429)
-                self.send_header('Date', formatdate(NOW, usegmt=True))
+                self.send_response_only(statuses.pop(0))
+                self.send_header('Date', formatdate(NOW + 3600, usegmt=True))
                 self.send_header('Retry-After', '7200')
                 self.end_headers()
             def log_message(self, *args): pass
@@ -595,24 +596,26 @@ class ScheduleProducerTransportTest(unittest.TestCase):
                 token = pub.reserve(pub.head, NOW, trigger='manual')
                 pub.accept_source(pub.head, token, (record,), NOW, selection_validated_utc=NOW)
                 client = LL2Client(origin=f'http://127.0.0.1:{server.server_port}', local_http=True)
+                page = client.first_url + '&offset=1'
+                token, _ = client.request(pub, NOW + 3600)
+                pub.finish_request(pub.head, token, NOW + 3600, 'success')
                 with self.assertRaises(Throttled):
-                    client.request(pub, NOW, trigger='extra')
-                reopened = Publisher(store, code)
-                self.assertEqual(reopened.reconcile(None), 'ready')
-                self.assertEqual(reopened.ledger['backoff_until_utc'], NOW + 7200)
-                self.assertEqual(reopened.ledger['requests'][-1]['outcome'], 'throttled')
-                before = reopened.head
-                with self.assertRaises(AllowanceUnavailable):
-                    client.request(reopened, NOW + 3600, trigger='manual')
-                self.assertEqual(reopened.head, before)
-                self.assertEqual(len(calls), 1)
-                self.assertEqual(reopened.schedule.entries[0].record, record)
-                self.assertEqual(reopened.ledger['selection_validated_utc'], NOW)
-                self.assertIsNotNone(reopened.reserve(reopened.head, NOW + 7200, trigger='manual'))
+                    client.request(pub, NOW + 3600, trigger='extra', url=page)
+                pub = Publisher(store, code); self.assertEqual(pub.reconcile(None), 'ready')
+                self.assertIsNone(pub.ledger['backoff_until_utc'])
+                # Both the new primary and its continuation are eligible now;
+                # a Retry-After from the previous page is not another policy.
+                token, _ = client.request(pub, NOW + 3601, trigger='manual')
+                pub.finish_request(pub.head, token, NOW + 3601, 'success')
+                token, _ = client.request(pub, NOW + 3601, trigger='extra', url=page)
+                pub.finish_request(pub.head, token, NOW + 3601, 'success')
+                pub = Publisher(store, code); pub.reconcile(None)
+                self.assertIsNone(client.request(pub, NOW + 3602, trigger='retry'))
+                self.assertEqual(len(calls), 4)
+                self.assertEqual(pub.schedule.entries[0].record, record)
+                self.assertEqual(pub.ledger['selection_validated_utc'], NOW)
         finally:
-            server.shutdown()
-            thread.join()
-            server.server_close()
+            server.shutdown(); thread.join(); server.server_close()
 
     def test_current_content_only_prepare_preserves_source_age_without_provider(self):
         from tools.cloud_feed import prepare_content
@@ -702,7 +705,7 @@ class ScheduleProducerTransportTest(unittest.TestCase):
         with local_authority() as (pub,store,code):
             a=normalize_launch(captured_starship(),NOW)
             token=pub.reserve(pub.head,NOW,trigger='manual');pub.accept_source(pub.head,token,(a,),NOW)
-            token=pub.reserve(pub.head,NOW+1,trigger='extra')
+            token=pub.reserve(pub.head,NOW+1,purpose='catalog',trigger='extra')
             pub.finish_request(pub.head,token,NOW+1,'throttled',retry_after_utc=NOW+601)
             reopened=Publisher(store,code);self.assertEqual(reopened.reconcile(None),'ready');before=reopened.head
             with self.assertRaises(AllowanceUnavailable):reopened.reserve(reopened.head,NOW+2,purpose='version',trigger='manual')
@@ -792,14 +795,11 @@ class ScheduleProducerTransportTest(unittest.TestCase):
             client=LL2Client(origin=f'http://127.0.0.1:{port}',local_http=True)
             with self.assertRaises(Throttled):client.request(pub,NOW+3600,trigger='extra')
             self.assertEqual(len(calls),1);self.assertEqual(client.requests_started,1)
-            before=pub.head
-            with self.assertRaises(AllowanceUnavailable):client.request(pub,NOW+3601,trigger='extra')
-            self.assertEqual(pub.head,before);self.assertEqual(client.requests_started,1)
             for _ in range(14):
-                token,response=client.request(pub,NOW+4200,trigger='extra')
-                self.assertEqual(response.status,304);pub.finish_request(pub.head,token,NOW+4200,'success')
+                token,response=client.request(pub,NOW+3601,trigger='extra')
+                self.assertEqual(response.status,304);pub.finish_request(pub.head,token,NOW+3601,'success')
             before=pub.head
-            with self.assertRaises(AllowanceUnavailable):client.request(pub,NOW+4201,trigger='extra')
+            with self.assertRaises(AllowanceUnavailable):client.request(pub,NOW+3602,trigger='extra')
             self.assertEqual(pub.head,before);self.assertEqual(client.requests_started,15)
             self.assertEqual(len(calls),15);self.assertEqual(reserved,['reserved']*15)
             self.assertEqual(len(Publisher(store,code).ledger['requests']),15)
@@ -828,8 +828,8 @@ class ScheduleProducerTransportTest(unittest.TestCase):
 
     def test_zero_utc_backoff_survives_reopen(self):
         with local_authority() as (pub,store,code):
-            first=pub.reserve(pub.head,-1000,trigger='manual')
-            second=pub.reserve(pub.head,-900,trigger='manual')
+            first=pub.reserve(pub.head,-1000,purpose='catalog',trigger='manual')
+            second=pub.reserve(pub.head,-900,purpose='catalog',trigger='manual')
             pub.finish_request(pub.head,first,-300,'failed',retry_after_utc=0)
             pub=Publisher(store,code);self.assertEqual(pub.reconcile(None),'ready')
             pub.finish_request(pub.head,second,-200,'throttled',retry_after_utc=-100)
@@ -905,37 +905,37 @@ class ScheduleProducerTransportTest(unittest.TestCase):
             finally:store.close()
 
     def test_advancing_clock_optional_429_keeps_primary(self):
-        clock=[NOW+900]
+        clock=[NOW+3600]
         with local_authority() as (pub,store,code),directed_pages_and_detail(clock,throttled=True) as (port,calls):
             original=normalize_launch(captured_starship(),NOW)
             token=pub.reserve(pub.head,NOW,trigger='manual');pub.accept_source(pub.head,token,(original,),NOW,selection_validated_utc=NOW)
             client=LL2Client(origin=f'http://127.0.0.1:{port}',page_size=1,local_http=True)
-            result=update(pub,client,NOW+900,build_catalog(ROOT),trigger='manual',max_pages=2,detail_limit=1,clock=lambda:clock[0])
+            result=update(pub,client,NOW+3600,build_catalog(ROOT),trigger='manual',max_pages=2,detail_limit=1,clock=lambda:clock[0])
             self.assertEqual(result['requests'],3);self.assertEqual(len(result['detailFailures']),1)
-            self.assertEqual(len(calls),3);self.assertEqual(clock[0],NOW+907)
+            self.assertEqual(len(calls),3);self.assertEqual(clock[0],NOW+3607)
             reopened=Publisher(store,code)
             by_id={e.record.launch_id.value:e.record for e in reopened.schedule.entries}
             self.assertEqual(by_id[original.launch_id.value].source_validated_utc,NOW)
-            self.assertEqual(reopened.ledger['selection_validated_utc'],NOW+782)
-            self.assertEqual(reopened.ledger['backoff_until_utc'],NOW+967)
+            self.assertEqual(reopened.ledger['selection_validated_utc'],NOW+3482)
+            self.assertIsNone(reopened.ledger['backoff_until_utc'])
             self.assertEqual(reopened.ledger['requests'][-1]['outcome'],'throttled')
             self.assertIsNotNone(reopened.ledger['pending'])
 
     def test_advancing_clock_keeps_each_response_origin(self):
-        clock=[NOW+900]
+        clock=[NOW+3600]
         with local_authority() as (pub,store,code),directed_pages_and_detail(clock) as (port,calls):
             original=normalize_launch(captured_starship(),NOW)
             token=pub.reserve(pub.head,NOW,trigger='manual');pub.accept_source(pub.head,token,(original,),NOW,selection_validated_utc=NOW)
             client=LL2Client(origin=f'http://127.0.0.1:{port}',page_size=1,local_http=True)
-            result=update(pub,client,NOW+900,build_catalog(ROOT),trigger='manual',max_pages=2,detail_limit=1,clock=lambda:clock[0])
+            result=update(pub,client,NOW+3600,build_catalog(ROOT),trigger='manual',max_pages=2,detail_limit=1,clock=lambda:clock[0])
             self.assertEqual(result['requests'],3);self.assertEqual(result['traversal']['detailRequests'],1)
-            self.assertEqual(clock[0],NOW+907);self.assertEqual(len(calls),3)
+            self.assertEqual(clock[0],NOW+3607);self.assertEqual(len(calls),3)
             reopened=Publisher(store,code);facts={e.record.launch_id.value:e.record.source_validated_utc for e in reopened.schedule.entries}
             self.assertEqual(facts,{original.launch_id.value:NOW,
-                '00000000-0000-4000-8000-000000000013':NOW+782,
-                '00000000-0000-4000-8000-000000000014':NOW+904})
-            self.assertEqual(reopened.ledger['selection_validated_utc'],NOW+782)
-            primaries=[r for r in reopened.ledger['requests'] if r['at_utc']==NOW+902]
+                '00000000-0000-4000-8000-000000000013':NOW+3482,
+                '00000000-0000-4000-8000-000000000014':NOW+3604})
+            self.assertEqual(reopened.ledger['selection_validated_utc'],NOW+3482)
+            primaries=[r for r in reopened.ledger['requests'] if r['at_utc']==NOW+3602]
             self.assertEqual(len(primaries),1);self.assertTrue(primaries[0]['accepted_source'])
             self.assertEqual(primaries[0]['outcome'],'success')
 
@@ -1246,7 +1246,7 @@ class ScheduleProducerTransportTest(unittest.TestCase):
                 self.assertEqual(by_id['00000000-0000-4000-8000-000000000018'].source_validated_utc,NOW+3600)
                 self.assertEqual(reopened.ledger['selection_validated_utc'],NOW+3600)
                 self.assertEqual(reopened.ledger['requests'][-1]['outcome'],'throttled' if kind=='429' else 'failed')
-                self.assertEqual(reopened.ledger['backoff_until_utc'],NOW+(4200 if kind=='429' else 3900))
+                self.assertIsNone(reopened.ledger['backoff_until_utc'])
                 self.assertIsNotNone(reopened.ledger['pending'])
 
     def test_optional_missing_404_preserves_primary_and_old_record(self):
@@ -1267,7 +1267,7 @@ class ScheduleProducerTransportTest(unittest.TestCase):
             self.assertTrue(next(e.stale for e in reopened.schedule.entries if e.record.launch_id==original.launch_id))
             self.assertEqual(by_id['00000000-0000-4000-8000-000000000017'].source_validated_utc,NOW+3600)
             self.assertEqual(reopened.ledger['selection_validated_utc'],NOW+3600)
-            self.assertEqual(reopened.ledger['backoff_until_utc'],NOW+3900)
+            self.assertIsNone(reopened.ledger['backoff_until_utc'])
             self.assertEqual(reopened.ledger['requests'][-1]['outcome'],'failed')
             self.assertEqual(len(calls),2);self.assertIsNotNone(reopened.ledger['pending'])
 
@@ -1285,7 +1285,7 @@ class ScheduleProducerTransportTest(unittest.TestCase):
             self.assertEqual(reopened.schedule.entries[0].record,original)
             self.assertEqual(reopened.schedule.entries[0].record.source_validated_utc,NOW)
             self.assertEqual(reopened.ledger['selection_validated_utc'],NOW+3600)
-            self.assertEqual(reopened.ledger['backoff_until_utc'],NOW+4200)
+            self.assertIsNone(reopened.ledger['backoff_until_utc'])
             self.assertEqual([x['outcome'] for x in reopened.ledger['requests']],['success','throttled'])
             self.assertIsNotNone(reopened.ledger['pending'])
 

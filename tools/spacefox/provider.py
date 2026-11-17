@@ -410,7 +410,9 @@ class LL2Client:
             response = self.transport.get(url or self.first_url)
             received_at = now if clock is None else clock()
             if response.status == 429:
-                raise Throttled(retry_deadline({k.lower(): v for k, v in response.headers.items()}, received_at) if trigger == 'extra' else None)
+                # Pagination/detail calls are still schedule acquisition; an
+                # `extra` transport slot must not restore a second retry policy.
+                raise Throttled(None)
             _require(response.status in (200, 304), f'provider HTTP status{response.status}')
             return token, response
         except Exception as error:

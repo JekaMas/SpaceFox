@@ -236,7 +236,7 @@ Another user's setup MUST NOT require the author's credentials or hosted feed.
 ### Requirement: Durable publisher state and request budget
 
 The publisher SHALL keep versioned active/pending snapshots, source-validation
-times, reschedule state, monotonic generation and request reservations/backoff in
+times, reschedule state, monotonic generation and request reservations/outcomes in
 a dedicated durable feed-state Git branch. Pages/CDN, Actions cache and expiring
 artifacts SHALL NOT be sole recovery authorities. Requests SHALL reserve quota
 durably before calling the provider; uncertain consumed reservations SHALL remain
@@ -244,7 +244,7 @@ counted after a crash.
 
 #### Scenario: Runner disappears after a provider call
 - **WHEN** a runner terminates after reserving quota but before recording the result
-- **THEN** the next run retains that reservation, source age and accepted flags, applies backoff and does not restart with a fresh request allowance
+- **THEN** the next run retains that reservation, source age and accepted flags, observes the in-flight guard while the call may still be running, and then uses the consolidated schedule decision without resetting the shared request allowance
 
 #### Scenario: Prior state cannot be recovered
 - **WHEN** the instance was bootstrapped but its authoritative state is unavailable or invalid

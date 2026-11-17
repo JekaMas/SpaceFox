@@ -1,0 +1,15 @@
+test_schedule_pagination_failure_retries_without_backoff (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_schedule_pagination_failure_retries_without_backoff) ... FAIL
+
+======================================================================
+FAIL: test_schedule_pagination_failure_retries_without_backoff (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_schedule_pagination_failure_retries_without_backoff)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-schedule-cadence-20261117/tests/test_schedule_producer_transport.py", line 605, in test_schedule_pagination_failure_retries_without_backoff
+    self.assertIsNone(pub.ledger['backoff_until_utc'])
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1794561992 is not None
+
+----------------------------------------------------------------------
+Ran 1 test in 3.196s
+
+FAILED (failures=1)

@@ -58,9 +58,12 @@ artifact upload, intent, asynchronous deployment, HTTPS observation and active
 promotion. It never cancels a running workflow to replace it. Pending jobs can
 be replaced or start out of chronological order; the current authenticated Git
 source ref and exact current-authority CAS decide permission. Only trusted main pushes,
-schedules and explicit dispatch run it. The offset15minute cron checks the
-persisted hourly/near15minute cadence; push/dispatch does not force a provider
-request. Optional fast mode is an explicit bootstrap policy, unchanged by restart.
+schedules and explicit dispatch run it. The five-minute cron supplies retry
+opportunities; the consolidated policy admits a successful future schedule only
+after one hour, or admits a connected retry after failure/no future schedule.
+Push/dispatch does not bypass that decision. The shared provider allowance and
+in-flight reservation guard remain independent hard constraints; proximity and
+bootstrap fast modes no longer select a request interval.
 
 Each checkout is the triggering SHA. Prepare materializes the full non-cone seed
 in `.github/spacefox-inputs.txt`; arm, deploy and promote derive the runtime-only
