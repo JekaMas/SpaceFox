@@ -484,5 +484,19 @@
     "SFR-in-flight peak memory on physical watch not measured",
     "Garmin and GitHub publication await independent peer and release GO"
   ],
-  "notes": "Actual raw launcher exit 1 and historical evidence/source delta are preserved; this graph describes observations, not device acceptance."
+  "notes": "Actual raw launcher exit 1 and historical evidence/source delta are preserved; this graph describes observations, not device acceptance.",
+  "independent_review": {
+    "status": "GREEN",
+    "source_revision": "469152653ccbb0567a20d297036e7080fd02c985",
+    "version": "0.2.11",
+    "native_id": "3c4d93d0",
+    "receipt": "evidence/PEER.json",
+    "report": "evidence/PEER.md",
+    "actual_current_gate": "evidence/peer-current-gate.log",
+    "runtime_changes_by_peer": false,
+    "new_sdk_runs_by_peer": 0,
+    "retained_output_boundary": "Five-primary full raw logs inspected by actual admission; other selected native/strict/host PASS results author-observed in tools with canonical summaries only, no independent late-error inspection.",
+    "physical_status": "NOT OBSERVED",
+    "delivery": "OPEN"
+  }
 }
