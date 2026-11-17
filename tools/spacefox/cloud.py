@@ -253,6 +253,12 @@ class Pages:
                     sum(in_step(line, '##[error]Process completed with exit code 2.') for line in lines) != 1):
                 return False
             root = Path(__file__).resolve().parents[2]
+            # The same Python error can follow an earlier successful invocation
+            # in a changed step script. Bind the originating workflow too: the
+            # reviewed deploy step invokes this CLI exactly once with deploy.
+            workflow = '.github/workflows/update-feed.yml'
+            if self._source_text(workflow, intent['source']) != (root / workflow).read_text():
+                return False
             functions = {
                 'tools/cloud_feed.py': ((None, 'main'),),
                 'tools/spacefox/cloud.py': ((None, 'deploy'), (None, '_http_direct'),

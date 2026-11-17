@@ -1,0 +1,15 @@
+test_post_then_stale_second_command_is_not_unstarted (tests.test_pages_stale_prepost.StalePrePost.test_post_then_stale_second_command_is_not_unstarted) ... FAIL
+
+======================================================================
+FAIL: test_post_then_stale_second_command_is_not_unstarted (tests.test_pages_stale_prepost.StalePrePost.test_post_then_stale_second_command_is_not_unstarted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-pages-stale-intent-20261117/tests/test_pages_stale_prepost.py", line 45, in test_post_then_stale_second_command_is_not_unstarted
+    self.assertFalse(p.never_started(INTENT))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 1 test in 0.042s
+
+FAILED (failures=1)
