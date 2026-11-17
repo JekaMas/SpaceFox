@@ -3,7 +3,7 @@
   "status": "GREEN",
   "version": "0.2.9",
   "native_id": "d13aa334",
-  "source_revision": "1f53420a5af7c4479aca537a12197d10980e1c07",
+  "source_revision": "bfe511d35e8eb26081302047c65458b6e49c74e9",
   "scope": "Independent native source/method review and repairs; all15 required full native campaigns plus retained4 full host campaigns. Existing five-primary qualification is retained under the actual source-admission guard.",
   "report": "openspec/changes/stm-event-pbt/evidence/PEER.md",
   "native_campaigns": "openspec/changes/stm-event-pbt/evidence/NATIVE-CAMPAIGN.json",
@@ -15,8 +15,11 @@
     "Actual SDK production owner seams with fake event-driven business dependencies; host ThreadPool workers control distinct native VMs, not MonkeyC OS threads.",
     "Compilation/startup/control gaps excluded from productive duration; raw SDK exit1 qualified only by complete selected PASS tables and strict identity/duration/output checks.",
     "Source-audited external-call closure plus asserted fake ports; MonkeyC globals cannot be globally monkeypatched, so no universal dynamically enforced absence of unseen Toybox calls is claimed.",
-    "No physical watch, phone HTTP, actual sensor values, raster/SFR rendering, notifications or hardware failure cause proved."
+    "No physical watch, phone HTTP, actual sensor values, raster/SFR rendering, notifications or hardware failure cause proved.",
+    "Signing predecessor metadata independently reviewed at bfe511d35e8eb26081302047c65458b6e49c74e9; original0.2.8 receipt/paired IQ and retained publication response agree; production UUID/SPKI/custody policy unchanged. All software observations retain their original source boundaries."
   ],
   "physical_status": "NOT_OBSERVED",
-  "publication_status": "PENDING root judgment and author delivery; this receipt does not claim merge/export/publication."
+  "publication_status": "PENDING root judgment and author delivery; this receipt does not claim merge/export/publication.",
+  "software_review_source_revision": "1f53420a5af7c4479aca537a12197d10980e1c07",
+  "signing_policy_review": "openspec/changes/stm-event-pbt/evidence/PEER-signing-predecessor.md"
 }

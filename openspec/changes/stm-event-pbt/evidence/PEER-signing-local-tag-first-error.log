@@ -1,0 +1,4 @@
+First targeted metadata control: existing previous_release accepted original clean receipt and checked actual paired IQ digest; original receipt SHA and policy UUID/SPKI/history assertions passed. Subsequent optional local-tag lookup failed:
+fatal: ambiguous argument 'v0.2.8^{commit}': unknown revision or path not in the working tree.
+subprocess.CalledProcessError: Command '['git', 'rev-parse', 'v0.2.8^{commit}']' returned non-zero exit status 128.
+No missing-local-tag pass or fresh remote tag verification is claimed.

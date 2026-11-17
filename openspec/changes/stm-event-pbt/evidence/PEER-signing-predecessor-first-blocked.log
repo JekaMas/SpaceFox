@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/Users/jekamas/.codex/tmp/spacefox-release-0290-prep-20261117/build.py", line 66, in <module>
+    result=g['build_iq_first'](base/'build',key=key,root=root,mode='official',previous=previous,backup=backup,evidence=[Path(os.environ['SPACEFOX_PEER_RECEIPT']).resolve()])
+  File "<external-iq-first-adapter>", line 36, in build_iq_first
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-stm-event-pbt-20261117/tools/release.py", line 37, in require
+    raise ReleaseBlocked(message)
+tools.release.ReleaseBlocked: production update requires the committed latest release receipt/package
