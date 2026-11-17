@@ -628,10 +628,10 @@ import Toybox.System;
  function post(slot,scene){posts.add([slot,scene["target"]]);}
 }
 (:test,:typecheck(false)) class ReminderTrace {
- var store;var cache;var services;var now=1794676650l;var target=1794677550l;var rowSince=1794676650l;var generation=0;var sequence=0;var control=null;var controlSince=null;var controlWrites=0;var attemptWrites=0;var attempts={};var expectedPosts=[];var enabled=true;var quiet=false;var fail=false;var enabledCalls=0;var timeCalls=0;var quietCalls=0;var trace=[];
+ var store;var cache;var services;var now=1794676650l;var target=1794677550l;var rowSince=1794676650l;var publishedTarget=null;var generation=0;var sequence=0;var control=null;var controlSince=null;var controlWrites=0;var attemptWrites=0;var attempts={};var expectedPosts=[];var enabled=true;var quiet=false;var fail=false;var enabledCalls=0;var timeCalls=0;var quietCalls=0;var trace=[];
  var coverage={"publish_applied"=>0,"wake_post"=>0,"wake_no"=>0,"quiet_consumed"=>0,"write_failure"=>0,"disabled_no"=>0,"reopen_applied"=>0};
  function initialize(){store=new PbtMemoryStore();cache=new NativeCache("https://pbt.invalid",store);services=new PbtReminderServices();}
- function publish(){generation+=1;var value=pbtExactSnapshot(generation,target);var owner=new NativeTrustedStore(store,"https://pbt.invalid");Test.assert(owner.save(value));sequence+=1;var packet=new NativeTrustedPacket(value);Test.assert(cache.acceptDurable(packet));LaunchReminderForeground.publishQueue(cache,now,[packet.presentation]);rowSince=now;coverage["publish_applied"]+=1;}
+ function publish(){generation+=1;var value=pbtExactSnapshot(generation,target);var owner=new NativeTrustedStore(store,"https://pbt.invalid");Test.assert(owner.save(value));sequence+=1;var packet=new NativeTrustedPacket(value);Test.assert(cache.acceptDurable(packet));LaunchReminderForeground.publishQueue(cache,now,[packet.presentation]);if(publishedTarget==null||publishedTarget!=target){rowSince=now;}publishedTarget=target;coverage["publish_applied"]+=1;}
  function wakeModel(){
   enabledCalls+=1;if(control==null||control!=enabled||controlSince>now){control=enabled;controlSince=now;controlWrites+=1;}
   if(!enabled){coverage["disabled_no"]+=1;return;}
@@ -861,4 +861,12 @@ import Toybox.System;
  Test.assertMessage(app.failedToken==before&&app.frameRequests==frames,"duplicate notification must not clear or redraw a failed admission");
  store.failSlotRead=false;Test.assert(disk.save(pbtSnapshot(3,1795042380l)));app.onBackgroundData({});
  Test.assertMessage(app.failedToken==null&&view.context!=null&&view.context.displayTarget==1795042380l,"new durable pointer must still admit facts");return true;
+}
+
+(:test,:typecheck(false)) function peerReminderContinuityReplay(logger){
+ var actual=runGeneratedReminderOwners(2000330,1);
+ var r=new ReminderTrace();var seq=[[0,0],[5,0],[1,660],[0,0],[5,0],[5,0]];
+ for(var i=0;i<seq.size();i+=1){r.step(seq[i][0],seq[i][1],2000330,i);}
+ Test.assert(r.services.posts.size()==2);Test.assert(r.services.posts[0][0]==0&&r.services.posts[1][0]==2);Test.assert(r.services.posts[0][1]==1794677550l&&r.services.posts[1][1]==1794677550l);
+ logger.debug("REMINDER_CONTINUITY exact_seed=2000330 arbitrary_events="+actual+" reduced_events=6 same_target_since_retained=true duplicate_no_post=true");return true;
 }

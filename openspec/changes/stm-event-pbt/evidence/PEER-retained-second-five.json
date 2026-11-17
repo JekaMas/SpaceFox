@@ -1,0 +1,40 @@
+{
+  "kind": "retained-native-campaign-scope-comparison",
+  "original_source_revision": "7f6de8254975c7314b67f7457354f9084487df9c",
+  "retained_owners": [
+    "view",
+    "foreground",
+    "fields",
+    "fitness",
+    "temporal"
+  ],
+  "original_receipt": "NATIVE-final-remaining-600/summary.json",
+  "unchanged_declarations": {
+    "PbtMetrics": true,
+    "recordCoverage": true,
+    "OwnerRandom": true,
+    "ownerCheck": true,
+    "PbtTemporalService": true,
+    "runGeneratedTemporalService": true,
+    "pbtSnapshot": true,
+    "PbtTimer": true,
+    "PbtView": true,
+    "ViewTrace": true,
+    "pbtCheckViewReleased": true,
+    "runGeneratedViewLifecycle": true,
+    "PbtForegroundApp": true,
+    "ForegroundTrace": true,
+    "runGeneratedForegroundDelivery": true,
+    "PbtComplicationApi": true,
+    "PbtSelectedFields": true,
+    "FieldTrace": true,
+    "runGeneratedSelectedFields": true,
+    "PbtEnergyApi": true,
+    "PbtEnergyFields": true,
+    "PbtFitness": true,
+    "FitnessTrace": true,
+    "runGeneratedFitnessOwners": true
+  },
+  "method": "Exact declaration text comparison; only ReminderTrace model/independent replay changed. Production/resources/campaign controller unchanged. Original revision/program digests retained.",
+  "limits": "Original whole wave is RED because reminder failed; only these five complete GREEN rows are credited."
+}

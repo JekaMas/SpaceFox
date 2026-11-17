@@ -1,0 +1,24 @@
+------------------------------------------------------------------------------
+Executing test campaignPilot...
+DEBUG (18:03): PBT_CAMPAIGN_BEGIN worker=1 owner=7 first=400001 version=0.2.9 native_id=d13aa334 budget_ms=606000
+DEBUG (18:04): PBT_CAMPAIGN_PROGRESS owner=7 next=401209 events=56765 productive_ms=60375
+DEBUG (18:05): PBT_CAMPAIGN_PROGRESS owner=7 next=402401 events=112800 productive_ms=120505
+DEBUG (18:06): PBT_CAMPAIGN_PROGRESS owner=7 next=403665 events=172214 productive_ms=180284
+DEBUG (18:07): PBT_CAMPAIGN_PROGRESS owner=7 next=404897 events=230116 productive_ms=240334
+DEBUG (18:08): PBT_CAMPAIGN_PROGRESS owner=7 next=406249 events=293669 productive_ms=300205
+DEBUG (18:09): PBT_CAMPAIGN_PROGRESS owner=7 next=407593 events=356843 productive_ms=360132
+DEBUG (18:10): PBT_CAMPAIGN_PROGRESS owner=7 next=408929 events=419634 productive_ms=420068
+DEBUG (18:11): PBT_CAMPAIGN_PROGRESS owner=7 next=410265 events=482414 productive_ms=480339
+DEBUG (18:12): PBT_CAMPAIGN_PROGRESS owner=7 next=411593 events=544843 productive_ms=540226
+DEBUG (18:13): PBT_CAMPAIGN_PROGRESS owner=7 next=412793 events=601243 productive_ms=600071
+DEBUG (18:13): PBT_CAMPAIGN_COVERAGE {duplicate_durable_no=>19697, volatile_applied=>46410, hidden_durable=>31785, stale_no=>35011, frame_no=>22269, pointer_failure=>41021, frame_applied=>59314, hidden_volatile=>56184, bootstrap_applied=>30368, hide_applied=>35119, slot_failure=>41005, reopen_applied=>41039, commit_applied=>53922, create_applied=>36727, show_applied=>59611} assertions=3271630 skipped=60371
+DEBUG (18:13): PBT_CAMPAIGN_END worker=1 owner=7 first=400001 next=412889 batches=1611 events=605730 productive_ms=606460 wall_ms=606484
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+campaignPilot                       PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

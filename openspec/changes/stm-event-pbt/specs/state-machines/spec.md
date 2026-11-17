@@ -12,6 +12,11 @@ Each applicable stateful owner SHALL make its allowed events, guards and effects
 - **WHEN** a complete snapshot pointer is durable but the separate successful-attempt checkpoint cannot be written
 - **THEN** the complete snapshot SHALL remain durable, the service SHALL terminate normally, and the failed attempt SHALL remain eligible for the approved retry policy.
 
+#### Scenario: A current eligible reminder target is republished
+- **WHEN** a fresh accepted source/launch/target is republished without changing its target or enabled state
+- **THEN** its continuous eligibility interval SHALL remain unchanged and an unconsumed currently permitted slot SHALL remain eligible
+- **AND** an already consumed slot SHALL remain suppressed; a target or enable transition SHALL use the applicable new eligibility boundary.
+
 ### Requirement: Production-bound generated event sequences
 A generated event property SHALL drive actual production owner seams with independent event-controlled dependency fakes and compare an independent reference model after every event and at trace completion. Required applied and observed-no-mutation dispositions SHALL be counted; skipped preconditions SHALL NOT count as coverage. Failures SHALL retain replayable seed, concrete events, state/effect observations and a minimized counterexample where feasible.
 
