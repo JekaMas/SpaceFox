@@ -71,8 +71,9 @@
     "current-eligibility-and-candidate": {
       "positive": "Actual _RepositoryCatalogOperation admits pinned current eligibility and builds a captured active snapshot candidate with artRevision 1",
       "negative": "Stale dictionaryDigest is refused; captured artifact tampering remains refused",
-      "command": "python3 -m unittest tests.test_rocket_generation85_reopen",
-      "evidence": "evidence/pages-prepost/eligibility-producer-green.log"
+      "command": "python3 -B -m unittest -v tests.test_rocket_generation85_reopen.Generation85Reopen.test_current_producer_operation_admits_pinned_eligibility tests.test_rocket_generation85_reopen.Generation85Reopen.test_captured_active_generation_accepts_new_catalog_and_reopens",
+      "evidence": "evidence/pages-prepost/eligibility-producer-green.log",
+      "independent_review": "evidence/pages-prepost/ELIGIBILITY-PEER.md"
     }
   },
   "independent_review": {
