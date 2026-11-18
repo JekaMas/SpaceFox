@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "id": "check-low-wake-pbt",
+      "type": "change",
+      "valid": true,
+      "issues": [],
+      "durationMs": 15
+    }
+  ],
+  "summary": {
+    "totals": {
+      "items": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "byType": {
+      "change": {
+        "items": 1,
+        "passed": 1,
+        "failed": 0
+      }
+    }
+  },
+  "version": "1.0",
+  "root": {
+    "path": "/Users/jekamas/projects/SpaceFox-worktrees/audit-low-wake-pbt-20261118",
+    "source": "nearest"
+  }
+}
+
+exit=0

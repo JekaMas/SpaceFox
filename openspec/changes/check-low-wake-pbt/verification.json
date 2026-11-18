@@ -1,0 +1,9 @@
+{
+  "scope": "Actual SpaceFoxView first-wake and sibling lifecycle callbacks with independent logical OS mode",
+  "properties": [
+    {"id": "cold-low-first-wake", "evidence": ["evidence/historical-guard-final-red.log", "evidence/current-generator-green.log", "evidence/current-directed-green.log"], "checks": "Same production-bound selector against historical-guard mutation and current source; assert after each event and trace end."},
+    {"id": "hidden-off-and-duplicate-callbacks", "evidence": ["evidence/current-generator-green.log", "evidence/current-off-green.log"], "checks": "Generated lifecycle disposition matrix and focused OFF callback check."}
+  ],
+  "retained": "Unchanged other native and host PBT observations retain their original source and scope; no new 10-minute campaign is claimed.",
+  "limits": "Fake OS and rendering ports, not actual pixel content, physical input delivery or physical wake latency."
+}

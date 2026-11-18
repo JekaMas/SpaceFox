@@ -1,0 +1,16 @@
+--- current/SpaceFoxView.mc
++++ historical-guard/SpaceFoxView.mc
+@@ -424,12 +424,7 @@
+     function stopFallbackClock() as Void {if(fallbackClockTimer!=null){fallbackClockTimer.stop();fallbackClockTimer=null;}}
+     function fallbackClockTick() as Void {if(!lifecycle.shown()||lifecycle.mode()!=NOT_LOW||deviceMode()!=System.DISPLAY_MODE_HIGH_POWER){stopFallbackClock();return;}requestFrame();}
+     function onEnterSleep() as Void {if(!lifecycle.sleep()){return;}var display=deviceMode();syncDisplayMode(display);if(display!=System.DISPLAY_MODE_OFF){prepareOptionalAod();} }
+-    function onExitSleep() as Void {
+-        // A view can first be shown in LOW without having received onEnterSleep.
+-        // The first wake must still reconcile the actual OS display mode.
+-        var woke=lifecycle.wake();var before=lifecycle.mode();var display=deviceMode();syncDisplayMode(display);
+-        if(woke&&lifecycle.shown()&&display!=System.DISPLAY_MODE_OFF&&before==lifecycle.mode()){requestFrame();}
+-    }
++    function onExitSleep() as Void {if(!lifecycle.wake()){return;}var display=deviceMode();syncDisplayMode(display);if(lifecycle.shown()&&display!=System.DISPLAY_MODE_OFF){requestFrame();} }
+     function onHide() as Void {if(!lifecycle.hide()){return;}_resumePending=false;lowNeedsLoader=false;stopResume();cancelSfrBuild();stopFitness();stopFallbackClock();if(cancelAdmission!=null){cancelAdmission.invoke();}releaseVisualForSettings();}
+     // Settings must not retain the decoded scene while its picker is open.
+     // The accepted packet and source remain; onLayout/onShow rebuild the view.

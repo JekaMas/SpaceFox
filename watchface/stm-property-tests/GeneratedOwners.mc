@@ -350,7 +350,7 @@ import Toybox.System;
 // The event model predicts scheduling/paint permission, not pixels.
 (:test,:typecheck(false)) class ViewTrace {
  var view;var dc;var state=0;var sleeping=false;var high=true;var now=1794818604;var minute=null;var pending=false;var timer=-1;var timers=[];var updates=0;var modeLogs=0;var low=0;var fallback=0;var layouts=0;var fitness=0;var stops=0;var fires=0;var initialSnapshot=true;var lowSnapshots=0;var trace=[];
- var coverage={"show_applied"=>0,"show_no"=>0,"hide_applied"=>0,"hide_no"=>0,"sleep_applied"=>0,"sleep_no"=>0,"wake_applied"=>0,"wake_no"=>0,"hidden_wake_no"=>0,"low_paint"=>0,"same_minute_no"=>0,"hidden_frame_no"=>0,"timer_applied"=>0,"timer_no"=>0,"mode_change"=>0};
+ var coverage={"show_applied"=>0,"show_no"=>0,"hide_applied"=>0,"hide_no"=>0,"sleep_applied"=>0,"sleep_no"=>0,"wake_applied"=>0,"wake_no"=>0,"hidden_wake_no"=>0,"low_paint"=>0,"same_minute_no"=>0,"hidden_frame_no"=>0,"timer_applied"=>0,"timer_no"=>0,"mode_change"=>0,"first_wake_without_sleep"=>0};
  function initialize(){view=new PbtView();dc=new PbtGraphics();}
  function stopTimer(){if(timer>=0){timers[timer]=0;timer=-1;stops+=1;}}
  function transition(next){if(state!=0&&state!=next){state=next;minute=null;updates+=1;modeLogs+=1;if(next==1){pending=false;stopTimer();}else{pending=true;}}}
@@ -360,15 +360,15 @@ import Toybox.System;
   if(e==0){if(state==0){coverage["show_applied"]+=1;state=1;minute=null;sync();if(state==2){pending=true;updates+=1;}}else{coverage["show_no"]+=1;}view.onShow();}
   else if(e==1){if(state!=0){coverage["hide_applied"]+=1;state=0;minute=null;pending=false;stopTimer();}else{coverage["hide_no"]+=1;}view.onHide();}
   else if(e==2){if(!sleeping){coverage["sleep_applied"]+=1;sleeping=true;sync();}else{coverage["sleep_no"]+=1;}view.onEnterSleep();}
-  else if(e==3){var wasSleeping=sleeping;var before=state;if(sleeping){coverage["wake_applied"]+=1;sleeping=false;}else{coverage["wake_no"]+=1;}sync();if(wasSleeping&&state!=0&&state==before){updates+=1;}else if(wasSleeping&&state==0){coverage["hidden_wake_no"]+=1;}view.onExitSleep();}
-  else if(e==4){high=!high;if(high){view.fakeMode=Toybox.System.DISPLAY_MODE_HIGH_POWER;}else{view.fakeMode=Toybox.System.DISPLAY_MODE_LOW_POWER;}var before=state;sync();if(before!=state){coverage["mode_change"]+=1;}view.syncDisplayMode(view.fakeMode);}
+  else if(e==3){var wasSleeping=sleeping;var before=state;sleeping=false;sync();var firstWake=!wasSleeping&&before==1&&high&&state==2;if(firstWake){coverage["first_wake_without_sleep"]+=1;}if(wasSleeping||firstWake){coverage["wake_applied"]+=1;}else{coverage["wake_no"]+=1;}if(wasSleeping&&state!=0&&state==before){updates+=1;}else if(wasSleeping&&state==0){coverage["hidden_wake_no"]+=1;}view.onExitSleep();}
+  else if(e==4){high=!high;if(high){view.fakeMode=Toybox.System.DISPLAY_MODE_HIGH_POWER;}else{view.fakeMode=Toybox.System.DISPLAY_MODE_LOW_POWER;}coverage["mode_change"]+=1;}
   else if(e==5){now+=arg;view.clock.now=now;}
   else if(e==6){
    if(state==0){coverage["hidden_frame_no"]+=1;}
    else{sync();if(state==1){var m=(now/60).toLong();if(minute==m){coverage["same_minute_no"]+=1;}else{minute=m;low+=1;coverage["low_paint"]+=1;if(initialSnapshot){initialSnapshot=false;lowSnapshots+=1;minute=null;updates+=1;}}}
     else{layouts+=1;fallback+=1;if(pending&&timer<0){pending=false;timer=timers.size();timers.add(1);}}}
    view.onUpdate(dc);
-  }else{var ix=0;if(timers.size()>0){ix=arg%timers.size();}var allowed=timers.size()>0&&timers[ix]==1;if(allowed){coverage["timer_applied"]+=1;timers[ix]=0;timer=-1;fires+=1;if(state==2&&high){fitness+=2;initialSnapshot=false;}}else{coverage["timer_no"]+=1;}var ran=false;if(view.timers.size()>0){ran=view.timers[ix].fire();}ownerCheck(ran==allowed,"view-timer",seed,i,trace,allowed,ran);}
+  }else{var ix=0;if(timers.size()>0){ix=arg%timers.size();}var allowed=timers.size()>0&&timers[ix]==1;if(allowed){coverage["timer_applied"]+=1;timers[ix]=0;timer=-1;fires+=1;if(state==2&&high){fitness+=2;initialSnapshot=false;}}else if(timers.size()>0){coverage["timer_no"]+=1;}else{PbtMetrics.skipped+=1;}var ran=false;if(view.timers.size()>0){ran=view.timers[ix].fire();}ownerCheck(ran==allowed,"view-timer",seed,i,trace,allowed,ran);}
   verify(seed,i);
  }
  function verify(seed,i){
@@ -380,13 +380,28 @@ import Toybox.System;
 }
 (:typecheck(false)) function runGeneratedViewLifecycle(firstSeed,seedCount){
  var total=0;
- for(var seed=firstSeed;seed<firstSeed+seedCount;seed+=1){var rng=new OwnerRandom(seed);var run=new ViewTrace();var prefix=[[4,0],[0,0],[6,0],[6,0],[6,0],[1,0],[4,0],[0,0],[0,0],[6,0],[7,0],[7,0],[2,0],[2,0],[6,0],[6,0],[5,60],[6,0],[3,0],[3,0],[4,0],[4,0],[1,0],[1,0],[6,0],[2,0],[3,0]];var events=prefix.size()+12+rng.draw(25);
+ for(var seed=firstSeed;seed<firstSeed+seedCount;seed+=1){var rng=new OwnerRandom(seed);var run=new ViewTrace();var prefix=[[4,0],[0,0],[4,0],[3,0],[6,0],[1,0],[4,0],[0,0],[6,0],[6,0],[6,0],[1,0],[4,0],[0,0],[0,0],[6,0],[7,1],[7,1],[2,0],[2,0],[6,0],[6,0],[5,60],[6,0],[3,0],[3,0],[4,0],[4,0],[1,0],[1,0],[6,0],[2,0],[3,0]];var events=prefix.size()+12+rng.draw(25);
   for(var i=0;i<events;i+=1){var e=0;var arg=0;if(i<prefix.size()){e=prefix[i][0];arg=prefix[i][1];}else{e=rng.draw(8);arg=rng.draw(5)*30;}run.step(e,arg,seed,i);total+=1;}
   run.final(seed,events);run.step(1,0,seed,events);total+=1;pbtCheckViewReleased(run.view,seed,events,run.trace);
  }
  return total;
 }
-(:test,:typecheck(false)) function generatedViewLifecycle(logger){var n=runGeneratedViewLifecycle(1,32);logger.debug("GENERATED_VIEWLIFECYCLE seeds=32 events="+n+" after_each=true end=true");return true;}
+(:test,:typecheck(false)) function generatedViewLifecycle(logger){PbtMetrics.coverage={};PbtMetrics.assertions=0;PbtMetrics.skipped=0;var n=runGeneratedViewLifecycle(1,32);logger.debug("GENERATED_VIEWLIFECYCLE seeds=32 events="+n+" after_each=true end=true assertions="+PbtMetrics.assertions+" skipped="+PbtMetrics.skipped+" coverage="+PbtMetrics.coverage);return true;}
+
+(:test,:typecheck(false)) function firstLowWakeWithoutSleep(logger){
+ var run=new ViewTrace();var trace=[[4,0],[0,0],[4,0],[3,0],[6,0]];
+ for(var i=0;i<trace.size();i+=1){run.step(trace[i][0],trace[i][1],1,i);}
+ ownerCheck(run.state==2&&run.updates==1&&run.fallback==1,"first-wake-useful-frame",1,trace.size(),run.trace,[2,1,1],[run.state,run.updates,run.fallback]);
+ logger.debug("FIRST_LOW_WAKE seed=1 trace="+trace+" active=true first_request=true fallback_paint=true");return true;
+}
+
+(:test,:typecheck(false)) function offWakeDoesNotPaint(logger){
+ var view=new PbtView();var dc=new PbtGraphics();view.fakeMode=Toybox.System.DISPLAY_MODE_OFF;
+ view.onShow();view.onExitSleep();view.onUpdate(dc);
+ Test.assertMessage(view.visible()&&view.displayMode()==0&&view.updates==0&&view.lowFrames==0&&view.fallbackFrames==0,"OFF show/wake/draw must not request or paint a visible frame");
+ view.onHide();view.onExitSleep();Test.assertMessage(!view.visible()&&view.updates==0,"hidden OFF wake must remain quiet");
+ logger.debug("OFF_WAKE show/wake/draw/hide/wake no frame");return true;
+}
 
 
 // Real application adapter with fake dependencies installed by constructor
