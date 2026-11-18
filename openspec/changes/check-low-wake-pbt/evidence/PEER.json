@@ -1,0 +1,45 @@
+{
+  "kind": "low-wake-pbt-independent-peer",
+  "status": "GREEN",
+  "reviewed_author_revision": "096e7dc85c66b52f54007254b49123a165081723",
+  "base_public_revision": "4ee218f70a5e3a1e1a543deb32a950e969fca767",
+  "reviewed_test_source": {
+    "path": "watchface/stm-property-tests/GeneratedOwners.mc",
+    "git_blob_oid": "c492b93e1a09f1bf64df40f7eafa5477441e63c6",
+    "sha256": "32c59fe28fe1f360b33be7f2b993b176608386ddce4a18e1d95090da0cc09830"
+  },
+  "production_changed": false,
+  "version": "0.2.11",
+  "native_id": "3c4d93d0",
+  "profile": "fr165m",
+  "sdk": "9.3.0-linux",
+  "program_sha256": "df152f7201b8b9522465be8b6ee82a889fc4538002a2591ad60e29f829eed6c5",
+  "seeds": [
+    1,
+    32
+  ],
+  "generator_events": 1974,
+  "generator_assertions": 2781,
+  "generator_skipped": 0,
+  "dispositions": {
+    "show_applied": 149,
+    "show_no": 68,
+    "hide_applied": 134,
+    "hide_no": 90,
+    "sleep_applied": 110,
+    "sleep_no": 78,
+    "wake_applied": 196,
+    "wake_no": 90,
+    "first_wake_without_sleep": 67,
+    "wake_reconciles_low": 35,
+    "hidden_wake_no": 47,
+    "os_context_change": 375,
+    "low_paint": 142,
+    "same_minute_no": 68,
+    "hidden_frame_no": 96,
+    "timer_applied": 32,
+    "timer_no": 121
+  },
+  "proof_boundary": "Independent v0.2.10 guard/oracle/event-mapping review and retained original same-property four-event mutation RED. Same peer repaired a distinct typed coverage bug: awake ACTIVE\u2192externalLOW\u2192exitSleep changed mode but was counted wake_no. New original native RED three-event trace retained, then affected current generator32seeds/1974events/2781assertions/skipped0 and directed reordered-LOW selector PASS, full raw tables/launcher1. Every declared generator cell required per seed; OS/time changes are fake context, stopped-timer no-op is fake dispatcher cancellation not real stale callback invocation. Original current first-HIGH directed and OFF/hidden observations retained at unchanged boundaries. All business ports fake/source-audited, actual view lifecycle callbacks used. Not exhaustive all-sequence/pixel/physical/latency/600second evidence. No production/version/export/Store change. One simulator setup-error record is a tool-output transcription because its original private file was overwritten; semantic RED/GREEN and compile outputs are original retained raw files.",
+  "report": "openspec/changes/check-low-wake-pbt/evidence/PEER.md"
+}

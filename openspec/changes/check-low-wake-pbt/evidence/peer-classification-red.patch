@@ -1,0 +1,18 @@
+--- author/GeneratedOwners.mc
++++ peer-accounting-red/GeneratedOwners.mc
+@@ -395,6 +395,15 @@
+  logger.debug("FIRST_LOW_WAKE seed=1 trace="+trace+" active=true first_request=true fallback_paint=true");return true;
+ }
+ 
++// A reordered exit-sleep still reconciles the externally observed LOW mode.
++// A real mode transition is applied coverage even without a sleeping flag.
++(:test,:typecheck(false)) function wakeReconcilesUnobservedLowMode(logger){
++ var run=new ViewTrace();var trace=[[0,0],[4,0],[3,0]];
++ for(var i=0;i<trace.size();i+=1){run.step(trace[i][0],trace[i][1],1,i);}
++ ownerCheck(run.state==1&&run.updates==3&&run.coverage["wake_applied"]==1&&run.coverage["wake_no"]==0,"wake-low-disposition",1,trace.size(),run.trace,[1,3,1,0],[run.state,run.updates,run.coverage["wake_applied"],run.coverage["wake_no"]]);
++ logger.debug("WAKE_LOW_RECONCILE seed=1 trace="+trace+" low=true transition_applied=true");return true;
++}
++
+ (:test,:typecheck(false)) function offWakeDoesNotPaint(logger){
+  var view=new PbtView();var dc=new PbtGraphics();view.fakeMode=Toybox.System.DISPLAY_MODE_OFF;
+  view.onShow();view.onExitSleep();view.onUpdate(dc);

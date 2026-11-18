@@ -1,0 +1,5 @@
+Setup only, before semantic tests. The initial owned simulator launch was not ready; the actual peer tool output was:
+Unable to connect to simulator.
+launcher_exit=2
+
+This is an exact tool-output transcription, not the original raw file: the private filename was subsequently overwritten by peer-classification-first-red.log. No test table or property executed in this setup attempt. The owned simulator was started after Xvfb readiness; the first semantic RED and all later semantic/compile outputs are retained as original raw files. No failed property or missing duration was reclassified PASS.
