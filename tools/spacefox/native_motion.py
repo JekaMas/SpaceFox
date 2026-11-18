@@ -10,7 +10,7 @@ import hashlib
 import shutil
 
 from .catalog import canonical_bytes, loads_json, validate_catalog, dependency_closure, validate_catalog_selection, catalog_validation_scope, _read_snapshot, _cache_safe
-from .graphics import build_pack, canonical_visual, export_svg, validate_visual, _source_path
+from .graphics import build_pack, canonical_visual, export_svg, fit_model_visual, validate_visual, _source_path
 from .visual_bridge import asset_descriptor, put, read_ref, sha
 from . import native_profile as static
 
@@ -138,6 +138,8 @@ def _assert_asset(files, value):
     raw = value['svg'].encode('utf-8')
     require(type(content['bytes']) is int and len(raw) == content['bytes'] and sha(raw) == content['sha256'], 'asset original bytes')
     visual = export_svg(raw, facts.get('exportSize'), facts.get('visualAnimation'))
+    if facts.get('visualFit') == 'fit54x124-v1':
+        visual = fit_model_visual(visual)
     require(visual[7] == [0, []], 'separate motion requires a real static source asset')
     from .visual_bridge import _validate_descriptor
     _validate_descriptor(value['sourceDescriptor'], files, set())

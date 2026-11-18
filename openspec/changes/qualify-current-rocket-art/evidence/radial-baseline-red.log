@@ -1,0 +1,153 @@
+test_primary_launch_envelopes (tests.test_rocket_source_proportions.PublishedRocketProportions.test_primary_launch_envelopes) ... 
+  test_primary_launch_envelopes (tests.test_rocket_source_proportions.PublishedRocketProportions.test_primary_launch_envelopes) (name='Falcon 9', identity='ll2:configuration:164') ... FAIL
+  test_primary_launch_envelopes (tests.test_rocket_source_proportions.PublishedRocketProportions.test_primary_launch_envelopes) (name='Falcon Heavy', identity='ll2:configuration:161') ... FAIL
+  test_primary_launch_envelopes (tests.test_rocket_source_proportions.PublishedRocketProportions.test_primary_launch_envelopes) (name='Electron', identity='ll2:configuration:26') ... FAIL
+  test_primary_launch_envelopes (tests.test_rocket_source_proportions.PublishedRocketProportions.test_primary_launch_envelopes) (name='Ariane 62', identity='ll2:configuration:121') ... FAIL
+  test_primary_launch_envelopes (tests.test_rocket_source_proportions.PublishedRocketProportions.test_primary_launch_envelopes) (name='Ariane 64', identity='ll2:configuration:116') ... FAIL
+  test_primary_launch_envelopes (tests.test_rocket_source_proportions.PublishedRocketProportions.test_primary_launch_envelopes) (name='Proton-M Breeze-M', identity='ll2:configuration:22') ... FAIL
+test_radial_boosters_form_one_attached_stack (tests.test_rocket_source_proportions.PublishedRocketProportions.test_radial_boosters_form_one_attached_stack) ... 
+  test_radial_boosters_form_one_attached_stack (tests.test_rocket_source_proportions.PublishedRocketProportions.test_radial_boosters_form_one_attached_stack) (identity='ll2:configuration:15') ... FAIL
+  test_radial_boosters_form_one_attached_stack (tests.test_rocket_source_proportions.PublishedRocketProportions.test_radial_boosters_form_one_attached_stack) (identity='ll2:configuration:168') ... FAIL
+  test_radial_boosters_form_one_attached_stack (tests.test_rocket_source_proportions.PublishedRocketProportions.test_radial_boosters_form_one_attached_stack) (identity='ll2:configuration:38') ... FAIL
+  test_radial_boosters_form_one_attached_stack (tests.test_rocket_source_proportions.PublishedRocketProportions.test_radial_boosters_form_one_attached_stack) (identity='ll2:configuration:19') ... FAIL
+  test_radial_boosters_form_one_attached_stack (tests.test_rocket_source_proportions.PublishedRocketProportions.test_radial_boosters_form_one_attached_stack) (identity='ll2:configuration:202') ... FAIL
+  test_radial_boosters_form_one_attached_stack (tests.test_rocket_source_proportions.PublishedRocketProportions.test_radial_boosters_form_one_attached_stack) (identity='ll2:configuration:204') ... FAIL
+
+======================================================================
+FAIL: test_primary_launch_envelopes (tests.test_rocket_source_proportions.PublishedRocketProportions.test_primary_launch_envelopes) (name='Falcon 9', identity='ll2:configuration:164')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tests/test_rocket_source_proportions.py", line 55, in test_primary_launch_envelopes
+    self.assertLessEqual(abs(width / height - expected), margin,
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         f'{name}: decoded bbox {width}x{height}, expected ratio {expected:.3f}')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.12739495798319328 not less than or equal to 0.025 : Falcon 9: decoded bbox 24x119, expected ratio 0.074
+
+======================================================================
+FAIL: test_primary_launch_envelopes (tests.test_rocket_source_proportions.PublishedRocketProportions.test_primary_launch_envelopes) (name='Falcon Heavy', identity='ll2:configuration:161')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tests/test_rocket_source_proportions.py", line 55, in test_primary_launch_envelopes
+    self.assertLessEqual(abs(width / height - expected), margin,
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         f'{name}: decoded bbox {width}x{height}, expected ratio {expected:.3f}')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.19546218487394962 not less than or equal to 0.035 : Falcon Heavy: decoded bbox 44x119, expected ratio 0.174
+
+======================================================================
+FAIL: test_primary_launch_envelopes (tests.test_rocket_source_proportions.PublishedRocketProportions.test_primary_launch_envelopes) (name='Electron', identity='ll2:configuration:26')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tests/test_rocket_source_proportions.py", line 55, in test_primary_launch_envelopes
+    self.assertLessEqual(abs(width / height - expected), margin,
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         f'{name}: decoded bbox {width}x{height}, expected ratio {expected:.3f}')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.15555555555555556 not less than or equal to 0.025 : Electron: decoded bbox 26x117, expected ratio 0.067
+
+======================================================================
+FAIL: test_primary_launch_envelopes (tests.test_rocket_source_proportions.PublishedRocketProportions.test_primary_launch_envelopes) (name='Ariane 62', identity='ll2:configuration:121')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tests/test_rocket_source_proportions.py", line 55, in test_primary_launch_envelopes
+    self.assertLessEqual(abs(width / height - expected), margin,
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         f'{name}: decoded bbox {width}x{height}, expected ratio {expected:.3f}')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.17610716238381632 not less than or equal to 0.035 : Ariane 62: decoded bbox 44x118, expected ratio 0.197
+
+======================================================================
+FAIL: test_primary_launch_envelopes (tests.test_rocket_source_proportions.PublishedRocketProportions.test_primary_launch_envelopes) (name='Ariane 64', identity='ll2:configuration:116')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tests/test_rocket_source_proportions.py", line 55, in test_primary_launch_envelopes
+    self.assertLessEqual(abs(width / height - expected), margin,
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         f'{name}: decoded bbox {width}x{height}, expected ratio {expected:.3f}')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.20153089119737563 not less than or equal to 0.035 : Ariane 64: decoded bbox 47x118, expected ratio 0.197
+
+======================================================================
+FAIL: test_primary_launch_envelopes (tests.test_rocket_source_proportions.PublishedRocketProportions.test_primary_launch_envelopes) (name='Proton-M Breeze-M', identity='ll2:configuration:22')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tests/test_rocket_source_proportions.py", line 55, in test_primary_launch_envelopes
+    self.assertLessEqual(abs(width / height - expected), margin,
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         f'{name}: decoded bbox {width}x{height}, expected ratio {expected:.3f}')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.3821611721611721 not less than or equal to 0.035 : Proton-M Breeze-M: decoded bbox 46x91, expected ratio 0.123
+
+======================================================================
+FAIL: test_radial_boosters_form_one_attached_stack (tests.test_rocket_source_proportions.PublishedRocketProportions.test_radial_boosters_form_one_attached_stack) (identity='ll2:configuration:15')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tests/test_rocket_source_proportions.py", line 28, in test_radial_boosters_form_one_attached_stack
+    self.assertLessEqual(max((b-a-1 for a,b in zip(xs,xs[1:])), default=0), 1,
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         f'disconnected strap-on stack at row {y}: {xs}')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 5 not less than or equal to 1 : disconnected strap-on stack at row 85: [5, 6, 7, 8, 9, 14, 15, 16, 17, 23, 24, 25, 26, 27, 28, 29, 30, 36, 37, 38, 39, 44, 45, 46, 47, 48]
+
+======================================================================
+FAIL: test_radial_boosters_form_one_attached_stack (tests.test_rocket_source_proportions.PublishedRocketProportions.test_radial_boosters_form_one_attached_stack) (identity='ll2:configuration:168')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tests/test_rocket_source_proportions.py", line 28, in test_radial_boosters_form_one_attached_stack
+    self.assertLessEqual(max((b-a-1 for a,b in zip(xs,xs[1:])), default=0), 1,
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         f'disconnected strap-on stack at row {y}: {xs}')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 5 not less than or equal to 1 : disconnected strap-on stack at row 85: [5, 6, 7, 8, 9, 14, 15, 16, 17, 23, 24, 25, 26, 27, 28, 29, 30, 36, 37, 38, 39, 44, 45, 46, 47, 48]
+
+======================================================================
+FAIL: test_radial_boosters_form_one_attached_stack (tests.test_rocket_source_proportions.PublishedRocketProportions.test_radial_boosters_form_one_attached_stack) (identity='ll2:configuration:38')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tests/test_rocket_source_proportions.py", line 28, in test_radial_boosters_form_one_attached_stack
+    self.assertLessEqual(max((b-a-1 for a,b in zip(xs,xs[1:])), default=0), 1,
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         f'disconnected strap-on stack at row {y}: {xs}')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 4 not less than or equal to 1 : disconnected strap-on stack at row 85: [4, 5, 6, 7, 11, 12, 13, 18, 19, 20, 23, 24, 25, 26, 27, 28, 29, 30, 33, 34, 35, 40, 41, 42, 46, 47, 48, 49]
+
+======================================================================
+FAIL: test_radial_boosters_form_one_attached_stack (tests.test_rocket_source_proportions.PublishedRocketProportions.test_radial_boosters_form_one_attached_stack) (identity='ll2:configuration:19')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tests/test_rocket_source_proportions.py", line 28, in test_radial_boosters_form_one_attached_stack
+    self.assertLessEqual(max((b-a-1 for a,b in zip(xs,xs[1:])), default=0), 1,
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         f'disconnected strap-on stack at row {y}: {xs}')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 3 not less than or equal to 1 : disconnected strap-on stack at row 85: [12, 13, 14, 18, 19, 20, 21, 24, 25, 26, 27, 28, 29, 32, 33, 34, 35, 39, 40, 41]
+
+======================================================================
+FAIL: test_radial_boosters_form_one_attached_stack (tests.test_rocket_source_proportions.PublishedRocketProportions.test_radial_boosters_form_one_attached_stack) (identity='ll2:configuration:202')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tests/test_rocket_source_proportions.py", line 28, in test_radial_boosters_form_one_attached_stack
+    self.assertLessEqual(max((b-a-1 for a,b in zip(xs,xs[1:])), default=0), 1,
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         f'disconnected strap-on stack at row {y}: {xs}')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 4 not less than or equal to 1 : disconnected strap-on stack at row 84: [5, 6, 7, 8, 9, 14, 15, 16, 17, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 36, 37, 38, 39, 44, 45, 46, 47, 48]
+
+======================================================================
+FAIL: test_radial_boosters_form_one_attached_stack (tests.test_rocket_source_proportions.PublishedRocketProportions.test_radial_boosters_form_one_attached_stack) (identity='ll2:configuration:204')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tests/test_rocket_source_proportions.py", line 28, in test_radial_boosters_form_one_attached_stack
+    self.assertLessEqual(max((b-a-1 for a,b in zip(xs,xs[1:])), default=0), 1,
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         f'disconnected strap-on stack at row {y}: {xs}')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 3 not less than or equal to 1 : disconnected strap-on stack at row 85: [5, 6, 7, 8, 9, 13, 14, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 35, 36, 37, 38, 39, 40, 44, 45, 46, 47, 48]
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.057s
+
+FAILED (failures=12)
+
+exit=1

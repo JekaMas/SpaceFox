@@ -1,0 +1,16 @@
+import sys,unittest,zipfile
+from pathlib import Path
+from tools.spacefox.publisher import Publisher
+import test_rocket_generation85_reopen as target
+out=Path('/Users/jekamas/.codex/tmp/spacefox-rocket-art-sdk-20261118')
+original=Publisher.prepare
+def capture(self,expected,now,files,*args,**kwargs):
+    revision=original(self,expected,now,files,*args,**kwargs)
+    generation=self.ledger['pending']['generation']
+    with zipfile.ZipFile(out / ('remote-%s.zip' % generation),'w',zipfile.ZIP_DEFLATED) as z:
+        for name,data in files.items():z.writestr(name,data)
+    return revision
+Publisher.prepare=capture
+suite=unittest.TestSuite([target.Generation85Reopen('test_captured_active_generation_accepts_new_catalog_and_reopens')])
+result=unittest.TextTestRunner(verbosity=2).run(suite)
+sys.exit(not result.wasSuccessful())

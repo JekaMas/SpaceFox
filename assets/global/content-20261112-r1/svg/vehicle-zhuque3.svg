@@ -1,1 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 128"><path data-part="core" d="M28.82768 116.00000L28.82768 26.32898L35.17232 26.32898L35.17232 116.00000Z" fill="#d9e1e6" /><path data-part="fairing" d="M28.33420 26.32898L28.33420 16.43133L29.87384 10.19948L32.00000 8.00000L34.12616 10.19948L35.66580 16.43133L35.66580 26.32898Z" fill="#edf2f4" /><rect x="28.82768" y="44.09399" width="6.34465" height="0.80000" fill="#405968" /><path data-part="stowed-leg" d="M28.82768 96.00000L26.32768 113.00000L28.32768 113.00000Z" fill="#4a6272" /><rect x="26.62768" y="51.00000" width="2.00000" height="4.00000" fill="#607c90" /><path data-part="stowed-leg" d="M35.17232 96.00000L37.67232 113.00000L35.67232 113.00000Z" fill="#4a6272" /><rect x="35.37232" y="51.00000" width="2.00000" height="4.00000" fill="#607c90" /><path data-part="nozzle" d="M30.80000 116.00000L30.00000 120.00000L34.00000 120.00000L33.20000 116.00000Z" fill="#748b9b" /></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 128">
+ <path data-part="core" d="M28.32 116 V28 H35.68 V116 Z" fill="#d9e1e6"/>
+ <path data-part="fairing" d="M27.75 28 V17.5 Q28.4 10.5 32 8 Q35.6 10.5 36.25 17.5 V28 Z" fill="#edf2f4"/>
+ <path data-part="stage-joint" d="M28.32 45 H35.68" stroke="#405968" stroke-width="0.8"/>
+ <path data-part="stowed-leg" d="M28.32 96 L26.82 113 L28.12 115 Z M35.68 96 L37.18 113 L35.88 115 Z" fill="#7a909d"/>
+ <path data-part="grid-fins" d="M27.3 50 H28.32 V54 H27.3 Z M35.68 50 H36.7 V54 H35.68 Z" fill="#607c90"/>
+ <path data-part="nozzle" d="M30.8 116 L30 120 H34 L33.2 116 Z" fill="#748b9b"/>
+</svg>

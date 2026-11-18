@@ -167,7 +167,7 @@ class CurrentLanguageAdmission(unittest.TestCase):
         app=ET.parse(self.root/'watchface/manifest.xml').getroot().find('{http://www.garmin.com/xml/connectiq}application')
         native=(self.root/'watchface/source/generated/NativeVersion.mc').read_text()
         native_id=re.search(r'const ID = "([0-9a-f]{8})"', native).group(1)
-        good={'data':{'kind':'physical-six-independent-peer','status':'GREEN',
+        good={'data':{'kind':'rocket-art-independent-peer','status':'GREEN',
                       'version':app.get('version'),'native_id':native_id,'source_revision':revision,
                       'proof_boundary':'Synthetic fixture for current release gate only.'}}
         with self.assertRaisesRegex(Exception, 'independent peer binding'):

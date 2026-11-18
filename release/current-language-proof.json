@@ -33,11 +33,11 @@
     "tools/display_corpus.py": "2a32ab33c013aab4c6ecbc0961ad2237fd74a4d847749ecb10edc3c31977ba1c",
     "tools/current_language_probe.py": "06d6c1acd689649a4ebc213b036c61c4cd577ae94d729a9eecba72a86e85a8bd",
     "tools/spacefox/provider.py": "2d855c18cbb43da57fa32087e275597bc14f4e7bf5490f4cc83090aab44c9c65",
-    "tools/spacefox/catalog.py": "b33bf56669302cc44cd5195c1665ac95b7cc95801efa4e1ad234bff24f92a29b",
+    "tools/spacefox/catalog.py": "5550d7a614d280acafcc1306bc3dd58413e052c86ca1a142a64b83ffafd0c127",
     "watchface/source/LocalePresentation.mc": "0cb0be9330afbaf415182dd30ea2304dd9e1139f714d05c71901c945c28a13cc",
     "watchface/source/SceneRenderer.mc": "2384791dadceb1aaff3687f4c247df1835342236a9344b6f38af6998d41ead45",
     "watchface/source/SceneSettings.mc": "264304ed331374ed730a93da642998813dd9b9c15d2cff8043f92afb53e2efc4",
-    "watchface/source/SpaceFoxView.mc": "02ce98cbbdbd6bce676908c6e0969b5c4ae4fbc820f6f0134af56c97bee9e331",
+    "watchface/source/SpaceFoxView.mc": "3f6087aecc3b10b1ed0f518d814bb5b5e80a6f4c246c53c2ae0ca489764221a3",
     "watchface/source/WatchClock.mc": "e1cb5dd3ac35fb8bc52efad2ef85c7b909cb15fe7a04b4710302d4d34ddec100",
     "watchface/source/Fitness.mc": "29e9494c28a6824d69c19264a5e75ef0134f986c29e617b127e29cc19f16083f",
     "watchface/source/ScheduleState.mc": "4a9f22b9d01398fa60eb2ce6e430b09d878380b93b88f93058972e340780f3c4",
@@ -76,13 +76,13 @@
   },
   "physicalDeviceObserved": false,
   "nativeSpeakerReviewed": false,
-  "proofBoundary": "Original Mac FR165 and prior Linux FR165M observations remain historical. The new current Linux FR165M observation covers five primary dictionaries, three bitmap fonts and all 413 joined-header compositions / 1822 records. It predates only the retained, non-text FieldSources subscription-rearm/type delta and NativeVersion identity update. Unchanged glyph-shaping reports retain their actual original scopes. No physical, phone, native-speaker, pixel or peak-memory claim.",
+  "proofBoundary": "Original Mac FR165 and earlier Linux observations remain historical. The current Linux FR165M SDK observation covers five primary dictionaries, three bitmap fonts, and all 413 joined-header compositions / 1822 records on the captured 0.2.12 native inputs. Prior glyph-shaping observations retain their original scope. No physical, phone, native-speaker, pixel or peak-memory claim.",
   "historicalToolchainLock": {
     "path": "openspec/changes/spacefox-watchface/evidence/final-native-timing-settings/baseline/watchface/toolchain-lock.json",
     "sha256": "948c281801f4596cd6f904428f385adf85ebfe63f89d3c416b959cddf7bed389"
   },
   "currentNativeObservation": {
-    "path": "openspec/changes/fix-physical-six/evidence/current-native-qualification/observation.json",
-    "sha256": "b92debc771bfb0a2d2ce38d12bc529f684fc9b1b49db6a851a6b67b71d940014"
+    "path": "openspec/changes/qualify-current-rocket-art/evidence/current-native-qualification/observation.json",
+    "sha256": "af0b1007a95721e7ca3f69dd2f295f40c30eeb463434a51339446cb5f6c7fbb4"
   }
 }

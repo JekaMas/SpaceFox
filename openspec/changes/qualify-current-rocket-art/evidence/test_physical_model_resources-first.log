@@ -1,0 +1,24 @@
+..FF.
+======================================================================
+FAIL: test_every_binding_preserves_its_catalog_asset_identity (test_physical_model_resources.OfflineModelBindings.test_every_binding_preserves_its_catalog_asset_identity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tests/test_physical_model_resources.py", line 50, in test_every_binding_preserves_its_catalog_asset_identity
+    self.assertEqual(self.mapping, {identity: asset_names[asset] for identity, asset in expected.items()})
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'ll2:configuration:10': 'BundledModel160', 'll2:configuratio[9987 chars]017'} != {'ll2:configuration:5': 'BundledModel158', 'll2:configuration[9987 chars]092'}
+Diff is 37246 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_lm2d_is_the_captured_sourced_raster (test_physical_model_resources.OfflineModelBindings.test_lm2d_is_the_captured_sourced_raster)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tests/test_physical_model_resources.py", line 39, in test_lm2d_is_the_captured_sourced_raster
+    self.assertEqual(pixels, decode_raster([capture.read_bytes()], 54, 124, 4))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00[106936 chars]\x00" != b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00[106972 chars]\x00'
+
+----------------------------------------------------------------------
+Ran 5 tests in 2.157s
+
+FAILED (failures=2)

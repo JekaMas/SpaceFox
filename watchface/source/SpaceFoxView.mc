@@ -117,7 +117,9 @@ class SpaceFoxView extends WatchUi.WatchFace {
         if(metricsMinute==null||metricsMinute!=minute){
             readFitnessSnapshot(now);metricsMinute=minute;changed=true;
         }
-        if(fitnessTimer==null){fitnessTimer=newViewTimer();fitnessTimer.start(method(:refreshFitness),60000,true);}
+        // While the fallback clock already ticks, it owns the minute check;
+        // do not allocate a fourth concurrent timer during SFR/resume work.
+        if(fitnessTimer==null&&fallbackClockTimer==null){fitnessTimer=newViewTimer();fitnessTimer.start(method(:refreshFitness),60000,true);}
         if(changed){requestFrame();}
     }
     function readFitnessSnapshot(now as Number or Long) as Void {
@@ -190,7 +192,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
     // qualified site data prevent reusing a visual for changed model or place.
     function packetVisualKey(next) {
         if(next==null||next.bridge==null||next.bridge["selection"]==null){return null;}
-        return [next.bridge["selection"]["sha256"],next.bridge["ids"],next.bridge["site"]];
+        return [next.bridge["selection"]["sha256"],next.bridge["ids"],next.bridge["site"],next.bridge["artRevision"]];
     }
     (:extendedCode, :typecheck(false))
     function setPacket(next) as Void {
@@ -420,9 +422,9 @@ class SpaceFoxView extends WatchUi.WatchFace {
         catch(e){mapDecision.failure();renderer=null;layoutReady=false;drawClockFallback(dc);}
         finally{if(sfrFallbackPrepared||sfrBuild!=null){renderer=null;presentation.suspend();}}
     }
-    function startFallbackClock() as Void {if(lifecycle.shown()&&lifecycle.mode()==NOT_LOW&&deviceMode()==System.DISPLAY_MODE_HIGH_POWER&&fallbackClockTimer==null){fallbackClockTimer=newViewTimer();fallbackClockTimer.start(method(:fallbackClockTick),1000,true);}}
-    function stopFallbackClock() as Void {if(fallbackClockTimer!=null){fallbackClockTimer.stop();fallbackClockTimer=null;}}
-    function fallbackClockTick() as Void {if(!lifecycle.shown()||lifecycle.mode()!=NOT_LOW||deviceMode()!=System.DISPLAY_MODE_HIGH_POWER){stopFallbackClock();return;}requestFrame();}
+    function startFallbackClock() as Void {if(lifecycle.shown()&&lifecycle.mode()==NOT_LOW&&deviceMode()==System.DISPLAY_MODE_HIGH_POWER&&fallbackClockTimer==null){if(fitnessTimer!=null){fitnessTimer.stop();fitnessTimer=null;}fallbackClockTimer=newViewTimer();fallbackClockTimer.start(method(:fallbackClockTick),1000,true);}}
+    function stopFallbackClock() as Void {if(fallbackClockTimer!=null){fallbackClockTimer.stop();fallbackClockTimer=null;refreshFitness();}}
+    function fallbackClockTick() as Void {if(!lifecycle.shown()||lifecycle.mode()!=NOT_LOW||deviceMode()!=System.DISPLAY_MODE_HIGH_POWER){stopFallbackClock();return;}refreshFitness();requestFrame();}
     function onEnterSleep() as Void {if(!lifecycle.sleep()){return;}var display=deviceMode();syncDisplayMode(display);if(display!=System.DISPLAY_MODE_OFF){prepareOptionalAod();} }
     function onExitSleep() as Void {
         // A view can first be shown in LOW without having received onEnterSleep.

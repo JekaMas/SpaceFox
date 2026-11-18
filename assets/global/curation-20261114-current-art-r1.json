@@ -81,7 +81,7 @@
         "creator": "SpaceFox contributors",
         "license": "MIT",
         "credit": "Original SpaceFox schematic adapted from prior original MIT SpaceFox geometry; cited primary sources provide vehicle facts, not redistributed artwork.",
-        "sourceSha256": "b7680cece5c43568c35fa1cc04d338b46b774236fab9471a3fe0f23080fc3b52",
+        "sourceSha256": "95dffde65b17d17683de2e8a5354818fc1505a1ba58dc7e8077a7037380fd6ef",
         "exportSize": [
           64,
           128
@@ -106,7 +106,8 @@
           "representativeDate": "2026-11",
           "lengthIsIllustrative": true,
           "diameterIsIllustrative": true
-        }
+        },
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -118,7 +119,7 @@
         "creator": "SpaceFox contributors",
         "license": "MIT",
         "credit": "Original SpaceFox schematic adapted from prior original MIT SpaceFox geometry; cited primary sources provide vehicle facts, not redistributed artwork.",
-        "sourceSha256": "bfbe4b23084514fc29bfa95737e12c8f56a53e9e299dced9fb40944c23659bf0",
+        "sourceSha256": "803c09c76963329512768e0252d77810563ceda7b562178a8b53a3bd218c24f1",
         "exportSize": [
           64,
           128
@@ -136,15 +137,29 @@
           "features": [
             "Vulcan core and Centaur V with a fairing; existing original VC2S profile serves as the family representative."
           ],
-          "limitations": "ULA offers 0/2/4/6 solid boosters and standard or long fairing. This representative shows two boosters and a short fairing only as a reviewed family example; provider ID does not specify either for the selected flight. No flight-specific paint."
+          "limitations": "ULA offers 0/2/4/6 solid boosters and standard or long fairing. This representative shows two boosters and a short fairing only as a reviewed family example; provider ID does not specify either for the selected flight. No flight-specific paint. Radial source-based projection replaces the former detached flattened booster spread."
         },
         "geometryReference": {
           "basis": "Source-dated informational family or development-programme representative; see cited primary descriptions and explicit limitations.",
           "reviewedAt": "2026-11-14",
           "representativeDate": "2026-11",
           "lengthIsIllustrative": true,
-          "diameterIsIllustrative": true
-        }
+          "diameterIsIllustrative": true,
+          "radialProjection": {
+            "heightMetres": "61.6",
+            "coreDiameterMetres": "5.4",
+            "fairingDiameterMetres": "5.4",
+            "fairingLengthMetres": "15.5",
+            "boosters": 2,
+            "boosterDiameterMetres": "1.6",
+            "boosterLengthMetres": "21.9",
+            "tapered": false,
+            "coreColor": "#e4ebee",
+            "source": "https://www.ulalaunch.com/docs/default-source/rockets/vulcancentaur.pdf",
+            "limitations": "Representative fairing and station proportions. Near/far radial boosters overlap; H3 unspecified suffix uses the recorded representative. Some unreported dimensions are approximations, not new provider facts."
+          }
+        },
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -156,7 +171,7 @@
         "creator": "SpaceFox contributors",
         "license": "MIT",
         "credit": "Original SpaceFox schematic adapted from prior original MIT SpaceFox geometry; cited primary sources provide vehicle facts, not redistributed artwork.",
-        "sourceSha256": "2899b2da2b49f0955e939b9fc5d93fe834a679333aca021f3f29a533b2ee6f8b",
+        "sourceSha256": "c59039ca04e435b8cfa79d14149474a9585b9b2af6bb06462c72adbd7293af9d",
         "exportSize": [
           64,
           128
@@ -174,15 +189,29 @@
           "features": [
             "Existing original H3-30 family profile depicts the core, upper stage and representative short fairing."
           ],
-          "limitations": "JAXA documents variants with two or three core engines and zero, two or four solid boosters and two fairings. This zero-booster image is a family representative only, not an asserted flight configuration. No exact flight paint."
+          "limitations": "JAXA documents variants with two or three core engines and zero, two or four solid boosters and two fairings. This zero-booster image is a family representative only, not an asserted flight configuration. No exact flight paint. Radial source-based projection replaces the former detached flattened booster spread."
         },
         "geometryReference": {
           "basis": "Source-dated informational family or development-programme representative; see cited primary descriptions and explicit limitations.",
           "reviewedAt": "2026-11-14",
           "representativeDate": "2026-11",
           "lengthIsIllustrative": true,
-          "diameterIsIllustrative": true
-        }
+          "diameterIsIllustrative": true,
+          "radialProjection": {
+            "heightMetres": "54.9",
+            "coreDiameterMetres": "5.2",
+            "fairingDiameterMetres": "5.2",
+            "fairingLengthMetres": "8.3",
+            "boosters": 0,
+            "boosterDiameterMetres": "0",
+            "boosterLengthMetres": "0",
+            "tapered": false,
+            "coreColor": "#e4ebee",
+            "source": "https://www.mhi.com/technology/review/sites/g/files/jwhtju2326/files/tr/pdf/e544/e544032.pdf",
+            "limitations": "Representative fairing and station proportions. Near/far radial boosters overlap; H3 unspecified suffix uses the recorded representative. Some unreported dimensions are approximations, not new provider facts."
+          }
+        },
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -194,7 +223,7 @@
         "creator": "SpaceFox contributors",
         "license": "MIT",
         "credit": "Original SpaceFox schematic adapted from prior original MIT SpaceFox geometry; cited primary sources provide vehicle facts, not redistributed artwork.",
-        "sourceSha256": "eb3db0faeadbbb69ce9829af0ddd0aaef3b4a15cc7098746985050de3a3a1c0c",
+        "sourceSha256": "38b4ef172965f8c5551d30f44b38241a0ca6eea7a8b5d1a1d72acc259a0395b5",
         "exportSize": [
           64,
           128
@@ -220,7 +249,8 @@
           "representativeDate": "2026-11",
           "lengthIsIllustrative": true,
           "diameterIsIllustrative": true
-        }
+        },
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -259,7 +289,8 @@
           "representativeDate": "2026-11",
           "lengthIsIllustrative": true,
           "diameterIsIllustrative": true
-        }
+        },
+        "visualFit": "fit54x124-v1"
       }
     }
   ],

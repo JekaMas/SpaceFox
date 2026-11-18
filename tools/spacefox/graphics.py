@@ -630,6 +630,31 @@ def export_svg(data,size,animation=None):
     return _export_svg(data,size,animation)[0]
 
 
+def fit_model_visual(value):
+    """Uniformly fit the visible, static model into 54x124 with 2px padding.
+
+    Applied at source-visual production, so previously accepted immutable
+    visuals retain their original rasterization and validation semantics.
+    """
+    validate_visual(value)
+    _require(value[7] == [0, []], 'model fit requires static source')
+    draw = _expanded(value)
+    xs = [points[i] for _, points in draw for i in range(0, len(points), 2)]
+    ys = [points[i] for _, points in draw for i in range(1, len(points), 2)]
+    x0, x1, y0, y1 = min(xs), max(xs), min(ys), max(ys)
+    _require(x1 > x0 and y1 > y0, 'model fit requires visible area')
+    scale = min(50 * UNITS / (x1-x0), 120 * UNITS / (y1-y0))
+    dx = (54 * UNITS - (x0+x1)*scale)/2
+    dy = (124 * UNITS - (y0+y1)*scale)/2
+    fitted = []
+    for color, points in draw:
+        result = []
+        for x, y in zip(points[::2], points[1::2]):
+            result.extend((round(x*scale+dx), round(y*scale+dy)))
+        fitted.append((color, result))
+    return validate_visual(_pooled([54,124], fitted))
+
+
 def _source_path(root,path):
     _require(isinstance(path,str) and path,'source path required')
     relative=Path(path)
@@ -682,6 +707,9 @@ def build_pack(root,catalog,*,roots=None,_include_catalog=True):
                 with path.open('rb') as source_stream:data=source_stream.read(LIMITS['sourceBytes']+1)
                 _require(type(content['bytes']) is int and len(data) == content['bytes'] and hashlib.sha256(data).hexdigest() == content['sha256'],'source digest/length mismatch')
                 value,stats=_export_svg(data,facts.get('exportSize'),facts.get('visualAnimation'))
+                if facts.get('visualFit') == 'fit54x124-v1':
+                    value=fit_model_visual(value)
+                    stats.update(metrics(value))
                 if 'nativeMotion' in facts:
                     # Validate opt-in motion before immutable recipe activation;
                     # the compatible legacy source and its SFV bytes stay static.

@@ -25,7 +25,7 @@ source += '''
  var ctx=feedScene(p,1794551192l);Test.assert(ctx.point!=null);
  Test.assert(ctx.point[0]==-97.15799f && ctx.point[1]==25.99677f);
  var renderer=new SceneRenderer(null);renderer.prepare(ctx,new SceneSettings(null));
- Test.assert(renderer.pin && renderer.model==NativeAssets.models["generic"]);
+ Test.assert(renderer.pin && renderer.model==Rez.Drawables.Art_unknown);
  p.bridge["site"]["position"]=null;ctx=feedScene(p,1794551192l);
  renderer.prepare(ctx,new SceneSettings(null));Test.assert(ctx.point==null && !renderer.pin);
  p.bridge["site"]["position"]={"longitude"=>"-97.15799","latitude"=>"26.99677"};

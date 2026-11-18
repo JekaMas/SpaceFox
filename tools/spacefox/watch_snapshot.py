@@ -90,7 +90,8 @@ def snapshot(feed,catalog):
     site=catalog['entries'].get(launch['site_id']) if launch and launch['site_id'] else None
     bridge={'version':3,'catalogDigest':feed['catalogDigest'],'selection':feed['visualSelection'],
             'transfer':feed['nativeTransfer'],'site':None if site is None else {'sourcePosition':site['sourcePosition'],'position':site['position'],'positionMode':site['positionMode']},
-            'ids':None if launch is None else [launch.get(x) for x in ('launch_id','configuration_id','operator_id','site_id','country_id')]}
+            'ids':None if launch is None else [launch.get(x) for x in ('launch_id','configuration_id','operator_id','site_id','country_id')],
+            'artRevision':1}
     return [1,feed['publisher'],policy,_row(launch,catalog,policy,True),rows,terminal,bridge]
 
 def encode_snapshot(feed,catalog):
@@ -110,6 +111,11 @@ def matches_accepted_projection(raw, feed, catalog):
         for row, launch in pairs:
             if row is not None and launch is not None and row[4] == launch.get('mission_purpose'):
                 row[4] = _mission_text(launch)
+        # Older immutable current-format snapshots predate the artwork epoch.
+        # Normalize only the comparison; the stored bytes remain untouched and
+        # the watch still sees the old snapshot as having no art revision.
+        if isinstance(rows[6], dict) and 'artRevision' not in rows[6]:
+            rows[6]['artRevision'] = 1
         return (set(actual) == {'data'} and
                 json.dumps(actual, ensure_ascii=False, separators=(',', ':'), allow_nan=False).encode('utf-8')
                 == encode_snapshot(feed, catalog))

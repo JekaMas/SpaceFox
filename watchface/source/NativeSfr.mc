@@ -85,11 +85,15 @@ class NativeSfrRenderer extends NativeVisualRenderer {
 
 (:extendedCode, :typecheck(false))
 class NativeSfrBuild {
-    var preferBundled=false;var store;var base;var packet;var immutable;var scene;var descriptors={};var expected=[];var role=0;var decoder=null;var result;var complete=false;var closureChecked=false;var closureAt=0;var selection;var rootReady=false;var rootParsed=false;var pendingRoot=null;var pendingRead=null;var pendingDescriptor=null;var rasterBytes=0;var rasterObjects=0;var readKind=0;var names;
+    var preferBundled=false;var preferBundledRocket=false;var store;var base;var packet;var immutable;var scene;var descriptors={};var expected=[];var role=0;var decoder=null;var result;var complete=false;var closureChecked=false;var closureAt=0;var selection;var rootReady=false;var rootParsed=false;var pendingRoot=null;var pendingRead=null;var pendingDescriptor=null;var rasterBytes=0;var rasterObjects=0;var readKind=0;var names;
     function initialize(adapter,url,p){store=adapter;base=url;packet=p;immutable=new NativeImmutable(store);selection=p.bridge["selection"];names=["map","rocket","siteCountry"];result=new NativeSfrRenderer();}
     function dispose(){if(pendingRead!=null){pendingRead.dispose();pendingRead=null;}if(decoder!=null){decoder.dispose();decoder=null;}result=null;scene=null;pendingRoot=null;rootParsed=false;packet=null;immutable=null;pendingDescriptor=null;expected=[];}
     function fail(){throw new Lang.InvalidValueException("Invalid native SFR1M scene");}
     function same(a,b){return nativeSame(a,b);}
+    function useBundledRocket(modelId,revision){
+        return modelId instanceof String && NativeModels.hasSpecific(modelId) &&
+            (!(revision instanceof Number || revision instanceof Long) || revision<1);
+    }
     function ref(r,prefix){packet.ref(r,prefix);return r;}
     function add(r){addTuple(0,r["sha256"],r["decodedBytes"]);}
     function addTuple(kind,digest,bytes){for(var i=0;i<expected.size();i+=1){if(expected[i][1].equals(digest)){if(expected[i][0]!=kind||expected[i][2]!=bytes){fail();}return false;}}expected.add([kind,digest,bytes]);return true;}
@@ -166,6 +170,11 @@ class NativeSfrBuild {
         // Rebuild the post-validation projection so removed root keys do not
         // leave the original large hash table resident during role parsing.
         scene={"position"=>scene["position"],"roles"=>scene["roles"],"siteId"=>scene["siteId"],"modelId"=>scene["modelId"],"countryId"=>scene["countryId"]};result.scene=scene;result.selectionHash=selection["sha256"];
+        var modelId=scene["modelId"];var revision=packet.bridge["artRevision"];
+        // The producer's artwork epoch changes when corrected model art is
+        // published. Earlier snapshots retain their map and verified objects,
+        // but cannot replace a known model's newer bundled rocket image.
+        preferBundledRocket=useBundledRocket(modelId,revision);
     }
     function roleRef(name){
         var binding=scene["roles"][name];if(binding==null){return null;}packet.shape(binding,["entityId","descriptor"],[]);var identity=name.equals("map")?scene["siteId"]:name.equals("rocket")?scene["modelId"]:scene["countryId"];if(identity==null||!packet.same(binding["entityId"],identity)){fail();}var tuple=binding["descriptor"];var r={"sha256"=>tuple[0],"decodedBytes"=>tuple[1]};add(r);scene["roles"][name]=null;readKind=1;return r;
@@ -191,7 +200,7 @@ class NativeSfrBuild {
         if(!rootReady){beginStep();return false;}
         if(role>=names.size()){if(!closureChecked){if(pendingRead==null){readKind=2;pendingRead=new NativeSfrReadJob(self,ref(packet.bridge["transfer"],"descriptors"),false);return false;}if(!pendingRead.step()){return false;}var index=pendingRead.result;pendingRead=null;checkIndex(index);closureChecked=true;scene=displayScene();result.scene=scene;return false;}if(closureAt<expected.size()){var start=System.getTimer();var checked=0;while(closureAt<expected.size()&&checked<4&&(checked==0||System.getTimer()-start<18)){checkRaw(expected[closureAt]);closureAt+=1;checked+=1;}return false;}closure();return true;}
         var name=names[role];if(decoder==null){if(pendingDescriptor!=null){var d=finishRole(name,pendingDescriptor);pendingDescriptor=null;if(name.equals("map")&&preferBundled){d["__localBundledOutline"]=true;result.bundledOutline=true;}decoder=new NativeSfrDecoder(store,d);return false;}if(pendingRead==null){var r=roleRef(name);if(r==null){role+=1;return false;}pendingRead=new NativeSfrReadJob(self,r,false);return false;}if(!pendingRead.step()){return false;}pendingDescriptor=pendingRead.result;pendingRead=null;return false;}
-        if(decoder.step()){if(name.equals("map")){result.mapBitmap=decoder.bitmap;result.mapOutline=decoder.outlineBitmap;}else if(name.equals("rocket")){result.bitmap=decoder.bitmap;}else if(name.equals("siteCountry")){result.siteCountryBitmap=decoder.bitmap;}decoder=null;role+=1;}return false;
+        if(decoder.step()){if(name.equals("map")){result.mapBitmap=decoder.bitmap;result.mapOutline=decoder.outlineBitmap;}else if(name.equals("rocket")){if(!preferBundledRocket){result.bitmap=decoder.bitmap;}}else if(name.equals("siteCountry")){result.siteCountryBitmap=decoder.bitmap;}decoder=null;role+=1;}return false;
     }
 }
 

@@ -391,7 +391,8 @@
         "originCode": "US",
         "originSources": [
           "https://media.northropgrumman.com/43ab124e-190b-46b7-9277-b44f01165e1b/Minotaur-IV-V-VI-User-Guide_Original%20file.pdf"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -435,7 +436,8 @@
         "originCode": "US",
         "originSources": [
           "https://media.northropgrumman.com/43ab124e-190b-46b7-9277-b44f01165e1b/Minotaur-IV-V-VI-User-Guide_Original%20file.pdf"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -447,7 +449,7 @@
         "creator": "SpaceFox contributors",
         "license": "MIT",
         "credit": "Original SpaceFox informational artwork. No third-party graphic bytes or official logo are redistributed.",
-        "sourceSha256": "38dafdfdfa44acaf8a645fe73e43662841b7283141fd436963c8f6390c9908a2",
+        "sourceSha256": "c9e96469067ef884fc224d8cde477c516584b402b55116a289c9d3da2a88062d",
         "exportSize": [
           64,
           128
@@ -478,7 +480,8 @@
         "originCode": "US",
         "originSources": [
           "https://media.northropgrumman.com/e87a0198-748a-4a41-b7b7-b44f011639cb/Minotaur-I-User-Guide_Original%20file.pdf"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -517,7 +520,8 @@
           "fairingLengthMetres": "5.5",
           "reviewedAt": "2026-11-12",
           "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry."
-        }
+        },
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -560,7 +564,8 @@
         "originCode": "CN",
         "originSources": [
           "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/2017_ast_compendium.pdf"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -603,7 +608,8 @@
         "originCode": "CN",
         "originSources": [
           "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/2017_ast_compendium.pdf"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -642,7 +648,8 @@
           "fairingLengthMetres": "3.5",
           "reviewedAt": "2026-11-12",
           "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry."
-        }
+        },
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -654,7 +661,7 @@
         "creator": "SpaceFox contributors",
         "license": "MIT",
         "credit": "Original SpaceFox informational artwork. No third-party graphic bytes or official logo are redistributed.",
-        "sourceSha256": "f194c5ee65c599946c8838f2bbc47e4d5d232217d0aca2781086cd2ac7af4b51",
+        "sourceSha256": "fe44b90cf3910dfc9f217e3bce56c140923acf572d3955315ca32d31cb762926",
         "exportSize": [
           64,
           128
@@ -680,8 +687,19 @@
           "fairingDiameterMetres": "4.35",
           "fairingLengthMetres": "13.3",
           "reviewedAt": "2026-11-12",
-          "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry."
-        }
+          "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry.",
+          "radialProjection": {
+            "heightMetres": 55.4,
+            "coreDiameterMetres": 2.9,
+            "fairingDiameterMetres": 4.35,
+            "fairingLengthMetres": 13.3,
+            "boosters": 4,
+            "boosterDiameterMetres": 2.9,
+            "boosterLengthMetres": 25,
+            "basis": "Source dimensions where noted by asset; booster projected length is a representative visual approximation, not an engineering measurement."
+          }
+        },
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -693,13 +711,14 @@
         "creator": "SpaceFox contributors",
         "license": "MIT",
         "credit": "Original SpaceFox informational artwork. No third-party graphic bytes or official logo are redistributed.",
-        "sourceSha256": "98670fc355bd013f5ec363b526ffc08179a343daccb333c5c3733fae673732b2",
+        "sourceSha256": "e8eddb5ba48525465eb6a2c4e5a0d869fb7c6c01354a4bb7697485e58ea2deb6",
         "exportSize": [
           64,
           128
         ],
         "sources": [
-          "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/2017_ast_compendium.pdf"
+          "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/2017_ast_compendium.pdf",
+          "https://www.cnsa.gov.cn/n6758824/n6759008/n6759011/c6794041/content.html"
         ],
         "kind": "specific",
         "coverage": {
@@ -719,12 +738,24 @@
           "fairingDiameterMetres": "3.8",
           "fairingLengthMetres": "12.0",
           "reviewedAt": "2026-11-12",
-          "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry."
+          "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry.",
+          "radialProjection": {
+            "heightMetres": 58.34,
+            "coreDiameterMetres": 3.35,
+            "fairingDiameterMetres": 3.8,
+            "fairingLengthMetres": 10,
+            "boosters": 4,
+            "boosterDiameterMetres": 2.25,
+            "boosterLengthMetres": 15,
+            "escapeTowerLengthMetres": 5.5,
+            "basis": "CNSA gives 58.34 m, 3.35 m core, four 2.25 m boosters and 3.8 m fairing; tower/booster/fairing lengths approximated from ascent illustration."
+          }
         },
         "originCode": "CN",
         "originSources": [
           "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/2017_ast_compendium.pdf"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -736,7 +767,7 @@
         "creator": "SpaceFox contributors",
         "license": "MIT",
         "credit": "Original SpaceFox informational artwork. No third-party graphic bytes or official logo are redistributed.",
-        "sourceSha256": "b1ec2ed73a1cb9ea63235b8449c66ef685ffcadf6064b38005162f7e38634228",
+        "sourceSha256": "ce34032762c9d79f5325f5002cf54edad036e1cebad0dbc86fade596146df396",
         "exportSize": [
           64,
           128
@@ -762,12 +793,23 @@
           "fairingDiameterMetres": "4.2",
           "fairingLengthMetres": "10.0",
           "reviewedAt": "2026-11-12",
-          "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry."
+          "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry.",
+          "radialProjection": {
+            "heightMetres": 53.1,
+            "coreDiameterMetres": 3.35,
+            "fairingDiameterMetres": 4.2,
+            "fairingLengthMetres": 10,
+            "boosters": 4,
+            "boosterDiameterMetres": 2.25,
+            "boosterLengthMetres": 26,
+            "basis": "Source dimensions where noted by asset; booster projected length is a representative visual approximation, not an engineering measurement."
+          }
         },
         "originCode": "CN",
         "originSources": [
           "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/2017_ast_compendium.pdf"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -779,7 +821,7 @@
         "creator": "SpaceFox contributors",
         "license": "MIT",
         "credit": "Original SpaceFox informational artwork. No third-party graphic bytes or official logo are redistributed.",
-        "sourceSha256": "16830e15099804c92ca7a93b57846f05c33a26144ab45aab36f8b6b3df177ba2",
+        "sourceSha256": "68c0fcb35b18138a888309c5eebdfaa9ddbfc950d09a7a83fca3f9c60a1c8483",
         "exportSize": [
           64,
           128
@@ -800,13 +842,14 @@
           "limitations": "Original source-dated schematic, not engineering reconstruction, launch photography, exact paintwork, or event-specific option selection. Published overall/core dimensions set aspect ratios where stated; fairing lengths, unpublished fairing diameters and collar stations are illustrative image proportions, not measured dimensions. Flattened side-booster layout shows the total count, not a physical perspective. Provider lifecycle flags and exact configuration labels are retained."
         },
         "geometryReference": {
-          "lengthMetres": "21.0",
-          "coreDiameterMetres": "1.35",
-          "fairingDiameterMetres": "1.35",
+          "lengthMetres": "26.4",
+          "coreDiameterMetres": "1.4",
+          "fairingDiameterMetres": "1.4",
           "fairingLengthMetres": "2.5",
           "reviewedAt": "2026-11-12",
-          "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry."
-        }
+          "basis": "FAA 2017 fact sheet p.210 gives 26.4 m and 1.4 m; stage transitions and fairing length are schematic."
+        },
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -851,7 +894,8 @@
         "originSources": [
           "https://global.jaxa.jp/projects/rockets/epsilon/pdf/EpsilonUsersManual_e.pdf",
           "https://www.rocket.jaxa.jp/e/rocket/epsilon/"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -894,7 +938,8 @@
         "originCode": "KR",
         "originSources": [
           "https://www.kari.re.kr/eng/contents/178"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -906,7 +951,7 @@
         "creator": "SpaceFox contributors",
         "license": "MIT",
         "credit": "Original SpaceFox informational artwork. No third-party graphic bytes or official logo are redistributed.",
-        "sourceSha256": "e2804a0fc393f9299aae08e1fd73fd74b5a3cc165c1130f9d137d0709ea1117d",
+        "sourceSha256": "b869f1ba4e5ccc71d62aae4a11fe8aea1a399c1dc8eba3e076c40da74f4e5928",
         "exportSize": [
           64,
           128
@@ -938,7 +983,8 @@
         "originCode": "US",
         "originSources": [
           "https://cdn.northropgrumman.com/-/media/wp-content/uploads/Pegasus-User-Guide-1.pdf?rev=c911ed46c86c489282e95967d127d2ad"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -950,7 +996,7 @@
         "creator": "SpaceFox contributors",
         "license": "MIT",
         "credit": "Original SpaceFox informational artwork. No third-party graphic bytes or official logo are redistributed.",
-        "sourceSha256": "f8b4a167cb58a8451dca96924753017768ab235ca751cf7dec1792b790c45702",
+        "sourceSha256": "2cdafa8c9804dc8890c5fba01c726f755efa3c400513f2479c4468aa28cc7372",
         "exportSize": [
           64,
           128
@@ -976,12 +1022,23 @@
           "fairingDiameterMetres": "5.2",
           "fairingLengthMetres": "12.5",
           "reviewedAt": "2026-11-12",
-          "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry."
+          "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry.",
+          "radialProjection": {
+            "heightMetres": 57,
+            "coreDiameterMetres": 5,
+            "fairingDiameterMetres": 5.2,
+            "fairingLengthMetres": 12.5,
+            "boosters": 4,
+            "boosterDiameterMetres": 3.35,
+            "boosterLengthMetres": 27,
+            "basis": "Source dimensions where noted by asset; booster projected length is a representative visual approximation, not an engineering measurement."
+          }
         },
         "originCode": "CN",
         "originSources": [
           "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/2017_ast_compendium.pdf"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -1024,7 +1081,8 @@
         "originCode": "CN",
         "originSources": [
           "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/2017_ast_compendium.pdf"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -1063,7 +1121,8 @@
           "fairingLengthMetres": "7.8",
           "reviewedAt": "2026-11-12",
           "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry."
-        }
+        },
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -1106,7 +1165,8 @@
         "originCode": "US",
         "originSources": [
           "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/2017_ast_compendium.pdf"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -1149,7 +1209,8 @@
         "originCode": "US",
         "originSources": [
           "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/2017_ast_compendium.pdf"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -1192,7 +1253,8 @@
         "originCode": "AU",
         "originSources": [
           "https://www.gspace.com/launch"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -1235,7 +1297,8 @@
         "originCode": "CN",
         "originSources": [
           "https://www.galactic-energy.cn/index.php/En/List/cid/14"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -1247,7 +1310,7 @@
         "creator": "SpaceFox contributors",
         "license": "MIT",
         "credit": "Original SpaceFox informational artwork. No third-party graphic bytes or official logo are redistributed.",
-        "sourceSha256": "f4d9f9d458e501cd417a51f9ffa0ae416aa3df119d6c7b259d0ed57e6b522503",
+        "sourceSha256": "e351ee961d882da453827e1d1e99f3cfb8c82813fe2aaf6bb4c825cc693b2a00",
         "exportSize": [
           64,
           128
@@ -1273,12 +1336,23 @@
           "fairingDiameterMetres": "5.2",
           "fairingLengthMetres": "20.5",
           "reviewedAt": "2026-11-12",
-          "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry."
+          "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry.",
+          "radialProjection": {
+            "heightMetres": 53.7,
+            "coreDiameterMetres": 5,
+            "fairingDiameterMetres": 5.2,
+            "fairingLengthMetres": 20.5,
+            "boosters": 4,
+            "boosterDiameterMetres": 3.35,
+            "boosterLengthMetres": 27,
+            "basis": "Source dimensions where noted by asset; booster projected length is a representative visual approximation, not an engineering measurement."
+          }
         },
         "originCode": "CN",
         "originSources": [
           "https://english.spacechina.com/n17212/c2908603/content.html"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -1290,7 +1364,7 @@
         "creator": "SpaceFox contributors",
         "license": "MIT",
         "credit": "Original SpaceFox informational artwork. No third-party graphic bytes or official logo are redistributed.",
-        "sourceSha256": "ead286afe4994df4789aff3f4e94f6ec26a47ca1b93f89a5db4d950cd17a9d02",
+        "sourceSha256": "2cfe49b88b3880936631b719921c1acabb78b20103c3ebf6a05396527c279585",
         "exportSize": [
           64,
           128
@@ -1316,12 +1390,23 @@
           "fairingDiameterMetres": "4.2",
           "fairingLengthMetres": "10.0",
           "reviewedAt": "2026-11-12",
-          "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry."
+          "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry.",
+          "radialProjection": {
+            "heightMetres": 50.3,
+            "coreDiameterMetres": 3.35,
+            "fairingDiameterMetres": 4.2,
+            "fairingLengthMetres": 10,
+            "boosters": 2,
+            "boosterDiameterMetres": 2.25,
+            "boosterLengthMetres": 26,
+            "basis": "Source dimensions where noted by asset; booster projected length is a representative visual approximation, not an engineering measurement."
+          }
         },
         "originCode": "CN",
         "originSources": [
           "https://english.spacechina.com/n17212/c3098119/content.html"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -1364,7 +1449,8 @@
         "originCode": "JP",
         "originSources": [
           "https://www.istellartech.com/en/launch/momo"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -1376,14 +1462,15 @@
         "creator": "SpaceFox contributors",
         "license": "MIT",
         "credit": "Original SpaceFox informational artwork. No third-party graphic bytes or official logo are redistributed.",
-        "sourceSha256": "f7fd435b4e475c503f111752de8b0169b9038e2ccddc2a7e2e9b8275e29b2b8c",
+        "sourceSha256": "10b2b3fb5ad98459fbb7bfdc022b3f60df0473633a6b8cb87792500824d89504",
         "exportSize": [
           64,
           128
         ],
         "sources": [
           "https://english.spacechina.com/n17212/c3098119/content.html",
-          "https://english.spacechina.com/n17212/c3454439/content.html"
+          "https://english.spacechina.com/n17212/c3454439/content.html",
+          "https://www.cnsa.gov.cn/n6758823/n6758838/c6813213/content.html"
         ],
         "kind": "specific",
         "coverage": {
@@ -1398,18 +1485,19 @@
           "limitations": "Original source-dated schematic, not engineering reconstruction, launch photography, exact paintwork, or event-specific option selection. Published overall/core dimensions set aspect ratios where stated; fairing lengths, unpublished fairing diameters and collar stations are illustrative image proportions, not measured dimensions. Flattened side-booster layout shows the total count, not a physical perspective. Provider lifecycle flags and exact configuration labels are retained."
         },
         "geometryReference": {
-          "lengthMetres": "50.3",
+          "lengthMetres": "48",
           "coreDiameterMetres": "3.35",
           "fairingDiameterMetres": "4.2",
           "fairingLengthMetres": "10.0",
           "reviewedAt": "2026-11-12",
-          "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry."
+          "basis": "CNSA 2022 core-only flight: approximately 48 m, 3.35 m core. Fairing length and collar locations remain representative."
         },
         "originCode": "CN",
         "originSources": [
           "https://english.spacechina.com/n17212/c3098119/content.html",
           "https://english.spacechina.com/n17212/c3454439/content.html"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -1448,7 +1536,8 @@
           "fairingLengthMetres": "5.0",
           "reviewedAt": "2026-11-12",
           "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry."
-        }
+        },
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -1491,7 +1580,8 @@
         "originCode": "US",
         "originSources": [
           "https://www.relativityspace.com/terran-r/"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -1534,7 +1624,8 @@
         "originCode": "CN",
         "originSources": [
           "https://en.cas-space.com/list/39.html"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -1573,7 +1664,8 @@
           "fairingLengthMetres": "4.9",
           "reviewedAt": "2026-11-12",
           "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry."
-        }
+        },
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -1612,7 +1704,8 @@
           "fairingLengthMetres": "5.5",
           "reviewedAt": "2026-11-12",
           "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry."
-        }
+        },
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -1651,7 +1744,8 @@
           "fairingLengthMetres": "5.0",
           "reviewedAt": "2026-11-12",
           "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry."
-        }
+        },
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -1691,7 +1785,8 @@
           "fairingLengthMetres": "1.8",
           "reviewedAt": "2026-11-12",
           "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry."
-        }
+        },
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -1734,7 +1829,8 @@
         "originCode": "IN",
         "originSources": [
           "https://www.isro.gov.in/ISRO_EN/Gaganyaan_TV-D1_Mission.html"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -1779,7 +1875,8 @@
         "originSources": [
           "https://www.istellartech.com/en/launch/zero",
           "https://www.istellartech.com/7hbym/wp-content/uploads/2026/08/ZERO-Payload-Users-Guide-2026.pdf"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -1824,7 +1921,8 @@
         "originSources": [
           "https://www.galactic-energy.cn/index.php/En/List/cid/14",
           "https://galactic-energy.cn/index.php/Show/cid/24/aid/248"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -1836,7 +1934,7 @@
         "creator": "SpaceFox contributors",
         "license": "MIT",
         "credit": "Original SpaceFox informational artwork. No third-party graphic bytes or official logo are redistributed.",
-        "sourceSha256": "1e5b537beb88d4405285a2758a67bd620453aa047044fd7138f7c680a79a473a",
+        "sourceSha256": "21f17caae96a3b355eeac8135b1bd904a708f20cca19fb79b7f7b571efefcb1a",
         "exportSize": [
           64,
           128
@@ -1863,7 +1961,8 @@
           "fairingLengthMetres": "3.2",
           "reviewedAt": "2026-11-12",
           "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry."
-        }
+        },
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -1906,7 +2005,8 @@
         "originCode": "CN",
         "originSources": [
           "https://www.landspace.com/news-detail.html?itemid=59"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -1918,12 +2018,13 @@
         "creator": "SpaceFox contributors",
         "license": "MIT",
         "credit": "Original SpaceFox informational artwork. No third-party graphic bytes or official logo are redistributed.",
-        "sourceSha256": "48b484d70636d3d15964835de9d05e955e6d8a581acb73bbcda59c6cfa7040c9",
+        "sourceSha256": "29cd7e6e451db28b5d7f4ba83099404b75cb2ae81044f2de8647761f035add61",
         "exportSize": [
           64,
           128
         ],
         "sources": [
+          "https://www.cnsa.gov.cn/n6758823/n6758838/c10768762/content.html",
           "https://www.landspace.com/news-detail.html?itemid=49"
         ],
         "kind": "specific",
@@ -1933,23 +2034,24 @@
             "ll2:configuration:539"
           ],
           "features": [
-            "LandSpace published4.5m core,5.2m fairing,76.6m length,9+1 engines,four deployable grid fins and landing legs. Original ascent view keeps legs/fins stowed; engine-internal details unqualified.",
+            "CNSA August 2026 flight report gives 66.1 m length, 4.5 m core, 5.2 m fairing, grid fins and landing legs. The 2023 LandSpace concept gave 76.6 m; this art follows the later flight dimensions.",
             "No side boosters"
           ],
           "limitations": "Original source-dated schematic, not engineering reconstruction, launch photography, exact paintwork, or event-specific option selection. Published overall/core dimensions set aspect ratios where stated; fairing lengths, unpublished fairing diameters and collar stations are illustrative image proportions, not measured dimensions. Flattened side-booster layout shows the total count, not a physical perspective. Provider lifecycle flags and exact configuration labels are retained."
         },
         "geometryReference": {
-          "lengthMetres": "76.6",
+          "lengthMetres": "66.1",
           "coreDiameterMetres": "4.5",
           "fairingDiameterMetres": "5.2",
           "fairingLengthMetres": "13.0",
           "reviewedAt": "2026-11-12",
-          "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry."
+          "basis": "CNSA August 2026 flight dimensions; fairing length and collar stations approximate."
         },
         "originCode": "CN",
         "originSources": [
           "https://www.landspace.com/news-detail.html?itemid=49"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -1961,13 +2063,14 @@
         "creator": "SpaceFox contributors",
         "license": "MIT",
         "credit": "Original SpaceFox informational artwork. No third-party graphic bytes or official logo are redistributed.",
-        "sourceSha256": "613b13d485f8bec6a42f9076c1063d2f3ff4643ad156746ca96edf29c2a4bfed",
+        "sourceSha256": "c5ef1f9f6228a73999766c8d94a942a53e400e192023329df684bb40445438ff",
         "exportSize": [
           64,
           128
         ],
         "sources": [
-          "https://www.spacepioneer.cc/tianlong/TL3"
+          "https://www.spacepioneer.cc/tianlong/TL3",
+          "https://www.spacepioneer.cc/news/detail/122"
         ],
         "kind": "specific",
         "coverage": {
@@ -1976,7 +2079,7 @@
             "ll2:configuration:540"
           ],
           "features": [
-            "Space Pioneer current TL3 table:72m by3.8m,9TH12+1TH12V. Inspected profile has unboosted stack, a dark interstage and stowed lower landing legs; not the much smallerTL2.",
+            "Space Pioneer reports 3.8 m core and 4.2 m fairing, with nine first-stage engines. Original unboosted candidate uses representative recovery elements and earlier 72 m plotting length; latest full ascent geometry remains unverified.",
             "No side boosters"
           ],
           "limitations": "Original source-dated schematic, not engineering reconstruction, launch photography, exact paintwork, or event-specific option selection. Published overall/core dimensions set aspect ratios where stated; fairing lengths, unpublished fairing diameters and collar stations are illustrative image proportions, not measured dimensions. Flattened side-booster layout shows the total count, not a physical perspective. Provider lifecycle flags and exact configuration labels are retained."
@@ -1984,15 +2087,16 @@
         "geometryReference": {
           "lengthMetres": "72.0",
           "coreDiameterMetres": "3.8",
-          "fairingDiameterMetres": "3.8",
+          "fairingDiameterMetres": "4.2",
           "fairingLengthMetres": "10.0",
           "reviewedAt": "2026-11-12",
-          "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry."
+          "basis": "Current manufacturer product page reports 72 m overall and 3.8 m core; manufacturer fairing production report gives 4.2 m fairing. Fairing length and collars are approximate."
         },
         "originCode": "CN",
         "originSources": [
           "https://www.spacepioneer.cc/tianlong/TL3"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -2035,7 +2139,8 @@
         "originCode": "CN",
         "originSources": [
           "https://en.cas-space.com/list/40.html"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -2080,7 +2185,8 @@
         "originSources": [
           "https://www.galactic-energy.cn/index.php/En/Show/cid/24/aid/276",
           "https://www.galactic-energy.cn/index.php/Show/cid/24/aid/277"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -2119,7 +2225,8 @@
           "fairingLengthMetres": "2.5",
           "reviewedAt": "2026-11-12",
           "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry."
-        }
+        },
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -2131,7 +2238,7 @@
         "creator": "SpaceFox contributors",
         "license": "MIT",
         "credit": "Original SpaceFox informational artwork. No third-party graphic bytes or official logo are redistributed.",
-        "sourceSha256": "c06b4f335cdbc4775d955dbb71512d785e10c2ce807ae50dc69ad32338e401ff",
+        "sourceSha256": "c15594a02825eabb77271fa764a959c70aa06b5d220577248993b60222b7dede",
         "exportSize": [
           64,
           128
@@ -2152,17 +2259,18 @@
           "limitations": "Original source-dated schematic, not engineering reconstruction, launch photography, exact paintwork, or event-specific option selection. Published overall/core dimensions set aspect ratios where stated; fairing lengths, unpublished fairing diameters and collar stations are illustrative image proportions, not measured dimensions. Flattened side-booster layout shows the total count, not a physical perspective. Provider lifecycle flags and exact configuration labels are retained."
         },
         "geometryReference": {
-          "lengthMetres": "30.0",
+          "lengthMetres": "28.0",
           "coreDiameterMetres": "3.5",
           "fairingDiameterMetres": "3.5",
           "fairingLengthMetres": "1.8",
           "reviewedAt": "2026-11-12",
-          "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry."
+          "basis": "ArianeGroup 2024 reports a 28 m prototype; 3.5 m diameter and landing-leg launch pose remain illustrative. Not an engineering drawing."
         },
         "originCode": "EUROPE",
         "originSources": [
           "https://www.esa.int/Enabling_Support/Space_Transportation/Future_space_transportation/Themis_stands_on_the_launch_pad"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -2205,7 +2313,8 @@
         "originCode": "CN",
         "originSources": [
           "https://english.spacechina.com/n17212/c4626403/content.html"
-        ]
+        ],
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -2217,10 +2326,10 @@
         "creator": "SpaceFox contributors",
         "license": "MIT",
         "credit": "Original SpaceFox informational artwork. No third-party graphic bytes or official logo are redistributed.",
-        "sourceSha256": "d95eebee748fccac63ea4136aba18e2becac34576064e4601b0f222b7373e0d6",
+        "sourceSha256": "7e55bada7ab2d12876e8a246072bf8a4936b16dcf9a394f4e90cb2341b823350",
         "exportSize": [
-          64,
-          160
+          54,
+          124
         ],
         "sources": [
           "https://www.ariane.group/actualite/le-nouveau-moteur-p160c-equipera-ariane-6-lors-de-son-prochain-vol/",
@@ -2242,7 +2351,8 @@
             "The accepted original keeps exactly2 boosters for62 and4 for64; Block2 internalP160C change has no invented extra external length."
           ],
           "limitations": "Reuses the accepted original informational silhouette under a new immutable asset ID. Source supports unchanged outer booster envelope, not mission payload/fairing choice, detailed paint or engineering-scale original proportions. Exact full Block2 labels remain metadata."
-        }
+        },
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -2254,10 +2364,10 @@
         "creator": "SpaceFox contributors",
         "license": "MIT",
         "credit": "Original SpaceFox informational artwork. No third-party graphic bytes or official logo are redistributed.",
-        "sourceSha256": "7730508c148e7e0bd9dbeb9f4257964de983e89a3c8ebe80426825dcf9cc8b6c",
+        "sourceSha256": "b8d4f6d27c2fc27abe097d934bf5e7620401ebe88de30584e2d063a1dd13d079",
         "exportSize": [
-          64,
-          160
+          54,
+          124
         ],
         "sources": [
           "https://www.ariane.group/actualite/le-nouveau-moteur-p160c-equipera-ariane-6-lors-de-son-prochain-vol/",
@@ -2279,7 +2389,8 @@
             "The accepted original keeps exactly2 boosters for62 and4 for64; Block2 internalP160C change has no invented extra external length."
           ],
           "limitations": "Reuses the accepted original informational silhouette under a new immutable asset ID. Source supports unchanged outer booster envelope, not mission payload/fairing choice, detailed paint or engineering-scale original proportions. Exact full Block2 labels remain metadata."
-        }
+        },
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -9795,7 +9906,8 @@
           "overallLengthMetres": null,
           "illustrativePayloadLengthMetres": "2.3",
           "sourceReviewDate": "2026-11-12"
-        }
+        },
+        "visualFit": "fit54x124-v1"
       }
     },
     {
@@ -9835,7 +9947,8 @@
           "overallLengthMetres": null,
           "illustrativePayloadLengthMetres": "2.3",
           "sourceReviewDate": "2026-11-12"
-        }
+        },
+        "visualFit": "fit54x124-v1"
       }
     }
   ],

@@ -247,7 +247,7 @@ import Toybox.Test;
 }
 
 (:test,:typecheck(false)) function deliveryBundledFallbackTransitions(logger){
-    var renderer=new SceneRenderer(null);var settings=new SceneSettings(null);var context=new SceneContext({"id"=>"ll2:launch:test","modelId"=>"falcon-9","point"=>[-80.5657,28.4458]});
+    var renderer=new SceneRenderer(null);var settings=new SceneSettings(null);var context=new SceneContext({"id"=>"ll2:launch:test","modelId"=>"ll2:configuration:164","point"=>[-80.5657,28.4458]});
     var coldStart=System.getTimer();renderer.prepare(context,settings);var coldMs=System.getTimer()-coldStart;var coldLoads=renderer.resourceLoads;var map=renderer.map;var art=renderer.art;Test.assert(map!=null&&art!=null&&renderer.pin&&renderer.aodResource!=null);
     var warmStart=System.getTimer();renderer.prepare(context,settings);var warmMs=System.getTimer()-warmStart;Test.assert(renderer.resourceLoads==coldLoads);
     var rich=new NativeSfrRenderer();rich.bitmap=art;rich.mapBitmap=map;renderer.useDownloaded(rich);
@@ -313,7 +313,7 @@ import Toybox.Test;
     function text(dc,x,y,font,value,color,width,contour){var shown=SceneRenderer.text(dc,x,y,font,value,color,width,contour);captured.add(shown);return shown;}
 }
 (:test,:typecheck(false)) function deliveryWarmLayoutIdentity(logger){
-    var p=new DeliveryCountingPresentation();var renderer=new DeliveryCountingRenderer(p);var settings=new SceneSettings(null);var context=new SceneContext({"id"=>"ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a","rocket"=>"Falcon 9","operator"=>"SpaceX","modelId"=>"falcon-9","point"=>[-80.5657,28.4458]});renderer.prepare(context,settings);
+    var p=new DeliveryCountingPresentation();var renderer=new DeliveryCountingRenderer(p);var settings=new SceneSettings(null);var context=new SceneContext({"id"=>"ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a","rocket"=>"Falcon 9","operator"=>"SpaceX","modelId"=>"ll2:configuration:164","point"=>[-80.5657,28.4458]});renderer.prepare(context,settings);
     var bitmap=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get();var dc=bitmap.getDc();var fitness=new Fitness();var values={"steps"=>1234,"energy"=>55,"heart"=>80,"stress"=>30};var clock=new ClockSnapshot("08:08","T- 01:00:00");
     var start=p.fits;renderer.active(dc,clock,settings,values,fitness,0.0);var cold=p.fits-start;renderer.captured=[];start=p.fits;renderer.active(dc,clock,settings,values,fitness,0.0);var warm=p.fits-start;
     Test.assert(warm<cold&&renderer.captured.indexOf("Falcon 9")>=0&&renderer.captured.indexOf("1,234")>=0);

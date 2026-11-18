@@ -20,6 +20,6 @@ import Toybox.Test;
  next.modelId="unmapped-new-model";view.setContext(next);view.prepareRenderer();
  Test.assert(view.context.launchId.equals("new-launch"));Test.assert(view.context.rocket.equals("New vehicle"));
  Test.assert(view.context.site.equals("New site"));Test.assert(view.downloaded==null);
- Test.assert(view.renderer.model==NativeAssets.models["generic"]);Test.assert(!view.renderer.pin);
+ Test.assert(view.renderer.model==Rez.Drawables.Art_unknown);Test.assert(!view.renderer.pin);
  logger.debug("UX_IDENTITY afterRejectedRestore=newLaunch generic=true oldBitmap=false oldPoint=false");return true;
 }

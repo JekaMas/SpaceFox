@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "<stdin>", line 5, in <module>
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tools/spacefox/native_profile.py", line 40, in png_pixels
+    require(1 <= width <= 390 and 1 <= height <= 390 and depth==8 and color in (2,6) and (compression,filtering,interlace)==(0,0,0), 'RGB/RGBA8 PNG required')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tools/spacefox/native_profile.py", line 27, in require
+    raise ValueError('native profile: ' + message)
+ValueError: native profile: RGB/RGBA8 PNG required

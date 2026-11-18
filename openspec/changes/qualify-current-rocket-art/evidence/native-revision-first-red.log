@@ -1,0 +1,20 @@
+------------------------------------------------------------------------------
+Executing test rocketArtworkRevisionContext...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - rocketArtworkRevisionContext() at /source/watchface/stm-property-tests/PhysicalAffected.mc:30 0x10003cdc 
+  - evaluate_test_entries_30_to_60() at /task/gen/006-B4432-00/source/UnitTests.mcgen:234 0x1000f293 
+  - runTest() at /task/gen/006-B4432-00/source/UnitTests.mcgen:284 0x1000fb37 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+rocketArtworkRevisionContext        ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

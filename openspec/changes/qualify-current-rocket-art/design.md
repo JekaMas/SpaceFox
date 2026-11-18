@@ -1,0 +1,3 @@
+# Design
+
+Use the existing accepted eligibility registry and canonical configuration-to-asset graph; no second runtime catalog. Record each configuration, original art, external reference, observed exterior characteristics, visual decision and confidence in the change-owned matrix. Compare decoded output rather than identifier counts. Existing program-evidence dates do not alone establish future operation; unsupported identity-specific exterior detail is best effort and explicitly disclosed. Original SVGs remain MIT. Render and load one selected bounded model and its matching downloaded SFR, with no flame, logos or animation. Preserve physical-acceptance limitations.

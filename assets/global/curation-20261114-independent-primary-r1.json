@@ -18,7 +18,7 @@
         "creator": "SpaceFox contributors",
         "license": "MIT",
         "credit": "Original SpaceFox geometric schematic; cited sources supply configuration and family facts, not copied image bytes.",
-        "sourceSha256": "7aabdf5743a0ceedbfd19b24603ec463ecec0301f5a3e35d0227472cce214e62",
+        "sourceSha256": "97d599db3bfcfb472b731722b78972c5654e686dbd06e32c43b932cbdcb07647",
         "exportSize": [
           64,
           128
@@ -44,8 +44,19 @@
           "reviewedAt": "2026-11-14",
           "representativeDate": "2024-05",
           "lengthIsIllustrative": true,
-          "diameterIsIllustrative": true
-        }
+          "diameterIsIllustrative": true,
+          "radialProjection": {
+            "heightMetres": 55.4,
+            "coreDiameterMetres": 2.9,
+            "fairingDiameterMetres": 4.35,
+            "fairingLengthMetres": 13.3,
+            "boosters": 4,
+            "boosterDiameterMetres": 2.9,
+            "boosterLengthMetres": 25,
+            "basis": "Source dimensions where noted by asset; booster projected length is a representative visual approximation, not an engineering measurement."
+          }
+        },
+        "visualFit": "fit54x124-v1"
       }
     }
   ],

@@ -1,0 +1,27 @@
+Switched to a new branch 'captured-state'
+E
+======================================================================
+ERROR: test_captured_active_generation_accepts_new_catalog_and_reopens (test_rocket_generation85_reopen.Generation85Reopen.test_captured_active_generation_accepts_new_catalog_and_reopens)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tests/test_rocket_generation85_reopen.py", line 70, in test_captured_active_generation_accepts_new_catalog_and_reopens
+    pub = Publisher(store, code)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tools/spacefox/publisher.py", line 961, in __init__
+    self.head, self._ledger = store.load()
+                              ~~~~~~~~~~^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tools/spacefox/publisher.py", line 648, in load
+    return self._load_authority(validate_artifacts=True)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tools/spacefox/publisher.py", line 688, in _load_authority
+    raw = self._blob(head, _catalog_ref(ref), MAX_CATALOG_JOURNAL_BYTES)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tools/spacefox/publisher.py", line 640, in _blob
+    return self._blobs(revision, {path: limit})[path]
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tools/spacefox/publisher.py", line 616, in _blobs
+    raise StateError('missing or invalid Git blob')
+tools.spacefox.publisher.StateError: missing or invalid Git blob
+
+----------------------------------------------------------------------
+Ran 1 test in 1.587s
+
+FAILED (errors=1)

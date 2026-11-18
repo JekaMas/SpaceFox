@@ -376,7 +376,7 @@ class GroupBTest(unittest.TestCase):
         server=ThreadingHTTPServer(('127.0.0.1',0),Handler);thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
         self.addCleanup(thread.join);self.addCleanup(server.server_close);self.addCleanup(server.shutdown)
         site=Site(f'http://127.0.0.1:{server.server_port}',local_http=True);collector=SimpleNamespace(journal={'staging':None},current=lambda:{'source':{'completedUtc':now}})
-        with patch.object(catalog_refresh,'CatalogRefresh',return_value=collector),patch.object(cloud_feed,'_cloud_source_fence',return_value=True),patch.object(cloud_feed,'_projection_changed',return_value=False),patch.object(cloud_feed,'_schedule',return_value=None),patch.object(cloud_feed,'RefreshPolicy',return_value=None):
+        with patch('tools.spacefox.native_profile.rasterize',side_effect=AssertionError('scheduling probe must not require renderer')),patch.object(catalog_refresh,'CatalogRefresh',return_value=collector),patch.object(cloud_feed,'_cloud_source_fence',return_value=True),patch.object(cloud_feed,'_projection_changed',return_value=False),patch.object(cloud_feed,'_schedule',return_value=None),patch.object(cloud_feed,'RefreshPolicy',return_value=None):
             def observe():return cloud_feed._scheduling_no_work(Store(),site,code,'local/spacefox',now,root=root)
             self.assertEqual(observe(),head)
             witness['date']='2000-01-01';self.assertIsNone(observe());witness['date']=datetime.now(timezone.utc).date().isoformat()

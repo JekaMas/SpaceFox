@@ -13,7 +13,11 @@ class CapturedSnapshot(unittest.TestCase):
   self.assertTrue(matches_accepted_projection(old,feed,catalog))
   new=encode_snapshot(feed,catalog)
   self.assertTrue(matches_accepted_projection(new,feed,catalog))
+  self.assertNotIn('artRevision',json.loads(old)['data'][6])
+  self.assertEqual(json.loads(new)['data'][6]['artRevision'],1)
   self.assertNotEqual(json.loads(new)['data'][3][4], 'Unknown')
+  bad=json.loads(new);bad['data'][6]['artRevision']=2
+  self.assertFalse(matches_accepted_projection(json.dumps(bad,ensure_ascii=False,separators=(',',':')).encode(),feed,catalog))
   for index,value in ((4,'Forged mission'), (9,['0','0'])):
    bad=json.loads(old);bad['data'][3][index]=value
    self.assertFalse(matches_accepted_projection(json.dumps(bad,ensure_ascii=False,separators=(',',':')).encode(),feed,catalog))

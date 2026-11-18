@@ -5,7 +5,8 @@ import re
 import unittest
 
 from tools.spacefox.catalog import build_catalog
-from tools.spacefox.native_profile import decode_raster, png_pixels
+from tools.spacefox.graphics import export_svg, fit_model_visual
+from tools.spacefox.native_profile import decode_raster, png_pixels, rasterize
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -30,13 +31,15 @@ class OfflineModelBindings(unittest.TestCase):
             self.assertIn(identity, self.mapping)
             self.assertTrue((ROOT / 'watchface/resources/drawables' / (self.mapping[identity] + '.png')).is_file())
 
-    def test_lm2d_is_the_captured_sourced_raster(self):
+    def test_lm2d_replaces_the_captured_old_raster(self):
         name = self.mapping['ll2:configuration:17']
         png = ROOT / 'watchface/resources/drawables' / (name + '.png')
         width, height, pixels = png_pixels(png.read_bytes())
         capture = ROOT / 'tests/fixtures/fr165-runtime-20261116/objects/rasters/81d5861906e66d2305e390eb4cc6983fa07064ae9c466759ccddca7480d68e16.sfr'
         self.assertEqual((width, height), (54, 124))
-        self.assertEqual(pixels, decode_raster([capture.read_bytes()], 54, 124, 4))
+        # The captured generation predates the corrected fit. It remains useful
+        # as an upgrade witness, not as the oracle for the new source art.
+        self.assertNotEqual(pixels, decode_raster([capture.read_bytes()], 54, 124, 4))
 
     def test_unidentified_id_is_not_assigned_a_known_vehicle(self):
         self.assertNotIn('ll2:configuration:999999999', self.mapping)
@@ -45,9 +48,21 @@ class OfflineModelBindings(unittest.TestCase):
         configurations = self.catalog['dictionaries']['configurations']
         expected = {identity: row['references']['visual'] for identity, row in configurations.items()
                     if row['references']['visual'] is not None}
-        asset_names = {identity: 'BundledModel%03d' % index
-                       for index, identity in enumerate(sorted(set(expected.values())))}
-        self.assertEqual(self.mapping, {identity: asset_names[asset] for identity, asset in expected.items()})
+        self.assertEqual(set(self.mapping), set(expected))
+        assets = self.catalog['dictionaries']['assets']
+        pixels_by_asset, pixels_by_resource = {}, {}
+        for identity, asset_id in expected.items():
+            if asset_id not in pixels_by_asset:
+                asset = assets[asset_id]
+                source = (ROOT / asset['content']['path']).read_bytes()
+                visual = fit_model_visual(export_svg(source, asset['facts']['exportSize']))
+                _, png, _ = rasterize([visual], 54, 124)
+                pixels_by_asset[asset_id] = bytes(png_pixels(png)[2])
+            resource = self.mapping[identity]
+            if resource not in pixels_by_resource:
+                png = (ROOT / 'watchface/resources/drawables' / (resource + '.png')).read_bytes()
+                pixels_by_resource[resource] = bytes(png_pixels(png)[2])
+            self.assertEqual(pixels_by_asset[asset_id], pixels_by_resource[resource], identity)
 
     def test_captured_2026_2036_carrier_identities_are_bound(self):
         ids = set()

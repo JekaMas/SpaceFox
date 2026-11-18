@@ -17,7 +17,7 @@
         "creator": "SpaceFox contributors",
         "license": "MIT",
         "credit": "Original SpaceFox informational schematic; no third-party artwork, lettering or logos redistributed.",
-        "sourceSha256": "a3728092f70dbf7dc9f86254a8dbbc7c9fcc15450d18235f2bd92125dd40c9b1",
+        "sourceSha256": "d589f3438d86a1c7ecfbbb1f58a5f43fce1abf270da5fc0bb06917b0ab54264e",
         "exportSize": [
           64,
           128
@@ -43,8 +43,19 @@
           "reviewedAt": "2026-11-14",
           "representativeDate": "2026-09",
           "lengthIsIllustrative": true,
-          "diameterIsIllustrative": true
-        }
+          "diameterIsIllustrative": true,
+          "radialProjection": {
+            "heightMetres": 30,
+            "coreDiameterMetres": 2.65,
+            "fairingDiameterMetres": 4.2,
+            "fairingLengthMetres": 6,
+            "boosters": 4,
+            "boosterDiameterMetres": 2.65,
+            "boosterLengthMetres": 15,
+            "basis": "Guangzhou Science and Technology Bureau gives 30 m, 2.65 m core/boosters, four boosters and 4.2 m fairing; booster and fairing lengths are visual approximations."
+          }
+        },
+        "visualFit": "fit54x124-v1"
       }
     }
   ],

@@ -1,0 +1,64 @@
+import Toybox.Application;
+import Toybox.Graphics;
+import Toybox.Lang;
+import Toybox.System;
+import Toybox.WatchUi;
+(:typecheck(false)) class RemoteClock extends WatchClock {function utcSeconds() as Number{return 1795041600;} function localTimeText() as String{return "08:25";}}
+(:typecheck(false)) class RemoteView extends SpaceFoxView {
+ var store;var stage=0;var shownAt=0;var drawn=-1;var started=false;
+ function initialize(s){SpaceFoxView.initialize(new RemoteClock(),new ScheduleState(null,"empty"));store=s;}
+ function onShow() as Void {SpaceFoxView.onShow();if(!started){started=true;loadStage(0);}}
+ function loadStage(n){
+  var v=null;if(n==0){v=WatchUi.loadResource(Rez.JsonData.Payload86);}else if(n==1){v=WatchUi.loadResource(Rez.JsonData.Payload87);}else{v=WatchUi.loadResource(Rez.JsonData.Payload88);}
+  var base="https://fixture.invalid";var snapshots=new NativeTrustedStore(store,base);if(!snapshots.save(v["payload"])){throw new Lang.InvalidValueException("remote snapshot");}v=null;
+  var packet=new NativeTrustedPacket(snapshots.load());var bridge=packet.bridge;
+  store.write("sf.batch.head",{"base"=>base,"pending"=>false,"catalogDigest"=>bridge["catalogDigest"],"transfer"=>bridge["transfer"],"serial"=>n+1});
+  store.write("sf.batch.pending",{"base"=>base,"pending"=>false});var source=new NativeRenderSource(store,base,bridge);
+  if(!source.ready){throw new Lang.InvalidValueException("remote cache");}
+  setPacket(packet);setAssetCache(source);prepareVisual();
+ }
+ function onUpdate(dc as Graphics.Dc) as Void {
+  SpaceFoxView.onUpdate(dc);
+  if(downloaded!=null && downloaded.bitmap!=null && drawn!=stage){drawn=stage;shownAt=System.getTimer();System.println("REMOTE_DRAWN generation="+(86+stage)+" model="+context.modelId+" bitmap=true");}
+  if(drawn==stage && stage<2 && System.getTimer()-shownAt>9000){stage+=1;loadStage(stage);}
+ }
+}
+(:typecheck(false)) class RemoteApp extends Application.AppBase {
+ function initialize(){AppBase.initialize();}
+ function getInitialView(){var store=new NativeStore();var value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object1);store.write("sf.obj.b049ed6769ac36c8eaf2065d94748e92e74642975d8f40f7a9a7f36406349c6e",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object2);store.write("sf.obj.54deb2f5bfc4464ec5ec620805fc243c142b930cf83ef1328c4649d48eb6dad4",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object3);store.write("sf.obj.5951f6fdd70f78a535c054c1ddbdaa753c330f5b506bab59a63d0b4ec9208a08",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object4);store.write("sf.obj.901d3d29bca55d8a3b6166c2d9fb96f6899e3ecb352ae4e9d6c736d3ce6527ad",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object5);store.write("sf.obj.4617e9798ca3b70a9b90dd65de89a0a4d6b3b7ec201cac7d9de5f0ed99f1781f",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object6);store.write("sf.obj.d8ef93754bf9a3a0738be8a2356e81ec2c9b9fed6dcfb361110a7b4556ae4d77",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object7);store.write("sf.obj.ae122b89d8e7b73f549aec1bd1c224987cdd12c799bbffdf9822459b00174951",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object8);store.write("sf.obj.5164b3d6b2f88555bea884a84d67781ca12210bfee567dfe8101205507808c53",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object9);store.write("sf.obj.e3c51aebee86ee92172bda69bdaf118de934957013436970027c516d553f94be",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object10);store.write("sf.obj.55d6a89e6501886da18d7c267b20bad2d450ea54357cedd8dac72a9a7bccf70c",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object11);store.write("sf.obj.2da484136defe082a5e08a3e99da992ff0af49048271edec3fed85c9513d2033",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object12);store.write("sf.obj.716020b5fe33cf56c49a06b0f28b3b3205d22667d12a9ee1dea4f528696e4a1d",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object13);store.write("sf.obj.96d837acf3aa45a2e4cb41b9b97b2885ba2f2364ef2050e22cfb37ad1cf32d40",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object14);store.write("sf.obj.2dcf8cb6f0dfe6143c54d9d19e74653eb69856b28531091e19b7047c2ddfeffe",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object15);store.write("sf.obj.09f162d3054c5f712802cb9991a3304841009ae2d4bb38ade26da4a648462d3d",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object16);store.write("sf.obj.07279bb976489dee556c585efb7dd8acd44fc92b582f7e6ed1afc3eab3bb243e",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object17);store.write("sf.obj.4edea30f427597503ada3694ce4b84571a797789e6634c002407a21921db3da3",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object18);store.write("sf.obj.e660f73a570f79b421d24d056457c8ff0cdcf4b57549d9163a69a215e0ed6330",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object19);store.write("sf.obj.e87746c33eaf3def038a20e19b34c74f72ed2ece6a840d050cfd8f45781e067e",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object20);store.write("sf.obj.cc1259a97c3a0da1e6768c8084ed2c37fa3d073546d9bd0c8f4e8440a1323f50",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object21);store.write("sf.obj.81d00edfdc9bd5329fd9044912e606a3710da3c13d33741e49967313c14b656b",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object22);store.write("sf.obj.612af786795440865402d640be41c954395f699d4532fe1f7096c01a9af360b4",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object23);store.write("sf.obj.79b6febe9d01b24544d6bf83520b11a076f3445d27bbb36e8729c7d15cfb8bf0",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object24);store.write("sf.obj.e389a03fb71f388eea9bde0af104ab108079a49de569eaf85a395af1f80d17de",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object25);store.write("sf.obj.33ccc1231995be48e1bcba259dee1b00b0c3d0722b4573634df9afede33a924b",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object26);store.write("sf.obj.b5d7198c0b7bfb50e1f6458fd655f2362534315919f85a733d15a5848e324424",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object27);store.write("sf.obj.1e76608cb224d48df37439db524b1b1043e3dd51df8109d897e6437c1c2665f7",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object28);store.write("sf.obj.f360eda1fe437a6313e8d37aaf959eae0522cc35bc61dd316dd37d8c78335ae3",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object29);store.write("sf.obj.4e9f92ede67b6e03361988da7b8bed61df59798d10e12c75f024571a04eed52a",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object30);store.write("sf.obj.cec6fd3353c7e55de95493eec30075005a2c364c86c7c28f995e5bc0165db27e",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object31);store.write("sf.obj.2fdf75f0ee17b465a305807e6aae16a4aaa605efe740fca8c28630dabb0113c5",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object32);store.write("sf.obj.9e2b3d6dbf1d4bcb6c4b250e28420447eeb86c396d5fbff705dd19ebf2067676",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object33);store.write("sf.obj.b2a5efa039fba8ff9fdb7a66d1a12c7765a8870e029f247a597345880cfd9bf6",value["value"]);value=null;
+  value=WatchUi.loadResource(Rez.JsonData.Object34);store.write("sf.obj.a377f7abac3aa53e8547ee69e4f8dfd4fcf8972662553266dee1c4f8dc334fae",value["value"]);value=null;
+  return [new RemoteView(store)];}
+}

@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/openspec/changes/qualify-current-rocket-art/evidence/candidate-contact-sheet.py", line 25, in <module>
+    visual=fit_model_visual(export_svg(path.read_bytes(),f['exportSize']));_,png,_=rasterize([visual],54,124);cache[k]=base64.b64encode(png).decode()
+                            ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tools/spacefox/graphics.py", line 630, in export_svg
+    return _export_svg(data,size,animation)[0]
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tools/spacefox/graphics.py", line 620, in _export_svg
+    visit(root,(1.,0.,0.),(0.,0.,float(drawing.w),float(drawing.h)),DEFAULT_STYLE,1,True)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tools/spacefox/graphics.py", line 591, in visit
+    visit(child,matrix,clip,style,depth+1)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tools/spacefox/graphics.py", line 568, in visit
+    _require(set(node.attrib) <= allowed,'unsupported source attribute '+','.join(sorted(set(node.attrib)-allowed)))
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tools/spacefox/graphics.py", line 43, in _require
+    raise VisualError(message)
+tools.spacefox.graphics.VisualError: unsupported source attribute data-part

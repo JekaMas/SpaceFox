@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tools/build_bundled_models.py", line 88, in <module>
+    print(json.dumps(generate(), sort_keys=True))
+                     ~~~~~~~~^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tools/build_bundled_models.py", line 41, in generate
+    visual = fit_model_visual(export_svg(source.read_bytes(), facts['exportSize']))
+                              ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tools/spacefox/graphics.py", line 630, in export_svg
+    return _export_svg(data,size,animation)[0]
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tools/spacefox/graphics.py", line 620, in _export_svg
+    visit(root,(1.,0.,0.),(0.,0.,float(drawing.w),float(drawing.h)),DEFAULT_STYLE,1,True)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tools/spacefox/graphics.py", line 578, in visit
+    _require(not {'x','y','width','height'} & node.attrib.keys(),'outer dimensions must come from catalog exportSize')
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tools/spacefox/graphics.py", line 43, in _require
+    raise VisualError(message)
+tools.spacefox.graphics.VisualError: outer dimensions must come from catalog exportSize

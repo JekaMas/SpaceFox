@@ -1,0 +1,47 @@
+import json,zipfile
+from pathlib import Path
+root=Path.cwd();task=Path('/Users/jekamas/.codex/tmp/spacefox-rocket-art-sdk-20261118');res=task/'remote-res';res.mkdir(exist_ok=True)
+refs=[];lines=[];seen=set()
+for gen in (86,87,88):
+ with zipfile.ZipFile(task/f'remote-{gen}.zip') as z:
+  feed=json.loads(z.read('feed.json'));w=json.loads(z.read('watch.json'))['data'];tr=json.loads(z.read(feed['nativeTransfer']['path']))
+  p=f'Payload{gen}.json';(res/p).write_text(json.dumps({'payload':w},ensure_ascii=False));refs.append((f'Payload{gen}',p))
+  for kind,digest in [(0,feed['nativeTransfer']['sha256'])]+[(x[0],x[1]) for x in tr['objects']]:
+   if digest in seen:continue
+   seen.add(digest);path=('descriptors/' if kind==0 else 'rasters/')+digest+('.json' if kind==0 else '.sfr');raw=z.read(path).decode('utf8');name='Object'+str(len(seen));filename=name+'.json';(res/filename).write_text(json.dumps({'value':raw},ensure_ascii=False));refs.append((name,filename));lines.append(f'  value=WatchUi.loadResource(Rez.JsonData.{name});store.write("sf.obj.{digest}",value["value"]);value=null;')
+(res/'resources.xml').write_text('<resources>'+''.join('<jsonData id="%s" filename="%s"/>'%r for r in refs)+'</resources>')
+code='''import Toybox.Application;
+import Toybox.Graphics;
+import Toybox.Lang;
+import Toybox.System;
+import Toybox.WatchUi;
+(:typecheck(false)) class RemoteClock extends WatchClock {function utcSeconds() as Number{return 1795041600;} function localTimeText() as String{return "08:25";}}
+(:typecheck(false)) class RemoteView extends SpaceFoxView {
+ var store;var stage=0;var shownAt=0;var drawn=-1;var started=false;
+ function initialize(s){SpaceFoxView.initialize(new RemoteClock(),new ScheduleState(null,"empty"));store=s;}
+ function onShow() as Void {SpaceFoxView.onShow();if(!started){started=true;loadStage(0);}}
+ function loadStage(n){
+  var v=null;if(n==0){v=WatchUi.loadResource(Rez.JsonData.Payload86);}else if(n==1){v=WatchUi.loadResource(Rez.JsonData.Payload87);}else{v=WatchUi.loadResource(Rez.JsonData.Payload88);}
+  var base="https://fixture.invalid";var snapshots=new NativeTrustedStore(store,base);if(!snapshots.save(v["payload"])){throw new Lang.InvalidValueException("remote snapshot");}v=null;
+  var packet=new NativeTrustedPacket(snapshots.load());var bridge=packet.bridge;
+  store.write("sf.batch.head",{"base"=>base,"pending"=>false,"catalogDigest"=>bridge["catalogDigest"],"transfer"=>bridge["transfer"],"serial"=>n+1});
+  store.write("sf.batch.pending",{"base"=>base,"pending"=>false});var source=new NativeRenderSource(store,base,bridge);
+  if(!source.ready){throw new Lang.InvalidValueException("remote cache");}
+  setPacket(packet);setAssetCache(source);prepareVisual();
+ }
+ function onUpdate(dc as Graphics.Dc) as Void {
+  SpaceFoxView.onUpdate(dc);
+  if(downloaded!=null && downloaded.bitmap!=null && drawn!=stage){drawn=stage;shownAt=System.getTimer();System.println("REMOTE_DRAWN generation="+(86+stage)+" model="+context.modelId+" bitmap=true");}
+  if(drawn==stage && stage<2 && System.getTimer()-shownAt>9000){stage+=1;loadStage(stage);}
+ }
+}
+(:typecheck(false)) class RemoteApp extends Application.AppBase {
+ function initialize(){AppBase.initialize();}
+ function getInitialView(){var store=new NativeStore();var value=null;
+'''+ '\n'.join(lines)+'''\n  return [new RemoteView(store)];}
+}
+'''
+(task/'remote-src').mkdir(exist_ok=True);(task/'remote-src/Remote.mc').write_text(code)
+manifest=(root/'watchface/manifest.xml').read_text().replace('entry="SpaceFoxApp"','entry="RemoteApp"');(task/'remote-manifest.xml').write_text(manifest)
+(task/'remote.jungle').write_text('project.manifest = /task/remote-manifest.xml\nbase.sourcePath = /source/watchface/source;/task/remote-src\nbase.resourcePath = /source/watchface/resources;/task/remote-res\n')
+print('distinct captured objects',len(seen),'resources',len(refs))

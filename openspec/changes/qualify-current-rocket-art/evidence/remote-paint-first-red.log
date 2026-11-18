@@ -1,0 +1,9 @@
+SF_VIEW mode=HIGH pending=false
+
+Error: Too Many Timers Error
+Details: Failed invoking <symbol>
+Stack: 
+  - refreshFitnessWork() at /source/watchface/source/SpaceFoxView.mc:120 0x5000b2bf 
+  - refreshFitness() at /source/watchface/source/SpaceFoxView.mc:112 0x5000b314 
+  - resumeAfterFrame() at /source/watchface/source/SpaceFoxView.mc:100 0x100038aa 
+Encountered an app crash.

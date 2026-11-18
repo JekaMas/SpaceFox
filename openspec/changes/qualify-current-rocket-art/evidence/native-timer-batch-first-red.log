@@ -1,0 +1,21 @@
+------------------------------------------------------------------------------
+Executing test rocketTimerAffectedBatch...
+DEBUG (08:09): FOREGROUND_TIMER_BUDGET peak=3 violations=0 minute_reads=2
+
+Error: Unexpected Type Error
+Details: Failed invoking <symbol>
+Stack: 
+  - onShow() at /source/watchface/source/SpaceFoxView.mc:88 0x10012b30 
+  - fallbackFitnessTimerOwnership() at /source/watchface/stm-property-tests/PhysicalAffected.mc:11 0x100014ed 
+  - rocketTimerAffectedBatch() at /task/combined/Combined.mc:16 0x10004399 
+  - evaluate_test_entries_60_to_68() at /task/gen/006-B4432-00/source/UnitTests.mcgen:274 0x1000fc76 
+  - runTest() at /task/gen/006-B4432-00/source/UnitTests.mcgen:297 0x10010288 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+rocketTimerAffectedBatch            ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

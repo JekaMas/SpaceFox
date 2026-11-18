@@ -329,6 +329,8 @@ def _check_seed_asset(facts, collection):
     for field in ('name', 'file', 'creator', 'license'):
         _text(facts[field], f'asset.{field}')
     _require(bool(_strings(facts['sources'], 'asset.sources')), 'asset sources required')
+    if 'visualFit' in facts:
+        _require(collection == 'models' and facts['visualFit'] == 'fit54x124-v1', 'unsupported model visual fit')
     if 'aliases' in facts:
         _strings(facts['aliases'], 'asset.aliases')
     if collection == 'countries':

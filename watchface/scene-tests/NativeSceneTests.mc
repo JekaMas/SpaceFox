@@ -10,7 +10,7 @@ function sceneBuffer() as Graphics.BufferedBitmap {
     return Graphics.createBufferedBitmap({:width=>390,:height=>390}).get() as Graphics.BufferedBitmap;
 }
 function suppliedScene() as SceneContext {
-    return new SceneContext({"id"=>"fixture-a","rocket"=>"Falcon 9","operator"=>"SpaceX","purpose"=>"Communications","site"=>"USA · Cape Canaveral","modelId"=>"falcon-9","operatorId"=>"company-spacex","point"=>[-80.6043,28.6084],"target"=>1800007200,"precision"=>"exact"});
+    return new SceneContext({"id"=>"fixture-a","rocket"=>"Falcon 9","operator"=>"SpaceX","purpose"=>"Communications","site"=>"USA · Cape Canaveral","modelId"=>"ll2:configuration:164","operatorId"=>"company-spacex","point"=>[-80.6043,28.6084],"target"=>1800007200,"precision"=>"exact"});
 }
 (:test)
 class SceneClock extends WatchClock {
@@ -44,7 +44,7 @@ function sceneLayoutNegative(logger as Test.Logger) as Boolean {
 (:test)
 function sceneContextPositive(logger as Test.Logger) as Boolean {
     var v=new SpaceFoxView(new SceneClock(),new ScheduleState(null,"empty"));var a=suppliedScene();v.setContext(a);v.onExitSleep();v.stopAnimation();
-    var first=v.snapshot();var b=new SceneContext({"id"=>"fixture-b","rocket"=>"Electron","operator"=>"Rocket Lab","purpose"=>"Small satellites","site"=>"New Zealand · Mahia","modelId"=>"electron","operatorId"=>"company-rocket-lab","point"=>[166.463,-39.261],"target"=>1800010800,"precision"=>"exact"});v.setContext(b);
+    var first=v.snapshot();var b=new SceneContext({"id"=>"fixture-b","rocket"=>"Electron","operator"=>"Rocket Lab","purpose"=>"Small satellites","site"=>"New Zealand · Mahia","modelId"=>"ll2:configuration:26","operatorId"=>"company-rocket-lab","point"=>[166.463,-39.261],"target"=>1800010800,"precision"=>"exact"});v.setContext(b);
     logger.debug("selected-id a->b swaps all context/time as one reference");
     return first.countdown.equals("T- 02:00:00") && v.snapshot().countdown.equals("T- 03:00:00") && v.context==b && (v.context as SceneContext).site.equals("New Zealand · Mahia");
 }
@@ -76,7 +76,7 @@ function sceneSettingsNegative(logger as Test.Logger) as Boolean {
 (:test)
 function sceneRocketPositive(logger as Test.Logger) as Boolean {
     var d=new SceneRenderer(null);var s=new SceneSettings(null);d.prepare(suppliedScene(),s);var original=d.model;
-    d.prepare(new SceneContext({"id"=>"e","rocket"=>"Electron","operator"=>"Rocket Lab","modelId"=>"electron","operatorId"=>"company-rocket-lab"}),s);
+    d.prepare(new SceneContext({"id"=>"e","rocket"=>"Electron","operator"=>"Rocket Lab","modelId"=>"ll2:configuration:26","operatorId"=>"company-rocket-lab"}),s);
     logger.debug("actual catalog resources change Falcon9->Electron; curated rocket origin remainsNZ independent USoperator");
     return original!=(d.model) && d.art!=null && (d.fullContext as SceneContext).operator.equals("Rocket Lab");
 }
@@ -84,7 +84,7 @@ function sceneRocketPositive(logger as Test.Logger) as Boolean {
 function sceneRocketNegative(logger as Test.Logger) as Boolean {
     var d=new SceneRenderer(null);d.prepare(new SceneContext({"id"=>"x","rocket"=>"Future unlisted rocket","site"=>"USA · Somewhere","modelId"=>"new-999","operatorId"=>"company-spacex"}),new SceneSettings(null));
     logger.debug("unknown model generic, missing supplied operator omits company/origin; siteUSA never fallback");
-    return d.model==NativeAssets.models["generic"] && d.art!=null && (d.fullContext as SceneContext).operator.equals("");
+    return d.model==Rez.Drawables.Art_unknown && d.art!=null && (d.fullContext as SceneContext).operator.equals("");
 }
 (:test)
 function sceneGeographyPositive(logger as Test.Logger) as Boolean {

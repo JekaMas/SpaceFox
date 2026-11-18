@@ -1,0 +1,37 @@
+Switched to a new branch 'captured-state'
+E
+======================================================================
+ERROR: test_captured_active_generation_accepts_new_catalog_and_reopens (test_rocket_generation85_reopen.Generation85Reopen.test_captured_active_generation_accepts_new_catalog_and_reopens)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tools/spacefox/bridge_map.py", line 35, in read
+    try:raw=_read_snapshot(_local_path(Path(root).resolve(),item['path']),maximum)
+            ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tools/spacefox/catalog.py", line 1044, in _read_snapshot
+    with path.open('rb') as stream:
+         ~~~~~~~~~^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 771, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-gen85-art-3dh316f4/new-art-source/licenses/d3-LICENSE.txt'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tests/test_rocket_generation85_reopen.py", line 149, in test_captured_active_generation_accepts_new_catalog_and_reopens
+    current = build_catalog(sandbox)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tools/spacefox/catalog.py", line 1246, in build_catalog
+    source = load_source(root, item)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tools/spacefox/bridge_map.py", line 46, in load_source
+    raw=read(pin,65536);notices.append({'path':pin['path'],'sha256':pin['sha256'],'text':raw.decode('utf-8')})
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tools/spacefox/bridge_map.py", line 36, in read
+    except (OSError,ValueError):_require(False,'map source digest/bound')
+                                ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tools/spacefox/visual_bridge.py", line 18, in _require
+    raise ValueError('visual bridge: ' + message)
+ValueError: visual bridge: map source digest/bound
+
+----------------------------------------------------------------------
+Ran 1 test in 86.960s
+
+FAILED (errors=1)

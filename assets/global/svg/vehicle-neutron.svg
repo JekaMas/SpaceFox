@@ -1,1 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 128"><rect x="21.0" y="28" width="22" height="88" fill="#e8eef1"/><path d="M18.5 33V18L32 8L45.5 18V33Z" fill="#f4f7fa"/><rect x="21.0" y="36" width="22" height="2" fill="#31495d"/><rect x="21.0" y="60" width="22" height="2" fill="#31495d"/><rect x="21.0" y="108" width="22" height="2" fill="#31495d"/><path d="M21 82L14 116H24Z M43 82L50 116H40Z" fill="#aab7be"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 128">
+  <path data-part="tapered-stage" d="M23.2 116 L25.1 30 Q25.2 17 32 8 Q38.8 17 38.9 30 L40.8 116 Z" fill="#71818a"/>
+  <path data-part="captive-fairing" d="M25.1 30 Q25.2 17 32 8 Q38.8 17 38.9 30 Z" fill="#9caab0"/>
+  <path data-part="fairing-seam" d="M32 9 V30 M25.1 30 H38.9" fill="none" stroke="#394d59" stroke-width="0.8"/>
+  <path data-part="canards" d="M25.1 29 L22 31 L22 36 L25 38 Z M38.9 29 L42 31 L42 36 L39 38 Z" fill="#9eafb6"/>
+  <path data-part="stowed-legs" d="M23.9 80 L22.4 108 L23.2 116 L25 115 L25 82 Z M40.1 80 L41.6 108 L40.8 116 L39 115 L39 82 Z" fill="#aebdc2"/>
+  <path data-part="nozzles" d="M26 116 L25 119 H39 L38 116 Z" fill="#536b78"/>
+</svg>

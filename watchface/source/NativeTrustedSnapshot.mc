@@ -25,7 +25,7 @@ class NativeTrustedStore {
         var rows=[];if(value[3]!=null){rows.add(value[3]);}rows.addAll(value[4]);
         for(var i=0;i<rows.size();i+=1){var row=rows[i];var nums=[10,13,14,15,20];for(var j=0;j<nums.size();j+=1){var k=nums[j];row[k]=integer(row[k]);}row[16]=policy;}
         for(var t=0;t<value[5].size();t+=1){value[5][t]["source_validated_utc"]=integer(value[5][t]["source_validated_utc"]);}
-        var bridge=value[6];if(bridge!=null){bridge["version"]=bridge["version"].toNumber();var refs=[bridge["selection"],bridge["transfer"]];for(var r=0;r<refs.size();r+=1){if(refs[r]!=null){refs[r]["decodedBytes"]=refs[r]["decodedBytes"].toNumber();}}}
+        var bridge=value[6];if(bridge!=null){bridge["version"]=bridge["version"].toNumber();var revision=bridge["artRevision"];if(revision instanceof Number || revision instanceof Long || revision instanceof Float || revision instanceof Double){bridge["artRevision"]=revision.toNumber();}var refs=[bridge["selection"],bridge["transfer"]];for(var r=0;r<refs.size();r+=1){if(refs[r]!=null){refs[r]["decodedBytes"]=refs[r]["decodedBytes"].toNumber();}}}
     }
     function writeCandidate(slot,value){
         if(phase!=CANDIDATE){throw new Lang.InvalidValueException("No snapshot candidate");}

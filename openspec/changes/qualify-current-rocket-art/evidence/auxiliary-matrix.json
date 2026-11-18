@@ -1,0 +1,854 @@
+{
+  "base": "18c99d7794931d069c6119821181c3083ab7019a",
+  "rows": [
+    {
+      "id": "ll2:configuration:36",
+      "name": "Long March 3C/YZ-1",
+      "eligibility": "needs-review",
+      "visual": "spacefox:asset:vehicle-lm3c",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://www.cgwic.com/Launchservice/LM3C.html"
+      ],
+      "observed_features": [
+        "3 published stages; representative 54.838m length / 3.35m core diameter / 4m fairing diameter",
+        "2 explicitly drawn side boosters",
+        "Narrower cryogenic third-stage section"
+      ],
+      "representative": "Original representative source-dated schematic using published diameter/length ratios; no exact engineering stage-collar location or mission paint. Fairing options and internal YZ stages remain labelled; this is not mission-specific fairing selection or lifecycle proof. Radial source-based projection replaces the former detached flattened booster spread.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112.json",
+      "generated_asset": "spacefox:asset:vehicle-lm3c",
+      "generated_resource": "BundledModel158",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:39",
+      "name": "Safir",
+      "eligibility": "excluded",
+      "visual": "spacefox:asset:generic",
+      "asset_kind": "generic",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "EXCLUDED from accepted 175; preserve original eligibility and assess usefulness separately.",
+      "reference_urls": [],
+      "observed_features": [],
+      "representative": "No current specific candidate established.",
+      "reference_boundary": "No source-backed candidate established in this pass; further decision pending.",
+      "generated_asset": "spacefox:asset:generic",
+      "generated_resource": "BundledModel104",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:40",
+      "name": "Rokot/Briz-KM",
+      "eligibility": "excluded",
+      "visual": "spacefox:asset:content-r1-vehicle-rokot-briz-km",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "EXCLUDED from accepted 175; preserve original eligibility and assess usefulness separately.",
+      "reference_urls": [
+        "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/2017_ast_compendium.pdf"
+      ],
+      "observed_features": [
+        "FAA2017 PDFp206-207: the specific commercial Rockot-KM has two SS-19-derived lower stages and enclosed Briz-KM; the historical photographed KM envelope is used.",
+        "No side boosters"
+      ],
+      "representative": "Original source-dated schematic, not engineering reconstruction, launch photography, exact paintwork, or event-specific option selection. Published overall/core dimensions set aspect ratios where stated; fairing lengths, unpublished fairing diameters and collar stations are illustrative image proportions, not measured dimensions. Flattened side-booster layout shows the total count, not a physical perspective. Provider lifecycle flags and exact configuration labels are retained.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112-content-r1.json",
+      "generated_asset": "spacefox:asset:content-r1-vehicle-rokot-briz-km",
+      "generated_resource": "BundledModel048",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:44",
+      "name": "Shavit",
+      "eligibility": "excluded",
+      "visual": "spacefox:asset:remaining-r3-shavit-nasa1996",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "EXCLUDED from accepted 175; preserve original eligibility and assess usefulness separately.",
+      "reference_urls": [
+        "https://ntrs.nasa.gov/api/citations/19960024281/downloads/19960024281.pdf"
+      ],
+      "observed_features": [
+        "Explicit April1996 NASA-published named Shavit representative: slim unboosted cylinder and short narrow nose from the full Reuters-credited published photograph.",
+        "NASA aerodynamic review text separately reports four trapezoidal aerodynamic surfaces with swept leading/trailing edges. Two small lateral fin symbols represent that textual feature; they are not tracings of ambiguous photo protrusions or pad cables."
+      ],
+      "representative": "Original SpaceFox MIT informational vector. No reference photo/graphic, logo or emblem redistributed. Exact labels, provider facts, source history, nonvisual roles and origin unknowns retained. Dated April1996 NASA TP3615 Figure57 representative, permitted for candidate authoring by root on2026-11-12; NEW peer/root mapping and geometry judgment still required. The NASA paper credits REUTERPHOTO on the image and cites Isakowitz1995; original flight/date and manufacturer authorship are not established. NASA printed59 mentions1988firstlaunch and1995Ofeq3 separately: the drawing does not assert either flight identity or exterior equivalence, nor equivalence to Shavit2. The grainy lower photograph contains ambiguous protrusions/cables/equipment; those are excluded. Fins are supported only by the paper’s explicit aerodynamic text; their small symbolic projection, size and stations are illustrative, not an asserted unoccluded photo reconstruction. Nose/body plotting is approximate. No new stage/dimension fact is written into the configuration.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112-remaining-r3.json",
+      "generated_asset": "spacefox:asset:remaining-r3-shavit-nasa1996",
+      "generated_resource": "BundledModel145",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:51",
+      "name": "Long March 3C/E",
+      "eligibility": "needs-review",
+      "visual": "spacefox:asset:vehicle-lm3c-enhanced",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://www.cgwic.com/Launchservice/LM3C.html"
+      ],
+      "observed_features": [
+        "3 published stages; representative 55.638m length / 3.35m core diameter / 4.2m fairing diameter",
+        "2 explicitly drawn side boosters",
+        "Narrower cryogenic third-stage section"
+      ],
+      "representative": "Original representative source-dated schematic using published diameter/length ratios; no exact engineering stage-collar location or mission paint. Fairing options and internal YZ stages remain labelled; this is not mission-specific fairing selection or lifecycle proof.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112.json",
+      "generated_asset": "spacefox:asset:vehicle-lm3c-enhanced",
+      "generated_resource": "BundledModel159",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:67",
+      "name": "Unha-3",
+      "eligibility": "needs-review",
+      "visual": "spacefox:asset:content-r1-vehicle-unha3",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/2017_ast_compendium.pdf"
+      ],
+      "observed_features": [
+        "FAA2017 PDFp226-227 explicitly photographs the2016 Kwangmyongsong-4 Unha3 launch vehicle. Broad first stage, two progressively narrower upper sections, fins. This does not identify generic Unha86 with Unha3.",
+        "No side boosters"
+      ],
+      "representative": "Original source-dated schematic, not engineering reconstruction, launch photography, exact paintwork, or event-specific option selection. Published overall/core dimensions set aspect ratios where stated; fairing lengths, unpublished fairing diameters and collar stations are illustrative image proportions, not measured dimensions. Flattened side-booster layout shows the total count, not a physical perspective. Provider lifecycle flags and exact configuration labels are retained.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112-content-r1.json",
+      "generated_asset": "spacefox:asset:content-r1-vehicle-unha3",
+      "generated_resource": "BundledModel003",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:74",
+      "name": "Safir 1B",
+      "eligibility": "excluded",
+      "visual": "spacefox:asset:generic",
+      "asset_kind": "generic",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "EXCLUDED from accepted 175; preserve original eligibility and assess usefulness separately.",
+      "reference_urls": [],
+      "observed_features": [],
+      "representative": "No current specific candidate established.",
+      "reference_boundary": "No source-backed candidate established in this pass; further decision pending.",
+      "generated_asset": "spacefox:asset:generic",
+      "generated_resource": "BundledModel104",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:78",
+      "name": "Long March 3B/YZ-1",
+      "eligibility": "needs-review",
+      "visual": "spacefox:asset:vehicle-lm3b",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://www.cgwic.com/Launchservice/LM3B.html"
+      ],
+      "observed_features": [
+        "3 published stages; representative 54.838m length / 3.35m core diameter / 4m fairing diameter",
+        "4 explicitly drawn side boosters",
+        "Narrower cryogenic third-stage section"
+      ],
+      "representative": "Original representative source-dated schematic using published diameter/length ratios; no exact engineering stage-collar location or mission paint. Fairing options and internal YZ stages remain labelled; this is not mission-specific fairing selection or lifecycle proof. Radial source-based projection replaces the former detached flattened booster spread.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112.json",
+      "generated_asset": "spacefox:asset:vehicle-lm3b",
+      "generated_resource": "BundledModel156",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:86",
+      "name": "Unha",
+      "eligibility": "needs-review",
+      "visual": "spacefox:asset:best-effort-unha-family-20261114",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/2017_ast_compendium.pdf"
+      ],
+      "observed_features": [
+        "Existing family example used only as a low-confidence visual approximation; exact configuration remains unverified."
+      ],
+      "representative": "Unha-3 family example; provider does not identify the precise Unha variant; approximation, not flight geometry or lifecycle proof. Original source-dated schematic, not engineering reconstruction, launch photography, exact paintwork, or event-specific option selection. Published overall/core dimensions set aspect ratios where stated; fairing lengths, unpublished fairing diameters and collar stations are illustrative image proportions, not measured dimensions. Flattened side-booster layout shows the total count, not a physical perspective. Provider lifecycle flags and exact configuration labels are retained.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261114-best-effort-r1.json",
+      "generated_asset": "spacefox:asset:best-effort-unha-family-20261114",
+      "generated_resource": "BundledModel003",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:94",
+      "name": "Proton-M DM-2 Enhanced",
+      "eligibility": "needs-review",
+      "visual": "spacefox:asset:best-effort-proton-family-20261114",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://www.ilslaunch.com/wp-content/uploads/pdf/Proton-Mission-Planners-Guide-Revision-7-LKEB-9812-1990.pdf"
+      ],
+      "observed_features": [
+        "Existing family example used only as a low-confidence visual approximation; exact configuration remains unverified."
+      ],
+      "representative": "Proton-M family example; DM-2 Enhanced upper-stage configuration and fairing are not established by this representative; approximation, not exact geometry or lifecycle proof. Family-level representative uses existing original Proton-M/Briz-M profile. Provider does not identify upper stage or exact fairing; image does not assert Briz-M for this event. Scale and section boundaries are schematic; no mission livery.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261114-best-effort-r1.json",
+      "generated_asset": "spacefox:asset:best-effort-proton-family-20261114",
+      "generated_resource": "BundledModel002",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:96",
+      "name": "Soyuz",
+      "eligibility": "excluded",
+      "visual": "spacefox:asset:generic",
+      "asset_kind": "generic",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "EXCLUDED from accepted 175; preserve original eligibility and assess usefulness separately.",
+      "reference_urls": [
+        "https://blogs.esa.int/promisse/2011/12/21/soyuz-launcher-101/"
+      ],
+      "observed_features": [
+        "Four tapered side boosters around the core."
+      ],
+      "representative": "Soyuz satellite-fairing family representative; exact flight fairing is not specified.",
+      "reference_boundary": "Candidate family binding; final pixel and producer checks pending.",
+      "generated_asset": "spacefox:asset:current-family-art-20261118-96",
+      "generated_resource": "BundledModel078",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:109",
+      "name": "Long March 7/YZ-1A",
+      "eligibility": "needs-review",
+      "visual": "spacefox:asset:remaining-r1-shared-lm7-yz1a",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://www.faa.gov/sites/faa.gov/files/space/additional_information/2017_AST_Compendium.pdf",
+        "https://calt.spacechina.com/n482/n875/c12155/content.html"
+      ],
+      "observed_features": [
+        "FAA2017 pp182-183 explicitly pictures the first LM7 flight vehicle, with four 2.25 m boosters around a 3.35 m core and its rounded payload envelope.",
+        "CALT 2018 review explicitly binds that 2016-06-25 first flight to Yuanzheng 1A. This is the same published first-flight outer configuration, not a presumption that all upper-stage combinations have equal exteriors."
+      ],
+      "representative": "Original source-dated schematic, not engineering reconstruction, launch photography, exact paintwork, or event-specific option selection. Published overall/core dimensions set aspect ratios where stated; fairing lengths, unpublished fairing diameters and collar stations are illustrative image proportions, not measured dimensions. Flattened side-booster layout shows the total count, not a physical perspective. Provider lifecycle flags and exact configuration labels are retained. Immutable copy of an existing MIT SpaceFox original with a new explicit shared review. Earlier mapped representatives remain unchanged. This review admits the newly listed exact configuration and named published option only, not all family variants.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112-remaining-r1.json",
+      "generated_asset": "spacefox:asset:remaining-r1-shared-lm7-yz1a",
+      "generated_resource": "BundledModel134",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:120",
+      "name": "Long March (Unknown Variant)",
+      "eligibility": "unknown-reference",
+      "visual": "spacefox:asset:generic",
+      "asset_kind": "generic",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://cgwic.com/Launchservice/LM2D.html"
+      ],
+      "observed_features": [
+        "LM-2D is a slender two-stage Long March family vehicle, with 3.35 m body and fairing."
+      ],
+      "representative": "LM-2D family representative; unspecified Long March variants differ widely, especially in boosters. The actual flight variant is not inferred.",
+      "reference_boundary": "Technical source text checked; candidate resource and behavior checks pending.",
+      "generated_asset": "spacefox:asset:current-family-art-20261118-120",
+      "generated_resource": "BundledModel075",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:123",
+      "name": "Long March 5/YZ-2",
+      "eligibility": "needs-review",
+      "visual": "spacefox:asset:further-r2-lm5-yz2-radial-firstflight",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://www.spacechina.com/n25/n146/n238/n12985/c1043765/content.html",
+        "https://calt.spacechina.com/n482/n699/c6767/content.html"
+      ],
+      "observed_features": [
+        "Exact2016-11-03 LongMarch5/Yuanzheng2 first-flight combination; two core stages plus upper stage, four3.35m liquid boosters around5m core.",
+        "First-flight short5.2m-class bulbous head and four radially mounted3.35m boosters around5m core. This orthographic representative shows two side boosters and one front booster; the fourth rear booster is occluded by the core. Not LongMarch5B/YZ2 or later lengthened fairing."
+      ],
+      "representative": "Original MIT SpaceFox informational schematic; no copied photo, manufacturer drawing, logo or official graphic bytes. Source-dated published representative, not an engineering reconstruction, exact paintwork or actual mission choice. Unpublished plotted proportions and symbolic engine/stage details are illustrative and never become catalog facts. Exact labels, raw providerfacts, role relationships, sourcehistory and originunknowns are retained. CASC2016 release explicitly identifies YZ2; the CALT gallery captions identify maiden-flight vehicle. The original photographer is credited SunHao on manufacturer-published photos. Published56.97m/5m/four3.35m architecture sets overall aspect ratio; the first-flight head and station proportions are illustrative from inspected photos. No equivalence to every LM5 fairing or sourcefact correction. Independent2026-11-12 radial-view fidelity improvement: original flattened informational total-booster schematic remains immutable. The new projection places four physical boosters radially, with the rear booster occluded and three externally visible. Transverse silhouette is source-bound to this representative, not a new global engineering-envelope rule. All unpublished stations remain illustrative.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112-further-r2-independent-v1.json",
+      "generated_asset": "spacefox:asset:further-r2-lm5-yz2-radial-firstflight",
+      "generated_resource": "BundledModel095",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:139",
+      "name": "Vector-R",
+      "eligibility": "needs-review",
+      "visual": "spacefox:asset:remaining-r3-vector-r-faa2017",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/FAA_AST_2017_Commercial_Space_Transportation_Compendium.pdf"
+      ],
+      "observed_features": [
+        "January2017 FAA-published Vector R orbital concept: broad long lower body, tapered interstage, slim upper cylinder and short rounded dark nose.",
+        "Lower triangular fins and three engine symbols distinguish the published orbital concept from the separately captioned3.7m test vehicle."
+      ],
+      "representative": "Original SpaceFox MIT informational vector. No reference photo/graphic, logo or emblem redistributed. Exact labels, provider facts, source history, nonvisual roles and origin unknowns retained. Explicit January2017 published representative. The diagram creator is not separately credited; FAA publication is established, manufacturer authorship is not. The page states12m/1.2m, while the next-page stage table says1.1m and the later manufacturer overview index says13.08m. These dated differences remain unharmonized. The publication describes a three-stage development including EUS; later two-stage/optional-EUS revisions are not equated with this concept. No prototype, current2023 redesign, flight or exact mission envelope is claimed. Plotting stations are illustrative; dimensions/stages are never written into provider facts.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112-remaining-r3.json",
+      "generated_asset": "spacefox:asset:remaining-r3-vector-r-faa2017",
+      "generated_resource": "BundledModel147",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:176",
+      "name": "Long March 2D/YZ-3",
+      "eligibility": "needs-review",
+      "visual": "spacefox:asset:vehicle-lm2d",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://en.cgwic.com/Launchservice/LM2D.html"
+      ],
+      "observed_features": [
+        "2 published stages; representative 41.056m length / 3.35m core diameter / 3.35m fairing diameter",
+        "0 explicitly drawn side boosters",
+        "Constant-diameter core/fairing and small stabilizing fins"
+      ],
+      "representative": "Original representative source-dated schematic using published diameter/length ratios; no exact engineering stage-collar location or mission paint. Fairing options and internal YZ stages remain labelled; this is not mission-specific fairing selection or lifecycle proof.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112.json",
+      "generated_asset": "spacefox:asset:vehicle-lm2d",
+      "generated_resource": "BundledModel154",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:182",
+      "name": "Atlas V",
+      "eligibility": "unknown-reference",
+      "visual": "spacefox:asset:generic",
+      "asset_kind": "generic",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://www.ulalaunch.com/docs/default-source/rockets/251015_atlas_cutawayposter.pdf"
+      ],
+      "observed_features": [
+        "Atlas V family has a central core and variant-dependent fairing and boosters."
+      ],
+      "representative": "400-series no-booster representative; provider does not specify variant.",
+      "reference_boundary": "Candidate family binding; final pixel and producer checks pending.",
+      "generated_asset": "spacefox:asset:current-family-art-20261118-182",
+      "generated_resource": "BundledModel076",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:192",
+      "name": "Smart Dragon 1",
+      "eligibility": "needs-review",
+      "visual": "spacefox:asset:remaining-r1-smart-dragon1",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://www.cnsa.gov.cn/n6758823/n6758838/c6805795/content.html",
+        "https://www.cnsa.gov.cn/n6758823/n6758838/c6807162/content.html"
+      ],
+      "observed_features": [
+        "Four solid stages in series, no strap-ons.",
+        "Published 1.2 m satellite-cabin option; 1.4 m option is not asserted for a flight."
+      ],
+      "representative": "Original source-dated representative schematic, not an engineering reconstruction, launch photograph, exact paintwork or mission-specific fairing/recovery choice. Published overall/core dimensions set aspect ratio where stated. Fairing lengths, collar/stage stations and unpublished dimensions are illustrative inspected-image proportions; they are not new catalog facts. Side boosters show total count in a flattened informational view. No logos, manufacturer graphics or photographs are redistributed. Exact configuration labels, provider facts, operator/manufacturer/origin/site roles and unknown values are preserved. ",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112-remaining-r1.json",
+      "generated_asset": "spacefox:asset:remaining-r1-smart-dragon1",
+      "generated_resource": "BundledModel136",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:197",
+      "name": "SARGE",
+      "eligibility": "excluded",
+      "visual": "spacefox:asset:further-r2-sarge-published2016",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "EXCLUDED from accepted 175; preserve original eligibility and assess usefulness separately.",
+      "reference_urls": [
+        "https://www.nasa.gov/wp-content/uploads/2021/01/flightopportunities-2016-annualreport-508-highres.pdf",
+        "https://ntrs.nasa.gov/api/citations/20170000838/downloads/20170000838.pdf",
+        "https://www.nasa.gov/wp-content/uploads/2016/09/nasa-flight-opportunities-newsletter-april-2019.pdf"
+      ],
+      "observed_features": [
+        "Published2016 NASA/Exos SARGE representative: single liquid-fuel sounding-rocket cylinder with pointed red nose and lower trapezoid fins.",
+        "No strap-ons or orbital upper stages; excludes the newer larger black BLK3 platform."
+      ],
+      "representative": "Original MIT SpaceFox informational schematic; no copied photo, manufacturer drawing, logo or official graphic bytes. Source-dated published representative, not an engineering reconstruction, exact paintwork or actual mission choice. Unpublished plotted proportions and symbolic engine/stage details are illustrative and never become catalog facts. Exact labels, raw providerfacts, role relationships, sourcehistory and originunknowns are retained. This is the explicitly source-dated2016 SARGE platform representative published by NASA with Exos credit, not proof of exterior equivalence to every2018/2019 flight. NASA2015 documents10.95m/0.5m; NASA2019 actual underside view supports lower fins but not exact nose dimensions. Current manufacturer capabilityPDF distinguishes25%larger BLK3; its current black hardware is excluded. All nose/fin stations are illustrative, not inferred catalog measurements. Root inspected the exact NASA2016 page on2026-11-12 and permits a published SARGE-platform representative from its sole named platform and0.5m/11m context. The photo caption itself says only EXOSrocket; it does not independently prove that photographed vehicle is SARGE. Original2018 Exos hover thumbnail and2019 NASA underside support lower-body/fins only. This uncertainty is retained; no exact2018flight/exterior-equivalence or BLK3 claim.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112-further-r2.json",
+      "generated_asset": "spacefox:asset:further-r2-sarge-published2016",
+      "generated_resource": "BundledModel102",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:205",
+      "name": "Space Launch System Block 1B",
+      "eligibility": "excluded",
+      "visual": "spacefox:asset:vehicle-sls-block1b",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "EXCLUDED from accepted 175; preserve original eligibility and assess usefulness separately.",
+      "reference_urls": [
+        "https://www.nasa.gov/image-article/nasas-sls-rocket-block-1-vs-block-1b-configuration/"
+      ],
+      "observed_features": [
+        "Orange central cryogenic core and two white segmented solid boosters",
+        "Taller historical EUS Block 1B design; not current lifecycle proof"
+      ],
+      "representative": "Original simplified informational front view; not an engineering drawing or mission paint. Flat booster spread shows the total count. Payload/internal-stage differences remain in the exact configuration label; lifecycle is not inferred.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112.json",
+      "generated_asset": "spacefox:asset:vehicle-sls-block1b",
+      "generated_resource": "BundledModel174",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:383",
+      "name": "Minotaur-C 1110",
+      "eligibility": "needs-review",
+      "visual": "spacefox:asset:further-r2-minotaur-c-1110",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://snebulos.mit.edu/projects/reference/launch_vehicles/OSC/Taurus-User-Guide-Rev4.0.pdf"
+      ],
+      "observed_features": [
+        "Exact 1110 code: SSLV/Peacekeeper stage0; standard-length Orion50S/50 upper motors.",
+        "63-inch payload fairing; Orion38 stage3 and no fifth stage. Broad lower motor, tapered interstage, slim upper stack and distinct fairing."
+      ],
+      "representative": "Original MIT SpaceFox informational schematic; no copied photo, manufacturer drawing, logo or official graphic bytes. Source-dated published representative, not an engineering reconstruction, exact paintwork or actual mission choice. Unpublished plotted proportions and symbolic engine/stage details are illustrative and never become catalog facts. Exact labels, raw providerfacts, role relationships, sourcehistory and originunknowns are retained. Manufacturer Figure2-4 explicitly defines each digit, including original SSLV code1 versus commercial standard code2 and XL code3. Figure2-1/2-3 supply the full outside and interstage; Figure2-5 gives motor dimensions. This is a code-bound original exterior schematic, not a mislabeled existing3210 or an exact mission fairing/paint reconstruction. Whole span and stage stations use illustrative plotting proportions; no summed engineering height is introduced. The Peacekeeper baseline lower motor is drawn shorter than the Castor120 standard per the manufacturer comparison; its unpublished exact overall envelope is not a catalog fact.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112-further-r2.json",
+      "generated_asset": "spacefox:asset:further-r2-minotaur-c-1110",
+      "generated_resource": "BundledModel096",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:384",
+      "name": "Minotaur-C 2110",
+      "eligibility": "needs-review",
+      "visual": "spacefox:asset:further-r2-minotaur-c-2110",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://snebulos.mit.edu/projects/reference/launch_vehicles/OSC/Taurus-User-Guide-Rev4.0.pdf"
+      ],
+      "observed_features": [
+        "Exact 2110 code: Castor120 stage0; standard-length Orion50S/50 upper motors, not TaurusXL.",
+        "63-inch payload fairing; Orion38 stage3 and no fifth stage. Broad lower motor, tapered interstage, slim upper stack and distinct fairing."
+      ],
+      "representative": "Original MIT SpaceFox informational schematic; no copied photo, manufacturer drawing, logo or official graphic bytes. Source-dated published representative, not an engineering reconstruction, exact paintwork or actual mission choice. Unpublished plotted proportions and symbolic engine/stage details are illustrative and never become catalog facts. Exact labels, raw providerfacts, role relationships, sourcehistory and originunknowns are retained. Manufacturer Figure2-4 explicitly defines each digit, including original SSLV code1 versus commercial standard code2 and XL code3. Figure2-1/2-3 supply the full outside and interstage; Figure2-5 gives motor dimensions. This is a code-bound original exterior schematic, not a mislabeled existing3210 or an exact mission fairing/paint reconstruction. Whole span and stage stations use illustrative plotting proportions; no summed engineering height is introduced. The Peacekeeper baseline lower motor is drawn shorter than the Castor120 standard per the manufacturer comparison; its unpublished exact overall envelope is not a catalog fact.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112-further-r2.json",
+      "generated_asset": "spacefox:asset:further-r2-minotaur-c-2110",
+      "generated_resource": "BundledModel097",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:385",
+      "name": "Minotaur-C 2210",
+      "eligibility": "needs-review",
+      "visual": "spacefox:asset:further-r2-minotaur-c-2210",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://snebulos.mit.edu/projects/reference/launch_vehicles/OSC/Taurus-User-Guide-Rev4.0.pdf"
+      ],
+      "observed_features": [
+        "Exact 2210 code: Castor120 stage0; standard-length Orion50S/50 upper motors, not TaurusXL.",
+        "92-inch payload fairing; Orion38 stage3 and no fifth stage. Broad lower motor, tapered interstage, slim upper stack and distinct fairing."
+      ],
+      "representative": "Original MIT SpaceFox informational schematic; no copied photo, manufacturer drawing, logo or official graphic bytes. Source-dated published representative, not an engineering reconstruction, exact paintwork or actual mission choice. Unpublished plotted proportions and symbolic engine/stage details are illustrative and never become catalog facts. Exact labels, raw providerfacts, role relationships, sourcehistory and originunknowns are retained. Manufacturer Figure2-4 explicitly defines each digit, including original SSLV code1 versus commercial standard code2 and XL code3. Figure2-1/2-3 supply the full outside and interstage; Figure2-5 gives motor dimensions. This is a code-bound original exterior schematic, not a mislabeled existing3210 or an exact mission fairing/paint reconstruction. Whole span and stage stations use illustrative plotting proportions; no summed engineering height is introduced. The Peacekeeper baseline lower motor is drawn shorter than the Castor120 standard per the manufacturer comparison; its unpublished exact overall envelope is not a catalog fact.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112-further-r2.json",
+      "generated_asset": "spacefox:asset:further-r2-minotaur-c-2210",
+      "generated_resource": "BundledModel098",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:386",
+      "name": "Minotaur-C 3110",
+      "eligibility": "needs-review",
+      "visual": "spacefox:asset:content-r1-vehicle-minotaurc3110",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/2017_ast_compendium.pdf"
+      ],
+      "observed_features": [
+        "FAA2017 PDFp196-197 explicitly draws3110 and3210 separately: broad Castor120 lower stage, much narrower upper stack,1.6m fairing on3110. No1110/2110/2210 renaming equivalence is claimed.",
+        "No side boosters"
+      ],
+      "representative": "Original source-dated schematic, not engineering reconstruction, launch photography, exact paintwork, or event-specific option selection. Published overall/core dimensions set aspect ratios where stated; fairing lengths, unpublished fairing diameters and collar stations are illustrative image proportions, not measured dimensions. Flattened side-booster layout shows the total count, not a physical perspective. Provider lifecycle flags and exact configuration labels are retained.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112-content-r1.json",
+      "generated_asset": "spacefox:asset:content-r1-vehicle-minotaurc3110",
+      "generated_resource": "BundledModel040",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:387",
+      "name": "Minotaur-C 3210",
+      "eligibility": "needs-review",
+      "visual": "spacefox:asset:content-r1-vehicle-minotaurc3210",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/2017_ast_compendium.pdf"
+      ],
+      "observed_features": [
+        "FAA2017 PDFp197 explicitly distinguishes3210 with2.3m fairing from3110 with1.6m fairing. Upper fairing silhouette remains observably wider.",
+        "No side boosters"
+      ],
+      "representative": "Original source-dated schematic, not engineering reconstruction, launch photography, exact paintwork, or event-specific option selection. Published overall/core dimensions set aspect ratios where stated; fairing lengths, unpublished fairing diameters and collar stations are illustrative image proportions, not measured dimensions. Flattened side-booster layout shows the total count, not a physical perspective. Provider lifecycle flags and exact configuration labels are retained.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112-content-r1.json",
+      "generated_asset": "spacefox:asset:content-r1-vehicle-minotaurc3210",
+      "generated_resource": "BundledModel041",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:463",
+      "name": "Super Heavy Prototype",
+      "eligibility": "excluded",
+      "visual": "spacefox:asset:vehicle-superheavy-prototype",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "EXCLUDED from accepted 175; preserve original eligibility and assess usefulness separately.",
+      "reference_urls": [
+        "https://www.faa.gov/stakeholderengagement/spacexstarship/assessment-spacex-starshipsuper-heavy-launch-vehicle-program"
+      ],
+      "observed_features": [
+        "Standalone cylindrical prototype booster only",
+        "Flat upper rim and engine section; no nose, Starship spacecraft or generic fairing"
+      ],
+      "representative": "Representative early prototype booster; unspecified individual test article and evolving fins are deliberately omitted. Not a complete Starship system.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112.json",
+      "generated_asset": "spacefox:asset:vehicle-superheavy-prototype",
+      "generated_resource": "BundledModel179",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:466",
+      "name": "MOMO v1",
+      "eligibility": "needs-review",
+      "visual": "spacefox:asset:content-r1-vehicle-momo-v1",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://www.istellartech.com/en/launch/momo"
+      ],
+      "observed_features": [
+        "Interstellar specs and horizontal engineering-style rendering: single-stage ethanol/LOX sounding vehicle,10.1m by0.5m with tail fins. Originalv1 provider label is retained; no sponsorship/livery copied.",
+        "No side boosters"
+      ],
+      "representative": "Original source-dated schematic, not engineering reconstruction, launch photography, exact paintwork, or event-specific option selection. Published overall/core dimensions set aspect ratios where stated; fairing lengths, unpublished fairing diameters and collar stations are illustrative image proportions, not measured dimensions. Flattened side-booster layout shows the total count, not a physical perspective. Provider lifecycle flags and exact configuration labels are retained.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112-content-r1.json",
+      "generated_asset": "spacefox:asset:content-r1-vehicle-momo-v1",
+      "generated_resource": "BundledModel043",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:474",
+      "name": "Hapith I",
+      "eligibility": "needs-review",
+      "visual": "spacefox:asset:remaining-r1-hapith1",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://www.tispace.com/en/about-en/album-en/hapith-i-en",
+        "https://www.tispace.com/images/2021/20210823First_Hapith_I_Launch_Permit_Australia.pdf"
+      ],
+      "observed_features": [
+        "TiSPACE Hapith I historic two-stage suborbital demonstrator, not Hapith V or HANBIT-Nano.",
+        "Source-dated whole vehicle on its launch pad; tapered interstage, broad lower stage and narrower rounded nose."
+      ],
+      "representative": "Original source-dated representative schematic, not an engineering reconstruction, launch photograph, exact paintwork or mission-specific fairing/recovery choice. Published overall/core dimensions set aspect ratio where stated. Fairing lengths, collar/stage stations and unpublished dimensions are illustrative inspected-image proportions; they are not new catalog facts. Side boosters show total count in a flattened informational view. No logos, manufacturer graphics or photographs are redistributed. Exact configuration labels, provider facts, operator/manufacturer/origin/site roles and unknown values are preserved. ",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112-remaining-r1.json",
+      "generated_asset": "spacefox:asset:remaining-r1-hapith1",
+      "generated_resource": "BundledModel115",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:480",
+      "name": "Orbex Prime",
+      "eligibility": "excluded",
+      "visual": "spacefox:asset:further-r2-orbex-prime-2022",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "EXCLUDED from accepted 175; preserve original eligibility and assess usefulness separately.",
+      "reference_urls": [
+        "https://via.ritzau.dk/pressemeddelelse/13651020/dansk-britiske-orbex-viser-for-forste-gang-banebrydende-raket-frem-pa-affyringsrampe?publisherId=13561053",
+        "https://www.gov.uk/government/news/uk-company-reveals-micro-launcher-rocket"
+      ],
+      "observed_features": [
+        "Orbex-issued2022-05-11 full-scalePrime prototype representative, two stages with six first-stage engines and one upper engine.",
+        "Unboosted carbon-body cylinder, near-uniform diameter and pale pointed nose; excludes unrelated Skyrora and hypothetical recovery devices."
+      ],
+      "representative": "Original MIT SpaceFox informational schematic; no copied photo, manufacturer drawing, logo or official graphic bytes. Source-dated published representative, not an engineering reconstruction, exact paintwork or actual mission choice. Unpublished plotted proportions and symbolic engine/stage details are illustrative and never become catalog facts. Exact labels, raw providerfacts, role relationships, sourcehistory and originunknowns are retained. The source is Orbex's own distributed press release, corroborated by UKSA, identifying the full-scale2022 prototype.19m length is documented;1.45m plotting diameter is illustrative here because the later manufacturer board URL failed. Representative excludes uninspected later flight-production changes; no actualflight, present operational state or successful launch inferred. The retained2026 administration/lifecycle conflict and source facts remain unchanged.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112-further-r2.json",
+      "generated_asset": "spacefox:asset:further-r2-orbex-prime-2022",
+      "generated_resource": "BundledModel100",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:494",
+      "name": "Miura 1",
+      "eligibility": "excluded",
+      "visual": "spacefox:asset:content-r1-vehicle-miura1",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "EXCLUDED from accepted 175; preserve original eligibility and assess usefulness separately.",
+      "reference_urls": [
+        "https://www.pldspace.com/en/miura-1.html",
+        "https://edocs.tib.eu/files/e01mr20/1687597367.pdf"
+      ],
+      "observed_features": [
+        "PLD current product table:12.5m by0.7m,single stage,TEPRELB. Primary table was read through the web tool; local TLS retrieval failed. PLD-authored DLR symposium paper PDFp460 Fig4 was inspected: slim unboosted ogive, visible lower stabilizing fins and tapered propulsion housing. No copied manufacturer picture.",
+        "No side boosters"
+      ],
+      "representative": "Original source-dated schematic, not engineering reconstruction, launch photography, exact paintwork, or event-specific option selection. Published overall/core dimensions set aspect ratios where stated; fairing lengths, unpublished fairing diameters and collar stations are illustrative image proportions, not measured dimensions. Flattened side-booster layout shows the total count, not a physical perspective. Provider lifecycle flags and exact configuration labels are retained.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112-content-r1.json",
+      "generated_asset": "spacefox:asset:content-r1-vehicle-miura1",
+      "generated_resource": "BundledModel042",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:495",
+      "name": "Chollima-1",
+      "eligibility": "needs-review",
+      "visual": "spacefox:asset:remaining-r3-chollima1-kcna2023",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://assets.korearisk.com/uploads/sites/5/2023/11/Pyongyang-times-2023-1125.pdf"
+      ],
+      "observed_features": [
+        "KCNA/NATA November21,2023 Chollima-1 published flight representative in the original November25 Pyongyang Times issue.",
+        "Long white cylinder, broad rounded payload fairing with narrowing shoulder, tapered lower aft skirt and short dark exterior bands; no Unha or missile substitution."
+      ],
+      "representative": "Original SpaceFox MIT informational vector. No reference photo/graphic, logo or emblem redistributed. Exact labels, provider facts, source history, nonvisual roles and origin unknowns retained. Original primary publication recovered through a third-party archive; the issue masthead/date, KCNA byline and NATA report bind the named whole launch photo. Archive hosting is not asserted to be original authorship. No reference image bytes, logos, flags or lettering are distributed. Dimensions and precise stage/engine counts are unavailable in this report and are not inferred from exterior bands. All plotting stations are approximate; this is a November2023 representative, not a reconstruction of every Chollima1 flight.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112-remaining-r3.json",
+      "generated_asset": "spacefox:asset:remaining-r3-chollima1-kcna2023",
+      "generated_resource": "BundledModel144",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:504",
+      "name": "Angara A5/Briz-M",
+      "eligibility": "needs-review",
+      "visual": "spacefox:asset:remaining-r1-shared-angara-a5-breezem",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://www.faa.gov/sites/faa.gov/files/space/additional_information/2017_AST_Compendium.pdf",
+        "https://www.ilslaunch.com/the-heavy-lift-angara-a5-1l-launch-vehicle-launched-successfully-from-the-plesetsk-launch-site-in-maiden-flight/"
+      ],
+      "observed_features": [
+        "FAA2017 pp112-113 explicitly labels the A5 third stage Breeze-M and provides the 13.3 m / 4.4 m short-fairing option that supplies the retained original shape.",
+        "Four side URM-1 modules plus central URM-1 and URM-2; source-dated short-fairing Breeze-M representative. No DM-03/Persei/Orion or whole-family equivalence is asserted."
+      ],
+      "representative": "Original source-dated schematic, not engineering reconstruction, launch photography, exact paintwork, or event-specific option selection. Published overall/core dimensions set aspect ratios where stated; fairing lengths, unpublished fairing diameters and collar stations are illustrative image proportions, not measured dimensions. Flattened side-booster layout shows the total count, not a physical perspective. Provider lifecycle flags and exact configuration labels are retained. Immutable copy of an existing MIT SpaceFox original with a new explicit shared review. Earlier mapped representatives remain unchanged. This review admits the newly listed exact configuration and named published option only, not all family variants.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112-remaining-r1.json",
+      "generated_asset": "spacefox:asset:remaining-r1-shared-angara-a5-breezem",
+      "generated_resource": "BundledModel133",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:505",
+      "name": "Qaem 100",
+      "eligibility": "needs-review",
+      "visual": "spacefox:asset:generic",
+      "asset_kind": "generic",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://www.presstv.ir/Detail/2024/01/22/718692/explainer-why-soraya-satellite-launch-major-space-breakthrough-iran"
+      ],
+      "observed_features": [
+        "Slender unboosted three-stage vehicle."
+      ],
+      "representative": "Approximate Qaem 100; precise dimensions and seams not confirmed.",
+      "reference_boundary": "Candidate family binding; final pixel and producer checks pending.",
+      "generated_asset": "spacefox:asset:current-family-art-20261118-505",
+      "generated_resource": "BundledModel077",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:506",
+      "name": "Ariane 6",
+      "eligibility": "unknown-reference",
+      "visual": "spacefox:asset:current-family-ariane-family-20261114",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://www.ariane.group/en/space-transportation/ariane-6/"
+      ],
+      "observed_features": [
+        "Original Ariane 62 geometry with two boosters is a source-reviewed Ariane 6 family example."
+      ],
+      "representative": "Ariane 6 has two- and four-booster versions and two fairing lengths. Provider marks the specific variant unknown; drawing does not assert a mission variant or specific flight livery.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261114-known-families-r1.json",
+      "generated_asset": "spacefox:asset:current-family-ariane-family-20261114",
+      "generated_resource": "BundledModel074",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:508",
+      "name": "Long March 5B/YZ-2",
+      "eligibility": "needs-review",
+      "visual": "spacefox:asset:remaining-r1-lm5b-yz2",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://calt.spacechina.com/n482/n742/c35760/content.html"
+      ],
+      "observed_features": [
+        "Long March 5B / Yuanzheng 2 exact manufacturer first-flight combination, 2024-12-16.",
+        "Single core stage with four 3.35 m liquid boosters and upper stage under the large rounded fairing; not inferred from a generic payload-stage family."
+      ],
+      "representative": "Original source-dated representative schematic, not an engineering reconstruction, launch photograph, exact paintwork or mission-specific fairing/recovery choice. Published overall/core dimensions set aspect ratio where stated. Fairing lengths, collar/stage stations and unpublished dimensions are illustrative inspected-image proportions; they are not new catalog facts. Side boosters show total count in a flattened informational view. No logos, manufacturer graphics or photographs are redistributed. Exact configuration labels, provider facts, operator/manufacturer/origin/site roles and unknown values are preserved. 53.66 m plotting scale comes from retained provider facts. Manufacturer release verifies this exact combination and supplies the whole-flight photograph; no engineering total or all-LM5B exterior equivalence asserted.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261112-remaining-r1.json",
+      "generated_asset": "spacefox:asset:remaining-r1-lm5b-yz2",
+      "generated_resource": "BundledModel123",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:511",
+      "name": "Unknown Launch Vehicle",
+      "eligibility": "unknown-reference",
+      "visual": "spacefox:asset:generic",
+      "asset_kind": "generic",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [],
+      "observed_features": [],
+      "representative": "Genuinely unknown launch vehicle: retain the generic fallback, and permit valid current remote artwork.",
+      "reference_boundary": "No model identity is supplied; a specific model cannot be inferred.",
+      "generated_asset": "spacefox:asset:generic",
+      "generated_resource": "BundledModel104",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:528",
+      "name": "Starship",
+      "eligibility": "unknown-reference",
+      "visual": "spacefox:asset:current-family-starship-family-20261114",
+      "asset_kind": "specific",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://new.spacex.com/vehicles/starship",
+        "https://www.spacex.com/launches/starship-flight-12"
+      ],
+      "observed_features": [
+        "Original Starship V3 and Super Heavy stack represents the known Starship launch-system family; two stages and external flaps are shown."
+      ],
+      "representative": "Provider marks specific variant unknown. V3 profile is a family example, not a claim the event uses V3, crew/cargo configuration or a particular flight livery.",
+      "reference_boundary": "Existing source facts and citations transcribed; independent visual and binding review pending.",
+      "fact_owner": "assets/global/curation-20261114-known-families-r1.json",
+      "generated_asset": "spacefox:asset:current-family-starship-family-20261114",
+      "generated_resource": "BundledModel086",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:27",
+      "name": "Atlas V 551",
+      "eligibility": "excluded",
+      "visual": "spacefox:asset:generic",
+      "asset_kind": "generic",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "EXCLUDED from accepted 175; preserve original eligibility and assess usefulness separately.",
+      "reference_urls": [],
+      "observed_features": [],
+      "representative": "No current specific candidate established.",
+      "reference_boundary": "No source-backed candidate established in this pass; further decision pending.",
+      "generated_asset": "spacefox:asset:generic",
+      "generated_resource": "BundledModel104",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "ll2:configuration:137",
+      "name": "New Shepard",
+      "eligibility": "excluded",
+      "visual": "spacefox:asset:generic",
+      "asset_kind": "generic",
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "EXCLUDED from accepted 175; preserve original eligibility and assess usefulness separately.",
+      "reference_urls": [],
+      "observed_features": [],
+      "representative": "No current specific candidate established.",
+      "reference_boundary": "No source-backed candidate established in this pass; further decision pending.",
+      "generated_asset": "spacefox:asset:generic",
+      "generated_resource": "BundledModel104",
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    },
+    {
+      "id": "spacefox:configuration:primeneo",
+      "name": "PrimeNEO",
+      "eligibility": "unknown-reference",
+      "visual": null,
+      "asset_kind": null,
+      "status": "AUTHOR_DISPOSITION_RECORDED",
+      "decision": "Auxiliary identity only; do not promote eligibility. Review candidate and final binding remains open.",
+      "reference_urls": [
+        "https://europeanspaceflight.com/portugals-omnidea-acquires-orbex-assets-plans-primeneo-rocket/"
+      ],
+      "observed_features": [],
+      "representative": "None: existing programme review explicitly records that its configuration and geometry are unfinalized; do not alias it to the retired Orbex Prime.",
+      "reference_boundary": "Programme review is a secondary report, not a primary exterior image; no actual source-backed silhouette established.",
+      "fact_owner": "catalog/current-primeneo-unfinalized-review-20261114.json",
+      "generated_asset": null,
+      "generated_resource": null,
+      "final_boundary": "Auxiliary only; no eligibility promotion. Generated binding recorded where present. Existing source and visual limitations remain as stated; independent peer judgment remains open."
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+Switched to a new branch 'captured-state'
+E
+======================================================================
+ERROR: test_captured_active_generation_accepts_new_catalog_and_reopens (test_rocket_generation85_reopen.Generation85Reopen.test_captured_active_generation_accepts_new_catalog_and_reopens)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-model-art-20261118/tests/test_rocket_generation85_reopen.py", line 97, in test_captured_active_generation_accepts_new_catalog_and_reopens
+    self.assertEqual(watch['artRevision'], 1)
+                     ~~~~~^^^^^^^^^^^^^^^
+KeyError: 'artRevision'
+
+----------------------------------------------------------------------
+Ran 1 test in 43.904s
+
+FAILED (errors=1)

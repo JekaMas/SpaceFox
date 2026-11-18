@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 1,
+  "id": "current-family-art-20261118",
+  "reviewedAt": "2026-11-18",
+  "sources": [
+    "https://www.ulalaunch.com/docs/default-source/rockets/251015_atlas_cutawayposter.pdf",
+    "https://blogs.esa.int/promisse/2011/12/21/soyuz-launcher-101/",
+    "https://www.presstv.ir/Detail/2024/01/22/718692/explainer-why-soraya-satellite-launch-major-space-breakthrough-iran",
+    "https://newsroom.arianespace.com/flight-vs25-focus-on-arianespaces-concluding-mission-in-a-successful-year-for-soyuz/",
+    "https://raaks.ru/docs/doc20180227_020.pdf",
+    "https://cgwic.com/Launchservice/LM2D.html"
+  ],
+  "reason": "Preserve named model and family identity with a sourced representative; do not promote eligibility.",
+  "assets": [
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-family-art-20261118-182",
+        "name": "Atlas V family representative",
+        "file": "current-family-art-20261118/atlas-v-family.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox drawing; cited sources support factual exterior only.",
+        "sourceSha256": "cd861741d5815c32aca47ec1cf839072f6e196e95a61a1c13e0c8a64b3f47af9",
+        "exportSize": [
+          54,
+          124
+        ],
+        "sources": [
+          "https://www.ulalaunch.com/docs/default-source/rockets/251015_atlas_cutawayposter.pdf"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "reviewed-shared",
+          "configurationIds": [
+            "ll2:configuration:182"
+          ],
+          "features": [
+            "A 400-series four-metre fairing above the core, with no side boosters, is one visible Atlas V family configuration."
+          ],
+          "limitations": "Provider does not specify a variant; 400 versus 500 fairings and zero to five solid boosters differ. This is a representative, not the flight configuration."
+        },
+        "familyIdentityOnly": true,
+        "familySourceIds": [
+          66,
+          174
+        ],
+        "visualFit": "fit54x124-v1"
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-family-art-20261118-96",
+        "name": "Soyuz family representative",
+        "file": "svg/vehicle-soyuz2.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox drawing; cited sources support factual exterior only.",
+        "sourceSha256": "eee748d3d89e03400a473c5dc622cbe7335477d445ff3f9502d9a09497682b5f",
+        "exportSize": [
+          54,
+          124
+        ],
+        "sources": [
+          "https://blogs.esa.int/promisse/2011/12/21/soyuz-launcher-101/"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "ll2:configuration:96"
+          ],
+          "features": [
+            "Four tapered first-stage boosters around a core are characteristic of the Soyuz family."
+          ],
+          "limitations": "Provider does not specify its fairing or Soyuz variant; the satellite fairing is representative."
+        },
+        "visualFit": "fit54x124-v1"
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-family-art-20261118-505",
+        "name": "Qaem 100",
+        "file": "current-family-art-20261118/qaem-100.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox drawing; cited sources support factual exterior only.",
+        "sourceSha256": "845e85c7550fc6ca1722bbebef885a34204c64ae2362d777f4236819698ea2d6",
+        "exportSize": [
+          54,
+          124
+        ],
+        "sources": [
+          "https://www.presstv.ir/Detail/2024/01/22/718692/explainer-why-soraya-satellite-launch-major-space-breakthrough-iran"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "ll2:configuration:505"
+          ],
+          "features": [
+            "Three-stage narrow unboosted solid launcher; contemporary launch photography shows a slender white stack and rounded fairing."
+          ],
+          "limitations": "Approximate silhouette; official public dimensions and exact stage seams could not be confirmed. No livery, markings or flight-specific details are inferred."
+        },
+        "visualFit": "fit54x124-v1"
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-family-art-20261118-soyuz-fregat-st",
+        "name": "Soyuz 2.1 Fregat ST representative",
+        "file": "current-family-art-20261118/soyuz-fregat-st.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox schematic from operator published launch configuration and fairing dimensions.",
+        "sourceSha256": "a41816e27557957bda6dbd714968b425d868a48225e7bff2af480f2219021ac3",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://newsroom.arianespace.com/flight-vs25-focus-on-arianespaces-concluding-mission-in-a-successful-year-for-soyuz/",
+          "https://raaks.ru/docs/doc20180227_020.pdf"
+        ],
+        "kind": "specific",
+        "visualFit": "fit54x124-v1",
+        "coverage": {
+          "type": "reviewed-shared",
+          "configurationIds": [
+            "ll2:configuration:134",
+            "ll2:configuration:212",
+            "ll2:configuration:42",
+            "ll2:configuration:45"
+          ],
+          "features": [
+            "Soyuz 2.1 family with four tapered radial boosters, enclosed Fregat and a representative 11.4 m ST fairing."
+          ],
+          "limitations": "ST is an operator-documented Fregat representative, not a claim that every Fregat flight uses this fairing; Fregat also flies with shorter fairings."
+        },
+        "geometryReference": {
+          "radialProjection": {
+            "heightMetres": 51.1,
+            "coreDiameterMetres": 2.95,
+            "fairingDiameterMetres": 4.11,
+            "fairingLengthMetres": 11.4,
+            "boosters": 4,
+            "boosterDiameterMetres": 2.68,
+            "boosterLengthMetres": 19.6,
+            "maximumProjectedWidthMetres": 10.3,
+            "tapered": true,
+            "coreColor": "#9cae9d",
+            "basis": "GK Launch Services gives 51.1 m representative Soyuz/Fregat; Arianespace VS25 identifies the ST fairing as 11.4 m. Flight options vary."
+          }
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-family-art-20261118-120",
+        "name": "Long March family representative",
+        "file": "svg/vehicle-lm2d.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox drawing; cited source supports the named representative only.",
+        "sourceSha256": "d2f00d37e9ff1dd2803d208531b10f8adad89e7b6f6068465a180fe35d8fdacb",
+        "exportSize": [
+          54,
+          124
+        ],
+        "sources": [
+          "https://cgwic.com/Launchservice/LM2D.html"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "reviewed-shared",
+          "configurationIds": [
+            "ll2:configuration:120"
+          ],
+          "features": [
+            "Long March 2D is a slender two-stage member of the named family with a 3.35 m body and fairing."
+          ],
+          "limitations": "Variant is unspecified; other Long March models have very different boosters, fairings and proportions. This is a family representative and does not identify the flight vehicle."
+        },
+        "familyIdentityOnly": true,
+        "familySourceIds": [
+          106
+        ],
+        "visualFit": "fit54x124-v1"
+      }
+    }
+  ],
+  "updates": [
+    {
+      "identity": "ll2:configuration:182",
+      "changes": {
+        "currentPackAssetId": "current-family-art-20261118-182",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.ulalaunch.com/docs/default-source/rockets/251015_atlas_cutawayposter.pdf"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:96",
+      "changes": {
+        "currentPackAssetId": "current-family-art-20261118-96",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://blogs.esa.int/promisse/2011/12/21/soyuz-launcher-101/"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:505",
+      "changes": {
+        "currentPackAssetId": "current-family-art-20261118-505",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.presstv.ir/Detail/2024/01/22/718692/explainer-why-soraya-satellite-launch-major-space-breakthrough-iran"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:134",
+      "changes": {
+        "currentPackAssetId": "current-family-art-20261118-soyuz-fregat-st",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://newsroom.arianespace.com/flight-vs25-focus-on-arianespaces-concluding-mission-in-a-successful-year-for-soyuz/",
+        "https://raaks.ru/docs/doc20180227_020.pdf"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:212",
+      "changes": {
+        "currentPackAssetId": "current-family-art-20261118-soyuz-fregat-st",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://newsroom.arianespace.com/flight-vs25-focus-on-arianespaces-concluding-mission-in-a-successful-year-for-soyuz/",
+        "https://raaks.ru/docs/doc20180227_020.pdf"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:42",
+      "changes": {
+        "currentPackAssetId": "current-family-art-20261118-soyuz-fregat-st",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://newsroom.arianespace.com/flight-vs25-focus-on-arianespaces-concluding-mission-in-a-successful-year-for-soyuz/",
+        "https://raaks.ru/docs/doc20180227_020.pdf"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:45",
+      "changes": {
+        "currentPackAssetId": "current-family-art-20261118-soyuz-fregat-st",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://newsroom.arianespace.com/flight-vs25-focus-on-arianespaces-concluding-mission-in-a-successful-year-for-soyuz/",
+        "https://raaks.ru/docs/doc20180227_020.pdf"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:120",
+      "changes": {
+        "currentPackAssetId": "current-family-art-20261118-120",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://cgwic.com/Launchservice/LM2D.html"
+      ]
+    }
+  ],
+  "additions": []
+}
