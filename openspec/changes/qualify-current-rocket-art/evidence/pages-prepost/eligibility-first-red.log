@@ -1,0 +1,25 @@
+E
+======================================================================
+ERROR: test_current_producer_operation_admits_pinned_eligibility (tests.test_rocket_generation85_reopen.Generation85Reopen.test_current_producer_operation_admits_pinned_eligibility)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-pages-prepost-20261118/tests/test_rocket_generation85_reopen.py", line 39, in test_current_producer_operation_admits_pinned_eligibility
+    owner = _RepositoryCatalogOperation(ROOT)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-pages-prepost-20261118/tools/spacefox/native_motion.py", line 271, in __init__
+    self.__eligibility = load_registry(self.__root, self.__catalog, _admission_date=admission)
+                         ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-pages-prepost-20261118/tools/spacefox/current_catalog.py", line 62, in load_registry
+    return validate_registry(catalog, registry, _admission_date=_admission_date)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-pages-prepost-20261118/tools/spacefox/current_catalog.py", line 26, in validate_registry
+    _require(registry.get('dictionaryDigest') == hashlib.sha256(canonical_bytes(catalog['dictionaries'])).hexdigest(),
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+             'eligibility catalog digest mismatch')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-pages-prepost-20261118/tools/spacefox/current_catalog.py", line 19, in _require
+    raise CatalogError(message)
+tools.spacefox.catalog.CatalogError: eligibility catalog digest mismatch
+
+----------------------------------------------------------------------
+Ran 1 test in 2.009s
+
+FAILED (errors=1)

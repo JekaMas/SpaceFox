@@ -27,6 +27,12 @@
         "representative-watchface-heap",
         "static-image"
       ]
+    },
+    {
+      "id": "current-publisher-admission",
+      "properties": [
+        "current-eligibility-and-candidate"
+      ]
     }
   ],
   "properties": {
@@ -61,6 +67,12 @@
     "static-image": {
       "positive": "same model at different times",
       "negative": "no rocket animation or flame"
+    },
+    "current-eligibility-and-candidate": {
+      "positive": "Actual _RepositoryCatalogOperation admits pinned current eligibility and builds a captured active snapshot candidate with artRevision 1",
+      "negative": "Stale dictionaryDigest is refused; captured artifact tampering remains refused",
+      "command": "python3 -m unittest tests.test_rocket_generation85_reopen",
+      "evidence": "evidence/pages-prepost/eligibility-producer-green.log"
     }
   },
   "independent_review": {

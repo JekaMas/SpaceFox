@@ -34,6 +34,11 @@ class CapturedStore:
 
 
 class Generation85Reopen(unittest.TestCase):
+    def test_current_producer_operation_admits_pinned_eligibility(self):
+        from tools.spacefox.native_motion import _RepositoryCatalogOperation
+        owner = _RepositoryCatalogOperation(ROOT)
+        self.assertEqual(len(owner.source_digest()), 64)
+
     def test_public_generation85_reopens_and_refuses_mutated_artifact(self):
         store=CapturedStore()
         snapshot,files=snapshot_files(store,'captured-state',85)
@@ -86,9 +91,10 @@ class Generation85Reopen(unittest.TestCase):
                 original, original_files = snapshot_files(store, pub.head, 85)
                 self.assertEqual(original['generation'], 85)
                 now = pub.ledger['last_event_utc'] + 1
-                catalog = build_catalog(ROOT)
-                files, revision = build_artifact(pub.schedule, catalog, now,
-                    publisher=pub.publisher_envelope(now), root=ROOT)
+                from tools.spacefox.native_motion import _RepositoryCatalogOperation
+                owner = _RepositoryCatalogOperation(ROOT)
+                files, revision = owner.build(pub.schedule, None, now,
+                    publisher=pub.publisher_envelope(now), policy=pub.policy, traversal=None)
                 feed = json.loads(files['feed.json'])
                 self.assertEqual(feed['launch']['configuration_id'], 'll2:configuration:17')
                 scene = json.loads(files[feed['visualSelection']['path']])
