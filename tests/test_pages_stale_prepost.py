@@ -73,6 +73,10 @@ class StalePrePost(unittest.TestCase):
         # second invocation failed before its own work permission.
         self.assertFalse(p.never_started(INTENT))
 
+    def test_sparse_closure_contains_current_workflow_for_historical_comparison(self):
+        lines=(ROOT/'.github/spacefox-inputs.txt').read_text().splitlines()
+        self.assertEqual(lines.count('/.github/workflows/update-feed.yml'),1)
+
     def test_missing_workflow_source_remains_armed(self):
         p=FakePages();p.sources['.github/workflows/update-feed.yml']=None
         self.assertFalse(p.never_started(INTENT))
