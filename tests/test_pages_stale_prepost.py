@@ -1,5 +1,9 @@
 """Recovery permits a proven stale pre-POST failure, never ambiguous POSTs."""
 import unittest
+import json
+import subprocess
+import sys
+import tempfile
 from unittest.mock import Mock, patch
 from pathlib import Path
 from tools.spacefox.cloud import Pages
@@ -76,6 +80,46 @@ class StalePrePost(unittest.TestCase):
     def test_sparse_closure_contains_current_workflow_for_historical_comparison(self):
         lines=(ROOT/'.github/spacefox-inputs.txt').read_text().splitlines()
         self.assertEqual(lines.count('/.github/workflows/update-feed.yml'),1)
+        # Match checkout's initial seed, then the deploy/promote runtime filter.
+        # Import and call the real helper from that root, not this full checkout.
+        witness=FakePages()
+        document={'intent':INTENT,'job':witness.job,'log':witness.log,'sources':witness.sources}
+        with tempfile.TemporaryDirectory(prefix='spacefox-sparse-pages-') as tmp:
+            checkout=Path(tmp)/'source'
+            def git(*args, input=None):
+                return subprocess.run(['git','-C',str(checkout),*args],input=input,
+                    text=True,check=True,capture_output=True,timeout=30)
+            subprocess.run(['git','clone','--quiet','--shared','--no-checkout',str(ROOT),str(checkout)],
+                check=True,capture_output=True,timeout=30)
+            git('sparse-checkout','set','--no-cone','--stdin',input='/.github/spacefox-inputs.txt\n')
+            git('checkout','--quiet','--detach','HEAD')
+            seed=(checkout/'.github/spacefox-inputs.txt').read_text().splitlines()
+            git('sparse-checkout','set','--no-cone','--stdin',
+                input='\n'.join(x for x in seed if x!='/catalog/source.json')+'\n')
+            self.assertFalse((checkout/'catalog/source.json').exists())
+            code='''
+import json,sys
+from pathlib import Path
+from tools.spacefox import cloud
+d=json.load(sys.stdin)
+assert Path(cloud.__file__).resolve().is_relative_to(Path.cwd())
+class Witness(cloud.Pages):
+    def _job_log(self,intent,job): return d['log']
+    def _source_text(self,name,revision): return d['sources'][name]
+p=Witness('local/spacefox','test-only')
+assert p._stale_prepost(d['intent'],d['job']) is True
+workflow=Path('.github/workflows/update-feed.yml')
+original=workflow.read_text()
+workflow.unlink()
+assert p._stale_prepost(d['intent'],d['job']) is False
+workflow.write_text(original+'\\n# changed local workflow\\n')
+assert p._stale_prepost(d['intent'],d['job']) is False
+print('PASS actual sparse-root import/positive; missing and altered local workflow refuse')
+'''
+            result=subprocess.run([sys.executable,'-B','-c',code],cwd=checkout,
+                input=json.dumps(document),text=True,capture_output=True,timeout=30)
+            self.assertEqual(result.returncode,0,result.stdout+result.stderr)
+            print(result.stdout.strip())
 
     def test_missing_workflow_source_remains_armed(self):
         p=FakePages();p.sources['.github/workflows/update-feed.yml']=None

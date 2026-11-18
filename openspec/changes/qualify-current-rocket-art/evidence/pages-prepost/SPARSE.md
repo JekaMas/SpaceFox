@@ -1,3 +1,5 @@
 # Hosted sparse-closure follow-up
 
 After the peer-reviewed pre-POST repair was pushed, run 44276908932 retained the armed intent with the same empty Pages status. The guard reads the current workflow file to bind the historical deploy step, but the runner's sparse input list omitted that file. The local authenticated read-only witness used a full checkout, so it did not expose this difference. The workflow is now included in the same exact checkout closure; no recovery guard, journal transition or POST permission has been relaxed. The first missing-path assertion and the six-test passing focused suite are retained. A successful hosted recovery remains unobserved until the normal workflow completes.
+
+Independent sparse/materialized-root boundary GREEN: see SPARSE-PEER.md and peer-sparse-green.log. The declaration-only regression was strengthened to import/call the real helper from the runtime-filtered sparse checkout and prove missing/altered local workflow refusals. Live recovery remains unobserved here.
