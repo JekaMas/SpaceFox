@@ -8,7 +8,11 @@ Historical author chronology below retains its original pending/corrected counts
 
 # Progress
 
-## Current author checkpoint
+## Current delivery checkpoint
+
+GitHub 0.2.12 and Garmin submission completed; independent peer GREEN and public publisher generation 89 / artRevision 1 are recorded in `PUBLICATION.md`. Store approval and physical/phone acceptance remain unobserved.
+
+## Earlier author checkpoint
 
 175 current/announced rows and 40 auxiliary dispositions are recorded. Final decoded artwork: 155 images, 15 sharing groups; reference extent is 77 full visual, 57 partial, 35 representative/unverified fairing and 6 no usable exact exterior. These limitations require peer judgment and do not establish 175 exact visual matches. Generated bindings, controlled current-format producer migration, ordinary FR165 four-model and SFR paint observations, the timer repair and current five-primary admission have the bounded receipts described in `AUTHOR.md`. The raw timer failure and the first partial observer run are retained. Independent peer, actual public producer readback and delivery remain open. Chronological notes below describe earlier intermediate states and are not the current status.
 
