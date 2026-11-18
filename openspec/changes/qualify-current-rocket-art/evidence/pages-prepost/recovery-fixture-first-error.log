@@ -1,0 +1,17 @@
+E....
+======================================================================
+ERROR: test_503_witness_reaches_owned_not_started_transition (tests.test_pages_stale_prepost.StalePrePost.test_503_witness_reaches_owned_not_started_transition)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-pages-prepost-20261118/tests/test_pages_stale_prepost.py", line 59, in test_503_witness_reaches_owned_not_started_transition
+    self.assertIs(recover(pub,site,p),pub)
+                  ~~~~~~~^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-pages-prepost-20261118/tools/spacefox/cloud.py", line 651, in recover
+    status = pages.wait(value['intent']['buildVersion'])
+                        ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+KeyError: 'buildVersion'
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.153s
+
+FAILED (errors=1)

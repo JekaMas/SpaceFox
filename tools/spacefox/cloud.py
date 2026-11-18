@@ -249,7 +249,26 @@ class Pages:
                 when = datetime.fromisoformat(match.group(1).replace('Z', '+00:00'))
                 return start <= when < end + timedelta(seconds=1)
             lines = log.splitlines()
-            if (sum(in_step(line, message) for line in lines) != 1 or
+            # A structured immutable-file 503 from Site.observe is also a
+            # pre-POST refusal in the bound deploy function below. Require the
+            # exact machine-produced shape, one occurrence and the step exit.
+            prefix = 'cloud-feed: live immutable file missing, mixed or corrupt; readback='
+            readbacks = []
+            for line in lines:
+                if prefix in line and in_step(line, line[line.index(prefix):]):
+                    data = json.loads(line.split(prefix, 1)[1])
+                    if (type(data) is dict and set(data) == {'path', 'kind', 'phase', 'status', 'expected', 'actual'}
+                            and data['kind'] == 'immutable-file' and data['phase'] == 'closure'
+                            and type(data['status']) is int and data['status'] == 503
+                            and type(data['path']) is str and data['path']
+                            and all(type(data[x]) is dict and set(data[x]) == {'bytes', 'sha256'}
+                                    and type(data[x]['bytes']) is int and data[x]['bytes'] >= 0
+                                    and type(data[x]['sha256']) is str
+                                    and re.fullmatch(r'[0-9a-f]{64}', data[x]['sha256'])
+                                    for x in ('expected', 'actual'))):
+                        readbacks.append(data)
+            matches = sum(in_step(line, message) for line in lines) + len(readbacks)
+            if (matches != 1 or
                     sum(in_step(line, '##[error]Process completed with exit code 2.') for line in lines) != 1):
                 return False
             root = Path(__file__).resolve().parents[2]
@@ -262,6 +281,7 @@ class Pages:
             functions = {
                 'tools/cloud_feed.py': ((None, 'main'),),
                 'tools/spacefox/cloud.py': ((None, 'deploy'), (None, '_http_direct'),
+                    (None, '_readback_error'), ('Site', 'observe'), ('Site', '_get_before'),
                     ('Pages', 'create'), ('Pages', 'wait'), ('Pages', 'cancel'),
                     ('Pages', 'status'), ('Pages', 'call'), ('Pages', 'repo_call'), ('HTTP', 'request')),
                 'tools/spacefox/publisher.py': (('Publisher', '_context'),),

@@ -1,5 +1,6 @@
 """Recovery permits a proven stale pre-POST failure, never ambiguous POSTs."""
 import unittest
+from unittest.mock import Mock, patch
 from pathlib import Path
 from tools.spacefox.cloud import Pages
 
@@ -31,6 +32,34 @@ class StalePrePost(unittest.TestCase):
         p=FakePages();p.job['head_sha']='b'*40;self.assertFalse(p.never_started(INTENT))
         p=FakePages();p.run['run_attempt']=2;self.assertFalse(p.never_started(INTENT))
         p=FakePages();p.job['steps'][0]['conclusion']='cancelled';self.assertFalse(p.never_started(INTENT))
+
+    def test_readback_503_prepost_requires_matching_control_flow_and_exact_error(self):
+        p=FakePages()
+        p.log=(ROOT/'openspec/changes/qualify-current-rocket-art/evidence/pages-prepost/original-44226344248-excerpt.log').read_text()
+        p.job['steps'][0]['started_at']='2026-11-18T03:00:43Z'
+        p.job['steps'][0]['completed_at']='2026-11-18T03:01:03Z'
+        self.assertTrue(p.never_started(INTENT))
+        for mutation in ('status', 'after_post', 'duplicate', 'workflow'):
+            q=FakePages();q.log=p.log;q.job['steps'][0].update(p.job['steps'][0])
+            if mutation=='status': q.log=q.log.replace('"status":503','"status":200')
+            if mutation=='after_post': q.sources['tools/spacefox/cloud.py']=q.sources['tools/spacefox/cloud.py'].replace('pages.create(intent, id_token)  # Exactly one POST; no transport retry.', 'pages.create(intent, id_token)\n    site.observe(pub)')
+            if mutation=='duplicate': q.log+=q.log
+            if mutation=='workflow': q.sources['.github/workflows/update-feed.yml']+='\n# unknown workflow change\n'
+            with self.subTest(mutation=mutation):self.assertFalse(q.never_started(INTENT))
+
+    def test_503_witness_reaches_owned_not_started_transition(self):
+        from tools.spacefox.cloud import recover, DeploymentStatusEmpty
+        p=FakePages();p.log=(ROOT/'openspec/changes/qualify-current-rocket-art/evidence/pages-prepost/original-44226344248-excerpt.log').read_text()
+        p.job['steps'][0]['started_at']='2026-11-18T03:00:43Z';p.job['steps'][0]['completed_at']='2026-11-18T03:01:03Z'
+        p.wait=Mock(side_effect=DeploymentStatusEmpty('empty'))
+        pub=Mock();pub.head='head';pub.deployment_event.return_value=(pub,None)
+        intent=dict(INTENT,buildVersion='a'*40)
+        value={'status':'armed','intent':intent,'files':{}}
+        site=Mock();site.observe.return_value=None
+        with patch('tools.spacefox.cloud.journal',side_effect=[value,{'status':'not_started','intent':intent,'files':{}}]):
+            self.assertIs(recover(pub,site,p),pub)
+        pub.deployment_event.assert_called_once_with('observed',intent=intent,status='not_started')
+        pub.reconcile.assert_called_once_with(None)
 
     def test_post_then_stale_second_command_is_not_unstarted(self):
         p=FakePages()

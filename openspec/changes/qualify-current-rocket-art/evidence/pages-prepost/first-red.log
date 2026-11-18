@@ -1,0 +1,14 @@
+F
+======================================================================
+FAIL: test_readback_503_prepost_requires_matching_control_flow_and_exact_error (tests.test_pages_stale_prepost.StalePrePost.test_readback_503_prepost_requires_matching_control_flow_and_exact_error)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-rocket-pages-prepost-20261118/tests/test_pages_stale_prepost.py", line 40, in test_readback_503_prepost_requires_matching_control_flow_and_exact_error
+    self.assertTrue(p.never_started(INTENT))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)
