@@ -1,3 +1,11 @@
+# Current authoritative peer status — bounded software GREEN
+
+Reviewed clean source0398bef12f8f5e822c83a9c735a69e20ac6dedc6,0.2.12/335c4db7. All175core per-model decisions/native-size images and40auxiliary policies independently assessed;15literal sharing decisions are in PEER-SHARING.md and175/40peer-ledger rows. Source extents remain77full/57partial/35representative/6noexact, not175exact comparisons. No new material art/runtime conflict; peer changes clarify decisions/evidence only. Current actual PEER.json passed existing clean source/five-primary gate. No SDK/PBT/ROI/observer rerun; prior full raw proofs retain their exact bounds. Actual publisher deployment, signed export and publication remain author-owned after root judgment. Physical/phone/peak-memory NOT OBSERVED.
+
+Historical author chronology below retains its original pending/corrected counts; this status, AUTHOR.md and PEER.md supersede current-looking unfinished statements. No partial reference is silently relabelled full.
+
+---
+
 # Progress
 
 ## Current author checkpoint

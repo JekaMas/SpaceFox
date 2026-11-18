@@ -1,18 +1,82 @@
 {
- "requirements": [
-  {"id":"complete-models","properties":["accepted-inventory","source-and-share-decisions"]},
-  {"id":"distinct-exteriors","properties":["visual-comparison","pixel-collision-refusal"]},
-  {"id":"connected-offline","properties":["binding-and-decode","sfr-and-watch-resource"]},
-  {"id":"bounded-rendering","properties":["representative-watchface-heap","static-image"]}
- ],
- "properties": {
-  "accepted-inventory":{"positive":"each current/announced registry ID mapped","negative":"missing ID refused"},
-  "source-and-share-decisions":{"positive":"per-row features and reference","negative":"unjustified sharing refused"},
-  "visual-comparison":{"positive":"contact sheets and reference comparisons","negative":"incorrect silhouettes repaired"},
-  "pixel-collision-refusal":{"positive":"justified identical exterior allowed","negative":"different documented exteriors cannot silently match"},
-  "binding-and-decode":{"positive":"canonical ID to bundled PNG","negative":"unknown ID not mislabeled"},
-  "sfr-and-watch-resource":{"positive":"representative same model across paths","negative":"cold start must not wait for optional download"},
-  "representative-watchface-heap":{"positive":"actual FR165 watchface representative resources","negative":"resource overflow is failure"},
-  "static-image":{"positive":"same model at different times","negative":"no rocket animation or flame"}
- }
+  "requirements": [
+    {
+      "id": "complete-models",
+      "properties": [
+        "accepted-inventory",
+        "source-and-share-decisions"
+      ]
+    },
+    {
+      "id": "distinct-exteriors",
+      "properties": [
+        "visual-comparison",
+        "pixel-collision-refusal"
+      ]
+    },
+    {
+      "id": "connected-offline",
+      "properties": [
+        "binding-and-decode",
+        "sfr-and-watch-resource"
+      ]
+    },
+    {
+      "id": "bounded-rendering",
+      "properties": [
+        "representative-watchface-heap",
+        "static-image"
+      ]
+    }
+  ],
+  "properties": {
+    "accepted-inventory": {
+      "positive": "each current/announced registry ID mapped",
+      "negative": "missing ID refused"
+    },
+    "source-and-share-decisions": {
+      "positive": "per-row features and reference",
+      "negative": "unjustified sharing refused"
+    },
+    "visual-comparison": {
+      "positive": "contact sheets and reference comparisons",
+      "negative": "incorrect silhouettes repaired"
+    },
+    "pixel-collision-refusal": {
+      "positive": "justified identical exterior allowed",
+      "negative": "different documented exteriors cannot silently match"
+    },
+    "binding-and-decode": {
+      "positive": "canonical ID to bundled PNG",
+      "negative": "unknown ID not mislabeled"
+    },
+    "sfr-and-watch-resource": {
+      "positive": "representative same model across paths",
+      "negative": "cold start must not wait for optional download"
+    },
+    "representative-watchface-heap": {
+      "positive": "actual FR165 watchface representative resources",
+      "negative": "resource overflow is failure"
+    },
+    "static-image": {
+      "positive": "same model at different times",
+      "negative": "no rocket animation or flame"
+    }
+  },
+  "independent_review": {
+    "status": "GREEN",
+    "reviewed_source_revision": "0398bef12f8f5e822c83a9c735a69e20ac6dedc6",
+    "version": "0.2.12",
+    "native_id": "335c4db7",
+    "receipt": "evidence/PEER.json",
+    "report": "evidence/PEER.md",
+    "current_gate": "evidence/peer-current-gate.log",
+    "per_model": "evidence/peer-model-review.jsonl",
+    "auxiliary": "evidence/peer-auxiliary-review.jsonl",
+    "sharing": "evidence/PEER-SHARING.md",
+    "source_extent": "77full/57partial/35representative/6no-exact retained, not175exactviews",
+    "new_sdk_runs": 0,
+    "production_changes_by_peer": false,
+    "delivery": "OPEN"
+  }
 }

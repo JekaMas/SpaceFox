@@ -1,3 +1,5 @@
+> Current independent decision: all15groups were assessed under the literal similar-exterior/no-usable-exact-reference rule. `PEER-SHARING.md` and per-row `peer-model-review.jsonl` are the applicable decisions, including explicit generic-identity exceptions; the original reasons below retain their narrower source/mission limits.
+
 # Decoded artwork sharing decisions
 
 The group members below have identical decoded pixels after final fit. Sources and limits are input observations and best-effort decisions; they do not prove an individual future mission fairing. The identity/binding test rejects identical pixels across groups.
