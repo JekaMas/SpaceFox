@@ -1,1 +1,30 @@
-{"scope":"activity overlay and ACTIVE composition","requirements":[{"id":"first-and-every-active-frame","method":"actual view lifecycle and renderer with independent layout/icon/font oracle"},{"id":"hidden-low-off","method":"generated fake-clock lifecycle events; no hidden/off paint"},{"id":"optional-assets","method":"decode interruption/refusal/retry with source-bound composition and real resource budget"},{"id":"native-visual","method":"paired normal watchface simulator frames, same input facts"}]}
+{
+  "scope": "activity overlay and ACTIVE composition",
+  "requirements": [
+    {
+      "id": "first-and-every-active-frame",
+      "method": "actual view lifecycle and renderer with independent layout/icon/font oracle"
+    },
+    {
+      "id": "hidden-low-off",
+      "method": "generated fake-clock lifecycle events; no hidden/off paint"
+    },
+    {
+      "id": "optional-assets",
+      "method": "decode interruption/refusal/retry with source-bound composition and real resource budget"
+    },
+    {
+      "id": "native-visual",
+      "method": "paired normal watchface simulator frames, same input facts"
+    }
+  ],
+  "independent_review": {
+    "status": "NOT_DONE",
+    "report": "evidence/PEER.md",
+    "receipt": "evidence/PEER.json",
+    "mandatory_recovery": "evidence/peer-controls-green.log",
+    "resource_attempt": "evidence/peer-resource-attempt.log",
+    "experiment": "evidence/peer-key-sharing-attempt.patch",
+    "release_blocked": true
+  }
+}

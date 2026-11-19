@@ -1,0 +1,21 @@
+------------------------------------------------------------------------------
+Executing test menuPeerControls...
+DEBUG (16:11): canonical descriptor fields equal; void-return owner compatible; unknown/duplicate/order/ref refusals=4
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED: mandatory recovery must clear partial paint and omit orphan values
+Stack: 
+  - API code 0x30000203 
+  - menuMandatoryPaintRecovery() at /source/watchface/activity-menu-tests/MenuTests.mc:136 0x10003880 
+  - menuPeerControls() at /source/watchface/activity-menu-tests/MenuTests.mc:144 0x100015f9 
+  - evaluate_test_entries_0_to_30() at /task/gen/006-B4432-00/source/UnitTests.mcgen:95 0x1000f5f2 
+  - runTest() at /task/gen/006-B4432-00/source/UnitTests.mcgen:251 0x1000fd8e 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+menuPeerControls                    ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

@@ -1,0 +1,35 @@
+diff --git a/watchface/source/NativeIncrementalJson.mc b/watchface/source/NativeIncrementalJson.mc
+index 9c9abf4bc..4ad0b5365 100644
+--- a/watchface/source/NativeIncrementalJson.mc
++++ b/watchface/source/NativeIncrementalJson.mc
+@@ -70,7 +70,12 @@ class NativeIncrementalJson extends NativeJson {
+         if(digits.length()>19||digits.length()==19&&digits.compareTo(negative?"9223372036854775808":"9223372036854775807")>0){value=new NativeIntegerLexeme(text);}else{var n=text.toLong();if(n==null){fail();}value=n>= -2147483648l&&n<=2147483647l?n.toNumber():n;}token=null;complete(value);
+     }
+     function finishKey(key){
+-        var f=stack[stack.size()-1];if(nodeOwner!=null){nodeOwner.knownField(f.path,key);}if(catalogMode&&f.depth==0&&["schemaVersion","catalogVersion","projection","entries","unresolved","visualSelection"].indexOf(key)<0){fail();}
++        var f=stack[stack.size()-1];
++        if(nodeOwner!=null){
++            var canonical=nodeOwner.knownField(f.path,key);
++            if(canonical instanceof String){key=canonical;}
++        }
++        if(catalogMode&&f.depth==0&&["schemaVersion","catalogVersion","projection","entries","unresolved","visualSelection"].indexOf(key)<0){fail();}
+         if(feedMode){var common=commonKeys.indexOf(key);if(common>=0){key=commonKeys[common];}}
+         if(f.result.hasKey(key)||feedMode&&f.previous!=null&&f.previous.compareTo(key)>=0){fail();}f.previous=key;f.key=key;f.state=2;
+     }
+diff --git a/watchface/source/NativeSfr.mc b/watchface/source/NativeSfr.mc
+index 80e14652f..859ac08ee 100644
+--- a/watchface/source/NativeSfr.mc
++++ b/watchface/source/NativeSfr.mc
+@@ -131,7 +131,11 @@ class NativeSfrBuild {
+         else if(path.equals("/roles/map")||path.equals("/roles/rocket")||path.equals("/roles/siteCountry")){allowed=["entityId","descriptor"];}
+         else{allowed=["path","sha256","decodedBytes"];}
+         if(path.equals("")){if(readKind==0){allowed=sceneKeys();}else if(readKind==1){allowed=allowed.slice(0,allowed.size());allowed.add("sourceCanvas");allowed.add("motionSource");}}
+-        if(allowed.indexOf(key)<0){fail();}
++        var index=allowed.indexOf(key);
++        if(index<0){fail();}
++        // Retain the schema's shared key instead of a new substring copied
++        // from every descriptor. Field content and lexical order are unchanged.
++        return allowed[index];
+     }
+     function sourceRef(r){packet.shape(r,["path","sha256","decodedBytes"],[]);if(!packet.hex(r["sha256"])||!packet.integer(r["decodedBytes"])||r["decodedBytes"]<1||r["decodedBytes"]>1048576||!packet.same(r["path"],"sources/"+r["sha256"]+".json")){fail();}}
+     function sceneField(key,value){

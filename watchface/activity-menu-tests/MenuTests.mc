@@ -1,21 +1,21 @@
 import Toybox.Timer;import Toybox.Graphics;import Toybox.Lang;import Toybox.System;import Toybox.Test;import Toybox.WatchUi;
 (:test,:typecheck(false)) class MenuClock extends WatchClock {function utcSeconds(){return 1794818604l;}function localTimeText(){return "08:25";}function localCalendar(){return [3,17,11];}}
 (:test,:typecheck(false)) class MenuDraw extends Graphics.Dc {
- var icons=0;var time=false;var metricTexts=0;var candidates=[];var clears=0;var failMap=false;var failArt=false;var mapFaults=0;var artFaults=0;
+ var icons=0;var time=false;var recoveryClock=false;var metricTexts=0;var candidates=[];var clears=0;var failMap=false;var failArt=false;var mapFaults=0;var artFaults=0;
  function initialize(){candidates=[WatchUi.loadResource(Rez.Drawables.Metric_steps),WatchUi.loadResource(Rez.Drawables.Metric_energy),WatchUi.loadResource(Rez.Drawables.Metric_heart),WatchUi.loadResource(Rez.Drawables.Metric_stress)];}
  function getWidth(){return 390;}function getHeight(){return 390;}
- function setColor(a,b){}function clear(){clears+=1;}function drawBitmap(x,y,b){if(failArt&&x==22&&y==118){failArt=false;artFaults+=1;throw new Lang.InvalidValueException("art fault");}for(var i=0;i<candidates.size();i+=1){if(b==candidates[i]){icons+=1;}}}function drawBitmap2(x,y,b,o){if(failMap){failMap=false;mapFaults+=1;throw new Lang.InvalidValueException("map fault");}}
+ function setColor(a,b){}function clear(){clears+=1;icons=0;time=false;recoveryClock=false;metricTexts=0;}function drawBitmap(x,y,b){if(failArt&&x==22&&y==118){failArt=false;artFaults+=1;throw new Lang.InvalidValueException("art fault");}for(var i=0;i<candidates.size();i+=1){if(b==candidates[i]){icons+=1;}}}function drawBitmap2(x,y,b,o){if(failMap){failMap=false;mapFaults+=1;throw new Lang.InvalidValueException("map fault");}}
  function setClip(x,y,w,h){}function clearClip(){}function fillCircle(x,y,r){}function drawCircle(x,y,r){}function fillPolygon(p){}function drawLine(a,b,c,d){}function fillRectangle(a,b,c,d){}
  function getTextWidthInPixels(t,f){return t.length()*8;}function getFontHeight(f){return 22;}
- function drawText(x,y,f,t,flags){if(y==109&&t.equals("08:25")&&f==WatchUi.loadResource(Rez.Fonts.Time80)){time=true;}if((y==240||y==278)&&(t.equals("10115")||t.equals("75")||t.equals("60")||t.equals("30"))){metricTexts+=1;}}
+ function drawText(x,y,f,t,flags){if(y==109&&t.equals("08:25")&&f==WatchUi.loadResource(Rez.Fonts.Time80)){time=true;}if(t.equals("08:25")&&f==Graphics.FONT_NUMBER_MEDIUM){recoveryClock=true;}if(t.equals("10115")||t.equals("75")||t.equals("60")||t.equals("30")){metricTexts+=1;}}
 }
-(:typecheck(false)) module MenuObserve {var icons=[];var time=false;var values=0;var resources=[];var frames=0;}
+(:typecheck(false)) module MenuObserve {var icons=[];var time=false;var values=0;var resources=[];var frames=0;var failMandatory=false;}
 (:test,:typecheck(false)) class MenuRenderer extends SceneRenderer {
  function initialize(owner){SceneRenderer.initialize(owner);}
  function active(dc,current,settings,values,fitness,progress){MenuObserve.frames+=1;SceneRenderer.active(dc,current,settings,values,fitness,progress);}
  function load(id){MenuObserve.resources.add(id);return SceneRenderer.load(id);}
  function icon(dc,x,y,role){if(icons.hasKey(role)){MenuObserve.icons.add([role,x,y]);}SceneRenderer.icon(dc,x,y,role);}
- function text(dc,x,y,font,value,color,width,contour){if(y==109&&value.equals("08:25")&&font==fonts["time"]){MenuObserve.time=true;}if(y==240||y==278){MenuObserve.values+=1;}return SceneRenderer.text(dc,x,y,font,value,color,width,contour);}
+ function text(dc,x,y,font,value,color,width,contour){if(y==109&&value.equals("08:25")&&font==fonts["time"]){MenuObserve.time=true;}if(y==240||y==278){MenuObserve.values+=1;}var result=SceneRenderer.text(dc,x,y,font,value,color,width,contour);if(MenuObserve.failMandatory&&y==240){MenuObserve.failMandatory=false;throw new Lang.InvalidValueException("mandatory metric paint fault");}return result;}
 }
 (:typecheck(false)) function menuReset(){MenuObserve.icons=[];MenuObserve.time=false;MenuObserve.values=0;MenuObserve.resources=[];MenuObserve.frames=0;}
 (:test,:typecheck(false)) class MenuBuild extends NativeSfrBuild {
@@ -98,4 +98,21 @@ import Toybox.Timer;import Toybox.Graphics;import Toybox.Lang;import Toybox.Syst
  Test.assert(menuOptionalDrawFaults(logger));
  Test.assert(menuGeneratedComposition(logger));
  logger.debug("MENU_AFFECTED directed=3 generated=1");return true;
+}
+
+(:test,:typecheck(false)) function menuMandatoryPaintRecovery(logger){
+ var view=new MenuView();
+ view.setPacket(new NativeTrustedPacket(WatchUi.loadResource(Rez.JsonData.CountdownCaptured)["payload"]));
+ view.values={"steps"=>10115,"energy"=>75,"heart"=>60,"stress"=>30};view.onShow();
+ var dc=new MenuDraw();MenuObserve.failMandatory=true;menuReset();view.onUpdate(dc);
+ Test.assert(dc.clears>=2&&dc.recoveryClock&&view.renderer==null);
+ Test.assertMessage(dc.icons==0&&dc.metricTexts==0,"mandatory recovery must clear partial paint and omit orphan values");
+ Test.assert(view.context.launchId.equals("ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60")&&view.displayMode()==view.NOT_LOW);
+ var healthy=new MenuDraw();menuReset();view.onUpdate(healthy);
+ logger.debug("healthy rebind time="+MenuObserve.time+" icons="+MenuObserve.icons.size()+" values="+MenuObserve.values+" metric_draw_calls="+healthy.metricTexts);
+ Test.assert(MenuObserve.time&&MenuObserve.icons.size()==4&&MenuObserve.values==4&&healthy.metricTexts>0);
+ view.onHide();logger.debug("mandatory paint failure clears partial metrics; recovery clock/facts; healthy canonical rebind");return true;
+}
+(:test,:typecheck(false)) function menuPeerControls(logger){
+ Test.assert(menuMandatoryPaintRecovery(logger));return true;
 }

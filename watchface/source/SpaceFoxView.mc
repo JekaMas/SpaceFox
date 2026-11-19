@@ -360,17 +360,13 @@ class SpaceFoxView extends WatchUi.WatchFace {
         // Their own failure cannot prevent the already drawn clock/date.
         try{if(context!=null){var now=_clock.utcSeconds();advanceSelection(now);var selected=context as SceneContext or Null;if(selected!=null){var snap=snapshotAt(now);var value=lifecycle.mode()==LOW?snap.lowCountdown:snap.countdown;dc.setColor(selected.rescheduled||selected.sourceHold?0xFF6B6B:settings.countdownColor,Graphics.COLOR_TRANSPARENT);dc.drawText(x,active?y+7:y+25,Graphics.FONT_TINY,value,Graphics.TEXT_JUSTIFY_CENTER);dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(x,active?y+124:y+55,Graphics.FONT_XTINY,active?presentation.fit(dc,selected.site,Graphics.FONT_XTINY,242):selected.site,Graphics.TEXT_JUSTIFY_CENTER);dc.drawText(x,active?y-159:y+80,Graphics.FONT_XTINY,active?presentation.fit(dc,selected.rocket,Graphics.FONT_XTINY,238):joinDetail(selected.rocket,selected.purpose),Graphics.TEXT_JUSTIFY_CENTER);if(active){var company=selected.operatorShort.equals("")?selected.operator:selected.operatorShort;dc.drawText(x,y-133,Graphics.FONT_XTINY,presentation.fit(dc,joinDetail(company,selected.purpose),Graphics.FONT_XTINY,282),Graphics.TEXT_JUSTIFY_CENTER);}}}}catch(e){}
         LocaleGraphemes.data=null;
-        // ACTIVE retains all four configured values even when fonts/optional
-        // art fail. This never samples providers or promotes the mode to LOW.
-        if(active){try{drawFallbackFields(dc);}catch(e){}}
+        // Mandatory-resource recovery has no metric composition. The clear
+        // above removes partial fields before clock/date and accepted facts
+        // are redrawn. A healthy next frame rebuilds the canonical renderer.
         // Bounded direct-draw map after clock and facts: an optional failure
         // must never erase or prevent the clock. Its source point is separate
         // from downloaded artwork and is absent for an unknown event location.
         try{var left=(dc.getWidth()-195)/2;FallbackWorld.draw(dc,left,15);if(mapDecision.pointVisible(true)){FallbackMap.point(dc,mapDecision.point,left,15);}}catch(e){}
-    }
-    (:typecheck(false)) function drawFallbackFields(dc) {
-        var x=dc.getWidth()/2;var y=dc.getHeight()/2;
-        for(var i=0;i<4;i+=1){dc.setColor(settings.fieldColors[i],Graphics.COLOR_TRANSPARENT);dc.drawText(x+(i%2==0?-100:100),y+(i<2?49:87),Graphics.FONT_TINY,presentation.metric(fitness,values,settings.slots[i]),Graphics.TEXT_JUSTIFY_CENTER);}
     }
     function applyPixelRest(dc as Graphics.Dc) as Void {
         if(lifecycle.mode() == NOT_LOW){return;}
