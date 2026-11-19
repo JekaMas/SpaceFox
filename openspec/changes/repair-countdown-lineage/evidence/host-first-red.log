@@ -1,0 +1,25 @@
+test_captured_coarse_net_has_display_retention_without_reminder (tests.test_countdown_lineage.CountdownLineage.test_captured_coarse_net_has_display_retention_without_reminder) ... FAIL
+test_captured_coarse_selection_expires_at_boundary (tests.test_countdown_lineage.CountdownLineage.test_captured_coarse_selection_expires_at_boundary) ... FAIL
+
+======================================================================
+FAIL: test_captured_coarse_net_has_display_retention_without_reminder (tests.test_countdown_lineage.CountdownLineage.test_captured_coarse_net_has_display_retention_without_reminder)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-countdown-lineage-20261119/tests/test_countdown_lineage.py", line 22, in test_captured_coarse_net_has_display_retention_without_reminder
+    self.assertEqual(result['retentionDeadline'],NET+900)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None != 1795043100
+
+======================================================================
+FAIL: test_captured_coarse_selection_expires_at_boundary (tests.test_countdown_lineage.CountdownLineage.test_captured_coarse_selection_expires_at_boundary)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-countdown-lineage-20261119/tests/test_countdown_lineage.py", line 30, in test_captured_coarse_selection_expires_at_boundary
+    self.assertEqual(select_next(ScheduleState((a,b),NET+900)).entry.record.launch_id,later.launch_id)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Stabl[35 chars] namespace='ll2', value='e0a11eb1-0bda-4872-b36b-140247fd5c60') != Stabl[35 chars] namespace='ll2', value='76617033-4dc0-4448-b50c-e5b0d5a18539')
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.002s
+
+FAILED (failures=2)

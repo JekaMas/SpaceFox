@@ -1,0 +1,177 @@
+------------------------------------------------------------------------------
+Executing test capturedCoarseRollover...
+DEBUG (13:01): captured coarse retention exact boundary + offline reopen + exhausted queue
+PASS
+------------------------------------------------------------------------------
+Executing test staleResponsePreservesDurableSnapshot...
+DEBUG (13:01): first durable=101
+DEBUG (13:01): reopened durable=101
+DEBUG (13:01): service 101->99 stale->tied-other->102, pointer failure, newer instance, late callback and reopen
+PASS
+------------------------------------------------------------------------------
+Executing test generatedCountdownLifecycle...
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+DEBUG (13:01): COUNTDOWN_GENERATED seeds=16 events=384 per_event_assertions=1152 reopen hide show sleep wake logical_time=true
+PASS
+------------------------------------------------------------------------------
+Executing test terminalSuppressesCachedFuture...
+DEBUG (13:01): newer terminal suppresses cached future; omission negative control reselects it
+PASS
+
+==============================================================================
+RESULTS
+Test:                                 Status:
+capturedCoarseRollover                PASS
+staleResponsePreservesDurableSnapshot PASS
+generatedCountdownLifecycle           PASS
+terminalSuppressesCachedFuture        PASS
+Ran 4 tests
+
+PASSED (passed=4, failed=0, errors=0)

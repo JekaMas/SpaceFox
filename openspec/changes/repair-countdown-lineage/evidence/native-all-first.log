@@ -1,0 +1,205 @@
+------------------------------------------------------------------------------
+Executing test capturedCoarseRollover...
+DEBUG (12:58): captured coarse retention exact boundary + offline reopen + exhausted queue
+PASS
+------------------------------------------------------------------------------
+Executing test countdownSnapshot...
+
+Error: Not Enough Arguments Error
+Details: Failed invoking <symbol>
+Stack: 
+  - countdownSnapshot() at /source/watchface/countdown-tests/CountdownTests.mc:48 0x100013fc 
+  - evaluate_test_entries_0_to_6() at /task/gen/006-B4432-00/source/UnitTests.mcgen:58 0x1000290d 
+  - runTest() at /task/gen/006-B4432-00/source/UnitTests.mcgen:81 0x100029db 
+ERROR
+------------------------------------------------------------------------------
+Executing test staleResponsePreservesDurableSnapshot...
+DEBUG (12:58): first durable=101
+DEBUG (12:58): reopened durable=101
+DEBUG (12:58): service 101->99 stale->tied-other->102, pointer interruption, reopen and retry
+PASS
+------------------------------------------------------------------------------
+Executing test expectedActive...
+
+Error: Not Enough Arguments Error
+Details: Failed invoking <symbol>
+Stack: 
+  - expectedActive() at /source/watchface/countdown-tests/CountdownTests.mc:81 0x10000f9e 
+  - evaluate_test_entries_0_to_6() at /task/gen/006-B4432-00/source/UnitTests.mcgen:62 0x10002943 
+  - runTest() at /task/gen/006-B4432-00/source/UnitTests.mcgen:81 0x100029db 
+ERROR
+------------------------------------------------------------------------------
+Executing test expectedLow...
+
+Error: Not Enough Arguments Error
+Details: Failed invoking <symbol>
+Stack: 
+  - expectedLow() at /source/watchface/countdown-tests/CountdownTests.mc:85 0x10000f20 
+  - evaluate_test_entries_0_to_6() at /task/gen/006-B4432-00/source/UnitTests.mcgen:64 0x1000295e 
+  - runTest() at /task/gen/006-B4432-00/source/UnitTests.mcgen:81 0x100029db 
+ERROR
+------------------------------------------------------------------------------
+Executing test generatedCountdownLifecycle...
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+DEBUG (12:58): COUNTDOWN_GENERATED seeds=16 events=384 per_event_assertions=1152 reopen hide show sleep wake logical_time=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                                 Status:
+capturedCoarseRollover                PASS
+countdownSnapshot                     ERROR
+staleResponsePreservesDurableSnapshot PASS
+expectedActive                        ERROR
+expectedLow                           ERROR
+generatedCountdownLifecycle           PASS
+Ran 6 tests
+
+FAILED (passed=3, failed=0, errors=3)

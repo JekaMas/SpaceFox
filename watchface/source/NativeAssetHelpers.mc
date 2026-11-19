@@ -1,6 +1,6 @@
 import Toybox.Lang;
 
-(:extendedCode, :typecheck(false))
+(:background, :extendedCode, :typecheck(false))
 function nativeSame(a,b){
     if(a==null||b==null){return a==null&&b==null;}
     if(a instanceof String){return b instanceof String&&a.equals(b);}

@@ -1,0 +1,15 @@
+test_exact_cancellation_later_cached_target_is_not_omitted (tests.test_countdown_lineage.CountdownLineage.test_exact_cancellation_later_cached_target_is_not_omitted) ... ERROR
+
+======================================================================
+ERROR: test_exact_cancellation_later_cached_target_is_not_omitted (tests.test_countdown_lineage.CountdownLineage.test_exact_cancellation_later_cached_target_is_not_omitted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-countdown-lineage-20261119/tests/test_countdown_lineage.py", line 45, in test_exact_cancellation_later_cached_target_is_not_omitted
+    self.assertEqual(terminal_updates(state,NET+3600)[0]['terminal']['launch_id'],'ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60')
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

@@ -56,6 +56,9 @@ class SceneContext {
         var ordering=data["orderingUtc"];if(ordering instanceof Number||ordering instanceof Long){orderingUtc=ordering.toLong();}
         var deadline=data["retentionDeadline"];
         if(deadline instanceof Number || deadline instanceof Long){retentionDeadline=deadline.toLong();}
+        // Existing schema-1 snapshots can carry an announced NET without the
+        // later presentation deadline. Do not promote its source precision.
+        else if(displayTarget!=null && !precision.equals("exact") && !precision.equals("minute")){retentionDeadline=displayTarget+900;}
         var checked=data["sourceValidated"];if(checked instanceof Number || checked instanceof Long){sourceValidated=checked.toLong();}
         if((precision.equals("exact")||precision.equals("minute")) && (target instanceof Number||target instanceof Long)){freshnessTarget=target.toLong();retentionTarget=target.toLong();}
         if(data["freshnessPolicy"] instanceof Dictionary){freshnessPolicy=data["freshnessPolicy"] as Dictionary;}

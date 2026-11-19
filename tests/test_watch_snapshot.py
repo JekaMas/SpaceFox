@@ -10,7 +10,10 @@ class CapturedSnapshot(unittest.TestCase):
   feed=json.loads((p/'public-feed-before.json').read_bytes());catalog=json.loads((p/'public-catalog-before.json').read_bytes());old=(p/'public-watch-before.json').read_bytes()
   self.assertEqual(feed['publisher']['generation'],84)
   self.assertEqual(json.loads(old)['data'][3][4], 'Unknown')
+  self.assertIsNone(json.loads(old)['data'][3][13])
   self.assertTrue(matches_accepted_projection(old,feed,catalog))
+  changed=json.loads(old);changed['data'][3][13]=1795043101
+  self.assertFalse(matches_accepted_projection(json.dumps(changed,ensure_ascii=False,separators=(',',':')).encode(),feed,catalog))
   new=encode_snapshot(feed,catalog)
   self.assertTrue(matches_accepted_projection(new,feed,catalog))
   self.assertNotIn('artRevision',json.loads(old)['data'][6])

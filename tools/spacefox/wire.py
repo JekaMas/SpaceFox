@@ -78,9 +78,10 @@ def terminal_updates(state, now):
     result = []
     for entry in state.entries:
         record = entry.record
-        target = record.timing.countdown_utc
-        deadline = None if target is None else max(target+900, record.ascent_end['end_utc'] if record.ascent_end else target+900)
-        if record.status in (LaunchStatus.CANCELLED, LaunchStatus.COMPLETED) and (deadline is None or now < deadline):
+        # A newer terminal event may invalidate an older cached later target,
+        # even after this record's own deadline. Durable compaction owns its
+        # bounded retention; don't silently discard it by presentation time.
+        if record.status in (LaunchStatus.CANCELLED, LaunchStatus.COMPLETED):
             result.append({'terminal': {'launch_id': identity_text(record.launch_id), 'status': record.status.value,
                 'source_validated_utc': record.source_validated_utc, 'source_updated_utc': record.source_updated_utc,
                 'source_updated_subsecond': record.source_updated_subsecond}})

@@ -179,6 +179,11 @@ class Timing:
         return None
 
     @property
+    def display_utc(self):
+        """A supplied exact or announced NET, without upgrading precision."""
+        return self.exact_utc if self.exact_utc is not None else self.nominal_utc
+
+    @property
     def ordering_utc(self):
         """A supplied ordering anchor, never an invented exact launch target.
 
@@ -532,6 +537,13 @@ class Selection:
     remaining_seconds: int | None
 
 
+def retention_deadline(target, ascent_end=None):
+    """Presentation expiry only; it never declares a launch completed."""
+    if target is None:
+        return None
+    return max(target + 900, ascent_end['end_utc'] if ascent_end else target + 900)
+
+
 def select_next(state: ScheduleState) -> Selection:
     """Select coherently, without excluding an elapsed but unconfirmed target.
 
@@ -541,14 +553,10 @@ def select_next(state: ScheduleState) -> Selection:
     """
     if type(state) is not ScheduleState:
         raise ScheduleError('state must be ScheduleState')
-    def retention_end(record):
-        target = record.timing.countdown_utc
-        return max(target + 900, record.ascent_end['end_utc'] if record.ascent_end else target + 900)
-
     eligible = [entry for entry in state.entries
                 if entry.record.status not in (LaunchStatus.CANCELLED, LaunchStatus.COMPLETED)
-                and (entry.record.timing.countdown_utc is None
-                     or state.evaluated_at_utc < retention_end(entry.record))
+                and (entry.record.timing.display_utc is None
+                     or state.evaluated_at_utc < retention_deadline(entry.record.timing.display_utc, entry.record.ascent_end))
                 and (entry.record.status is not LaunchStatus.STARTED
                      or entry.record.timing.countdown_utc is not None
                      and entry.record.timing.countdown_utc <= state.evaluated_at_utc)]

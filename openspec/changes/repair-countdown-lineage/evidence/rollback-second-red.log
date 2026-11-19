@@ -1,0 +1,22 @@
+------------------------------------------------------------------------------
+Executing test staleResponsePreservesDurableSnapshot...
+DEBUG (12:54): first durable=101
+DEBUG (12:54): reopened durable=99
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - staleResponsePreservesDurableSnapshot() at /source/watchface/countdown-tests/CountdownTests.mc:56 0x1000153e 
+  - evaluate_test_entries_0_to_3() at /task/gen/006-B4432-00/source/UnitTests.mcgen:57 0x100047f3 
+  - runTest() at /task/gen/006-B4432-00/source/UnitTests.mcgen:72 0x10004855 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                                 Status:
+staleResponsePreservesDurableSnapshot ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

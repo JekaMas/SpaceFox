@@ -70,11 +70,9 @@ def _row(launch, catalog, policy, selected):
             day=(date.fromisoformat(timing['date_utc'])-date(1970,1,1)).days*86400
             if ordering is None or day>ordering:ordering=day
         if ordering is None:ordering=timing['window_end_utc'] if timing['window_end_utc'] is not None else timing.get('nominal_utc')
-    deadline=None
-    if precision in ('exact','minute') and target is not None:
-        deadline=target+900;ascent=launch.get('ascent_end')
-        if ascent is not None:deadline=max(deadline,ascent['end_utc'])
-    reminder=(launch['status']=='pending' and deadline is not None and
+    from .schedule import retention_deadline
+    deadline=retention_deadline(target if target is not None else display, launch.get('ascent_end'))
+    reminder=(launch['status']=='pending' and target is not None and deadline is not None and
               (timing['window_start_utc'] is None or target>=timing['window_start_utc']) and
               (timing['window_end_utc'] is None or target<=timing['window_end_utc']))
     values=(launch['launch_id'],rocket,operator,short,_mission_text(launch),site,
@@ -109,8 +107,14 @@ def matches_accepted_projection(raw, feed, catalog):
         pairs = [(rows[3], feed['launch'])]
         pairs += list(zip(rows[4], (r for r in feed.get('upcoming', []) if 'terminal' not in r)))
         for row, launch in pairs:
-            if row is not None and launch is not None and row[4] == launch.get('mission_purpose'):
-                row[4] = _mission_text(launch)
+            if row is not None and launch is not None:
+                if row[4] == launch.get('mission_purpose'):
+                    row[4] = _mission_text(launch)
+                # Immutable schema-1 snapshots emitted before coarse-NET expiry
+                # have null deadline; compare only, never alter stored bytes.
+                if row[13] is None and row[10] is None and row[20] is not None:
+                    from .schedule import retention_deadline
+                    row[13] = retention_deadline(row[20], launch.get('ascent_end'))
         # Older immutable current-format snapshots predate the artwork epoch.
         # Normalize only the comparison; the stored bytes remain untouched and
         # the watch still sees the old snapshot as having no art revision.

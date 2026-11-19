@@ -15,13 +15,7 @@ class NativeCache {
     const EMPTY=0;const VOLATILE=1;const DURABLE=2;
     var store;var base;var packet=null;var failure="";var ramState=0;var pendingVolatile=null;
     function initialize(url,adapter){var transfer=new NativeTransfer(url,adapter);base=transfer.base;store=transfer.store;}
-    function comparePublisher(a,b,allowEqual){
-        var at=a["selectionValidatedUtc"];var bt=b["selectionValidatedUtc"];
-        if(!(at instanceof Number||at instanceof Long)||!(bt instanceof Number||bt instanceof Long)){return false;}
-        if(at!=bt){return at>bt;}
-        if(!(a["instance"] instanceof String)||!(b["instance"] instanceof String)||!a["instance"].equals(b["instance"])){return false;}
-        return allowEqual?a["generation"]>=b["generation"]:a["generation"]>b["generation"];
-    }
+    function comparePublisher(a,b,allowEqual){return nativePublisherNewer(a,b,allowEqual);}
     function newerPublisher(a,allowEqual){return packet==null||comparePublisher(a,packet.document["publisher"],allowEqual);}
     function queueVolatile(value){
         var publisher=value[1];if(!newerPublisher(publisher,false)){return false;}
@@ -33,6 +27,6 @@ class NativeCache {
     function takeVolatile(){var value=pendingVolatile;pendingVolatile=null;return value!=null&&newerPublisher(value[1],false)?value:null;}
     function newer(candidate,allowEqual){return newerPublisher(candidate.document["publisher"],allowEqual);}
     function acceptVolatile(candidate){if(!newer(candidate,false)){return false;}packet=candidate;ramState=VOLATILE;return true;}
-    function acceptDurable(candidate){if(ramState==VOLATILE&&!newer(candidate,true)){return false;}packet=candidate;ramState=DURABLE;return true;}
+    function acceptDurable(candidate){if(packet!=null&&!newer(candidate,true)){return false;}packet=candidate;ramState=DURABLE;return true;}
 
 }

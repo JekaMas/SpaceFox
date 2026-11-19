@@ -267,7 +267,7 @@ import Toybox.System;
   if(e==0){var allowed=n>current&&(pending==0||n>pending);if(allowed){pending=n;coverage["queue_applied"]+=1;}else{coverage["queue_no"]+=1;}ownerCheck(cache.queueVolatile(pbtSnapshot(n,1795042200l+n*60))==allowed,"cache-queue",seed,i,trace,allowed,n);}
   else if(e==1){var deliver=pending>current;var prior=pending;pending=0;var value=cache.takeVolatile();ownerCheck((value!=null)==deliver,"cache-take",seed,i,trace,deliver,value!=null);if(deliver){current=prior;ram=1;Test.assert(cache.acceptVolatile(new NativeTrustedPacket(value)));bind();coverage["delivery_applied"]+=1;}else{coverage["delivery_no"]+=1;}}
   else if(e==2){var accept=current==0||n>current;if(accept){current=n;ram=1;}else{coverage["volatile_no"]+=1;}ownerCheck(cache.acceptVolatile(packet(n))==accept,"cache-volatile",seed,i,trace,accept,n);if(accept){bind();}}
-  else if(e==3){var accept=ram!=1||current==0||n>=current;if(accept){current=n;ram=2;}else{coverage["durable_no"]+=1;}ownerCheck(cache.acceptDurable(packet(n))==accept,"cache-durable",seed,i,trace,accept,n);if(accept){bind();}}
+  else if(e==3){var accept=current==0||n>=current;if(accept){current=n;ram=2;}else{coverage["durable_no"]+=1;}ownerCheck(cache.acceptDurable(packet(n))==accept,"cache-durable",seed,i,trace,accept,n);if(accept){bind();}}
   else if(e==4){cache=new NativeCache("https://other.invalid",store);current=0;pending=0;ram=0;bind();coverage["source_applied"]+=1;}
   else if(e==5){shown=!shown;}
   else if(e==6){ready=!ready;}
@@ -790,7 +790,7 @@ import Toybox.System;
  function deleteEvent(){deletes+=1;reg=null;} function log(value){logs+=1;}
 }
 (:test,:typecheck(false)) class WakeTrace {
- var store;var cache;var ports;var now=1794818604l;var attempt=null;var connected=true;var pending=false;var registered=null;var last=null;var reminder=null;var writes=0;var registerAttempts=0;var registerFailure=false;var logs=0;var success=false;var future=null;var trace=[];
+ var store;var cache;var ports;var now=1794818604l;var attempt=null;var connected=true;var pending=false;var registered=null;var last=null;var reminder=null;var writes=0;var registerAttempts=0;var registerFailure=false;var logs=0;var success=false;var future=null;var generation=0;var trace=[];
  var coverage={"arm"=>0,"register"=>0,"kept"=>0,"pending"=>0,"offline"=>0,"reminder"=>0,"floor"=>0,"healthy"=>0,"registration_failure"=>0};
  function initialize(){store=new PbtMemoryStore();cache=new NativeTransfer("https://pbt.invalid",store);ports=new PbtWakePorts();}
  function arm(){
@@ -813,7 +813,7 @@ import Toybox.System;
   else if(e==5){last=now-arg*100;ports.lastAt=last;}
   else if(e==6){reminder=now+arg*100;ports.reminderAt=reminder;}
   else if(e==7){reminder=null;ports.reminderAt=null;}
-  else if(e==8){if(attempt==null){attempt=now;cache.attempted(now);}future=now+7200;var v=pbtSnapshot(1,future);v[3][14]=future;Test.assert(new NativeTrustedStore(store,"https://pbt.invalid").save(v));cache.completed(true);success=true;}
+  else if(e==8){if(attempt==null){attempt=now;cache.attempted(now);}future=now+7200;generation+=1;var v=pbtSnapshot(generation,future);v[3][14]=future;Test.assert(new NativeTrustedStore(store,"https://pbt.invalid").save(v));cache.completed(true);success=true;}
   else{registerFailure=!registerFailure;ports.failRegister=registerFailure;}
   ownerCheck(ports.reg==registered&&ports.registrations.size()==writes&&ports.attempts==registerAttempts&&ports.logs==logs&&ports.deletes==0,"wake-registration",seed,i,trace,[registered,writes,registerAttempts,logs],[ports.reg,ports.registrations.size(),ports.attempts,ports.logs]);
  }

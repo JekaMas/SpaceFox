@@ -112,8 +112,12 @@ SHALL be qualified separately from JSON bytes.
 
 The system SHALL choose the earliest eligible launch from the accepted schedule
 using stable identifiers, retaining it until target+900 seconds or a later
-source-supported ascent end. Cancellation, withdrawal or reschedule SHALL
-override retention. Terminal entries SHALL NOT be newly selected.
+source-supported ascent end. An explicitly supplied inexact announced NET
+uses the same 900-second presentation retention without becoming an exact time
+or proof of liftoff. A date/window without an announced NET has no invented
+clock deadline. Cancellation, withdrawal or reschedule SHALL override retention.
+Terminal entries SHALL NOT be newly selected; retained newer terminal facts
+must suppress an older cached future record of the same identity.
 #### Scenario: Cached successors and replenishment
 - **WHEN** eligible future records are known, the producer includes a bounded ordered successor buffer in the same atomic feed generation, with source-qualified location metadata and the existing selected visual closure
 - **THEN** the watch validates and caches successors before the selected launch expires, replenishes using its existing bounded refresh policy, and selects the next eligible cached record at its deadline without a network request or storage write on the transition

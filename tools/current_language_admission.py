@@ -13,7 +13,7 @@ import re
 PRIMARY = ['en', 'ru', 'de', 'fr', 'es']
 # Updated only with the reviewed canonical record; it is not derived from an
 # untrusted caller-provided catalog, so a repinned manifest cannot grant access.
-CURRENT_PROOF_SHA256 = '78b23bacb9613436cb477b6c3d40ac3b582c9326d938763dbbbde788a3cf048f'
+CURRENT_PROOF_SHA256 = 'b9cf6fb8ad813299505e966897ec8f928e306573cd4b16d463ac0f14c5fa4d7c'
 
 
 UI_KEYS = ('hour', 'minute', 'day', 'second', 'noSchedule', 'dateOnly', 'window',

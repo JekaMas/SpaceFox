@@ -148,9 +148,11 @@ class SpaceFoxView extends WatchUi.WatchFace {
     // storage work on every countdown tick. A successor can replace this
     // waiting state only through a validated, source-bound admission.
     (:extendedCode) function resetRollover() as Void {passedSelections=[];}
+    (:typecheck(false)) function selectionTarget(scene) {return scene.retentionTarget==null?scene.displayTarget:scene.retentionTarget;}
     (:typecheck(false)) function selectionPassed(scene) {
-        if(scene==null||scene.retentionDeadline==null||scene.retentionTarget==null){return false;}
-        for(var i=0;i<passedSelections.size();i+=1){var row=passedSelections[i];if(row[0].equals(scene.launchId)&&row[1]==scene.retentionTarget&&row[2]==scene.retentionDeadline){return true;}}
+        if(scene==null||scene.retentionDeadline==null){return false;}
+        var target=selectionTarget(scene);if(target==null){return false;}
+        for(var i=0;i<passedSelections.size();i+=1){var row=passedSelections[i];if(row[0].equals(scene.launchId)&&row[1]==target&&row[2]==scene.retentionDeadline){return true;}}
         return false;
     }
     (:typecheck(false)) function advanceSelection(now as Number or Long) as Void {
@@ -165,7 +167,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
     (:extendedCode,:typecheck(false)) function resolveSelection(now as Number or Long) as Void {
         var next=context;var changed=false;
         while(next!=null&&next.retentionDeadline!=null&&(selectionPassed(next)||now.toLong()>=next.retentionDeadline)){
-            if(!selectionPassed(next)){passedSelections.add([next.launchId,next.retentionTarget,next.retentionDeadline]);if(passedSelections.size()>3){passedSelections=passedSelections.slice(passedSelections.size()-3,passedSelections.size());}}
+            if(!selectionPassed(next)){passedSelections.add([next.launchId,selectionTarget(next),next.retentionDeadline]);if(passedSelections.size()>3){passedSelections=passedSelections.slice(passedSelections.size()-3,passedSelections.size());}}
             changed=true;next=null;if(upcoming.size()>0){next=upcoming[0];upcoming=upcoming.slice(1,upcoming.size());}
         }
         if(!changed){return;}

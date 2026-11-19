@@ -38,6 +38,10 @@ import Toybox.Test;
   state=0;
   if(millis-started>=22000){coverage["timeout"]+=1;terminal(0,0);return;}
   if(code!=200){coverage["network_fail"]+=1;terminal(0,0);return;}
+  // The independent input model uses one epoch/instance and an immutable
+  // deterministic payload for each generation. Older content is rejected;
+  // identical replay is a successful read without a second slot/pointer.
+  if(disk!=0&&generation<=disk){if(generation==disk&&fault!=4){succeeded=true;}terminal(0,0);return;}
   if(fault==1){coverage["slot_fail"]+=1;terminal(1,generation);return;}
   slots+=1;if(fault==2){coverage["pointer_fail"]+=1;terminal(1,generation);return;}
   pointers+=1;disk=generation;coverage["commit"]+=1;

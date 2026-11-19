@@ -1,0 +1,178 @@
+------------------------------------------------------------------------------
+Executing test countdownAffectedBatch...
+DEBUG (13:19): captured coarse retention exact boundary + offline reopen + exhausted queue
+DEBUG (13:19): first durable=101
+DEBUG (13:19): reopened durable=101
+DEBUG (13:19): service 101->99 stale->tied-other->102, pointer failure, newer instance, late callback and reopen
+DEBUG (13:19): null epoch bootstrap accepts first real source; no invented epoch
+DEBUG (13:19): identical replay succeeds without writes or age change; same revision conflict fails and retries
+DEBUG (13:19): legacy replay and newer transition read old slot; stamped newer no slot read; replay reads once
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+DEBUG (13:19): COUNTDOWN_GENERATED seeds=16 events=384 per_event_assertions=1152 event_counts_advance_hide_show_sleep_wake_reopen=[93, 54, 75, 60, 57, 45] logical_time=true
+DEBUG (13:19): newer terminal suppresses cached future; omission negative control reselects it
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+DEBUG (13:19): actual view ACTIVE/LOW callback and frame intent; fake drawing port, not pixel evidence
+DEBUG (13:19): GENERATED_STORAGEOWNERS seeds=64 events=2376 after_each=true end=true
+DEBUG (13:19): GENERATED_SERVICE_FAILURE seeds=16 events=1209 fake_ports=true after_each=true end=true
+DEBUG (13:19): GENERATED_WAKE seeds=32 events=1270 fake_os=true after_each=true end=true
+DEBUG (13:19): GENERATED_FOREGROUNDDELIVERY seeds=32 events=1494 after_each=true end=true
+DEBUG (13:19): GENERATED_CACHEMAPOWNERS seeds=64 events=2696 after_each=true end=true
+DEBUG (13:19): COUNTDOWN_AFFECTED six_directed_or_generated plus_storage_service_wake_foreground_cache=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+countdownAffectedBatch              PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

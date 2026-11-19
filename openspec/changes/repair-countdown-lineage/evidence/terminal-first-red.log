@@ -1,0 +1,15 @@
+test_recent_cancellation_supersedes_cached_later_target_after_old_net (tests.test_countdown_lineage.CountdownLineage.test_recent_cancellation_supersedes_cached_later_target_after_old_net) ... ERROR
+
+======================================================================
+ERROR: test_recent_cancellation_supersedes_cached_later_target_after_old_net (tests.test_countdown_lineage.CountdownLineage.test_recent_cancellation_supersedes_cached_later_target_after_old_net)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-countdown-lineage-20261119/tests/test_countdown_lineage.py", line 39, in test_recent_cancellation_supersedes_cached_later_target_after_old_net
+    self.assertEqual(terminal_updates(state,NET+3600)[0]['terminal']['launch_id'],'ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60')
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)
