@@ -1,3 +1,5 @@
-# Progress: author verification complete
+# Progress — software peer GREEN, delivery open
 
-Base `2c99e48f0968ec0a3497426c346a3e705c5eb934`; deployed 0.2.12 source/tag `c4de8e6ad6c4081e89eebf161e11cb3e7ad85b86`. Candidate 0.2.13 / NativeID `510fab8f`. The publisher-to-watch owner inventory, retained checkpoint chronology, first REDs, corrected focused host and native observations and explicit external gaps are in `OWNERS.md`, `INITIAL.md` and `AUTHOR.md`. The 24-hour terminal compaction limit is not hidden. Independent peer review and release are open; no external publisher state was changed in this task.
+Final reviewed source d964ff4501a81e344581705afd8b3ddff1387808,0.2.13/93adb52f. The same independent peer repaired the wrapped-terminal packet→foreground gap and the real public generation102 durable reopen failure, preserving their first RED and targeted GREEN outputs. Actual clean combined peer/source/five-primary gate PASS. See PEER.md/json and tasks.md. No publisher deployment, release publication or physical observation was performed by peer.
+
+Author handoff47c02edc81db6bdaf9b2bc3302e5eda8593c3a8e was0.2.13/510fab8f. Its earlier host/native/language results remain at their recorded boundaries. Native source changes by peer are confined to terminal packet projection and generated version identity. Broad PBT/font/SDK proofs were reused where their semantic inputs remain applicable.

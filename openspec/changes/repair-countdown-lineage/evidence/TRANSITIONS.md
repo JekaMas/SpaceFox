@@ -3,7 +3,8 @@
 | Event | Guard | Effect / authority |
 | --- | --- | --- |
 | Accepted response | Newer validation epoch; for equal epoch the same instance advances generation | Background snapshot owner writes inactive slot then pointer; accepted facts retain precision and source age. |
-| Stale/duplicate/tied foreign instance response | Publisher order does not advance | No slot or pointer write; request remains unsuccessful and the existing connected retry policy applies. |
+| Stale/conflicting/tied foreign instance response | Publisher order does not advance, or equal revision facts differ | No slot or pointer write; request remains unsuccessful and the existing connected retry policy applies. |
+| Exact immutable replay | Same instance, epoch and generation with all normalized facts equal | Successful hourly request without slot/pointer write or source-age change. |
 | Slot/pointer failure | Previous complete pointer exists | Old durable snapshot remains readable; complete RAM response follows the existing bounded IPC path. |
 | Clock frame before presentation deadline | Accepted source has an exact target or announced NET | ACTIVE seconds and LOW minutes use that same UTC value; no inference of actual launch. |
 | Clock frame at/after deadline | Exact/minute or announced NET | Selection owner consumes eligible cached successor, or clears numeric schedule when exhausted. No provider request/storage write occurs at the transition. |

@@ -14,3 +14,11 @@ The watch SHALL stop presenting an expired nominal launch time as a current coun
 #### Scenario: Stale and conflicting responses
 - **WHEN** a response is older than the complete accepted snapshot, or differs while claiming the same immutable publisher generation
 - **THEN** it SHALL NOT replace that snapshot or advance its source freshness
+
+#### Scenario: Wrapped terminal reaches cached queue
+- **WHEN** a newer explicit terminal arrives in the schema-1 wrapper and is reopened through the production application
+- **THEN** packet projection supplies its source facts to the foreground queue owner and suppresses the older cached future identity
+
+#### Scenario: Accepted artifact retains earlier projection
+- **WHEN** an immutable accepted current-format artifact omitted a terminal under the former elapsed-timed retention condition
+- **THEN** its exact bytes can reopen with source/integrity checks retained, while newly prepared artifacts must include the complete current terminal projection

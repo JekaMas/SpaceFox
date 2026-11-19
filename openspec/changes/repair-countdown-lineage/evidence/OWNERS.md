@@ -17,3 +17,5 @@
 | `tools/spacefox/visual_bridge.py`, `native_profile.py`, `native_motion.py`; `watchface/source/NativeSfr.mc`, `SceneLifecycle.mc` | Build/admit source-bound rocket/site identities and optional visual jobs. | Read identity bindings; art completion does not own the UTC target, and scene replacement invalidates old art. |
 
 The photo establishes the user's physical observation, not the specific stored generation, timezone setting, current watch UTC or phone delivery. The captured publisher snapshots and controlled SDK runs are separate evidence.
+
+Peer corrections use the existing owners. NativeTrustedPacket projects wrapped terminal facts once before foreground saved-queue merge. Publisher.validate_snapshot_artifact admits exact former expired-timed omissions for accepted readback and requires complete current terminal projection for new preparation. Exact public generation102 bytes and the actual current producer candidate form the new host regression. See PEER.md for source and observations.

@@ -1,1 +1,48 @@
-{"requirements":[{"id":"countdown-lineage","properties":["authorized-target","expiry-successor","offline-retention","source-and-clock"]}],"properties":{"authorized-target":{"positive":"new accepted schedule may change target","negative":"lifecycle/art/stale callbacks cannot"},"expiry-successor":{"positive":"valid successor advances at retention deadline","negative":"expired lone target cannot remain as indefinite T+"},"offline-retention":{"positive":"last complete durable snapshot reopens","negative":"partial writes and old callbacks do not replace accepted facts"},"source-and-clock":{"positive":"independent UTC countdown tracks accepted target","negative":"NET and launch success are not invented"}}}
+{
+  "requirements": [
+    {
+      "id": "countdown-lineage",
+      "properties": [
+        "authorized-target",
+        "expiry-successor",
+        "offline-retention",
+        "source-and-clock"
+      ]
+    }
+  ],
+  "properties": {
+    "authorized-target": {
+      "positive": "new accepted schedule may change target",
+      "negative": "lifecycle/art/stale callbacks cannot"
+    },
+    "expiry-successor": {
+      "positive": "valid successor advances at retention deadline",
+      "negative": "expired lone target cannot remain as indefinite T+"
+    },
+    "offline-retention": {
+      "positive": "last complete durable snapshot reopens",
+      "negative": "partial writes and old callbacks do not replace accepted facts"
+    },
+    "source-and-clock": {
+      "positive": "independent UTC countdown tracks accepted target",
+      "negative": "NET and launch success are not invented"
+    }
+  },
+  "independent_review": {
+    "status": "GREEN",
+    "source_revision": "d964ff4501a81e344581705afd8b3ddff1387808",
+    "version": "0.2.13",
+    "native_id": "93adb52f",
+    "report": "evidence/PEER.md",
+    "receipt": "evidence/PEER.json",
+    "gate": "evidence/peer-current-gate.log",
+    "new_controls": [
+      "evidence/peer-terminal-wrapped-red.log",
+      "evidence/peer-terminal-green.log",
+      "evidence/peer-public102-first-red.log",
+      "evidence/peer-public102-green.log"
+    ],
+    "retained": "Original author observations retain their recorded source and scope. No repeated long PBT/font/native campaign.",
+    "delivery": "pending root acceptance and author delivery"
+  }
+}
