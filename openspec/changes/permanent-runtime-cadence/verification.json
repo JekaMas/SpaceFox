@@ -1,1 +1,46 @@
-{"scope":"FR165/M foreground cadence and permanent incident suite","properties":[{"id":"runtime-suite","checks":["exact-selector parser negative controls","pinned SDK actual native selected suite"]},{"id":"lifecycle-cadence","checks":["actual view callbacks with independent logical event model","menu/first wake/hidden/OFF/LOW frame and provider counters"]},{"id":"incident-regressions","checks":["current health, countdown, activity-menu and STM selectors","FR165M real watchface resource boundary"]},{"id":"release-admission","checks":["directly affected current source and five-primary admission","independent peer"]}]}
+{
+  "scope": "FR165/M foreground cadence and permanent incident suite",
+  "properties": [
+    {
+      "id": "runtime-suite",
+      "checks": [
+        "exact-selector parser negative controls",
+        "pinned SDK actual native selected suite"
+      ]
+    },
+    {
+      "id": "lifecycle-cadence",
+      "checks": [
+        "actual view callbacks with independent logical event model",
+        "menu/first wake/hidden/OFF/LOW frame and provider counters"
+      ]
+    },
+    {
+      "id": "incident-regressions",
+      "checks": [
+        "current health, countdown, activity-menu and STM selectors",
+        "FR165M real watchface resource boundary"
+      ]
+    },
+    {
+      "id": "release-admission",
+      "checks": [
+        "directly affected current source and five-primary admission",
+        "independent peer"
+      ]
+    }
+  ],
+  "independentReview": {
+    "status": "GREEN",
+    "source_revision": "cd3612c9bba3dba1794fa45ba6da74847fdfbb6c",
+    "version": "0.2.16",
+    "native_id": "7fac46b5",
+    "receipt": "evidence/PEER.json",
+    "report": "evidence/PEER.md",
+    "actualGate": "evidence/peer-current-gate.log",
+    "rawReconciliation": "evidence/peer-raw-reconciliation.log",
+    "newNativeRuns": 0,
+    "physicalObserved": false,
+    "batteryMeasured": false
+  }
+}
