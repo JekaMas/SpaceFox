@@ -1,0 +1,38 @@
+test_public_generation102_reopens (tests.test_countdown_lineage.CountdownLineage.test_public_generation102_reopens) ... ERROR
+
+======================================================================
+ERROR: test_public_generation102_reopens (tests.test_countdown_lineage.CountdownLineage.test_public_generation102_reopens)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-countdown-lineage-20261119/tools/spacefox/cloud.py", line 374, in validate_snapshot
+    if validate_snapshot_artifact(snapshot, files, refresh_policy=refresh_policy, instance=instance, selection_validated_utc=selection_validated_utc,
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                  require_selection_epoch=require_selection_epoch) is None:
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-countdown-lineage-20261119/tools/spacefox/publisher.py", line 234, in validate_snapshot_artifact
+    raise StateError('artifact upcoming facts disagree with durable schedule')
+tools.spacefox.publisher.StateError: artifact upcoming facts disagree with durable schedule
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-countdown-lineage-20261119/tests/test_countdown_lineage.py", line 28, in test_public_generation102_reopens
+    snapshot,files=snapshot_files(PublicStore(),'captured-public-state',102)
+                   ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-countdown-lineage-20261119/tools/spacefox/cloud.py", line 365, in snapshot_files
+    validate_snapshot(snapshot, files, refresh_policy=doc['refresh_policy'], instance=doc['instance_id'],
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                      selection_validated_utc=doc.get('selection_validated_utc'),
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                      require_selection_epoch=snapshot is doc['pending'])
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-countdown-lineage-20261119/tools/spacefox/cloud.py", line 378, in validate_snapshot
+    raise CloudError('invalid complete durable product closure') from error
+tools.spacefox.cloud.CloudError: invalid complete durable product closure
+
+----------------------------------------------------------------------
+Ran 1 test in 0.539s
+
+FAILED (errors=1)
+
+exit=1

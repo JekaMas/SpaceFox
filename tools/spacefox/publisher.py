@@ -198,7 +198,7 @@ def _product_files(files, profile):
 
 
 def validate_snapshot_artifact(snapshot, files, *, refresh_policy, instance=None, selection_validated_utc=None,
-                               require_selection_epoch=False):
+                               require_selection_epoch=False, require_current_projection=False):
     """Admit current-format product snapshots on write and reopen."""
     feed = _product_files(files, snapshot['artifact_profile'])
     if require_selection_epoch and feed['publisher']['selectionValidatedUtc'] != selection_validated_utc:
@@ -227,10 +227,27 @@ def validate_snapshot_artifact(snapshot, files, *, refresh_policy, instance=None
             or feed['selection']['acceptedRecords'] != len(source.entries)):
         raise StateError('artifact selected facts disagree with durable schedule')
     if 'upcoming' in feed:
-        from .wire import upcoming_entries, terminal_updates, project_launch
+        from .wire import upcoming_entries, terminal_updates, project_launch, identity_text
         expected_upcoming = [project_launch(entry) for entry in upcoming_entries(source, source.evaluated_at_utc, policy)]
+        actual_terminal = [row for row in feed['upcoming'] if 'terminal' in row]
+        expected_terminal = terminal_updates(source, source.evaluated_at_utc)
+        if not require_current_projection:
+            # Accepted current-format bytes may predate terminal retention in
+            # the watch projection. Only formerly elapsed, timed tombstones
+            # could be omitted. Every present fact still matches its source.
+            from .schedule import retention_deadline
+            optional = set()
+            for entry in source.entries:
+                record = entry.record
+                target = record.timing.countdown_utc
+                if target is not None and source.evaluated_at_utc >= retention_deadline(target, record.ascent_end):
+                    optional.add(identity_text(record.launch_id))
+            present = {row['terminal']['launch_id'] for row in actual_terminal}
+            expected_terminal = [row for row in expected_terminal
+                                 if row['terminal']['launch_id'] not in optional
+                                 or row['terminal']['launch_id'] in present]
         if ([{k:v for k,v in row.items() if k not in ('sitePosition','siteSource')} for row in feed['upcoming'] if 'terminal' not in row] != expected_upcoming or
-                [row for row in feed['upcoming'] if 'terminal' in row] != terminal_updates(source, source.evaluated_at_utc)):
+                actual_terminal != expected_terminal):
             raise StateError('artifact upcoming facts disagree with durable schedule')
     return feed
 
@@ -1298,7 +1315,8 @@ class Publisher:
         candidate['artifact_revision'] = _sha(_canonical(candidate))
         _snapshot(candidate)
         validate_snapshot_artifact(candidate, files, refresh_policy=doc['refresh_policy'], instance=doc['instance_id'],
-                                   selection_validated_utc=doc.get('selection_validated_utc'), require_selection_epoch=True)
+                                   selection_validated_utc=doc.get('selection_validated_utc'), require_selection_epoch=True,
+                                   require_current_projection=True)
         # Do not durably strand a new pending generation that cannot be exported
         # together with the exact protected active closure.
         from .cloud import preflight_delivery

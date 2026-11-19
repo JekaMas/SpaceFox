@@ -105,7 +105,13 @@ class NativeTrustedPacket extends NativeFeed {
         if(!(value instanceof Array)||value.size()!=7||value[0]!=1||!(value[1] instanceof Dictionary)||!(value[2] instanceof Dictionary)||!(value[4] instanceof Array)||!(value[5] instanceof Array)){throw new Lang.InvalidValueException("Invalid snapshot");}
         var policy=value[2];presentation=scene(value[3],policy);upcomingScenes=[];
         for(var i=0;i<value[4].size();i+=1){upcomingScenes.add(scene(value[4][i],policy));}
-        terminalUpdates=value[5];bridge=value[6];document={"publisher"=>value[1],"refreshPolicy"=>policy,"launch"=>presentation==null?null:{"launch_id"=>presentation.launchId}};
+        // Wire rows retain their terminal wrapper. The foreground queue owner
+        // consumes the terminal facts themselves, projected once at admission.
+        terminalUpdates=[];
+        for(var t=0;t<value[5].size();t+=1){
+            terminalUpdates.add(value[5][t]["terminal"]);
+        }
+        bridge=value[6];document={"publisher"=>value[1],"refreshPolicy"=>policy,"launch"=>presentation==null?null:{"launch_id"=>presentation.launchId}};
         validation=presentation==null?null:presentation.sourceValidated;stale=presentation==null?false:presentation.stale;rescheduled=presentation==null?false:presentation.rescheduled;
     }
     function refreshTarget(){return presentation==null?null:presentation.retentionTarget;}

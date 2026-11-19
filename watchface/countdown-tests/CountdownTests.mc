@@ -115,14 +115,29 @@ import Toybox.WatchUi;
  logger.debug("COUNTDOWN_GENERATED seeds=16 events="+events+" per_event_assertions="+checks+" event_counts_advance_hide_show_sleep_wake_reopen="+counts+" logical_time=true");return true;
 }
 
+(:test,:typecheck(false)) class CountdownForegroundApp extends PbtForegroundApp {
+ function initialize(store){PbtForegroundApp.initialize(store);}
+ function createView() as SpaceFoxView {
+  var clock=new CountdownClock();clock.now=now;
+  var result=new CountdownEventView(clock);result.fakeMode=osMode;return result;
+ }
+}
 (:test,:typecheck(false)) function terminalSuppressesCachedFuture(logger){
- var source=WatchUi.loadResource(Rez.JsonData.CountdownCaptured)["payload"];var clock=new CountdownClock();clock.now=1795045800l;
- var old=new SceneContext({"id"=>"ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60","target"=>1795049000l,"precision"=>"exact","retentionDeadline"=>1795049900l,"orderingUtc"=>1795049000l,"sourceValidated"=>1794970678l});
- var signal={"launch_id"=>old.launchId,"source_validated_utc"=>1795045800l};
- var view=new SpaceFoxView(clock,new ScheduleState(null,"empty"));view.setPacket(new NativeTrustedPacket(source));view.mergeSaved([old],clock.now,[signal]);
- Test.assertEqual(view.context.launchId,"ll2:launch:76617033-4dc0-4448-b50c-e5b0d5a18539");
- var control=new SpaceFoxView(clock,new ScheduleState(null,"empty"));control.setPacket(new NativeTrustedPacket(source));control.mergeSaved([old],clock.now,[]);Test.assertEqual(control.context.launchId,old.launchId);
- logger.debug("newer terminal suppresses cached future; omission negative control reselects it");return true;
+ for(var includeTerminal=0;includeTerminal<2;includeTerminal+=1){
+  var source=WatchUi.loadResource(Rez.JsonData.CountdownCaptured)["payload"];
+  var base="https://pbt.invalid";var store=new PbtMemoryStore();
+  var old=new SceneContext({"id"=>"ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60","target"=>1795049000l,"precision"=>"exact","retentionDeadline"=>1795049900l,"orderingUtc"=>1795049000l,"sourceValidated"=>1794970678l});
+  new NativeUpcomingCache(store,base,source[1]["instance"]).save([old]);
+  source[5]=includeTerminal==1?[{"terminal"=>{"launch_id"=>old.launchId,"status"=>"cancelled","source_validated_utc"=>1795045800l,"source_updated_utc"=>1795045799l,"source_updated_subsecond"=>123457}}]:[];
+  Test.assert(new NativeTrustedStore(store,base).save(source));
+  // Ordinary application reopen loads the slot and projects the packet before
+  // NativeForegroundApp.display merges the independently persisted queue.
+  var app=new CountdownForegroundApp(store);app.now=1795045800l;app.getInitialView();app.performReload();
+  var expected=includeTerminal==1?"ll2:launch:76617033-4dc0-4448-b50c-e5b0d5a18539":old.launchId;
+  Test.assertMessage(app.view.context!=null&&app.view.context.launchId.equals(expected),"wrapped terminal through durable reopen and foreground merge include="+includeTerminal);
+  app.view.onHide();
+ }
+ logger.debug("wrapped terminal slot/reopen/packet/foreground suppresses cached future; omission preserves it");return true;
 }
 
 (:test,:typecheck(false)) function emptyEpochThenFirstSource(logger){
