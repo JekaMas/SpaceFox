@@ -195,7 +195,7 @@ def validate_api_policy(root: Path, lock: dict) -> None:
                                    unsupported["symbol"] + " on FR165 API" + lock["profile_api"])
 
 
-def build(output: Path, *, root: Path = ROOT, tests: bool = False, test_scope: str = "clock", preview: Path | None = None) -> dict:
+def build(output: Path, *, root: Path = ROOT, tests: bool = False, test_scope: str = "clock", preview: Path | None = None, profile: str | None = None) -> dict:
     root = root.resolve()
     try:
         from tools.generate_native_version import validate as validate_identity
@@ -218,6 +218,10 @@ def build(output: Path, *, root: Path = ROOT, tests: bool = False, test_scope: s
         app.set("entry", "ScenePreviewApp")
         if json.loads(preview.read_text()).get("runtimeLifecycle", False):
             app.set("entry", "LifecyclePreviewApp")
+    if tests and test_scope == "runtime":
+        app.set("entry", "PbtApp")
+    if profile is not None and profile not in ("fr165", "fr165m"):
+        raise BuildBlocked("unsupported runtime regression profile")
     source_files = sorted(p for p in (root / "watchface").rglob("*") if p.is_file())
     sources = {str(p.relative_to(root)): digest(p) for p in source_files}
     # Temporary generated manifest has a separate UUID. Original source is compiled
@@ -240,14 +244,19 @@ def build(output: Path, *, root: Path = ROOT, tests: bool = False, test_scope: s
             source_paths.extend([root / "watchface/preview", generated])
             if values.get("runtimeLifecycle", False):
                 source_paths.append(root / "watchface/lifecycle-preview")
+        resources = [root / "watchface/resources"]
         if tests:
-            source_paths.append(root / ("watchface/scene-tests" if test_scope == "scene" else "watchface/transport-tests" if test_scope == "transport" else "watchface/tests"))
+            if test_scope == "runtime":
+                source_paths.extend(root / ("watchface/" + name) for name in ("stm-property-tests", "activity-menu-tests", "health-incident-tests", "countdown-tests", "physical-six-tests"))
+                resources.extend(root / ("watchface/" + name + "/resources") for name in ("activity-menu-tests", "countdown-tests"))
+            else:
+                source_paths.append(root / ("watchface/scene-tests" if test_scope == "scene" else "watchface/transport-tests" if test_scope == "transport" else "watchface/tests"))
         jungle.write_text("project.manifest = " + str(manifest) + "\nbase.sourcePath = " +
                           ";".join(str(p) for p in source_paths) + "\nbase.resourcePath = " +
-                          str(root / "watchface/resources") + "\nbase.lang.rus = " + str(root / "watchface/resources-rus") + "\n" + "".join("base.lang." + ({"chs":"zhs","cht":"zht"}.get(r["garmin"],r["garmin"])) + " = " + str(root/"watchface"/("resources-"+{"chs":"zhs","cht":"zht"}.get(r["garmin"],r["garmin"])))+"\n" for r in json.loads((root/"locales/catalog.json").read_text())["locales"] if r["id"] not in ["en","ru"]))
+                          ";".join(str(p) for p in resources) + "\nbase.lang.rus = " + str(root / "watchface/resources-rus") + "\n" + "".join("base.lang." + ({"chs":"zhs","cht":"zht"}.get(r["garmin"],r["garmin"])) + " = " + str(root/"watchface"/("resources-"+{"chs":"zhs","cht":"zht"}.get(r["garmin"],r["garmin"])))+"\n" for r in json.loads((root/"locales/catalog.json").read_text())["locales"] if r["id"] not in ["en","ru"]))
         prg = output / ("SpaceFox-tests.prg" if tests else "SpaceFox-development.prg")
         argv = [str(context["java"]), "-Dfile.encoding=UTF-8", "-jar", str(context["compiler"]), "-f", str(jungle),
-                "-d", lock["product"], "-o", str(prg), "-y", str(context["key"]), *lock["compiler_options"]]
+                "-d", profile or lock["product"], "-o", str(prg), "-y", str(context["key"]), *lock["compiler_options"]]
         if tests:
             argv.append("--unit-test")
         result = run(argv, temp)
@@ -260,9 +269,10 @@ def build(output: Path, *, root: Path = ROOT, tests: bool = False, test_scope: s
                    "exit_code": result.returncode, "command": argv, "source_revision": revision.stdout.strip(),
                    "source_dirty": bool(state.stdout.strip()), "source_sha256": sources,
                    "sdk_version": lock["sdk_version"], "compiler_sha256": digest(context["compiler"]),
-                   "java_version": context["java_version"], "java_file_encoding": "UTF-8", "permissions": lock.get("permissions", []), "product": lock["product"],
-                   "profile_api": lock["profile_api"], "profile_sha256": digest(context["profile"]),
-                   "simulator_profile_sha256": digest(context["simulator_profile"]),
+                   "java_version": context["java_version"], "java_file_encoding": "UTF-8", "permissions": lock.get("permissions", []), "product": profile or lock["product"],
+                   "profile_api": context["profiles"][profile or lock["product"]]["partNumbers"][0]["connectIQVersion"],
+                   "profile_sha256": lock["profiles"][profile or lock["product"]]["files_sha256"]["compiler.json"],
+                   "simulator_profile_sha256": lock["profiles"][profile or lock["product"]]["files_sha256"]["simulator.json"],
                    "sdk_input_sha256": lock["sdk_input_sha256"],
                    "profile_input_sha256": lock["profile_input_sha256"],
                    "application_type": "watchface", "application_uuid": identity,
@@ -278,7 +288,7 @@ def build(output: Path, *, root: Path = ROOT, tests: bool = False, test_scope: s
                    "build_tool_sha256": digest(Path(__file__)),
                    "debug_sha256": digest(prg.with_suffix(".prg.debug.xml")) if prg.with_suffix(".prg.debug.xml").is_file() else None,
                    "key_boundary": "External disposable development/test key, not official release identity",
-                   "proof_boundary": "SDK FR165-profile compile only; no physical firmware/memory/battery/language/release qualification"}
+                   "proof_boundary": "SDK selected-profile compile only; no physical firmware/memory/battery/language/release qualification"}
         (output / "build.json").write_text(json.dumps(receipt, indent=2) + "\n")
         if result.returncode:
             raise BuildBlocked("actual Monkey C compilation failed; see " + str(output / "compile.log"))

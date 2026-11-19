@@ -1,0 +1,27 @@
+------------------------------------------------------------------------------
+Executing test generatedViewLifecycle...
+STM_FAIL owner=view seed=1 index=4 trace=[[4, 0], [0, 0], [4, 0], [3, 0], [6, 0]] expected=[2, false, true, null, 1, 0, 1, 1, 0, 1, 0, 0] actual=[true, 1, null, 1, 0, 1, 2, 0, 1, 0, 0]
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - ownerCheck() at /source/watchface/stm-property-tests/GeneratedOwners.mc:16 0x100073cd 
+  - verify() at /source/watchface/stm-property-tests/GeneratedOwners.mc:377 0x1000b410 
+  - step() at /source/watchface/stm-property-tests/GeneratedOwners.mc:372 0x1000baff 
+  - runGeneratedViewLifecycle() at /source/watchface/stm-property-tests/GeneratedOwners.mc:384 0x10005e0d 
+  - generatedViewLifecycle() at /source/watchface/stm-property-tests/GeneratedOwners.mc:389 0x100075e4 
+  - evaluate_test_entries_30_to_60() at /task/gen/006-B4433-00/source/UnitTests.mcgen:206 0x10010f49 
+  - runTest() at /task/gen/006-B4433-00/source/UnitTests.mcgen:308 0x10011aa7 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+generatedViewLifecycle              ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)
+
+STDERR

@@ -6,17 +6,11 @@ import Toybox.Lang;
  function refreshFitnessWork() as Void {SpaceFoxView.refreshFitnessWork();}
 }
 
-// One clock timer owns both the visible one-second tick and the minute-gated
-// health refresh during optional art work. It must not discard last values.
+// OS frames authorize bounded refresh without a periodic health timer.
 (:test,:typecheck(false)) function fallbackFitnessTimerOwnership(logger){
- var v=new PbtFallbackFitnessView();v.onShow();v.refreshFitness();
- Test.assert(v.fitnessTimer!=null);Test.assertEqual(v.lowSnapshots,1);
- v.startFallbackClock();Test.assert(v.fitnessTimer==null);Test.assert(v.fallbackClockTimer!=null);
- v.fallbackClockTick();Test.assertEqual(v.lowSnapshots,1);Test.assert(v.fitnessTimer==null);
- v.clock.now+=60;v.fallbackClockTick();Test.assertEqual(v.lowSnapshots,2);Test.assert(v.fitnessTimer==null);
- v.stopFallbackClock();Test.assert(v.fallbackClockTimer==null);Test.assert(v.fitnessTimer!=null);
- Test.assertEqual(v.lowSnapshots,2);v.onHide();pbtCheckViewReleased(v,0,0,[]);
- logger.debug("FALLBACK_FITNESS one_clock=true minute_refresh=true normal_timer_restored=true");return true;
+ var v=new PbtFallbackFitnessView();v.onShow();v.refreshFitness();Test.assertEqual(v.lowSnapshots,1);Test.assertEqual(v.timers.size(),0);
+ v.clock.now+=59;v.refreshFitness();Test.assertEqual(v.lowSnapshots,1);v.clock.now+=1;v.refreshFitness();Test.assertEqual(v.lowSnapshots,2);v.onHide();pbtCheckViewReleased(v,0,0,[]);
+ logger.debug("FOREGROUND_CADENCE os=true minute_refresh=true periodic_timers=0");return true;
 }
 
 // Model the observed fr165 three-active-timer budget, including a one-shot
@@ -43,18 +37,13 @@ import Toybox.Lang;
  var payload=pbtSnapshot(85,1795042260l);payload[6]={"selection"=>{"sha256"=>"selection"},"transfer"=>{"sha256"=>"transfer"},"ids"=>[],"site"=>null};
  v.setPacket(new NativeTrustedPacket(payload));v.setAssetCache(new PbtArtSource(new PbtMemoryStore()));
  v.prepareVisual();v.sfrStep();v.startSfrTimer();
- Test.assert(v.sfrTimer!=null&&v.fallbackClockTimer!=null);Test.assertEqual(budget.violations,0);
- v.queueResumeAfterFrame();Test.assertEqual(budget.active,3);Test.assertEqual(budget.violations,0);
- // The one-shot remains budgeted while its callback starts health work.
+ Test.assert(v.sfrTimer!=null);Test.assertEqual(budget.violations,0);
+ v.queueResumeAfterFrame();Test.assertEqual(budget.active,2);Test.assertEqual(budget.violations,0);
  var resume=budget.timers[budget.timers.size()-1] as PbtBudgetTimer;Test.assert(resume.fire());
- Test.assertEqual(budget.violations,0);Test.assert(v.fitnessTimer==null);Test.assertEqual(v.lowSnapshots,1);
- var tick=v.fallbackClockTimer as PbtBudgetTimer;Test.assert(tick.fire());Test.assertEqual(v.lowSnapshots,1);
- v.clock.now+=60;Test.assert(tick.fire());Test.assertEqual(v.lowSnapshots,2);Test.assertEqual(budget.violations,0);
- v.cancelSfrBuild();v.stopFallbackClock();Test.assert(v.fitnessTimer!=null);Test.assertEqual(budget.violations,0);
- // Re-admitting the same source after cancellation hands the cadence back to
- // fallback and starts a fresh SFR job without exceeding the same budget.
- v.prepareVisual();v.sfrStep();v.startSfrTimer();
- Test.assert(v.sfrTimer!=null&&v.fallbackClockTimer!=null&&v.fitnessTimer==null);
+ Test.assertEqual(budget.violations,0);Test.assertEqual(v.lowSnapshots,1);
+ v.refreshFitness();Test.assertEqual(v.lowSnapshots,1);v.clock.now+=60;v.refreshFitness();Test.assertEqual(v.lowSnapshots,2);
+ v.cancelSfrBuild();Test.assertEqual(budget.violations,0);
+ v.prepareVisual();v.sfrStep();v.startSfrTimer();Test.assert(v.sfrTimer!=null);
  Test.assertEqual(v.lowSnapshots,2);Test.assertEqual(budget.violations,0);
  v.onHide();Test.assertEqual(budget.active,0);Test.assertEqual(budget.violations,0);Test.assert(budget.peak<=3);
  logger.debug("FOREGROUND_TIMER_BUDGET peak="+budget.peak+" violations="+budget.violations+" minute_reads="+v.lowSnapshots);return true;
@@ -94,4 +83,23 @@ import Toybox.Lang;
  view.setPacket(new NativeTrustedPacket(later));Test.assert(view.sfrBuild==null);Test.assert(!view.sceneLifecycle.complete(nextToken));
  Test.assert(view.context.modelId.equals("ll2:configuration:17"));Test.assert(view.context.point!=null);
  logger.debug("ART_REVISION old_specific=local old_generic=remote successive_new=eligible stale_jobs=refused facts=retained");return true;
+}
+(:test,:typecheck(false)) function cadenceNoPeriodicTimers(logger){
+ var v=new PbtFallbackFitnessView();v.onShow();v.refreshFitness();Test.assertEqual(v.lowSnapshots,1);
+ Test.assertMessage(v.timers.size()==0,"OS cadence must not allocate a periodic health timer");v.onHide();return true;
+}
+(:test,:typecheck(false)) class PbtScheduledCadenceView extends PbtFallbackFitnessView {
+ function initialize(){clock=new PbtClock();SpaceFoxView.initialize(clock,new ScheduleState(1794900000,"exact"));}
+}
+(:typecheck(false)) function expectedCadenceCountdown(now){var delta=1794900000-now;return "T- "+(delta/3600).format("%02d")+":"+((delta%3600)/60).format("%02d")+":"+(delta%60).format("%02d");}
+// Logical event inputs and expected elapsed-time rule are independent of the SUT.
+(:test,:typecheck(false)) function generatedForegroundCadence(logger){
+ var count=0;var reads=0;var hiddenEvents=0;var wakes=0;
+ for(var seed=1;seed<=16;seed+=1){var v=new PbtScheduledCadenceView();var dc=new PbtGraphics();v.values={"steps"=>717,"energy"=>68,"heart"=>null,"stress"=>0,"battery"=>50};v.onShow();v.onUpdate(dc);Test.assert(v.timers.size()==1);Test.assert((v.timers[0] as PbtTimer).fire());var expected=1;var last=v.clock.now;var trace=[];Test.assertEqual(v.lowSnapshots,expected);var rng=new OwnerRandom(seed);var covered=[0,0,0,0];
+  for(var i=0;i<40;i+=1){var event=i<4?i:rng.draw(4);covered[event]+=1;trace.add([event,v.clock.now]);if(event==0){v.clock.now+=rng.draw(40)+1;}else if(event==1){v.clock.now+=60;}else if(event==2){v.onHide();v.onUpdate(dc);Test.assertEqual(v.lowSnapshots,expected);hiddenEvents+=1;v.onShow();v.onUpdate(dc);var t=v.timers[v.timers.size()-1] as PbtTimer;Test.assert(t.fire());expected+=1;last=v.clock.now;wakes+=1;}else{v.onEnterSleep();v.fakeMode=Toybox.System.DISPLAY_MODE_LOW_POWER;v.onUpdate(dc);v.fakeMode=Toybox.System.DISPLAY_MODE_HIGH_POWER;v.onExitSleep();v.onUpdate(dc);var t=v.timers[v.timers.size()-1] as PbtTimer;Test.assert(t.fire());expected+=1;last=v.clock.now;wakes+=1;}
+   if(event<2){v.onUpdate(dc);if(v.clock.now-last>=60){expected+=1;last=v.clock.now;reads+=1;}}
+   var snapshot=v.snapshotAt(v.clock.now);ownerCheck(snapshot.localTime.equals("08:25")&&snapshot.countdown.equals(expectedCadenceCountdown(v.clock.now))&&v.values["steps"]==717&&v.values["energy"]==68&&v.values["heart"]==null&&v.values["stress"]==0,"foreground-projection",seed,i,trace,expectedCadenceCountdown(v.clock.now),snapshot.countdown);ownerCheck(v.lowSnapshots==expected,"foreground-cadence",seed,i,trace,expected,v.lowSnapshots);count+=1;
+  }for(var k=0;k<covered.size();k+=1){ownerCheck(covered[k]>0,"foreground-cadence-coverage",seed,40,trace,">0",covered[k]);}ownerCheck(v.lowSnapshots==expected,"foreground-cadence-end",seed,40,trace,expected,v.lowSnapshots);v.onHide();pbtCheckViewReleased(v,seed,40,[]);
+ }
+ Test.assert(reads>0&&hiddenEvents>0&&wakes>0);logger.debug("FOREGROUND_CADENCE_GENERATED seeds=16 events="+count+" elapsed_reads="+reads+" hidden="+hiddenEvents+" wakes="+wakes+" after_each=true end=true");return true;
 }

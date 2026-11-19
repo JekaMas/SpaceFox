@@ -46,3 +46,7 @@ No private checkout, private Git object, environment override, installed SDK,
 account, provider fetch or shared-workflow submodule is required by those public
 checks. The complete ready DAG still has external watch/phone/resource/Store
 holds. Do not run it expecting a hardware acceptance verdict.
+
+### Foreground runtime regressions
+
+With the pinned Garmin SDK and an external test-only key configured as described above, start a task-owned simulator and run `python3 -m tools.run_runtime_regressions --output /absolute/private/output`. The runner compiles actual Monkey C for FR165 and FR165 Music and requires every named incident and STM selector on both profiles. It retains raw output and fails on unavailable SDK, timeout, missing tests, incomplete tables or late errors. The hosted inventory check is portable Python only; it is not a native SDK execution.

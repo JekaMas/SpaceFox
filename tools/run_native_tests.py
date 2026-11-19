@@ -79,10 +79,10 @@ def parse_output(raw: str, raw_exit: int, expected: tuple[str, ...] = EXPECTED) 
             "launcher_nonzero_framework_pass": raw_exit == 1 and valid}
 
 
-def observe_program(package: str, output: Path, context: dict, test_filter: str | None = None) -> dict:
+def observe_program(package: str, output: Path, context: dict, test_filter: str | None = None, profile: str = "fr165") -> dict:
     command = [str(context["java"]), "-Dfile.encoding=UTF-8", "-classpath", str(context["compiler"]),
                "com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux", "-f", package,
-               "-d", "fr165", "-s", str(context["sdk"] / "bin/shell"), "-t"]
+               "-d", profile, "-s", str(context["sdk"] / "bin/shell"), "-t"]
     if test_filter:
         command.append(test_filter)
     output.mkdir(parents=True, exist_ok=True)

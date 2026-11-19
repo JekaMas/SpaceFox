@@ -157,7 +157,7 @@ class FieldComplicationApi {
 // persisted if a provider disappears; a failed subscription is polled on minute.
 (:extendedCode, :typecheck(false))
 class SelectedFields {
-    var selected=[];var subscribed=[];var labels={};var text={};var icons={};var states={};var reasons={};var energy as Number or Null=null;var energyStatus="WAITING";var energyReason="no-sample";var heart as Number or Null=null;var heartStatus="WAITING";var heartReason="no-sample";var stress as Number or Null=null;var stressStatus="WAITING";var stressReason="no-sample";var previousRoles=null;var changeCallback=null;var callbackRegistered=false;var firstSubscriptionRead=false;var provider=null;var api=null;var customMask=0;var fittedMask=0;var numericMask=0;var initialSnapshotPending=true;var healthClock=null;var historyQuery=[null,null];var historyCache=[null,null];var historyExpiry=[null,null];
+    var selected=[];var subscribed=[];var labels={};var text={};var icons={};var states={};var reasons={};var energy as Number or Null=null;var energyStatus="WAITING";var energyReason="no-sample";var heart as Number or Null=null;var heartStatus="WAITING";var heartReason="no-sample";var stress as Number or Null=null;var stressStatus="WAITING";var stressReason="no-sample";var previousRoles=null;var changeCallback=null;var callbackRegistered=false;var firstSubscriptionRead=false;var provider=null;var api=null;var customMask=0;var fittedMask=0;var numericMask=0;var healthClock=null;var historyQuery=[null,null];var historyCache=[null,null];var historyExpiry=[null,null];
     function initialize(){}
     function bindClock(clock){healthClock=clock;}
     function savedField(slot){return FieldCatalog.saved(slot);}
@@ -210,14 +210,11 @@ class SelectedFields {
     function healthValue(role as String) as Number or Null {return role.equals("heart")?heart:(role.equals("stress")?stress:energy);}
     function healthState(role as String) as String {return role.equals("heart")?heartStatus:(role.equals("stress")?stressStatus:energyStatus);}
     function healthReason(role as String) as String {return role.equals("heart")?heartReason:(role.equals("stress")?stressReason:energyReason);}
-    // Startup/settings authorize one bounded LOW acquisition. Suspending
-    // subscriptions does not revoke the accepted snapshot or rearm this lease.
-    function claimInitialSnapshot(){if(!initialSnapshotPending){return false;}initialSnapshotPending=false;return true;}
-    function invalidateSnapshot(){clearSnapshot();previousRoles=null;initialSnapshotPending=true;}
+    function invalidateSnapshot(){clearSnapshot();previousRoles=null;}
     function read(locale){if(firstSubscriptionRead){firstSubscriptionRead=false;}else if(active()){ensureSubscriptions();}readSelected(locale,null);}
     function readChanged(locale,id){readSelected(locale,id);}
     function readSelected(locale,onlyId){
-        if(!active()){return;}initialSnapshotPending=false;
+        if(!active()){return;}
         var info=null;var fetched=false;var stats=null;var statsFetched=false;var words=null;
         if(onlyId==null){labels={};text={};icons={};states={};reasons={};clearHealth(18);clearHealth(22);clearHealth(23);fittedMask=0;numericMask=0;}
         else{for(var i=0;i<selected.size();i+=1){var prior=selected[i];if(prior instanceof Complications.Id&&prior.equals(onlyId)){var key="custom"+(i+1);labels.remove(key);text.remove(key);icons.remove(key);states.remove(key);reasons.remove(key);fittedMask&=~(1<<i);numericMask&=~(1<<i);clearHealth(prior.getType());}}}

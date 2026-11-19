@@ -113,12 +113,12 @@ import Toybox.Test;
 (:test,:typecheck(false)) function coldLowAcquiresOneFieldSnapshot(logger){
  var v=new PbtLowMetricView();v.fakeMode=Toybox.System.DISPLAY_MODE_LOW_POWER;v.onShow();v.onUpdate(new PbtGraphics());
  Test.assert(v.displayMode()==v.LOW&&v.values["steps"]==27&&v.values["energy"]==68&&v.values["heart"]==72&&v.values["stress"]==35);
- Test.assert(v.timers.size()==0&&v.fitnessTimer==null&&!v.selectedFields.active());
+ Test.assert(v.timers.size()==0&&!v.selectedFields.active());
  v.onUpdate(new PbtGraphics());v.onUpdate(new PbtGraphics());
  Test.assert(v.fitness.activityCalls==1&&v.fitness.heartCalls==0&&v.fitness.stressCalls==0&&v.selectedFields.fakeApi.gets==3);
  v.fitness.stepsValue=40;v.fakeMode=Toybox.System.DISPLAY_MODE_HIGH_POWER;v.syncDisplayMode(v.fakeMode);v.refreshFitness();
  Test.assert(v.values["steps"]==40&&v.selectedFields.fakeApi.gets==6&&v.fitness.activityCalls==2);v.fakeMode=Toybox.System.DISPLAY_MODE_LOW_POWER;v.onEnterSleep();
- Test.assert(v.values["steps"]==40&&!v.selectedFields.active()&&v.fitnessTimer==null);return true;
+ Test.assert(v.values["steps"]==40&&!v.selectedFields.active());return true;
 }
 (:test,:typecheck(false)) function peerLifetimeControls(logger){
  Test.assert(serviceRetryConsumesVolatileLease(logger));Test.assert(selectedFieldsStoppedReadRetainsSnapshot(logger));Test.assert(coldLowAcquiresOneFieldSnapshot(logger));Test.assert(campaignBudgetExcludesControlGaps(logger));

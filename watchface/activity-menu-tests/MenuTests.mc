@@ -9,15 +9,15 @@ import Toybox.Timer;import Toybox.Graphics;import Toybox.Lang;import Toybox.Syst
  function getTextWidthInPixels(t,f){return t.length()*8;}function getFontHeight(f){return 22;}
  function drawText(x,y,f,t,flags){if(y==109&&t.equals("08:25")&&f==WatchUi.loadResource(Rez.Fonts.Time80)){time=true;}if(t.equals("08:25")&&f==Graphics.FONT_NUMBER_MEDIUM){recoveryClock=true;}if(t.equals("10115")||t.equals("75")||t.equals("60")||t.equals("30")){metricTexts+=1;}}
 }
-(:typecheck(false)) module MenuObserve {var icons=[];var time=false;var values=0;var resources=[];var frames=0;var failMandatory=false;}
+(:typecheck(false)) module MenuObserve {var icons=[];var time=false;var values=0;var resources=[];var frames=0;var failMandatory=false;var countdown=null;}
 (:test,:typecheck(false)) class MenuRenderer extends SceneRenderer {
  function initialize(owner){SceneRenderer.initialize(owner);}
- function active(dc,current,settings,values,fitness,progress){MenuObserve.frames+=1;SceneRenderer.active(dc,current,settings,values,fitness,progress);}
+ function active(dc,current,settings,values,fitness,progress){MenuObserve.frames+=1;MenuObserve.countdown=current.countdown;SceneRenderer.active(dc,current,settings,values,fitness,progress);}
  function load(id){MenuObserve.resources.add(id);return SceneRenderer.load(id);}
  function icon(dc,x,y,role){if(icons.hasKey(role)){MenuObserve.icons.add([role,x,y]);}SceneRenderer.icon(dc,x,y,role);}
  function text(dc,x,y,font,value,color,width,contour){if(y==109&&value.equals("08:25")&&font==fonts["time"]){MenuObserve.time=true;}if(y==240||y==278){MenuObserve.values+=1;}var result=SceneRenderer.text(dc,x,y,font,value,color,width,contour);if(MenuObserve.failMandatory&&y==240){MenuObserve.failMandatory=false;throw new Lang.InvalidValueException("mandatory metric paint fault");}return result;}
 }
-(:typecheck(false)) function menuReset(){MenuObserve.icons=[];MenuObserve.time=false;MenuObserve.values=0;MenuObserve.resources=[];MenuObserve.frames=0;}
+(:typecheck(false)) function menuReset(){MenuObserve.icons=[];MenuObserve.time=false;MenuObserve.values=0;MenuObserve.resources=[];MenuObserve.frames=0;MenuObserve.countdown=null;}
 (:test,:typecheck(false)) class MenuBuild extends NativeSfrBuild {
  function initialize(){result=new NativeSfrRenderer();result.scene={"position"=>null};result.selectionHash="3557175b3da4c08b8cf84d3a57334ce72fa84cbaf410861636e21b41bdb3c226";result.bitmap=WatchUi.loadResource(Rez.Drawables.Metric_steps);}
  function step(){return true;}
@@ -176,4 +176,12 @@ import Toybox.Timer;import Toybox.Graphics;import Toybox.Lang;import Toybox.Syst
 }
 (:test,:typecheck(false)) function menuPeerControls(logger){
  Test.assert(menuMandatoryPaintRecovery(logger));return true;
+}
+
+(:test,:typecheck(false)) class MenuCadenceClock extends WatchClock {var now=1795042100;function utcSeconds(){return now;}function localTimeText(){return "08:25";}function localCalendar(){return [3,17,11];}}
+(:test,:typecheck(false)) class MenuCadenceView extends MenuView {var clock;function initialize(){clock=new MenuCadenceClock();SpaceFoxView.initialize(clock,new ScheduleState(null,"empty"));timers=[];}}
+(:test,:typecheck(false)) function menuCadenceFrames(logger){
+ var raw=WatchUi.loadResource(Rez.JsonData.CountdownCaptured)["payload"];Test.assertEqual(raw[3][20],1795042200);var v=new MenuCadenceView();v.setPacket(new NativeTrustedPacket(raw));v.values={"steps"=>10115,"energy"=>75,"heart"=>60,"stress"=>30};var dc=new MenuDraw();v.onShow();v.onLayout(dc);
+ var expected=["T- 00:01:40","T- 00:01:39","T- 00:01:29"];for(var i=0;i<3;i+=1){if(i==1){v.clock.now+=1;}if(i==2){v.onHide();v.clock.now+=10;v.onShow();v.onLayout(dc);}menuReset();v.onUpdate(dc);Test.assertMessage(MenuObserve.countdown.equals(expected[i]),"UTC countdown at actual ACTIVE paint");Test.assert(MenuObserve.time&&MenuObserve.icons.size()==4&&MenuObserve.values==4);var roles=["steps","energy","heart","stress"];for(var j=0;j<4;j+=1){Test.assert(MenuObserve.icons[j][0].equals(roles[j]));}}
+ v.onHide();logger.debug("MENU_CADENCE actual_renderer=3 frames countdown_and_four_positions=true");return true;
 }

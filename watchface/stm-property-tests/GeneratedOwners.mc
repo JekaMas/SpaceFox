@@ -329,7 +329,7 @@ import Toybox.System;
  function logMode() as Void {modeLogs+=1;}
  function newViewTimer() as Toybox.Timer.Timer {var t=new PbtTimer();timers.add(t);return t;}
  function onLayout(dc as Toybox.Graphics.Dc) as Void {layouts+=1;}
- function refreshFitnessWork() as Void {fitnessCalls+=1;selectedFields.claimInitialSnapshot();}
+ function refreshFitnessWork() as Void {fitnessCalls+=1;}
  function readFitnessSnapshot(now as Number or Long) as Void {lowSnapshots+=1;}
  function drawPendingLow(dc){lowFrames+=1;markLowFramePainted((clock.now/60).toLong());}
  function drawClockFallback(dc){fallbackFrames+=1;}
@@ -349,16 +349,16 @@ import Toybox.System;
 // The view's OS, timer, layout and paint ports are fake before the first event.
 // The event model predicts scheduling/paint permission, not pixels.
 (:test,:typecheck(false)) class ViewTrace {
- var view;var dc;var state=0;var sleeping=false;var high=true;var now=1794818604;var minute=null;var pending=false;var timer=-1;var timers=[];var updates=0;var modeLogs=0;var low=0;var fallback=0;var layouts=0;var fitness=0;var stops=0;var fires=0;var initialSnapshot=true;var lowSnapshots=0;var trace=[];
+ var view;var dc;var state=0;var sleeping=false;var high=true;var now=1794818604;var minute=null;var pending=false;var metricAt=null;var timer=-1;var timers=[];var updates=0;var modeLogs=0;var low=0;var fallback=0;var layouts=0;var fitness=0;var stops=0;var fires=0;var initialSnapshot=true;var lowSnapshots=0;var trace=[];
  var coverage={"show_applied"=>0,"show_no"=>0,"hide_applied"=>0,"hide_no"=>0,"sleep_applied"=>0,"sleep_no"=>0,"wake_applied"=>0,"wake_no"=>0,"hidden_wake_no"=>0,"low_paint"=>0,"same_minute_no"=>0,"hidden_frame_no"=>0,"timer_applied"=>0,"timer_no"=>0,"os_context_change"=>0,"first_wake_without_sleep"=>0,"wake_reconciles_low"=>0};
  function initialize(){view=new PbtView();dc=new PbtGraphics();}
  function stopTimer(){if(timer>=0){timers[timer]=0;timer=-1;stops+=1;}}
- function transition(next){if(state!=0&&state!=next){state=next;minute=null;updates+=1;modeLogs+=1;if(next==1){pending=false;stopTimer();}else{pending=true;}}}
+ function transition(next){if(state!=0&&state!=next){state=next;minute=null;metricAt=null;updates+=1;modeLogs+=1;if(next==1){pending=false;stopTimer();}else{pending=true;}}}
  function sync(){var next=1;if(!sleeping&&high){next=2;}transition(next);}
  function step(e,arg,seed,i){
   trace.add([e,arg]);
   if(e==0){if(state==0){coverage["show_applied"]+=1;state=1;minute=null;sync();if(state==2){pending=true;updates+=1;}}else{coverage["show_no"]+=1;}view.onShow();}
-  else if(e==1){if(state!=0){coverage["hide_applied"]+=1;state=0;minute=null;pending=false;stopTimer();}else{coverage["hide_no"]+=1;}view.onHide();}
+  else if(e==1){if(state!=0){coverage["hide_applied"]+=1;state=0;minute=null;metricAt=null;pending=false;stopTimer();}else{coverage["hide_no"]+=1;}view.onHide();}
   else if(e==2){if(!sleeping){coverage["sleep_applied"]+=1;sleeping=true;sync();}else{coverage["sleep_no"]+=1;}view.onEnterSleep();}
   else if(e==3){var wasSleeping=sleeping;var before=state;sleeping=false;sync();var firstWake=!wasSleeping&&before==1&&high&&state==2;if(firstWake){coverage["first_wake_without_sleep"]+=1;}if(!wasSleeping&&before==2&&!high&&state==1){coverage["wake_reconciles_low"]+=1;}if(wasSleeping||before!=state){coverage["wake_applied"]+=1;}else{coverage["wake_no"]+=1;}if(wasSleeping&&state!=0&&state==before){updates+=1;}else if(wasSleeping&&state==0){coverage["hidden_wake_no"]+=1;}view.onExitSleep();}
   else if(e==4){high=!high;if(high){view.fakeMode=Toybox.System.DISPLAY_MODE_HIGH_POWER;}else{view.fakeMode=Toybox.System.DISPLAY_MODE_LOW_POWER;}coverage["os_context_change"]+=1;}
@@ -366,9 +366,9 @@ import Toybox.System;
   else if(e==6){
    if(state==0){coverage["hidden_frame_no"]+=1;}
    else{sync();if(state==1){var m=(now/60).toLong();if(minute==m){coverage["same_minute_no"]+=1;}else{minute=m;low+=1;coverage["low_paint"]+=1;if(initialSnapshot){initialSnapshot=false;lowSnapshots+=1;minute=null;updates+=1;}}}
-    else{layouts+=1;fallback+=1;if(pending&&timer<0){pending=false;timer=timers.size();timers.add(1);}}}
+    else{if(!pending&&timer<0&&(metricAt==null||now<metricAt||now-metricAt>=60)){fitness+=1;metricAt=now;initialSnapshot=false;}layouts+=1;fallback+=1;if(pending&&timer<0){pending=false;timer=timers.size();timers.add(1);}}}
    view.onUpdate(dc);
-  }else{var ix=0;if(timers.size()>0){ix=arg%timers.size();}var allowed=timers.size()>0&&timers[ix]==1;if(allowed){coverage["timer_applied"]+=1;timers[ix]=0;timer=-1;fires+=1;if(state==2&&high){fitness+=2;initialSnapshot=false;}}else if(timers.size()>0){coverage["timer_no"]+=1;}else{PbtMetrics.skipped+=1;}var ran=false;if(view.timers.size()>0){ran=view.timers[ix].fire();}ownerCheck(ran==allowed,"view-timer",seed,i,trace,allowed,ran);}
+  }else{var ix=0;if(timers.size()>0){ix=arg%timers.size();}var allowed=timers.size()>0&&timers[ix]==1;if(allowed){coverage["timer_applied"]+=1;timers[ix]=0;timer=-1;fires+=1;if(state==2&&high&&(metricAt==null||now<metricAt||now-metricAt>=60)){fitness+=1;updates+=1;metricAt=now;initialSnapshot=false;}}else if(timers.size()>0){coverage["timer_no"]+=1;}else{PbtMetrics.skipped+=1;}var ran=false;if(view.timers.size()>0){ran=view.timers[ix].fire();}ownerCheck(ran==allowed,"view-timer",seed,i,trace,allowed,ran);}
   verify(seed,i);
  }
  function verify(seed,i){

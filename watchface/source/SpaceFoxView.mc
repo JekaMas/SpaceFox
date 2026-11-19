@@ -37,15 +37,12 @@ class SpaceFoxView extends WatchUi.WatchFace {
     var assetCache as NativeRenderSource or Null=null;
     var sfrBuild as NativeSfrBuild or Null=null;var sfrTimer as Timer.Timer or Null=null;
     var sfrDeferred as Boolean=false;var sfrFallbackPrepared as Boolean=false;var sfrBundled as Boolean=false;
-    var fallbackClockTimer as Timer.Timer or Null=null;
     var sceneLifecycle as SceneLifecycle;var mapDecision as MapPresentation;var sfrGeneration as Number=0;
     var pendingLoader as Method or Null=null;
     var renderer as SceneRenderer or Null;
     var fitness as Fitness;
     var selectedFields as SelectedFields;
     var values as Dictionary<String, Number or Null>;
-    var metricsMinute as Long or Null = null;
-    var fitnessTimer as Timer.Timer or Null=null;
     var restMask as Graphics.BitmapType or Null=null;
     var sceneBuffer as Graphics.BufferedBitmap or Null=null;
     var sceneScaleOptions as Dictionary or Null=null;
@@ -67,8 +64,8 @@ class SpaceFoxView extends WatchUi.WatchFace {
         transitionMode(lifecycle.awake() && mode == System.DISPLAY_MODE_HIGH_POWER ? NOT_LOW : LOW);
     }
     function stopForDisplayOff() as Void {
-        lifecycle.setMode(LOW);_resumePending=false;lifecycle.invalidateFrame();metricsMinute=null;restMask=null;if(renderer!=null){(renderer as SceneRenderer).releaseAod();}
-        stopResume();stopFitness();stopFallbackClock();
+        lifecycle.setMode(LOW);_resumePending=false;lifecycle.invalidateFrame();lifecycle.resetFitness();restMask=null;if(renderer!=null){(renderer as SceneRenderer).releaseAod();}
+        stopResume();stopFitness();
         // Preserve the resumable SFR job across OFF; no timer runs there.
         stopSfrTimer();
     }
@@ -78,8 +75,8 @@ class SpaceFoxView extends WatchUi.WatchFace {
     function markLowFramePainted(minute as Long) as Void {lifecycle.framePainted(minute);}
     function transitionMode(next as Number) as Void {
         if (!lifecycle.shown() || lifecycle.mode() == next) { return; }
-        lifecycle.setMode(next);lifecycle.invalidateFrame();metricsMinute=null;logMode();
-        if (lifecycle.mode() == LOW) { _resumePending=false;stopResume();stopSfrTimer();stopFitness();stopFallbackClock();prepareOptionalAod(); }
+        lifecycle.setMode(next);lifecycle.invalidateFrame();lifecycle.resetFitness();logMode();
+        if (lifecycle.mode() == LOW) { _resumePending=false;stopResume();stopSfrTimer();stopFitness();prepareOptionalAod(); }
         else { restMask=null;if(renderer!=null){(renderer as SceneRenderer).releaseAod();}_resumePending=true; }
         requestFrame();
     }
@@ -106,23 +103,16 @@ class SpaceFoxView extends WatchUi.WatchFace {
         if(lifecycle.shown() && _resumePending && _resumeTimer==null){_resumePending=false;_resumeTimer=newViewTimer();_resumeTimer.start(method(:resumeAfterFrame),50,false);}
     }
     (:extendedCode)
-    function refreshFitness() as Void {
-        if(!lifecycle.shown()||!(lifecycle.mode() == NOT_LOW)||admissionPending||deviceMode()!=System.DISPLAY_MODE_HIGH_POWER){return;}
-        try{refreshFitnessWork();}catch(e){}
+    function refreshFitness() as Void {refreshFitnessIfDue(false);}
+    function refreshFitnessIfDue(drawing as Boolean) as Void {
+        if(!lifecycle.shown()||lifecycle.mode()!=NOT_LOW||admissionPending||deviceMode()!=System.DISPLAY_MODE_HIGH_POWER){return;}
+        if(!lifecycle.takeFitness(_clock.utcSeconds().toLong())){return;}
+        try{refreshFitnessWork();if(!drawing){requestFrame();}}catch(e){}
     }
     (:extendedCode)
-    function refreshFitnessWork() as Void {
-        var now=_clock.utcSeconds();var minute=utcMinute(now);var changed=false;
-        if(metricsMinute==null||metricsMinute!=minute){
-            readFitnessSnapshot(now);metricsMinute=minute;changed=true;
-        }
-        // While the fallback clock already ticks, it owns the minute check;
-        // do not allocate a fourth concurrent timer during SFR/resume work.
-        if(fitnessTimer==null&&fallbackClockTimer==null){fitnessTimer=newViewTimer();fitnessTimer.start(method(:refreshFitness),60000,true);}
-        if(changed){requestFrame();}
-    }
+    function refreshFitnessWork() as Void {readFitnessSnapshot(_clock.utcSeconds());}
     function readFitnessSnapshot(now as Number or Long) as Void {
-        selectedFields.claimInitialSnapshot();fitness.selectedRoles=settings.slots;
+        fitness.selectedRoles=settings.slots;
         if(!selectedFields.active()){selectedFields.start(settings.slots,method(:fieldsChanged));}
         selectedFields.read(settings.language);values=fitness.sample(now);
     }
@@ -131,7 +121,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
         try{if(!selectedFields.includes(id)){return;}selectedFields.readChanged(settings.language,id);
         var roles=["energy","heart","stress"];for(var i=0;i<roles.size();i+=1){var role=roles[i];if(settings.slots.indexOf(role)>=0){values[role]=selectedFields.healthValue(role);fitness.status[role]=selectedFields.healthState(role);fitness.reason[role]=selectedFields.healthReason(role);}}requestFrame();}catch(e){}
     }
-    function stopFitness() as Void {if(fitnessTimer!=null){fitnessTimer.stop();fitnessTimer=null;}try{selectedFields.stop();}catch(e){}metricsMinute=null;}
+    function stopFitness() as Void {try{selectedFields.stop();}catch(e){}lifecycle.resetFitness();}
     (:typecheck(false)) function snapshotAt(now as Number or Long) as ClockSnapshot {
         if(selectedFields.expireHistory(now.toLong())){var health=["energy","stress"];for(var i=0;i<health.size();i+=1){var role=health[i];values[role]=selectedFields.healthValue(role);fitness.status[role]=selectedFields.healthState(role);fitness.reason[role]=selectedFields.healthReason(role);}}
         advanceSelection(now);
@@ -187,7 +177,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
     }
     function snapshot() as ClockSnapshot {return snapshotAt(_clock.utcSeconds());}
     (:extendedCode)
-    function setSettings(next as SceneSettings) as Void { stopFitness();selectedFields.invalidateSnapshot();var rolesChanged=!nativeSame(settings.slots,next.slots);settings=next;if(rolesChanged){metricsMinute=null;values={};}lifecycle.invalidateFrame();if(lifecycle.shown()&&!admissionPending&&!sfrFallbackPrepared&&sfrBuild==null){presentation.restore(settings.language);}if(renderer!=null){renderer.prepare(context,settings);(renderer as SceneRenderer).useDownloaded(downloaded);} if(canForegroundWork()){refreshFitness();} }
+    function setSettings(next as SceneSettings) as Void { stopFitness();selectedFields.invalidateSnapshot();lifecycle.rearmInitialFitness();var rolesChanged=!nativeSame(settings.slots,next.slots);settings=next;if(rolesChanged){lifecycle.resetFitness();values={};}lifecycle.invalidateFrame();if(lifecycle.shown()&&!admissionPending&&!sfrFallbackPrepared&&sfrBuild==null){presentation.restore(settings.language);}if(renderer!=null){renderer.prepare(context,settings);(renderer as SceneRenderer).useDownloaded(downloaded);} if(canForegroundWork()){refreshFitness();} }
     function refreshLocale() as Void {var previous=settings.language;settings.refreshLanguage();if(!previous.equals(settings.language)){setSettings(settings);}}
     (:extendedCode, :typecheck(false))
     // The scene digest binds selected art/map identity; bridge IDs and exact
@@ -256,7 +246,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
     function canAcceptBackground() as Boolean {return lifecycle.shown()&&deviceMode()!=System.DISPLAY_MODE_OFF&&(lifecycle.mode()==LOW||canForegroundWork());}
     // Release only rebuildable graphics while the strict candidate is resident;
     // retain the compact selected context, UTC schedule and successor facts.
-    function beginAdmission() as Void {cancelSfrBuild();stopFitness();presentation.suspend();LocaleGraphemes.data=null;if(packet!=null&&context!=null){context.stale=packet.stale as Boolean;context.rescheduled=packet.rescheduled as Boolean;}packet=null;downloaded=null;assetCache=null;renderer=null;restMask=null;sceneBuffer=null;sceneScaleOptions=null;layoutReady=false;admissionPending=true;startFallbackClock();requestFrame();}
+    function beginAdmission() as Void {cancelSfrBuild();stopFitness();presentation.suspend();LocaleGraphemes.data=null;if(packet!=null&&context!=null){context.stale=packet.stale as Boolean;context.rescheduled=packet.rescheduled as Boolean;}packet=null;downloaded=null;assetCache=null;renderer=null;restMask=null;sceneBuffer=null;sceneScaleOptions=null;layoutReady=false;admissionPending=true;requestFrame();}
     function endAdmission() as Void {admissionPending=false;_resumePending=true;requestFrame();}
     (:typecheck(false))
     // Keep the last accepted scene while its durable packet is revalidated.
@@ -307,7 +297,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
         // Cold LOW must not depend on a preceding ACTIVE callback. Consume one
         // startup/settings lease after the first clock frame, then stop sources;
         // later LOW frames retain the result without provider polling/timers.
-        if(selectedFields.claimInitialSnapshot()){
+        if(lifecycle.takeInitialLowFitness()){
             try{readFitnessSnapshot(_clock.utcSeconds());}catch(e){}finally{stopFitness();}
             lifecycle.invalidateFrame();requestFrame();
         }
@@ -325,6 +315,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
         }
         // Garmin may deliver a draw before the corresponding sleep callback.
         syncDisplayMode(displayMode);
+        if(lifecycle.mode()==NOT_LOW&&canForegroundWork()){refreshFitnessIfDue(true);}
 
         if(!(lifecycle.mode() == NOT_LOW) && !lifecycle.frameDue(utcMinute(_clock.utcSeconds()))){return;}
         if(lifecycle.mode()==LOW&&(bootstrapPending||admissionPending||sfrFallbackPrepared||renderer==null)){
@@ -336,10 +327,9 @@ class SpaceFoxView extends WatchUi.WatchFace {
         }
         if((renderer==null||!layoutReady) && lifecycle.mode()==NOT_LOW){onLayout(dc);}
         if((bootstrapPending||admissionPending)&&lifecycle.mode()==NOT_LOW&&renderer==null){queueResumeAfterFrame();return;}
-        if((renderer==null||!layoutReady) && sfrBuild==null&&!sfrFallbackPrepared){onLayout(dc);}
+        if(lifecycle.mode()==LOW&&(renderer==null||!layoutReady)&&sfrBuild==null&&!sfrFallbackPrepared){onLayout(dc);}
         if(lifecycle.mode()==LOW&&renderer!=null&&!(renderer as SceneRenderer).fonts.hasKey("aod")){prepareOptionalAod();}
         if(renderer==null){drawClockFallback(dc);if(lifecycle.mode()==NOT_LOW){queueResumeAfterFrame();}return;}
-        if(!sfrFallbackPrepared&&sfrBuild==null){stopFallbackClock();}
         // Skip the entire LOW update, including mask and scaled-buffer blit.
         if(sceneBuffer!=null){var bitmap=sceneBuffer as Graphics.BufferedBitmap;var target=bitmap.getDc();drawScene(target);applyPixelRest(target);if(sceneX!=0||sceneY!=0){dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.clear();}dc.drawBitmap2(sceneX,sceneY,bitmap,sceneScaleOptions);if(lifecycle.mode()==LOW){afterLowFrame();}if(lifecycle.mode()==NOT_LOW&&(renderer!=null||sfrFallbackPrepared||sfrBuild!=null)){queueResumeAfterFrame();}return;}
         drawScene(dc);applyPixelRest(dc);
@@ -350,7 +340,6 @@ class SpaceFoxView extends WatchUi.WatchFace {
     // health providers. This is temporary while the full scene is unavailable.
     function joinDetail(base as String,detail as String) as String {return base.equals("")?detail:(detail.equals("")?base:base+" · "+detail);}
     (:typecheck(false)) function drawClockFallback(dc as Graphics.Dc) as Void {
-        startFallbackClock();
         var x=dc.getWidth()/2;var y=dc.getHeight()/2;var active=lifecycle.mode()==NOT_LOW;var parts=_clock.localCalendar();
         if(lifecycle.mode()==LOW){var minute=utcMinute(_clock.utcSeconds());var phase=((minute%4+4)%4).toNumber();x+=(phase%2==0?-1:1);y+=(phase/2==0?-1:1);lifecycle.framePainted(minute);}
         dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.clear();
@@ -392,9 +381,6 @@ class SpaceFoxView extends WatchUi.WatchFace {
         finally{if(sfrFallbackPrepared||sfrBuild!=null){LocaleGraphemes.data=null;}}
 
     }
-    function startFallbackClock() as Void {if(lifecycle.shown()&&lifecycle.mode()==NOT_LOW&&deviceMode()==System.DISPLAY_MODE_HIGH_POWER&&fallbackClockTimer==null){if(fitnessTimer!=null){fitnessTimer.stop();fitnessTimer=null;}fallbackClockTimer=newViewTimer();fallbackClockTimer.start(method(:fallbackClockTick),1000,true);}}
-    function stopFallbackClock() as Void {if(fallbackClockTimer!=null){fallbackClockTimer.stop();fallbackClockTimer=null;refreshFitness();}}
-    function fallbackClockTick() as Void {if(!lifecycle.shown()||lifecycle.mode()!=NOT_LOW||deviceMode()!=System.DISPLAY_MODE_HIGH_POWER){stopFallbackClock();return;}refreshFitness();requestFrame();}
     function onEnterSleep() as Void {if(!lifecycle.sleep()){return;}var display=deviceMode();syncDisplayMode(display);if(display!=System.DISPLAY_MODE_OFF){prepareOptionalAod();} }
     function onExitSleep() as Void {
         // A view can first be shown in LOW without having received onEnterSleep.
@@ -402,7 +388,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
         var woke=lifecycle.wake();var before=lifecycle.mode();var display=deviceMode();syncDisplayMode(display);
         if(woke&&lifecycle.shown()&&display!=System.DISPLAY_MODE_OFF&&before==lifecycle.mode()){requestFrame();}
     }
-    function onHide() as Void {if(!lifecycle.hide()){return;}_resumePending=false;lowNeedsLoader=false;stopResume();cancelSfrBuild();stopFitness();stopFallbackClock();if(cancelAdmission!=null){cancelAdmission.invoke();}releaseVisualForSettings();}
+    function onHide() as Void {if(!lifecycle.hide()){return;}_resumePending=false;lowNeedsLoader=false;stopResume();cancelSfrBuild();stopFitness();if(cancelAdmission!=null){cancelAdmission.invoke();}releaseVisualForSettings();}
     // Settings must not retain the decoded scene while its picker is open.
     // The accepted packet and source remain; onLayout/onShow rebuild the view.
     function releaseVisualForSettings() as Void {downloaded=null;renderer=null;restMask=null;sceneBuffer=null;sceneScaleOptions=null;layoutReady=false;sceneLifecycle.replace();presentation.suspend();}
@@ -431,7 +417,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
         if(sfrBuild!=null&&sfrBuild.closureChecked&&sfrBuild.closureAt<sfrBuild.expected.size()){var largest=0;for(var i=sfrBuild.closureAt;i<sfrBuild.expected.size()&&i<sfrBuild.closureAt+4;i+=1){if(sfrBuild.expected[i][2]>largest){largest=sfrBuild.expected[i][2];}}return 2*largest+128*3+512;}
         return 2*4096+2*390*3+128*3+512;
     }
-    (:typecheck(false)) function deferSfr(){stopSfrTimer();sfrDeferred=true;sfrTimer=newViewTimer();sfrTimer.start(method(:sfrStep),5000,true);if(renderer==null){startFallbackClock();}requestFrame();}
+    (:typecheck(false)) function deferSfr(){stopSfrTimer();sfrDeferred=true;sfrTimer=newViewTimer();sfrTimer.start(method(:sfrStep),5000,true);requestFrame();}
     (:typecheck(false)) function resumeSfrCadence(){if(sfrDeferred){stopSfrTimer();sfrTimer=newViewTimer();sfrTimer.start(method(:sfrStep),50,true);}}
     (:typecheck(false))
     function sfrStep() as Void {

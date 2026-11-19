@@ -5,6 +5,12 @@ class NativeDisplayLifecycle {
     var state as Number=HIDDEN;
     var sleeping as Boolean=false;
     var frameMinute as Long or Null=null;
+    var lastFitness as Long or Null=null;
+    var initialFitness as Boolean=true;
+    function rearmInitialFitness() as Void {initialFitness=true;}
+    function takeInitialLowFitness() as Boolean {if(state!=LOW||!initialFitness){return false;}initialFitness=false;return true;}
+    function resetFitness() as Void {lastFitness=null;}
+    function takeFitness(now as Long) as Boolean {if(state!=ACTIVE){return false;}if(lastFitness!=null&&now>=lastFitness&&now-lastFitness<60){return false;}lastFitness=now;initialFitness=false;return true;}
     function frameDue(minute as Long) as Boolean {return frameMinute==null||frameMinute!=minute;}
     function framePainted(minute as Long) as Void {frameMinute=minute;}
     function invalidateFrame() as Void {frameMinute=null;}

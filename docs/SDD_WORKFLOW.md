@@ -8,6 +8,9 @@ whole batch is stable and self-GREEN. Exactly one independent peer then reviews
 and repairs that same batch through peer GREEN; do not assign a new agent for
 each finding. Root judges the accepted result and merges once. Generate the
 native ID and necessary source-admission metadata before final peer GREEN.
+For changes affecting native runtime lifecycle, fields, countdown or scene, run
+the exact FR165 and FR165 Music regression entry point documented in `TESTING.md`
+and retain its raw results; portable CI inventory checks do not replace SDK execution.
 
 After peer GREEN, freeze, merge, build the full signed release and publish as
 authorized. Do not add a separate artifact-verification agent or repeat SDK,
