@@ -4,6 +4,8 @@ import Toybox.Complications;
 import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.System;
+import Toybox.SensorHistory;
+import Toybox.Time;
 
 // Runtime enumeration is intentionally limited to the picker. Active drawing
 // retains only the four selected identifiers and formatted values.
@@ -155,8 +157,9 @@ class FieldComplicationApi {
 // persisted if a provider disappears; a failed subscription is polled on minute.
 (:extendedCode, :typecheck(false))
 class SelectedFields {
-    var selected=[];var subscribed=[];var labels={};var text={};var icons={};var states={};var reasons={};var energy as Number or Null=null;var energyStatus="WAITING";var energyReason="no-sample";var heart as Number or Null=null;var heartStatus="WAITING";var heartReason="no-sample";var stress as Number or Null=null;var stressStatus="WAITING";var stressReason="no-sample";var previousRoles=null;var changeCallback=null;var callbackRegistered=false;var firstSubscriptionRead=false;var provider=null;var api=null;var customMask=0;var fittedMask=0;var numericMask=0;var initialSnapshotPending=true;
+    var selected=[];var subscribed=[];var labels={};var text={};var icons={};var states={};var reasons={};var energy as Number or Null=null;var energyStatus="WAITING";var energyReason="no-sample";var heart as Number or Null=null;var heartStatus="WAITING";var heartReason="no-sample";var stress as Number or Null=null;var stressStatus="WAITING";var stressReason="no-sample";var previousRoles=null;var changeCallback=null;var callbackRegistered=false;var firstSubscriptionRead=false;var provider=null;var api=null;var customMask=0;var fittedMask=0;var numericMask=0;var initialSnapshotPending=true;var healthClock=null;var historyQuery=[null,null];var historyCache=[null,null];var historyExpiry=[null,null];
     function initialize(){}
+    function bindClock(clock){healthClock=clock;}
     function savedField(slot){return FieldCatalog.saved(slot);}
     function systemInfo(){return System.getSystemStats();}
     function activityInfo(){return ActivityMonitor.getInfo();}
@@ -192,10 +195,18 @@ class SelectedFields {
         subscribed=[];selected=[];icons={};callbackRegistered=false;firstSubscriptionRead=false;changeCallback=null;
     }
     // Selection/settings changes start a new snapshot; OS suspension does not.
-    function clearSnapshot(){labels={};text={};icons={};states={};reasons={};clearHealth(18);clearHealth(22);clearHealth(23);customMask=0;fittedMask=0;numericMask=0;}
-    function clearHealth(kind){if(kind==18){heart=null;heartStatus="WAITING";heartReason="no-sample";}else if(kind==22){stress=null;stressStatus="WAITING";stressReason="no-sample";}else if(kind==23){energy=null;energyStatus="WAITING";energyReason="no-sample";}}
+    function clearSnapshot(){labels={};text={};icons={};states={};reasons={};clearHealth(18);clearHealth(22);clearHealth(23);historyQuery=[null,null];historyCache=[null,null];customMask=0;fittedMask=0;numericMask=0;}
+    function clearHealth(kind){if(kind==18){heart=null;heartStatus="WAITING";heartReason="no-sample";}else if(kind==22){stress=null;stressStatus="WAITING";stressReason="no-sample";historyExpiry[1]=null;}else if(kind==23){energy=null;energyStatus="WAITING";energyReason="no-sample";historyExpiry[0]=null;}}
     function failHealth(kind){if(kind==18){heartStatus="UNAVAILABLE";heartReason="provider-error";}else if(kind==22){stressStatus="UNAVAILABLE";stressReason="provider-error";}else if(kind==23){energyStatus="UNAVAILABLE";energyReason="provider-error";}}
-    function acceptHealth(kind,value){if(!(value instanceof Number)||value<0||value>(kind==18?300:100)){return;}if(kind==18){heart=value;heartStatus="READY";heartReason="available";}else if(kind==22){stress=value;stressStatus="READY";stressReason="available";}else if(kind==23){energy=value;energyStatus="READY";energyReason="available";}}
+    function acceptHealth(kind,value){if(!(value instanceof Number)||value<0||value>(kind==18?300:100)||kind==18&&value==0){return;}if(kind==18){heart=value;heartStatus="READY";heartReason="available";}else if(kind==22){stress=value;stressStatus="READY";stressReason="available";historyExpiry[1]=null;}else if(kind==23){energy=value;energyStatus="READY";energyReason="available";historyExpiry[0]=null;}}
+    function healthNow(){return healthClock==null?Time.now().value():healthClock.utcSeconds();}
+    function historySamples(kind){if(!(Toybox has :SensorHistory)){return null;}var opts={:period=>3,:order=>SensorHistory.ORDER_NEWEST_FIRST};if(kind==23&&SensorHistory has :getBodyBatteryHistory){return SensorHistory.getBodyBatteryHistory(opts);}if(kind==22&&SensorHistory has :getStressHistory){return SensorHistory.getStressHistory(opts);}return null;}
+    function admitHistory(kind){
+        var n=kind==23?0:1;var now=healthNow().toLong();var last=historyQuery[n];
+        if(last==null||now<last||now-last>=60){historyQuery[n]=now;var old=historyCache[n];if(old!=null&&(now<old[1]||now-old[1]>300)){historyCache[n]=null;}try{var iter=historySamples(kind);if(iter!=null){for(var i=0;i<3;i+=1){var sample=iter.next();if(sample==null){break;}var value=sample.data;var stamp=sample.when==null?null:sample.when.value();var admitted=HealthSample.recentValue(value,stamp,now,100,false);if(admitted!=null){var cached=historyCache[n];if(cached==null||stamp.toLong()>=cached[1]){historyCache[n]=[admitted,stamp.toLong()];}break;}}}}catch(e){}}
+        var cached=historyCache[n];if(cached!=null&&now>=cached[1]&&now-cached[1]<=300){acceptHealth(kind,cached[0]);historyExpiry[n]=cached[1]+300;if(kind==23){energyReason="recent-history";}else{stressReason="recent-history";}}
+    }
+    function expireHistory(now){var changed=false;for(var i=0;i<2;i+=1){var expiry=historyExpiry[i];if(expiry!=null&&(now>expiry||now<expiry-300)){clearHealth(i==0?23:22);changed=true;}}return changed;}
     function healthValue(role as String) as Number or Null {return role.equals("heart")?heart:(role.equals("stress")?stress:energy);}
     function healthState(role as String) as String {return role.equals("heart")?heartStatus:(role.equals("stress")?stressStatus:energyStatus);}
     function healthReason(role as String) as String {return role.equals("heart")?heartReason:(role.equals("stress")?stressReason:energyReason);}
@@ -230,6 +241,8 @@ class SelectedFields {
             catch(e){states[key]="UNAVAILABLE";reasons[key]="provider-error";}
             if(text.hasKey(key)&&text[key] instanceof String&&!(text[key] as String).equals("—")){states[key]="READY";reasons[key]="available";}
         }
+        // Only built-in selected roles may use bounded history; custom text remains provider-only.
+        for(var i=0;i<selected.size();i+=1){var source=selected[i];if((customMask&(1<<i))!=0||!(source instanceof Complications.Id)||(onlyId!=null&&!source.equals(onlyId))){continue;}var kind=source.getType();if((kind==22||kind==23)&&healthValue(kind==22?"stress":"energy")==null){try{admitHistory(kind);}catch(e){}}}
     }
     // Optional provider graphics are managed references with bounded dimensions.
     // False requests a neutral marker; null means no icon was supplied.

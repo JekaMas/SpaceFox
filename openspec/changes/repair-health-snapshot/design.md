@@ -1,0 +1,5 @@
+# Design
+
+SelectedFields remains the single owner of active sources and health observations. A built-in Body Battery or stress field may use the newest Garmin SensorHistory sample only when the current complication is absent, invalid or fails, and only when its timestamp is between now and 300 seconds old and its numeric value is in 0–100. A built-in heart field uses only the positive current complication, never historical pulse as live. Explicit custom complications preserve their selected provider. No health sample is persisted or transmitted. Reads use the existing refresh and callback events; bounded per-role throttling prevents repeated history queries from repeated callbacks. No new timer or background poll is introduced.
+
+Reference: Garmin [Complications](https://developer.garmin.com/connect-iq/api-docs/Toybox/Complications.html), [SensorHistory](https://developer.garmin.com/connect-iq/api-docs/Toybox/SensorHistory.html) and [SensorSample](https://developer.garmin.com/connect-iq/api-docs/Toybox/SensorHistory/SensorSample.html). Values may genuinely be unavailable; simulator and fake data are not physical-watch measurements.

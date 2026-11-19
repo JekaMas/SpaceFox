@@ -1,0 +1,26 @@
+------------------------------------------------------------------------------
+Executing test generatedFitnessOwners...
+STM_FAIL owner=fitness-coverage seed=1 index=53 trace=[[0, 0], [11, 0], [2, 27], [3, 0], [4, 35], [5, 68], [9, 0], [11, 0], [7, 0], [9, 0], [11, 0], [7, 0], [6, 0], [9, 0], [11, 0], [1, 0], [9, 0], [0, 0], [3, 72], [9, 0], [11, 0], [3, 77], [0, 26], [2, 18], [2, 34], [6, 24], [2, 64], [9, 61], [9, 81], [1, 91], [2, 93], [10, 66], [10, 37], [8, 2], [1, 100], [11, 60], [7, 82], [11, 23], [9, 57], [11, 55], [3, 0], [0, 81], [3, 71], [6, 86], [4, 54], [6, 0], [5, 82], [1, 1], [8, 48], [4, 45], [1, 16], [3, 83], [7, 51]] expected=zero actual=0
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - ownerCheck() at /source/watchface/stm-property-tests/GeneratedOwners.mc:16 0x10006e22 
+  - final() at /source/watchface/stm-property-tests/GeneratedOwners.mc:616 0x1000fe62 
+  - runGeneratedFitnessOwners() at /source/watchface/stm-property-tests/GeneratedOwners.mc:620 0x1000174e 
+  - generatedFitnessOwners() at /source/watchface/stm-property-tests/GeneratedOwners.mc:624 0x100022f3 
+  - evaluate_test_entries_30_to_60() at /task/gen/006-B4433-00/source/UnitTests.mcgen:220 0x10010aa6 
+  - runTest() at /task/gen/006-B4433-00/source/UnitTests.mcgen:296 0x100113ab 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+generatedFitnessOwners              ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)
+
+STDERR

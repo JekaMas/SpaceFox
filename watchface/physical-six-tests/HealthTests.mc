@@ -13,6 +13,7 @@ import Toybox.Test;
  function unsubscribe(id){}
  function get(id){var kind=id.getType();calls.add(kind);if(kind==failed){throw new Lang.InvalidValueException("provider");}return new PhysicalHealthItem(values[kind]);}
 }
+(:test,:typecheck(false)) class PhysicalFakeFields extends SelectedFields {function historySamples(kind){return null;} function healthNow(){return 1800000000;}}
 (:test,:typecheck(false)) class PhysicalHealthObserver {function changed(id) as Void {}}
 (:test,:typecheck(false)) class PhysicalActivity {var steps=0;var calories=12;}
 (:test,:typecheck(false)) class PhysicalFitness extends Fitness {
@@ -21,7 +22,7 @@ import Toybox.Test;
 }
 
 (:test,:typecheck(false)) function physicalSupportedHealthSubscriptions(logger){
- var fields=new SelectedFields();var api=new PhysicalHealthApi();var observer=new PhysicalHealthObserver();fields.api=api;
+ var fields=new PhysicalFakeFields();var api=new PhysicalHealthApi();var observer=new PhysicalHealthObserver();fields.api=api;
  fields.start(["steps","energy","heart","stress"],observer.method(:changed));
  Test.assertMessage(fields.includes(new Complications.Id(18)),"heart must subscribe to the supported Garmin heart complication");
  Test.assertMessage(fields.includes(new Complications.Id(22)),"stress must subscribe to the supported Garmin stress complication");
@@ -30,14 +31,14 @@ import Toybox.Test;
 }
 
 (:test,:typecheck(false)) function physicalHealthValuesAndFailures(logger){
- var fields=new SelectedFields();var api=new PhysicalHealthApi();var observer=new PhysicalHealthObserver();fields.api=api;
+ var fields=new PhysicalFakeFields();var api=new PhysicalHealthApi();var observer=new PhysicalHealthObserver();fields.api=api;
  fields.start(["steps","energy","heart","stress"],observer.method(:changed));fields.read("en");
  var fitness=new PhysicalFitness();fitness.selectedRoles=["steps","energy","heart","stress"];fitness.selectedFields=fields;
- var values=fitness.sample(1800000000);Test.assert(values["steps"]==0&&values["energy"]==68&&values["heart"]==0&&values["stress"]==37);
- Test.assert(fitness.status["heart"].equals("READY"));
- fields.stop();Test.assert(fields.healthValue("energy")==68&&fields.healthValue("heart")==0&&fields.healthValue("stress")==37);
+ var values=fitness.sample(1800000000);Test.assert(values["steps"]==0&&values["energy"]==68&&values["heart"]==null&&values["stress"]==37);
+ Test.assert(fitness.status["heart"].equals("WAITING"));
+ fields.stop();Test.assert(fields.healthValue("energy")==68&&fields.healthValue("heart")==null&&fields.healthValue("stress")==37);
  fields.start(["steps","energy","heart","stress"],observer.method(:changed));
- Test.assert(fields.healthValue("energy")==68&&fields.healthValue("heart")==0&&fields.healthValue("stress")==37);
+ Test.assert(fields.healthValue("energy")==68&&fields.healthValue("heart")==null&&fields.healthValue("stress")==37);
  api.values[18]=72;fields.readChanged("en",new Complications.Id(18));
  Test.assert(fields.healthValue("heart")==72&&fields.healthValue("energy")==68&&fields.healthValue("stress")==37);
  api.failed=22;fields.readChanged("en",new Complications.Id(22));
@@ -62,8 +63,8 @@ import Toybox.Test;
 
 (:test,:typecheck(false)) function physicalMetricCallbackKeepsSceneAndLowValues(logger){
  var view=new PhysicalWakeView();view.mode=Toybox.System.DISPLAY_MODE_HIGH_POWER;view.onShow();
- var api=new PhysicalHealthApi();view.selectedFields.api=api;view.fitness=new PhysicalFitness();view.fitness.selectedFields=view.selectedFields;
- view.readFitnessSnapshot(1800000000);Test.assert(view.values["steps"]==0&&view.values["energy"]==68&&view.values["heart"]==0&&view.values["stress"]==37);
+ var api=new PhysicalHealthApi();view.selectedFields=new PhysicalFakeFields();view.selectedFields.api=api;view.fitness=new PhysicalFitness();view.fitness.selectedFields=view.selectedFields;
+ view.readFitnessSnapshot(1800000000);Test.assert(view.values["steps"]==0&&view.values["energy"]==68&&view.values["heart"]==null&&view.values["stress"]==37);
  Test.assert(view.sceneLifecycle.request(1));var token=view.sceneLifecycle.begin();var generation=view.sceneLifecycle.generation;
  api.values[18]=72;view.fieldsChanged(new Complications.Id(18));
  Test.assert(view.values["heart"]==72&&view.values["energy"]==68&&view.values["stress"]==37);
@@ -76,8 +77,8 @@ import Toybox.Test;
 
 (:test,:typecheck(false)) function physicalHealthSubscriptionRearm(logger){
  var view=new PhysicalWakeView();view.mode=Toybox.System.DISPLAY_MODE_HIGH_POWER;view.onShow();
- var api=new PhysicalHealthApi();api.registerFailed=true;view.selectedFields.api=api;view.fitness=new PhysicalFitness();view.fitness.selectedFields=view.selectedFields;
- view.readFitnessSnapshot(1800000000);Test.assert(api.registers==1&&view.values["heart"]==0);
+ var api=new PhysicalHealthApi();api.registerFailed=true;view.selectedFields=new PhysicalFakeFields();view.selectedFields.api=api;view.fitness=new PhysicalFitness();view.fitness.selectedFields=view.selectedFields;
+ view.readFitnessSnapshot(1800000000);Test.assert(api.registers==1&&view.values["heart"]==null);
  api.registerFailed=false;api.refuseKind=22;view.readFitnessSnapshot(1800000060);
  Test.assertMessage(api.registers==2&&api.subscriptions.size()==2,"next scheduled refresh must retry callback registration");
  api.refuseKind=-1;view.readFitnessSnapshot(1800000120);

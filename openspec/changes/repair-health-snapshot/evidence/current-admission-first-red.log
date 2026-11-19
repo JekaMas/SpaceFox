@@ -1,0 +1,65 @@
+E...F.E.E
+======================================================================
+ERROR: test_committed_observation_reader_does_not_discover_sdk_or_run_tools (tests.test_current_language_admission.CurrentLanguageAdmission.test_committed_observation_reader_does_not_discover_sdk_or_run_tools)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-fitness-runtime-20261119/tests/test_current_language_admission.py", line 52, in test_committed_observation_reader_does_not_discover_sdk_or_run_tools
+    self.assertEqual(validate(self.root, self.catalog), ['en','ru','de','fr','es'])
+                     ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-fitness-runtime-20261119/tools/current_language_admission.py", line 222, in validate
+    require(parse_output(raw,1,(selector,))['status']=='passed','current native selector failed: '+selector)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-fitness-runtime-20261119/tools/current_language_admission.py", line 41, in require
+    raise ValueError(reason)
+ValueError: current native selector failed: currentFivePrimaryAndBitmapFonts
+
+======================================================================
+ERROR: test_real_five_primary_observations_and_source_replay (tests.test_current_language_admission.CurrentLanguageAdmission.test_real_five_primary_observations_and_source_replay)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-fitness-runtime-20261119/tests/test_current_language_admission.py", line 45, in test_real_five_primary_observations_and_source_replay
+    self.assertEqual(validate(self.root, self.catalog), ['en', 'ru', 'de', 'fr', 'es'])
+                     ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-fitness-runtime-20261119/tools/current_language_admission.py", line 222, in validate
+    require(parse_output(raw,1,(selector,))['status']=='passed','current native selector failed: '+selector)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-fitness-runtime-20261119/tools/current_language_admission.py", line 41, in require
+    raise ValueError(reason)
+ValueError: current native selector failed: currentFivePrimaryAndBitmapFonts
+
+======================================================================
+ERROR: test_source_fence_refuses_hidden_index_mutation (tests.test_current_language_admission.CurrentLanguageAdmission.test_source_fence_refuses_hidden_index_mutation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-fitness-runtime-20261119/tests/test_current_language_admission.py", line 123, in test_source_fence_refuses_hidden_index_mutation
+    captured=source_state(self.root)['inputs']
+             ~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-fitness-runtime-20261119/tools/release.py", line 80, in source_state
+    software_locales(root, catalog)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-fitness-runtime-20261119/tools/native_language_policy.py", line 85, in software_locales
+    return validate(root,catalog)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-fitness-runtime-20261119/tools/current_language_admission.py", line 222, in validate
+    require(parse_output(raw,1,(selector,))['status']=='passed','current native selector failed: '+selector)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-fitness-runtime-20261119/tools/current_language_admission.py", line 41, in require
+    raise ValueError(reason)
+ValueError: current native selector failed: currentFivePrimaryAndBitmapFonts
+
+======================================================================
+FAIL: test_peer_fence_requires_current_identity_and_semantic_scope (tests.test_current_language_admission.CurrentLanguageAdmission.test_peer_fence_requires_current_identity_and_semantic_scope)
+----------------------------------------------------------------------
+ValueError: current native selector failed: currentFivePrimaryAndBitmapFonts
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-fitness-runtime-20261119/tests/test_current_language_admission.py", line 173, in test_peer_fence_requires_current_identity_and_semantic_scope
+    with self.assertRaisesRegex(Exception, 'independent peer binding'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "independent peer binding" does not match "current native selector failed: currentFivePrimaryAndBitmapFonts"
+
+----------------------------------------------------------------------
+Ran 9 tests in 4.169s
+
+FAILED (failures=1, errors=3)

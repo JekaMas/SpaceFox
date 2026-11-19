@@ -583,6 +583,8 @@ import Toybox.System;
 (:test,:typecheck(false)) class PbtEnergyFields extends SelectedFields {
  var fakeApi;var forbidden=0;
  function initialize(){SelectedFields.initialize();fakeApi=new PbtEnergyApi();api=fakeApi;}
+ function healthNow(){return 1794818604;}
+ function historySamples(kind){return null;}
  function savedField(slot){forbidden+=1;throw new Lang.InvalidValueException("unexpected field storage");}
  function systemInfo(){forbidden+=1;throw new Lang.InvalidValueException("unexpected system");}
  function activityInfo(){forbidden+=1;throw new Lang.InvalidValueException("unexpected activity");}
@@ -602,7 +604,7 @@ import Toybox.System;
   else if(e==6){input[1]=null;fields.fakeApi.values[18]=null;}
   else if(e==7){failures[1]=!failures[1];fields.fakeApi.failures[18]=failures[1];}
   else if(e==8){failures[2]=!failures[2];fields.fakeApi.failures[22]=failures[2];}
-  else if(e==9){if(active){fields.read("en");reads+=1;coverage["read_applied"]+=1;for(var n=0;n<3;n+=1){accepted[n]=null;acceptedStates[n]="WAITING";if(failures[n]){acceptedStates[n]="UNAVAILABLE";coverage["failure"]+=1;}else if(input[n]!=null&&input[n]>=0&&input[n]<=100){accepted[n]=input[n];acceptedStates[n]="READY";coverage["ready"]+=1;if(input[n]==0){coverage["zero"]+=1;}}else{coverage["missing"]+=1;}}}else{fields.readChanged("en",new Toybox.Complications.Id(23));coverage["inactive_read_no"]+=1;}}
+  else if(e==9){if(active){fields.read("en");reads+=1;coverage["read_applied"]+=1;for(var n=0;n<3;n+=1){accepted[n]=null;acceptedStates[n]="WAITING";if(failures[n]){acceptedStates[n]="UNAVAILABLE";coverage["failure"]+=1;}else if(input[n]!=null&&input[n]>=0&&input[n]<=100&&(n!=1||input[n]>0)){accepted[n]=input[n];acceptedStates[n]="READY";coverage["ready"]+=1;if(input[n]==0){coverage["zero"]+=1;}}else{coverage["missing"]+=1;}}}else{fields.readChanged("en",new Toybox.Complications.Id(23));coverage["inactive_read_no"]+=1;}}
   else if(e==10){failures[0]=!failures[0];fields.fakeApi.failures[23]=failures[0];}
   else{samples+=1;expected=[steps,accepted[0],accepted[1],accepted[2]];expectedStates=[steps==null?"WAITING":"READY",acceptedStates[0],acceptedStates[1],acceptedStates[2]];result=fitness.sample(now);coverage["sample_applied"]+=1;}
   verify(seed,i);
@@ -614,7 +616,7 @@ import Toybox.System;
  function final(seed,n){verify(seed,n);var keys=coverage.keys();for(var k=0;k<keys.size();k+=1){ownerCheck(coverage[keys[k]]>0,"fitness-coverage",seed,n,trace,keys[k],coverage[keys[k]]);}recordCoverage(coverage);}
 }
 (:typecheck(false)) function runGeneratedFitnessOwners(firstSeed,seedCount){
- var total=0;for(var seed=firstSeed;seed<firstSeed+seedCount;seed+=1){var rng=new OwnerRandom(seed);var run=new FitnessTrace();var prefix=[[0,0],[11,0],[2,27],[3,0],[4,35],[5,68],[9,0],[11,0],[7,0],[9,0],[11,0],[7,0],[6,0],[9,0],[11,0],[1,0],[9,0],[0,0],[3,72],[9,0],[11,0]];var events=prefix.size()+12+rng.draw(37);
+ var total=0;for(var seed=firstSeed;seed<firstSeed+seedCount;seed+=1){var rng=new OwnerRandom(seed);var run=new FitnessTrace();var prefix=[[0,0],[11,0],[2,27],[3,0],[4,35],[5,0],[9,0],[5,68],[9,0],[11,0],[7,0],[9,0],[11,0],[7,0],[6,0],[9,0],[11,0],[1,0],[9,0],[0,0],[3,72],[9,0],[11,0]];var events=prefix.size()+12+rng.draw(37);
   for(var i=0;i<events;i+=1){var e=0;var arg=0;if(i<prefix.size()){e=prefix[i][0];arg=prefix[i][1];}else{e=rng.draw(12);arg=rng.draw(101);}run.step(e,arg,seed,i);total+=1;}run.final(seed,events);
  }
  return total;

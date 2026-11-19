@@ -1,0 +1,6 @@
+Change 'repair-health-snapshot' has issues
+⚠ [WARNING] health-fields/spec.md: ADDED "Bounded genuine health samples": Requirement text is very long (>500 characters). Move examples and edge cases into scenarios, or split it into separate requirements that each state one behavior.
+Next steps:
+  - Ensure change has deltas in specs/: use headers ## ADDED/MODIFIED/REMOVED/RENAMED Requirements
+  - Each requirement MUST include at least one #### Scenario: block
+  - Debug parsed deltas: openspec show repair-health-snapshot --json --deltas-only

@@ -12,14 +12,14 @@ import Toybox.Test;
  Test.assert(atLimit["energy"]==68&&atLimit["battery"]==82&&atLimit["calories"]==2345);
  Test.assert(atLimit["heart"]==null&&atLimit["stress"]==null);
  Test.assert(traceEquals(["activity.info","system.stats"]));
- MetricSDK.reset(0);var aged=f.sample(1800000301);Test.assert(aged["energy"]==68&&f.recentValue(72,1800000000,1800000301,300,true)==null);
+ MetricSDK.reset(0);var aged=f.sample(1800000301);Test.assert(aged["energy"]==68&&HealthSample.recentValue(72,1800000000,1800000301,300,true)==null);
  energyFields.energy=null;MetricSDK.reset(3);var absent=f.sample(1800000000);Test.assert(absent["energy"]==null);
  MetricSDK.reset(1);var denied=f.sample(1800000000);Test.assert(denied["energy"]==null);
  energyFields.energy=68;MetricSDK.reset(0);var fresh=f.sample(1800000000);Test.assert(fresh["energy"]==68);
  f.selectedRoles=["heart","heart","heart","heart"];MetricSDK.reset(0);f.sample(1800000000);
  Test.assert(traceEquals(["heart.open","heart.next"]));
  f.selectedRoles=[];MetricSDK.reset(0);f.sample(1800000000);Test.assert(traceEquals([]));
- Test.assert(f.recentValue(0,1800000000,1800000000,100,false)==0);
+ Test.assert(HealthSample.recentValue(0,1800000000,1800000000,100,false)==0);
  logger.debug("METRIC_ROLE duplicate=one historyAgeBound=unchanged energy=currentComplication absent=unavailable fresh=restored");return true;
 }
 (:test,:typecheck(false)) class D03CountFitness extends Fitness {

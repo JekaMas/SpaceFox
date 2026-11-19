@@ -147,13 +147,13 @@ function sceneAodNegative(logger as Test.Logger) as Boolean {
 function sceneMetricsPositive(logger as Test.Logger) as Boolean {
     var f=new Fitness();var values={"steps"=>0,"energy"=>0,"heart"=>72,"stress"=>0,"calories"=>0,"battery"=>82};
     logger.debug("independently supplied0validenergy/stress/calories/steps vs82watchcharge;300srecencyinclusive");
-    return f.display(values,"steps").equals("0") && f.display(values,"stress").equals("0") && f.display(values,"calories").equals("0") && f.display({"battery"=>0},"battery").equals("0%") && f.display(values,"energy").equals("0") && f.display(values,"battery").equals("82%") && f.recentValue(0,1800000000,1800000300,100,false)==0 && f.recentValue(72,1800000000,1800000300,300,true)==72;
+    return f.display(values,"steps").equals("0") && f.display(values,"stress").equals("0") && f.display(values,"calories").equals("0") && f.display({"battery"=>0},"battery").equals("0%") && f.display(values,"energy").equals("0") && f.display(values,"battery").equals("82%") && HealthSample.recentValue(0,1800000000,1800000300,100,false)==0 && HealthSample.recentValue(72,1800000000,1800000300,300,true)==72;
 }
 (:test)
 function sceneMetricsNegative(logger as Test.Logger) as Boolean {
     var f=new Fitness();var measured=f.sample(Time.now().value());
     logger.debug("realSDKmetricadapter guardedpermission/API smoke; nofixturehealth; absent/stale/future/outofrange rejected");
-    return f.display({"heart"=>null},"heart").equals("—") && f.number(-1,100)==null && f.number(101,100)==null && f.number(true,100)==null && f.recentValue(50,1800000000,1800000301,100,false)==null && f.recentValue(50,1800000001,1800000000,100,false)==null && f.recentValue(0,1800000000,1800000000,300,true)==null && measured.hasKey("battery");
+    return f.display({"heart"=>null},"heart").equals("—") && f.number(-1,100)==null && f.number(101,100)==null && f.number(true,100)==null && HealthSample.recentValue(50,1800000000,1800000301,100,false)==null && HealthSample.recentValue(50,1800000001,1800000000,100,false)==null && HealthSample.recentValue(0,1800000000,1800000000,300,true)==null && measured.hasKey("battery");
 }
 (:test)
 function sceneFontsPositive(logger as Test.Logger) as Boolean {

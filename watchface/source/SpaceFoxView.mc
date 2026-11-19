@@ -53,7 +53,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
     var layoutReady as Boolean=false;
     function initialize(clock as WatchClock, schedule as ScheduleState) {
         WatchFace.initialize();lifecycle=new NativeDisplayLifecycle();_clock=clock;_schedule=schedule;
-        presentation=createPresentation();settings=new SceneSettings(null);context=null;renderer=null;fitness=new Fitness();selectedFields=new SelectedFields();fitness.selectedFields=selectedFields;values={};sceneLifecycle=new SceneLifecycle();mapDecision=new MapPresentation();
+        presentation=createPresentation();settings=new SceneSettings(null);context=null;renderer=null;fitness=new Fitness();selectedFields=new SelectedFields();selectedFields.bindClock(clock);fitness.selectedFields=selectedFields;values={};sceneLifecycle=new SceneLifecycle();mapDecision=new MapPresentation();
     }
     // External effects are overridable at the actual view boundary for logical
     // event tests; the default implementations are the unchanged Garmin APIs.
@@ -133,6 +133,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
     }
     function stopFitness() as Void {if(fitnessTimer!=null){fitnessTimer.stop();fitnessTimer=null;}try{selectedFields.stop();}catch(e){}metricsMinute=null;}
     (:typecheck(false)) function snapshotAt(now as Number or Long) as ClockSnapshot {
+        if(selectedFields.expireHistory(now.toLong())){var health=["energy","stress"];for(var i=0;i<health.size();i+=1){var role=health[i];values[role]=selectedFields.healthValue(role);fitness.status[role]=selectedFields.healthState(role);fitness.reason[role]=selectedFields.healthReason(role);}}
         advanceSelection(now);
         if(context!=null){context.advanceFreshness(now);if(packet!=null&&packet.presentation==context){packet.stale=context.stale;}}
         var remaining=_schedule.remainingSeconds(now);

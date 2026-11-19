@@ -127,7 +127,7 @@ function basicUnavailablePositive(logger as Test.Logger) as Boolean {
 function basicUnavailableNegative(logger as Test.Logger) as Boolean {
     var f=new Fitness();var v=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"unknown"));v.values={"heart"=>72,"energy"=>68};v.fitness=new BasicTelemetry();v.onShow();var dc=(Graphics.createBufferedBitmap({:width=>390,:height=>390}).get() as Graphics.BufferedBitmap).getDc();v.onLayout(dc);v.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);v.resumeAfterFrame();v.stopAnimation();
     logger.debug("new missing sample replaces former72/68; age300 accepted,301 or future unavailable; real zero allowed only for applicable metrics");
-    v.onHide();return f.display(v.values,"heart").equals("—")&&f.display(v.values,"energy").equals("—")&&f.recentValue(68,1800000000,1800000300,100,false)==68&&f.recentValue(68,1800000000,1800000301,100,false)==null&&f.recentValue(68,1800000001,1800000000,100,false)==null&&f.recentValue(0,1800000000,1800000000,300,true)==null&&f.display({"steps"=>0},"steps").equals("0");
+    v.onHide();return f.display(v.values,"heart").equals("—")&&f.display(v.values,"energy").equals("—")&&HealthSample.recentValue(68,1800000000,1800000300,100,false)==68&&HealthSample.recentValue(68,1800000000,1800000301,100,false)==null&&HealthSample.recentValue(68,1800000001,1800000000,100,false)==null&&HealthSample.recentValue(0,1800000000,1800000000,300,true)==null&&f.display({"steps"=>0},"steps").equals("0");
 }
 (:test)
 function basicBatteryPositive(logger as Test.Logger) as Boolean {

@@ -3,6 +3,16 @@ import Toybox.Lang;
 import Toybox.System;
 import Toybox.Time;
 
+// One bounded, source-independent policy for Garmin history samples.
+module HealthSample {
+    function recentValue(value as Object or Null, when as Number or Long or Null, now as Number or Long, maximum as Number, heart as Boolean) as Number or Null {
+        if(when==null||!(value instanceof Number||value instanceof Float||value instanceof Double||value instanceof Long)){return null;}
+        var age=now.toLong()-when.toLong();
+        if(age<0||age>300||!(value>=0)||!(value<=maximum)||(heart&&value==0)){return null;}
+        return value.toNumber();
+    }
+}
+
 class Fitness {
     // Null means the unfiltered adapter, used by direct API diagnostics.
     var selectedRoles as Array<String> or Null = null;
@@ -19,18 +29,6 @@ class Fitness {
         if (!(value >= 0) || !(value <= 2147483647) || (maximum != null && !(value <= maximum))) { return null; }
         return value.toNumber();
     }
-    function recentValue(value as Object or Null, when as Number or Long or Null, now as Number or Long, maximum as Number or Null, heart as Boolean) as Number or Null {
-        if (when == null) { return null; }
-        var age = now.toLong() - when.toLong();
-        if (age < 0 || age > 300) { return null; }
-        var accepted = number(value, maximum);
-        if (heart && accepted == 0) { return null; }
-        return accepted;
-    }
-    (:typecheck(false)) function recent(sample, now as Number or Long, maximum as Number, heart as Boolean) as Number or Null {
-        if(sample==null || sample.when==null){return null;}
-        return recentValue(sample.data,sample.when.value(),now,maximum,heart);
-    }
     // READY means a real Garmin value, WAITING means the provider returned
     // no usable current sample, and UNAVAILABLE records a missing API/error.
     (:typecheck(false)) function sample(now as Number or Long) as Dictionary<String, Number or Null> {
@@ -45,7 +43,7 @@ class Fitness {
         if(requested("battery")){try{values["battery"]=number(batteryValue(),100);}catch(e){status["battery"]="UNAVAILABLE";reason["battery"]="provider-error";}}
         if(selectedFields!=null){var source=selectedFields as SelectedFields;var health=["energy","heart","stress"];
             for(var i=0;i<health.size();i+=1){var role=health[i];if(requested(role)){values[role]=source.healthValue(role);status[role]=source.healthState(role);reason[role]=source.healthReason(role);}}}
-        for(var i=0;i<roles.size();i+=1){var role=roles[i];if(requested(role)&&values[role]!=null){status[role]="READY";reason[role]="available";}}
+        for(var i=0;i<roles.size();i+=1){var role=roles[i];if(requested(role)&&values[role]!=null){status[role]="READY";reason[role]=selectedFields!=null&&(role.equals("energy")||role.equals("heart")||role.equals("stress"))?(selectedFields as SelectedFields).healthReason(role):"available";}}
         return values;
     }
     function fieldReason(role as String) as String {if(role.find("custom")==0&&selectedFields!=null){return (selectedFields as SelectedFields).reason(role) as String;}return reason.hasKey(role)?reason[role] as String:"no-sample";}
