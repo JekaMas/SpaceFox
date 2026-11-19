@@ -7,3 +7,7 @@ The completed126784-byte FR165M86→87→88 observations with and without hide/s
 Current menu-finalowner2 reports9directed cases plus272events/2112checks. Retained mandatory recovery verifies no orphan metrics and next healthy canonical rebind. Current Linux-compiled/Mac-simulator five-primary evidence stays at its exact scope. Direct paired-image inspection corrects the earlier visual misread, with both frames showingT−00:10:00 and matching clock/fields. Optional map/flag differences and simulator callback limits remain explicit.
 
 Root judgment and author delivery remain open. Physical watch, phone, actual OS menu, full-interval heap/graphics peak and Store availability are unobserved. Broad legacy/per-file audit remains outside this batch.
+
+## Delivery
+
+Root accepted independent peer GREEN. Tag and compiled source `26cf4d82d4210737db610387d64c71bb632e9a12` were pushed; one signed IQ-first export and the regular GitHub release are complete. Garmin verified the exact signed IQ and returned `Version update pending` after Submit. Approval, public availability, physical watch and phone acceptance remain unobserved. See `PUBLICATION.md`.

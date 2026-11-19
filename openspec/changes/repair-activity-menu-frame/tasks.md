@@ -7,6 +7,6 @@
 - [x] Restore actual86→87→88 SFR liveness with and without hide/show at the126784-byte FR165M budget.
 - [x] Review paired font/icon/layout facts directly and correct the prior countdown visual misread with simulator/optional-art limits.
 - [x] Retain current0.2.14/9257a3e6 five-primary observations and complete independent review plus actual clean current peer/source gate GREEN.
-- [ ] Root judgment followed by author integration, frozen release export, deployment/readback and authorized publication.
+- [x] Root judgment followed by author integration, frozen signed export, GitHub release/readback and Garmin submission. Store approval and physical acceptance remain unobserved.
 
 PEER.md/json are current. Earlier NOT DONE, deferrals, OOM and setup failures remain historical and retain their exact proof boundaries.

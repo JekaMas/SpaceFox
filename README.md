@@ -2,15 +2,15 @@
 
 SpaceFox is a free, MIT-licensed space watch face for Garmin watches, including Forerunner 165 and Forerunner 165 Music. It combines a large digital clock, rocket artwork, a launch-site map, a local T−/T+ countdown and four configurable activity fields.
 
-**[Install from Connect IQ](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3)** · **[0.2.13 release](https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.13)** · **[FR165 install ZIP](https://github.com/JekaMas/SpaceFox/releases/download/v0.2.13/SpaceFox-0.2.13-FR165-install.zip)** · [Release notes](https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.13)
+**[Install from Connect IQ](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3)** · **[0.2.14 release](https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.14)** · **[FR165 install ZIP](https://github.com/JekaMas/SpaceFox/releases/download/v0.2.14/SpaceFox-0.2.14-FR165-install.zip)** · [Release notes](https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.14)
 
-The 0.2.13 GitHub release repairs stale countdown selection and protects accepted snapshots against older or conflicting updates. Garmin accepted its signed 0.2.13 submission; public availability, physical watch and phone acceptance are not yet observed. The owner reported missing fields, a launch marker issue and slow wake on physical 0.2.4; 0.2.13 has not been observed on that watch. Reminders default off.
+The 0.2.14 GitHub release preserves the normal ACTIVE face after activity-menu and sleep/wake transitions and improves artwork resource ownership. Garmin verified and accepted the signed update; its version update is pending approval. Physical watch and phone acceptance are not yet observed. Reminders default off.
 
 ![SpaceFox 0.1.18 in the Forerunner 165 Music simulator](openspec/changes/spacefox-watchface/evidence/fields018/entry-controls/peer-release-390-256680ec.png)
 
 Native simulator capture; it is not a physical watch photograph.
 
-The 0.2.13 release uses hourly healthy schedule checks and retries missing or failed schedules at the next permitted connected opportunity. Garmin background dispatch has a five-minute minimum. Phone delivery and physical watch acceptance remain unobserved.
+The 0.2.14 release uses hourly healthy schedule checks and retries missing or failed schedules at the next permitted connected opportunity. Garmin background dispatch has a five-minute minimum. Phone delivery and physical watch acceptance remain unobserved.
 
 ## What it shows
 
