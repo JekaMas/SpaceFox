@@ -23,6 +23,10 @@ import Toybox.Timer;import Toybox.Graphics;import Toybox.Lang;import Toybox.Syst
  function step(){return true;}
  function dispose(){}
 }
+(:test,:typecheck(false)) class MenuRasterStore extends PbtMemoryStore {
+ var failActive=false;
+ function write(key,value){if(failActive&&key.equals("sf.raster.active")){throw new Lang.InvalidValueException("injected raster pointer failure");}PbtMemoryStore.write(key,value);}
+}
 (:test,:typecheck(false)) class MenuView extends SpaceFoxView {
  var timers=[];var mode=System.DISPLAY_MODE_HIGH_POWER;var fakeHeap=0;function initialize(){SpaceFoxView.initialize(new MenuClock(),new ScheduleState(null,"empty"));}
  function deviceMode() as System.DisplayMode {return mode;}function requestFrame() as Void {}function logMode() as Void {}
@@ -92,12 +96,69 @@ import Toybox.Timer;import Toybox.Graphics;import Toybox.Lang;import Toybox.Syst
  var artDc=new MenuDraw();artDc.failArt=true;menuReset();view.onUpdate(artDc);Test.assert(artDc.artFaults==1);Test.assert(MenuObserve.frames==1&&MenuObserve.time&&MenuObserve.icons.size()==4&&MenuObserve.values==4);
  Test.assert(view.context!=null&&view.context.launchId.equals("ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60"));view.onHide();logger.debug("optional map/art faults: canonical time and four identities retained");return true;
 }
+(:test,:typecheck(false)) function menuRootProjectionCase(resource,expected){
+ var packet=new NativeTrustedPacket(WatchUi.loadResource(Rez.JsonData.RootPayload)["payload"]);var build=new NativeSfrBuild(null,"https://example.invalid",packet);
+ var parser=new NativeIncrementalJson();parser.feedMode=true;parser.commonKeys=["decodedBytes","path","sha256"];parser.nodeOwner=build;parser.rootOwner=build;var ok=true;
+ try{parser.begin(WatchUi.loadResource(resource)["raw"],4096);var steps=0;while(!parser.step()){steps+=1;if(steps>5000){throw new Lang.InvalidValueException("step bound");}}build.scene=parser.result;build.finishBegin();build.roleRef("rocket");}catch(e){ok=false;}parser.dispose();build.dispose();Test.assertMessage(ok==expected,"root projection refusal/acceptance");return true;
+}
+(:test,:typecheck(false)) function menuRootProjection(logger){
+ menuRootProjectionCase(Rez.JsonData.RootValid,true);menuRootProjectionCase(Rez.JsonData.RootMaxSource,true);
+ menuRootProjectionCase(Rez.JsonData.RootMissing,false);menuRootProjectionCase(Rez.JsonData.RootIdentity,false);
+ menuRootProjectionCase(Rez.JsonData.RootRole,false);menuRootProjectionCase(Rez.JsonData.RootProvenance,false);
+ menuRootProjectionCase(Rez.JsonData.RootDuplicate,false);menuRootProjectionCase(Rez.JsonData.RootUnknown,false);
+ logger.debug("ROOT_PROJECTION valid/maxSource accepted; missing/identity/role/provenance/duplicate/unknown refused");return true;
+}
+(:test,:typecheck(false)) function menuHiddenResourceCycle(logger){
+ var raw=WatchUi.loadResource(Rez.JsonData.CountdownCaptured)["payload"];var view=new MenuView();view.setPacket(new NativeTrustedPacket(raw));
+ for(var i=0;i<3;i+=1){view.onShow();view.onUpdate(new MenuDraw());view.queueResumeAfterFrame();for(var t=0;t<view.timers.size();t+=1){(view.timers[t] as PbtTimer).fire();}view.onHide();
+  Test.assert(view.renderer==null&&view.sfrTimer==null&&view.presentation.label==null&&view.presentation.dictionary==null);
+  view.setSettings(new SceneSettings({"Language"=>1}));Test.assert(view.presentation.label==null&&view.presentation.dictionary==null);
+  for(var j=0;j<view.timers.size();j+=1){Test.assert(view.timers[j].callback==null);}
+ }
+ logger.debug("HIDDEN_RESOURCE cycles=3 callbacks_released=true hidden_settings_no_reload=true");return true;
+}
+(:test,:typecheck(false)) function menuCompactClosure(logger){
+ var packet=new NativeTrustedPacket(WatchUi.loadResource(Rez.JsonData.RootPayload)["payload"]);var store=new PbtMemoryStore();var b=new NativeSfrBuild(store,"https://example.invalid",packet);
+ var a="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";var c="bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb";
+ var first=b.addTuple(1,sfrCompactDigest(a),17);var again=b.addTuple(1,sfrCompactDigest(a),17);Test.assert(first==again&&b.expected.size()==1&&b.rasterBytes==17);
+ var refused=false;try{b.addTuple(1,sfrCompactDigest(a),18);}catch(e){refused=true;}Test.assert(refused);refused=false;try{b.addTuple(0,sfrCompactDigest(a),17);}catch(e){refused=true;}Test.assert(refused);
+ b.addTuple(1,sfrCompactDigest(c),19);b.readKind=2;b.arrayElement("/objects",0,[1,a,17],1);b.arrayElement("/objects",1,[1,c,19],1);
+ refused=false;try{b.arrayElement("/objects",0,[1,c,19],1);}catch(e){refused=true;}Test.assert(refused);
+ store.write("sf.obj."+a,"corrupted");refused=false;try{b.checkRaw(first);}catch(e){refused=true;}Test.assert(refused);
+ b.scene={"position"=>null};b.closure();var saved=store.read("sf.raster.active");Test.assert(saved["refs"][0][1].equals(a)&&saved["refs"][1][1].equals(c));
+ b.dispose();logger.debug("COMPACT_CLOSURE byte_value_dedup/conflicts/order/corrupt_ref/canonical_durable passed");return true;
+}
+(:test,:typecheck(false)) function menuRasterCommitFailure(logger){
+ var packet=new NativeTrustedPacket(WatchUi.loadResource(Rez.JsonData.RootPayload)["payload"]);var store=new MenuRasterStore();var prior={"base"=>"https://example.invalid","selectionHash"=>"old","refs"=>[[0,"old",1]]};store.write("sf.raster.active",prior);
+ var b=new NativeSfrBuild(store,"https://example.invalid",packet);b.addTuple(1,sfrCompactDigest("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"),17);b.scene={"position"=>null};store.failActive=true;
+ var refused=false;try{b.closure();}catch(e){refused=true;}Test.assert(refused&&!b.complete&&store.read("sf.raster.active")==prior&&store.read("sf.raster.recovery")==prior);b.dispose();
+ logger.debug("RASTER_COMMIT failure retains old active/recovery and does not publish candidate");return true;
+}
+(:test,:typecheck(false)) function menuShardCase(resource,accepted){
+ var fixture=WatchUi.loadResource(resource);var packet=new NativeTrustedPacket(WatchUi.loadResource(Rez.JsonData.RootPayload)["payload"]);var b=new NativeSfrBuild(null,"https://example.invalid",packet);b.readKind=1;
+ var parser=new NativeIncrementalJson();parser.feedMode=true;parser.commonKeys=["decodedBytes","path","sha256"];parser.nodeOwner=b;var ok=true;
+ try{parser.begin(fixture["raw"],4096);var n=0;while(!parser.step()){n+=1;if(n>5000){throw new Lang.InvalidValueException("step bound");}}var d=b.finishRole("map",parser.result);var shards=d["shards"];Test.assert(sfrDigestText(shards[0][1]).equals(fixture["first"])&&sfrDigestText(shards[shards.size()-1][1]).equals(fixture["last"]));Test.assert(shards[0]==b.expected[0]);}catch(e){ok=false;}parser.dispose();b.dispose();Test.assert(ok==accepted);return true;
+}
+(:test,:typecheck(false)) function menuShardProjection(logger){menuShardCase(Rez.JsonData.ShardValid,true);menuShardCase(Rez.JsonData.ShardBadHash,false);menuShardCase(Rez.JsonData.ShardOver,false);logger.debug("SHARD_PROJECTION captured19 accepted; malformed digest and oversized input refused");return true;}
+(:test,:typecheck(false)) function menuCompactPixel(logger){
+ var raw="SFR1:0:1:AAECAw==";var h=new NativeWireHash();h.put(raw);var digest=h.digest();
+ for(var i=0;i<2;i+=1){var store=new PbtMemoryStore();store.write("sf.obj."+digest,raw);var good="039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81";var d={"canvas"=>[1,1],"channels"=>3,"pixelSha256"=>i==0?good:"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","shards"=>[[1,sfrCompactDigest(digest),h.count]]};var accepted=true;
+  try{var decoder=new NativeSfrDecoder(store,d);var n=0;while(!decoder.step()){n+=1;if(n>10){throw new Lang.InvalidValueException("step bound");}}}catch(e){accepted=false;}Test.assert(accepted==(i==0));
+ }
+ logger.debug("COMPACT_PIXEL valid accepted; wrong pixel hash refused");return true;
+}
 (:test,:typecheck(false)) function menuAffectedBatch(logger){
  Test.assert(menuDeferredDecodeKeepsComposition(logger));
  Test.assert(menuRetainedAndReplacedVisual(logger));
  Test.assert(menuOptionalDrawFaults(logger));
+ Test.assert(menuRootProjection(logger));
+ Test.assert(menuHiddenResourceCycle(logger));
+ Test.assert(menuCompactClosure(logger));
+ Test.assert(menuRasterCommitFailure(logger));
+ Test.assert(menuShardProjection(logger));
+ Test.assert(menuCompactPixel(logger));
  Test.assert(menuGeneratedComposition(logger));
- logger.debug("MENU_AFFECTED directed=3 generated=1");return true;
+ logger.debug("MENU_AFFECTED directed=9 generated=1");return true;
 }
 
 (:test,:typecheck(false)) function menuMandatoryPaintRecovery(logger){

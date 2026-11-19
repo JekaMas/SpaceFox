@@ -35,9 +35,9 @@
     "tools/spacefox/provider.py": "2d855c18cbb43da57fa32087e275597bc14f4e7bf5490f4cc83090aab44c9c65",
     "tools/spacefox/catalog.py": "5550d7a614d280acafcc1306bc3dd58413e052c86ca1a142a64b83ffafd0c127",
     "watchface/source/LocalePresentation.mc": "0cb0be9330afbaf415182dd30ea2304dd9e1139f714d05c71901c945c28a13cc",
-    "watchface/source/SceneRenderer.mc": "2384791dadceb1aaff3687f4c247df1835342236a9344b6f38af6998d41ead45",
+    "watchface/source/SceneRenderer.mc": "e4855de5c3bc7e78e5ab1219b800f2ab66d1d065ac2e3432bf4068cc2adfdcef",
     "watchface/source/SceneSettings.mc": "264304ed331374ed730a93da642998813dd9b9c15d2cff8043f92afb53e2efc4",
-    "watchface/source/SpaceFoxView.mc": "5e5231d733db5b1529ba34d8938e5f5937fd73bec17894a25de3cd40c168df72",
+    "watchface/source/SpaceFoxView.mc": "77f6b42b82ce04c694ffae06ed8c3e1dc6e0d4707dd68c7b4d8da0280e9394ab",
     "watchface/source/WatchClock.mc": "e1cb5dd3ac35fb8bc52efad2ef85c7b909cb15fe7a04b4710302d4d34ddec100",
     "watchface/source/Fitness.mc": "29e9494c28a6824d69c19264a5e75ef0134f986c29e617b127e29cc19f16083f",
     "watchface/source/ScheduleState.mc": "4a9f22b9d01398fa60eb2ce6e430b09d878380b93b88f93058972e340780f3c4",
@@ -76,13 +76,13 @@
   },
   "physicalDeviceObserved": false,
   "nativeSpeakerReviewed": false,
-  "proofBoundary": "Original Mac FR165 and earlier Linux observations remain historical. The current Linux FR165M SDK observation covers five primary dictionaries, three bitmap fonts, and all 413 joined-header compositions / 1822 records on the captured 0.2.13 native inputs. Prior glyph-shaping observations retain their original scope. No physical, phone, native-speaker, pixel or peak-memory claim.",
+  "proofBoundary": "Five primary locales: historical finite/font observations plus current Linux-compiled, Mac-simulator source-bound observations; no physical or native-speaker claim.",
   "historicalToolchainLock": {
     "path": "openspec/changes/spacefox-watchface/evidence/final-native-timing-settings/baseline/watchface/toolchain-lock.json",
     "sha256": "948c281801f4596cd6f904428f385adf85ebfe63f89d3c416b959cddf7bed389"
   },
   "currentNativeObservation": {
-    "path": "openspec/changes/repair-countdown-lineage/evidence/current-native-qualification/observation.json",
-    "sha256": "fdf91097aa17d3ed0b8639b802bdd216d9c81b6f404404c789ccb9d98bdc3c05"
+    "path": "openspec/changes/repair-activity-menu-frame/evidence/current-native-qualification/observation.json",
+    "sha256": "0e88cd2e986dd0e3a4f37f7b130b6b4ff3d55aa16fdcd2caa6ae60631a506715"
   }
 }

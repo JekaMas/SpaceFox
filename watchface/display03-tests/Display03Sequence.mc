@@ -191,7 +191,7 @@ import Toybox.Application;
 (:test,:typecheck(false)) function display03StreamWireValidation(logger){
  var raws=["SFR1:0:1:AAECAw==","SFR1:0:1:AAECAx==","SFR1:0:1:AA=CAw=="];
  for(var i=0;i<raws.size();i+=1){var store=new D03Store();var h=new NativeWireHash();h.put(raws[i]);var digest=h.digest();store.write("sf.obj."+digest,raws[i]);
-  var descriptor={"canvas"=>[1,1],"channels"=>3,"pixelSha256"=>"039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81","shards"=>[[digest,h.count]]};
+  var descriptor={"canvas"=>[1,1],"channels"=>3,"pixelSha256"=>"039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81","shards"=>[[1,sfrCompactDigest(digest),h.count]]};
   var accepted=true;try{var decoder=new NativeSfrDecoder(store,descriptor);var steps=0;while(!decoder.step()){steps+=1;Test.assert(steps<10);}Test.assert(decoder.done);}catch(e){accepted=false;}
   Test.assert(accepted==(i==0));
  }

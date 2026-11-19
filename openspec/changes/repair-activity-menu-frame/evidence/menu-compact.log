@@ -1,0 +1,27 @@
+------------------------------------------------------------------------------
+Executing test menuAffectedBatch...
+DEBUG (17:10): before icons=4 time=true values=4
+DEBUG (17:10): deferred icons=4 time=true values=4
+DEBUG (17:10): same immutable bitmap retained; replaced selection detaches previous bitmap
+DEBUG (17:10): optional map/art faults: canonical time and four identities retained
+DEBUG (17:10): ROOT_PROJECTION valid/maxSource accepted; missing/identity/role/provenance/duplicate/unknown refused
+DEBUG (17:10): HIDDEN_RESOURCE cycles=3 callbacks_released=true hidden_settings_no_reload=true
+
+Error: Unhandled Exception
+Exception: Invalid native SFR1M scene
+Stack: 
+  - fail() at /source/watchface/source/NativeSfr.mc:94 0x5000f9ae 
+  - arrayElement() at /source/watchface/source/NativeSfr.mc:116 0x5000f666 
+  - menuCompactClosure() at /source/watchface/activity-menu-tests/MenuTests.mc:121 0x1000106c 
+  - menuAffectedBatch() at /source/watchface/activity-menu-tests/MenuTests.mc:139 0x10005458 
+  - evaluate_test_entries_0_to_30() at /task/gen/006-B4432-00/source/UnitTests.mcgen:102 0x100101a3 
+  - runTest() at /task/gen/006-B4432-00/source/UnitTests.mcgen:277 0x100105dd 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+menuAffectedBatch                   ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

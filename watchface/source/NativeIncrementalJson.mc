@@ -84,6 +84,6 @@ class NativeIncrementalJson extends NativeJson {
             if(path.equals("/launch/operator_abbrev")){var next=finish;while(next<source.length()&&" \t\r\n".find(source.substring(next,next+1))!=null){next+=1;}if(source.substring(next,next+1).equals(",")){spans[path]=[f.keyStart,next+1];}else{fail();}}
             if(path.equals("/publisher")||path.equals("/launch/source_validated_utc")||path.equals("/launch/stale")||path.equals("/launch/rescheduled")||path.equals("/pollIntervalSeconds")||path.equals("/timingState")){ignored.add([begin,finish]);}child=projection(path,child);
         }
-        if(nodeOwner!=null){child=nodeOwner.objectField(oldPath,key,child);}if(rootOwner!=null&&oldPath.equals("")){child=rootOwner.sceneField(key,child);}f.result[key]=child;path=oldPath;f.state=4;
+        if(nodeOwner!=null){child=nodeOwner.objectField(oldPath,key,child);}var keep=true;if(rootOwner!=null&&oldPath.equals("")){child=rootOwner.sceneField(key,child);keep=rootOwner.keepSceneField(key);}if(keep){f.result[key]=child;}path=oldPath;f.state=4;
     }
 }

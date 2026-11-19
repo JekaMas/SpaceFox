@@ -4,6 +4,9 @@ import Toybox.StringUtil;
 import Toybox.Cryptography;
 import Toybox.System;
 
+(:extendedCode, :typecheck(false)) function sfrCompactDigest(text){return StringUtil.convertEncodedString(text,{:fromRepresentation=>StringUtil.REPRESENTATION_STRING_HEX,:toRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY});}
+(:extendedCode, :typecheck(false)) function sfrDigestText(bytes){return StringUtil.convertEncodedString(bytes,{:fromRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:toRepresentation=>StringUtil.REPRESENTATION_STRING_HEX}).toLower();}
+
 // One bounded chunk and one previous scanline. No complete pixel array, geometry
 // AST, network, storage or decoder work is owned by redraw.
 // Hot pixel loops remain resident; only cold construction/chunk admission is
@@ -23,8 +26,8 @@ class NativeSfrDecoder {
     function chunk(){
         if(shard>=descriptor["shards"].size()){fail();}
         var item=descriptor["shards"][shard];
-        if(!(item instanceof Array)||item.size()!=2||!(item[0] instanceof String)||!(item[1] instanceof Number||item[1] instanceof Long)){fail();}
-        var raw=immutable.raw({"sha256"=>item[0],"decodedBytes"=>item[1]});
+        if(!(item instanceof Array)||item.size()!=3||item[0]!=1||!(item[1] instanceof ByteArray)||!(item[2] instanceof Number||item[2] instanceof Long)){fail();}
+        var raw=immutable.raw({"sha256"=>sfrDigestText(item[1]),"decodedBytes"=>item[2]});
         if(!(raw instanceof String)||raw.length()<8||!raw.substring(0,5).equals("SFR1:")){fail();}
 
         // Inspect only the bounded ASCII header. Copying two almost-complete
@@ -85,7 +88,7 @@ class NativeSfrRenderer extends NativeVisualRenderer {
 
 (:extendedCode, :typecheck(false))
 class NativeSfrBuild {
-    var preferBundled=false;var preferBundledRocket=false;var store;var base;var packet;var immutable;var scene;var descriptors={};var expected=[];var role=0;var decoder=null;var result;var complete=false;var closureChecked=false;var closureAt=0;var selection;var rootReady=false;var rootParsed=false;var pendingRoot=null;var pendingRead=null;var pendingDescriptor=null;var rasterBytes=0;var rasterObjects=0;var readKind=0;var names;
+    var preferBundled=false;var preferBundledRocket=false;var store;var base;var packet;var immutable;var scene;var expected=[];var role=0;var decoder=null;var result;var complete=false;var closureChecked=false;var closureAt=0;var selection;var rootReady=false;var rootParsed=false;var pendingRoot=null;var pendingRead=null;var pendingDescriptor=null;var rasterBytes=0;var rasterObjects=0;var readKind=0;var names;var sceneFields=0;
     function initialize(adapter,url,p){store=adapter;base=url;packet=p;immutable=new NativeImmutable(store);selection=p.bridge["selection"];names=["map","rocket","siteCountry"];result=new NativeSfrRenderer();}
     function dispose(){if(pendingRead!=null){pendingRead.dispose();pendingRead=null;}if(decoder!=null){decoder.dispose();decoder=null;}result=null;scene=null;pendingRoot=null;rootParsed=false;packet=null;immutable=null;pendingDescriptor=null;expected=[];}
     function fail(){throw new Lang.InvalidValueException("Invalid native SFR1M scene");}
@@ -95,11 +98,13 @@ class NativeSfrBuild {
             (!(revision instanceof Number || revision instanceof Long) || revision<1);
     }
     function ref(r,prefix){packet.ref(r,prefix);return r;}
-    function add(r){addTuple(0,r["sha256"],r["decodedBytes"]);}
-    function addTuple(kind,digest,bytes){for(var i=0;i<expected.size();i+=1){if(expected[i][1].equals(digest)){if(expected[i][0]!=kind||expected[i][2]!=bytes){fail();}return false;}}expected.add([kind,digest,bytes]);return true;}
+    function add(r){addTuple(0,sfrCompactDigest(r["sha256"]),r["decodedBytes"]);}
+    function sameDigest(a,b){if(a.size()!=32||b.size()!=32){return false;}for(var i=0;i<32;i+=1){if(a[i]!=b[i]){return false;}}return true;}
+    function addTuple(kind,digest,bytes){for(var i=0;i<expected.size();i+=1){if(sameDigest(expected[i][1],digest)){if(expected[i][0]!=kind||expected[i][2]!=bytes){fail();}return expected[i];}}var entry=[kind,digest,bytes];expected.add(entry);if(kind==1){rasterBytes+=bytes;rasterObjects+=1;if(rasterBytes>98304||rasterObjects>32){fail();}}return entry;}
     function objectField(path,key,value){
         if(path.equals("/mapSource")){if(key.equals("corresponding")||key.equals("notices")){sourceRef(value);}else if(key.equals("recipeSha256")||key.equals("worldSha256")){if(!packet.hex(value)){fail();}}else{fail();}return null;}
         if(path.find("/roles/")==0&&key.equals("descriptor")){ref(value,"descriptors");return [value["sha256"],value["decodedBytes"]];}
+        if(path.equals("/roles")&&value!=null){packet.shape(value,["entityId","descriptor"],[]);var index=key.equals("map")?3:key.equals("rocket")?1:4;var identity=packet.bridge["ids"][index];if(identity==null||!packet.same(value["entityId"],identity)){fail();}return value["descriptor"];}
         if((path.equals("/origins/model")||path.equals("/origins/operator"))&&key.equals("sourceRecord")){if(value!=null){sourceRef(value);}return value==null?null:true;}
         if(path.equals("")&&key.equals("siteCountrySource")){sourceRef(value);return true;}
         if(path.equals("")&&key.equals("motionSource")){sourceRef(value);return true;}
@@ -111,9 +116,9 @@ class NativeSfrBuild {
         if(readKind==0&&!path.equals("/marker/anchor")&&!path.equals("/marker/colors")){fail();}
         if(readKind==1&&!path.equals("/canvas")&&!path.equals("/sourceCanvas")&&!path.equals("/animation")&&!path.equals("/shards")){fail();}
         if(readKind==2&&!path.equals("/objects")){fail();}
-        if(path.equals("/shards")&&depth==1){if(index>=32){fail();}ref(value,"rasters");return [value["sha256"],value["decodedBytes"]];}
+        if(path.equals("/shards")&&depth==1){if(index>=32){fail();}ref(value,"rasters");var compact=sfrCompactDigest(value["sha256"]);if(compact.size()!=32){fail();}return addTuple(1,compact,value["decodedBytes"]);}
         if(path.equals("/shards")&&depth>1){fail();}
-        if(path.equals("/objects")&&depth==1){if(index>=40||index>=expected.size()||!(value instanceof Array)||value.size()!=3||!packet.integer(value[0])||(value[0]!=0&&value[0]!=1)||!packet.hex(value[1])||!packet.integer(value[2])||value[2]<1||value[2]>4096||!same(value,expected[index])){fail();}return null;}
+        if(path.equals("/objects")&&depth==1){if(index>=40||index>=expected.size()||!(value instanceof Array)||value.size()!=3||!packet.integer(value[0])||(value[0]!=0&&value[0]!=1)||!packet.hex(value[1])||!packet.integer(value[2])||value[2]<1||value[2]>4096||value[0]!=expected[index][0]||value[2]!=expected[index][2]||!sameDigest(sfrCompactDigest(value[1]),expected[index][1])){fail();}return null;}
         if(path.equals("/objects")&&(depth>2||depth==2&&index>=3)){fail();}
         if(path.equals("/animation")&&(depth>3||depth==1&&index>=2||depth==2&&index>=16||depth==3&&index>=4)){fail();}
         if(((path.equals("/canvas")||path.equals("/sourceCanvas"))&&index>=2)||(path.equals("/marker/anchor")&&index>=2)||(path.equals("/marker/colors")&&index>=3)){fail();}
@@ -131,10 +136,15 @@ class NativeSfrBuild {
         else if(path.equals("/roles/map")||path.equals("/roles/rocket")||path.equals("/roles/siteCountry")){allowed=["entityId","descriptor"];}
         else{allowed=["path","sha256","decodedBytes"];}
         if(path.equals("")){if(readKind==0){allowed=sceneKeys();}else if(readKind==1){allowed=allowed.slice(0,allowed.size());allowed.add("sourceCanvas");allowed.add("motionSource");}}
-        if(allowed.indexOf(key)<0){fail();}
+        var at=allowed.indexOf(key);if(at<0){fail();}if(path.equals("")&&readKind==0){sceneFields=sceneFields|(1<<at);}
     }
     function sourceRef(r){packet.shape(r,["path","sha256","decodedBytes"],[]);if(!packet.hex(r["sha256"])||!packet.integer(r["decodedBytes"])||r["decodedBytes"]<1||r["decodedBytes"]>1048576||!packet.same(r["path"],"sources/"+r["sha256"]+".json")){fail();}}
     function sceneField(key,value){
+        if(key.equals("type")&&!packet.same(value,"native-scene")||key.equals("schemaVersion")&&(!packet.integer(value)||value!=3)||key.equals("rendererProfile")&&!packet.same(value,"SFR1M")||key.equals("layoutRevision")&&!packet.same(value,"native-04-motion-v1")){fail();}
+        var identity=["launchId","modelId","operatorId","siteId","countryId"].indexOf(key);if(identity>=0&&!same(value,packet.bridge["ids"][identity])){fail();}
+        if(key.equals("positionMode")){var site=packet.bridge["site"];if(!same(value,site==null?null:site["positionMode"])){fail();}}
+        if(key.equals("origins")){admitOrigins(value);return null;}
+        if(key.equals("siteCountrySource")&&value!=true){fail();}
         if(key.equals("sourcePosition")||key.equals("position")){var site=packet.bridge["site"];if(!same(value,site==null?null:site[key])){fail();}return key.equals("position")&&value!=null?true:null;}
         if(key.equals("sourceSelection")){ref(value,"descriptors");return null;}
         if(key.equals("mapDefinitionSha256")){if(value!=null&&!packet.hex(value)){fail();}return value==null?null:true;}
@@ -142,9 +152,10 @@ class NativeSfrBuild {
         if(key.equals("mapSource")){if(value!=null){packet.shape(value,["recipeSha256","worldSha256","corresponding","notices"],[]);}return value==null?null:true;}
         return value;
     }
+    function keepSceneField(key){return key.equals("position")||key.equals("roles")||key.equals("mapDefinitionSha256")||key.equals("marker")||key.equals("mapSource");}
     function sceneKeys(){var keys=["type","schemaVersion","rendererProfile","layoutRevision","sourceSelection","launchId","modelId","operatorId","siteId","countryId","sourcePosition","position","positionMode","mapDefinitionSha256","mapSource","marker","roles"];keys.add("origins");keys.add("siteCountrySource");return keys;}
-    function admitOrigins(){
-        var origins=scene["origins"];packet.shape(origins,["model","operator"],[]);var modes=["model","operator"];for(var i=0;i<2;i+=1){var origin=origins[modes[i]];packet.shape(origin,["ownerId","countryId","sourceRecord"],[]);var owner=scene[i==0?"modelId":"operatorId"];if(!same(origin["ownerId"],owner)||!packet.id(origin["countryId"],"country",true)||owner==null&&origin["countryId"]!=null||origin["sourceRecord"]!=true){fail();}origin.remove("sourceRecord");}
+    function admitOrigins(origins){
+        packet.shape(origins,["model","operator"],[]);var modes=["model","operator"];for(var i=0;i<2;i+=1){var origin=origins[modes[i]];packet.shape(origin,["ownerId","countryId","sourceRecord"],[]);var owner=packet.bridge["ids"][i==0?1:2];if(!same(origin["ownerId"],owner)||!packet.id(origin["countryId"],"country",true)||owner==null&&origin["countryId"]!=null||origin["sourceRecord"]!=true){fail();}}
     }
     function beginStep(){
         if(rootReady){return true;}
@@ -155,45 +166,37 @@ class NativeSfrBuild {
         if(!pendingRead.step()){return false;}pendingRoot=pendingRead.result;pendingRead=null;rootParsed=true;return false;
     }
     function finishBegin(){
-        packet.shape(scene,sceneKeys(),[]);
-        if(!packet.same(scene["type"],"native-scene")||!packet.integer(scene["schemaVersion"])||scene["schemaVersion"]!=3||!packet.same(scene["rendererProfile"],"SFR1M")||!packet.same(scene["layoutRevision"],"native-04-motion-v1")){fail();}var keys=["launchId","modelId","operatorId","siteId","countryId"];for(var i=0;i<keys.size();i+=1){if(!same(scene[keys[i]],packet.bridge["ids"][i])){fail();}}
-        var site=packet.bridge["site"];if(!same(scene["positionMode"],site==null?null:site["positionMode"])){fail();}
+        if(sceneFields!=(1<<sceneKeys().size())-1){fail();}packet.shape(scene,["position","roles","mapDefinitionSha256","marker","mapSource"],[]);
         if(scene["position"]!=null){if(scene["mapDefinitionSha256"]!=true||scene["marker"]!=true||scene["mapSource"]!=true){fail();}}
-        admitOrigins();if(scene["siteCountrySource"]!=true){fail();}scene.remove("siteCountrySource");packet.shape(scene["roles"],names,[]);if(scene["position"]==null&&(scene["roles"]["map"]!=null||scene["marker"]!=null)){fail();}add(selection);
+        packet.shape(scene["roles"],names,[]);if(scene["position"]==null&&(scene["roles"]["map"]!=null||scene["marker"]!=null)){fail();}add(selection);
         // Provenance is digest-bound by the raw root. Only current scene facts
         // and selected role references need to remain resident after admission.
-        scene.remove("mapSource");scene.remove("sourceSelection");scene.remove("sourcePosition");scene.remove("mapDefinitionSha256");scene.remove("marker");
-        // Root identity, provenance, version and position mode have all been
-        // checked above. They are not needed by role decoding or display; drop
-        // these parsed dictionaries before the next immutable shard read.
-        scene.remove("origins");scene.remove("type");scene.remove("schemaVersion");scene.remove("rendererProfile");scene.remove("layoutRevision");scene.remove("positionMode");
-        // Rebuild the post-validation projection so removed root keys do not
-        // leave the original large hash table resident during role parsing.
-        scene={"position"=>scene["position"],"roles"=>scene["roles"],"siteId"=>scene["siteId"],"modelId"=>scene["modelId"],"countryId"=>scene["countryId"]};result.scene=scene;result.selectionHash=selection["sha256"];
-        var modelId=scene["modelId"];var revision=packet.bridge["artRevision"];
+        scene.remove("mapSource");scene.remove("mapDefinitionSha256");scene.remove("marker");result.scene=scene;result.selectionHash=selection["sha256"];
+        var modelId=packet.bridge["ids"][1];var revision=packet.bridge["artRevision"];
         // The producer's artwork epoch changes when corrected model art is
         // published. Earlier snapshots retain their map and verified objects,
         // but cannot replace a known model's newer bundled rocket image.
         preferBundledRocket=useBundledRocket(modelId,revision);
     }
     function roleRef(name){
-        var binding=scene["roles"][name];if(binding==null){return null;}packet.shape(binding,["entityId","descriptor"],[]);var identity=name.equals("map")?scene["siteId"]:name.equals("rocket")?scene["modelId"]:scene["countryId"];if(identity==null||!packet.same(binding["entityId"],identity)){fail();}var tuple=binding["descriptor"];var r={"sha256"=>tuple[0],"decodedBytes"=>tuple[1]};add(r);scene["roles"][name]=null;readKind=1;return r;
+        var tuple=scene["roles"][name];if(tuple==null){return null;}var r={"sha256"=>tuple[0],"decodedBytes"=>tuple[1]};add(r);scene["roles"][name]=null;readKind=1;return r;
     }
     function finishRole(name,d){
         var moving=name.equals("rocket");packet.shape(d,["type","schemaVersion","rendererProfile","canvas","channels","pixelSha256","sourceDescriptor","sourceSemanticSha256","animation","shards"],moving?["sourceCanvas","motionSource"]:[]);if(moving&&(!d.hasKey("sourceCanvas")||!d.hasKey("motionSource"))){fail();}
         var size=name.equals("map")?[390,390]:name.equals("rocket")?[54,124]:[20,12];
-        if(!packet.same(d["type"],"raster")||!packet.integer(d["schemaVersion"])||d["schemaVersion"]!=(moving?2:1)||!packet.same(d["rendererProfile"],moving?"SFR1M":"SFR1")||!same(d["canvas"],size)||!packet.integer(d["channels"])||d["channels"]!=(name.equals("map")?3:4)||!packet.hex(d["pixelSha256"])||!name.equals("map")&&!packet.hex(d["sourceSemanticSha256"])||name.equals("map")&&d["sourceSemanticSha256"]!=null||!(d["shards"] instanceof Array)||d["shards"].size()<1||d["shards"].size()>32){fail();}var total=0;for(var i=0;i<d["shards"].size();i+=1){var shard=d["shards"][i];if(addTuple(1,shard[0],shard[1])){total+=shard[1];rasterObjects+=1;}}rasterBytes+=total;if(rasterBytes>98304||rasterObjects>32){fail();}
+        if(!packet.same(d["type"],"raster")||!packet.integer(d["schemaVersion"])||d["schemaVersion"]!=(moving?2:1)||!packet.same(d["rendererProfile"],moving?"SFR1M":"SFR1")||!same(d["canvas"],size)||!packet.integer(d["channels"])||d["channels"]!=(name.equals("map")?3:4)||!packet.hex(d["pixelSha256"])||!name.equals("map")&&!packet.hex(d["sourceSemanticSha256"])||name.equals("map")&&d["sourceSemanticSha256"]!=null||!(d["shards"] instanceof Array)||d["shards"].size()<1||d["shards"].size()>32){fail();}
         if(!moving&&!same(d["animation"],[0,[]])){fail();}if(moving){var canvas=d["sourceCanvas"];if(!(canvas instanceof Array)||canvas.size()!=2||!packet.integer(canvas[0])||!packet.integer(canvas[1])||canvas[0]<1||canvas[0]>256||canvas[1]<1||canvas[1]>256||d["motionSource"]!=true){fail();}}
-        new NativeAnimation().validate(d["animation"]);if(name.equals("rocket")){result.manifest={"canvas"=>moving?d["sourceCanvas"]:size,"animation"=>d["animation"]};result.animations=d["animation"];result.prepareCanvas(result.manifest["canvas"]);}
-        d.remove("sourceDescriptor");d.remove("sourceSemanticSha256");return d;
+        new NativeAnimation().validate(d["animation"]);
+        d.remove("sourceDescriptor");d.remove("sourceSemanticSha256");d.remove("animation");d.remove("sourceCanvas");d.remove("motionSource");return d;
     }
     function checkIndex(index){
         packet.shape(index,["type","schemaVersion","rendererProfile","scene","objects"],[]);if(!packet.same(index["type"],"native-transfer")||!packet.integer(index["schemaVersion"])||index["schemaVersion"]!=1||!packet.same(index["rendererProfile"],"SFR1M")||!same(index["scene"],[selection["sha256"],selection["decodedBytes"]])||!(index["objects"] instanceof Array)||index["objects"].size()!=expected.size()||expected.size()>40){fail();}var total=0;for(var i=0;i<expected.size();i+=1){total+=expected[i][2];}if(total>114688){fail();}
     }
-    function checkRaw(r){if(immutable.raw({"sha256"=>r[1],"decodedBytes"=>r[2]})==null){fail();}}
+    function checkRaw(r){if(immutable.raw({"sha256"=>sfrDigestText(r[1]),"decodedBytes"=>r[2]})==null){fail();}}
     function closure(){
         // Commit only the complete decoded/pixel-verified current selection.
-        var prior=store.read("sf.raster.active");if(prior instanceof Dictionary&&!(prior["base"] instanceof String&&prior["base"].equals(base)&&prior["selectionHash"] instanceof String&&prior["selectionHash"].equals(selection["sha256"]))){store.write("sf.raster.recovery",prior);}if(!(prior instanceof Dictionary&&prior["base"] instanceof String&&prior["base"].equals(base)&&prior["selectionHash"] instanceof String&&prior["selectionHash"].equals(selection["sha256"]))){var refs=expected.slice(0,expected.size());refs.add([0,packet.bridge["transfer"]["sha256"],packet.bridge["transfer"]["decodedBytes"]]);store.write("sf.raster.active",{"base"=>base,"catalogDigest"=>packet.bridge["catalogDigest"],"selectionHash"=>selection["sha256"],"refs"=>refs});}result.scene=displayScene();complete=true;packet=null;
+        var prior=store.read("sf.raster.active");var samePrior=prior instanceof Dictionary&&prior["base"] instanceof String&&prior["base"].equals(base)&&prior["selectionHash"] instanceof String&&prior["selectionHash"].equals(selection["sha256"]);if(prior instanceof Dictionary&&!samePrior){store.write("sf.raster.recovery",prior);}prior=null;
+        if(!samePrior){for(var i=0;i<expected.size();i+=1){expected[i][1]=sfrDigestText(expected[i][1]);}expected.add([0,packet.bridge["transfer"]["sha256"],packet.bridge["transfer"]["decodedBytes"]]);store.write("sf.raster.active",{"base"=>base,"catalogDigest"=>packet.bridge["catalogDigest"],"selectionHash"=>selection["sha256"],"refs"=>expected});}result.scene=displayScene();complete=true;packet=null;
     }
     function displayScene(){return {"position"=>scene["position"]};}
     function step(){
