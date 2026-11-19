@@ -6,4 +6,4 @@
 - [x] Exercise actual view/STM generated events, incident witnesses and FR165/M resource-bound behavior; retain raw output.
 - [x] Bind candidate version/current admission and complete author self-review.
 - [x] Complete independent production/runner/oracle/raw-evidence review and actual clean current peer/source/native/five-primary gate.
-- [ ] After peer and root judgment, deliver the authorized release.
+- [x] After peer and root judgment, deliver the authorized release; Garmin approval remains pending.

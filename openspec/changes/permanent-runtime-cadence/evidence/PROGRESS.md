@@ -1,7 +1,5 @@
 # Current status
 
-Base 161b61392206837f7c8425f4e56f961b201bdb5a. `tools/run_native_tests.py` selects ten clock tests only; it does not execute incident health, activity-menu, countdown lineage or STM suites. The existing GitHub motion workflow runs Python publisher tests and does not provision the Garmin SDK. `SpaceFoxView` separately owns minute field state, a 60-second fitness timer and a 1-second fallback clock timer in addition to display lifecycle; the new batch is open. Historical test receipts remain bounded to their original selectors and source. No device acceptance or new release claimed.
+SpaceFox 0.2.16 / NativeID 7fac46b5 is published on GitHub and submitted to Garmin, where approval remains pending. See PUBLICATION.md for exact source, package and delivery identities. Physical watch, phone and battery behavior remain unobserved.
 
-Author checks passed: ordinary runner 34/34 (17 per profile), final changed per-seed selector passed on both profiles, real FR165M simulator app observer and current five-primary qualification passed. NativeID 7fac46b5. Clean source-state PASS at 5f4600238 (2315 inputs); peer/release remain open; see AUTHOR.md for exact retained-source and physical limits.
-
-Independent peer software GREEN at cd3612c9 /0.2.16/7fac46b5. Actual current combined gate PASS and34retained tables plus2final per-seed replacements reconciled. No production repair or peer SDK rerun. See PEER.md/json. Root judgment and author delivery remain open.
+The author runner passed 34/34 selected profile/selector executions; the subsequently strengthened per-seed selector passed on both profiles. Peer independently reconciled the raw results and accepted the actual clean combined gate at cd3612c9. Historical evidence remains bounded to its original source; see AUTHOR.md and PEER.md.
