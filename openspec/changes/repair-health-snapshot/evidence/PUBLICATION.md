@@ -1,0 +1,7 @@
+# Publication 0.2.15
+
+- Immutable tag and compiled source: `1cba9b35cb16f85e53734c622e5c0973550d4388`; independently reviewed protected source `6b204e08d8ab7d025dfe57340be2ecfa75c3926d`; NativeID `cd048922`. One official signed IQ-first export inspected 91 program members across 42 profiles.
+- [GitHub regular release](https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.15): 53 assets and 52 manifest entries matching GitHub API digest metadata. IQ SHA-256 `35bce10080abda6b48afce14debe5eced80ec6103a5eb729be947e0b71672de3`, 49,726,198 bytes. Original receipt SHA-256 `4ff94df5fcbc1a7a7640466980c44fa6f5372cbf08631e70adb12ba8da4b32ba`.
+- Garmin verified the exact IQ, AppID, signature and version 0.2.15; Submit returned to the listing, showing 0.2.15/Internal 24 and **Version update pending**. Approval and public availability have not been observed.
+- [FR165/FR165 Music install ZIP](https://github.com/JekaMas/SpaceFox/releases/download/v0.2.15/SpaceFox-0.2.15-FR165-install.zip), [FR165](https://github.com/JekaMas/SpaceFox/releases/download/v0.2.15/SpaceFox-fr165.prg), [FR165 Music](https://github.com/JekaMas/SpaceFox/releases/download/v0.2.15/SpaceFox-fr165m.prg), [IQ](https://github.com/JekaMas/SpaceFox/releases/download/v0.2.15/SpaceFox.iq).
+- This app-only delivery did not force a publisher or provider request. Simulator and typed fake evidence does not establish the real watch's health data availability or physical/phone behavior.
