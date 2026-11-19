@@ -1,1 +1,33 @@
-{"scope":"current health roles, lifecycle and indicator","requirements":[{"id":"fresh-real-history","tests":"production SelectedFields with typed fake Complications/SensorHistory, first RED and age/range/zero/error controls"},{"id":"subscription-lifecycle","tests":"bounded start/read/change/stop/wake event sequences with effect counters"},{"id":"actual-api","tests":"current SDK FR165/FR165M profile and focused native observer where supported"},{"id":"countdown-timers","tests":"source lineage and timer-owner analysis; public generation observation separately attributed"}]}
+{
+  "scope": "current health roles, lifecycle and indicator",
+  "requirements": [
+    {
+      "id": "fresh-real-history",
+      "tests": "production SelectedFields with typed fake Complications/SensorHistory, first RED and age/range/zero/error controls"
+    },
+    {
+      "id": "subscription-lifecycle",
+      "tests": "bounded start/read/change/stop/wake event sequences with effect counters"
+    },
+    {
+      "id": "actual-api",
+      "tests": "current SDK FR165/FR165M profile and focused native observer where supported"
+    },
+    {
+      "id": "countdown-timers",
+      "tests": "source lineage and timer-owner analysis; public generation observation separately attributed"
+    }
+  ],
+  "independentReview": {
+    "status": "GREEN",
+    "source_revision": "6b204e08d8ab7d025dfe57340be2ecfa75c3926d",
+    "version": "0.2.15",
+    "native_id": "cd048922",
+    "report": "evidence/PEER.md",
+    "receipt": "evidence/PEER.json",
+    "actualGate": "evidence/peer-current-gate.log",
+    "newRuntimeRuns": 0,
+    "retainedScope": "eight named native tests plus fault refinement;960/3336 finite events;five current qualification raw PASS tables;nine admission controls",
+    "physicalObserved": false
+  }
+}

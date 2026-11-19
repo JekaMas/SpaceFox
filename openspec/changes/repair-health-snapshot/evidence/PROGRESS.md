@@ -4,4 +4,4 @@ Author implementation on base 0261ba305 targets 0.2.15. The actual `SelectedFiel
 
 The first RED reproduced the previously ignored genuine-shaped history sample. A second RED reproduced loss of a still-fresh accepted history sample after an empty query; the revised owner retains it through its original expiry. The prior fitness-generator coverage RED followed the corrected requirement that heart zero is not a live pulse; a real zero Body Battery witness preserves zero coverage. All failures remain in evidence.
 
-Current-source five-primary admission and its refusal controls passed. Independent peer and any actual release remain pending until their actual receipts exist. No physical acquisition, Store availability, or device result is claimed.
+Current-source five-primary admission and its refusal controls passed. Independent source/evidence review and the actual clean combined peer/source/native/five-primary gate are GREEN at6b204e08, version0.2.15/cd048922. See PEER.md, PEER.json and peer-current-gate.log. Root judgment and author delivery remain open. Physical acquisition, Store availability and device results remain unobserved.
