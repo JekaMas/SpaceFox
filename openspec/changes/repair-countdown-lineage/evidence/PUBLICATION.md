@@ -1,0 +1,7 @@
+# Publication 0.2.13
+
+- Immutable tag and compiled source: `7391f1646180b442d8e0cb3e4644983afa188cfb`; independently reviewed protected source `d964ff4501a81e344581705afd8b3ddff1387808`; NativeID `93adb52f`. One official IQ-first export derived standalone programs from the signed IQ.
+- [GitHub regular release](https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.13): 53 assets, 52 manifest entries matched GitHub API digest metadata. IQ SHA-256 `d5fc32f48c2a42fb78f23af10c4016f768aaaa480777a6e985f472f7224980cd`, 49,687,172 bytes. Original release receipt SHA-256 `63a7a2f9a2ae7d765a4a511177cbc82d2e4dc9918db67cbc4859b2917a40dc47`.
+- Garmin accepted the same IQ with version 0.2.13, matching AppID, Status Verified and Signature Verified; final Submit returned to the listing with 0.2.13 notes while the displayed version was 0.2.12/Internal 21. Submission observed; approval and public availability not observed.
+- Current-source publisher [run 44538089620](https://github.com/JekaMas/SpaceFox/actions/runs/44538089620) succeeded through prepare, arm, deploy, promote and metadata. One HTTPS readback showed generation 112, selected Falcon 9 / USSF-317 target 1795148935, a retained explicit completed terminal for the earlier Long March 2D, and a coarse successor with a retention deadline. This is public data, not proof of phone delivery or physical watch behavior.
+- Terminal compaction remains bounded to 24 hours; offline longer can miss a terminal fact. Physical watch, phone delivery and peak background heap remain unobserved.

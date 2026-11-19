@@ -1,3 +1,7 @@
+# Current delivery status
+
+Software and independent review are GREEN; 0.2.13 is published on GitHub and submitted to Garmin. The deployed current-source publisher and HTTPS generation 112 were observed. Store approval, public availability, phone and physical-watch behavior remain unobserved. See `PEER.md` and `PUBLICATION.md`; retained tests remain tied to their original source boundaries. Existing 24-hour terminal compaction remains a documented offline limit.
+
 # Progress — software peer GREEN, delivery open
 
 Final reviewed source d964ff4501a81e344581705afd8b3ddff1387808,0.2.13/93adb52f. The same independent peer repaired the wrapped-terminal packet→foreground gap and the real public generation102 durable reopen failure, preserving their first RED and targeted GREEN outputs. Actual clean combined peer/source/five-primary gate PASS. See PEER.md/json and tasks.md. No publisher deployment, release publication or physical observation was performed by peer.
