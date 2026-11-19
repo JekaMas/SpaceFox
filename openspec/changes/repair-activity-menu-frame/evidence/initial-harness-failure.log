@@ -1,0 +1,21 @@
+------------------------------------------------------------------------------
+Executing test menuDeferredDecodeKeepsComposition...
+DEBUG (14:47): before icons=0 time=false values=9
+DEBUG (14:47): deferred icons=0 time=false values=0
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED: normal ACTIVE baseline
+Stack: 
+  - API code 0x30000203 
+  - menuDeferredDecodeKeepsComposition() at /source/watchface/activity-menu-tests/MenuTests.mc:26 0x10003b14 
+  - evaluate_test_entries_0_to_30() at /task/gen/006-B4432-00/source/UnitTests.mcgen:81 0x1000e2c9 
+  - runTest() at /task/gen/006-B4432-00/source/UnitTests.mcgen:230 0x1000e80a 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+menuDeferredDecodeKeepsComposition  ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

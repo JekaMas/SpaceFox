@@ -28,6 +28,7 @@ class SceneRenderer {
     var layoutRocketInput as String or Null=null;var layoutOperatorInput as String or Null=null;var layoutShortInput as String or Null=null;
     var layoutLabelFont as Graphics.FontType or Null=null;var layoutNameFont as Graphics.FontType or Null=null;var layoutRocket as String="";var layoutOperator as String="";
     var layoutRocketWidth as Number=0;var layoutOperatorWidth as Number=0;var layoutGap as Number=0;var layoutLeft as Number=0;
+    var siteInput as String or Null=null;var siteFont as Graphics.FontType or Null=null;var siteBudget as Number=0;var siteText as String="";var siteWidth as Number=0;
     var metricLayouts as Array=[null,null,null,null,null,null,null,null];
     (:extendedCode)
     function initialize(owner as LocalePresentation or Null) {
@@ -91,6 +92,7 @@ class SceneRenderer {
     (:extendedCode, :typecheck(false)) function fit(dc as Graphics.Dc, text as String, font as Graphics.FontType, width as Number) as String {
         if(layoutRocketInput!=null && font==layoutLabelFont && text.equals(layoutRocket) && layoutRocketWidth<=width){return text;}
         if(layoutOperatorInput!=null && font==layoutNameFont && text.equals(layoutOperator) && layoutOperatorWidth<=width){return text;}
+        if(siteInput!=null&&font==siteFont&&text.equals(siteText)&&siteWidth<=width){return text;}
         for(var i=0;i<metricLayouts.size();i+=1){var entry=metricLayouts[i];if(entry!=null && entry[1]==font && text.equals(entry[3]) && entry[4]<=width){return text;}}
         return presentation.fit(dc,text,font,width);
     }
@@ -118,7 +120,9 @@ class SceneRenderer {
         // A complete selected scene owns its validated map; the bundled map
         // remains the fallback while that scene is absent or incomplete.
         var selectedMap=mapDecision.useDownloaded(true,rich!=null && rich.mapBitmap!=null && rich.scene!=null && rich.scene["position"]!=null);
-        if(selectedMap){dc.drawBitmap(0,0,rich.mapBitmap);}else if(worldFallback){FallbackWorld.draw(dc,97,15);}else if(map!=null){dc.drawBitmap2(0,0,map,mapScale);}
+        var useWorld=worldFallback;
+        try{if(selectedMap){dc.drawBitmap(0,0,rich.mapBitmap);}else if(useWorld){FallbackWorld.draw(dc,97,15);}else if(map!=null){dc.drawBitmap2(0,0,map,mapScale);}}
+        catch(e){selectedMap=false;useWorld=true;dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.clear();try{FallbackWorld.draw(dc,97,15);}catch(ignored){}}
         var context = fullContext;
         if (context != null) {
             // Match the existing unavailable health marker without changing the
@@ -144,12 +148,15 @@ class SceneRenderer {
             if(gap>0){text(dc,left+rocketWidth+8,47,fonts["nameSmall"] as Graphics.FontType,"·",0x96B8C9,16,1);}
             text(dc,left+rocketWidth+gap+operatorWidth/2,47,fonts["nameSmall"] as Graphics.FontType,operatorTitle,0xD4DFEB,238,1);
             text(dc,195,70,(fonts["small"] as Graphics.FontType),purposeText,0xD4DFEB,282,1);
-            if(downloaded!=null&&downloaded.bitmap!=null){downloaded.draw(dc,0.0,0);}else{dc.drawBitmap(22,118,art as Graphics.BitmapType);}
+            try{if(downloaded!=null&&downloaded.bitmap!=null){downloaded.draw(dc,0.0,0);}else if(art!=null){dc.drawBitmap(22,118,art as Graphics.BitmapType);}}
+            catch(e){dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.fillRectangle(22,118,54,124);try{if(art==null&&artResource!=null){art=load(artResource as ResourceId) as Graphics.BitmapType;}if(art!=null){dc.drawBitmap(22,118,art as Graphics.BitmapType);}}catch(ignored){}}
             var flag=rich==null?null:rich.siteCountryBitmap;
             var footerBudget=flag==null?242:216;
             var footerFont=dc.getTextWidthInPixels(context.site,fonts["label"] as Graphics.FontType)>footerBudget?fonts["nameSmall"] as Graphics.FontType:fonts["label"] as Graphics.FontType;
-            var footer=fit(dc,context.site,footerFont,footerBudget);
-            var footerWidth=dc.getTextWidthInPixels(footer,footerFont);
+            if(siteInput==null||!siteInput.equals(context.site)||siteFont!=footerFont||siteBudget!=footerBudget){
+                siteInput=context.site;siteFont=footerFont;siteBudget=footerBudget;siteText=presentation.fit(dc,context.site,footerFont,footerBudget);siteWidth=dc.getTextWidthInPixels(siteText,footerFont);
+            }
+            var footer=siteText;var footerWidth=siteWidth;
             var flagWidth=flag==null?0:26;
             var footerLeft=195-(footerWidth+flagWidth)/2;
             if(flag!=null){dc.drawBitmap(footerLeft,325,flag as Graphics.BitmapType);}
@@ -190,9 +197,9 @@ class SceneRenderer {
                 text(dc,left+width/2,y,fonts["metric"] as Graphics.FontType,label,settings.fieldColors[i],128,1);
             }
         }
-        if(selectedMap){if(rich.scene!=null && rich.scene["position"]!=null){dc.drawBitmap(321,151,marker);}}
-        else if(pin){dc.drawBitmap(pinX-14,pinY-14,marker);}
-        else if(worldFallback&&context!=null){FallbackMap.point(dc,context.point,97,15);}
+        try{if(selectedMap){if(rich.scene!=null && rich.scene["position"]!=null){dc.drawBitmap(321,151,marker);}}
+        else if(useWorld&&context!=null){FallbackMap.point(dc,context.point,97,15);}
+        else if(pin){dc.drawBitmap(pinX-14,pinY-14,marker);}}catch(ignored){}
     }
     // Metric32 contains digits, percent and punctuation only. Provider strings
     // and units use the locale-capable font instead of missing bitmap glyphs.

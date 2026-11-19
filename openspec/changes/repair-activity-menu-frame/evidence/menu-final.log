@@ -1,0 +1,16 @@
+------------------------------------------------------------------------------
+Executing test menuAffectedBatch...
+DEBUG (15:54): before icons=4 time=true values=4
+DEBUG (15:54): deferred icons=4 time=true values=4
+DEBUG (15:54): same immutable bitmap retained; replaced selection detaches previous bitmap
+DEBUG (15:55): MENU_GENERATED seeds=8 events=272 checks=2112 event_counts=[17, 92, 18, 12, 19, 14, 13, 13, 20, 14, 12, 13, 15] after_each=true
+DEBUG (15:55): MENU_AFFECTED directed=2 generated=1
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+menuAffectedBatch                   PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)
