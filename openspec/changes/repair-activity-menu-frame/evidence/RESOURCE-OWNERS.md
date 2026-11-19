@@ -1,6 +1,6 @@
-# Native resource ownership investigation — in progress
+# Native resource ownership review — software GREEN
 
-This is a source-level ownership map; no listed reference is a measured peak. Follow actual transitions and retain existing receipts. Production candidate and proof are not yet complete.
+This current source-level ownership map is independently reviewed in PEER.md. Listed references are ownership facts. Sampled resource results and unobserved peak/physical boundaries retain their recorded scope. Earlier investigation notes below are chronological.
 
 | File / owner | Retain and release boundary | Review |
 |---|---|---|

@@ -1,25 +1,19 @@
-# ACTIVE composition and event boundary
+# Current ACTIVE state and ownership matrix
 
-The expected ACTIVE contract is literal: Time80 at y=109, configured icon roles at y=249/287, and their values in the established SceneRenderer layout. A change in launch facts is a data event and is not itself a lifecycle-mode change. Generated tests invoke production view methods and the production renderer; the recorder is an effect port, not a model of the renderer.
+Time80 at y109 and configured icon roles at y249/287 define the canonical ACTIVE composition. Display lifecycle owns visibility and mode. Optional resources cannot select a competing layout.
 
-| State / event | Expected paint and resource rule | Evidence/status |
-| --- | --- | --- |
-| Hidden or OFF → draw | No paint or resource work from the frame | `menu-generated.log`: generated hide/show/OFF events, scope of recorder |
-| Cold/show/wake → ACTIVE draw | Canonical time/font and four selected icons | `menu-generated.log`, paired normal-watchface font/icon samples with BEFORE countdown-source gap |
-| ACTIVE → hide → show | Same canonical composition for identical facts/settings | `menu-first-red.log`, `menu-generated.log` |
-| Optional SFR heap refusal | Keep canonical renderer, defer optional job under existing guard | `menu-first-red.log`, `menu-initial-green.log`, `menu-generated.log` |
-| Optional SFR running/completion | Keep canonical renderer while job owns its lease; completed art can update | Actual126784-byte observer completes86/87;88 remains deferred |
-| LOW/sleep/wake | No ACTIVE renderer paint while LOW; wake reconciles OS mode, then canonical ACTIVE | `menu-generated.log`: event/permission boundary; visual LOW retains earlier scope |
-| Snapshot admission/bootstrap | Accepted facts and canonical ACTIVE composition; no independent alternate ACTIVE layout | `menu-generated.log`: fake boundary; peak background memory pending |
-| Settings change | New configured icon identities in canonical slots | `menu-generated.log`: default/reversed slots, role/y checks |
-| Mandatory resource paint exception | Clear partial fields, preserve clock/date/accepted facts without orphan metrics, rebind canonical frame on next healthy paint | peer-controls-green.log, injected mandatory paint effect-port scope |
+| State or event | Current rule | Evidence and boundary |
+|---|---|---|
+| Hidden or OFF draw | No paint or frame resource work | Retained generated events and source visibility/OFF guards |
+| Cold/show/wake ACTIVE | Canonical font and four configured icon identities | menu-finalowner2 and directly inspected pair-final images |
+| Hide/show | Drop renderer/downloaded buffers, suspend locale and stop callbacks, then restore canonical frame | Hidden three-cycle selector, pair-final observer and raw resource runs |
+| Hidden settings | Retain settings without restoring locale/font handles | HIDDEN_RESOURCE cases and source visibility guard |
+| Optional SFR queued/running/deferred | Keep mandatory renderer and accepted facts |9directed+272events and actual126784-byte86/87/88 observers |
+| Actual SFR replacement | Complete86/87/88 with and without hide, attach only current generation | transfer-alt and nohide-alt raw logs, sampled memory scope |
+| LOW or OFF during job | Stop active timers, retain resumable lease, resume on allowed HIGH | Existing lifecycle owner, generated events and source review |
+| Optional map/rocket paint error | Confine substitution to optional role, retain canonical fields/font | Directed injected optional draw errors |
+| Mandatory paint error | Clear partial composition, show recovery clock/facts without orphan metrics, rebuild next healthy canonical frame | Retained peer mandatory-paint selector, injected effect-port scope |
+| Root/role/transfer refusal | Dispose failed job, keep facts, require a fresh permitted lease | Root/compact/pixel refusal cases and complete failure-path review |
+| Durable raster pointer failure | Candidate remains incomplete and prior active/recovery stay available | Injected pointer-write failure and ownership review |
 
-This table does not claim physical device, phone, actual OS menu interaction or peak memory. The supplied photos are a qualitative witness of an illegal hybrid frame; they do not prove the specific cause.
-
-## Latest bounded outcome
-
-The retained author selector (`menu-new.log`) executes 272 events across 8 seeds and reports 2,112 after-event checks. Its complete PASS table has launcher exit 1. Forced one-shot optional map and rocket drawing exceptions retain the canonical four icons and clock font in the recording renderer. Actual raster evidence is limited to the paired normal FR165M hide/show simulation with synthetic values. Repeated remote revisions are **not** green: revision 88 defers with the real watchface heap budget, including after hide/show; see `PROGRESS.md` and the retained raw logs. Real mandatory-resource OOM and physical menu/tap delivery remain unobserved. The later injected mandatory-paint recovery case is recorded below and in PEER.md.
-
-## Peer terminal reconciliation
-
-The mandatory exception route is addressed within the directed injected-paint boundary. The actual88liveness deficit remains104bytes at8088free/8192reserve, and the parser experiment was reverted. The paired images do not establish identical facts or a countdown cause. Full batch and release remain NOT DONE. See PEER.md.
+Current software GREEN supersedes prior incomplete notes. Both inspected paired frames show08:25, T−00:10:00 and the same four synthetic readings. The previousT−00:00 assertion was a visual misread. Map/flag can differ after art release. Physical OS-menu/watch/phone behavior and full-interval peak memory remain unobserved. PEER.md gives exact source/evidence boundaries.

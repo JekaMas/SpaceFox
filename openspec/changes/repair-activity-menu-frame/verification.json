@@ -23,12 +23,21 @@
     }
   ],
   "independent_review": {
-    "status": "NOT_DONE",
+    "status": "GREEN",
+    "source_revision": "7e7e2cb555f06ec50ae9e14303bb10a3439e8aa9",
+    "version": "0.2.14",
+    "native_id": "9257a3e6",
     "report": "evidence/PEER.md",
     "receipt": "evidence/PEER.json",
-    "mandatory_recovery": "evidence/peer-controls-green.log",
-    "resource_attempt": "evidence/peer-resource-attempt.log",
-    "experiment": "evidence/peer-key-sharing-attempt.patch",
-    "release_blocked": true
+    "gate": "evidence/peer-current-gate.log",
+    "new_peer_check": "evidence/peer-fence-green.log",
+    "retained_current": [
+      "evidence/menu-finalowner2.log",
+      "evidence/transfer-alt-remote-observer.log",
+      "evidence/nohide-alt-remote-observer.log",
+      "evidence/current-native-qualification/observation.json"
+    ],
+    "historical": "Prior NOT DONE/deficit/OOM/setup logs retain their original source and status.",
+    "delivery": "pending root judgment and author delivery"
   }
 }
