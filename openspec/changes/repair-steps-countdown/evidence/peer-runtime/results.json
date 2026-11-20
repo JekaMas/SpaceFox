@@ -11,7 +11,9 @@
       "stepsCountdownBatch": "PASS"
     },
     "observed_count": 1,
-    "launcher_nonzero_framework_pass": true
+    "launcher_nonzero_framework_pass": true,
+    "execution_program_sha256": "7a3217b42906f7b8b6a43e5eb490413631315d0465b94b62f2d513b60b8db8b0",
+    "execution_boundary": "Final production/test source; official checked-in runtime build."
   },
   {
     "profile": "fr165",
@@ -25,7 +27,9 @@
       "generatedFitnessOwners": "PASS"
     },
     "observed_count": 1,
-    "launcher_nonzero_framework_pass": true
+    "launcher_nonzero_framework_pass": true,
+    "execution_program_sha256": "7a3217b42906f7b8b6a43e5eb490413631315d0465b94b62f2d513b60b8db8b0",
+    "execution_boundary": "Final production/test source; official checked-in runtime build."
   },
   {
     "profile": "fr165",
@@ -39,7 +43,9 @@
       "coldLowAcquiresOneFieldSnapshot": "PASS"
     },
     "observed_count": 1,
-    "launcher_nonzero_framework_pass": true
+    "launcher_nonzero_framework_pass": true,
+    "execution_program_sha256": "7a3217b42906f7b8b6a43e5eb490413631315d0465b94b62f2d513b60b8db8b0",
+    "execution_boundary": "Final production/test source; official checked-in runtime build."
   },
   {
     "profile": "fr165m",
@@ -53,7 +59,9 @@
       "coldLowAcquiresOneFieldSnapshot": "PASS"
     },
     "observed_count": 1,
-    "launcher_nonzero_framework_pass": true
+    "launcher_nonzero_framework_pass": true,
+    "execution_program_sha256": "3591a7d957c6385df0e00ed401d8efdc9391801f98fa661bd8329264f147c52c",
+    "execution_boundary": "Final production/test source; official checked-in runtime build."
   },
   {
     "profile": "fr165m",
@@ -67,7 +75,9 @@
       "stepsCountdownBatch": "PASS"
     },
     "observed_count": 1,
-    "launcher_nonzero_framework_pass": true
+    "launcher_nonzero_framework_pass": true,
+    "execution_program_sha256": "d36ac2b0d7101eb93012e31e4c0c5f67af49f730f42c2458faf11879ee811eb1",
+    "execution_boundary": "Current final productionc1c2ebd4; test image precedes unrelated coldLOW effect assertion2to1. Selected tests unchanged. Direct Mac compile peer-runtime/fr165m/pre-cold-assert-compile.log."
   },
   {
     "profile": "fr165m",
@@ -81,6 +91,8 @@
       "generatedFitnessOwners": "PASS"
     },
     "observed_count": 1,
-    "launcher_nonzero_framework_pass": true
+    "launcher_nonzero_framework_pass": true,
+    "execution_program_sha256": "d36ac2b0d7101eb93012e31e4c0c5f67af49f730f42c2458faf11879ee811eb1",
+    "execution_boundary": "Current final productionc1c2ebd4; test image precedes unrelated coldLOW effect assertion2to1. Selected tests unchanged. Direct Mac compile peer-runtime/fr165m/pre-cold-assert-compile.log."
   }
 ]

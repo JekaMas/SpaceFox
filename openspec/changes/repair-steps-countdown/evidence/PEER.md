@@ -1,0 +1,35 @@
+# Independent steps/countdown software GREEN
+
+Reviewed and repaired protected source `b4c6d6b5aaba7691f5623a30608ee12554830ba8`, candidate **0.2.18 / NativeID c1c2ebd4**. Author handoff `ce5274cec` and original implementation `3ef4ddfb425ddbb298d2a6c669cdf03addc603ec` retain their original d3ba5ef7 evidence. This review found and repaired two bounded current properties. Final descendants contain review/task evidence only.
+
+## Selected step authority and read ownership
+
+The production `SelectedFields` subscribes to builtin Garmin ID2 when steps are selected. It admits actual nonnegative Number values including zero. A missing or failing current complication permits real ActivityMonitor fallback. Custom and built-in identical IDs share one read in either order. The callback uses full selected ID membership before reading; it projects steps only for ID2 and each health role only for its matching kind, preserving unrelated slot values. Visible ACTIVE, admission and actual device-mode guards precede those effects. Hidden/LOW callbacks do not read. Existing initial/wake/minute permissions remain with the display lifecycle. No timer, total-combination, persistence or new health source was introduced.
+
+The author source still queried ActivityMonitor on every full sample before overwriting it with a valid complication. The old selected-fitness oracle required that duplicate work. The peer reproduced the exact SDK product RED, then moved complication precedence ahead of activity acquisition. A full sample now reads ActivityMonitor only when steps are missing or calories need it, and both use one result. Valid zero remains authoritative even if the independent calories read fails. Directed current42/zero0/null7/calories/error controls pass. The updated independent model counts fallback reads from accepted input events after every event. `PEER-REPAIRS.md` and all first raw failures preserve that distinction.
+
+Body Battery current/history ownership remains unchanged. The bounded fallback admits at most three newest entries with original age0–300 seconds, valid range and original TTL, preserving current/custom authority. Both old and peer SDK batches report a real simulator iterator/sample with age0 admitted. This does not establish the photographed watch’s data, on-body availability or root cause. [Garmin complications](https://developer.garmin.com/connect-iq/api-docs/Toybox/Complications.html), [SensorHistory](https://developer.garmin.com/connect-iq/api-docs/Toybox/SensorHistory.html)
+
+## Countdown arithmetic and independent indicators
+
+The accepted UTC target minus current UTC populates `ClockSnapshot.remainingUtc`. One `SceneAod.countdownColor` policy is used by ACTIVE, LOW and fallback. Raw86400 is neutral,86399 uses the configured color, zero and negative remain configured, absent delta remains neutral. No formatted or minute-rounded string controls the threshold. Reschedule and source hold never force red. Existing settings may select their own countdown color.
+
+The six-stroke reschedule arrow and two-stroke sourced-hold pause are independent flags, can coexist with each other and stale, and do not change arithmetic. ACTIVE and shifted LOW markers use their own existing text positions. The peer found fallback lacked stale dots. A single shared dot function now supplies normal ACTIVE, LOW and fallback, preserving normal coordinates and keeping stale distinct from the pause. Fallback recording controls compare against no-cue world-map geometry in both modes, then check stale-only dots, hold2 and reschedule+hold8. This is draw-command evidence; no new screenshot or physical pixel claim is made. There is no artwork, font, scheduling or source-freshness policy change.
+
+## Evidence and exact invalidation
+
+All40 author profile-selector raw tables were independently parsed with the strict current parser. The current40 obligations are closed using34 unaffected original scopes and six targeted replacement obligations. No whole40 SDK rerun or19campaign rerun occurred.
+
+Both FR165 and FR165 Music pass `stepsCountdownBatch` (new ownership/fallback controls plus12seeds/576 after-event lifecycle events), `generatedFitnessOwners` (64seeds/3720 after-event/end events with input-derived I/O oracle), and `coldLowAcquiresOneFieldSnapshot`. Raw launcher1 has complete named PASS tables with zero test failures/errors and no late error. Raw logs and result metadata are in peer-runtime/. The two FR165M steps/fitness observations precede an unrelated coldLOW assertion correction in their test image; final production is identical. Their actual program hash and compile boundary are recorded per result rather than relabelled as executions of the later image. Final official build records cover both profiles and the corrected coldLOW case.
+
+The coldLOW retained RED was an obsolete expected activity-call count after a valid complication41: the original cold fallback read stays1 and wake no longer repeats it. Two fallback harness errors are preserved separately, one missing DC dimensions and one counting map line segments as cue strokes. The product duplicate-read RED remains separate. The first qualification compile error came from concurrent compiles sharing a generated-output directory; qualification output isolation repaired that setup. No failed or partial execution is counted GREEN.
+
+Guided author simulator traces retain controlled0→123→0 on FR165 Music and0→321 on FR165. Source and logs survive, while no standalone screenshot was retained. The photo does not expose physical Garmin return values. Existing memory/timer/crop/menu observations remain at their original scopes. This peer did not repeat them.
+
+## Genuine current qualification and clean gate
+
+The source repair invalidated the exact current semantic binding. It was genuinely recompiled using the pinned Linux SDK9.3 wrapper/JAR running on macOS Java11 and executed in the owned Mac simulator. All five named primary selectors pass, including five modes/three bitmap fonts/60UIwords/35calendarstates and413 nonempty joined-header compositions across1822 records. Actual Linux JAR hash and all four installed FR165M profile pins were checked. The original author qualification remains unchanged; new program, raw logs, compiled and semantic input hashes are stored in peer-current-native/. No old observation hash was rewritten as a new run.
+
+NativeID was generated once after stable production changes. `PEER.json` is the single actual steps-countdown-independent-peer receipt with literal nonempty proof_boundary,0.2.18/c1c2ebd4 and exact reviewed source. `peer-current-gate.log` records the existing combined source_state/native/current-five-primary/peer gate PASS on clean b4c6d6b5. The owned Mac simulator was stopped and saved configuration restored byte-for-byte; no foreign process or watch operation occurred.
+
+Software review and the required current gate are GREEN. Root judgment and authorized author delivery remain open. Physical steps/Body Battery acquisition, stock-widget comparison, on-body pulse, phone transport, real battery use and full-interval heap/graphics peaks remain unobserved.

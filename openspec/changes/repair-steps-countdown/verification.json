@@ -1,1 +1,49 @@
-{"scope":"selected Garmin steps and countdown presentation","properties":[{"id":"steps-callback","checks":["actual selected-field subscription and view callback","zero/null/duplicate/wake/hidden and polling bounds"]},{"id":"body-battery","checks":["actual built-in and custom source paths","history timestamp, range, ordering and expiry"]},{"id":"countdown","checks":["UTC threshold and actual ACTIVE/LOW drawing","reschedule and stale independence"]},{"id":"release-input","checks":["FR165/M permanent runtime runner","current five-primary qualification","independent peer"]}]}
+{
+  "scope": "selected Garmin steps and countdown presentation",
+  "properties": [
+    {
+      "id": "steps-callback",
+      "checks": [
+        "actual selected-field subscription and view callback",
+        "zero/null/duplicate/wake/hidden and polling bounds"
+      ]
+    },
+    {
+      "id": "body-battery",
+      "checks": [
+        "actual built-in and custom source paths",
+        "history timestamp, range, ordering and expiry"
+      ]
+    },
+    {
+      "id": "countdown",
+      "checks": [
+        "UTC threshold and actual ACTIVE/LOW drawing",
+        "reschedule and stale independence"
+      ]
+    },
+    {
+      "id": "release-input",
+      "checks": [
+        "FR165/M permanent runtime runner",
+        "current five-primary qualification",
+        "independent peer"
+      ]
+    }
+  ],
+  "independentReview": {
+    "status": "GREEN",
+    "source_revision": "b4c6d6b5aaba7691f5623a30608ee12554830ba8",
+    "version": "0.2.18",
+    "native_id": "c1c2ebd4",
+    "report": "evidence/PEER.md",
+    "receipt": "evidence/PEER.json",
+    "actualGate": "evidence/peer-current-gate.log",
+    "repairs": "evidence/PEER-REPAIRS.md",
+    "affectedNativeResults": "evidence/peer-runtime/results.json",
+    "currentPrimaryObservation": "evidence/peer-current-native/observation.json",
+    "retainedAuthorTables": 40,
+    "affectedReplacements": 6,
+    "physicalObserved": false
+  }
+}
