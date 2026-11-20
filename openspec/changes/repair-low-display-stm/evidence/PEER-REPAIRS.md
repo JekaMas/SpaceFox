@@ -1,0 +1,11 @@
+# Independent layout boundary repair
+
+The author’s new four-state owner correctly refused off/hidden onUpdate, but the real OS onLayout entry still invoked prepareRenderer unconditionally. An early hidden layout therefore acquired fonts/bitmaps before the lifecycle permitted visible work. The SDK product RED is peer-hidden-layout-first-red.log. The preceding missing inherited-constructor fixture error is separate and preserved.
+
+onLayout now observes current OS mode through the same existing owner and checks its permitsFrame permission before resource acquisition. An older queued HIGH update also checks that same permission after layout, because layout can observe newer OFF. This uses the existing owner without another pending flag or mode policy.
+
+lateLayoutAndColdBootstrap is permanently selected and passes on FR165 and FR165 Music. It rejects early hidden, late hidden and rawOFF layout acquisition, then executes actual onShow→onUpdate for coldHIGH canonical icons/time and coldLOW accepted point without priorACTIVE. Menu return rebinds the canonical composition. A queued olderHIGH observation cannot paint once layout observesOFF. The runtime uses fake clock/OS/field ports and recordingDC plus actual renderer resources; it does not establish a physical OS dispatch.
+
+The first repaired-program launch timed out45seconds without any test output. Its empty raw and timeout record are preserved separately. One restart of the owned Mac simulator resolved the stale connection. Complete named PASS tables with raw exit1 supply acceptance; the timeout is never counted as a pass.
+
+The only production delta is the layout permission boundary and its enclosing paint permission recheck. Candidate NativeID66e10514 binds that source. Current five-primary qualification was genuinely recompiled and all five selectors passed using the pinned Linux SDK JAR onMac and the Mac simulator. The earlier author qualification remains unchanged. The existing LOW screenshot predates the author’s HIGH onShow duplicate-request removal and this no-work guard, while its visibleLOW drawing implementation/placement is unchanged. Its point and9239lit pixels remain a one-scene simulator observation. No recapture or worst-case/power claim was introduced.

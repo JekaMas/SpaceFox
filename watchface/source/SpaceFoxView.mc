@@ -260,6 +260,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
     function prepareOptionalAod() as Void {if(renderer!=null&&sfrBuild==null&&!sfrFallbackPrepared){try{(renderer as SceneRenderer).prepareAod();}catch(e){renderer=null;layoutReady=false;}}}
     function releaseRenderer() as Void {renderer=null;layoutReady=false;}
     function onLayout(dc as Graphics.Dc) as Void {
+        syncDisplayMode(deviceMode());if(!lifecycle.permitsFrame()){return;}
         try{if(renderer==null){prepareRenderer();}}catch(e){renderer=null;return;}
         // Render the complete 390px design into one canvas before scaling:
         // map, points, dynamic raster, foreground, fonts and maintenance stay
@@ -325,6 +326,8 @@ class SpaceFoxView extends WatchUi.WatchFace {
         if((bootstrapPending||admissionPending)&&lifecycle.mode()==NOT_LOW&&renderer==null){queueResumeAfterFrame();return;}
         if(lifecycle.mode()==LOW&&(renderer==null||!layoutReady)&&sfrBuild==null&&!sfrFallbackPrepared){onLayout(dc);}
         if(lifecycle.mode()==LOW&&renderer!=null&&!(renderer as SceneRenderer).fonts.hasKey("aod")){prepareOptionalAod();}
+        // onLayout may observe OFF after the OS queued this older frame.
+        if(!lifecycle.permitsFrame()){return;}
         if(renderer==null){drawClockFallback(dc);if(lifecycle.mode()==NOT_LOW){queueResumeAfterFrame();}return;}
         // Skip the entire LOW update, including mask and scaled-buffer blit.
         if(sceneBuffer!=null){var bitmap=sceneBuffer as Graphics.BufferedBitmap;var target=bitmap.getDc();drawScene(target);applyPixelRest(target);if(sceneX!=0||sceneY!=0){dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.clear();}dc.drawBitmap2(sceneX,sceneY,bitmap,sceneScaleOptions);if(lifecycle.mode()==LOW){afterLowFrame();}if(lifecycle.mode()==NOT_LOW&&(renderer!=null||sfrFallbackPrepared||sfrBuild!=null)){queueResumeAfterFrame();}return;}

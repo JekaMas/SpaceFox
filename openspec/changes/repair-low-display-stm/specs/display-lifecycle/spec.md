@@ -24,3 +24,7 @@ LOW SHALL retain the approved AOD design, bounded pixel use and one cold/setting
 - **GIVEN** accepted valid source coordinates for the selected launch
 - **WHEN** LOW is reached from cold start, menu return or OFF, including optional art or admission fallback
 - **THEN** the same map presentation owner supplies a visible point and the accepted countdown; without qualified coordinates no point is invented.
+
+#### Scenario: Layout before show or after visibility loss
+- **WHEN** an SDK layout callback arrives while hidden or current OS mode is OFF
+- **THEN** resource acquisition is deferred through the same display owner; a later onShow and onUpdate still produce the first useful HIGH or LOW frame, and a newly observed OFF revokes an older queued HIGH paint.

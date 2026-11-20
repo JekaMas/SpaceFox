@@ -23,7 +23,7 @@ SELECTORS = (
     'foregroundArtTimerBudget', 'cadenceNoPeriodicTimers', 'coldLowAcquiresOneFieldSnapshot',
     'generatedForegroundCadence', 'anchoredModelFrame', 'stepsCountdownBatch',
     'offToLowReentersAod', 'offLowEventSequences', 'offLateSettingsAndFirstFrame', 'generatedDisplayOwners', 'lowPointRetainedAcrossLifecycle',
-    'generatedSourceSwitch', 'generatedForegroundDelivery',
+    'generatedSourceSwitch', 'generatedForegroundDelivery', 'lateLayoutAndColdBootstrap',
 )
 PROFILES = ('fr165', 'fr165m')
 

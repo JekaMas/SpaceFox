@@ -68,3 +68,26 @@ import Toybox.Test;
  v.admissionPending=false;v.setContext(new SceneContext({"id"=>"simulated:unknown"}));v.onUpdate(dc);Test.assertMessage(!v.mapDecision.pointVisible(true),"unknown coordinates cannot invent a point");v.onHide();
  logger.debug("LOW_POINT cold menu OFF_LOW admission=true unknown=false; draw intent with actual map owner");return true;
 }
+
+(:test,:typecheck(false)) class LayoutBoundaryView extends MenuView {
+ var preparations=0;var initialReads=0;
+ function initialize(){MenuView.initialize();}
+ function prepareRenderer() as Void {preparations+=1;SpaceFoxView.prepareRenderer();}
+ function readFitnessSnapshot(now as Number or Long) as Void {initialReads+=1;}
+}
+(:test,:typecheck(false)) class LayoutBoundaryDraw extends MenuDraw {
+ var points=0;
+ function initialize(){MenuDraw.initialize();}
+ function fillCircle(x,y,r){if(r==4||r==7){points+=1;}}
+}
+(:test,:typecheck(false)) function lateLayoutAndColdBootstrap(logger){
+ for(var n=0;n<2;n+=1){var view=new LayoutBoundaryView();var raw=Toybox.WatchUi.loadResource(Rez.JsonData.CountdownCaptured)["payload"];view.setPacket(new NativeTrustedPacket(raw));var dc=new LayoutBoundaryDraw();
+  view.onLayout(dc);Test.assertMessage(view.preparations==0&&view.renderer==null&&dc.clears==0,"early hidden layout must defer resource acquisition");
+  view.mode=n==0?System.DISPLAY_MODE_HIGH_POWER:System.DISPLAY_MODE_LOW_POWER;view.onShow();menuReset();view.onUpdate(dc);
+  if(n==0){Test.assertMessage(view.preparations==1&&MenuObserve.time&&MenuObserve.icons.size()==4,"cold HIGH update must acquire and paint normal canonical frame after deferred layout");}else{Test.assertMessage(dc.clears>0&&dc.points>=2&&view.initialReads==1,"cold LOW update must paint qualified point without prior resource acquisition or ACTIVE");}
+  var before=view.preparations;view.mode=System.DISPLAY_MODE_OFF;view.onLayout(dc);Test.assertMessage(view.displayMode()==-1&&view.preparations==before,"early OFF layout must classify OS before acquiring resources");
+  view.onHide();view.mode=System.DISPLAY_MODE_HIGH_POWER;view.onLayout(dc);Test.assert(view.preparations==before);view.onShow();menuReset();view.onUpdate(dc);Test.assert(MenuObserve.time&&MenuObserve.icons.size()==4);view.onHide();
+ }
+ var queued=new LayoutBoundaryView();queued.onShow();queued.mode=System.DISPLAY_MODE_OFF;var late=new LayoutBoundaryDraw();queued.updateForDisplayMode(late,System.DISPLAY_MODE_HIGH_POWER);Test.assertMessage(queued.displayMode()==-1&&queued.preparations==0&&late.clears==0,"layout observing OFF must revoke an older queued HIGH frame before paint");queued.onHide();
+ logger.debug("LAYOUT_BOUNDARY hidden_and_raw_off_no_acquire=true cold_HIGH_canonical=true cold_LOW_point=true menu_rebind=true queued_old_HIGH_no_paint=true");return true;
+}

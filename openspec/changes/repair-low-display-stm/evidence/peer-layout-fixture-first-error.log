@@ -1,0 +1,19 @@
+------------------------------------------------------------------------------
+Executing test lateLayoutAndColdBootstrap...
+
+Error: Unexpected Type Error
+Details: Failed invoking <symbol>
+Stack: 
+  - setPacket() at /Users/jekamas/projects/SpaceFox-worktrees/fix-low-display-stm-20261120/watchface/source/SpaceFoxView.mc:209 0x5001416a 
+  - lateLayoutAndColdBootstrap() at /Users/jekamas/projects/SpaceFox-worktrees/fix-low-display-stm-20261120/watchface/stm-property-tests/LowDisplayTests.mc:82 0x100014a2 
+  - evaluate_test_entries_90_to_108() at /Users/jekamas/.codex/tmp/spacefox-low-display-peer-20261120/red/gen/006-B4433-00/source/UnitTests.mcgen:381 0x1001782f 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-low-display-peer-20261120/red/gen/006-B4433-00/source/UnitTests.mcgen:432 0x10017a79 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+lateLayoutAndColdBootstrap          ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)
