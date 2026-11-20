@@ -1,5 +1,9 @@
 # Current status
 
+Independent software GREEN at a707e4556 /0.2.17/85013e5a. Actual current combined peer/source/native/five-primary gate passed on clean source. See PEER.md/json and peer-current-gate.log. No peer production repair or SDK rerun. Root judgment and delivery remain open. Physical/battery/peak observations remain unobserved; task Docker lane state remains unknown after API500.
+
+# Chronological author observations
+
 Base 001c77aae636a9e0afdf768e0cdcdffe5d9a6c45. `NativeSfrDecoder` always allocates drawable bitmap and DC; `NativeSfrBuild` later discards that rocket bitmap when `preferBundledRocket` is true. Existing map resources are generated with automaticPalette=false and `SceneRenderer.text` uses eight outline draws plus the foreground draw. The four bounded candidates are not yet measured or accepted. No physical watch, battery, Store or release claim.
 
 ## Current batch observations

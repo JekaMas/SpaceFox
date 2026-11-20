@@ -1,1 +1,54 @@
-{"scope":"native FR165/M image allocation and bounded candidate comparisons","properties":[{"id":"verified-bundled-rocket","checks":["same decoder valid and malformed row/hash/shard controls","normal watchface lifecycle and selected-art identity"]},{"id":"crop-anchor","checks":["all current bundled pixel reconstruction","actual compiled profile size and 20 percent material threshold"]},{"id":"palette","checks":["one controlled actual Garmin palette sample","decoded pixel/alpha and app/graphics resource measurements"]},{"id":"outline","checks":["actual text drawing comparison","appearance and resource lifetime"]},{"id":"admission","checks":["affected maintained native suite","current source/locale admission","independent peer"]}]}
+{
+  "scope": "native FR165/M image allocation and bounded candidate comparisons",
+  "properties": [
+    {
+      "id": "verified-bundled-rocket",
+      "checks": [
+        "same decoder valid and malformed row/hash/shard controls",
+        "normal watchface lifecycle and selected-art identity"
+      ]
+    },
+    {
+      "id": "crop-anchor",
+      "checks": [
+        "all current bundled pixel reconstruction",
+        "actual compiled profile size and 20 percent material threshold"
+      ]
+    },
+    {
+      "id": "palette",
+      "checks": [
+        "one controlled actual Garmin palette sample",
+        "decoded pixel/alpha and app/graphics resource measurements"
+      ]
+    },
+    {
+      "id": "outline",
+      "checks": [
+        "actual text drawing comparison",
+        "appearance and resource lifetime"
+      ]
+    },
+    {
+      "id": "admission",
+      "checks": [
+        "affected maintained native suite",
+        "current source/locale admission",
+        "independent peer"
+      ]
+    }
+  ],
+  "independentReview": {
+    "status": "GREEN",
+    "source_revision": "a707e4556f3a635324f72304bddf6d7a62f054f7",
+    "version": "0.2.17",
+    "native_id": "85013e5a",
+    "receipt": "evidence/PEER.json",
+    "report": "evidence/PEER.md",
+    "actualGate": "evidence/peer-current-gate.log",
+    "rawReconciliation": "evidence/peer-raw-reconciliation.log",
+    "newNativeRuns": 0,
+    "physicalObserved": false,
+    "graphicsPeakObserved": false
+  }
+}

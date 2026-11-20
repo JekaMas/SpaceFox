@@ -6,4 +6,5 @@
 - [x] Measure one palette candidate and one glyph-outline candidate; reject both at their observed boundaries.
 - [x] Run affected native FR165/M suite and normal watchface budget/lifecycle witness, current-source admission and version binding.
 - [x] Pass the author clean-source gate.
-- [ ] Hand off to the same independent peer; await root judgment before delivery.
+- [x] Complete independent decoder/crop/draw/runtime-evidence review and actual clean current peer/source gate.
+- [ ] Obtain root judgment and complete authorized author delivery.
