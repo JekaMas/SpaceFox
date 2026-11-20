@@ -1,6 +1,6 @@
 # Current status
 
-Implementation is complete for candidate 0.2.18 / NativeID `d3ba5ef7`; independent review and publication remain open. The current five-primary source qualification passed. Guided ordinary simulator runs observed steps 0 → 123 → 0 on FR165 Music and 0 → 321 on FR165, with controlled simulator inputs. No physical source value or Body Battery sample has been observed. The permanent two-profile runner passed all 40 exact selectors, including 13 retained unaffected FR165 passes; its first retry-count and fitness-model failures are retained and their changed assertions corrected. See `AUTHOR.md` for source, oracle, original REDs and exact boundaries.
+Author self-GREEN on protected source `3ef4ddfb425ddbb298d2a6c669cdf03addc603ec` for candidate 0.2.18 / NativeID `d3ba5ef7`; clean current source_state passed for 2,318 inputs. Independent review and publication remain open. The current five-primary source qualification passed. Guided ordinary simulator runs observed steps 0 → 123 → 0 on FR165 Music and 0 → 321 on FR165, with controlled simulator inputs. No physical source value or Body Battery sample has been observed. The permanent two-profile runner passed all 40 exact selectors, including 13 retained unaffected FR165 passes; its first retry-count and fitness-model failures are retained and their changed assertions corrected. See `AUTHOR.md` for source, oracle, original REDs and exact boundaries.
 
 ## Historical progress
 
