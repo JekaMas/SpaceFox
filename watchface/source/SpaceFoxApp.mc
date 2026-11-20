@@ -43,11 +43,12 @@ class SpaceFoxApp extends Application.AppBase {
     (:typecheck(disableBackgroundCheck))
     function onBackgroundData(data as Application.PersistableType) as Void {
         traceMessage("SF_FG background_delivery");
+        if(view!=null){view.syncDisplayMode(currentDisplayMode());}
         if(data instanceof Dictionary&&data.hasKey("volatileSnapshot")){
             try{NativeForegroundApp.receiveVolatile(self,data);}catch(e){traceMessage("SF_FG volatile_rejected");}
             return;
         }
-        var current=view;if(current==null||!current.visible()||currentDisplayMode()==System.DISPLAY_MODE_OFF){return;}
+        var current=view;if(current==null||!current.displayPermitsFrame()){return;}
         // A notification carries no source identity. Only a genuinely new
         // complete pointer for the currently bound source may trigger work.
         // Repeated or late notifications must not clear a failed admission.
@@ -56,7 +57,7 @@ class SpaceFoxApp extends Application.AppBase {
             var sequence=marker["sequence"];
             if(!(sequence instanceof Number||sequence instanceof Long)||sequence==trustedToken||sequence==failedToken){return;}
         }catch(e){return;}}
-        if(current.canAcceptBackground()){try{reloadFeed();}catch(e){}}requestForegroundFrame();
+        if(current.canAcceptBackground()){try{reloadFeed();}catch(e){}}if(current.displayPermitsFrame()){requestForegroundFrame();}
     }
     (:typecheck(disableBackgroundCheck))
     function reloadFeed() as Void {try{performReload();}catch(e){traceMessage("SF_FG reload_error");}}
@@ -66,8 +67,8 @@ class SpaceFoxApp extends Application.AppBase {
         var current=view;var mode=currentDisplayMode();
         if(current==null){return;}
         current.syncDisplayMode(mode);
-        if(mode==System.DISPLAY_MODE_HIGH_POWER && current.canForegroundWork()){current.prepareVisual();}
+        if(current.canForegroundWork()){current.prepareVisual();}
     }
     (:typecheck(disableBackgroundCheck))
-    function onSettingsChanged() as Void {try{var now=currentUtc();var reminderTransfer=createForegroundTransfer(feedUrl(),null);NativeForegroundApp.bindSource(self,reminderTransfer.base);reminderTransfer.load();syncForegroundReminders(reminderTransfer.store as Object,now);armForeground(reminderTransfer,now);}catch(e){}var current=view;if(current!=null){try{current.setSettings(initialSettings());}catch(e){current.releaseRenderer();}if(current.canAcceptBackground()){reloadFeed();}if(current.visible()){requestForegroundFrame();}}}
+    function onSettingsChanged() as Void {try{var now=currentUtc();var reminderTransfer=createForegroundTransfer(feedUrl(),null);NativeForegroundApp.bindSource(self,reminderTransfer.base);reminderTransfer.load();syncForegroundReminders(reminderTransfer.store as Object,now);armForeground(reminderTransfer,now);}catch(e){}var current=view;if(current!=null){current.syncDisplayMode(currentDisplayMode());try{current.setSettings(initialSettings());}catch(e){current.releaseRenderer();}if(current.canAcceptBackground()){reloadFeed();}if(current.displayPermitsFrame()){requestForegroundFrame();}}}
 }

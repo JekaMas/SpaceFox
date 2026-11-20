@@ -1,0 +1,23 @@
+------------------------------------------------------------------------------
+Executing test physicalHealthRearmRegressionBatch...
+DEBUG (13:16): Complication values, zero, per-source failure and stop/restart retention
+DEBUG (13:16): ACTUAL_PROVIDER energy=96/READY heart=175/READY stress=29/READY steps=0/READY
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - physicalMetricCallbackKeepsSceneAndLowValues() at /Users/jekamas/projects/SpaceFox-worktrees/fix-low-display-stm-20261120/watchface/physical-six-tests/HealthTests.mc:73 0x1000e664 
+  - physicalHealthRearmRegressionBatch() at /Users/jekamas/projects/SpaceFox-worktrees/fix-low-display-stm-20261120/watchface/physical-six-tests/HealthTests.mc:93 0x10009a7c 
+  - evaluate_test_entries_30_to_60() at /Users/jekamas/.codex/tmp/spacefox-low-display-20261120/runtime-current/fr165/gen/006-B4432-00/source/UnitTests.mcgen:211 0x100167fb 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-low-display-20261120/runtime-current/fr165/gen/006-B4432-00/source/UnitTests.mcgen:421 0x10017791 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+physicalHealthRearmRegressionBatch  ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

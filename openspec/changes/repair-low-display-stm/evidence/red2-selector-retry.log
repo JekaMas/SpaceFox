@@ -1,0 +1,21 @@
+raw_exit 1
+------------------------------------------------------------------------------
+Executing test offToLowReentersAod...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED: OFF to LOW must re-enter AOD and restore its resources
+Stack: 
+  - API code 0x30000203 
+  - offToLowReentersAod() at /Users/jekamas/projects/SpaceFox-worktrees/fix-low-display-stm-20261120/watchface/stm-property-tests/LowDisplayTests.mc:14 0x10009652 
+  - evaluate_test_entries_90_to_104() at /Users/jekamas/.codex/tmp/spacefox-low-display-20261120/red2/gen/006-B4433-00/source/UnitTests.mcgen:369 0x10016bfa 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-low-display-20261120/red2/gen/006-B4433-00/source/UnitTests.mcgen:420 0x10016dee 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+offToLowReentersAod                 ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)
+

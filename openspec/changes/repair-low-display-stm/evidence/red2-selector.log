@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<stdin>", line 4, in <module>
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-low-display-stm-20261120/tools/build_watchface.py", line 139, in discover
+    raise BuildBlocked("external test-only PKCS8 DER key required: set SPACEFOX_TEST_KEY")
+tools.build_watchface.BuildBlocked: external test-only PKCS8 DER key required: set SPACEFOX_TEST_KEY

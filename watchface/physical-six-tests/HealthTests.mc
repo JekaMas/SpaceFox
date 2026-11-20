@@ -69,9 +69,9 @@ import Toybox.Test;
  api.values[18]=72;view.fieldsChanged(new Complications.Id(18));
  Test.assert(view.values["heart"]==72&&view.values["energy"]==68&&view.values["stress"]==37);
  Test.assert(view.sceneLifecycle.generation==generation&&view.sceneLifecycle.job.token==token);
- view.onEnterSleep();api.values[18]=99;view.fieldsChanged(new Complications.Id(18));
+ view.mode=Toybox.System.DISPLAY_MODE_LOW_POWER;view.onEnterSleep();api.values[18]=99;view.fieldsChanged(new Complications.Id(18));
  Test.assert(view.values["heart"]==72&&view.values["energy"]==68&&view.values["stress"]==37);
- view.onExitSleep();Test.assert(view.values["heart"]==72&&view.values["energy"]==68&&view.values["stress"]==37);
+ view.mode=Toybox.System.DISPLAY_MODE_HIGH_POWER;view.onExitSleep();Test.assert(view.values["heart"]==72&&view.values["energy"]==68&&view.values["stress"]==37);
  view.onHide();logger.debug("metric callback preserves unrelated fields, scene job and LOW snapshot");return true;
 }
 

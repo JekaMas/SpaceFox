@@ -147,7 +147,7 @@ large configurable fields, with watch battery available as a field. No redundant
 ### Requirement: Compact exceptional-state indicators
 
 The active home face SHALL omit a persistent update timestamp and service-status badges.
-A target reschedule or explicit source-reported hold SHALL use a readable reddish countdown; otherwise it SHALL use the persisted selected countdown color, mint by default. Stale data
+Countdown SHALL use a neutral color at 24 hours or more and the persisted selected countdown color below that threshold. Reschedule and source-reported hold SHALL have distinct small indicators. Stale data
 SHALL add a dotted countdown underline, independently of rescheduling and sourced hold. No
 exclamation or cloud-off badge SHALL occupy the face.
 
@@ -157,11 +157,11 @@ exclamation or cloud-off badge SHALL occupy the face.
 
 #### Scenario: Sourced hold and uncertain time
 - **WHEN** the accepted source explicitly reports a hold, including when the target is unknown or the record is stale
-- **THEN** the countdown is reddish, a stale record separately has a dotted underline, and neither elapsed time nor uncertainty alone asserts a hold
+- **THEN** the hold has its own indicator, a stale record separately has a dotted underline, and neither elapsed time nor uncertainty alone asserts a hold
 
 #### Scenario: Reschedule and stale data coexist
 - **WHEN** a previously detected reschedule remains selected and its cached schedule becomes stale
-- **THEN** the countdown is reddish with a dotted underline inside the circle, and the current-time color remains unchanged
+- **THEN** the countdown has a reschedule indicator and a dotted underline inside the circle, and the current-time color remains unchanged
 
 ### Requirement: Announced-time uncertainty
 
@@ -177,7 +177,7 @@ The active watch face SHALL render the selected source-backed rocket or closest 
 #### Scenario: Raise wrist
 - **WHEN** the face becomes active through a wrist gesture
 - **THEN** the rocket remains static while current time and launch information remain readable
-- **AND** HIGH selects NOT_LOW, LOW selects LOW, and OFF stops drawing and active work while retaining LOW as app state. A draw observing LOW before the power callback SHALL use LOW and stop active work. Loading, errors, retries and readiness SHALL NOT choose the mode.
+- **AND** HIGH selects NOT_LOW, LOW selects LOW, and OFF is a distinct no-draw state that stops active work. A draw observing LOW before the power callback SHALL use LOW and stop active work. Loading, errors, retries and readiness SHALL NOT choose the mode.
 
 #### Scenario: Display sleeps
 - **WHEN** the face enters sleep/low-power mode
@@ -190,12 +190,12 @@ The AOD SHALL show centered time, local weekday/date, a minute-only countdown or
 #### Scenario: Enter always-on mode
 - **WHEN** FR165 enters low-power always-on mode
 - **THEN** the sparse scene stays within the applicable 10-percent lit-pixel limit and device burn-in rules, active timers stop, the matching outline and point remain visible and the countdown shows minutes without seconds
-- **AND** LOW redraws at most once per minute even if callbacks arrive more often; time and countdown use configured colors except for the sourced-hold or reschedule override, and hold/reschedule and stale states remain distinguishable
+- **AND** LOW redraws at most once per minute even if callbacks arrive more often; time uses the configured color and countdown uses its 24-hour threshold policy, and hold/reschedule and stale states remain distinguishable
 - **AND** LOW and NOT_LOW are the only intentional visible modes. Optional downloads, decode, retries and rejected updates SHALL NOT substitute a maintenance layout. Same visual identity retains its accepted scene and bitmap through sleep, wake and unchanged or rejected callbacks; on rejection the accepted scene and visual remain visible while the durable packet is restored. Ambient operation SHALL NOT initiate network, visual decoding or active sensor sampling. AOD clock ink is centered within two pixels and at least 96px high; countdown ink is at least 28px and current system battery at least 32px, subject to pixel and burn-in limits. Transient update or partial staging failures retain the accepted launch and compatible scene across restart.
 
 #### Scenario: Lifecycle and display notifications differ
 - **WHEN** the watch-face lifecycle is sleeping or the physical display mode is LOW
-- **THEN** the full active layout is not drawn; once the lifecycle is awake and the display permits HIGH, the next update draws the active cached scene before optional feed or artwork work
+- **THEN** the full active layout is not drawn; once the observed display mode is HIGH, the next update draws the active cached scene before optional feed or artwork work
 
 #### Scenario: Wrist gestures disabled
 - **WHEN** the user disables wrist wake and keeps AOD enabled
@@ -323,10 +323,7 @@ site country abbreviation; the site strip SHALL omit a duplicated operator prefi
 
 ### Requirement: Two display modes and one UTC countdown
 
-LOW and NOT_LOW SHALL be the only app-visible modes. NOT_LOW requires both an
-awake watch-face lifecycle and a HIGH display; either a sleeping lifecycle or
-LOW display selects LOW. OFF stops drawing and active work while retaining LOW
-as the app state. Loading, errors, retries and asset readiness SHALL NOT choose a mode.
+LOW and NOT_LOW SHALL be the only visible layouts. The display lifecycle SHALL distinguish HIDDEN, OFF, LOW and ACTIVE, with the current OS display observation selecting LOW or ACTIVE independently of delayed sleep/wake callbacks. OFF and HIDDEN stop drawing and active work. Loading, errors, retries and asset readiness SHALL NOT choose a mode.
 The version belongs in settings, not on the face.
 
 #### Scenario: Draw arrives before the power callback

@@ -35,7 +35,7 @@ module NativeForegroundApp {
         var selected=bindSource(app,url);
         if(!selected.queueVolatile(value)){return;}
         app.failedToken=null;
-        if(app.view!=null&&app.view.visible()){flushVolatile(app,selected);}
+        if(app.view!=null&&app.view.canAcceptBackground()){flushVolatile(app,selected);}
     }
     function flushVolatile(app,selected){
         var value=selected.takeVolatile();if(value==null){return;}
@@ -64,7 +64,7 @@ module NativeForegroundApp {
     // second scene or disturb a running optional artwork job.
     function reload(app) {
         var url=app.createForegroundTransfer(app.feedUrl(),null).base;var now=app.currentUtc();var selected=bindSource(app,url);
-        if(app.view!=null&&app.view.visible()&&selected.pendingVolatile!=null){flushVolatile(app,selected);}
+        if(app.view!=null&&app.view.canAcceptBackground()&&selected.pendingVolatile!=null){flushVolatile(app,selected);}
         var marker=new NativeTrustedStore(selected.store,url).marker();var sequence=marker instanceof Dictionary&&marker["base"] instanceof String&&marker["base"].equals(url)?marker["sequence"]:null;
         if(sequence!=null&&sequence!=app.trustedToken&&sequence!=app.failedToken&&app.view!=null){
             if(selected.packet!=null&&selected.ramState!=selected.VOLATILE){try{new NativeUpcomingCache(selected.store,url,selected.packet.document["publisher"]["instance"]).save(app.view.queueSnapshots());}catch(e){app.traceMessage("SF_FG queue_save_error");}}
@@ -76,7 +76,7 @@ module NativeForegroundApp {
             }catch(e){app.failedToken=sequence;app.traceMessage("SF_FG snapshot_error");}
             app.view.admissionPending=false;app.view.resumeAfterAdmission();
         }else if(selected.packet!=null){if(selected.ramState!=selected.VOLATILE){display(app,selected);savePlan(selected,app.view);}else if(app.view.packet!=selected.packet){app.view.setPacket(selected.packet);}}
-        if(app.view!=null&&app.currentDisplayMode()==System.DISPLAY_MODE_HIGH_POWER){app.view.prepareVisual();}
+        if(app.view!=null&&app.view.canForegroundWork()){app.view.prepareVisual();}
         var transfer=app.createForegroundTransfer(selected.base,selected.store);transfer.load();app.armForeground(transfer,now);
     }
 }

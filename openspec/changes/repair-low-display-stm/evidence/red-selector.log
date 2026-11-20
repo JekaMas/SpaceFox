@@ -1,0 +1,21 @@
+raw_exit 1
+------------------------------------------------------------------------------
+Executing test offToLowReentersAod...
+
+Error: Unexpected Type Error
+Details: Failed invoking <symbol>
+Stack: 
+  - onShow() at /Users/jekamas/projects/SpaceFox-worktrees/fix-low-display-stm-20261120/watchface/source/SpaceFoxView.mc:85 0x10019634 
+  - offToLowReentersAod() at /Users/jekamas/projects/SpaceFox-worktrees/fix-low-display-stm-20261120/watchface/stm-property-tests/LowDisplayTests.mc:10 0x100095e9 
+  - evaluate_test_entries_90_to_104() at /Users/jekamas/.codex/tmp/spacefox-low-display-20261120/red/gen/006-B4433-00/source/UnitTests.mcgen:369 0x10016bfa 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-low-display-20261120/red/gen/006-B4433-00/source/UnitTests.mcgen:420 0x10016dee 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+offToLowReentersAod                 ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)
+

@@ -1,0 +1,17 @@
+------------------------------------------------------------------------------
+Executing test stepsCountdownBatch...
+DEBUG (13:37): PEER_STEPS_READ current_and_zero_skip=true missing_fallback_once=true calories_shared_read=true independent_error=true
+DEBUG (13:37): PEER_FALLBACK_CUES active_low stale_dots_only=true hold2=true both8=true
+DEBUG (13:37): STEPS_CALLBACK complication=123 zero=0 activity_fallback=7 hidden_no_read=true duplicate_orders=2 paint=true
+DEBUG (13:37): COUNTDOWN_CUES delta=86400,86399,0,-30,null active_low_marker=6 stale_dots=true hold_marker=2 aod_shift=2
+DEBUG (13:37): STEPS_GENERATED seeds=12 events=576 callbacks=54 hidden=56 resumes=58 after_each=true
+DEBUG (13:37): BODY_BATTERY_SDK iterator=true sample=true data_present=true age=0 accepted=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+stepsCountdownBatch                 PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

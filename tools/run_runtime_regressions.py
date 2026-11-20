@@ -22,6 +22,8 @@ SELECTORS = (
     'countdownAffectedBatch', 'generatedViewLifecycle', 'generatedFitnessOwners',
     'foregroundArtTimerBudget', 'cadenceNoPeriodicTimers', 'coldLowAcquiresOneFieldSnapshot',
     'generatedForegroundCadence', 'anchoredModelFrame', 'stepsCountdownBatch',
+    'offToLowReentersAod', 'offLowEventSequences', 'offLateSettingsAndFirstFrame', 'generatedDisplayOwners', 'lowPointRetainedAcrossLifecycle',
+    'generatedSourceSwitch', 'generatedForegroundDelivery',
 )
 PROFILES = ('fr165', 'fr165m')
 
@@ -37,7 +39,7 @@ def parse_runtime_output(raw: str, raw_exit: int, selector: str) -> dict:
             active = True
         elif text in ('PASS', 'FAIL', 'ERROR', 'RESULTS'):
             active = False
-        if active and re.fullmatch(r'SF_VIEW mode=(HIGH|LOW) pending=(true|false)', text):
+        if active and re.fullmatch(r'SF_VIEW mode=(HIGH|LOW|OFF) pending=(true|false)', text):
             continue
         filtered.append(line)
     return parse_output(''.join(filtered), raw_exit, (selector,))

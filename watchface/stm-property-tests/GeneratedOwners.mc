@@ -18,28 +18,20 @@ import Toybox.System;
 
 // The model is independent scalar data; every event calls the real owner.
 (:typecheck(false)) function runGeneratedDisplayOwners(firstSeed,seedCount){
-    var count=0;
-    for(var seed=firstSeed;seed<firstSeed+seedCount;seed+=1){
-        var random=new OwnerRandom(seed);var sut=new NativeDisplayLifecycle();var state=0;var sleeping=false;var minute=null;var trace=[];
-        var coverage={"show_applied"=>0,"show_no"=>0,"hide_applied"=>0,"hide_no"=>0,"active_applied"=>0,"mode_hidden_no"=>0,"sleep_applied"=>0,"sleep_no"=>0,"wake_applied"=>0,"wake_no"=>0,"frame_applied"=>0,"invalidate_applied"=>0};
-        var prefix=[0,0,4,5,2,2,3,3,1,1,4,6,7];var events=prefix.size()+12+random.draw(37);
-        for(var i=0;i<events;i+=1){var event=0;if(i<prefix.size()){event=prefix[i];}else{event=random.draw(8);}var stamp=100+random.draw(4);trace.add([event,stamp]);
-            if(event==0){var applied=state==0;if(applied){coverage["show_applied"]+=1;state=1;minute=null;}else{coverage["show_no"]+=1;}ownerCheck(sut.show()==applied,"display-show",seed,i,trace,applied,sut.state);}
-            else if(event==1){var applied=state!=0;if(applied){coverage["hide_applied"]+=1;state=0;minute=null;}else{coverage["hide_no"]+=1;}ownerCheck(sut.hide()==applied,"display-hide",seed,i,trace,applied,sut.state);}
-            else if(event==2){var applied=!sleeping;if(applied){coverage["sleep_applied"]+=1;}else{coverage["sleep_no"]+=1;}sleeping=true;ownerCheck(sut.sleep()==applied,"display-sleep",seed,i,trace,applied,sut.sleeping);}
-            else if(event==3){var applied=sleeping;if(applied){coverage["wake_applied"]+=1;}else{coverage["wake_no"]+=1;}sleeping=false;ownerCheck(sut.wake()==applied,"display-wake",seed,i,trace,applied,sut.sleeping);}
-            else if(event==4){if(state==0){coverage["mode_hidden_no"]+=1;}else if(state!=2){coverage["active_applied"]+=1;}if(state!=0){state=2;}sut.setMode(1);}
-            else if(event==5){if(state!=0){state=1;}sut.setMode(0);}
-            else if(event==6){coverage["frame_applied"]+=1;minute=stamp;sut.framePainted(stamp.toLong());}
-            else{if(minute!=null){coverage["invalidate_applied"]+=1;}minute=null;sut.invalidateFrame();}
-            var actual=[sut.state,sut.sleeping,sut.frameMinute];var expected=[state,sleeping,minute];
-            ownerCheck(sut.state==state&&sut.sleeping==sleeping&&sut.frameMinute==minute,"display",seed,i,trace,expected,actual);
-            ownerCheck(sut.shown()==(state!=0)&&sut.awake()==!sleeping&&((sut.mode()==1&&state==2)||(sut.mode()==0&&state!=2))&&sut.frameDue(stamp.toLong())==(minute==null||minute!=stamp),"display-effects",seed,i,trace,expected,actual);count+=1;
-        }
-        ownerCheck(sut.state==state&&sut.sleeping==sleeping&&sut.frameMinute==minute,"display-end",seed,events,trace,[state,sleeping,minute],[sut.state,sut.sleeping,sut.frameMinute]);
-        var keys=coverage.keys();for(var k=0;k<keys.size();k+=1){ownerCheck(coverage[keys[k]]>0,"display-coverage",seed,events,trace,keys[k],coverage[keys[k]]);}recordCoverage(coverage);
-    }
-    return count;
+ var total=0;
+ for(var seed=firstSeed;seed<firstSeed+seedCount;seed+=1){var rng=new OwnerRandom(seed);var sut=new NativeDisplayLifecycle();var state=0;var minute=null;var trace=[];var cov={"show"=>0,"hide"=>0,"high"=>0,"low"=>0,"off"=>0,"hidden_no"=>0,"duplicate_no"=>0,"frame"=>0,"invalidate"=>0};
+  var prefix=[2,0,2,2,3,4,3,5,6,1,1,4];var n=prefix.size()+12+rng.draw(37);
+  for(var i=0;i<n;i+=1){var e=i<prefix.size()?prefix[i]:rng.draw(7);var m=(100+rng.draw(4)).toLong();trace.add([e,m]);
+   if(e==0){var applied=state==0;if(applied){state=3;minute=null;cov["show"]+=1;}else{cov["duplicate_no"]+=1;}ownerCheck(sut.show()==applied,"display-show",seed,i,trace,applied,sut.state);}
+   else if(e==1){var applied=state!=0;if(applied){state=0;minute=null;cov["hide"]+=1;}else{cov["duplicate_no"]+=1;}ownerCheck(sut.hide()==applied,"display-hide",seed,i,trace,applied,sut.state);}
+   else if(e>=2&&e<=4){var target=e==2?2:(e==3?1:3);var os=e==2?System.DISPLAY_MODE_HIGH_POWER:(e==3?System.DISPLAY_MODE_LOW_POWER:System.DISPLAY_MODE_OFF);var changed=state!=0&&state!=target;if(state==0){cov["hidden_no"]+=1;}else if(!changed){cov["duplicate_no"]+=1;}else{state=target;minute=null;if(e==2){cov["high"]+=1;}else if(e==3){cov["low"]+=1;}else{cov["off"]+=1;}}ownerCheck(sut.observe(os)==changed,"display-observe",seed,i,trace,changed,sut.state);}
+   else if(e==5){minute=m;sut.framePainted(m);cov["frame"]+=1;}
+   else{minute=null;sut.invalidateFrame();cov["invalidate"]+=1;}
+   var expectedMode=state==2?1:(state==3?-1:0);ownerCheck(sut.state==state&&sut.frameMinute==minute&&sut.mode()==expectedMode&&sut.permitsFrame()==(state==1||state==2)&&sut.permitsActive()==(state==2),"display-owner",seed,i,trace,[state,minute],[sut.state,sut.frameMinute]);total+=1;
+  }
+  var keys=cov.keys();for(var k=0;k<keys.size();k+=1){ownerCheck(cov[keys[k]]>0,"display-coverage",seed,n,trace,keys[k],cov[keys[k]]);}recordCoverage(cov);
+ }
+ return total;
 }
 (:test,:typecheck(false)) function generatedDisplayOwners(logger){var count=runGeneratedDisplayOwners(1,64);logger.debug("GENERATED_DISPLAY seeds=64 events="+count+" variable_length=true after_each=true end=true");return true;
 }
@@ -353,19 +345,19 @@ import Toybox.System;
  var coverage={"show_applied"=>0,"show_no"=>0,"hide_applied"=>0,"hide_no"=>0,"sleep_applied"=>0,"sleep_no"=>0,"wake_applied"=>0,"wake_no"=>0,"hidden_wake_no"=>0,"low_paint"=>0,"same_minute_no"=>0,"hidden_frame_no"=>0,"timer_applied"=>0,"timer_no"=>0,"os_context_change"=>0,"first_wake_without_sleep"=>0,"wake_reconciles_low"=>0};
  function initialize(){view=new PbtView();dc=new PbtGraphics();}
  function stopTimer(){if(timer>=0){timers[timer]=0;timer=-1;stops+=1;}}
- function transition(next){if(state!=0&&state!=next){state=next;minute=null;metricAt=null;updates+=1;modeLogs+=1;if(next==1){pending=false;stopTimer();}else{pending=true;}}}
- function sync(){var next=1;if(!sleeping&&high){next=2;}transition(next);}
+ function transition(next,drawing){if(state!=0&&state!=next){state=next;minute=null;metricAt=null;if(!drawing){updates+=1;}modeLogs+=1;if(next==1){pending=false;stopTimer();}else{pending=true;}}}
+ function sync(drawing){var next=1;if(high){next=2;}transition(next,drawing);}
  function step(e,arg,seed,i){
   trace.add([e,arg]);
-  if(e==0){if(state==0){coverage["show_applied"]+=1;state=1;minute=null;sync();if(state==2){pending=true;updates+=1;}}else{coverage["show_no"]+=1;}view.onShow();}
+  if(e==0){if(state==0){coverage["show_applied"]+=1;state=3;minute=null;sync(false);}else{coverage["show_no"]+=1;}view.onShow();}
   else if(e==1){if(state!=0){coverage["hide_applied"]+=1;state=0;minute=null;metricAt=null;pending=false;stopTimer();}else{coverage["hide_no"]+=1;}view.onHide();}
-  else if(e==2){if(!sleeping){coverage["sleep_applied"]+=1;sleeping=true;sync();}else{coverage["sleep_no"]+=1;}view.onEnterSleep();}
-  else if(e==3){var wasSleeping=sleeping;var before=state;sleeping=false;sync();var firstWake=!wasSleeping&&before==1&&high&&state==2;if(firstWake){coverage["first_wake_without_sleep"]+=1;}if(!wasSleeping&&before==2&&!high&&state==1){coverage["wake_reconciles_low"]+=1;}if(wasSleeping||before!=state){coverage["wake_applied"]+=1;}else{coverage["wake_no"]+=1;}if(wasSleeping&&state!=0&&state==before){updates+=1;}else if(wasSleeping&&state==0){coverage["hidden_wake_no"]+=1;}view.onExitSleep();}
+  else if(e==2){if(!sleeping){coverage["sleep_applied"]+=1;sleeping=true;}else{coverage["sleep_no"]+=1;}sync(false);view.onEnterSleep();}
+  else if(e==3){var wasSleeping=sleeping;var before=state;sleeping=false;sync(false);var firstWake=!wasSleeping&&before==1&&high&&state==2;if(firstWake){coverage["first_wake_without_sleep"]+=1;}if(!wasSleeping&&before==2&&!high&&state==1){coverage["wake_reconciles_low"]+=1;}if(wasSleeping||before!=state){coverage["wake_applied"]+=1;}else{coverage["wake_no"]+=1;}if(wasSleeping&&state==0){coverage["hidden_wake_no"]+=1;}view.onExitSleep();}
   else if(e==4){high=!high;if(high){view.fakeMode=Toybox.System.DISPLAY_MODE_HIGH_POWER;}else{view.fakeMode=Toybox.System.DISPLAY_MODE_LOW_POWER;}coverage["os_context_change"]+=1;}
   else if(e==5){now+=arg;view.clock.now=now;}
   else if(e==6){
    if(state==0){coverage["hidden_frame_no"]+=1;}
-   else{sync();if(state==1){var m=(now/60).toLong();if(minute==m){coverage["same_minute_no"]+=1;}else{minute=m;low+=1;coverage["low_paint"]+=1;if(initialSnapshot){initialSnapshot=false;lowSnapshots+=1;minute=null;updates+=1;}}}
+   else{sync(true);if(state==1){var m=(now/60).toLong();if(minute==m){coverage["same_minute_no"]+=1;}else{minute=m;low+=1;coverage["low_paint"]+=1;if(initialSnapshot){initialSnapshot=false;lowSnapshots+=1;minute=null;updates+=1;}}}
     else{if(!pending&&timer<0&&(metricAt==null||now<metricAt||now-metricAt>=60)){fitness+=1;metricAt=now;initialSnapshot=false;}layouts+=1;fallback+=1;if(pending&&timer<0){pending=false;timer=timers.size();timers.add(1);}}}
    view.onUpdate(dc);
   }else{var ix=0;if(timers.size()>0){ix=arg%timers.size();}var allowed=timers.size()>0&&timers[ix]==1;if(allowed){coverage["timer_applied"]+=1;timers[ix]=0;timer=-1;fires+=1;if(state==2&&high&&(metricAt==null||now<metricAt||now-metricAt>=60)){fitness+=1;updates+=1;metricAt=now;initialSnapshot=false;}}else if(timers.size()>0){coverage["timer_no"]+=1;}else{PbtMetrics.skipped+=1;}var ran=false;if(view.timers.size()>0){ran=view.timers[ix].fire();}ownerCheck(ran==allowed,"view-timer",seed,i,trace,allowed,ran);}

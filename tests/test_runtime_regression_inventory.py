@@ -20,6 +20,8 @@ class RuntimeRegressionInventory(unittest.TestCase):
             'countdownAffectedBatch', 'generatedViewLifecycle', 'generatedFitnessOwners',
             'foregroundArtTimerBudget', 'cadenceNoPeriodicTimers', 'coldLowAcquiresOneFieldSnapshot',
             'generatedForegroundCadence', 'anchoredModelFrame', 'stepsCountdownBatch',
+    'offToLowReentersAod', 'offLowEventSequences', 'offLateSettingsAndFirstFrame', 'generatedDisplayOwners', 'lowPointRetainedAcrossLifecycle',
+    'generatedSourceSwitch', 'generatedForegroundDelivery',
         })
         for selector in SELECTORS:
             self.assertEqual(len(re.findall(r'(?m)^.*\(:test(?:,|\)).*\bfunction\s+'+re.escape(selector)+r'\s*\(', source)), 1, selector)

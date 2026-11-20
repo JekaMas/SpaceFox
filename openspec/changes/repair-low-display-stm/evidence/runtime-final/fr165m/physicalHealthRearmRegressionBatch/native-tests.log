@@ -1,0 +1,16 @@
+------------------------------------------------------------------------------
+Executing test physicalHealthRearmRegressionBatch...
+DEBUG (13:38): Complication values, zero, per-source failure and stop/restart retention
+DEBUG (13:38): ACTUAL_PROVIDER energy=73/READY heart=178/READY stress=72/READY steps=0/READY
+DEBUG (13:38): metric callback preserves unrelated fields, scene job and LOW snapshot
+DEBUG (13:38): callback and missing subscription rearmed by bounded refresh
+DEBUG (13:38): HEALTH_REARM_BATCH cases=5 provider_and_view=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+physicalHealthRearmRegressionBatch  PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)
