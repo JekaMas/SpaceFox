@@ -80,9 +80,9 @@ import Toybox.Test;
  var api=new PhysicalHealthApi();api.registerFailed=true;view.selectedFields=new PhysicalFakeFields();view.selectedFields.api=api;view.fitness=new PhysicalFitness();view.fitness.selectedFields=view.selectedFields;
  view.readFitnessSnapshot(1800000000);Test.assert(api.registers==1&&view.values["heart"]==null);
  api.registerFailed=false;api.refuseKind=22;view.readFitnessSnapshot(1800000060);
- Test.assertMessage(api.registers==2&&api.subscriptions.size()==2,"next scheduled refresh must retry callback registration");
+ Test.assertMessage(api.registers==2&&api.subscriptions.size()==3&&api.subscriptions.indexOf(2)>=0&&api.subscriptions.indexOf(23)>=0&&api.subscriptions.indexOf(18)>=0,"next scheduled refresh must retry callback registration and subscribe selected steps");
  api.refuseKind=-1;view.readFitnessSnapshot(1800000120);
- Test.assertMessage(api.registers==2&&api.subscriptions.size()==3,"next scheduled refresh must retry only the missing subscription");
+ Test.assertMessage(api.registers==2&&api.subscriptions.size()==4&&api.subscriptions.indexOf(22)>=0,"next scheduled refresh must retry only the missing subscription");
  view.onHide();logger.debug("callback and missing subscription rearmed by bounded refresh");return true;
 }
 

@@ -41,10 +41,19 @@ class Fitness {
             catch(e){status["steps"]="UNAVAILABLE";status["calories"]="UNAVAILABLE";reason["steps"]="provider-error";reason["calories"]="provider-error";}
         }
         if(requested("battery")){try{values["battery"]=number(batteryValue(),100);}catch(e){status["battery"]="UNAVAILABLE";reason["battery"]="provider-error";}}
-        if(selectedFields!=null){var source=selectedFields as SelectedFields;var health=["energy","heart","stress"];
+        if(selectedFields!=null){var source=selectedFields as SelectedFields;if(requested("steps")&&source.stepValue()!=null){values["steps"]=source.stepValue();}var health=["energy","heart","stress"];
             for(var i=0;i<health.size();i+=1){var role=health[i];if(requested(role)){values[role]=source.healthValue(role);status[role]=source.healthState(role);reason[role]=source.healthReason(role);}}}
         for(var i=0;i<roles.size();i+=1){var role=roles[i];if(requested(role)&&values[role]!=null){status[role]="READY";reason[role]=selectedFields!=null&&(role.equals("energy")||role.equals("heart")||role.equals("stress"))?(selectedFields as SelectedFields).healthReason(role):"available";}}
         return values;
+    }
+    // A steps complication callback invalidates only the selected ActivityMonitor value.
+    (:typecheck(false)) function sampleSteps() as Number or Null {
+        status["steps"]="WAITING";reason["steps"]="no-sample";
+        if(selectedFields!=null&&(selectedFields as SelectedFields).stepValue()!=null){status["steps"]="READY";reason["steps"]="available";return (selectedFields as SelectedFields).stepValue();}
+        try {if(!activityAvailable()){status["steps"]="UNAVAILABLE";reason["steps"]="unsupported";return null;}
+            var info=activityInfo();var value=info!=null&&info has :steps?number(info.steps,null):null;
+            if(value!=null){status["steps"]="READY";reason["steps"]="available";}return value;
+        }catch(e){status["steps"]="UNAVAILABLE";reason["steps"]="provider-error";return null;}
     }
     function fieldReason(role as String) as String {if(role.find("custom")==0&&selectedFields!=null){return (selectedFields as SelectedFields).reason(role) as String;}return reason.hasKey(role)?reason[role] as String:"no-sample";}
     function fieldState(role as String) as String {if(role.find("custom")==0&&selectedFields!=null){return (selectedFields as SelectedFields).state(role) as String;}return status.hasKey(role)?status[role] as String:"WAITING";}

@@ -342,7 +342,7 @@ def require_combined_peer(root: Path, supplied: list[dict]) -> None:
     native = (root / "watchface/source/generated/NativeVersion.mc").read_text()
     match = re.search(r'const ID = "([0-9a-f]{8})"', native)
     peers = [item["data"] for item in supplied
-             if item["data"].get("kind") == "image-memory-independent-peer"]
+             if item["data"].get("kind") == "steps-countdown-independent-peer"]
     require(len(peers) == 1 and peers[0].get("status") == "GREEN"
             and peers[0].get("version") == app.get("version") and match is not None
             and peers[0].get("native_id") == match.group(1)

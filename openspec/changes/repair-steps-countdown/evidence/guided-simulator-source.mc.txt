@@ -1,0 +1,7 @@
+import Toybox.Application;import Toybox.WatchUi;import Toybox.Graphics;import Toybox.Time;import Toybox.System;
+(:typecheck(false)) class GuidedView extends SpaceFoxView {
+ var previous=null;
+ function initialize(){var now=Time.now().value();SpaceFoxView.initialize(new WatchClock(),new ScheduleState(now+86399,"exact"));context=new SceneContext({"id"=>"simulated:launch","rocket"=>"Falcon 9","operator"=>"SpaceX","site"=>"US · Vandenberg","modelId"=>"ll2:configuration:80","precision"=>"exact","target"=>now+86399,"displayTarget"=>now+86399,"rescheduled"=>true});}
+ function onUpdate(dc as Graphics.Dc) as Void {SpaceFoxView.onUpdate(dc);var step=values.hasKey("steps")?values["steps"]:null;if(previous==null||step!=previous){System.println("GUIDED_FRAME steps="+step+" state="+fitness.fieldState("steps"));previous=step;}}
+}
+(:typecheck(false)) class GuidedApp extends Application.AppBase {function getInitialView(){return [new GuidedView()];}}

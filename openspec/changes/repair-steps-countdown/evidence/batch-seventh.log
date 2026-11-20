@@ -1,0 +1,23 @@
+------------------------------------------------------------------------------
+Executing test stepsCountdownBatch...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - selectedStepsCallback() at /Users/jekamas/projects/SpaceFox-worktrees/fix-steps-countdown-20261120/watchface/health-incident-tests/StepsCountdown.mc:19 0x100077bd 
+  - stepsCountdownBatch() at /Users/jekamas/projects/SpaceFox-worktrees/fix-steps-countdown-20261120/watchface/health-incident-tests/StepsCountdown.mc:36 0x1000791a 
+  - evaluate_test_entries_30_to_60() at /Users/jekamas/.codex/tmp/spacefox-steps-countdown-20261120/gen/006-B4433-00/source/UnitTests.mcgen:195 0x1001591b 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-steps-countdown-20261120/gen/006-B4433-00/source/UnitTests.mcgen:403 0x1001698e 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+stepsCountdownBatch                 ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)
+
+raw_exit=1

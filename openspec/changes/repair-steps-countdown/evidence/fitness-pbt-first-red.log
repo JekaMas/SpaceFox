@@ -1,0 +1,25 @@
+------------------------------------------------------------------------------
+Executing test generatedFitnessOwners...
+STM_FAIL owner=fitness-effects seed=1 index=6 trace=[[0, 0], [11, 0], [2, 27], [3, 0], [4, 35], [5, 0], [9, 0]] expected=[3, 1, 0] actual=[4, 1, 0]
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - ownerCheck() at /Users/jekamas/projects/SpaceFox-worktrees/fix-steps-countdown-20261120/watchface/stm-property-tests/GeneratedOwners.mc:16 0x1000ae5d 
+  - verify() at /Users/jekamas/projects/SpaceFox-worktrees/fix-steps-countdown-20261120/watchface/stm-property-tests/GeneratedOwners.mc:613 0x10014c7d 
+  - step() at /Users/jekamas/projects/SpaceFox-worktrees/fix-steps-countdown-20261120/watchface/stm-property-tests/GeneratedOwners.mc:610 0x1001518f 
+  - runGeneratedFitnessOwners() at /Users/jekamas/projects/SpaceFox-worktrees/fix-steps-countdown-20261120/watchface/stm-property-tests/GeneratedOwners.mc:620 0x10001611 
+  - generatedFitnessOwners() at /Users/jekamas/projects/SpaceFox-worktrees/fix-steps-countdown-20261120/watchface/stm-property-tests/GeneratedOwners.mc:624 0x10002329 
+  - evaluate_test_entries_60_to_90() at /Users/jekamas/.codex/tmp/spacefox-steps-countdown-20261120/runtime-retained/fr165/gen/006-B4432-00/source/UnitTests.mcgen:321 0x1001608d 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-steps-countdown-20261120/runtime-retained/fr165/gen/006-B4432-00/source/UnitTests.mcgen:407 0x100165ce 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+generatedFitnessOwners              ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

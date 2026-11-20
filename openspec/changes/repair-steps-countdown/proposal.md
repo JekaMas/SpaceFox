@@ -1,0 +1,3 @@
+# Repair selected steps and countdown cues
+
+The on-wrist 0.2.17 photograph shows a zero step count, an unavailable default Body Battery field, and working heart and stress values. Trace real selected-source acquisition and provide event-driven step updates with the existing bounded polling fallback; retain zero, missing values and configured source identity. Display distant countdowns neutrally, near countdowns in the configured color and a distinct vector reschedule mark, keeping stale signaling and LOW policy. No fabricated health data or claim of a physical cause without device observations.

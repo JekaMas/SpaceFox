@@ -19,7 +19,7 @@ class RuntimeRegressionInventory(unittest.TestCase):
             'physicalHealthRearmRegressionBatch', 'menuAffectedBatch', 'menuPeerControls', 'menuCadenceFrames',
             'countdownAffectedBatch', 'generatedViewLifecycle', 'generatedFitnessOwners',
             'foregroundArtTimerBudget', 'cadenceNoPeriodicTimers', 'coldLowAcquiresOneFieldSnapshot',
-            'generatedForegroundCadence', 'anchoredModelFrame',
+            'generatedForegroundCadence', 'anchoredModelFrame', 'stepsCountdownBatch',
         })
         for selector in SELECTORS:
             self.assertEqual(len(re.findall(r'(?m)^.*\(:test(?:,|\)).*\bfunction\s+'+re.escape(selector)+r'\s*\(', source)), 1, selector)

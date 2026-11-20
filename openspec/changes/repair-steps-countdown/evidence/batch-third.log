@@ -1,0 +1,24 @@
+------------------------------------------------------------------------------
+Executing test stepsCountdownBatch...
+
+Error: Symbol Not Found Error
+Details: Could not find symbol 'getType'
+Stack: 
+  - complication() at /Users/jekamas/projects/SpaceFox-worktrees/fix-steps-countdown-20261120/watchface/source/FieldSources.mc:122 0x500125f9 
+  - readSelected() at /Users/jekamas/projects/SpaceFox-worktrees/fix-steps-countdown-20261120/watchface/source/FieldSources.mc:234 0x500115b1 
+  - read() at /Users/jekamas/projects/SpaceFox-worktrees/fix-steps-countdown-20261120/watchface/source/FieldSources.mc:215 0x5001196c 
+  - selectedStepsCallback() at /Users/jekamas/projects/SpaceFox-worktrees/fix-steps-countdown-20261120/watchface/health-incident-tests/StepsCountdown.mc:18 0x100074cd 
+  - stepsCountdownBatch() at /Users/jekamas/projects/SpaceFox-worktrees/fix-steps-countdown-20261120/watchface/health-incident-tests/StepsCountdown.mc:27 0x100075a4 
+  - evaluate_test_entries_30_to_60() at /Users/jekamas/.codex/tmp/spacefox-steps-countdown-20261120/gen/006-B4433-00/source/UnitTests.mcgen:193 0x100155e0 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-steps-countdown-20261120/gen/006-B4433-00/source/UnitTests.mcgen:400 0x1001652f 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+stepsCountdownBatch                 ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)
+
+raw_exit=1

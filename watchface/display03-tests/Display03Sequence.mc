@@ -125,11 +125,11 @@ import Toybox.Application;
  var settings=new SceneSettings(null);var values=[raw,held];
  for(var i=0;i<2;i+=1){var store=new D03Store();store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);var base="https://fixture.invalid/hold"+i;var clock=new Display03Clock();clock.now=1794551202;var cache=new TestNativeCache(base,store);Test.assert(cache.accept(values[i],clock.now));
   var view=new SpaceFoxView(clock,new ScheduleState(null,"empty"));view.setPacket(cache.packet);Test.assert(view.context.sourceHold==(i==1));
-  var snapshot=view.snapshot();Test.assert(SceneAod.countdownColor(snapshot,settings)==(i==1?0xFF6B6B:settings.countdownColor));
-  snapshot.stale=true;Test.assert(SceneAod.countdownColor(snapshot,settings)==(i==1?0xFF6B6B:settings.countdownColor));
+  var snapshot=view.snapshot();Test.assert(SceneAod.countdownColor(snapshot,settings)==settings.countdownColor);
+  snapshot.stale=true;Test.assert(SceneAod.countdownColor(snapshot,settings)==settings.countdownColor);
   var reopened=new TestNativeCache(base,store);Test.assert(reopened.load(clock.now)!=null);view.setPacket(reopened.packet);Test.assert(view.context.sourceHold==(i==1));
-  snapshot=view.snapshot();Test.assert(SceneAod.countdownColor(snapshot,settings)==(i==1?0xFF6B6B:settings.countdownColor));
-  snapshot.rescheduled=true;Test.assert(SceneAod.countdownColor(snapshot,settings)==0xFF6B6B);
+  snapshot=view.snapshot();Test.assert(SceneAod.countdownColor(snapshot,settings)==settings.countdownColor);
+  snapshot.rescheduled=true;Test.assert(SceneAod.countdownColor(snapshot,settings)==settings.countdownColor);
  }
  logger.debug("SOURCED_HOLD status5=true staleIndependent=true cacheReopen=true");return true;
 }

@@ -21,7 +21,7 @@ SELECTORS = (
     'physicalHealthRearmRegressionBatch', 'menuAffectedBatch', 'menuPeerControls', 'menuCadenceFrames',
     'countdownAffectedBatch', 'generatedViewLifecycle', 'generatedFitnessOwners',
     'foregroundArtTimerBudget', 'cadenceNoPeriodicTimers', 'coldLowAcquiresOneFieldSnapshot',
-    'generatedForegroundCadence', 'anchoredModelFrame',
+    'generatedForegroundCadence', 'anchoredModelFrame', 'stepsCountdownBatch',
 )
 PROFILES = ('fr165', 'fr165m')
 

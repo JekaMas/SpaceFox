@@ -9,6 +9,7 @@ class ClockSnapshot {
     var localTime as String;
     var countdown as String;
     var lowCountdown as String = "--:--";
+    var remainingUtc as Number or Long or Null = null;
     var stale as Boolean=false;var rescheduled as Boolean=false;var sourceHold as Boolean=false;
     var date as String or Null=null;
     var localCalendar as Array<Number> or Null=null;
@@ -119,7 +120,8 @@ class SpaceFoxView extends WatchUi.WatchFace {
     function fieldsChanged(id as Complications.Id) as Void {
         if(!lifecycle.shown()||lifecycle.mode()!=NOT_LOW||admissionPending||deviceMode()!=System.DISPLAY_MODE_HIGH_POWER){return;}
         try{if(!selectedFields.includes(id)){return;}selectedFields.readChanged(settings.language,id);
-        var roles=["energy","heart","stress"];for(var i=0;i<roles.size();i+=1){var role=roles[i];if(settings.slots.indexOf(role)>=0){values[role]=selectedFields.healthValue(role);fitness.status[role]=selectedFields.healthState(role);fitness.reason[role]=selectedFields.healthReason(role);}}requestFrame();}catch(e){}
+        if(id.getType()==2&&settings.slots.indexOf("steps")>=0){values["steps"]=fitness.sampleSteps();}
+        var roles=["energy","heart","stress"];var kinds=[23,18,22];for(var i=0;i<roles.size();i+=1){var role=roles[i];if(id.getType()==kinds[i]&&settings.slots.indexOf(role)>=0){values[role]=selectedFields.healthValue(role);fitness.status[role]=selectedFields.healthState(role);fitness.reason[role]=selectedFields.healthReason(role);}}requestFrame();}catch(e){}
     }
     function stopFitness() as Void {try{selectedFields.stop();}catch(e){}lifecycle.resetFitness();}
     (:typecheck(false)) function snapshotAt(now as Number or Long) as ClockSnapshot {
@@ -128,7 +130,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
         if(context!=null){context.advanceFreshness(now);if(packet!=null&&packet.presentation==context){packet.stale=context.stale;}}
         var remaining=_schedule.remainingSeconds(now);
         if(context!=null&&context.displayTarget!=null){remaining=(context.displayTarget as Long)-now.toLong();}
-        var current=new ClockSnapshot(_clock.localTimeText(),CountdownFormat.format(remaining));
+        var current=new ClockSnapshot(_clock.localTimeText(),CountdownFormat.format(remaining));current.remainingUtc=remaining;
         current.lowCountdown=CountdownFormat.minutes(remaining);
         current.date=context==null?null:context.date;current.localCalendar=_clock.localCalendar();current.battery=fitness.display(values,"battery");
         if(context!=null){current.stale=context.stale;current.rescheduled=context.rescheduled;current.sourceHold=context.sourceHold;}
@@ -348,7 +350,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
         if(parts.size()==3){dc.drawText(x,active?y-107:y-45,Graphics.FONT_TINY,parts[1].format("%02d")+"."+parts[2].format("%02d"),Graphics.TEXT_JUSTIFY_CENTER);}
         // Keep admitted facts independent of the optional graphics as well.
         // Their own failure cannot prevent the already drawn clock/date.
-        try{if(context!=null){var now=_clock.utcSeconds();advanceSelection(now);var selected=context as SceneContext or Null;if(selected!=null){var snap=snapshotAt(now);var value=lifecycle.mode()==LOW?snap.lowCountdown:snap.countdown;dc.setColor(selected.rescheduled||selected.sourceHold?0xFF6B6B:settings.countdownColor,Graphics.COLOR_TRANSPARENT);dc.drawText(x,active?y+7:y+25,Graphics.FONT_TINY,value,Graphics.TEXT_JUSTIFY_CENTER);dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(x,active?y+124:y+55,Graphics.FONT_XTINY,active?presentation.fit(dc,selected.site,Graphics.FONT_XTINY,242):selected.site,Graphics.TEXT_JUSTIFY_CENTER);dc.drawText(x,active?y-159:y+80,Graphics.FONT_XTINY,active?presentation.fit(dc,selected.rocket,Graphics.FONT_XTINY,238):joinDetail(selected.rocket,selected.purpose),Graphics.TEXT_JUSTIFY_CENTER);if(active){var company=selected.operatorShort.equals("")?selected.operator:selected.operatorShort;dc.drawText(x,y-133,Graphics.FONT_XTINY,presentation.fit(dc,joinDetail(company,selected.purpose),Graphics.FONT_XTINY,282),Graphics.TEXT_JUSTIFY_CENTER);}}}}catch(e){}
+        try{if(context!=null){var now=_clock.utcSeconds();advanceSelection(now);var selected=context as SceneContext or Null;if(selected!=null){var snap=snapshotAt(now);var value=lifecycle.mode()==LOW?snap.lowCountdown:snap.countdown;dc.setColor(SceneAod.countdownColor(snap,settings),Graphics.COLOR_TRANSPARENT);dc.drawText(x,active?y+7:y+25,Graphics.FONT_TINY,value,Graphics.TEXT_JUSTIFY_CENTER);if(snap.rescheduled){SceneAod.rescheduleMark(dc,x+dc.getTextWidthInPixels(value,Graphics.FONT_TINY)/2+8,active?y+11:y+29);}if(snap.sourceHold){SceneAod.holdMark(dc,x+dc.getTextWidthInPixels(value,Graphics.FONT_TINY)/2+(snap.rescheduled?20:8),active?y+11:y+29);}dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(x,active?y+124:y+55,Graphics.FONT_XTINY,active?presentation.fit(dc,selected.site,Graphics.FONT_XTINY,242):selected.site,Graphics.TEXT_JUSTIFY_CENTER);dc.drawText(x,active?y-159:y+80,Graphics.FONT_XTINY,active?presentation.fit(dc,selected.rocket,Graphics.FONT_XTINY,238):joinDetail(selected.rocket,selected.purpose),Graphics.TEXT_JUSTIFY_CENTER);if(active){var company=selected.operatorShort.equals("")?selected.operator:selected.operatorShort;dc.drawText(x,y-133,Graphics.FONT_XTINY,presentation.fit(dc,joinDetail(company,selected.purpose),Graphics.FONT_XTINY,282),Graphics.TEXT_JUSTIFY_CENTER);}}}}catch(e){}
         LocaleGraphemes.data=null;
         // Mandatory-resource recovery has no metric composition. The clear
         // above removes partial fields before clock/date and accepted facts

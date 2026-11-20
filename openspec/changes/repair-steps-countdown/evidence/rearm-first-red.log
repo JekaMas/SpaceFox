@@ -1,0 +1,23 @@
+------------------------------------------------------------------------------
+Executing test physicalHealthRearmRegressionBatch...
+DEBUG (11:24): Complication values, zero, per-source failure and stop/restart retention
+DEBUG (11:24): ACTUAL_PROVIDER energy=57/READY heart=167/READY stress=3/READY steps=0/READY
+DEBUG (11:24): metric callback preserves unrelated fields, scene job and LOW snapshot
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED: next scheduled refresh must retry callback registration
+Stack: 
+  - API code 0x30000203 
+  - physicalHealthSubscriptionRearm() at /Users/jekamas/projects/SpaceFox-worktrees/fix-steps-countdown-20261120/watchface/physical-six-tests/HealthTests.mc:83 0x10009f8a 
+  - physicalHealthRearmRegressionBatch() at /Users/jekamas/projects/SpaceFox-worktrees/fix-steps-countdown-20261120/watchface/physical-six-tests/HealthTests.mc:94 0x10008ed6 
+  - evaluate_test_entries_30_to_60() at /Users/jekamas/.codex/tmp/spacefox-steps-countdown-20261120/runtime/fr165/gen/006-B4432-00/source/UnitTests.mcgen:207 0x100154db 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-steps-countdown-20261120/runtime/fr165/gen/006-B4432-00/source/UnitTests.mcgen:403 0x10016497 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+physicalHealthRearmRegressionBatch  ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

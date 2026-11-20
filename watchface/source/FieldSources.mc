@@ -157,7 +157,7 @@ class FieldComplicationApi {
 // persisted if a provider disappears; a failed subscription is polled on minute.
 (:extendedCode, :typecheck(false))
 class SelectedFields {
-    var selected=[];var subscribed=[];var labels={};var text={};var icons={};var states={};var reasons={};var energy as Number or Null=null;var energyStatus="WAITING";var energyReason="no-sample";var heart as Number or Null=null;var heartStatus="WAITING";var heartReason="no-sample";var stress as Number or Null=null;var stressStatus="WAITING";var stressReason="no-sample";var previousRoles=null;var changeCallback=null;var callbackRegistered=false;var firstSubscriptionRead=false;var provider=null;var api=null;var customMask=0;var fittedMask=0;var numericMask=0;var healthClock=null;var historyQuery=[null,null];var historyCache=[null,null];var historyExpiry=[null,null];
+    var step as Number or Null=null;var selected=[];var subscribed=[];var labels={};var text={};var icons={};var states={};var reasons={};var energy as Number or Null=null;var energyStatus="WAITING";var energyReason="no-sample";var heart as Number or Null=null;var heartStatus="WAITING";var heartReason="no-sample";var stress as Number or Null=null;var stressStatus="WAITING";var stressReason="no-sample";var previousRoles=null;var changeCallback=null;var callbackRegistered=false;var firstSubscriptionRead=false;var provider=null;var api=null;var customMask=0;var fittedMask=0;var numericMask=0;var healthClock=null;var historyQuery=[null,null];var historyCache=[null,null];var historyExpiry=[null,null];
     function initialize(){}
     function bindClock(clock){healthClock=clock;}
     function savedField(slot){return FieldCatalog.saved(slot);}
@@ -169,7 +169,7 @@ class SelectedFields {
         if(!same){clearSnapshot();}previousRoles=[];for(var n=0;n<slots.size();n+=1){previousRoles.add(slots[n]);}
         for(var i=0;i<4;i+=1){
             var custom=slots[i].equals("custom"+(i+1));if(custom){customMask|=(1<<i);}
-            var kind=slots[i].equals("energy")?23:(slots[i].equals("heart")?18:(slots[i].equals("stress")?22:0));
+            var kind=slots[i].equals("energy")?23:(slots[i].equals("heart")?18:(slots[i].equals("stress")?22:(slots[i].equals("steps")?2:0)));
             var source=kind!=0?new Complications.Id(kind):(custom?savedField(i+1):null);
             selected.add(source);
         }
@@ -195,7 +195,7 @@ class SelectedFields {
         subscribed=[];selected=[];icons={};callbackRegistered=false;firstSubscriptionRead=false;changeCallback=null;
     }
     // Selection/settings changes start a new snapshot; OS suspension does not.
-    function clearSnapshot(){labels={};text={};icons={};states={};reasons={};clearHealth(18);clearHealth(22);clearHealth(23);historyQuery=[null,null];historyCache=[null,null];customMask=0;fittedMask=0;numericMask=0;}
+    function clearSnapshot(){step=null;labels={};text={};icons={};states={};reasons={};clearHealth(18);clearHealth(22);clearHealth(23);historyQuery=[null,null];historyCache=[null,null];customMask=0;fittedMask=0;numericMask=0;}
     function clearHealth(kind){if(kind==18){heart=null;heartStatus="WAITING";heartReason="no-sample";}else if(kind==22){stress=null;stressStatus="WAITING";stressReason="no-sample";historyExpiry[1]=null;}else if(kind==23){energy=null;energyStatus="WAITING";energyReason="no-sample";historyExpiry[0]=null;}}
     function failHealth(kind){if(kind==18){heartStatus="UNAVAILABLE";heartReason="provider-error";}else if(kind==22){stressStatus="UNAVAILABLE";stressReason="provider-error";}else if(kind==23){energyStatus="UNAVAILABLE";energyReason="provider-error";}}
     function acceptHealth(kind,value){if(!(value instanceof Number)||value<0||value>(kind==18?300:100)||kind==18&&value==0){return;}if(kind==18){heart=value;heartStatus="READY";heartReason="available";}else if(kind==22){stress=value;stressStatus="READY";stressReason="available";historyExpiry[1]=null;}else if(kind==23){energy=value;energyStatus="READY";energyReason="available";historyExpiry[0]=null;}}
@@ -207,6 +207,7 @@ class SelectedFields {
         var cached=historyCache[n];if(cached!=null&&now>=cached[1]&&now-cached[1]<=300){acceptHealth(kind,cached[0]);historyExpiry[n]=cached[1]+300;if(kind==23){energyReason="recent-history";}else{stressReason="recent-history";}}
     }
     function expireHistory(now){var changed=false;for(var i=0;i<2;i+=1){var expiry=historyExpiry[i];if(expiry!=null&&(now>expiry||now<expiry-300)){clearHealth(i==0?23:22);changed=true;}}return changed;}
+    function stepValue() as Number or Null {return step;}
     function healthValue(role as String) as Number or Null {return role.equals("heart")?heart:(role.equals("stress")?stress:energy);}
     function healthState(role as String) as String {return role.equals("heart")?heartStatus:(role.equals("stress")?stressStatus:energyStatus);}
     function healthReason(role as String) as String {return role.equals("heart")?heartReason:(role.equals("stress")?stressReason:energyReason);}
@@ -216,8 +217,8 @@ class SelectedFields {
     function readSelected(locale,onlyId){
         if(!active()){return;}
         var info=null;var fetched=false;var stats=null;var statsFetched=false;var words=null;
-        if(onlyId==null){labels={};text={};icons={};states={};reasons={};clearHealth(18);clearHealth(22);clearHealth(23);fittedMask=0;numericMask=0;}
-        else{for(var i=0;i<selected.size();i+=1){var prior=selected[i];if(prior instanceof Complications.Id&&prior.equals(onlyId)){var key="custom"+(i+1);labels.remove(key);text.remove(key);icons.remove(key);states.remove(key);reasons.remove(key);fittedMask&=~(1<<i);numericMask&=~(1<<i);clearHealth(prior.getType());}}}
+        if(onlyId==null){step=null;labels={};text={};icons={};states={};reasons={};clearHealth(18);clearHealth(22);clearHealth(23);fittedMask=0;numericMask=0;}
+        else{if(onlyId.getType()==2){step=null;}for(var i=0;i<selected.size();i+=1){var prior=selected[i];if(prior instanceof Complications.Id&&prior.equals(onlyId)){var key="custom"+(i+1);labels.remove(key);text.remove(key);icons.remove(key);states.remove(key);reasons.remove(key);fittedMask&=~(1<<i);numericMask&=~(1<<i);clearHealth(prior.getType());}}}
         for(var i=0;i<selected.size();i+=1){var key="custom"+(i+1);var source=selected[i];if(source==null){if((customMask&(1<<i))!=0){states[key]="UNAVAILABLE";reasons[key]="not-configured";}continue;}
             if(onlyId!=null&&(!(source instanceof Complications.Id)||!source.equals(onlyId))){continue;}
             states[key]="WAITING";reasons[key]="no-sample";
@@ -226,6 +227,7 @@ class SelectedFields {
                 if(earlier>=0){var previous="custom"+(earlier+1);if(labels.hasKey(previous)){labels[key]=labels[previous];}if(text.hasKey(previous)){text[key]=text[previous];}if(icons.hasKey(previous)){icons[key]=icons[previous];}if(states.hasKey(previous)){states[key]=states[previous];}if(reasons.hasKey(previous)){reasons[key]=reasons[previous];}continue;}
                 var item=null;try{item=provider!=null?provider.get(source):(api==null?Complications.getComplication(source):api.get(source));}catch(missing){states[key]="UNAVAILABLE";reasons[key]="provider-error";failHealth(source.getType());}
                 if(item!=null){var kind=source.getType();var needText=(customMask&(1<<i))!=0;
+                    if(kind==2&&item.value instanceof Number&&item.value>=0){step=item.value;}
                     if(kind==18||kind==22||kind==23){acceptHealth(kind,item.value);}
                     if(!needText){for(var j=i+1;j<selected.size();j+=1){if((customMask&(1<<j))!=0&&selected[j] instanceof Complications.Id&&source.equals(selected[j])){needText=true;break;}}}
                     if(needText){var label=item.shortLabel;if(!(label instanceof String)||label.equals("")){label=item.longLabel;}labels[key]=label instanceof String?label:"";

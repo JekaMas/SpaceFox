@@ -574,7 +574,7 @@ import Toybox.System;
  function batteryValue(){batteryCalls+=1;throw new Lang.InvalidValueException("unexpected battery");}
 }
 (:test,:typecheck(false)) class PbtEnergyApi extends FieldComplicationApi {
- var values={18=>null,22=>null,23=>null};var failures={18=>false,22=>false,23=>false};var gets=0;var registers=0;var unregistrations=0;var subscriptions=0;var unsubscriptions=0;
+ var values={2=>null,18=>null,22=>null,23=>null};var failures={2=>false,18=>false,22=>false,23=>false};var gets=0;var registers=0;var unregistrations=0;var subscriptions=0;var unsubscriptions=0;
  function register(callback){if(callback==null){unregistrations+=1;}else{registers+=1;}}
  function subscribe(id){subscriptions+=1;return true;}
  function unsubscribe(id){unsubscriptions+=1;}
@@ -591,8 +591,8 @@ import Toybox.System;
  function callback(id){}
 }
 (:test,:typecheck(false)) class FitnessTrace {
- var fitness;var fields;var active=false;var now=1794818604;var steps=null;var input=[null,null,null];var failures=[false,false,false];var accepted=[null,null,null];var acceptedStates=["WAITING","WAITING","WAITING"];var reads=0;var samples=0;var expected=null;var expectedStates=null;var result=null;var trace=[];
- var coverage={"start_applied"=>0,"stop_applied"=>0,"sample_applied"=>0,"ready"=>0,"missing"=>0,"failure"=>0,"zero"=>0,"read_applied"=>0,"inactive_read_no"=>0};
+ var fitness;var fields;var active=false;var now=1794818604;var steps=null;var complicationSteps=null;var acceptedSteps=null;var input=[null,null,null];var failures=[false,false,false];var accepted=[null,null,null];var acceptedStates=["WAITING","WAITING","WAITING"];var reads=0;var samples=0;var expected=null;var expectedStates=null;var result=null;var trace=[];
+ var coverage={"start_applied"=>0,"stop_applied"=>0,"sample_applied"=>0,"ready"=>0,"missing"=>0,"failure"=>0,"zero"=>0,"read_applied"=>0,"inactive_read_no"=>0,"steps_complication"=>0,"steps_fallback"=>0};
  function initialize(){fitness=new PbtFitness();fields=new PbtEnergyFields();fitness.selectedRoles=["steps","energy","heart","stress"];fitness.selectedFields=fields;}
  function step(e,arg,seed,i){trace.add([e,arg]);
   if(e==0){if(active){fields.stop();}fields.start(["steps","energy","heart","stress"],fields.method(:callback));active=true;coverage["start_applied"]+=1;}
@@ -604,20 +604,21 @@ import Toybox.System;
   else if(e==6){input[1]=null;fields.fakeApi.values[18]=null;}
   else if(e==7){failures[1]=!failures[1];fields.fakeApi.failures[18]=failures[1];}
   else if(e==8){failures[2]=!failures[2];fields.fakeApi.failures[22]=failures[2];}
-  else if(e==9){if(active){fields.read("en");reads+=1;coverage["read_applied"]+=1;for(var n=0;n<3;n+=1){accepted[n]=null;acceptedStates[n]="WAITING";if(failures[n]){acceptedStates[n]="UNAVAILABLE";coverage["failure"]+=1;}else if(input[n]!=null&&input[n]>=0&&input[n]<=100&&(n!=1||input[n]>0)){accepted[n]=input[n];acceptedStates[n]="READY";coverage["ready"]+=1;if(input[n]==0){coverage["zero"]+=1;}}else{coverage["missing"]+=1;}}}else{fields.readChanged("en",new Toybox.Complications.Id(23));coverage["inactive_read_no"]+=1;}}
+  else if(e==9){if(active){fields.read("en");acceptedSteps=complicationSteps;reads+=1;coverage["read_applied"]+=1;for(var n=0;n<3;n+=1){accepted[n]=null;acceptedStates[n]="WAITING";if(failures[n]){acceptedStates[n]="UNAVAILABLE";coverage["failure"]+=1;}else if(input[n]!=null&&input[n]>=0&&input[n]<=100&&(n!=1||input[n]>0)){accepted[n]=input[n];acceptedStates[n]="READY";coverage["ready"]+=1;if(input[n]==0){coverage["zero"]+=1;}}else{coverage["missing"]+=1;}}}else{fields.readChanged("en",new Toybox.Complications.Id(23));coverage["inactive_read_no"]+=1;}}
   else if(e==10){failures[0]=!failures[0];fields.fakeApi.failures[23]=failures[0];}
-  else{samples+=1;expected=[steps,accepted[0],accepted[1],accepted[2]];expectedStates=[steps==null?"WAITING":"READY",acceptedStates[0],acceptedStates[1],acceptedStates[2]];result=fitness.sample(now);coverage["sample_applied"]+=1;}
+  else if(e==12){complicationSteps=arg%2==0?arg:null;fields.fakeApi.values[2]=complicationSteps;}
+  else{samples+=1;var selectedStep=acceptedSteps==null?steps:acceptedSteps;if(acceptedSteps==null){coverage["steps_fallback"]+=1;}else{coverage["steps_complication"]+=1;}expected=[selectedStep,accepted[0],accepted[1],accepted[2]];expectedStates=[selectedStep==null?"WAITING":"READY",acceptedStates[0],acceptedStates[1],acceptedStates[2]];result=fitness.sample(now);coverage["sample_applied"]+=1;}
   verify(seed,i);
  }
  function verify(seed,i){
-  ownerCheck(fields.fakeApi.gets==reads*3&&fitness.activityCalls==samples&&fitness.heartCalls==0&&fitness.stressCalls==0&&fitness.batteryCalls==0&&fields.forbidden==0,"fitness-effects",seed,i,trace,[reads*3,samples,0],[fields.fakeApi.gets,fitness.activityCalls,fields.forbidden]);
+  ownerCheck(fields.fakeApi.gets==reads*4&&fitness.activityCalls==samples&&fitness.heartCalls==0&&fitness.stressCalls==0&&fitness.batteryCalls==0&&fields.forbidden==0,"fitness-effects",seed,i,trace,[reads*4,samples,0],[fields.fakeApi.gets,fitness.activityCalls,fields.forbidden]);
   if(result!=null){var roles=["steps","energy","heart","stress"];for(var j=0;j<4;j+=1){ownerCheck(result[roles[j]]==expected[j]&&fitness.fieldState(roles[j]).equals(expectedStates[j]),"fitness-value",seed,i,trace,[roles[j],expected[j],expectedStates[j]],[result[roles[j]],fitness.fieldState(roles[j])]);}}
  }
  function final(seed,n){verify(seed,n);var keys=coverage.keys();for(var k=0;k<keys.size();k+=1){ownerCheck(coverage[keys[k]]>0,"fitness-coverage",seed,n,trace,keys[k],coverage[keys[k]]);}recordCoverage(coverage);}
 }
 (:typecheck(false)) function runGeneratedFitnessOwners(firstSeed,seedCount){
- var total=0;for(var seed=firstSeed;seed<firstSeed+seedCount;seed+=1){var rng=new OwnerRandom(seed);var run=new FitnessTrace();var prefix=[[0,0],[11,0],[2,27],[3,0],[4,35],[5,0],[9,0],[5,68],[9,0],[11,0],[7,0],[9,0],[11,0],[7,0],[6,0],[9,0],[11,0],[1,0],[9,0],[0,0],[3,72],[9,0],[11,0]];var events=prefix.size()+12+rng.draw(37);
-  for(var i=0;i<events;i+=1){var e=0;var arg=0;if(i<prefix.size()){e=prefix[i][0];arg=prefix[i][1];}else{e=rng.draw(12);arg=rng.draw(101);}run.step(e,arg,seed,i);total+=1;}run.final(seed,events);
+ var total=0;for(var seed=firstSeed;seed<firstSeed+seedCount;seed+=1){var rng=new OwnerRandom(seed);var run=new FitnessTrace();var prefix=[[0,0],[11,0],[2,27],[3,0],[4,35],[5,0],[9,0],[12,42],[9,0],[11,0],[12,1],[9,0],[11,0],[5,68],[9,0],[11,0],[7,0],[9,0],[11,0],[7,0],[6,0],[9,0],[11,0],[1,0],[9,0],[0,0],[3,72],[9,0],[11,0]];var events=prefix.size()+12+rng.draw(37);
+  for(var i=0;i<events;i+=1){var e=0;var arg=0;if(i<prefix.size()){e=prefix[i][0];arg=prefix[i][1];}else{e=rng.draw(13);arg=rng.draw(101);}run.step(e,arg,seed,i);total+=1;}run.final(seed,events);
  }
  return total;
 }
