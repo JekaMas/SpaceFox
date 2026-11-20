@@ -7,4 +7,4 @@
 - [x] Run directly affected native controls, FR165/M permanent runner, guided observer and current source admission; retain raw results.
 - [x] Freeze version/NativeID and author self-GREEN for independent peer.
 - [x] Independent peer repair/review and actual clean current release gate at0.2.18/c1c2ebd4.
-- [ ] Root judgment and authorized delivery after peer GREEN.
+- [x] Root judgment and authorized delivery after peer GREEN; Store approval and physical acceptance remain unobserved.

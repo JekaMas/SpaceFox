@@ -1,5 +1,7 @@
 # Current status
 
+0.2.18 is published on GitHub and submitted to Garmin after verified signature and version. The listing still displayed 0.2.17/Internal 26; approval and availability are not observed. See `PUBLICATION.md`.
+
 Independent peer repairs pass the six directly affected profile/selector cases and five current-primary selectors at0.2.18/c1c2ebd4. Actual clean peer/source/native/five-primary gate PASS at b4c6d6b5; PEER.md/json record the final software GREEN. See PEER-REPAIRS.md. Author40tables remain at their original scopes; no whole-suite or19PBT rerun. Physical steps/BodyBattery and battery observations remain open.
 
 # Author handoff history
