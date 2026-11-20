@@ -1,0 +1,19 @@
+------------------------------------------------------------------------------
+Executing test peerStepsReadOwnership...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED: valid current steps must not read ActivityMonitor during full sample
+Stack: 
+  - API code 0x30000203 
+  - peerStepsReadOwnership() at /Users/jekamas/projects/SpaceFox-worktrees/fix-steps-countdown-20261120/watchface/health-incident-tests/StepsCountdown.mc:40 0x100030ba 
+  - evaluate_test_entries_30_to_60() at /Users/jekamas/.codex/tmp/spacefox-steps-countdown-peer-20261120/red/gen/006-B4433-00/source/UnitTests.mcgen:197 0x10015beb 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-steps-countdown-peer-20261120/red/gen/006-B4433-00/source/UnitTests.mcgen:409 0x10016c7e 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+peerStepsReadOwnership              ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

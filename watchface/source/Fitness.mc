@@ -35,18 +35,21 @@ class Fitness {
         var values={"steps"=>null,"calories"=>null,"battery"=>null,"heart"=>null,"energy"=>null,"stress"=>null};
         status={};reason={};var roles=["steps","calories","battery","heart","energy","stress"];
         for(var i=0;i<roles.size();i+=1){if(requested(roles[i])){status[roles[i]]="WAITING";reason[roles[i]]="no-sample";}}
-        if(requested("steps")||requested("calories")){
-            try{if(activityAvailable()){var info=activityInfo();if(info!=null){if(info has :steps){values["steps"]=number(info.steps,null);}if(info has :calories){values["calories"]=number(info.calories,null);}}}
+        if(requested("steps")&&selectedFields!=null){values["steps"]=(selectedFields as SelectedFields).stepValue();}
+        var needActivitySteps=requested("steps")&&values["steps"]==null;
+        if(needActivitySteps||requested("calories")){
+            try{if(activityAvailable()){var info=activityInfo();if(info!=null){if(needActivitySteps&&info has :steps){values["steps"]=number(info.steps,null);}if(info has :calories){values["calories"]=number(info.calories,null);}}}
                 else{status["steps"]="UNAVAILABLE";status["calories"]="UNAVAILABLE";reason["steps"]="unsupported";reason["calories"]="unsupported";}}
             catch(e){status["steps"]="UNAVAILABLE";status["calories"]="UNAVAILABLE";reason["steps"]="provider-error";reason["calories"]="provider-error";}
         }
         if(requested("battery")){try{values["battery"]=number(batteryValue(),100);}catch(e){status["battery"]="UNAVAILABLE";reason["battery"]="provider-error";}}
-        if(selectedFields!=null){var source=selectedFields as SelectedFields;if(requested("steps")&&source.stepValue()!=null){values["steps"]=source.stepValue();}var health=["energy","heart","stress"];
+        if(selectedFields!=null){var source=selectedFields as SelectedFields;var health=["energy","heart","stress"];
             for(var i=0;i<health.size();i+=1){var role=health[i];if(requested(role)){values[role]=source.healthValue(role);status[role]=source.healthState(role);reason[role]=source.healthReason(role);}}}
         for(var i=0;i<roles.size();i+=1){var role=roles[i];if(requested(role)&&values[role]!=null){status[role]="READY";reason[role]=selectedFields!=null&&(role.equals("energy")||role.equals("heart")||role.equals("stress"))?(selectedFields as SelectedFields).healthReason(role):"available";}}
         return values;
     }
-    // A steps complication callback invalidates only the selected ActivityMonitor value.
+    // A steps callback projects that source alone, using ActivityMonitor only
+    // when the selected complication is unavailable.
     (:typecheck(false)) function sampleSteps() as Number or Null {
         status["steps"]="WAITING";reason["steps"]="no-sample";
         if(selectedFields!=null&&(selectedFields as SelectedFields).stepValue()!=null){status["steps"]="READY";reason["steps"]="available";return (selectedFields as SelectedFields).stepValue();}

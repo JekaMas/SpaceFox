@@ -117,7 +117,7 @@ import Toybox.Test;
  v.onUpdate(new PbtGraphics());v.onUpdate(new PbtGraphics());
  Test.assert(v.fitness.activityCalls==1&&v.fitness.heartCalls==0&&v.fitness.stressCalls==0&&v.selectedFields.fakeApi.gets==4);
  v.fitness.stepsValue=40;v.selectedFields.fakeApi.values[2]=41;v.fakeMode=Toybox.System.DISPLAY_MODE_HIGH_POWER;v.syncDisplayMode(v.fakeMode);v.refreshFitness();
- Test.assert(v.values["steps"]==41&&v.selectedFields.fakeApi.gets==8&&v.fitness.activityCalls==2);v.fakeMode=Toybox.System.DISPLAY_MODE_LOW_POWER;v.onEnterSleep();
+ Test.assert(v.values["steps"]==41&&v.selectedFields.fakeApi.gets==8&&v.fitness.activityCalls==1);v.fakeMode=Toybox.System.DISPLAY_MODE_LOW_POWER;v.onEnterSleep();
  Test.assert(v.values["steps"]==41&&!v.selectedFields.active());return true;
 }
 (:test,:typecheck(false)) function peerLifetimeControls(logger){

@@ -1,0 +1,19 @@
+------------------------------------------------------------------------------
+Executing test peerFallbackCues...
+
+Error: Symbol Not Found Error
+Details: Could not find symbol 'getWidth'
+Stack: 
+  - drawClockFallback() at /Users/jekamas/projects/SpaceFox-worktrees/fix-steps-countdown-20261120/watchface/source/SpaceFoxView.mc:345 0x100175ff 
+  - peerFallbackCues() at /Users/jekamas/projects/SpaceFox-worktrees/fix-steps-countdown-20261120/watchface/health-incident-tests/StepsCountdown.mc:50 0x10003e9f 
+  - evaluate_test_entries_30_to_60() at /Users/jekamas/.codex/tmp/spacefox-steps-countdown-peer-20261120/red/gen/006-B4433-00/source/UnitTests.mcgen:199 0x10015c06 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-steps-countdown-peer-20261120/red/gen/006-B4433-00/source/UnitTests.mcgen:409 0x10016c7e 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+peerFallbackCues                    ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

@@ -13,3 +13,11 @@ The countdown SHALL use neutral color when its UTC delta is unknown or at least 
 #### Scenario: Threshold and reschedule
 - **WHEN** a valid target crosses 86400 seconds or its reschedule status changes
 - **THEN** the first applicable ACTIVE or LOW frame reflects the correct color and marker without changing countdown arithmetic.
+
+#### Scenario: Full sample source ownership
+- **WHEN** a full sample has valid current selected steps, including zero
+- **THEN** ActivityMonitor is queried only if another selected activity field requires it; missing steps and calories share one activity read.
+
+#### Scenario: Mandatory-resource fallback
+- **WHEN** the accepted countdown is drawn through the fallback renderer
+- **THEN** stale dots, reschedule arrow and source-hold pause retain their independent meaning and UTC color policy in ACTIVE and LOW.

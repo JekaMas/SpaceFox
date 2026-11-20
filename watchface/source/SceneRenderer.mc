@@ -212,8 +212,7 @@ class SceneRenderer {
         return presentation.metric(fitness,values,role);
     }
     (:extendedCode) function underline(dc as Graphics.Dc,x as Numeric,y as Numeric,width as Number,color as Number) as Void {
-        dc.setColor(color,Graphics.COLOR_TRANSPARENT);
-        for (var i = x-width/2; i <= x+width/2; i += 5) { dc.fillCircle(i,y,1); }
+        SceneAod.staleMark(dc,x,y,width,color);
     }
     (:extendedCode) function icon(dc as Graphics.Dc,x as Numeric,y as Numeric,role as String) as Void {
         if(icons.hasKey(role)){dc.drawBitmap(x,y,icons[role] as Graphics.BitmapType);}
@@ -260,6 +259,7 @@ module SceneAod {
     (:extendedCode) function project(point as Array<Numeric>,longitude as Numeric,latitude as Numeric) as Array<Number> {var rad=0.017453292519943295;var lambda=(point[0]-longitude)*rad;var phi=point[1]*rad;var delta=-latitude*rad;var x=Math.cos(lambda)*Math.cos(phi);var y=Math.sin(lambda)*Math.cos(phi);var z=Math.sin(phi);return [(335+145*Math.atan2(y,x*Math.cos(delta)-z*Math.sin(delta))+0.5).toNumber(),(165-145*Math.asin(z*Math.cos(delta)+x*Math.sin(delta))+0.5).toNumber()];}
     (:extendedCode) function coordinate(data as ByteArray,offset as Number) as Float {return ((data[offset]<<24)|(data[offset+1]<<16)|(data[offset+2]<<8)|data[offset+3])/1000000.0;}
     (:extendedCode) function countdownColor(current as ClockSnapshot, settings as SceneSettings) as Number {var remaining=current.remainingUtc;if(remaining==null){return 0xA3ADB8;}return remaining>=86400?0xA3ADB8:settings.countdownColor;}
+    (:extendedCode) function staleMark(dc as Graphics.Dc,x as Numeric,y as Numeric,width as Number,color as Number) as Void {dc.setColor(color,Graphics.COLOR_TRANSPARENT);for(var i=x-width/2;i<=x+width/2;i+=5){dc.fillCircle(i,y,1);}}
     (:extendedCode) function rescheduleMark(dc as Graphics.Dc,x as Number,y as Number) as Void {dc.drawLine(x-4,y-3,x+2,y-3);dc.drawLine(x+2,y-3,x+4,y-1);dc.drawLine(x+4,y-1,x+2,y+1);dc.drawLine(x+4,y+3,x-2,y+3);dc.drawLine(x-2,y+3,x-4,y+1);dc.drawLine(x-4,y+1,x-2,y-1);}
     (:extendedCode) function holdMark(dc as Graphics.Dc,x as Number,y as Number) as Void {dc.drawLine(x-2,y-4,x-2,y+4);dc.drawLine(x+2,y-4,x+2,y+4);}
     (:extendedCode) function draw(dc as Graphics.Dc,current as ClockSnapshot,minute as Number or Long,presentation as LocalePresentation,font as Graphics.FontType,settings as SceneSettings,map as Graphics.BitmapType or Null,pin as Boolean,pinX as Number,pinY as Number,worldPoint as Array<Numeric> or Null) as Void {
@@ -296,7 +296,7 @@ module SceneAod {
         var value=presentation.fit(dc,current.countdown,countFont,300);
         dc.setColor(color,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],246+p[1],countFont,value,Graphics.TEXT_JUSTIFY_CENTER);if(current.rescheduled){rescheduleMark(dc,195+p[0]+dc.getTextWidthInPixels(value,countFont)/2+8,253+p[1]);}if(current.sourceHold){holdMark(dc,195+p[0]+dc.getTextWidthInPixels(value,countFont)/2+(current.rescheduled?20:8),253+p[1]);}
         dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],295+p[1],presentation.aodBatteryFont as Graphics.FontType,current.battery,Graphics.TEXT_JUSTIFY_CENTER);
-        if(current.stale){dc.setColor(color,Graphics.COLOR_TRANSPARENT);var width=dc.getTextWidthInPixels(value,countFont);for(var x=195+p[0]-width/2;x<=195+p[0]+width/2;x+=5){dc.fillCircle(x,286+p[1],1);}}
+        if(current.stale){staleMark(dc,195+p[0],286+p[1],dc.getTextWidthInPixels(value,countFont),color);}
         if(map!=null && pin){var x=pinX;var y=pinY;dc.setColor(0xFFFFFF,Graphics.COLOR_TRANSPARENT);dc.fillCircle(x,y,7);dc.setColor(0xFF6B6B,Graphics.COLOR_TRANSPARENT);dc.fillCircle(x,y,4);}
     }
 }
