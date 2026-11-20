@@ -1,0 +1,22 @@
+------------------------------------------------------------------------------
+Executing test physicalTaiyuanActiveLowTrace...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - physicalTaiyuanActiveLowTrace() at /Users/jekamas/projects/SpaceFox-worktrees/optimize-native-image-memory-20261120/watchface/physical-six-tests/RenderTests.mc:38 0x10008fda 
+  - evaluate_test_entries_30_to_60() at /Users/jekamas/.codex/tmp/spacefox-image-memory-20261120/runtime/fr165m/gen/006-B4433-00/source/UnitTests.mcgen:203 0x10014785 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-image-memory-20261120/runtime/fr165m/gen/006-B4433-00/source/UnitTests.mcgen:388 0x100156af 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+physicalTaiyuanActiveLowTrace       ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)
+
+raw_exit=1

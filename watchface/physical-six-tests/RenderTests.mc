@@ -35,18 +35,23 @@ import Toybox.WatchUi;
  var active=new PhysicalFrameTrace();active.expectedMarker=renderer.marker;active.art=renderer.art;
  renderer.active(active,clock,settings,values,new Fitness(),0.0f);renderer.active(active,clock,settings,values,new Fitness(),0.5f);renderer.active(active,clock,settings,values,new Fitness(),1.0f);
  Test.assert(active.bitmapMarkers==3&&active.questions==0&&active.unknown==0&&active.polygons==0&&active.artPositions.size()==3);
- for(var i=0;i<3;i+=1){Test.assert(active.artPositions[i][0]==22&&active.artPositions[i][1]==118);}
+ for(var i=0;i<3;i+=1){Test.assert(active.artPositions[i][0]==42&&active.artPositions[i][1]==120);}
  var low=new PhysicalFrameTrace();renderer.aod(low,clock,0l,settings);Test.assert(low.circles>=2&&low.questions==0&&low.unknown==0);
  logger.debug("Taiyuan active/LOW marker; static LM2D bitmap, no Unknown, question or flame");return true;
 }
 
 (:test,:typecheck(false)) function physicalLargestModelResourceHeap(logger){
  var beforeStats=System.getSystemStats();var before=beforeStats.totalMemory-beforeStats.usedMemory;
- // Falcon Heavy is the largest PNG in the 175-entry current-evidence set;
- // all generated model bitmaps use the same bounded 54x124 canvas.
+ // Representative Falcon Heavy resource: source canvas is 54x124; its
+ // lossless cropped bounds are 22x120 and retain their generated anchor.
  var image=WatchUi.loadResource(NativeModels.resource("ll2:configuration:161"));
- Test.assert(image!=null&&image.getWidth()==54&&image.getHeight()==124);
+ Test.assert(image!=null&&image.getWidth()==22&&image.getHeight()==120);
  var afterStats=System.getSystemStats();var after=afterStats.totalMemory-afterStats.usedMemory;
  Test.assert(after>=0&&afterStats.totalMemory==beforeStats.totalMemory);
- logger.debug("MODEL_HEAP free_before="+before+" free_after="+after+" canvas=54x124 max_png_bytes=2658; instantaneous samples, not peak");return true;
+ logger.debug("MODEL_HEAP free_before="+before+" free_after="+after+" source_canvas=54x124 cropped=22x120; instantaneous samples, not peak");return true;
+}
+
+(:test,:typecheck(false)) function anchoredModelFrame(logger){
+ physicalTaiyuanActiveLowTrace(logger);physicalLargestModelResourceHeap(logger);
+ logger.debug("ANCHORED_MODEL exact_lm2d_origin=42,120 falcon_heavy_crop=22x120");return true;
 }

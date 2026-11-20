@@ -1,0 +1,23 @@
+------------------------------------------------------------------------------
+Executing test verifiedRocketDecode...
+
+Error: Unhandled Exception
+Exception: Invalid SFR1 raster
+Stack: 
+  - fail() at /task/oldsource/NativeSfr.mc:24 0x5001323b 
+  - chunk() at /task/oldsource/NativeSfr.mc:31 0x50012c98 
+  - step() at /task/oldsource/NativeSfr.mc:79 0x100140a9 
+  - verifiedRocketDecode() at /source/watchface/activity-menu-tests/NativeVerifyRocket.mc:10 0x10008f22 
+  - evaluate_test_entries_0_to_30() at /task/gen/006-B4433-00/source/UnitTests.mcgen:115 0x100154a4 
+  - runTest() at /task/gen/006-B4433-00/source/UnitTests.mcgen:384 0x10015b76 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+verifiedRocketDecode                ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)
+
+STDERR

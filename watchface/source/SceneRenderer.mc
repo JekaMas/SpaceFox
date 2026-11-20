@@ -12,7 +12,7 @@ class SceneRenderer {
     var marker as Graphics.BitmapType;
     var art as Graphics.BitmapType or Null;
     var map as Graphics.BitmapType or Null;
-    var artResource as ResourceId or Null=null;
+    var artResource as ResourceId or Null=null;var artX as Number=0;var artY as Number=0;
     var mapResource as ResourceId or Null=null;
     var aodMap as Graphics.BitmapType or Null=null;
     var aodResource as ResourceId or Null=null;
@@ -66,10 +66,10 @@ class SceneRenderer {
         prepared=true;
         // The bundled view is geographical backdrop only: no location marker is
         // shown unless the selected launch supplies a qualified matching point.
-        model = null; art = null; map = null; aodMap=null; aodResource=null; pin = false;aodPin=false;worldFallback=false;
+        model = null; art = null; artX=0;artY=0; map = null; aodMap=null; aodResource=null; pin = false;aodPin=false;worldFallback=false;
         var resource=mapDecision.activeResource();
         if (context == null) { self.mapResource=resource;artResource=Rez.Drawables.Art_unknown;aodResource=mapDecision.lowResource();map=load(resource) as Graphics.BitmapType; art=load(artResource as ResourceId) as Graphics.BitmapType; return; }
-        model=NativeModels.resource(context.modelId);artResource=model;art=load(artResource as ResourceId) as Graphics.BitmapType;
+        model=NativeModels.resource(context.modelId);artResource=model;var anchor=NativeModels.anchor(model as ResourceId);artX=anchor[0];artY=anchor[1];art=load(artResource as ResourceId) as Graphics.BitmapType;
         pin=mapDecision.matched;aodPin=pin;pinX=mapDecision.x;pinY=mapDecision.y;aodPinX=pinX;aodPinY=pinY;
         worldFallback=mapDecision.worldPoint(true)!=null;
         aodResource=worldFallback?null:mapDecision.lowResource();
@@ -148,8 +148,8 @@ class SceneRenderer {
             if(gap>0){text(dc,left+rocketWidth+8,47,fonts["nameSmall"] as Graphics.FontType,"·",0x96B8C9,16,1);}
             text(dc,left+rocketWidth+gap+operatorWidth/2,47,fonts["nameSmall"] as Graphics.FontType,operatorTitle,0xD4DFEB,238,1);
             text(dc,195,70,(fonts["small"] as Graphics.FontType),purposeText,0xD4DFEB,282,1);
-            try{if(downloaded!=null&&downloaded.bitmap!=null){downloaded.draw(dc,0.0,0);}else if(art!=null){dc.drawBitmap(22,118,art as Graphics.BitmapType);}}
-            catch(e){dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.fillRectangle(22,118,54,124);try{if(art==null&&artResource!=null){art=load(artResource as ResourceId) as Graphics.BitmapType;}if(art!=null){dc.drawBitmap(22,118,art as Graphics.BitmapType);}}catch(ignored){}}
+            try{if(downloaded!=null&&downloaded.bitmap!=null){downloaded.draw(dc,0.0,0);}else if(art!=null){dc.drawBitmap(22+artX,118+artY,art as Graphics.BitmapType);}}
+            catch(e){dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.fillRectangle(22,118,54,124);try{if(art==null&&artResource!=null){art=load(artResource as ResourceId) as Graphics.BitmapType;}if(art!=null){dc.drawBitmap(22+artX,118+artY,art as Graphics.BitmapType);}}catch(ignored){}}
             var flag=rich==null?null:rich.siteCountryBitmap;
             var footerBudget=flag==null?242:216;
             var footerFont=dc.getTextWidthInPixels(context.site,fonts["label"] as Graphics.FontType)>footerBudget?fonts["nameSmall"] as Graphics.FontType:fonts["label"] as Graphics.FontType;
@@ -162,7 +162,7 @@ class SceneRenderer {
             if(flag!=null){dc.drawBitmap(footerLeft,325,flag as Graphics.BitmapType);}
             text(dc,footerLeft+flagWidth+footerWidth/2,319,footerFont,footer,0xD4DFEB,footerBudget,1);
         }
-        if(context==null && art!=null){dc.drawBitmap(22,118,art as Graphics.BitmapType);}
+        if(context==null && art!=null){dc.drawBitmap(22+artX,118+artY,art as Graphics.BitmapType);}
         if(current.localCalendar!=null){text(dc,195,95,presentation.calendarFont as Graphics.FontType,presentation.calendar(current.localCalendar as Array<Number>),0xD4DFEB,200,1);}
         text(dc,195,109,(fonts["time"] as Graphics.FontType),current.localTime,settings.clockColor,250,1);
         current.rescheduled=current.rescheduled||context!=null&&context.rescheduled;

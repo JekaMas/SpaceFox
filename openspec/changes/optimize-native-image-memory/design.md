@@ -1,0 +1,5 @@
+# Design
+
+The downloaded rocket may be irrelevant to presentation when the accepted model selects a bundled image, but its immutable bytes, descriptor, scanline grammar, exact length and pixel digest remain mandatory. The existing incremental decoder will own a verification-only disposition, reusing the same row/hash parser without creating a drawable bitmap or DC; remote art needed by the current model remains unchanged. No new public configuration, wire profile or alternative validation owner.
+
+For bundled resources, compare lossless crop-and-anchor restoration against the actual original pixels for every generated image, with compiled profile size and current lifecycle/placement. Adopt only if the dominant measured byte/latency metric improves by at least 20% without changing reconstructed pixels. A single palette experiment must separately report app/graphics memory, RGB565 and alpha behavior and visual quality; a clock-outline experiment compares actual draw operations and memory/lifetime. Neither is adopted without measured net benefit and equivalent rendering. Existing host codec decisions are retained rather than re-researched.

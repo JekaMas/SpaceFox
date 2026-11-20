@@ -1,0 +1,10 @@
+SF_VIEW mode=HIGH pending=false
+
+Error: Unhandled Exception
+Exception: remote snapshot
+Stack: 
+  - loadStage() at /task/remote-src/Remote.mc:13 0x1000470e 
+  - onShow() at /task/remote-src/Remote.mc:10 0x100042e5 
+Encountered an app crash.
+
+OBSERVER_STOP launcher exited 2 elapsed=50.39

@@ -4,6 +4,7 @@ from pathlib import Path
 import re
 import unittest
 
+from tests.model_pixel_support import restore
 from tools.spacefox.catalog import build_catalog
 from tools.spacefox.graphics import export_svg, fit_model_visual
 from tools.spacefox.native_profile import decode_raster, png_pixels, rasterize
@@ -34,7 +35,7 @@ class OfflineModelBindings(unittest.TestCase):
     def test_lm2d_replaces_the_captured_old_raster(self):
         name = self.mapping['ll2:configuration:17']
         png = ROOT / 'watchface/resources/drawables' / (name + '.png')
-        width, height, pixels = png_pixels(png.read_bytes())
+        width, height, pixels = 54, 124, restore(name)
         capture = ROOT / 'tests/fixtures/fr165-runtime-20261116/objects/rasters/81d5861906e66d2305e390eb4cc6983fa07064ae9c466759ccddca7480d68e16.sfr'
         self.assertEqual((width, height), (54, 124))
         # The captured generation predates the corrected fit. It remains useful
@@ -61,7 +62,7 @@ class OfflineModelBindings(unittest.TestCase):
             resource = self.mapping[identity]
             if resource not in pixels_by_resource:
                 png = (ROOT / 'watchface/resources/drawables' / (resource + '.png')).read_bytes()
-                pixels_by_resource[resource] = bytes(png_pixels(png)[2])
+                pixels_by_resource[resource] = restore(resource)
             self.assertEqual(pixels_by_asset[asset_id], pixels_by_resource[resource], identity)
 
     def test_captured_2026_2036_carrier_identities_are_bound(self):

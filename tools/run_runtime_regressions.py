@@ -16,12 +16,12 @@ from tools.build_watchface import ROOT, BuildBlocked, build, discover
 from tools.run_native_tests import observe_program, parse_output
 
 SELECTORS = (
-    'incidentFreshHistory', 'incidentHistoryPolicy', 'incidentCustomDuplicateOrdering',
+    'verifiedRocketDecode', 'incidentFreshHistory', 'incidentHistoryPolicy', 'incidentCustomDuplicateOrdering',
     'incidentFreshCacheTransientFailure', 'incidentGeneratedHistory', 'incidentFirstPaintExpiry',
     'physicalHealthRearmRegressionBatch', 'menuAffectedBatch', 'menuPeerControls', 'menuCadenceFrames',
     'countdownAffectedBatch', 'generatedViewLifecycle', 'generatedFitnessOwners',
     'foregroundArtTimerBudget', 'cadenceNoPeriodicTimers', 'coldLowAcquiresOneFieldSnapshot',
-    'generatedForegroundCadence',
+    'generatedForegroundCadence', 'anchoredModelFrame',
 )
 PROFILES = ('fr165', 'fr165m')
 

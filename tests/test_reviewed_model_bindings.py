@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 import re
 import unittest
+from tests.model_pixel_support import restore
 from tools.spacefox.catalog import build_catalog
 from tools.spacefox.graphics import export_svg, fit_model_visual
 from tools.spacefox.native_profile import png_pixels, rasterize
@@ -43,7 +44,10 @@ class ReviewedModelBindings(unittest.TestCase):
                 source=(ROOT/row['content']['path']).read_bytes()
                 visual=fit_model_visual(export_svg(source,row['facts']['exportSize']))
                 _,raw,_=rasterize([visual],54,124)
-            width,height,rgba=png_pixels(raw)
+            if key.startswith('BundledModel'):
+                width,height,rgba=54,124,restore(key)
+            else:
+                width,height,rgba=png_pixels(raw)
             if (width,height)!=(54,124):raise AssertionError('wrong model canvas '+key)
             cls.cache[key]=bytes(rgba)
         return cls.cache[key]

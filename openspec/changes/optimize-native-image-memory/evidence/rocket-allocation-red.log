@@ -1,0 +1,20 @@
+------------------------------------------------------------------------------
+Executing test verifiedRocketDecode...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED: verify-only must allocate no drawable
+Stack: 
+  - API code 0x30000203 
+  - verifiedRocketDecode() at /source/watchface/activity-menu-tests/NativeVerifyRocket.mc:6 0x10008da8 
+  - evaluate_test_entries_0_to_30() at /task/gen/006-B4433-00/source/UnitTests.mcgen:115 0x10015492 
+  - runTest() at /task/gen/006-B4433-00/source/UnitTests.mcgen:384 0x10015b64 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+verifiedRocketDecode                ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)
+raw_exit=1

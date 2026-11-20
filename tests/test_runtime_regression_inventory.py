@@ -14,12 +14,12 @@ class RuntimeRegressionInventory(unittest.TestCase):
         self.assertEqual(PROFILES, ('fr165', 'fr165m'))
         self.assertEqual(len(SELECTORS), len(set(SELECTORS)))
         self.assertEqual(set(SELECTORS), {
-            'incidentFreshHistory', 'incidentHistoryPolicy', 'incidentCustomDuplicateOrdering',
+            'verifiedRocketDecode', 'incidentFreshHistory', 'incidentHistoryPolicy', 'incidentCustomDuplicateOrdering',
             'incidentFreshCacheTransientFailure', 'incidentGeneratedHistory', 'incidentFirstPaintExpiry',
             'physicalHealthRearmRegressionBatch', 'menuAffectedBatch', 'menuPeerControls', 'menuCadenceFrames',
             'countdownAffectedBatch', 'generatedViewLifecycle', 'generatedFitnessOwners',
             'foregroundArtTimerBudget', 'cadenceNoPeriodicTimers', 'coldLowAcquiresOneFieldSnapshot',
-            'generatedForegroundCadence',
+            'generatedForegroundCadence', 'anchoredModelFrame',
         })
         for selector in SELECTORS:
             self.assertEqual(len(re.findall(r'(?m)^.*\(:test(?:,|\)).*\bfunction\s+'+re.escape(selector)+r'\s*\(', source)), 1, selector)

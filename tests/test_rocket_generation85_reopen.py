@@ -9,6 +9,7 @@ import tempfile
 import unittest
 import zipfile
 
+from tests.model_pixel_support import restore
 from tools.spacefox.cloud import snapshot_files, CloudError
 from tools.spacefox.catalog import build_catalog
 from tools.spacefox.native_motion import PROFILE, build_artifact, validate_artifact
@@ -106,7 +107,7 @@ class Generation85Reopen(unittest.TestCase):
                 match = re.search(r'id\.equals\("ll2:configuration:17"\)\)\{return Rez\.Drawables\.(BundledModel\d+);\}', native)
                 self.assertIsNotNone(match)
                 bundle = ROOT / 'watchface/resources/drawables' / (match.group(1) + '.png')
-                self.assertEqual(pixels, bytes(png_pixels(bundle.read_bytes())[2]))
+                self.assertEqual(pixels, restore(match.group(1)))
                 damaged = dict(files)
                 path = raster['shards'][0]['path']
                 damaged[path] += b'x'
