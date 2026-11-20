@@ -5,17 +5,17 @@
   "public_key_spki_sha256": "84e95bea4f3052a7c93f297e25605dc374a02f946b8011c65eec950b284146cc",
   "status": "local_production_custody_restored",
   "latest_release": {
-    "version": "0.2.18",
-    "package_sha256": "f2a53f9f72608456967a28eab0b3f10a0a91b3616130878ba53d51ed43b91c55",
+    "version": "0.2.19",
+    "package_sha256": "a85fd324d6f7ec2322e20a8eca75c8c8a2e29353902a962134dfa86c66431521",
     "kind": "github_release",
-    "tag": "v0.2.18",
-    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.18",
-    "source_revision": "cc352897d1b548d3eb06f6bb1d4dae6f5a0bcbce",
-    "tag_revision": "cc352897d1b548d3eb06f6bb1d4dae6f5a0bcbce",
-    "original_receipt_sha256": "2703ab136b62f1d445287b9d76b01a12792bbcfb7faab1598434f861dc64a03c",
-    "proof_boundary": "Signed IQ, 42 profiles, 53 GitHub assets and 52 matching manifest digest entries. Garmin verified signature and version and accepted Submit; listing displayed 0.2.17/Internal 26. Approval, public availability, physical watch and phone behavior not observed."
+    "tag": "v0.2.19",
+    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.19",
+    "source_revision": "990069261b20cbb91de865aadcc9b21fd50b86a2",
+    "tag_revision": "990069261b20cbb91de865aadcc9b21fd50b86a2",
+    "original_receipt_sha256": "e60bdf959fda2370df68e8bc8ad7fa0f280de9f68694559e5f0f8ecee447f0f3",
+    "proof_boundary": "Signed IQ, 42 profiles, 53 GitHub assets and 52 matching manifest digest entries. Garmin verified signature and version and accepted Submit; listing displayed 0.2.18/Internal 27. Approval, public availability, physical watch and phone behavior not observed."
   },
-  "note": "Stable production UUID/key. The next update uses the original published 0.2.18 receipt and matching IQ.",
+  "note": "Stable production UUID/key. The next update uses the original published 0.2.19 receipt and matching IQ.",
   "local_custody": {
     "encrypted_backup_sha256": "863f743d0c3966bc67c38aa2cf91d254e4aab0d0a4334ca4de340f8a608312f6",
     "public_evidence": "openspec/changes/spacefox-watchface/evidence/production-signing/round1/custody-initialization.json",
@@ -306,5 +306,16 @@
     "tag_revision": "6cd3060328c9d98248b1f583e060ee526d9cb1ac",
     "original_receipt_sha256": "eeabc2f58db73c26c2bd5453157889e2c5760ca46e9e0f00b162b84caaadebc1",
     "proof_boundary": "Signed IQ, 42 profiles, 53 GitHub assets and 52 matching manifest digest entries. Garmin verified signature and version and accepted Submit; listing still displayed 0.2.16/Internal 25. Approval, public availability and physical behavior not observed."
+  },
+  "prior_0218_release": {
+    "version": "0.2.18",
+    "package_sha256": "f2a53f9f72608456967a28eab0b3f10a0a91b3616130878ba53d51ed43b91c55",
+    "kind": "github_release",
+    "tag": "v0.2.18",
+    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.18",
+    "source_revision": "cc352897d1b548d3eb06f6bb1d4dae6f5a0bcbce",
+    "tag_revision": "cc352897d1b548d3eb06f6bb1d4dae6f5a0bcbce",
+    "original_receipt_sha256": "2703ab136b62f1d445287b9d76b01a12792bbcfb7faab1598434f861dc64a03c",
+    "proof_boundary": "Signed IQ, 42 profiles, 53 GitHub assets and 52 matching manifest digest entries. Garmin verified signature and version and accepted Submit; listing displayed 0.2.17/Internal 26. Approval, public availability, physical watch and phone behavior not observed."
   }
 }

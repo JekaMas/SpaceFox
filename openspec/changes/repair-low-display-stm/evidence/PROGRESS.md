@@ -1,3 +1,7 @@
+# Delivery
+
+Version 0.2.19 was submitted to Garmin after signature verification. The listing still displayed 0.2.18 / Internal 27; approval and availability of 0.2.19, physical watch and phone behavior remain unobserved. See PUBLICATION.md.
+
 # Current peer status
 
 Peer layout permission repair, both-profile directed callback test and five current-primary selectors are GREEN at0.2.19/66e10514. Actual clean combined peer/source/native/five-primary gate PASS at4a89277cd. PEER.md/json record software GREEN. See PEER-REPAIRS.md. All original54raw tables retain their source scope; no full56suite or19campaign rerun. Physical/power/peak outcomes remain unobserved.
