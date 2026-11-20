@@ -4,5 +4,6 @@
 - [x] Implement single explicit OFF/LOW/ACTIVE/hidden lifecycle and eliminate bypass decisions.
 - [x] Verify independent generated callback/OS order model and directed first frame, cold LOW, no-work and same-minute cases.
 - [x] Verify actual SDK LOW frame/pixel budget and ordinary FR165/M runtime regression entrypoint; record original failures and raw output.
-- [ ] Bind current source, version and NativeID; author self-GREEN then independent peer review.
+- [x] Bind current source, version and NativeID; author self-GREEN.
+- [ ] Independent peer review and actual current release gate.
 - [ ] Root judgment and authorized release; distinguish physical/Store outcome.

@@ -1,6 +1,6 @@
 # Current
 
-Candidate 0.2.19 / NativeID `e39b693d`: 54/54 permanent FR165/M runtime selectors passed on the final candidate (16 unchanged owner cases retained, 38 affected cases rerun), five current-primary selectors and 11 portable controls passed; the actual simulator OFF→LOW capture before that final redraw-only change retained its qualified point and countdown and measured 9,239 lit pixels. See `AUTHOR.md` for first RED, source ownership, observer limits and full logs. Clean source binding and independent peer remain open. The old change passes non-strict validation, while strict reports its unrelated unchanged long launch-schedule requirement warning.
+Candidate 0.2.19 / NativeID `e39b693d`: 54/54 permanent FR165/M runtime selectors passed on the final candidate (16 unchanged owner cases retained, 38 affected cases rerun), five current-primary selectors and 11 portable controls passed; the actual simulator OFF→LOW capture before that final redraw-only change retained its qualified point and countdown and measured 9,239 lit pixels. See `AUTHOR.md` for first RED, source ownership, observer limits and full logs. Clean `source_state` passed at protected source `c84613d28b5b2920de69fd276ddc4349e86cf219` (2,319 inputs). Independent peer and delivery remain open. The old change passes non-strict validation, while strict reports its unrelated unchanged long launch-schedule requirement warning.
 
 ## Initial finding
 
