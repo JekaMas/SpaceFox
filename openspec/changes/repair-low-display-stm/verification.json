@@ -1,1 +1,50 @@
-{"scope":"OS display observation and lifecycle effects","properties":[{"id":"off-low","checks":["actual view OFF to LOW same-minute first frame and resource reentry","independent generated event model"]},{"id":"hidden-off","checks":["no paint, fitness reads, loader or timer effects"]},{"id":"aod-frame","checks":["actual LOW frame point/countdown and lit pixel bound","FR165 and FR165 Music permanent native runner"]},{"id":"admission","checks":["affected current source and five-primary qualification","independent peer"]}]}
+{
+  "scope": "OS display observation and lifecycle effects",
+  "properties": [
+    {
+      "id": "off-low",
+      "checks": [
+        "actual view OFF to LOW same-minute first frame and resource reentry",
+        "independent generated event model"
+      ]
+    },
+    {
+      "id": "hidden-off",
+      "checks": [
+        "no paint, fitness reads, loader or timer effects"
+      ]
+    },
+    {
+      "id": "aod-frame",
+      "checks": [
+        "actual LOW frame point/countdown and lit pixel bound",
+        "FR165 and FR165 Music permanent native runner"
+      ]
+    },
+    {
+      "id": "admission",
+      "checks": [
+        "affected current source and five-primary qualification",
+        "independent peer"
+      ]
+    }
+  ],
+  "independentReview": {
+    "status": "GREEN",
+    "source_revision": "4a89277cd43a0eb322a57d6e7582c20fc81fbe43",
+    "version": "0.2.19",
+    "native_id": "66e10514",
+    "report": "evidence/PEER.md",
+    "receipt": "evidence/PEER.json",
+    "actualGate": "evidence/peer-current-gate.log",
+    "repairs": "evidence/PEER-REPAIRS.md",
+    "newSelectedResults": "evidence/peer-native/results.json",
+    "currentPrimaryObservation": "evidence/peer-current-native/observation.json",
+    "retainedAuthorTables": 54,
+    "newProfileSelectorPairs": 2,
+    "lowImage": "evidence/final-off-low-point.png",
+    "lowImageNonblackPixels": 9239,
+    "lowImageScope": "Single controlled scene before HIGH duplicate request and layout permission guard; visible LOW draw unchanged",
+    "physicalObserved": false
+  }
+}

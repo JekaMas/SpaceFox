@@ -1,6 +1,6 @@
 # Current peer status
 
-Peer layout permission repair, both-profile directed callback test and five current-primary selectors are GREEN at0.2.19/66e10514. Clean source/peer gate and final report are being closed. See PEER-REPAIRS.md. All original54raw tables retain their source scope; no full56suite or19campaign rerun. Physical/power/peak outcomes remain unobserved.
+Peer layout permission repair, both-profile directed callback test and five current-primary selectors are GREEN at0.2.19/66e10514. Actual clean combined peer/source/native/five-primary gate PASS at4a89277cd. PEER.md/json record software GREEN. See PEER-REPAIRS.md. All original54raw tables retain their source scope; no full56suite or19campaign rerun. Physical/power/peak outcomes remain unobserved.
 
 # Current
 

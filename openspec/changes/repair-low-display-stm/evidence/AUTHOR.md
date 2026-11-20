@@ -17,3 +17,5 @@ Five actual current-primary selectors compiled with the exact Linux 9.3 compiler
 The canonical `spacefox-watchface` specification was updated to remove the previous OFF-as-LOW and sleeping-flag policy, and to reflect the already-shipped 0.2.18 countdown cues. Its non-strict OpenSpec validation passed; strict validation reports the pre-existing long-requirement warning in unchanged `launch-schedule/spec.md` and exits 1. The new `repair-low-display-stm` change validates strict.
 
 Clean tracked source and current admission passed at protected source `c84613d28b5b2920de69fd276ddc4349e86cf219` (`source-state.log`, 2,319 inputs). Peer review remains open.
+
+Independent peer closed the additional public-onLayout acquisition gap at source4a89277cd /0.2.19/66e10514. See PEER.md/json and PEER-REPAIRS.md for the preserved firstRED, two new selected results, genuine current qualification and actual clean combined gate. Earlier author observations retain their original scope. Root judgment and delivery remain open.
