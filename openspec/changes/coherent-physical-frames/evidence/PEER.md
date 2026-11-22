@@ -1,6 +1,6 @@
 # Independent peer review
 
-Software status is GREEN for this coherent-frame batch, subject to root judgment. Candidate is 0.2.20 / NativeID `b53f14dc`. The author handoff was `d44d6c7cedffb2ebe4b85fb63c34ec9a79017fd5`; the reviewed source revision and current release gate are recorded in `PEER.json` and `PEER-gate.log`.
+Software status is GREEN for this coherent-frame batch, subject to root judgment. Candidate is 0.2.20 / NativeID `b53f14dc`. The author handoff was `d44d6c7cedffb2ebe4b85fb63c34ec9a79017fd5`. Repaired source `ad2bd44d86187fc8770d1b63b2293fdb0359e882` passed the actual `tools.release.require_combined_peer` gate, including its clean tracked source-state fence and exact five-primary admission. `PEER.json` uses the existing `low-display-stm-independent-peer` kind required by production export. `PEER-gate.log` retains the exact observed command output. The following commit adds only the receipt/gate and report.
 
 ## Repairs
 
