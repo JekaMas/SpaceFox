@@ -10,7 +10,7 @@ The actual current source permitted two separate relevant failures: vector-font 
 
 Five primary locale selectors, including 413 joined header contexts and 1,822 finite corpus records, passed on FR165M simulator with the pinned Linux SDK compiler/JAR and Mac simulator. The original observation and test program are under `current-native/`; historical font and corpus facts retain their original scope. Current admission validates all five locales without extending physical, translation or linguistic claims.
 
-Directly affected FR165 selectors are in `native-fr165/`; fourteen FR165M selectors passed in `native-fr165m/`, and eighteen further affected lifecycle selectors passed across the two profiles in `native-extra/`. Logs preserve exact SDK launcher exit 1 with complete PASS tables. Clean-source admission and independent peer review remain open.
+Directly affected FR165 selectors are in `native-fr165/`; fourteen FR165M selectors passed in `native-fr165m/`, and eighteen further affected lifecycle selectors passed across the two profiles in `native-extra/`. Logs preserve exact SDK launcher exit 1 with complete PASS tables. Clean-source admission passed at `c224b8d2e` with 2,319 tracked inputs; independent peer review remains open.
 
 ## Check invalidation and retained observations
 
