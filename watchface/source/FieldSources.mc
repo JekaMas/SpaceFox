@@ -44,6 +44,11 @@ module FieldCatalog {
         }}catch(e){}
         return result;
     }
+    // Only exact semantic matches reuse one of the six bundled field icons.
+    function bundledIconRole(source){
+        if(!(source instanceof Complications.Id)){return null;}
+        var kind=source.getType();if(kind==1){return "battery";}if(kind==2){return "steps";}if(kind==3){return "calories";}if(kind==18){return "heart";}if(kind==22){return "stress";}if(kind==23){return "energy";}return null;
+    }
     function systemKeys(){return ["system:batteryInDays","system:charging","system:solarIntensity"];}
     function systemLabels(locale){return FieldText.menu(locale)["system"];}
     function systemSupported(stats,key,types){
@@ -157,21 +162,30 @@ class FieldComplicationApi {
 // persisted if a provider disappears; a failed subscription is polled on minute.
 (:extendedCode, :typecheck(false))
 class SelectedFields {
-    var step as Number or Null=null;var selected=[];var subscribed=[];var labels={};var text={};var icons={};var states={};var reasons={};var energy as Number or Null=null;var energyStatus="WAITING";var energyReason="no-sample";var heart as Number or Null=null;var heartStatus="WAITING";var heartReason="no-sample";var stress as Number or Null=null;var stressStatus="WAITING";var stressReason="no-sample";var previousRoles=null;var changeCallback=null;var callbackRegistered=false;var firstSubscriptionRead=false;var provider=null;var api=null;var customMask=0;var fittedMask=0;var numericMask=0;var healthClock=null;var historyQuery=[null,null];var historyCache=[null,null];var historyExpiry=[null,null];
+    var step as Number or Null=null;var selected=[];var subscribed=[];var labels={};var text={};var icons={};var states={};var reasons={};var energy as Number or Null=null;var energyStatus="WAITING";var energyReason="no-sample";var heart as Number or Null=null;var heartStatus="WAITING";var heartReason="no-sample";var stress as Number or Null=null;var stressStatus="WAITING";var stressReason="no-sample";var previousRoles=null;var previousSources=null;var changeCallback=null;var callbackRegistered=false;var firstSubscriptionRead=false;var provider=null;var api=null;var customMask=0;var fittedMask=0;var numericMask=0;var healthClock=null;var historyQuery=[null,null];var historyCache=[null,null];var historyExpiry=[null,null];
     function initialize(){}
     function bindClock(clock){healthClock=clock;}
     function savedField(slot){return FieldCatalog.saved(slot);}
+    function iconSource(slot){return previousSources!=null&&previousSources.size()>=slot?previousSources[slot-1]:savedField(slot);}
     function systemInfo(){return System.getSystemStats();}
     function activityInfo(){return ActivityMonitor.getInfo();}
+    // Cached presentation belongs to both the slot role and its saved source.
+    function sameSelection(slots){
+        if(previousRoles==null||previousSources==null||previousRoles.size()!=slots.size()){return false;}
+        for(var n=0;n<slots.size();n+=1){
+            if(!previousRoles[n].equals(slots[n])){return false;}
+            if(slots[n].equals("custom"+(n+1))){var old=previousSources[n];var next=savedField(n+1);if(old==null||next==null){if(old!=null||next!=null){return false;}}else if(!old.equals(next)){return false;}}
+        }
+        return true;
+    }
     function start(slots,onChange){
-        stop();var same=previousRoles!=null&&previousRoles.size()==slots.size();
-        if(same){for(var n=0;n<slots.size();n+=1){if(!previousRoles[n].equals(slots[n])){same=false;break;}}}
-        if(!same){clearSnapshot();}previousRoles=[];for(var n=0;n<slots.size();n+=1){previousRoles.add(slots[n]);}
+        var same=sameSelection(slots);stop();
+        if(!same){clearSnapshot();}previousRoles=[];previousSources=[];for(var n=0;n<slots.size();n+=1){previousRoles.add(slots[n]);}
         for(var i=0;i<4;i+=1){
             var custom=slots[i].equals("custom"+(i+1));if(custom){customMask|=(1<<i);}
             var kind=slots[i].equals("energy")?23:(slots[i].equals("heart")?18:(slots[i].equals("stress")?22:(slots[i].equals("steps")?2:0)));
             var source=kind!=0?new Complications.Id(kind):(custom?savedField(i+1):null);
-            selected.add(source);
+            selected.add(source);previousSources.add(source);
         }
         changeCallback=onChange;ensureSubscriptions();firstSubscriptionRead=true;
     }
@@ -211,14 +225,14 @@ class SelectedFields {
     function healthValue(role as String) as Number or Null {return role.equals("heart")?heart:(role.equals("stress")?stress:energy);}
     function healthState(role as String) as String {return role.equals("heart")?heartStatus:(role.equals("stress")?stressStatus:energyStatus);}
     function healthReason(role as String) as String {return role.equals("heart")?heartReason:(role.equals("stress")?stressReason:energyReason);}
-    function invalidateSnapshot(){clearSnapshot();previousRoles=null;}
+    function invalidateSnapshot(){clearSnapshot();previousRoles=null;previousSources=null;}
     function read(locale){if(firstSubscriptionRead){firstSubscriptionRead=false;}else if(active()){ensureSubscriptions();}readSelected(locale,null);}
     function readChanged(locale,id){readSelected(locale,id);}
     function readSelected(locale,onlyId){
         if(!active()){return;}
         var info=null;var fetched=false;var stats=null;var statsFetched=false;var words=null;
-        if(onlyId==null){step=null;labels={};text={};icons={};states={};reasons={};clearHealth(18);clearHealth(22);clearHealth(23);fittedMask=0;numericMask=0;}
-        else{if(onlyId.getType()==2){step=null;}for(var i=0;i<selected.size();i+=1){var prior=selected[i];if(prior instanceof Complications.Id&&prior.equals(onlyId)){var key="custom"+(i+1);labels.remove(key);text.remove(key);icons.remove(key);states.remove(key);reasons.remove(key);fittedMask&=~(1<<i);numericMask&=~(1<<i);clearHealth(prior.getType());}}}
+        if(onlyId==null){step=null;text={};icons={};states={};reasons={};clearHealth(18);clearHealth(22);clearHealth(23);fittedMask=0;numericMask=0;}
+        else{if(onlyId.getType()==2){step=null;}for(var i=0;i<selected.size();i+=1){var prior=selected[i];if(prior instanceof Complications.Id&&prior.equals(onlyId)){var key="custom"+(i+1);text.remove(key);icons.remove(key);states.remove(key);reasons.remove(key);fittedMask&=~(1<<i);numericMask&=~(1<<i);clearHealth(prior.getType());}}}
         for(var i=0;i<selected.size();i+=1){var key="custom"+(i+1);var source=selected[i];if(source==null){if((customMask&(1<<i))!=0){states[key]="UNAVAILABLE";reasons[key]="not-configured";}continue;}
             if(onlyId!=null&&(!(source instanceof Complications.Id)||!source.equals(onlyId))){continue;}
             states[key]="WAITING";reasons[key]="no-sample";
@@ -232,7 +246,7 @@ class SelectedFields {
                     if(!needText){for(var j=i+1;j<selected.size();j+=1){if((customMask&(1<<j))!=0&&selected[j] instanceof Complications.Id&&source.equals(selected[j])){needText=true;break;}}}
                     if(needText){var label=item.shortLabel;if(!(label instanceof String)||label.equals("")){label=item.longLabel;}labels[key]=label instanceof String?label:"";
                         text[key]=kind==23?(energy==null?"—":energy.toString()):FieldFormat.complication(item,locale);
-                        if(kind==0){try{var icon=item.getIcon();if(icon!=null){icons[key]=safeProviderIcon(icon);}}catch(noIcon){icons[key]=false;}}
+                        if(kind==0){try{var icon=item.getIcon();icons[key]=icon==null?false:safeProviderIcon(icon);}catch(noIcon){icons[key]=false;}}
                     }
                 }item=null;
             }else if(source instanceof String){if(source.find("system:")==0){if(!statsFetched){stats=systemInfo();statsFetched=true;}if(stats!=null){text[key]=FieldFormat.system(source,FieldCatalog.systemValue(stats,source),locale);var keys=FieldCatalog.systemKeys();var at=keys.indexOf(source);if(at>=0){if(words==null){words=FieldText.menu(locale);}labels[key]=words["system"][at];}}}

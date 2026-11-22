@@ -23,7 +23,7 @@ SELECTORS = (
     'foregroundArtTimerBudget', 'cadenceNoPeriodicTimers', 'coldLowAcquiresOneFieldSnapshot',
     'generatedForegroundCadence', 'anchoredModelFrame', 'stepsCountdownBatch',
     'offToLowReentersAod', 'offLowEventSequences', 'offLateSettingsAndFirstFrame', 'generatedDisplayOwners', 'lowPointRetainedAcrossLifecycle',
-    'generatedSourceSwitch', 'generatedForegroundDelivery', 'lateLayoutAndColdBootstrap',
+    'generatedSourceSwitch', 'generatedForegroundDelivery', 'lateLayoutAndColdBootstrap', 'generatedFieldCatalog', 'generatedLocalFieldCatalog', 'generatedCatalogViewLifecycle', 'generatedLocalViewLifecycle', 'generatedBuiltinSlotMatrix', 'fields018CapabilityInventory', 'fields018ObservedProviderSizes', 'fields018ChangedIdAndSharedSlots',
 )
 PROFILES = ('fr165', 'fr165m')
 

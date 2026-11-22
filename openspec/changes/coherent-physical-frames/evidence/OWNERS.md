@@ -1,0 +1,29 @@
+# Current production owner map (base 3eece8f08)
+
+| Boundary | Current owner | Initial finding / required proof |
+|---|---|---|
+| OS display, hide/show, permitted minute paint | NativeDisplayLifecycle, SpaceFoxView.observeDisplay/updateForDisplayMode, SpaceFoxApp.onDisplayModeChanged | Verify callback order and OFF/no-work with actual view, independent mode oracle. |
+| Mandatory frame and resource acquisition | SpaceFoxView.prepareRenderer/onLayout/drawScene, SceneRenderer, LocalePresentation | `drawClockFallback` is a distinct clock/date-only emergency composition; failed draw clears a partial frame and uses it. `restore` catches failed scalable fonts, stores system substitutions, and regards non-null label as ready on future restores. Distinguish these from historical `drawDecodingFrame` (removed before 0.2.14). |
+| LOW while bootstrap, admission, optional SFR, missing renderer | SpaceFoxView.drawPendingLow, SceneAod, MapPresentation | Alternate route must be checked against ordinary LOW map, cue and coordinate semantics; first/one-shot delivery and the pixel budget are separate requirements. |
+| Menu and resource lifetime | SpaceFoxView.onHide/releaseVisualForSettings/beginAdmission/endAdmission; SceneLifecycle | Prove identity and first permitted frame across actual release/rebind and parser completion; preserve optional art liveness and current heap bounds. |
+| Picker | FieldCatalog.page/systemKeys/activityKeys, FieldFormat, FieldText | Runtime enumeration yields available complication IDs (including unknown third-party kinds); 21 local activity and 3 local system keys are conditional on supported device properties. Test finite built-ins and named current keys in four slots; never claim the unbounded third-party universe. |
+| Selected values and provider icons | SelectedFields.start/stop/readSelected, Fitness, SceneRenderer.active | `stop` retains text but clears icons. `readSelected` requests an icon only for type 0; other picked complications and local sources can paint values without an icon. Test each supported family and missing/duplicate/callback/reopen causally. |
+| Countdown/cues | snapshotAt, ScheduleState, SceneAod.countdownColor/staleMark/rescheduleMark/holdMark | ACTIVE, normal LOW and pending LOW route must preserve raw UTC threshold and distinct flags. |
+
+Initial observations are static source facts, not observed root cause of the private photos. Photos contain values and weekday; .19 clock fallback has neither, while the historical pre-0.2.14 drawDecodingFrame had that qualitative fingerprint. Installed version remains unconfirmed.
+
+Garmin's current [Complications API](https://developer.garmin.com/connect-iq/api-docs/Toybox/Complications.html) declares system types 1–42, with 41 (golf score) and 42 (sleep score) beyond the previously assumed 1–40. Types 6, 7, 12, 26, 39 and 41 have String values; the controlled finite tests must exercise those types as strings, not invent numeric production data. Availability is device and firmware dependent. Type 0 is an invalid system kind; third-party publisher IDs require their own selected controlled test.
+
+Correction: the official [`Complication.getIcon`](https://developer.garmin.com/connect-iq/api-docs/Toybox/Complications/Complication.html#getIcon-instance_function) contract explicitly returns an icon only for user complications and null for native kinds. An initial WIP assumption that native IDs could provide icons was wrong and the extra API calls were removed. The actual gap remains: native-picked/local slots receive no slot marker at all in the current renderer. User-provider bitmaps are optional and must not be retained after their graphics lease is dropped.
+
+## Candidate event/output obligations
+
+| Event | Production boundary | Required observable output |
+|---|---|---|
+| show / hide / menu | `SpaceFoxView.onShow/onHide`, `NativeDisplayLifecycle.show/hide` | Show permits current OS mode only; hidden paints and provider reads are absent. Same source retains its own accepted presentation; changed source clears old output. |
+| OS OFF / LOW / HIGH and queued paint | `observeDisplay`, `NativeDisplayLifecycle.observe/permitsPaint`, `updateForDisplayMode` | OFF does not paint or start work; LOW yields minute clock, map and qualified point; ACTIVE produces Time80/Metric32 and four identities. Same-minute LOW invalidation is bounded. |
+| optional preparation / draw failure | `SceneRenderer.prepare/loadOptional/active/aod`, `SceneAod.draw`, `SpaceFoxView.drawPendingLow` | Art failure does not abort mandatory frame. Missing/failing map uses retained qualified point on the shared world projection. Failed mandatory preflight keeps prior frame; partial direct drawing is cleared before recovery. |
+| settings / poll / provider callback | `setSettings`, `SelectedFields.sameSelection/start/readSelected`, `fieldsChanged` | Four source identities and values stay matched; same-source reopen preserves prior presentation, missing and error clear live value, changed identifier clears old output. Native picker IDs, 21 local activity keys, 3 local system keys and any discovered user publishers have separate evidence bounds. |
+| time / launch update | `snapshotAt`, `ScheduleState`, `SceneAod.countdownColor`, `staleMark/rescheduleMark/holdMark` | UTC >=86400 is neutral; smaller numeric T−/T+ uses configured color, reschedule/hold/stale independent. |
+
+Candidate `generatedFieldCatalog` tests 1–42, all four positions and generated fake-provider tails against literal expectations, with production `SceneRenderer.active` called after each tail event. `generatedCatalogViewLifecycle` and `generatedLocalViewLifecycle` add actual view show/paint/timer/hide/reopen and changed-source checks. These statements describe intended test code, not observed PASS. Exact device-native provider enumeration and custom publisher availability require independent observed run results.

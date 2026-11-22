@@ -21,8 +21,8 @@ import Toybox.Timer;
  function requestFrame() as Void {requests+=1;}
  function logMode() as Void {}
  function newViewTimer() as Timer.Timer {return new PhysicalWakeTimer();}
- function onLayout(dc as Graphics.Dc) as Void {}
- function drawClockFallback(dc){paints+=1;}
+ function onLayout(dc as Graphics.Dc) as Void {renderer=new PbtFrameRenderer();layoutReady=true;}
+ function drawScene(dc as Graphics.Dc) as Boolean {paints+=1;return true;}
 }
 (:test,:typecheck(false)) function physicalFirstWakeFromColdLow(logger){
  var view=new PhysicalWakeView();view.onShow();Test.assert(view.displayMode()==0);

@@ -247,7 +247,7 @@ def build(output: Path, *, root: Path = ROOT, tests: bool = False, test_scope: s
         resources = [root / "watchface/resources"]
         if tests:
             if test_scope == "runtime":
-                source_paths.extend(root / ("watchface/" + name) for name in ("stm-property-tests", "activity-menu-tests", "health-incident-tests", "countdown-tests", "physical-six-tests"))
+                source_paths.extend(root / ("watchface/" + name) for name in ("stm-property-tests", "activity-menu-tests", "health-incident-tests", "countdown-tests", "physical-six-tests", "fields018-tests"))
                 resources.extend(root / ("watchface/" + name + "/resources") for name in ("activity-menu-tests", "countdown-tests"))
             else:
                 source_paths.append(root / ("watchface/scene-tests" if test_scope == "scene" else "watchface/transport-tests" if test_scope == "transport" else "watchface/tests"))

@@ -15,6 +15,13 @@ readability of time, countdown and selected fitness values.
 - **WHEN** the home screen displays a launch and all four fitness fields
 - **THEN** time, countdown, rocket name and country/site fit inside the circular display without overlap or clipping
 
+#### Scenario: Preserve a coherent frame during resource recovery
+- **WHEN** required fonts or renderer resources cannot be prepared before an ACTIVE frame
+- **THEN** the previously painted frame remains untouched and a later permitted frame retries the canonical composition, without a system-font metrics layout.
+- **WHEN** mandatory drawing fails after direct painting begins
+- **THEN** the partial frame is cleared and the renderer is released before a later canonical attempt.
+- **AND** an unavailable optional map, rocket or provider icon does not suppress the mandatory clock or the four selected field identities.
+
 #### Scenario: Local time changes
 - **WHEN** the watch's local time zone changes
 - **THEN** current time follows the watch while the UTC-based launch countdown retains the same duration

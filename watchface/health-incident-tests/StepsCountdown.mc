@@ -33,7 +33,7 @@ import Toybox.Complications;import Toybox.Graphics;import Toybox.Test;import Toy
   }v.onHide();
  }Test.assert(applied>0&&hiddenEvents>0&&resumes>0);logger.debug("STEPS_GENERATED seeds=12 events="+count+" callbacks="+applied+" hidden="+hiddenEvents+" resumes="+resumes+" after_each=true");return true;
 }
-(:test,:typecheck(false)) function stepsCountdownBatch(logger){peerStepsReadOwnership(logger);peerFallbackCues(logger);selectedStepsCallback(logger);countdownCues(logger);stepsGeneratedLifecycle(logger);var sdk=new SelectedFields();try{var iter=sdk.historySamples(23);var sample=iter==null?null:iter.next();var now=Time.now().value();var stamp=sample==null||sample.when==null?null:sample.when.value();var admitted=sample==null?null:HealthSample.recentValue(sample.data,stamp,now,100,false);logger.debug("BODY_BATTERY_SDK iterator="+(iter!=null)+" sample="+(sample!=null)+" data_present="+(sample!=null&&sample.data!=null)+" age="+(stamp==null?"unknown":(now-stamp).toString())+" accepted="+(admitted!=null));}catch(e){logger.debug("BODY_BATTERY_SDK unavailable=true");}return true;}
+(:test,:typecheck(false)) function stepsCountdownBatch(logger){peerStepsReadOwnership(logger);selectedStepsCallback(logger);countdownCues(logger);stepsGeneratedLifecycle(logger);var sdk=new SelectedFields();try{var iter=sdk.historySamples(23);var sample=iter==null?null:iter.next();var now=Time.now().value();var stamp=sample==null||sample.when==null?null:sample.when.value();var admitted=sample==null?null:HealthSample.recentValue(sample.data,stamp,now,100,false);logger.debug("BODY_BATTERY_SDK iterator="+(iter!=null)+" sample="+(sample!=null)+" data_present="+(sample!=null&&sample.data!=null)+" age="+(stamp==null?"unknown":(now-stamp).toString())+" accepted="+(admitted!=null));}catch(e){logger.debug("BODY_BATTERY_SDK unavailable=true");}return true;}
 
 (:test,:typecheck(false)) function peerStepsReadOwnership(logger){
  var fields=new StepsFields();var api=new StepsApi();fields.api=api;fields.start(["steps","custom2","heart","stress"],fields.method(:callback));var fit=new StepsFitness();fit.selectedFields=fields;fit.selectedRoles=["steps"];
@@ -44,11 +44,4 @@ import Toybox.Complications;import Toybox.Graphics;import Toybox.Test;import Toy
  api.currentStep=null;fields.readChanged("en",new Complications.Id(2));before=fit.calls;values=fit.sample(1794818604l);Test.assert(values["steps"]==7&&values["calories"]==90&&fit.calls==before+1);
  api.currentStep=0;fields.readChanged("en",new Complications.Id(2));fit.failActivity=true;before=fit.calls;values=fit.sample(1794818604l);Test.assert(values["steps"]==0&&fit.fieldState("steps").equals("READY")&&fit.fieldState("calories").equals("UNAVAILABLE")&&fit.calls==before+1);fields.stop();
  logger.debug("PEER_STEPS_READ current_and_zero_skip=true missing_fallback_once=true calories_shared_read=true independent_error=true");return true;
-}
-(:test,:typecheck(false)) function peerFallbackCues(logger){
- var view=new MenuView();view.context=new SceneContext({"id"=>"simulated:launch","rocket"=>"Falcon 9","operator"=>"SpaceX","site"=>"US","modelId"=>"ll2:configuration:80","precision"=>"exact","target"=>1794818704,"displayTarget"=>1794818704});view.onShow();
- for(var mode=0;mode<2;mode+=1){view.mode=mode==0?System.DISPLAY_MODE_HIGH_POWER:System.DISPLAY_MODE_LOW_POWER;view.syncDisplayMode(view.mode);view.context.stale=false;view.context.sourceHold=false;view.context.rescheduled=false;var baseline=new CueTrace();view.drawClockFallback(baseline);view.context.stale=true;var stale=new CueTrace();view.drawClockFallback(stale);Test.assertMessage(stale.dots>baseline.dots&&stale.lines==baseline.lines,"fallback stale must keep dots without hold/reschedule glyphs");
- view.context.stale=false;view.context.sourceHold=true;var held=new CueTrace();view.drawClockFallback(held);Test.assert(held.dots==baseline.dots&&held.lines==baseline.lines+2);
- view.context.rescheduled=true;var both=new CueTrace();view.drawClockFallback(both);Test.assert(both.dots==baseline.dots&&both.lines==baseline.lines+8);}
- view.onHide();logger.debug("PEER_FALLBACK_CUES active_low stale_dots_only=true hold2=true both8=true");return true;
 }

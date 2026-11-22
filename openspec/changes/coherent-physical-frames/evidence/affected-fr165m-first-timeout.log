@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "/Users/jekamas/.codex/tmp/spacefox-coherent-frames-20261122/run-fr165m-affected.py", line 11, in <module>
+    actual=observe_program(receipt['package'],out/selector,ctx,selector,'fr165m'); verdict=parse_runtime_output(actual['raw'],actual['raw_exit_code'],selector);results.append({'selector':selector,**verdict}); (out/'results.json').write_text(json.dumps(results,indent=2)+'\n')
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-coherent-physical-frames-20261122/tools/run_native_tests.py", line 90, in observe_program
+    result = run(command, output, timeout=45)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-coherent-physical-frames-20261122/tools/build_watchface.py", line 36, in run
+    return subprocess.run(argv, cwd=cwd, text=True, stdout=subprocess.PIPE,
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                          stderr=subprocess.STDOUT, timeout=timeout, check=False)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 557, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1221, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 2154, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1268, in _check_timeout
+    raise TimeoutExpired(
+    ...<2 lines>...
+            stderr=b''.join(stderr_seq) if stderr_seq else None)
+subprocess.TimeoutExpired: Command '['/opt/homebrew/Cellar/openjdk@11/11.0.21/libexec/openjdk.jdk/Contents/Home/bin/java', '-Dfile.encoding=UTF-8', '-classpath', '/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/monkeybrains.jar', 'com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux', '-f', '/Users/jekamas/.codex/tmp/spacefox-coherent-frames-20261122/affected-fr165m/SpaceFox-tests.prg', '-d', 'fr165m', '-s', '/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/shell', '-t', 'menuAffectedBatch']' timed out after 45 seconds

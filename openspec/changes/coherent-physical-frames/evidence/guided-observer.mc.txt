@@ -1,0 +1,15 @@
+import Toybox.Application;import Toybox.WatchUi;import Toybox.Graphics;import Toybox.Time;import Toybox.System;
+(:typecheck(false)) class GuidedClock extends WatchClock {
+ var now=1800000000l;function utcSeconds(){return now;}function localTimeText(){return "08:25";}function localCalendar(){return [3,17,11];}
+}
+(:typecheck(false)) class GuidedView extends SpaceFoxView {
+ var guidedClock;
+ function initialize(){guidedClock=new GuidedClock();var now=guidedClock.now;SpaceFoxView.initialize(guidedClock,new ScheduleState(now+86399,"exact"));setContext(new SceneContext({"id"=>"simulated:launch","rocket"=>"Falcon 9","operator"=>"SpaceX","site"=>"US · Vandenberg","modelId"=>"ll2:configuration:80","siteId"=>"ll2:pad:16","point"=>[-120.61,34.63],"precision"=>"exact","target"=>now+86399,"displayTarget"=>now+86399,"rescheduled"=>true,"stale"=>true,"sourceHold"=>true}));}
+ function advance(){guidedClock.now+=60;}
+ function onUpdate(dc as Graphics.Dc) as Void {SpaceFoxView.onUpdate(dc);var stats=System.getSystemStats();System.println("GUIDED mode="+deviceMode()+" minute="+(guidedClock.now/60)+" phase="+((guidedClock.now/60)%4)+" used="+stats.usedMemory+" total="+stats.totalMemory+" point="+(context!=null&&context.point!=null));}
+}
+(:typecheck(false)) class GuidedApp extends SpaceFoxApp {
+ function initialize(){SpaceFoxApp.initialize();}
+ function getInitialView(){view=new GuidedView();return [view];}
+ function onDisplayModeChanged() as Void {SpaceFoxApp.onDisplayModeChanged();if(view!=null&&System.getDisplayMode()==System.DISPLAY_MODE_LOW_POWER){(view as GuidedView).advance();WatchUi.requestUpdate();}}
+}

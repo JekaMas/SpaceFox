@@ -198,8 +198,10 @@ import Toybox.WatchUi;
  var testClock;var activeText="";var lowText="";
  function initialize(clock){testClock=clock;CountdownEventView.initialize(clock);}
  function newViewTimer() as Toybox.Timer.Timer{return new PbtTimer();}
- function onLayout(dc as Toybox.Graphics.Dc) as Void {}
- function drawClockFallback(dc){activeText=snapshotAt(testClock.now).countdown;}
+ function onLayout(dc as Toybox.Graphics.Dc) as Void {renderer=new PbtFrameRenderer();layoutReady=true;}
+ function prepareOptionalAod() as Void {}
+ function applyPixelRest(dc as Toybox.Graphics.Dc) as Void {}
+ function drawScene(dc as Toybox.Graphics.Dc) as Boolean {if(displayMode()==LOW){lowText=snapshotAt(testClock.now).lowCountdown;markLowFramePainted((testClock.now/60).toLong());}else{activeText=snapshotAt(testClock.now).countdown;}return true;}
  function drawPendingLow(dc){lowText=snapshotAt(testClock.now).lowCountdown;markLowFramePainted((testClock.now/60).toLong());}
 }
 (:test,:typecheck(false)) function capturedFrameIntent(logger){

@@ -27,7 +27,7 @@ import Toybox.Test;
   var prefix=[0,2,4,6,2,5,6,6,6,3,7,6,1,5,6,0,6];var count=prefix.size()+24+rng.draw(25);
   for(var i=0;i<count;i+=1){
    var e=i<prefix.size()?prefix[i]:rng.draw(8);trace.add(e);
-   var beforePaint=view.lowFrames+view.fallbackFrames;var beforeRead=view.fitnessCalls+view.lowSnapshots;
+   var beforePaint=view.lowFrames+view.activeFrames;var beforeRead=view.fitnessCalls+view.lowSnapshots;
    if(e==0){if(!visible){visible=true;state=3;minute=null;var next=os==2?3:(os==1?2:1);if(state!=next){state=next;minute=null;}}view.onShow();}
    else if(e==1){if(visible){visible=false;state=0;minute=null;}view.onHide();}
    else if(e==2){os=2;view.fakeMode=System.DISPLAY_MODE_OFF;}
@@ -39,7 +39,7 @@ import Toybox.Test;
     if(!visible){hiddenNo+=1;}else if(state==3){offNo+=1;}else if(state==1){var m=(view.clock.now/60).toLong();if(minute==m){sameNo+=1;}else{minute=m;lowPaint+=1;expectedPaint=1;if(initial){initial=false;minute=null;}}}
     view.onUpdate(dc);ownerCheck(view.lowFrames-wasLow==expectedPaint,"off-low-paint",seed,i,trace,expectedPaint,view.lowFrames-wasLow);
    }
-   if(!visible||state==3){ownerCheck(view.lowFrames+view.fallbackFrames==beforePaint&&view.fitnessCalls+view.lowSnapshots==beforeRead,"off-hidden-work",seed,i,trace,0,view.lowFrames+view.fallbackFrames-beforePaint);}
+   if(!visible||state==3){ownerCheck(view.lowFrames+view.activeFrames==beforePaint&&view.fitnessCalls+view.lowSnapshots==beforeRead,"off-hidden-work",seed,i,trace,0,view.lowFrames+view.activeFrames-beforePaint);}
    var expected=state==2?1:(state==3?-1:0);ownerCheck(view.visible()==visible&&view.displayMode()==expected&&view.lastLowFrameMinute()==minute,"off-low-model",seed,i,trace,[visible,os,state,minute],[view.visible(),view.displayMode(),view.lastLowFrameMinute()]);total+=1;
   }
   ownerCheck(offNo>startOff&&hiddenNo>startHidden&&lowPaint>startPaint&&sameNo>startSame&&offLow>startOffLow&&wakeEvents>startWake,"off-low-required-per-seed",seed,count,trace,true,[offNo-startOff,hiddenNo-startHidden,lowPaint-startPaint,sameNo-startSame,offLow-startOffLow]);view.onHide();pbtCheckViewReleased(view,seed,count,trace);

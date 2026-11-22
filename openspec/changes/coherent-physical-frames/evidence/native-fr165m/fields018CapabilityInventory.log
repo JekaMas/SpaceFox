@@ -1,0 +1,14 @@
+------------------------------------------------------------------------------
+Executing test fields018CapabilityInventory...
+DEBUG (23:28): ACTIVITY_KEYS [distance, stepGoal, floorsClimbedGoal, floorsDescended, metersClimbed, metersDescended, moveBarLevel, activeMinutesWeekGoal, activeMinutesDayTotal, activeMinutesDayModerate, activeMinutesDayVigorous, activeMinutesWeekModerate, activeMinutesWeekVigorous, stressScore]
+DEBUG (23:28): SYSTEM_KEYS [system:batteryInDays, system:charging]
+DEBUG (23:28): CAPABILITY native=40 paged=40 activity=14 system=2 availableNullSelectable=true solarNullUnsupported=true solarNegativeSupported=true type42=false
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+fields018CapabilityInventory        PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

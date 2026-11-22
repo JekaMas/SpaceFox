@@ -5,10 +5,12 @@ import Toybox.WatchUi;
 
 class SceneRenderer {
     var presentation as LocalePresentation;
+    var selectedFields as SelectedFields or Null=null;
     var mapDecision as MapPresentation;
     var fonts as Dictionary<String, Graphics.FontType>;
     var model as ResourceId or Null;
     var icons as Dictionary<String,Graphics.BitmapType>;
+    var iconRoles as Dictionary = {};
     var marker as Graphics.BitmapType;
     var art as Graphics.BitmapType or Null;
     var map as Graphics.BitmapType or Null;
@@ -45,12 +47,17 @@ class SceneRenderer {
     }
     (:extendedCode)
     function load(id as ResourceId) as WatchUi.Resource { resourceLoads += 1; return WatchUi.loadResource(id); }
+    (:typecheck(false)) function loadOptional(id){try{return load(id);}catch(e){return null;}}
     (:extendedCode, :typecheck(false))
     function prepare(context as SceneContext or Null, settings as SceneSettings) as Void {
         presentation.prepare(settings.language);fonts["label"]=presentation.label as Graphics.FontType;fonts["small"]=presentation.small as Graphics.FontType;fonts["count"]=presentation.count as Graphics.FontType;
-        var selected={} as Dictionary<String,Graphics.BitmapType>;
-        for(var i=0;i<settings.slots.size();i+=1){var role=settings.slots[i];if(NativeAssets.icons.hasKey(role)&&!selected.hasKey(role)){selected[role]=icons.hasKey(role)?(icons[role] as Graphics.BitmapType):load(NativeAssets.icons[role] as ResourceId) as Graphics.BitmapType;}}
-        icons=selected;
+        var selected={} as Dictionary<String,Graphics.BitmapType>;var selectedRoles={};
+        for(var i=0;i<settings.slots.size();i+=1){var role=settings.slots[i];var resourceRole=role;
+            if(role.equals("custom"+(i+1))){resourceRole=selectedFields==null?null:FieldCatalog.bundledIconRole((selectedFields as SelectedFields).iconSource(i+1));}
+            if(resourceRole!=null&&NativeAssets.icons.hasKey(resourceRole)&&!selected.hasKey(role)){
+                var sameIcon=icons.hasKey(role)&&iconRoles.hasKey(role)&&iconRoles[role].equals(resourceRole);
+                selected[role]=sameIcon?(icons[role] as Graphics.BitmapType):load(NativeAssets.icons[resourceRole] as ResourceId) as Graphics.BitmapType;selectedRoles[role]=resourceRole;}}
+        icons=selected;iconRoles=selectedRoles;
         mapDecision.bind(context);
         // Unchanged model and qualified point retain the same bitmaps even if
         // metadata/settings were refreshed or the accepted scene woke again.
@@ -59,8 +66,8 @@ class SceneRenderer {
         fullContext=context;
         if(same){
             var rich=downloaded instanceof NativeSfrRenderer?downloaded:null;
-            if(art==null && artResource!=null && (downloaded==null||downloaded.bitmap==null)){art=load(artResource as ResourceId) as Graphics.BitmapType;}
-            if(map==null && mapResource!=null && (rich==null||rich.mapBitmap==null)){map=load(mapResource as ResourceId) as Graphics.BitmapType;}
+            if(art==null && artResource!=null && (downloaded==null||downloaded.bitmap==null)){art=loadOptional(artResource as ResourceId) as Graphics.BitmapType or Null;}
+            if(map==null && mapResource!=null && (rich==null||rich.mapBitmap==null)){map=loadOptional(mapResource as ResourceId) as Graphics.BitmapType or Null;}
             return;
         }
         prepared=true;
@@ -68,21 +75,21 @@ class SceneRenderer {
         // shown unless the selected launch supplies a qualified matching point.
         model = null; art = null; artX=0;artY=0; map = null; aodMap=null; aodResource=null; pin = false;aodPin=false;worldFallback=false;
         var resource=mapDecision.activeResource();
-        if (context == null) { self.mapResource=resource;artResource=Rez.Drawables.Art_unknown;aodResource=mapDecision.lowResource();map=load(resource) as Graphics.BitmapType; art=load(artResource as ResourceId) as Graphics.BitmapType; return; }
-        model=NativeModels.resource(context.modelId);artResource=model;var anchor=NativeModels.anchor(model as ResourceId);artX=anchor[0];artY=anchor[1];art=load(artResource as ResourceId) as Graphics.BitmapType;
+        if (context == null) { self.mapResource=resource;artResource=Rez.Drawables.Art_unknown;aodResource=mapDecision.lowResource();map=loadOptional(resource) as Graphics.BitmapType or Null; art=loadOptional(artResource as ResourceId) as Graphics.BitmapType or Null; return; }
+        model=NativeModels.resource(context.modelId);artResource=model;var anchor=NativeModels.anchor(model as ResourceId);artX=anchor[0];artY=anchor[1];art=loadOptional(artResource as ResourceId) as Graphics.BitmapType or Null;
         pin=mapDecision.matched;aodPin=pin;pinX=mapDecision.x;pinY=mapDecision.y;aodPinX=pinX;aodPinY=pinY;
         worldFallback=mapDecision.worldPoint(true)!=null;
         aodResource=worldFallback?null:mapDecision.lowResource();
-        if(worldFallback){self.mapResource=null;map=null;}else{self.mapResource=resource;map=load(resource) as Graphics.BitmapType;}
+        if(worldFallback){self.mapResource=null;map=null;}else{self.mapResource=resource;map=loadOptional(resource) as Graphics.BitmapType or Null;}
     }
     // Only restore a bundled bitmap if this point has a matching bundled map;
     // unmatched points continue to use the bounded source-world fallback.
     (:typecheck(false)) function useDownloaded(value as NativeVisualRenderer or Null) as Void {
         downloaded=value;var rich=value instanceof NativeSfrRenderer?value:null;
         if(value!=null && value.bitmap!=null){art=null;}
-        else if(art==null && artResource!=null){art=load(artResource as ResourceId) as Graphics.BitmapType;}
+        else if(art==null && artResource!=null){art=loadOptional(artResource as ResourceId) as Graphics.BitmapType or Null;}
         if(rich!=null && rich.mapBitmap!=null){map=null;}
-        else if(map==null && mapResource!=null){map=load(mapResource as ResourceId) as Graphics.BitmapType;}
+        else if(map==null && mapResource!=null){map=loadOptional(mapResource as ResourceId) as Graphics.BitmapType or Null;}
     }
     function samePoint(a as Array<Numeric> or Null,b as Array<Numeric> or Null) as Boolean {
         if(a==null||b==null){return a==null&&b==null;}
@@ -120,7 +127,7 @@ class SceneRenderer {
         // A complete selected scene owns its validated map; the bundled map
         // remains the fallback while that scene is absent or incomplete.
         var selectedMap=mapDecision.useDownloaded(true,rich!=null && rich.mapBitmap!=null && rich.scene!=null && rich.scene["position"]!=null);
-        var useWorld=worldFallback;
+        var useWorld=worldFallback||(!selectedMap&&map==null);
         try{if(selectedMap){dc.drawBitmap(0,0,rich.mapBitmap);}else if(useWorld){FallbackWorld.draw(dc,97,15);}else if(map!=null){dc.drawBitmap2(0,0,map,mapScale);}}
         catch(e){selectedMap=false;useWorld=true;dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.clear();try{FallbackWorld.draw(dc,97,15);}catch(ignored){}}
         var context = fullContext;
@@ -149,7 +156,7 @@ class SceneRenderer {
             text(dc,left+rocketWidth+gap+operatorWidth/2,47,fonts["nameSmall"] as Graphics.FontType,operatorTitle,0xD4DFEB,238,1);
             text(dc,195,70,(fonts["small"] as Graphics.FontType),purposeText,0xD4DFEB,282,1);
             try{if(downloaded!=null&&downloaded.bitmap!=null){downloaded.draw(dc,0.0,0);}else if(art!=null){dc.drawBitmap(22+artX,118+artY,art as Graphics.BitmapType);}}
-            catch(e){dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.fillRectangle(22,118,54,124);try{if(art==null&&artResource!=null){art=load(artResource as ResourceId) as Graphics.BitmapType;}if(art!=null){dc.drawBitmap(22+artX,118+artY,art as Graphics.BitmapType);}}catch(ignored){}}
+            catch(e){dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.fillRectangle(22,118,54,124);}
             var flag=rich==null?null:rich.siteCountryBitmap;
             var footerBudget=flag==null?242:216;
             var footerFont=dc.getTextWidthInPixels(context.site,fonts["label"] as Graphics.FontType)>footerBudget?fonts["nameSmall"] as Graphics.FontType:fonts["label"] as Graphics.FontType;
@@ -162,7 +169,7 @@ class SceneRenderer {
             if(flag!=null){dc.drawBitmap(footerLeft,325,flag as Graphics.BitmapType);}
             text(dc,footerLeft+flagWidth+footerWidth/2,319,footerFont,footer,0xD4DFEB,footerBudget,1);
         }
-        if(context==null && art!=null){dc.drawBitmap(22+artX,118+artY,art as Graphics.BitmapType);}
+        if(context==null && art!=null){try{dc.drawBitmap(22+artX,118+artY,art as Graphics.BitmapType);}catch(ignored){}}
         if(current.localCalendar!=null){text(dc,195,95,presentation.calendarFont as Graphics.FontType,presentation.calendar(current.localCalendar as Array<Number>),0xD4DFEB,200,1);}
         text(dc,195,109,(fonts["time"] as Graphics.FontType),current.localTime,settings.clockColor,250,1);
         current.rescheduled=current.rescheduled||context!=null&&context.rescheduled;
@@ -180,7 +187,7 @@ class SceneRenderer {
             if(role.find("custom")==0){
                 var small=fonts["small"] as Graphics.FontType;var metric=fonts["metric"] as Graphics.FontType;
                 var customLeft=i%2==0?55:207;var name=metricFit(i,dc,fitness.fieldLabel(role),small,35);
-                drawProviderIcon(dc,fitness.fieldIcon(role),customLeft,rowTop,settings.fieldColors[i]);
+                drawProviderIcon(dc,fitness.fieldIcon(role),customLeft,rowTop,settings.fieldColors[i],role);
                 text(dc,customLeft+17,rowTop+6,small,name,settings.fieldColors[i],35,1);
                 var selected=fitness.selectedFields;var numeric=selected!=null && (selected as SelectedFields).fitted(role)?(selected as SelectedFields).numeric(role):metricGlyphs(label);
                 var valueFont=numeric?metric:small;
@@ -217,14 +224,16 @@ class SceneRenderer {
     (:extendedCode) function icon(dc as Graphics.Dc,x as Numeric,y as Numeric,role as String) as Void {
         if(icons.hasKey(role)){dc.drawBitmap(x,y,icons[role] as Graphics.BitmapType);}
     }
-    (:typecheck(false)) function drawProviderIcon(dc,icon,left,top,color) as Void {
-        if(icon==null){return;}
-        if(icon!=false){try{dc.drawBitmap2(left-25,top+5,icon[0],icon[1]);return;}catch(e){}}
+    (:typecheck(false)) function drawProviderIcon(dc,icon,left,top,color,role) as Void {
+        // When a provider has no icon, or its graphics lease was released on
+        // hide, keep a bounded visible slot marker alongside the source label.
+        if(icon!=null&&icon!=false){try{dc.drawBitmap2(left-25,top+5,icon[0],icon[1]);return;}catch(e){}}
+        if(icons.hasKey(role)){try{dc.drawBitmap(left-25,top+5,icons[role] as Graphics.BitmapType);return;}catch(e){}}
         dc.setColor(color,Graphics.COLOR_TRANSPARENT);dc.drawCircle(left-16,top+14,4);
     }
-    (:extendedCode) function prepareAod() as Void {presentation.prepareAodFonts();if(!fonts.hasKey("aod")){fonts["aod"]=load(Rez.Fonts.Aod40) as Graphics.FontType;}if(aodMap==null && aodResource!=null){aodMap=load(aodResource as ResourceId) as Graphics.BitmapType;}}
+    (:extendedCode) function prepareAod() as Void {presentation.prepareAodFonts();if(!fonts.hasKey("aod")){fonts["aod"]=load(Rez.Fonts.Aod40) as Graphics.FontType;}if(aodMap==null && aodResource!=null){aodMap=loadOptional(aodResource as ResourceId) as Graphics.BitmapType or Null;}}
     (:extendedCode) function releaseAod() as Void {aodMap=null;fonts.remove("aod");presentation.aodContextFont=null;presentation.aodBatteryFont=null;}
-    (:extendedCode, :typecheck(false)) function aodWorldPoint(bundled,selected) {return worldFallback&&!bundled&&!selected&&fullContext!=null?fullContext.point:null;}
+    (:extendedCode, :typecheck(false)) function aodWorldPoint(bundled,selected) {return fullContext!=null?fullContext.point:null;}
     (:extendedCode, :typecheck(false)) function aod(dc as Graphics.Dc,current as ClockSnapshot,minute as Number or Long,settings as SceneSettings) as Void {
         current.rescheduled=current.rescheduled||fullContext!=null&&fullContext.rescheduled;
         current.sourceHold=current.sourceHold||fullContext!=null&&fullContext.sourceHold;
@@ -265,8 +274,9 @@ module SceneAod {
     (:extendedCode) function draw(dc as Graphics.Dc,current as ClockSnapshot,minute as Number or Long,presentation as LocalePresentation,font as Graphics.FontType,settings as SceneSettings,map as Graphics.BitmapType or Null,pin as Boolean,pinX as Number,pinY as Number,worldPoint as Array<Numeric> or Null) as Void {
         dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.clear();
         var positions=[[-1,-1],[1,-1],[-1,1],[1,1]];var phase=((minute%4+4)%4).toNumber();var p=positions[phase];
-        if(map!=null){dc.drawBitmap(0,0,map);}
-        if(worldPoint!=null){FallbackWorld.draw(dc,97,15);}
+        var useWorld=map==null&&worldPoint!=null;
+        if(map!=null){try{dc.drawBitmap(0,0,map);}catch(e){dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.clear();map=null;pin=false;useWorld=worldPoint!=null;}}
+        if(useWorld){try{FallbackWorld.draw(dc,97,15);}catch(ignored){}}
         // Keep the ACTIVE-coordinate coastlines outside the foreground bands.
         // Clearing under the hollow clock also bounds lit pixels on dense maps.
         dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);
@@ -274,7 +284,7 @@ module SceneAod {
         dc.fillRectangle(40,247,310,39);dc.fillRectangle(125,296,140,43);
         // Draw the qualified point after the foreground masks so a southern
         // coordinate is not erased by the calendar/clock clearing band.
-        if(worldPoint!=null){FallbackMap.point(dc,worldPoint,97,15);}
+        if(useWorld){try{FallbackMap.point(dc,worldPoint,97,15);}catch(ignored){}}
         dc.setColor(settings.clockColor,Graphics.COLOR_TRANSPARENT);
         // Monospaced advance boxes do not imply symmetric digit ink. The
         // bundled AOD atlas has 53px advances; these are the fully lit left

@@ -7,7 +7,7 @@ import Toybox.System;
 // share the same dictionary and fonts. All resources are prepared off redraw.
 (:extendedCode, :typecheck(false))
 class LocalePresentation {
-    var qualificationMode as Boolean=false;var lightweight as Boolean=false;
+    var qualificationMode as Boolean=false;
     var locale as String="";
     var dictionary=null;
     var small as Graphics.FontType or Null=null;
@@ -20,27 +20,28 @@ class LocalePresentation {
     var loads=0;
     var calendarWeekday=-1;var calendarDay=-1;var calendarMonth=-1;var calendarText="";
     var stepsRaw=null;var stepsText=null;var caloriesRaw=null;var caloriesText=null;
-    function initialize(){restore("en");}
+    function initialize(){try{restore("en");}catch(e){suspend();}}
     // All fields are optional outside the renderer. Rebuild them before the
     // normal scene so feed/bitmap work need not retain font resources.
-    function suspend(){lightweight=false;dictionary=null;small=null;label=null;latinSmall=null;count=null;calendarFont=null;aodContextFont=null;aodBatteryFont=null;locale="";LocaleGraphemes.data=null;}
+    function suspend(){dictionary=null;small=null;label=null;latinSmall=null;count=null;calendarFont=null;aodContextFont=null;aodBatteryFont=null;locale="";LocaleGraphemes.data=null;}
+    function vectorFont(faces,size){return Graphics.getVectorFont({:face=>faces,:size=>size});}
     function restore(requested){
-        if(label!=null){prepare(requested);return;}
-        // Proper names use a shared Latin face, independent of UI language.
-        // SDK font files stay external; retain only these two common handles.
-        try{label=Graphics.getVectorFont({:face=>["RobotoRegular","RobotoCondensedRegular"],:size=>26});latinSmall=Graphics.getVectorFont({:face=>["RobotoRegular","RobotoCondensedRegular"],:size=>22});}catch(e){}
-        if(label==null){label=Graphics.FONT_TINY;}if(latinSmall==null){latinSmall=Graphics.FONT_XTINY;}
-        try{calendarFont=Graphics.getVectorFont({:face=>["RobotoRegular","RobotoCondensedRegular"],:size=>36});}catch(e){}
-        if(calendarFont==null){calendarFont=Graphics.FONT_TINY;}
-        prepare(requested);
-    }
-    function prepareLight(requested){
-        lightweight=true;var index=SceneStrings.index(requested);if(!SceneStrings.available(index)){index=0;}locale=SceneStrings.locale(index);try{dictionary=WatchUi.loadResource(SceneStrings.resource(index));}catch(e){dictionary=null;}
-        label=Graphics.FONT_TINY;latinSmall=Graphics.FONT_XTINY;small=Graphics.FONT_TINY;count=Graphics.FONT_MEDIUM;calendarFont=Graphics.FONT_MEDIUM;
+        if(label!=null&&latinSmall!=null&&calendarFont!=null){prepare(requested);return;}
+        // Build a complete font set before the renderer can use it. A transient
+        // allocation failure must not publish system-sized substitutes as ready.
+        suspend();
+        try{
+            label=vectorFont(["RobotoRegular","RobotoCondensedRegular"],26);
+            latinSmall=vectorFont(["RobotoRegular","RobotoCondensedRegular"],22);
+            calendarFont=vectorFont(["RobotoRegular","RobotoCondensedRegular"],36);
+            if(label==null||latinSmall==null||calendarFont==null){throw new Lang.InvalidValueException("mandatory font unavailable");}
+            prepare(requested);
+        }catch(e){suspend();throw e;}
     }
     function prepareAodFonts(){
-        if(aodContextFont==null){try{aodContextFont=Graphics.getVectorFont({:face=>["RobotoRegular","RobotoCondensedRegular"],:size=>47});}catch(e){}if(aodContextFont==null){aodContextFont=calendarFont==null?Graphics.FONT_SMALL:calendarFont;}}
-        if(aodBatteryFont==null){try{aodBatteryFont=Graphics.getVectorFont({:face=>["RobotoRegular","RobotoCondensedRegular"],:size=>51});}catch(e){}if(aodBatteryFont==null){aodBatteryFont=aodContextFont;}}
+        if(aodContextFont==null){aodContextFont=vectorFont(["RobotoRegular","RobotoCondensedRegular"],47);}
+        if(aodBatteryFont==null){aodBatteryFont=vectorFont(["RobotoRegular","RobotoCondensedRegular"],51);}
+        if(aodContextFont==null||aodBatteryFont==null){throw new Lang.InvalidValueException("mandatory LOW font unavailable");}
     }
     function prepare(requested) {
         var index=SceneStrings.index(requested);
@@ -51,15 +52,13 @@ class LocalePresentation {
         try {
             dictionary=WatchUi.loadResource(SceneStrings.resource(index));loads+=1;
             var face=dictionary["face"];
-            small=face.equals("RobotoRegular")?latinSmall:Graphics.getVectorFont({:face=>[face,"RobotoRegular","RobotoCondensedRegular"],:size=>22});
-            count=Graphics.getVectorFont({:face=>[face,"RobotoRegular","RobotoCondensedRegular"],:size=>46});
+            small=face.equals("RobotoRegular")?latinSmall:vectorFont([face,"RobotoRegular","RobotoCondensedRegular"],22);
+            count=vectorFont([face,"RobotoRegular","RobotoCondensedRegular"],46);
             if(small==null||label==null||count==null){throw new Lang.InvalidValueException("locale font unavailable");}
             locale=next;
         } catch(e) {
-            dictionary=null;small=null;count=null;
-            if(!next.equals("en")){prepare("en");return;}
-            // Built-in English survives unavailable scalable-font resources.
-            locale="en";small=latinSmall;count=Graphics.FONT_SMALL;
+            dictionary=null;small=null;count=null;locale="";
+            throw e;
         }
     }
     function calendar(parts as Array<Number>) as String {
