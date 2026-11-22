@@ -178,15 +178,26 @@ class SelectedFields {
         }
         return true;
     }
-    function start(slots,onChange){
-        var same=sameSelection(slots);stop();
-        if(!same){clearSnapshot();}previousRoles=[];previousSources=[];for(var n=0;n<slots.size();n+=1){previousRoles.add(slots[n]);}
+    // Change ownership slot by slot before any deferred provider sampling.
+    function select(slots){
+        var oldRoles=previousRoles;var oldSources=previousSources;
+        previousRoles=[];previousSources=[];customMask=0;
         for(var i=0;i<4;i+=1){
-            var custom=slots[i].equals("custom"+(i+1));if(custom){customMask|=(1<<i);}
-            var kind=slots[i].equals("energy")?23:(slots[i].equals("heart")?18:(slots[i].equals("stress")?22:(slots[i].equals("steps")?2:0)));
+            var role=slots[i];var custom=role.equals("custom"+(i+1));
+            var kind=role.equals("energy")?23:(role.equals("heart")?18:(role.equals("stress")?22:(role.equals("steps")?2:0)));
             var source=kind!=0?new Complications.Id(kind):(custom?savedField(i+1):null);
-            selected.add(source);previousSources.add(source);
+            var same=oldRoles!=null&&oldSources!=null&&oldRoles[i].equals(role);
+            if(same){var old=oldSources[i];same=old==null?source==null:(source!=null&&old.equals(source));}
+            if(!same){
+                var key="custom"+(i+1);labels.remove(key);text.remove(key);icons.remove(key);states.remove(key);reasons.remove(key);
+                fittedMask&=~(1<<i);numericMask&=~(1<<i);
+            }
+            previousRoles.add(role);previousSources.add(source);if(custom){customMask|=1<<i;}
         }
+    }
+    function start(slots,onChange){
+        stop();select(slots);
+        for(var i=0;i<4;i+=1){selected.add(previousSources[i]);}
         changeCallback=onChange;ensureSubscriptions();firstSubscriptionRead=true;
     }
     // A failed registration or subscription can be retried at the existing

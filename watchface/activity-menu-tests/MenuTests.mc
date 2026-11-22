@@ -181,7 +181,7 @@ import Toybox.Timer;import Toybox.Graphics;import Toybox.Lang;import Toybox.Syst
  view.onHide();logger.debug("mandatory paint failure clears partial frame; healthy canonical rebind");return true;
 }
 (:test,:typecheck(false)) function menuPeerControls(logger){
- Test.assert(menuMandatoryPaintRecovery(logger));return true;
+ Test.assert(menuMandatoryPaintRecovery(logger));Test.assert(menuSlotAndLocaleIsolation(logger));return true;
 }
 
 (:test,:typecheck(false)) class MenuCadenceClock extends WatchClock {var now=1795042100;function utcSeconds(){return now;}function localTimeText(){return "08:25";}function localCalendar(){return [3,17,11];}}
@@ -315,4 +315,27 @@ import Toybox.Timer;import Toybox.Graphics;import Toybox.Lang;import Toybox.Syst
   var v=new MenuView();var settings={"Field1"=>0,"Field2"=>1,"Field3"=>2,"Field4"=>3};settings["Field"+(slot+1)]=role;v.setSettings(new SceneSettings(settings));v.values={"steps"=>10,"energy"=>20,"heart"=>30,"stress"=>40,"calories"=>50,"battery"=>60};v.onShow();menuReset();v.onUpdate(new MenuDraw());
   Test.assertMessage(MenuObserve.time&&MenuObserve.icons.size()==4&&MenuObserve.values==4,"canonical frame must contain four preset slots");Test.assert(MenuObserve.icons[slot][0].equals(names[role]));Test.assert(MenuObserve.icons[slot][2]==(slot<2?244:282)+(names[role].equals("battery")?2:5));v.onHide();checks+=1;
  }}logger.debug("BUILTIN_MATRIX roles=6 slots=4 view_frames="+checks+" controlled=true");return true;
+}
+
+(:test,:typecheck(false)) class MenuAutoSettings extends SceneSettings {
+ var nextLanguage="en";
+ function initialize(){SceneSettings.initialize({"Field1"=>6,"Field2"=>6,"Field3"=>6,"Field4"=>6});}
+ function refreshLanguage() as Void {language=nextLanguage;}
+}
+(:test,:typecheck(false)) class MenuLocaleView extends MenuView {
+ function initialize(){MenuView.initialize();}
+ function refreshLocale() as Void {SpaceFoxView.refreshLocale();}
+}
+(:test,:typecheck(false)) function menuSlotAndLocaleIsolation(logger){
+ var view=new MenuLocaleView();var fields=new PbtSelectedFields();view.selectedFields=fields;view.fitness.selectedFields=fields;
+ var settings=new MenuAutoSettings();view.setSettings(settings);fields.fakeApi.values=[11,22,33,44];
+ fields.start(settings.slots,fields.method(:callback));fields.read("en");view.onShow();view.admissionPending=true;
+ var reads=fields.fakeApi.gets;fields.fakeApi.kinds[0]=1;view.setSettings(settings);
+ Test.assertMessage(fields.display("custom1").equals("—")&&fields.label("custom1").equals(""),"changed source clears only its own slot before deferred sampling");
+ for(var i=2;i<=4;i+=1){Test.assertMessage(fields.display("custom"+i).equals((i*11).toString())&&fields.label("custom"+i).equals("src"),"unchanged slot survives another source change");}
+ Test.assert(fields.fakeApi.gets==reads);fields.start(settings.slots,fields.method(:callback));fields.read("en");
+ settings.nextLanguage="ru";view.refreshLocale();Test.assert(view.settings.language.equals("ru"));
+ for(var slot=1;slot<=4;slot+=1){Test.assertMessage(fields.display("custom"+slot).equals("—")&&fields.label("custom"+slot).equals(""),"automatic locale change invalidates formatted snapshot even with the same settings object");}
+ Test.assert(fields.fakeApi.gets==reads+4);view.onHide();
+ logger.debug("SLOT_LOCALE source_change=one retained=three admission_reads=0 locale_cache_cleared=four");return true;
 }

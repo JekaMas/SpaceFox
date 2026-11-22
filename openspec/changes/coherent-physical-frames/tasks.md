@@ -5,4 +5,5 @@
 - [x] Cover current picker categories and all four positions in independent production-bound event sequences; simulator availability and third-party provider limits are recorded.
 - [x] Run directly affected FR165/M native selectors, retain unaffected earlier receipts, real-app LOW/resource observations and current admission; retain raw evidence. Raster and physical gaps are stated in the author report.
 - [x] Freeze source/version and author report for independent peer. Physical watch outcome remains unobserved.
-- [ ] Independent peer review and root judgment; delivery is not authorized by this author receipt alone.
+- [x] Independent peer reviewed and repaired the bounded batch, retained the original RED and reused valid observations; current peer/source gate is recorded in evidence/PEER-gate.log.
+- [ ] Root judgment and authorized delivery. Physical watch outcome, complete mask/missing-map raster set and real menu raster pair remain unobserved.

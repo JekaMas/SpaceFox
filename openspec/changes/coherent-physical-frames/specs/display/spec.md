@@ -25,7 +25,9 @@ The watch face SHALL render only the approved complete ACTIVE or sparse LOW comp
 - **WHEN** a settings/menu event keeps a slot's role, saved source identity and locale unchanged
 - **THEN** the accepted same-source presentation remains associated with that slot until a fresh provider result replaces it.
 - **WHEN** a saved source identity changes, including when the slot stays `custom`
-- **THEN** prior source text and value are cleared before any next paint.
+- **THEN** prior source text and value are cleared before any next paint, while unchanged slots retain their own accepted presentation during deferred sampling.
+- **WHEN** automatic system language changes on the existing settings object
+- **THEN** language-dependent cached field text is invalidated before the next presentation.
 
 #### Scenario: Clock and countdown cues
 - **WHEN** a numeric countdown is displayed at or beyond 86400 seconds before target

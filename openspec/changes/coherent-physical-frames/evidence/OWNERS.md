@@ -10,7 +10,7 @@
 | Selected values and provider icons | SelectedFields.start/stop/readSelected, Fitness, SceneRenderer.active | `stop` retains text but clears icons. `readSelected` requests an icon only for type 0; other picked complications and local sources can paint values without an icon. Test each supported family and missing/duplicate/callback/reopen causally. |
 | Countdown/cues | snapshotAt, ScheduleState, SceneAod.countdownColor/staleMark/rescheduleMark/holdMark | ACTIVE, normal LOW and pending LOW route must preserve raw UTC threshold and distinct flags. |
 
-Initial observations are static source facts, not observed root cause of the private photos. Photos contain values and weekday; .19 clock fallback has neither, while the historical pre-0.2.14 drawDecodingFrame had that qualitative fingerprint. Installed version remains unconfirmed.
+Initial observations are static source facts, not observed root cause of the private photos. Photos contain values and weekday; .19 clock fallback has neither, while the historical pre-0.2.14 drawDecodingFrame had that qualitative fingerprint. The user confirms the reported installed version as 0.2.19. Binary/source identity and the physical cause remain unobserved.
 
 Garmin's current [Complications API](https://developer.garmin.com/connect-iq/api-docs/Toybox/Complications.html) declares system types 1–42, with 41 (golf score) and 42 (sleep score) beyond the previously assumed 1–40. Types 6, 7, 12, 26, 39 and 41 have String values; the controlled finite tests must exercise those types as strings, not invent numeric production data. Availability is device and firmware dependent. Type 0 is an invalid system kind; third-party publisher IDs require their own selected controlled test.
 

@@ -1,0 +1,28 @@
+------------------------------------------------------------------------------
+Executing test menuAffectedBatch...
+DEBUG (23:49): before icons=4 time=true values=4
+DEBUG (23:49): deferred icons=4 time=true values=4
+DEBUG (23:49): same immutable bitmap retained; replaced selection detaches previous bitmap
+DEBUG (23:49): optional map/art faults: canonical time and four identities retained
+DEBUG (23:49): ROOT_PROJECTION valid/maxSource accepted; missing/identity/role/provenance/duplicate/unknown refused
+DEBUG (23:49): HIDDEN_RESOURCE cycles=3 callbacks_released=true hidden_settings_no_reload=true
+DEBUG (23:49): COMPACT_CLOSURE byte_value_dedup/conflicts/order/corrupt_ref/canonical_durable passed
+DEBUG (23:49): RASTER_COMMIT failure retains old active/recovery and does not publish candidate
+DEBUG (23:49): SHARD_PROJECTION captured19 accepted; malformed digest and oversized input refused
+DEBUG (23:49): COMPACT_PIXEL valid accepted; wrong pixel hash refused
+DEBUG (23:49): MENU_GENERATED seeds=8 events=272 checks=2112 event_counts=[17, 92, 18, 12, 19, 14, 13, 13, 20, 14, 12, 13, 15] after_each=true
+DEBUG (23:49): custom icon missing/released: two markers
+DEBUG (23:49): MENU_SOURCES unchanged retained; changed ID cleared
+DEBUG (23:49): FONT_PREFLIGHT no paint on failure; canonical frame after retry
+DEBUG (23:49): LOW_MAP_FAULT point retained on four phases; graphics-call observer
+DEBUG (23:49): MENU_CANONICAL identical four icon placements, Time80, Metric32 across hide/show
+DEBUG (23:49): MENU_AFFECTED directed=15 generated=1
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+menuAffectedBatch                   PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

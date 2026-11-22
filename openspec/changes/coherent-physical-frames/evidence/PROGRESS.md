@@ -1,6 +1,14 @@
-# Current
+# Current independent software GREEN
 
-Base `3eece8f08dd8d753821688145b18197de33346ad` (0.2.19); candidate 0.2.20, NativeID `b02c0419`. The user reports the photos are 0.2.19. Their exact runtime cause is not established, and the private photos and health readings are not included here.
+The peer found and repaired two current settings transitions. A single custom-source change now invalidates that slot in the existing SelectedFields owner, preserving the other three while admission defers sampling. Automatic locale refresh invalidates formatted caches before the same settings object is passed onward. The original production regression and a separate test-subclass initialization error are retained under `peer-runtime/`. Current NativeID is `b53f14dc`.
+
+The original author observations below retain their source and capture boundaries. LOW geometry, masks, point projection and countdown rendering are unchanged by the peer repair. Current five-primary qualification was genuinely rerun because SpaceFoxView is an exact semantic input. Nine affected selector/profile observations and five genuine current-primary selectors passed with complete strict tables and raw launcher exit 1. PEER.md and PEER.json state the bounded result; PEER-gate.log records the current clean-source/release gate. No fresh 72-case full run is claimed. Root judgment and delivery remain pending.
+
+## Author completion and historical attempts
+
+# Current peer closure in progress
+
+Base `3eece8f08dd8d753821688145b18197de33346ad` (0.2.19); candidate 0.2.20, NativeID `b53f14dc`. The user reports the photos are 0.2.19. Their exact runtime cause is not established, and the private photos and health readings are not included here.
 
 Mandatory font acquisition, coherent frame recovery, optional visual isolation and selected-field source identity have been implemented. Focused FR165 production-bound selectors passed, including 42 complication kinds and 24 local sources across four slots, generated events, menu return and fault injection. Actual SDK inventory observed 40 available native kinds, 14 activity and two system keys; third-party publisher coverage is not exhaustive. Current five-primary admission passed with the real Linux-compiled FR165M qualification program run on the Mac simulator; this does not establish physical or linguistic review.
 

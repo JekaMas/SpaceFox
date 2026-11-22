@@ -1,0 +1,15 @@
+{
+  "production_revision": "d44d6c7cedffb2ebe4b85fb63c34ec9a79017fd5",
+  "private_snapshot": "peer-old-production/source",
+  "restored_from_git": [
+    "watchface/source/FieldSources.mc",
+    "watchface/source/SpaceFoxView.mc",
+    "watchface/source/generated/NativeVersion.mc"
+  ],
+  "current_test": "watchface/activity-menu-tests/MenuTests.mc",
+  "selector": "menuPeerControls",
+  "raw_exit_code": 1,
+  "status": "ERROR",
+  "failure": "ASSERTION FAILED: unchanged slot survives another source change",
+  "prior_harness_error": "MenuLocaleView lacked its explicit base initializer; first-harness-error.log is a distinct harness failure."
+}
