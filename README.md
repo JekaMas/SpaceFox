@@ -1,16 +1,14 @@
 # SpaceFox
 
-SpaceFox is a free, MIT-licensed space watch face for Garmin watches, including Forerunner 165 and Forerunner 165 Music. It combines a large digital clock, rocket artwork, a launch-site map, a local T−/T+ countdown and four configurable activity fields.
+> I’m Ivan Danilenko. I love spaceflight and dream of designing rockets someday. I follow launch schedules, but I couldn’t find a Garmin watch face that showed me which rocket was next, where it would launch, and how long I had to wait. My dad helped me turn that idea into SpaceFox.
 
-**[Install from Connect IQ](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3)** · **[0.2.14 release](https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.14)** · **[FR165 install ZIP](https://github.com/JekaMas/SpaceFox/releases/download/v0.2.14/SpaceFox-0.2.14-FR165-install.zip)** · [Release notes](https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.14)
+SpaceFox is a free, open-source watch face for Garmin. It puts the next scheduled rocket launch, a T−/T+ countdown and a launch-site map alongside the clock and four configurable activity fields. On compatible watches, Always-On keeps the countdown and launch point visible.
 
-The 0.2.14 GitHub release preserves the normal ACTIVE face after activity-menu and sleep/wake transitions and improves artwork resource ownership. Garmin verified and accepted the signed update; its version update is pending approval. Physical watch and phone acceptance are not yet observed. Reminders default off.
+**[Install from Connect IQ](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3)** · **[GitHub releases](https://github.com/JekaMas/SpaceFox/releases)** · **[FR165 / FR165 Music install ZIP](https://github.com/JekaMas/SpaceFox/releases/download/v0.2.20/SpaceFox-0.2.20-FR165-install.zip)**
 
-![SpaceFox 0.1.18 in the Forerunner 165 Music simulator](openspec/changes/spacefox-watchface/evidence/fields018/entry-controls/peer-release-390-256680ec.png)
+![SpaceFox Active and Always-On previews showing Falcon 9 and the Vandenberg launch site](docs/images/spacefox-launch-hero.png)
 
-Native simulator capture; it is not a physical watch photograph.
-
-The 0.2.14 release uses hourly healthy schedule checks and retries missing or failed schedules at the next permitted connected opportunity. Garmin background dispatch has a five-minute minimum. Phone delivery and physical watch acceptance remain unobserved.
+Garmin simulator captures with sample activity readings.
 
 ## What it shows
 
@@ -21,7 +19,7 @@ The 0.2.14 release uses hourly healthy schedule checks and retries missing or fa
 - A full map outline and launch point in always-on mode, with centered time, date, weekday, minute countdown and battery. The four activity fields and rocket artwork are omitted in this mode.
 - Optional, quiet-aware launch reminders. They are off by default; when enabled, Garmin schedules notifications from T−15. Device settings control vibration and delivery.
 
-A delayed or rescheduled launch uses a reddish countdown; stale data has a separate dotted indicator. Passing zero is a time calculation, not confirmation of liftoff. Missing Garmin readings remain unavailable; Body Battery, heart rate and stress use Garmin's current complication values when selected. Rocket artwork is static.
+The countdown uses a neutral color with at least 24 hours remaining and the selected accent closer to launch. Reschedules and stale data have separate indicators. Passing zero is a time calculation, not confirmation of liftoff. Missing Garmin readings remain unavailable; Body Battery, heart rate and stress use Garmin's current complication values when selected. Rocket artwork is static.
 
 A countdown may refer to an inexact announced NET; it does not confirm liftoff or change reminder eligibility. Dashes mean no usable target is available. A point is omitted when no valid launch-site coordinates are available. A simplified world outline can appear while optional artwork is loading.
 
